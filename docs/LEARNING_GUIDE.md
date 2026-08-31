@@ -174,9 +174,50 @@ pytest                                   # 5. verify nothing broke
 
 Then open `reports/ML Tool.pbix` and refresh to pull the new CSV.
 
-## 9. What comes next
+## 9. The financial-statement layer (Phase 1: `src/financials/`)
 
-The financial-statement layer (see the phased plan) adds ingestion,
-account mapping, FX translation, consolidation, controls, and forecasting
-*upstream* of step 6, so the placeholder inputs become numbers traced all the
-way back to a client's actual statements — file, sheet, and row.
+This is the start of the pipeline that will eventually replace the
+hard-coded valuation inputs with numbers derived from real client
+financial statements. Phase 1 is the foundation: schemas, loading, and
+validation. Python concepts worth studying in it:
+
+- **`schemas.py` — data as code.** Every CSV's shape is declared once as
+  frozen `@dataclass` objects (`Column`, `TableSchema`). "Frozen" makes
+  them immutable — nothing can quietly change a schema at runtime. The
+  loader and validator both read this registry, so there is exactly one
+  definition of "valid" in the whole codebase.
+- **`validator.py` — collect, don't crash.** Each rule returns a list of
+  `Issue` records instead of raising on the first problem. One load
+  surfaces *every* error at once (an analyst fixes the file in one pass),
+  and the same records can later be exported for audit. Compare
+  `check_duplicate_keys` (pandas `duplicated()`) and `_missing_refs`
+  (set membership with `isin`) — two patterns you'll reuse constantly.
+- **`loader.py` — validate as text, then type.** CSVs are read with
+  `dtype=str, keep_default_na=False` so validation sees the file exactly
+  as written; pandas' type guessing would hide problems (an account code
+  `0400` becoming the number 400). Only after checks pass are columns
+  coerced to real numbers and dates.
+- **Fail loudly.** With `strict=True`, any ERROR raises
+  `ClientFSValidationError` listing every problem with CSV line numbers.
+  Silent bad data is the one thing a financial pipeline can never allow.
+- **Lineage.** Every raw row carries source_file / sheet / row / load_id.
+  Run `python src/load_client_fs.py` to watch one number (Beispiel GmbH
+  FY2025 revenue, €300) get traced from standardized concept back to the
+  workbook cell it came from.
+- **Tests as specification.** `tests/test_client_fs_validator.py` breaks
+  the fixture data one way per test and asserts the exact rule fires.
+  Read it as the executable list of what the loader guarantees.
+
+The fixture company (COMP001, a USD parent with a EUR subsidiary and an
+elimination entity) is small enough to check by hand: both balance sheets
+balance, retained earnings roll forward (170 + 135 − 45 = 260), and the
+cash-flow statement walks beginning cash to ending cash (120 + 30 = 150).
+Later phases (controls, FX, consolidation) will verify those same
+identities in code.
+
+## 10. What comes next
+
+Account mapping and sign normalization (Phase 2), FX translation and
+consolidation (Phase 3), the control engine (Phase 4), then NWC → NOPAT →
+UFCF (Phase 5) — each phase upgrading one placeholder in the valuation
+model into a number traced all the way back to a source statement.

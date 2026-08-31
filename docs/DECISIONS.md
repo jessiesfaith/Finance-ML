@@ -61,3 +61,53 @@ scripts are left exactly as they are.
 ### 8. Claude push access to this repo — RESOLVED WHEN FIRST BRANCH PUSHED
 The Claude GitHub App needed this repository added to its repository-access
 list before automated branches could be pushed for review.
+
+---
+
+## 2026-08-31 — Phase 1 (client financial-statement ingestion layer)
+
+### 9. Power BI stays untouched until the pipeline is stable — DIRECTIVE
+Per Jessica: the existing PBIX / semantic model is downstream and
+**read-only** throughout Phases 1–10. Backward compatibility with
+`finance_scenario_report.csv` is maintained at all times (schema-lock
+test). Only after the output tables stabilize does `ML Tool.pbix` get a
+`.pbip` copy for source-controlled report development. Division of labor
+at that point: TMDL semantic model / DAX / Power Query M are authored
+code-first; the report-layout JSON is treated as **more fragile than
+DAX/TMDL** — code provides scaffolding only, and layout/visual polish is
+QA'd by hand in Power BI Desktop. Full contract: docs/POWERBI_CONTRACT.md.
+
+### 10. Stable reporting interface — CURATED TABLES ONLY
+Power BI consumes only curated `reports/*.csv` outputs written by Python,
+never raw or intermediate financial-statement files. This lets internal
+schemas churn freely during the build without breaking reporting.
+
+### 11. Imports via conftest.py, not a packaging setup — SIMPLICITY
+`conftest.py` adds `src/` to the import path so `from financials import …`
+works everywhere with zero install steps (`pip install -r requirements.txt`
+is all a fresh machine needs). A pyproject/editable-install can formalize
+this later; for a learning-first project, less packaging magic wins.
+
+### 12. Validation reads every cell as text first — DELIBERATE
+The loader reads CSVs with `dtype=str` and no NaN inference, validates the
+literal file contents, and only then coerces types. Pandas' automatic
+inference would hide exactly the problems validation exists to catch
+(blank vs NaN, account code "0400" becoming the number 400).
+
+### 13. Unmapped accounts are ERRORs, not warnings
+An account with no `account_mapping` row blocks the load. The pipeline
+never guesses a mapping — an analyst adds the row (or consciously excludes
+the account) and the load is re-run. Same philosophy as failed controls:
+nothing is silently fixed.
+
+### 14. account_mapping key is source_account_code alone — REVISIT IN PHASE 2
+If two source systems ever reuse the same code, the key must become
+(source_system, source_account_code). Fixture codes are kept distinct so
+this can be deferred until the mapping engine is built.
+
+### 15. Fixture FX simplifications — INTENTIONAL, FIXED IN PHASE 3
+The COMP001 fixture translates the EUR balance sheet entirely at closing
+rate (including equity, which properly uses historical rates, with the
+difference landing in CTA/AOCI). The raw rows say so in `source_note`.
+Phase 3 (FX translation) implements the correct treatment; the fixture
+then gains a CTA line and the consolidation controls verify it.

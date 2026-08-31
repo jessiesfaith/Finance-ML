@@ -1,0 +1,4 @@
+company_id,entity_id,parent_entity_id,entity_name,entity_type,ownership_pct,functional_currency,country,consolidation_method,elimination_entity_flag,active_flag
+COMP001,ENT_PARENT,,Example Company Inc.,PARENT,100,USD,US,FULL,N,Y
+COMP001,ENT_GMBH,ENT_PARENT,Beispiel GmbH,SUBSIDIARY,100,EUR,DE,FULL,N,Y
+COMP001,ENT_ELIM,ENT_PARENT,Consolidation Eliminations,ELIMINATION,100,USD,US,ELIMINATION,Y,Y

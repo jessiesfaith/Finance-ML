@@ -1,0 +1,40 @@
+source_account_code,source_account_name,standard_account_id,standard_account_name,statement_type,statement_section,normal_balance,sign_multiplier,operating_classification,nwc_classification,ufcf_classification,roic_classification,share_classification,cash_flow_classification,oci_classification,review_status
+4000,Revenue,revenue,Revenue,IS,revenue,CR,1,OPERATING,,,,,,,APPROVED
+5000,Cost of Goods Sold,cogs,Cost of Goods Sold,IS,cogs,DR,-1,OPERATING,,,,,,,APPROVED
+6000,Operating Expenses,opex,Operating Expenses,IS,operating_expenses,DR,-1,OPERATING,,,,,,,APPROVED
+6500,Depreciation & Amortization,depreciation_amortization,Depreciation & Amortization,IS,depreciation_amortization,DR,-1,OPERATING,,UFCF_ADDBACK,,,,,APPROVED
+7000,Interest Expense,interest_expense,Interest Expense,IS,interest,DR,-1,FINANCING,,,,,,,APPROVED
+8000,Income Tax Expense,income_tax_expense,Income Tax Expense,IS,tax,DR,-1,TAX,,,,,,,APPROVED
+1000,Cash and Cash Equivalents,cash,Cash and Cash Equivalents,BS,current_assets,DR,1,NON_OPERATING,EXCLUDED,,,,,,APPROVED
+1100,Accounts Receivable,accounts_receivable,Accounts Receivable,BS,current_assets,DR,1,OPERATING,NWC_OPERATING_ASSET,,ROIC_OPERATING_ASSET,,,,APPROVED
+1200,Inventory,inventory,Inventory,BS,current_assets,DR,1,OPERATING,NWC_OPERATING_ASSET,,ROIC_OPERATING_ASSET,,,,APPROVED
+1500,"Property, Plant & Equipment, Net",ppe_net,"Property, Plant & Equipment, Net",BS,noncurrent_assets,DR,1,OPERATING,,,ROIC_OPERATING_ASSET,,,,APPROVED
+2000,Accounts Payable,accounts_payable,Accounts Payable,BS,current_liabilities,CR,1,OPERATING,NWC_OPERATING_LIABILITY,,ROIC_OPERATING_LIABILITY,,,,APPROVED
+2500,Long-Term Debt,long_term_debt,Long-Term Debt,BS,noncurrent_liabilities,CR,1,FINANCING,EXCLUDED,,,,,,APPROVED
+3000,Common Stock,common_stock,Common Stock,BS,equity,CR,1,EQUITY,,,,,,,APPROVED
+3500,Retained Earnings,retained_earnings,Retained Earnings,BS,equity,CR,1,EQUITY,,,,,,,APPROVED
+9100,Net Income (CFS),cfs_net_income,Net Income per Cash Flow Statement,CFS,operating,CR,1,,,,,,CFO,,APPROVED
+9200,D&A Add-back,cfs_depreciation_amortization,Depreciation & Amortization Add-back,CFS,operating,DR,1,,,,,,CFO,,APPROVED
+9300,Change in Working Capital,cfs_change_in_nwc,Change in Net Working Capital,CFS,operating,DR,1,,,,,,CFO,,APPROVED
+9400,Capital Expenditures,cfs_capex,Capital Expenditures,CFS,investing,DR,1,,,UFCF_CAPEX,,,CFI,,APPROVED
+9500,Dividends Paid,cfs_dividends_paid,Dividends Paid,CFS,financing,DR,1,,,,,,CFF,,APPROVED
+9600,Debt Repayments,cfs_debt_repayment,Debt Repayments,CFS,financing,DR,1,,,,,,CFF,,APPROVED
+9700,Foreign Currency Translation Adjustment,oci_fx_translation,Foreign Currency Translation Adjustment,OCI,oci,CR,1,,,,,,,OCI_TRANSLATION,APPROVED
+9800,Retained Earnings Beginning Balance,re_beginning,Retained Earnings Beginning Balance,EQUITY,retained_earnings,CR,1,EQUITY,,,,,,,APPROVED
+9810,Net Income (Equity Statement),re_net_income,Net Income per Equity Statement,EQUITY,retained_earnings,CR,1,EQUITY,,,,,,,APPROVED
+9820,Dividends Declared,re_dividends,Dividends Declared,EQUITY,retained_earnings,DR,1,EQUITY,,,,,,,APPROVED
+9830,Retained Earnings Ending Balance,re_ending,Retained Earnings Ending Balance,EQUITY,retained_earnings,CR,1,EQUITY,,,,,,,APPROVED
+8400,Umsatzerloese,revenue,Revenue,IS,revenue,CR,1,OPERATING,,,,,,,APPROVED
+5000-DE,Herstellungskosten,cogs,Cost of Goods Sold,IS,cogs,DR,-1,OPERATING,,,,,,,APPROVED
+6300,Betriebsausgaben,opex,Operating Expenses,IS,operating_expenses,DR,-1,OPERATING,,,,,,,APPROVED
+6220,Abschreibungen,depreciation_amortization,Depreciation & Amortization,IS,depreciation_amortization,DR,-1,OPERATING,,UFCF_ADDBACK,,,,,APPROVED
+7310,Zinsaufwand,interest_expense,Interest Expense,IS,interest,DR,-1,FINANCING,,,,,,,APPROVED
+7645,Steueraufwand,income_tax_expense,Income Tax Expense,IS,tax,DR,-1,TAX,,,,,,,APPROVED
+1600,Kasse und Bankguthaben,cash,Cash and Cash Equivalents,BS,current_assets,DR,1,NON_OPERATING,EXCLUDED,,,,,,APPROVED
+1400,Forderungen aus Lieferungen und Leistungen,accounts_receivable,Accounts Receivable,BS,current_assets,DR,1,OPERATING,NWC_OPERATING_ASSET,,ROIC_OPERATING_ASSET,,,,APPROVED
+3970,Vorraete,inventory,Inventory,BS,current_assets,DR,1,OPERATING,NWC_OPERATING_ASSET,,ROIC_OPERATING_ASSET,,,,APPROVED
+0400,Sachanlagen,ppe_net,"Property, Plant & Equipment, Net",BS,noncurrent_assets,DR,1,OPERATING,,,ROIC_OPERATING_ASSET,,,,APPROVED
+3300,Verbindlichkeiten aus Lieferungen und Leistungen,accounts_payable,Accounts Payable,BS,current_liabilities,CR,1,OPERATING,NWC_OPERATING_LIABILITY,,ROIC_OPERATING_LIABILITY,,,,APPROVED
+3150,Langfristige Darlehen,long_term_debt,Long-Term Debt,BS,noncurrent_liabilities,CR,1,FINANCING,EXCLUDED,,,,,,APPROVED
+2900,Gezeichnetes Kapital,common_stock,Common Stock,BS,equity,CR,1,EQUITY,,,,,,,APPROVED
+2970,Gewinnruecklagen,retained_earnings,Retained Earnings,BS,equity,CR,1,EQUITY,,,,,,,APPROVED

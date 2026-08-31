@@ -27,12 +27,14 @@ finance math. Design decisions live in **[docs/DECISIONS.md](docs/DECISIONS.md)*
 | Folder | Contents |
 |---|---|
 | `data/` | SQLite database + raw macro CSVs (synthetic for now, seed 42) |
+| `data/client_fs/` | client financial-statement CSV layer (synthetic COMP001 fixture) |
 | `src/` | data generation, database build, loaders, shared calcs |
+| `src/financials/` | financial-statement pipeline: schemas, loader, validation |
 | `sql/` | SQL queries kept in their own files |
 | `models/` | ML training + the scenario/valuation "learning ladder" scripts |
 | `reports/` | `finance_scenario_report.csv` (Power BI contract) + `ML Tool.pbix` |
 | `tests/` | pytest suite, including the Power BI schema lock |
-| `docs/` | learning guide + decisions log |
+| `docs/` | learning guide, schemas, Power BI contract, decisions log |
 
 ## Quick start
 
@@ -43,6 +45,7 @@ python src/generate_history.py           # synthesize macro history
 python src/build_history_database.py     # load it into SQLite
 python models/train_treasury_model.py    # train + save the Treasury model
 python models/export_finance_report.py   # scenarios → valuation → report CSV
+python src/load_client_fs.py             # load + validate client financial statements
 pytest                                   # verify nothing broke
 ```
 

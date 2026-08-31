@@ -1,0 +1,4 @@
+period_id,fiscal_year,fiscal_quarter,period_start,period_end,period_type,is_historical,is_forecast,days_in_period
+FY2024,2024,,2024-01-01,2024-12-31,ANNUAL,Y,N,366
+FY2025,2025,,2025-01-01,2025-12-31,ANNUAL,Y,N,365
+FY2026,2026,,2026-01-01,2026-12-31,ANNUAL,N,Y,365

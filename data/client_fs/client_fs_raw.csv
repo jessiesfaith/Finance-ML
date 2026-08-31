@@ -1,0 +1,68 @@
+company_id,entity_id,period_id,statement_type,source_account_code,source_account_name,amount_local,local_currency,fx_rate_to_reporting,amount_reporting,reporting_currency,scenario,source_file,source_sheet,source_row,source_note,load_id,load_timestamp
+COMP001,ENT_PARENT,FY2024,IS,4000,Revenue,900,USD,1.0,900,USD,ACTUAL,example_company_us_fy2024.xlsx,Income Statement,10,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2024,IS,5000,Cost of Goods Sold,550,USD,1.0,550,USD,ACTUAL,example_company_us_fy2024.xlsx,Income Statement,11,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2024,IS,6000,Operating Expenses,140,USD,1.0,140,USD,ACTUAL,example_company_us_fy2024.xlsx,Income Statement,12,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2024,IS,6500,Depreciation & Amortization,45,USD,1.0,45,USD,ACTUAL,example_company_us_fy2024.xlsx,Income Statement,13,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2024,IS,7000,Interest Expense,22,USD,1.0,22,USD,ACTUAL,example_company_us_fy2024.xlsx,Income Statement,14,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2024,IS,8000,Income Tax Expense,36,USD,1.0,36,USD,ACTUAL,example_company_us_fy2024.xlsx,Income Statement,15,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2024,BS,1000,Cash and Cash Equivalents,120,USD,1.0,120,USD,ACTUAL,example_company_us_fy2024.xlsx,Balance Sheet,10,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2024,BS,1100,Accounts Receivable,100,USD,1.0,100,USD,ACTUAL,example_company_us_fy2024.xlsx,Balance Sheet,11,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2024,BS,1200,Inventory,70,USD,1.0,70,USD,ACTUAL,example_company_us_fy2024.xlsx,Balance Sheet,12,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2024,BS,1500,"Property, Plant & Equipment, Net",480,USD,1.0,480,USD,ACTUAL,example_company_us_fy2024.xlsx,Balance Sheet,13,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2024,BS,2000,Accounts Payable,80,USD,1.0,80,USD,ACTUAL,example_company_us_fy2024.xlsx,Balance Sheet,14,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2024,BS,2500,Long-Term Debt,320,USD,1.0,320,USD,ACTUAL,example_company_us_fy2024.xlsx,Balance Sheet,15,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2024,BS,3000,Common Stock,200,USD,1.0,200,USD,ACTUAL,example_company_us_fy2024.xlsx,Balance Sheet,16,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2024,BS,3500,Retained Earnings,170,USD,1.0,170,USD,ACTUAL,example_company_us_fy2024.xlsx,Balance Sheet,17,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,IS,4000,Revenue,1000,USD,1.0,1000,USD,ACTUAL,example_company_us_fy2025.xlsx,Income Statement,10,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,IS,5000,Cost of Goods Sold,600,USD,1.0,600,USD,ACTUAL,example_company_us_fy2025.xlsx,Income Statement,11,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,IS,6000,Operating Expenses,150,USD,1.0,150,USD,ACTUAL,example_company_us_fy2025.xlsx,Income Statement,12,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,IS,6500,Depreciation & Amortization,50,USD,1.0,50,USD,ACTUAL,example_company_us_fy2025.xlsx,Income Statement,13,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,IS,7000,Interest Expense,20,USD,1.0,20,USD,ACTUAL,example_company_us_fy2025.xlsx,Income Statement,14,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,IS,8000,Income Tax Expense,45,USD,1.0,45,USD,ACTUAL,example_company_us_fy2025.xlsx,Income Statement,15,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,BS,1000,Cash and Cash Equivalents,150,USD,1.0,150,USD,ACTUAL,example_company_us_fy2025.xlsx,Balance Sheet,10,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,BS,1100,Accounts Receivable,120,USD,1.0,120,USD,ACTUAL,example_company_us_fy2025.xlsx,Balance Sheet,11,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,BS,1200,Inventory,80,USD,1.0,80,USD,ACTUAL,example_company_us_fy2025.xlsx,Balance Sheet,12,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,BS,1500,"Property, Plant & Equipment, Net",500,USD,1.0,500,USD,ACTUAL,example_company_us_fy2025.xlsx,Balance Sheet,13,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,BS,2000,Accounts Payable,90,USD,1.0,90,USD,ACTUAL,example_company_us_fy2025.xlsx,Balance Sheet,14,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,BS,2500,Long-Term Debt,300,USD,1.0,300,USD,ACTUAL,example_company_us_fy2025.xlsx,Balance Sheet,15,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,BS,3000,Common Stock,200,USD,1.0,200,USD,ACTUAL,example_company_us_fy2025.xlsx,Balance Sheet,16,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,BS,3500,Retained Earnings,260,USD,1.0,260,USD,ACTUAL,example_company_us_fy2025.xlsx,Balance Sheet,17,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,CFS,9100,Net Income (CFS),135,USD,1.0,135,USD,ACTUAL,example_company_us_fy2025.xlsx,Cash Flow,10,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,CFS,9200,D&A Add-back,50,USD,1.0,50,USD,ACTUAL,example_company_us_fy2025.xlsx,Cash Flow,11,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,CFS,9300,Change in Working Capital,-20,USD,1.0,-20,USD,ACTUAL,example_company_us_fy2025.xlsx,Cash Flow,12,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,CFS,9400,Capital Expenditures,-70,USD,1.0,-70,USD,ACTUAL,example_company_us_fy2025.xlsx,Cash Flow,13,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,CFS,9500,Dividends Paid,-45,USD,1.0,-45,USD,ACTUAL,example_company_us_fy2025.xlsx,Cash Flow,14,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,CFS,9600,Debt Repayments,-20,USD,1.0,-20,USD,ACTUAL,example_company_us_fy2025.xlsx,Cash Flow,15,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,OCI,9700,Foreign Currency Translation Adjustment,5,USD,1.0,5,USD,ACTUAL,example_company_us_fy2025.xlsx,OCI,10,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,EQUITY,9800,Retained Earnings Beginning Balance,170,USD,1.0,170,USD,ACTUAL,example_company_us_fy2025.xlsx,Equity,10,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,EQUITY,9810,Net Income (Equity Statement),135,USD,1.0,135,USD,ACTUAL,example_company_us_fy2025.xlsx,Equity,11,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,EQUITY,9820,Dividends Declared,-45,USD,1.0,-45,USD,ACTUAL,example_company_us_fy2025.xlsx,Equity,12,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_PARENT,FY2025,EQUITY,9830,Retained Earnings Ending Balance,260,USD,1.0,260,USD,ACTUAL,example_company_us_fy2025.xlsx,Equity,13,,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2024,IS,8400,Umsatzerloese,280,EUR,1.05,294,USD,ACTUAL,beispiel_gmbh_fy2024.xlsx,GuV,10,average-period FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2024,IS,5000-DE,Herstellungskosten,170,EUR,1.05,178.5,USD,ACTUAL,beispiel_gmbh_fy2024.xlsx,GuV,11,average-period FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2024,IS,6300,Betriebsausgaben,55,EUR,1.05,57.75,USD,ACTUAL,beispiel_gmbh_fy2024.xlsx,GuV,12,average-period FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2024,IS,6220,Abschreibungen,14,EUR,1.05,14.7,USD,ACTUAL,beispiel_gmbh_fy2024.xlsx,GuV,13,average-period FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2024,IS,7310,Zinsaufwand,6,EUR,1.05,6.3,USD,ACTUAL,beispiel_gmbh_fy2024.xlsx,GuV,14,average-period FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2024,IS,7645,Steueraufwand,8,EUR,1.05,8.4,USD,ACTUAL,beispiel_gmbh_fy2024.xlsx,GuV,15,average-period FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2024,BS,1600,Kasse und Bankguthaben,30,EUR,1.08,32.4,USD,ACTUAL,beispiel_gmbh_fy2024.xlsx,Bilanz,10,closing FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2024,BS,1400,Forderungen aus Lieferungen und Leistungen,45,EUR,1.08,48.6,USD,ACTUAL,beispiel_gmbh_fy2024.xlsx,Bilanz,11,closing FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2024,BS,3970,Vorraete,25,EUR,1.08,27,USD,ACTUAL,beispiel_gmbh_fy2024.xlsx,Bilanz,12,closing FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2024,BS,0400,Sachanlagen,110,EUR,1.08,118.8,USD,ACTUAL,beispiel_gmbh_fy2024.xlsx,Bilanz,13,closing FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2024,BS,3300,Verbindlichkeiten aus Lieferungen und Leistungen,30,EUR,1.08,32.4,USD,ACTUAL,beispiel_gmbh_fy2024.xlsx,Bilanz,14,closing FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2024,BS,3150,Langfristige Darlehen,65,EUR,1.08,70.2,USD,ACTUAL,beispiel_gmbh_fy2024.xlsx,Bilanz,15,closing FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2024,BS,2900,Gezeichnetes Kapital,80,EUR,1.08,86.4,USD,ACTUAL,beispiel_gmbh_fy2024.xlsx,Bilanz,16,closing FX; historical-rate treatment arrives in Phase 3,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2024,BS,2970,Gewinnruecklagen,35,EUR,1.08,37.8,USD,ACTUAL,beispiel_gmbh_fy2024.xlsx,Bilanz,17,closing FX; historical-rate treatment arrives in Phase 3,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2025,IS,8400,Umsatzerloese,300,EUR,1.08,324,USD,ACTUAL,beispiel_gmbh_fy2025.xlsx,GuV,10,average-period FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2025,IS,5000-DE,Herstellungskosten,180,EUR,1.08,194.4,USD,ACTUAL,beispiel_gmbh_fy2025.xlsx,GuV,11,average-period FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2025,IS,6300,Betriebsausgaben,60,EUR,1.08,64.8,USD,ACTUAL,beispiel_gmbh_fy2025.xlsx,GuV,12,average-period FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2025,IS,6220,Abschreibungen,15,EUR,1.08,16.2,USD,ACTUAL,beispiel_gmbh_fy2025.xlsx,GuV,13,average-period FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2025,IS,7310,Zinsaufwand,5,EUR,1.08,5.4,USD,ACTUAL,beispiel_gmbh_fy2025.xlsx,GuV,14,average-period FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2025,IS,7645,Steueraufwand,10,EUR,1.08,10.8,USD,ACTUAL,beispiel_gmbh_fy2025.xlsx,GuV,15,average-period FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2025,BS,1600,Kasse und Bankguthaben,40,EUR,1.10,44,USD,ACTUAL,beispiel_gmbh_fy2025.xlsx,Bilanz,10,closing FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2025,BS,1400,Forderungen aus Lieferungen und Leistungen,50,EUR,1.10,55,USD,ACTUAL,beispiel_gmbh_fy2025.xlsx,Bilanz,11,closing FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2025,BS,3970,Vorraete,30,EUR,1.10,33,USD,ACTUAL,beispiel_gmbh_fy2025.xlsx,Bilanz,12,closing FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2025,BS,0400,Sachanlagen,120,EUR,1.10,132,USD,ACTUAL,beispiel_gmbh_fy2025.xlsx,Bilanz,13,closing FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2025,BS,3300,Verbindlichkeiten aus Lieferungen und Leistungen,35,EUR,1.10,38.5,USD,ACTUAL,beispiel_gmbh_fy2025.xlsx,Bilanz,14,closing FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2025,BS,3150,Langfristige Darlehen,60,EUR,1.10,66,USD,ACTUAL,beispiel_gmbh_fy2025.xlsx,Bilanz,15,closing FX,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2025,BS,2900,Gezeichnetes Kapital,80,EUR,1.10,88,USD,ACTUAL,beispiel_gmbh_fy2025.xlsx,Bilanz,16,closing FX; historical-rate treatment arrives in Phase 3,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_GMBH,FY2025,BS,2970,Gewinnruecklagen,65,EUR,1.10,71.5,USD,ACTUAL,beispiel_gmbh_fy2025.xlsx,Bilanz,17,closing FX; historical-rate treatment arrives in Phase 3,L20260831-001,2026-08-31T12:00:00Z

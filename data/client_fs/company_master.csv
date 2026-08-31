@@ -1,0 +1,2 @@
+company_id,company_name,reporting_currency,fiscal_year_end,accounting_standard,source_system,industry,subindustry,country,active_flag
+COMP001,Example Company Inc. (SYNTHETIC TEST DATA),USD,12-31,US_GAAP,SYNTHETIC_FIXTURE,Technology,Software,US,Y
