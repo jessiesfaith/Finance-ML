@@ -207,6 +207,12 @@ validation. Python concepts worth studying in it:
 - **Tests as specification.** `tests/test_client_fs_validator.py` breaks
   the fixture data one way per test and asserts the exact rule fires.
   Read it as the executable list of what the loader guarantees.
+- **`sign_normalizer.py` — policy as a pure function.** Two sources can
+  present the same expense as `+50` or `-50`; both must normalize to the
+  same canonical value without ever double-flipping a sign. The whole
+  policy is one small deterministic function plus a documented convention
+  (docs/SIGN_CONVENTION.md) — worth studying as an example of separating
+  a business rule from the pipeline that will apply it (Phase 2).
 
 The fixture company (COMP001, a USD parent with a EUR subsidiary and an
 elimination entity) is small enough to check by hand: both balance sheets

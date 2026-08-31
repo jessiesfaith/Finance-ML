@@ -56,23 +56,31 @@ supports future per-day metrics (DSO, DIO, DPO).
 
 ## account_mapping.csv — the translation dictionary
 
-Key: `source_account_code`. Maps every account name a source system uses
-("Accounts Receivable", "Trade Receivables", "Forderungen aus Lieferungen
-und Leistungen") onto ONE standardized concept (`accounts_receivable`), so
-no company's chart of accounts is ever hard-coded into analysis logic.
+Key: `(company_id, source_system, source_account_code)`. Maps every
+account name a source system uses ("Accounts Receivable", "Trade
+Receivables", "Forderungen aus Lieferungen und Leistungen") onto ONE
+standardized concept (`accounts_receivable`), so no company's chart of
+accounts is ever hard-coded into analysis logic.
 
-Each row also carries the account's analytical treatment:
-`normal_balance` (DR/CR), `sign_multiplier` (applied by the Phase 2 sign
-normalizer), and classification tags consumed by later phases —
-`nwc_classification` (which accounts form operating NWC; cash and debt are
-explicitly EXCLUDED), `ufcf_classification` (D&A add-back, CapEx),
-`roic_classification` (invested-capital build-up), plus share / cash-flow /
+**Why the compound key:** ERP systems, subsidiaries, and acquired
+companies reuse account codes — the fixture itself has `4000` meaning
+Revenue in NETSUITE and Other Operating Income in DATEV. An account is
+therefore identified by system + code, never code alone. `company_id`
+blank = a reusable default mapping that applies to any company; a row
+with a `company_id` is company-specific and overrides the default for
+that company (the validator honors applicability now; the Phase 2 mapper
+implements the override resolution).
+
+Each row also carries the account's sign treatment —
+`normal_balance` (DR/CR), `sign_multiplier` (the account's canonical
+sign), and `source_sign_convention` (MAGNITUDE/SIGNED — how this source
+presents the number); see **docs/SIGN_CONVENTION.md** — plus
+classification tags consumed by later phases: `nwc_classification`
+(which accounts form operating NWC; cash and debt are explicitly
+EXCLUDED), `ufcf_classification` (D&A add-back, CapEx),
+`roic_classification` (invested-capital build-up), and share / cash-flow /
 OCI classifications. `review_status` records that an analyst approved the
 mapping.
-
-*Phase 2 note:* if two source systems ever reuse the same account code,
-the mapping key will need to become (source_system, source_account_code).
-The fixture keeps codes distinct; the decision is logged in DECISIONS.md.
 
 ## fx_rates.csv — currency translation inputs
 
@@ -89,18 +97,45 @@ source_account_code, scenario)`.
 
 Statement types: IS, BS, CFS, OCI, EQUITY, SEGMENT, CONSOL — the list
 lives in one place (`schemas.py`) so new types are one-line additions.
+Each row also names its `source_system` (NETSUITE, DATEV, …) so accounts
+resolve against the mapping per system.
 
-Every row records the amount twice — `amount_local` in the entity's own
-currency and `amount_reporting` after FX (`fx_rate_to_reporting` says what
-rate was applied) — plus **full source lineage**: `source_file`,
-`source_sheet`, `source_row`, `source_note`, `load_id`, `load_timestamp`.
-That is what makes every downstream number traceable back to a cell in a
-source workbook (spec section 30).
+**Raw vs computed amounts:** `amount_local` is the authoritative source
+amount. `amount_reporting` is the *source-reported* reporting-currency
+figure, preserved for reconciliation only — Phase 3's FX engine computes
+its own `calculated_reporting_amount` from `amount_local` × the correct
+rate type and reports an FX translation variance against the
+source-reported figure; it never treats the client's own translation as
+the answer.
+
+Every row carries **full source lineage**: `source_file`, `source_sheet`,
+`source_row`, `source_note`, `load_id`, `load_timestamp`. That is what
+makes every downstream number traceable back to a cell in a source
+workbook (spec section 30).
 
 This file is **immutable**: the loader only reads it, the analyst agent
 will never write to it, and adjustments live in their own tables (Phase 8).
 
 ---
+
+## Canonical files vs future ingestion adapters
+
+These CSVs are the **canonical internal layer**, so their required fields
+are enforced strictly. Unexpected *additional* columns do **not** fail the
+load — they raise a WARNING and are ignored downstream, so a file carrying
+extra useful information still loads.
+
+Real client files will not arrive in canonical shape, and clients will
+never be asked to delete columns to make a load work. The eventual flow is:
+
+```
+arbitrary client/source file → ingestion adapter → canonical internal schema
+```
+
+Adapters (a future phase) translate whatever a client exports — extra
+columns, different names, different layouts — into these canonical files,
+preserving lineage. The canonical layer stays strict; the adapters absorb
+the messiness.
 
 ## Validation rules (Phase 1)
 

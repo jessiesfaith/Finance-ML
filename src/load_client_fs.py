@@ -58,7 +58,8 @@ def main():
     if not example.empty:
         row = example.iloc[0]
         std = mapping.loc[
-            mapping["source_account_code"] == row["source_account_code"],
+            (mapping["source_system"] == row["source_system"])
+            & (mapping["source_account_code"] == row["source_account_code"]),
             "standard_account_id",
         ].iloc[0]
 
@@ -66,8 +67,8 @@ def main():
         print("LINEAGE TRACE (one number, back to its source)")
         print("-" * 60)
         print(f"  standard account : {std}")
-        print(f"  source account   : {row['source_account_code']} "
-              f"({row['source_account_name']})")
+        print(f"  source account   : {row['source_system']} / "
+              f"{row['source_account_code']} ({row['source_account_name']})")
         print(f"  entity / period  : {row['entity_id']} / {row['period_id']}")
         print(f"  local amount     : {row['local_currency']} {row['amount_local']:,.2f}")
         print(f"  fx to reporting  : × {row['fx_rate_to_reporting']}")

@@ -119,6 +119,51 @@ def test_unmapped_account_is_an_error(tables):
     assert "9999-UNMAPPED" in issues[0].message
 
 
+def test_account_codes_do_not_leak_across_source_systems(tables):
+    """
+    Code 4000 exists in the mapping for NETSUITE (Revenue) and DATEV
+    (Sonstige betriebliche Ertraege) — but a SAP row with code 4000 must
+    still be unmapped: accounts resolve per (source_system, code), never
+    by code alone.
+    """
+    tables["client_fs_raw"].loc[0, "source_system"] = "SAP"
+    issues = validator.check_unmapped_accounts(tables)
+    assert rules(issues) == {"unmapped_account"}
+    assert "SAP/4000" in issues[0].message
+
+
+def test_reused_code_resolves_per_system(tables):
+    """A DATEV row using code 4000 maps to the DATEV meaning, no error."""
+    raw = tables["client_fs_raw"]
+    idx = raw.index[raw["source_system"] == "DATEV"][0]
+    raw.loc[idx, "source_account_code"] = "4000"
+    assert validator.check_unmapped_accounts(tables) == []
+
+
+def _with_company_specific_mapping(tables, company_id):
+    """Add a mapping row that only exists for one company, and a raw row using it."""
+    mapping = tables["account_mapping"]
+    extra = mapping.iloc[[0]].copy()
+    extra["company_id"] = company_id
+    extra["source_system"] = "NETSUITE"
+    extra["source_account_code"] = "CUSTOM-001"
+    tables["account_mapping"] = pd.concat([mapping, extra], ignore_index=True)
+    tables["client_fs_raw"].loc[0, "source_account_code"] = "CUSTOM-001"
+
+
+def test_company_specific_mapping_applies_to_its_company(tables):
+    # Raw data is COMP001; a COMP001-specific mapping row satisfies it.
+    _with_company_specific_mapping(tables, "COMP001")
+    assert validator.check_unmapped_accounts(tables) == []
+
+
+def test_company_specific_mapping_does_not_leak_to_other_companies(tables):
+    # The same row scoped to COMP999 must NOT satisfy COMP001 data.
+    _with_company_specific_mapping(tables, "COMP999")
+    issues = validator.check_unmapped_accounts(tables)
+    assert rules(issues) == {"unmapped_account"}
+
+
 def test_missing_fx_rate_is_an_error(tables):
     """A foreign-currency row whose period has no FX rate must be flagged."""
     fx = tables["fx_rates"]

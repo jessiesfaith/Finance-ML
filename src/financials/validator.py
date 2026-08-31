@@ -197,7 +197,13 @@ def check_references(tables):
 
 def check_unmapped_accounts(tables):
     """
-    Every source account in the raw data must exist in account_mapping.
+    Every source account in the raw data must resolve to an account_mapping
+    row. Because ERP systems reuse account codes, an account is identified
+    by (source_system, source_account_code) — NEVER by code alone. A
+    mapping row applies to a raw row when system and code match AND the
+    mapping's company_id is blank (reusable default) or equals the raw
+    row's company_id (company-specific override).
+
     Unmapped accounts block the Phase 2 mapping step, so this is an ERROR:
     an analyst either maps the account or explicitly excludes it — the
     pipeline never guesses.
@@ -205,12 +211,48 @@ def check_unmapped_accounts(tables):
     raw = tables["client_fs_raw"]
     mapping = tables["account_mapping"]
 
-    rows, values = _missing_refs(raw, "source_account_code", mapping, "source_account_code")
-    if rows:
+    needed_raw = {"company_id", "source_system", "source_account_code"}
+    needed_map = {"company_id", "source_system", "source_account_code"}
+    if not needed_raw.issubset(raw.columns) or not needed_map.issubset(mapping.columns):
+        return []
+
+    def col(df, name):
+        return df[name].astype(str).str.strip()
+
+    map_company = col(mapping, "company_id")
+    map_system = col(mapping, "source_system")
+    map_code = col(mapping, "source_account_code")
+
+    # Reusable defaults (blank company_id) vs company-specific rows.
+    default_keys = set(zip(map_system[map_company == ""], map_code[map_company == ""]))
+    specific_keys = set(zip(
+        map_company[map_company != ""],
+        map_system[map_company != ""],
+        map_code[map_company != ""],
+    ))
+
+    raw_company = col(raw, "company_id")
+    raw_system = col(raw, "source_system")
+    raw_code = col(raw, "source_account_code")
+
+    unmapped_mask = [
+        not (
+            (system, code) in default_keys
+            or (company, system, code) in specific_keys
+        )
+        for company, system, code in zip(raw_company, raw_system, raw_code)
+    ]
+
+    bad = raw.index[unmapped_mask].tolist()
+    if bad:
+        pairs = sorted(set(
+            f"{raw_system.loc[i]}/{raw_code.loc[i]}" for i in bad
+        ))
         return [Issue(
             "ERROR", "client_fs_raw", "unmapped_account",
-            f"source_account_code value(s) {values} have no row in "
-            f"account_mapping — {_rows(rows)}",
+            f"account(s) {pairs} have no applicable row in account_mapping "
+            f"(matched on source_system + source_account_code, honoring "
+            f"company-specific overrides) — {_rows(bad)}",
         )]
     return []
 

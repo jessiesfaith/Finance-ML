@@ -34,6 +34,15 @@ RATE_TYPES = ("AVERAGE", "CLOSING", "HISTORICAL")
 # How an entity rolls up into the consolidated company (spec section 3).
 CONSOLIDATION_METHODS = ("FULL", "EQUITY_METHOD", "NOT_CONSOLIDATED", "ELIMINATION")
 
+# How a SOURCE presents an account's numbers (see docs/SIGN_CONVENTION.md):
+#   MAGNITUDE  the source shows the account's size with direction implied by
+#              the account itself (an expense appears as +50)
+#   SIGNED     the source already reports signed economic values
+#              (an expense appears as -50, CapEx as -70)
+# The sign normalizer uses this to reach ONE canonical convention without
+# ever double-flipping a sign.
+SIGN_CONVENTIONS = ("MAGNITUDE", "SIGNED")
+
 ENTITY_TYPES = ("PARENT", "SUBSIDIARY", "ELIMINATION")
 
 PERIOD_TYPES = ("ANNUAL", "QUARTERLY", "MONTHLY")
@@ -130,6 +139,14 @@ ACCOUNT_MAPPING = TableSchema(
     table="account_mapping",
     filename="account_mapping.csv",
     columns=(
+        # Blank company_id = a reusable default mapping that applies to any
+        # company. A row with a company_id is company-specific and overrides
+        # the default for that company (override resolution lands in the
+        # Phase 2 mapper; the validator already honors applicability).
+        Column("company_id", required=False),
+        # ERP systems reuse account codes (two systems can both have a
+        # "4000"), so a code alone can never identify an account.
+        Column("source_system"),
         Column("source_account_code"),
         Column("source_account_name"),
         Column("standard_account_id"),
@@ -137,9 +154,13 @@ ACCOUNT_MAPPING = TableSchema(
         Column("statement_type", allowed=STATEMENT_TYPES),
         Column("statement_section"),
         Column("normal_balance", allowed=NORMAL_BALANCES),
-        # Applied by the Phase 2 sign normalizer; stored here so the mapping
-        # table fully describes each account's treatment.
+        # The account's CANONICAL sign (+1/-1) in the analytical convention
+        # defined in docs/SIGN_CONVENTION.md. Only applied when the source
+        # presents magnitudes — see source_sign_convention.
         Column("sign_multiplier", kind="integer"),
+        # How THIS source presents THIS account's numbers (MAGNITUDE/SIGNED).
+        # This is what prevents -100 expense x -1 = +100 accidents.
+        Column("source_sign_convention", allowed=SIGN_CONVENTIONS),
         Column("operating_classification", required=False),
         Column("nwc_classification", required=False),
         Column("ufcf_classification", required=False),
@@ -149,7 +170,7 @@ ACCOUNT_MAPPING = TableSchema(
         Column("oci_classification", required=False),
         Column("review_status", allowed=REVIEW_STATUSES),
     ),
-    key=("source_account_code",),
+    key=("company_id", "source_system", "source_account_code"),
 )
 
 FX_RATES = TableSchema(
@@ -176,11 +197,20 @@ CLIENT_FS_RAW = TableSchema(
         Column("entity_id"),
         Column("period_id"),
         Column("statement_type", allowed=STATEMENT_TYPES),
+        # Which ERP/export produced this row — needed to resolve the account
+        # against account_mapping, whose key includes source_system.
+        Column("source_system"),
         Column("source_account_code"),
         Column("source_account_name"),
+        # amount_local is the authoritative source amount.
         Column("amount_local", kind="number"),
         Column("local_currency"),
         Column("fx_rate_to_reporting", kind="number"),
+        # amount_reporting is the SOURCE-REPORTED reporting-currency amount,
+        # kept for reconciliation only. Phase 3's FX engine computes its own
+        # calculated_reporting_amount from amount_local x the correct rate
+        # and reports any variance against this — it never trusts this
+        # column as the translation result.
         Column("amount_reporting", kind="number"),
         Column("reporting_currency"),
         Column("scenario"),

@@ -111,3 +111,47 @@ rate (including equity, which properly uses historical rates, with the
 difference landing in CTA/AOCI). The raw rows say so in `source_note`.
 Phase 3 (FX translation) implements the correct treatment; the fixture
 then gains a CTA line and the consolidation controls verify it.
+
+---
+
+## 2026-08-31 — Phase 1 architecture correction pass (pre-Phase 2)
+
+### 16. Account-mapping key widened NOW — supersedes #14
+Directive from Jessica: do not wait for a collision. The mapping key is
+`(company_id, source_system, source_account_code)`; raw rows carry
+`source_system` so accounts resolve per system, never by code alone.
+Blank `company_id` = reusable default mapping; a company-specific row
+overrides the default for that company (validator honors applicability
+now; the Phase 2 mapper implements full override resolution). The fixture
+demonstrates the point: code 4000 is NETSUITE Revenue AND DATEV Other
+Operating Income, coexisting without conflict.
+
+### 17. Raw rows carry source_system — SPEC ADDITION, JUSTIFIED
+`client_fs_raw` gains a `source_system` column beyond the original spec
+list — without it, a raw row cannot be resolved against a mapping keyed
+by system. It is also lineage: which ERP produced the number.
+
+### 18. Sign normalization policy locked BEFORE Phase 2
+Canonical convention defined in docs/SIGN_CONVENTION.md (IS lines sum to
+net income; assets/liabilities/equity positive; CFS signed by cash
+direction). `sign_multiplier` = the account's canonical sign;
+`source_sign_convention` (MAGNITUDE/SIGNED) records how the source
+presents numbers. The multiplier applies ONLY to MAGNITUDE presentations,
+so a signed export can never be double-flipped (-50 x -1 = +50 is
+structurally impossible). Policy engine: `financials/sign_normalizer.py`,
+proven by tests including both-presentations-equal properties. Raw
+amounts are never modified; Phase 2 stores raw -> rule -> normalized.
+
+### 19. amount_reporting is source-reported, NOT the translation result
+`amount_local` is the authoritative source amount. A client-supplied
+`amount_reporting` is preserved for reconciliation only. Phase 3's FX
+engine computes `calculated_reporting_amount` from amount_local x the
+correct rate type and reports an FX translation variance against the
+source-reported figure. No full FX engine yet.
+
+### 20. Canonical strictness vs ingestion flexibility — DOCUMENTED
+Unexpected extra columns on canonical CSVs are WARNINGs (load proceeds;
+columns ignored), missing required fields are ERRORs. Arbitrary client
+files are handled by future ingestion adapters that translate any export
+into the canonical schema — clients are never asked to delete columns.
+See "Canonical files vs future ingestion adapters" in docs/SCHEMAS.md.
