@@ -18,9 +18,10 @@ def test_registry_covers_the_expected_tables():
         "account_mapping",
         "fx_rates",
         "client_fs_raw",
-        # Phase 2-3 outputs
+        # Phase 2-4 outputs
         "client_fs_normalized",
         "entity_consolidation",
+        "control_checks",
     }
     assert set(SCHEMAS_BY_TABLE) == expected
 

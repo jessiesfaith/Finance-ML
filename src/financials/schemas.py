@@ -339,6 +339,36 @@ ENTITY_CONSOLIDATION = TableSchema(
 )
 
 
-OUTPUT_SCHEMAS = (CLIENT_FS_NORMALIZED, ENTITY_CONSOLIDATION)
+CONTROL_CHECKS = TableSchema(
+    table="control_checks",
+    filename="control_checks.csv",
+    columns=(
+        Column("company_id"),
+        Column("period_id"),
+        Column("entity_id"),
+        Column("control_id"),
+        Column("control_name"),
+        Column("control_category"),
+        Column("expected_value", kind="number"),
+        Column("actual_value", kind="number"),
+        Column("variance_amount", kind="number"),
+        Column("variance_pct", kind="number", required=False),
+        Column("tolerance_amount", kind="number"),
+        Column("tolerance_pct", kind="number", required=False),
+        Column("status", allowed=("PASS", "REVIEW", "FAIL")),
+        Column("severity", allowed=("LOW", "MEDIUM", "HIGH")),
+        # Engine-generated explanation today; the Phase 10 analyst agent
+        # appends its interpretation here without ever changing status.
+        Column("agent_comment", required=False),
+        Column("reviewer_comment", required=False),
+        Column("review_status", allowed=("PENDING", "APPROVED", "REJECTED")),
+        Column("source_reference"),
+    ),
+    key=("company_id", "period_id", "entity_id", "control_id",
+         "control_name", "source_reference"),
+)
+
+
+OUTPUT_SCHEMAS = (CLIENT_FS_NORMALIZED, ENTITY_CONSOLIDATION, CONTROL_CHECKS)
 
 SCHEMAS_BY_TABLE = {s.table: s for s in ALL_SCHEMAS + OUTPUT_SCHEMAS}

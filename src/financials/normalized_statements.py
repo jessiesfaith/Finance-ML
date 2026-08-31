@@ -118,16 +118,29 @@ def net_income_by_entity_period(normalized: pd.DataFrame) -> pd.Series:
     return is_rows.groupby(["entity_id", "period_id"])["amount_reporting"].sum()
 
 
+BS_SECTION_SIGNS = {
+    "current_assets": 1,
+    "noncurrent_assets": 1,
+    "current_liabilities": -1,
+    "noncurrent_liabilities": -1,
+    "equity": -1,
+}
+
+
 def balance_sheet_gap(normalized: pd.DataFrame) -> pd.Series:
     """Assets − Liabilities − Equity per entity/period (0 when it balances)."""
     bs = normalized[normalized["statement_type"] == "BS"]
-    section_sign = bs["statement_section"].map({
-        "current_assets": 1,
-        "noncurrent_assets": 1,
-        "current_liabilities": -1,
-        "noncurrent_liabilities": -1,
-        "equity": -1,
-    })
+    section_sign = bs["statement_section"].map(BS_SECTION_SIGNS)
+
+    # A BS row whose section is not in the map would silently vanish from
+    # the identity (NaN × amount, skipna sum) — fail loudly instead.
+    unknown = sorted(bs.loc[section_sign.isna(), "statement_section"].unique())
+    if unknown:
+        raise ValueError(
+            f"unknown balance-sheet statement_section(s) {unknown} — add "
+            "them to BS_SECTION_SIGNS so the identity stays complete"
+        )
+
     gap = bs["amount_reporting"] * section_sign
     return gap.groupby([bs["entity_id"], bs["period_id"]]).sum()
 

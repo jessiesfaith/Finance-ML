@@ -268,9 +268,34 @@ docs/FX_AND_CONSOLIDATION.md. The finance ideas are the stars here:
   loop handles clearly) and the `groupby(...).sum()` + `merge(how="outer")`
   assembly of the consolidation columns.
 
-## 12. What comes next
+## 12. The control engine (Phase 4)
 
-The control engine (Phase 4) formalizes every identity we've been
-checking ad hoc — balance sheet, cash walk, RE roll, consolidation, FX —
-into PASS/REVIEW/FAIL records with tolerances; then NWC → NOPAT → UFCF
-(Phase 5) starts replacing the valuation model's hard-coded inputs.
+Run `python src/run_controls.py` next to docs/CONTROLS.md. What to study:
+
+- **Identities become code.** Every check we'd been doing ad hoc —
+  balance sheet, cash walk, NI tie, RE and debt rolls, consolidation,
+  FX, source integrity — is now one small function returning structured
+  `ControlResult` records with expected/actual/variance/tolerance/status.
+  Accounting identities are the *original* unit tests; here they run
+  against data instead of code.
+- **Three statuses, one philosophy.** PASS within tolerance; FAIL beyond
+  it; and REVIEW for "cannot be tested with the data on hand" or "known,
+  documented cause needing sign-off." The engine never adjusts a number
+  to make a control pass — exceptions go to a human.
+- **Local currency for roll-forwards.** C2/C4/C6 test each entity in its
+  own currency so FX can't mask (or fake) a broken roll; C9 separately
+  compares the source's translation against the engine's — and the
+  fixture's variance is *exactly* the CTA, the identity the audit proved.
+- **Independent recomputation.** C8 rebuilds the consolidation roll-up
+  through its own groupby rather than trusting the builder's arithmetic —
+  the difference between re-running code and actually checking it.
+- **Corruption tests.** `tests/test_controls.py` breaks the data one way
+  per test and asserts exactly the right control flips to FAIL with
+  exactly the right variance — the executable proof the controls detect
+  what they claim to.
+
+## 13. What comes next
+
+NWC → NOPAT → UFCF (Phase 5) starts replacing the valuation model's
+hard-coded inputs with statement-derived values, guarded by the controls
+built here.

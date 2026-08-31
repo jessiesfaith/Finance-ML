@@ -174,6 +174,17 @@ drive the three views. Until the Phase 3 FX engine lands,
 `amount_reporting` derives from the source-reported reporting-currency
 amount (decision #19/#22).
 
+## control_checks.csv — the control record (OUTPUT, Phase 4)
+
+Written by `python src/run_controls.py`; rebuild-locked by tests. One row
+per control evaluation: identifiers, `expected_value` / `actual_value` /
+`variance_amount` / `variance_pct`, the tolerance applied, `status`
+(PASS/REVIEW/FAIL), `severity` (LOW/MEDIUM/HIGH), `agent_comment` (engine
+explanation; Phase 10 agent appends, never overwrites), `reviewer_comment`
++ `review_status` (PENDING/APPROVED/REJECTED — the human verdict), and
+`source_reference` naming what was compared. Methodology and the full
+control list: **docs/CONTROLS.md**. Exceptions are surfaced, never fixed.
+
 ## Canonical files vs future ingestion adapters
 
 These CSVs are the **canonical internal layer**, so their required fields

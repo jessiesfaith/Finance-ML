@@ -15,6 +15,7 @@ from financials.consolidation import (
     consolidated_balance_gap,
     consolidated_net_income,
 )
+from financials.controls import apply_consolidation_status
 from financials.fx_translation import translate_statements
 from financials.loader import load_client_fs
 from financials.schemas import ENTITY_CONSOLIDATION
@@ -24,7 +25,9 @@ from financials.schemas import ENTITY_CONSOLIDATION
 def consolidated():
     tables = load_client_fs(strict=True).tables
     translated = translate_statements(tables)
-    return consolidate(translated, tables["entity_master"])
+    combined = consolidate(translated, tables["entity_master"])
+    # Same step the build script applies (Phase 4 control engine).
+    return apply_consolidation_status(combined, translated, tables["entity_master"])
 
 
 def account(consolidated, period, account_id):
@@ -39,7 +42,10 @@ def account(consolidated, period, account_id):
 def test_schema_and_single_consolidated_entity(consolidated):
     assert list(consolidated.columns) == ENTITY_CONSOLIDATION.column_names()
     assert set(consolidated["entity_id"]) == {"CONSOLIDATED"}
-    assert set(consolidated["control_status"]) == {"PENDING"}
+    # Phase 4: the control engine fills the status from an independent
+    # recomputation of the roll-up.
+    assert set(consolidated["control_status"]) == {"PASS"}
+    assert consolidated["control_variance"].abs().max() <= 0.01
 
 
 def test_intercompany_revenue_is_eliminated(consolidated):

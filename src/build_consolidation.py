@@ -32,6 +32,7 @@ from financials.consolidation import (
     consolidated_balance_gap,
     consolidated_net_income,
 )
+from financials.controls import apply_consolidation_status
 
 logging.basicConfig(level=logging.INFO, format="%(name)s  %(message)s")
 
@@ -41,6 +42,11 @@ def main():
         result = load_client_fs(strict=True)
         translated = translate_statements(result.tables)
         consolidated = consolidate(translated, result.tables["entity_master"])
+        # Phase 4: fill control_status/control_variance from an
+        # independent recomputation (replaces the PENDING placeholder).
+        consolidated = apply_consolidation_status(
+            consolidated, translated, result.tables["entity_master"]
+        )
     except ClientFSValidationError as exc:
         print()
         print("BUILD FAILED — fix these before continuing:")

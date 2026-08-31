@@ -268,3 +268,45 @@ BOM stripped from `data/raw/macro_sample.csv` (same bug class as #1).
 is tolerated ONLY while the data is synthetic (#5); it becomes forbidden
 the day live data lands — the append-only `market_observations`
 architecture (docs/MARKET_DATA_PROPOSAL.md) replaces it at Phase 13.
+
+---
+
+## 2026-08-31 — Phase 4 (control engine)
+
+### 34. Controls are deterministic functions, exceptions are for humans
+Controls 1-10 (C7 deferred to Phase 6 share data) live in
+`financials/controls.py` and write `control_checks.csv`. REVIEW/FAIL
+rows are never auto-fixed; `review_status` records the human verdict.
+The Phase 10 agent may only APPEND to agent_comment - never change a
+status. C8 re-derives the consolidation roll-up through an independent
+groupby rather than trusting the builder's own arithmetic.
+
+### 35. Roll-forward controls run in LOCAL currency
+C2/C4/C6 test an entity's books in its own currency, so FX translation
+can neither mask nor fake a broken roll. Translation quality is tested
+separately by C9, whose known fixture variance (the source's
+closing-rate equity shortcut) equals the CTA and is therefore REVIEW
+with a documented cause, not FAIL.
+
+### 36. Fixture control landscape is intentionally imperfect
+29 PASS / 5 REVIEW / 0 FAIL. The REVIEWs are honest gaps kept in the
+fixture on purpose (missing GmbH CFS, unexplained EUR debt movement,
+unmapped AOCI account, FX shortcut) so the exception workflow is
+exercised end-to-end - per spec section 29's requirement that the
+sample company demonstrate non-PASS controls.
+
+### 37. Adversarial review hardened the controls before they shipped
+A three-lens review of the Phase 4 diff confirmed five defects, all of
+the "control would miss what it claims to catch" class, fixed before
+push: C8 and C10 now evaluate the UNION of keys from both sides (a
+fully dropped account or statement group FAILs instead of vanishing);
+C8 and apply_consolidation_status compare the pre-elimination /
+elimination / FX breakdown columns individually (a misallocated
+elimination fails even when the total is right) and key by
+company+scenario; _prior_period_map links only consecutive ANNUAL
+years (gap years break the chain instead of silently mislinking);
+control-check rows carry unique schema keys (statement added to C10's
+source_reference); balance-sheet identity helpers raise on an unknown
+statement_section instead of silently dropping the row; and C9 quotes
+the "equals the CTA" known cause only when the variance actually
+equals the CTA. Each fix is pinned by a regression test.

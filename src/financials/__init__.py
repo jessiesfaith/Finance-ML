@@ -20,6 +20,12 @@ Phase 3 modules:
     consolidation  — entity roll-up with an explicit elimination layer,
                      written to entity_consolidation.csv
 
+Phase 4 modules:
+    controls — deterministic financial controls (balance sheet, cash walk,
+               NI tie, RE/debt rolls, OCI coverage, consolidation, FX,
+               source integrity) producing PASS/REVIEW/FAIL records in
+               control_checks.csv; exceptions are surfaced, never fixed
+
 Later phases add: account mapping, sign normalization, FX translation,
 consolidation, controls, adjustments, outliers, NWC/UFCF/ROIC, shares,
 pro forma, and the analyst-review agent.
@@ -27,6 +33,12 @@ pro forma, and the analyst-review agent.
 
 from financials.account_mapper import resolve_mapping
 from financials.consolidation import consolidate, write_consolidation
+from financials.controls import (
+    apply_consolidation_status,
+    results_frame,
+    run_all_controls,
+    write_control_checks,
+)
 from financials.fx_translation import translate_statements
 from financials.loader import load_client_fs, ClientFSValidationError, LoadResult
 from financials.normalized_statements import (
@@ -48,4 +60,8 @@ __all__ = [
     "translate_statements",
     "consolidate",
     "write_consolidation",
+    "run_all_controls",
+    "results_frame",
+    "apply_consolidation_status",
+    "write_control_checks",
 ]

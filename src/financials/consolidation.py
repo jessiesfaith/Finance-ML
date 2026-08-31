@@ -122,10 +122,15 @@ def consolidated_net_income(consolidated: pd.DataFrame) -> pd.Series:
 
 
 def consolidated_balance_gap(consolidated: pd.DataFrame) -> pd.Series:
+    from financials.normalized_statements import BS_SECTION_SIGNS
+
     bs = consolidated[consolidated["statement_type"] == "BS"]
-    sign = bs["statement_section"].map({
-        "current_assets": 1, "noncurrent_assets": 1,
-        "current_liabilities": -1, "noncurrent_liabilities": -1,
-        "equity": -1,
-    })
+    sign = bs["statement_section"].map(BS_SECTION_SIGNS)
+
+    unknown = sorted(bs.loc[sign.isna(), "statement_section"].unique())
+    if unknown:
+        raise ValueError(
+            f"unknown balance-sheet statement_section(s) {unknown} — add "
+            "them to BS_SECTION_SIGNS so the identity stays complete"
+        )
     return (bs["consolidated_amount"] * sign).groupby(bs["period_id"]).sum()
