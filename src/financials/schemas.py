@@ -53,6 +53,15 @@ REVIEW_STATUSES = ("APPROVED", "REVIEW", "REJECTED")
 
 FLAGS = ("Y", "N")
 
+# Normalized-layer row provenance (spec section 5): REPORTED rows come
+# straight from the source statements; ADJUSTED rows are created by the
+# Phase 8 adjustment engine and always reference an adjustment_id.
+REPORTED_OR_ADJUSTED = ("REPORTED", "ADJUSTED")
+
+# Whether a row participates in the normalized / pro forma views
+# (spec section 10): YES, NO, or REVIEW while an analyst decides.
+INCLUDE_FLAGS = ("YES", "NO", "REVIEW")
+
 
 # ------------------------------------------------
 # SCHEMA BUILDING BLOCKS
@@ -235,7 +244,56 @@ CLIENT_FS_RAW = TableSchema(
 )
 
 
-# Registry the loader iterates over. Order matters only for readability.
+CLIENT_FS_NORMALIZED = TableSchema(
+    table="client_fs_normalized",
+    filename="client_fs_normalized.csv",
+    columns=(
+        Column("company_id"),
+        Column("entity_id"),
+        Column("period_id"),
+        Column("statement_type", allowed=STATEMENT_TYPES),
+        Column("standard_account_id"),
+        Column("standard_account_name"),
+        Column("statement_section"),
+        # Canonical-sign amount in reporting currency. Until the Phase 3 FX
+        # engine lands, this derives from the SOURCE-REPORTED reporting
+        # amount (see decision #19/#22 in docs/DECISIONS.md).
+        Column("amount_reporting", kind="number"),
+        Column("reporting_currency"),
+        Column("scenario"),
+        Column("reported_or_adjusted", allowed=REPORTED_OR_ADJUSTED),
+        Column("adjustment_id", required=False),    # Phase 8
+        Column("transaction_id", required=False),   # Phase 9
+        Column("include_in_normalized", allowed=INCLUDE_FLAGS),
+        Column("include_in_proforma", allowed=INCLUDE_FLAGS),
+        # Sign-normalization audit trail: raw amount -> rule -> normalized
+        # amount, so every transformation is reproducible and reviewable.
+        Column("source_system"),
+        Column("source_account_code"),
+        Column("amount_source", kind="number"),
+        Column("sign_multiplier", kind="integer"),
+        Column("source_sign_convention", allowed=SIGN_CONVENTIONS),
+        Column("load_id"),
+    ),
+    # Row-level (one normalized row per raw row) so lineage survives; the
+    # adjustment layer adds ADJUSTED rows alongside REPORTED ones.
+    key=(
+        "company_id",
+        "entity_id",
+        "period_id",
+        "statement_type",
+        "source_system",
+        "source_account_code",
+        "scenario",
+        "reported_or_adjusted",
+        "adjustment_id",
+    ),
+)
+
+
+# Registry of INPUT files the loader requires in data/client_fs/.
+# (client_fs_normalized is an OUTPUT the pipeline writes, never a
+# required input — see OUTPUT_SCHEMAS.)
 ALL_SCHEMAS = (
     COMPANY_MASTER,
     ENTITY_MASTER,
@@ -245,4 +303,6 @@ ALL_SCHEMAS = (
     CLIENT_FS_RAW,
 )
 
-SCHEMAS_BY_TABLE = {s.table: s for s in ALL_SCHEMAS}
+OUTPUT_SCHEMAS = (CLIENT_FS_NORMALIZED,)
+
+SCHEMAS_BY_TABLE = {s.table: s for s in ALL_SCHEMAS + OUTPUT_SCHEMAS}

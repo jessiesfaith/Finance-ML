@@ -46,6 +46,7 @@ python src/build_history_database.py     # load it into SQLite
 python models/train_treasury_model.py    # train + save the Treasury model
 python models/export_finance_report.py   # scenarios → valuation → report CSV
 python src/load_client_fs.py             # load + validate client financial statements
+python src/build_client_fs_normalized.py # map accounts + normalize signs -> normalized CSV
 pytest                                   # verify nothing broke
 ```
 

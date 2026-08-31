@@ -155,3 +155,36 @@ columns ignored), missing required fields are ERRORs. Arbitrary client
 files are handled by future ingestion adapters that translate any export
 into the canonical schema — clients are never asked to delete columns.
 See "Canonical files vs future ingestion adapters" in docs/SCHEMAS.md.
+
+---
+
+## 2026-08-31 — Phase 2 (account mapping + sign normalization)
+
+### 21. Normalized layer carries a sign audit trail — SPEC ADDITION
+`client_fs_normalized.csv` includes four columns beyond the section-5 spec
+list: `source_system`, `amount_source`, `sign_multiplier`,
+`source_sign_convention`. They preserve raw amount → rule → normalized
+amount on every row (the correction-pass auditability requirement) and
+keep mapping resolution reproducible.
+
+### 22. Normalized amounts derive from source-reported FX for now
+Phase 2's `amount_reporting` applies canonical signs to the SOURCE-
+REPORTED reporting-currency amount (per decision #19, that column is
+reconciliation data). When the Phase 3 FX engine computes
+`calculated_reporting_amount` from `amount_local` and the correct rate
+type, the normalized layer switches to the calculated figure and the
+difference surfaces as an FX translation variance — a deliberate,
+visible change, not a silent one.
+
+### 23. Normalized rows are row-level, not aggregated
+One normalized row per raw row. Aggregation to standard-account totals
+happens in the calculation layers (consolidation, NWC, UFCF), never in
+the normalized file itself — otherwise lineage to file/sheet/row would be
+destroyed at the first step. The committed output is locked to a fresh
+rebuild by a test, so derived data in the repo cannot silently go stale.
+
+### 24. Mapping statement_type disagreements fail loudly
+If a raw row's statement_type differs from its mapping row's (raw says
+BS, mapping says IS), the build refuses with `statement_type_mismatch` —
+either the mapping or the source data is wrong, and the pipeline never
+reconciles that silently.

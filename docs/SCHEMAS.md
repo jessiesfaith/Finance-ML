@@ -118,6 +118,30 @@ will never write to it, and adjustments live in their own tables (Phase 8).
 
 ---
 
+## client_fs_normalized.csv — the normalized statements (OUTPUT, Phase 2)
+
+Written by `python src/build_client_fs_normalized.py` — never edited by
+hand and never a required input. One normalized row per raw row (no
+aggregation), so lineage survives: `source_system` +
+`source_account_code` + `load_id` lead straight back to the raw row and
+from there to the source file / sheet / row.
+
+Each row carries the standardized account (`standard_account_id`,
+`statement_section`), the canonical-sign `amount_reporting`, and the full
+sign audit trail: `amount_source` (as the source presented it) →
+`sign_multiplier` + `source_sign_convention` (the rule) →
+`amount_reporting` (the canonical result). Under the canonical convention
+subtotals are sums: IS rows sum to net income, CFS rows sum to the change
+in cash, and assets − liabilities − equity nets to zero — verified on
+every build and in tests.
+
+`reported_or_adjusted` is REPORTED for all rows today; the Phase 8
+adjustment engine adds ADJUSTED rows referencing `adjustment_id`, and the
+`include_in_normalized` / `include_in_proforma` flags (YES/NO/REVIEW)
+drive the three views. Until the Phase 3 FX engine lands,
+`amount_reporting` derives from the source-reported reporting-currency
+amount (decision #19/#22).
+
 ## Canonical files vs future ingestion adapters
 
 These CSVs are the **canonical internal layer**, so their required fields

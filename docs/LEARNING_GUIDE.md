@@ -221,9 +221,34 @@ cash-flow statement walks beginning cash to ending cash (120 + 30 = 150).
 Later phases (controls, FX, consolidation) will verify those same
 identities in code.
 
-## 10. What comes next
+## 10. Account mapping + sign normalization (Phase 2)
 
-Account mapping and sign normalization (Phase 2), FX translation and
-consolidation (Phase 3), the control engine (Phase 4), then NWC → NOPAT →
-UFCF (Phase 5) — each phase upgrading one placeholder in the valuation
-model into a number traced all the way back to a source statement.
+Run `python src/build_client_fs_normalized.py` and study these ideas:
+
+- **Resolution with precedence (`account_mapper.py`).** Two pandas
+  left-merges — one keyed by (company, system, code), one by (system,
+  code) — line up row-for-row with the raw data because mapping keys are
+  unique. `Series.where(~use_specific, by_company[col])` then picks the
+  company-specific answer wherever one exists and the reusable default
+  otherwise. That's the override pattern databases call "most specific
+  wins," in four lines of pandas.
+- **Policy stays in one function.** The builder applies signs by calling
+  `normalize_sign` in a plain loop rather than re-implementing the rule
+  vectorized — 67 rows don't need speed, and one implementation of a
+  business rule beats two that can drift apart.
+- **Identities as sums.** The payoff of the canonical convention: net
+  income is `groupby(entity, period).sum()` over IS rows — no special
+  cases, no sign juggling. Same for the cash walk and the balance-sheet
+  gap. The Phase 4 control engine will formalize exactly these checks.
+- **Derived data locked by a test.** The committed
+  `client_fs_normalized.csv` must byte-match a fresh rebuild
+  (`test_committed_output_matches_a_fresh_rebuild`), the same trick that
+  protects the Power BI report CSV — generated files in a repo either
+  stay verifiably current or the suite goes red.
+
+## 11. What comes next
+
+FX translation and consolidation (Phase 3), the control engine
+(Phase 4), then NWC → NOPAT → UFCF (Phase 5) — each phase upgrading one
+placeholder in the valuation model into a number traced all the way back
+to a source statement.

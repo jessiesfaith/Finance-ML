@@ -9,14 +9,17 @@ starts producing confusing errors.
 from financials.schemas import ALL_SCHEMAS, SCHEMAS_BY_TABLE
 
 
-def test_registry_covers_the_phase_1_tables():
+def test_registry_covers_the_expected_tables():
     expected = {
+        # Phase 1 inputs
         "company_master",
         "entity_master",
         "period_master",
         "account_mapping",
         "fx_rates",
         "client_fs_raw",
+        # Phase 2 output
+        "client_fs_normalized",
     }
     assert set(SCHEMAS_BY_TABLE) == expected
 
