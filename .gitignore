@@ -1,8 +1,16 @@
-﻿.env
+# Secrets / environment — never commit these
+.env
 *.env
+credentials*
+
+# Python virtual environments
 .venv/
 venv/
+
+# Python caches
 __pycache__/
 *.pyc
+.pytest_cache/
+
+# Jupyter notebook checkpoints
 .ipynb_checkpoints/
-credentials*
