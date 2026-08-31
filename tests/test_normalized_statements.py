@@ -80,7 +80,9 @@ def test_cash_flow_sums_to_change_in_cash(normalized):
 
 def test_balance_sheets_balance(normalized):
     gaps = balance_sheet_gap(normalized)
-    assert len(gaps) == 4  # two entities x two periods
+    # Parent and sub for two periods each, plus the elimination entity in
+    # FY2025 (whose IC AR/AP reversals net to zero by construction).
+    assert len(gaps) == 5
     for gap in gaps:
         assert gap == pytest.approx(0.0, abs=1e-9)
 

@@ -303,6 +303,33 @@ ALL_SCHEMAS = (
     CLIENT_FS_RAW,
 )
 
-OUTPUT_SCHEMAS = (CLIENT_FS_NORMALIZED,)
+ENTITY_CONSOLIDATION = TableSchema(
+    table="entity_consolidation",
+    filename="entity_consolidation.csv",
+    columns=(
+        Column("company_id"),
+        Column("period_id"),
+        # "CONSOLIDATED" on every row — per-entity detail lives in the
+        # translated layer, this table is the roll-up (DECISIONS.md #27).
+        Column("entity_id"),
+        Column("standard_account_id"),
+        Column("standard_account_name"),
+        Column("statement_type", allowed=STATEMENT_TYPES),
+        Column("statement_section"),
+        Column("pre_elimination_amount", kind="number"),
+        Column("intercompany_elimination", kind="number"),
+        Column("other_consolidation_adjustment", kind="number"),
+        Column("fx_translation_adjustment", kind="number"),
+        Column("consolidated_amount", kind="number"),
+        Column("reporting_currency"),
+        Column("scenario"),
+        Column("control_status", allowed=("PASS", "REVIEW", "FAIL", "PENDING")),
+        Column("control_variance", kind="number", required=False),
+    ),
+    key=("company_id", "period_id", "standard_account_id", "scenario"),
+)
+
+
+OUTPUT_SCHEMAS = (CLIENT_FS_NORMALIZED, ENTITY_CONSOLIDATION)
 
 SCHEMAS_BY_TABLE = {s.table: s for s in ALL_SCHEMAS + OUTPUT_SCHEMAS}

@@ -66,3 +66,7 @@ COMP001,ENT_GMBH,FY2025,BS,DATEV,3300,Verbindlichkeiten aus Lieferungen und Leis
 COMP001,ENT_GMBH,FY2025,BS,DATEV,3150,Langfristige Darlehen,60,EUR,1.10,66,USD,ACTUAL,beispiel_gmbh_fy2025.xlsx,Bilanz,15,closing FX,L20260831-001,2026-08-31T12:00:00Z
 COMP001,ENT_GMBH,FY2025,BS,DATEV,2900,Gezeichnetes Kapital,80,EUR,1.10,88,USD,ACTUAL,beispiel_gmbh_fy2025.xlsx,Bilanz,16,closing FX; historical-rate treatment arrives in Phase 3,L20260831-001,2026-08-31T12:00:00Z
 COMP001,ENT_GMBH,FY2025,BS,DATEV,2970,Gewinnruecklagen,65,EUR,1.10,71.5,USD,ACTUAL,beispiel_gmbh_fy2025.xlsx,Bilanz,17,closing FX; historical-rate treatment arrives in Phase 3,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_ELIM,FY2025,IS,NETSUITE,4000,Revenue,-50,USD,1.0,-50,USD,ACTUAL,consolidation_journal_fy2025.xlsx,IC Eliminations,10,eliminate intercompany revenue parent->sub,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_ELIM,FY2025,IS,NETSUITE,5000,Cost of Goods Sold,-50,USD,1.0,-50,USD,ACTUAL,consolidation_journal_fy2025.xlsx,IC Eliminations,11,eliminate intercompany COGS at sub,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_ELIM,FY2025,BS,NETSUITE,1100,Accounts Receivable,-10,USD,1.0,-10,USD,ACTUAL,consolidation_journal_fy2025.xlsx,IC Eliminations,12,eliminate intercompany AR due from sub,L20260831-001,2026-08-31T12:00:00Z
+COMP001,ENT_ELIM,FY2025,BS,NETSUITE,2000,Accounts Payable,-10,USD,1.0,-10,USD,ACTUAL,consolidation_journal_fy2025.xlsx,IC Eliminations,13,eliminate intercompany AP due to parent,L20260831-001,2026-08-31T12:00:00Z

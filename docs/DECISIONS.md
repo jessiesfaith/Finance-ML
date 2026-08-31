@@ -188,3 +188,39 @@ If a raw row's statement_type differs from its mapping row's (raw says
 BS, mapping says IS), the build refuses with `statement_type_mismatch` —
 either the mapping or the source data is wrong, and the pipeline never
 reconciles that silently.
+
+---
+
+## 2026-08-31 — Phase 3 (FX translation + entity consolidation)
+
+### 25. REPORTED view keeps source-reported amounts — refines #22
+`client_fs_normalized.csv` (the REPORTED view) stays on the source's own
+reporting-currency figures: REPORTED means "as the source reported it."
+The methodologically correct figures live in the translated/consolidated
+layer (`translate_statements` → `entity_consolidation.csv`), with the
+difference exposed per row as `fx_translation_variance` — monitored by
+Control 9 in Phase 4, never silently substituted.
+
+### 26. FX rate policy is code, FX rates are data
+Which rate TYPE applies to which item (average/closing/historical/
+roll-forward — see docs/FX_AND_CONSOLIDATION.md) is methodology and lives
+in one function, `rate_type_for`. The rates themselves stay in
+`fx_rates.csv`. First-period beginning retained earnings is derived from
+local-currency data (ending RE − NI − dividends) and translated at the
+HISTORICAL rate — the one modeling assumption in the roll-forward, stated
+here and in the docs.
+
+### 27. entity_consolidation.csv rows are the roll-up, entity_id=CONSOLIDATED
+The spec's column list includes entity_id; since amounts in this table
+aggregate across entities, every row carries the constant CONSOLIDATED,
+and per-entity contributions remain queryable in the translated layer.
+Three columns were added beyond the spec list (standard_account_name,
+statement_type, statement_section) so the table is usable standalone in
+Power BI later. control_status is PENDING until the Phase 4 control
+engine populates PASS/REVIEW/FAIL.
+
+### 28. Fixture gained an intercompany elimination layer
+Four ENT_ELIM rows (IC revenue/COGS ±50, IC AR/AP −10) booked in the
+parent's chart of accounts, statement-typed IS/BS so they group naturally
+in consolidation. The elimination entity nets to zero on both statements
+by construction — the identity tests prove it.

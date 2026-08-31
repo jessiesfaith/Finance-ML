@@ -13,12 +13,21 @@ Phase 2 modules:
     normalized_statements — builds client_fs_normalized.csv (REPORTED view)
                             with canonical signs and a per-row audit trail
 
+Phase 3 modules:
+    fx_translation — deterministic currency translation (correct rate type
+                     per item, RE roll-forward, CTA plug, per-row variance
+                     vs the source's own translation)
+    consolidation  — entity roll-up with an explicit elimination layer,
+                     written to entity_consolidation.csv
+
 Later phases add: account mapping, sign normalization, FX translation,
 consolidation, controls, adjustments, outliers, NWC/UFCF/ROIC, shares,
 pro forma, and the analyst-review agent.
 """
 
 from financials.account_mapper import resolve_mapping
+from financials.consolidation import consolidate, write_consolidation
+from financials.fx_translation import translate_statements
 from financials.loader import load_client_fs, ClientFSValidationError, LoadResult
 from financials.normalized_statements import (
     build_normalized_statements,
@@ -36,4 +45,7 @@ __all__ = [
     "resolve_mapping",
     "build_normalized_statements",
     "write_normalized_statements",
+    "translate_statements",
+    "consolidate",
+    "write_consolidation",
 ]

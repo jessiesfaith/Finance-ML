@@ -40,9 +40,20 @@ rework. The curated layer absorbs all of that churn.
 
 ## Later: the Power BI Project (.pbip) phase
 
-Once the output tables are stable, `ML Tool.pbix` gets a `.pbip` copy in
-the repo and report development moves into source control, with this
-division of labor:
+Once the output tables are stable, `ML Tool.pbix` stays as the backup and
+a Power BI Project copy is saved at `reports/ML Tool/` (`ML Tool.pbip` +
+`ML Tool.Report` + `ML Tool.SemanticModel`), moving report development
+into source control. The manual copy/paste-DAX workflow disappears:
+measures, relationships, calculated columns, Power Query/M, display
+folders, and formatting metadata get authored directly in the project
+files, then reviewed on refresh in Power BI Desktop.
+
+Planned measure organization (display folders), so the Fields pane scales
+past 100 measures: Client Financials · Working Capital · Free Cash Flow ·
+Cost of Capital · Valuation · ROIC · Capital Allocation · Controls · FX ·
+M&A · Industry Benchmarking.
+
+Division of labor:
 
 - **Code-first (Claude authors directly):** Power Query/M, the TMDL
   semantic model — tables, relationships, field definitions, DAX measures —

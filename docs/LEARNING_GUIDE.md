@@ -246,9 +246,31 @@ Run `python src/build_client_fs_normalized.py` and study these ideas:
   protects the Power BI report CSV — generated files in a repo either
   stay verifiably current or the suite goes red.
 
-## 11. What comes next
+## 11. FX translation + consolidation (Phase 3)
 
-FX translation and consolidation (Phase 3), the control engine
-(Phase 4), then NWC → NOPAT → UFCF (Phase 5) — each phase upgrading one
-placeholder in the valuation model into a number traced all the way back
-to a source statement.
+Run `python src/build_consolidation.py` alongside
+docs/FX_AND_CONSOLIDATION.md. The finance ideas are the stars here:
+
+- **Different items, different rates.** IS at average, BS at closing,
+  common stock at historical, retained earnings rolled forward — and the
+  balance sheet *deliberately* stops balancing. The gap is the CTA, an
+  equity line the engine emits explicitly rather than hiding.
+- **The variance teaches.** The fixture's source file used the common
+  shortcut of translating everything at closing rate. The engine never
+  overwrites it — it shows, row by row, that the shortcut's equity
+  variances (8.00 + 2.75) are *exactly* the CTA (10.75). A test pins it.
+- **Eliminations change mix, not profit.** IC revenue −50 and IC COGS +50
+  net to zero income; IC AR/AP knock 10 off both sides of the balance
+  sheet. Consolidation = Σ entities + eliminations + CTA, each in its own
+  column so a reviewer sees what was removed and why.
+- **Python-wise**, study the roll-forward loop (state carried across
+  periods in order — a pattern vectorization handles badly and a plain
+  loop handles clearly) and the `groupby(...).sum()` + `merge(how="outer")`
+  assembly of the consolidation columns.
+
+## 12. What comes next
+
+The control engine (Phase 4) formalizes every identity we've been
+checking ad hoc — balance sheet, cash walk, RE roll, consolidation, FX —
+into PASS/REVIEW/FAIL records with tolerances; then NWC → NOPAT → UFCF
+(Phase 5) starts replacing the valuation model's hard-coded inputs.
