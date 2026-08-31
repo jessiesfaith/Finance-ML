@@ -10,15 +10,46 @@ company's financials appear anywhere in this repository.
 
 ---
 
-## The three kinds of information (kept separate by design)
+## The value taxonomy (kept separate by design)
 
-| Kind | Lives in | Examples |
+Every important value in the system belongs to one of six classes
+(2026-08-31 audit, conformance gap a). The first three are *source kinds*
+whose raw tables never mix; the last three describe what the pipeline
+produces from them:
+
+| Class | Lives in | Examples |
 |---|---|---|
-| A. Client/company financial data | `client_fs_raw.csv` | revenue, AR, debt, equity |
-| B. External market data | `fx_rates.csv` (later: rates, ERP, beta) | FX rates, Treasury yields |
-| C. Analyst assumptions | *(later phases: adjustments, forecasts)* | normalized tax rate, terminal growth |
+| CLIENT F/S | `client_fs_raw.csv` | revenue, AR, debt, equity, shares |
+| MARKET DATA | `fx_rates.csv`; future `data/market/` | FX rates, Treasury yields, credit spreads |
+| INDUSTRY / PEER | future `data/market/benchmark_*` (Phase 14) | peer margins, beta, EV/EBITDA bands |
+| ANALYST ASSUMPTION | `account_mapping.csv` treatments; future `data/scenarios/` | normalized tax rate, terminal growth, hurdle premium, ERP |
+| CALCULATED | derived layers (`client_fs_normalized`, translated, consolidation, WACC/DCF math) | NOPAT, WACC, enterprise value, CTA |
+| MODEL OUTPUT | report edge | implied share price, investment recommendation, ML-predicted rates |
 
-Raw source tables never mix these.
+New curated `reports/*.csv` files created from Phase 11 onward carry a
+`value_class` column; the frozen `finance_scenario_report.csv` contract
+does not retrofit it.
+
+## Units (canonical convention)
+
+Adopted 2026-08-31 (audit, conformance gap g):
+
+- **Monetary amounts are stored in MILLIONS of the stated currency** in
+  every canonical layer. The scale is declared, not implied:
+  `company_master.amount_scale` (MILLIONS today). Ingestion adapters
+  convert any client file that arrives in a different scale at load and
+  record the conversion in lineage.
+- **Share counts are in millions**, so per-share math ($M ÷ M shares =
+  $/share) stays coherent by construction.
+- **Rates, ratios, and percentages are decimals** in all internal and
+  canonical layers. Percent representations exist only in display
+  columns explicitly suffixed `_pct`, converted exactly once at the
+  reporting edge (the existing `export_finance_report.py` practice,
+  promoted from habit to rule).
+- **FX rates are dimensionless** `to_currency per from_currency`, always
+  read together with their `from_currency`/`to_currency` columns.
+- Display-side rescaling ($M → $B) happens only in explicitly suffixed
+  presentation measures (e.g. `($B)` twins in Power BI), never silently.
 
 ---
 
@@ -29,6 +60,7 @@ Raw source tables never mix these.
 | company_id | unique ID (key), e.g. COMP001 |
 | company_name | legal/display name |
 | reporting_currency | currency the consolidated statements are presented in |
+| amount_scale | scale of all monetary amounts in this company's files (MILLIONS/THOUSANDS/ONES) |
 | fiscal_year_end | MM-DD |
 | accounting_standard | US_GAAP, IFRS, … |
 | source_system | where the data came from |

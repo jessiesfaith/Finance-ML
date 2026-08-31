@@ -270,11 +270,22 @@ scenarios["roic_wacc_spread_pct"] = (
     scenarios["roic_pct"] - scenarios["wacc_pct"]
 )
 
-# Project IRR assumptions
+# ------------------------------------------------
+# PROJECT APPRAISAL ASSUMPTIONS
+# ------------------------------------------------
+# Hurdle rate = WACC + a project risk premium. This was previously
+# defined ONLY as a DAX measure inside the Power BI model ("Hurdle
+# Rate (%)" = Calculated WACC + 2.00), invisible to this pipeline.
+# Promoted here per the 2026-08-31 model audit (docs/MODEL_AUDIT.md,
+# finding D2) so one engine owns the project cash-flow set.
 initial_investment = 1500
+hurdle_premium = 0.02
 
-# Calculate IRR separately for each rate scenario
-project_irr_pct = []
+scenarios["hurdle_rate_pct"] = (
+    scenarios["wacc_pct"] + hurdle_premium * 100
+)
+
+
 # IRR calculation function
 def calculate_irr(cash_flows, low=-0.99, high=10.0, tolerance=0.000001):
     def npv(rate):
@@ -305,34 +316,42 @@ def calculate_irr(cash_flows, low=-0.99, high=10.0, tolerance=0.000001):
     return mid
 
 
-# Project cash flows
-# Use Base-case WACC for terminal value in the IRR cash-flow set
-base_wacc = scenarios.loc[
-    scenarios["scenario"] == "Base",
-    "wacc_pct"
-].iloc[0] / 100
+# ------------------------------------------------
+# PROJECT IRR — one IRR per scenario, on the SAME cash-flow set the
+# report's Project NPV panel displays.
+# ------------------------------------------------
+# The project terminal value is built at each scenario's HURDLE rate,
+# matching the Power BI "Project Terminal Value ($M)" and "Project NPV
+# ($M)" measures (which discount at the hurdle). Before the audit this
+# used the Base-scenario WACC instead, so the IRR shown on the report
+# (17.54%) could not be reproduced from the terminal value shown next
+# to it (audit finding D2). Now the displayed inputs and the displayed
+# IRR reconcile, scenario by scenario.
+project_irr_pct = []
 
-project_terminal_value = (
-    fcf[-1] * (1 + terminal_growth)
-) / (base_wacc - terminal_growth)
+for hurdle_pct in scenarios["hurdle_rate_pct"]:
 
-project_cash_flows = [
-    -initial_investment,
-    fcf[0],
-    fcf[1],
-    fcf[2],
-    fcf[3],
-    fcf[4] + project_terminal_value,
-]
+    hurdle = hurdle_pct / 100
 
-# Calculate project IRR
-irr = calculate_irr(project_cash_flows)
+    project_terminal_value = (
+        fcf[-1] * (1 + terminal_growth)
+    ) / (hurdle - terminal_growth)
 
-project_irr_pct = (
-    irr * 100 if irr is not None else None
-)
+    project_cash_flows = [
+        -initial_investment,
+        fcf[0],
+        fcf[1],
+        fcf[2],
+        fcf[3],
+        fcf[4] + project_terminal_value,
+    ]
 
-# Add IRR to all scenarios
+    irr = calculate_irr(project_cash_flows)
+
+    project_irr_pct.append(
+        irr * 100 if irr is not None else None
+    )
+
 scenarios["project_irr_pct"] = project_irr_pct
 
 report_columns = [
@@ -370,6 +389,7 @@ report_columns = [
 "invested_capital",
 "roic_pct",
 "roic_wacc_spread_pct",
+"hurdle_rate_pct",
 "project_irr_pct",
 
     # Valuation assumptions

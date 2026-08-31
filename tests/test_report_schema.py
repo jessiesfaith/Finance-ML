@@ -53,6 +53,10 @@ EXPECTED_COLUMNS = [
     "invested_capital",
     "roic_pct",
     "roic_wacc_spread_pct",
+    # Added 2026-08-31 (model audit D2): the project hurdle rate was
+    # previously a DAX-only constant; columns are only ever ADDED to
+    # this contract, never renamed or removed.
+    "hurdle_rate_pct",
     "project_irr_pct",
     # Valuation assumptions
     "debt",
@@ -104,6 +108,22 @@ def test_report_has_all_three_scenarios():
     )
 
     assert len(df) == 3, f"Expected exactly 3 scenario rows, found {len(df)}"
+
+
+def test_hurdle_rate_is_wacc_plus_two_points():
+    """The hurdle methodology promoted from DAX: WACC + 2.00pts, per scenario."""
+    df = pd.read_csv(REPORT_FILE)
+    assert ((df["hurdle_rate_pct"] - df["wacc_pct"]).round(6) == 2.0).all()
+
+
+def test_project_irr_varies_by_scenario():
+    """
+    Audit finding D2: one Base-WACC IRR used to be broadcast to all rows.
+    The IRR is now computed per scenario on the hurdle-basis cash-flow
+    set, so the three rows must differ.
+    """
+    df = pd.read_csv(REPORT_FILE)
+    assert df["project_irr_pct"].nunique() == 3
 
 
 def test_key_outputs_are_numeric_and_populated():

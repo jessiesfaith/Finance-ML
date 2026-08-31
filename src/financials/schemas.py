@@ -49,6 +49,11 @@ PERIOD_TYPES = ("ANNUAL", "QUARTERLY", "MONTHLY")
 
 NORMAL_BALANCES = ("DR", "CR")
 
+# Scale of monetary amounts in a company's statements (docs/SCHEMAS.md
+# "Units"). Canonical internal convention is MILLIONS; ingestion adapters
+# convert anything else at load and record the conversion in lineage.
+AMOUNT_SCALES = ("MILLIONS", "THOUSANDS", "ONES")
+
 REVIEW_STATUSES = ("APPROVED", "REVIEW", "REJECTED")
 
 FLAGS = ("Y", "N")
@@ -97,6 +102,10 @@ COMPANY_MASTER = TableSchema(
         Column("company_id"),
         Column("company_name"),
         Column("reporting_currency"),
+        # Scale of every monetary amount in this company's files —
+        # added 2026-08-31 (audit conformance gap g): amounts were
+        # implicitly $M with nothing declaring it.
+        Column("amount_scale", allowed=AMOUNT_SCALES),
         Column("fiscal_year_end"),
         Column("accounting_standard"),
         Column("source_system"),

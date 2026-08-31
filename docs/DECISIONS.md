@@ -224,3 +224,47 @@ Four ENT_ELIM rows (IC revenue/COGS ±50, IC AR/AP −10) booked in the
 parent's chart of accounts, statement-typed IS/BS so they group naturally
 in consolidation. The elimination entity nets to zero on both statements
 by construction — the identity tests prove it.
+
+---
+
+## 2026-08-31 — Model audit outcomes (audit approved; fixes applied)
+
+### 29. Project appraisal unified on the hurdle basis — audit D2 FIXED
+`models/export_finance_report.py` now computes the project terminal value
+at each scenario's HURDLE rate (WACC + 2.00pts), matching the basis the
+Power BI NPV panel always used, and computes ONE IRR PER SCENARIO
+(13.34 / 12.03 / 10.53%) instead of broadcasting a single Base-WACC IRR
+(17.54%). Consequence, accepted as correct: the Higher Rate scenario's
+project now FAILS its hurdle — consistent with the negative NPV that
+scenario always showed. The displayed IRR, TV, and NPV now reconcile by
+construction.
+
+### 30. Hurdle rate promoted into the versioned pipeline
+`hurdle_rate_pct` (= wacc_pct + 2.00) is a new CSV contract column —
+the assumption previously lived ONLY in an unversioned DAX measure.
+Contract rule clarified: columns are only ever ADDED to
+`finance_scenario_report.csv`, never renamed/removed (Power BI binds by
+name, so additions are backward compatible). Schema-lock test updated to
+the 33-column contract.
+
+### 31. Report-layer fixes staged, not applied
+The comparison-glyph defect (audit D1), the $M/$B row, the duplicate
+Terminal Value section, and the color/interaction housekeeping live in
+the PBIX and cannot be edited from the pipeline. Exact steps + ready DAX
+are in docs/POWERBI_FIX_CHECKLIST.md — apply by hand in Desktop or in
+code at the .pbip phase.
+
+### 32. Units convention adopted; amount_scale added
+Canonical convention documented in docs/SCHEMAS.md "Units" (monetary =
+millions of stated currency; shares in millions; decimals internally,
+percent only in `_pct` display columns). `company_master.amount_scale`
+(MILLIONS/THOUSANDS/ONES) declares the scale that was previously
+implicit. Six-class value taxonomy documented in SCHEMAS.md; the
+machine-readable `value_class` column lands with Phase 11 curated files.
+
+### 33. Legacy market-data hygiene
+BOM stripped from `data/raw/macro_sample.csv` (same bug class as #1).
+`if_exists="replace"` in `src/build_database.py`/`build_history_database.py`
+is tolerated ONLY while the data is synthetic (#5); it becomes forbidden
+the day live data lands — the append-only `market_observations`
+architecture (docs/MARKET_DATA_PROPOSAL.md) replaces it at Phase 13.
