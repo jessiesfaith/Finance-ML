@@ -1,0 +1,43 @@
+{
+  "cik": 9999999,
+  "entityName": "Synthetic Example Corp (TEST DATA)",
+  "facts": {
+    "us-gaap": {
+      "Revenues": {
+        "label": "Revenues",
+        "units": {"USD": [
+          {"start": "2022-10-01", "end": "2023-09-30", "val": 500000000, "accn": "0000999999-23-000010", "fy": 2023, "fp": "FY", "form": "10-K", "filed": "2023-11-01"},
+          {"start": "2023-10-01", "end": "2024-09-28", "val": 560000000, "accn": "0000999999-24-000010", "fy": 2024, "fp": "FY", "form": "10-K", "filed": "2024-11-01"},
+          {"start": "2023-10-01", "end": "2024-09-28", "val": 561000000, "accn": "0000999999-24-000011", "fy": 2024, "fp": "FY", "form": "10-K", "filed": "2024-11-15"},
+          {"start": "2024-09-29", "end": "2024-12-28", "val": 150000000, "accn": "0000999999-25-000002", "fy": 2025, "fp": "Q1", "form": "10-Q", "filed": "2025-01-30"}
+        ]}
+      },
+      "CostOfRevenue": {
+        "label": "Cost of revenue",
+        "units": {"USD": [
+          {"start": "2022-10-01", "end": "2023-09-30", "val": 300000000, "accn": "0000999999-23-000010", "fy": 2023, "fp": "FY", "form": "10-K", "filed": "2023-11-01"},
+          {"start": "2023-10-01", "end": "2024-09-28", "val": 330000000, "accn": "0000999999-24-000010", "fy": 2024, "fp": "FY", "form": "10-K", "filed": "2024-11-01"}
+        ]}
+      },
+      "CashAndCashEquivalentsAtCarryingValue": {
+        "label": "Cash and cash equivalents",
+        "units": {"USD": [
+          {"end": "2023-09-30", "val": 80000000, "accn": "0000999999-23-000010", "fy": 2023, "fp": "FY", "form": "10-K", "filed": "2023-11-01"},
+          {"end": "2024-09-28", "val": 95000000, "accn": "0000999999-24-000010", "fy": 2024, "fp": "FY", "form": "10-K", "filed": "2024-11-01"}
+        ]}
+      },
+      "AccountsReceivableNetCurrent": {
+        "label": "Accounts receivable, net, current",
+        "units": {"USD": [
+          {"end": "2024-09-28", "val": 60000000, "accn": "0000999999-24-000010", "fy": 2024, "fp": "FY", "form": "10-K", "filed": "2024-11-01"}
+        ]}
+      },
+      "Goodwill": {
+        "label": "Goodwill",
+        "units": {"USD": [
+          {"end": "2024-09-28", "val": 400000000, "accn": "0000999999-24-000010", "fy": 2024, "fp": "FY", "form": "10-K", "filed": "2024-11-01"}
+        ]}
+      }
+    }
+  }
+}

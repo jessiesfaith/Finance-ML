@@ -1,0 +1,21 @@
+company_id,source_system,source_account_code,source_account_name,standard_account_id,standard_account_name,statement_type,statement_section,normal_balance,sign_multiplier,source_sign_convention,operating_classification,nwc_classification,netdebt_classification,ufcf_classification,roic_classification,share_classification,cash_flow_classification,oci_classification,review_status
+,SEC_XBRL,RevenueFromContractWithCustomerExcludingAssessedTax,Revenue from contracts with customers,revenue,Revenue,IS,revenue,CR,1,MAGNITUDE,OPERATING,,,,,,,,REVIEW
+,SEC_XBRL,Revenues,Revenues,revenue,Revenue,IS,revenue,CR,1,MAGNITUDE,OPERATING,,,,,,,,REVIEW
+,SEC_XBRL,CostOfGoodsAndServicesSold,Cost of goods and services sold,cogs,Cost of Goods Sold,IS,cogs,DR,-1,MAGNITUDE,OPERATING,,,,,,,,REVIEW
+,SEC_XBRL,CostOfRevenue,Cost of revenue,cogs,Cost of Goods Sold,IS,cogs,DR,-1,MAGNITUDE,OPERATING,,,,,,,,REVIEW
+,SEC_XBRL,SellingGeneralAndAdministrativeExpense,SG&A expense,opex,Operating Expenses,IS,operating_expenses,DR,-1,MAGNITUDE,OPERATING,,,,,,,,REVIEW
+,SEC_XBRL,ResearchAndDevelopmentExpense,R&D expense,opex,Operating Expenses,IS,operating_expenses,DR,-1,MAGNITUDE,OPERATING,,,,,,,,REVIEW
+,SEC_XBRL,InterestExpense,Interest expense,interest_expense,Interest Expense,IS,interest,DR,-1,MAGNITUDE,FINANCING,,,,,,,,REVIEW
+,SEC_XBRL,IncomeTaxExpenseBenefit,Income tax expense (benefit),income_tax_expense,Income Tax Expense,IS,tax,DR,-1,MAGNITUDE,TAX,,,,,,,,REVIEW
+,SEC_XBRL,CashAndCashEquivalentsAtCarryingValue,Cash and cash equivalents,cash,Cash and Cash Equivalents,BS,current_assets,DR,1,MAGNITUDE,NON_OPERATING,EXCLUDED,CASH_AND_EQUIVALENTS,,,,,,REVIEW
+,SEC_XBRL,AccountsReceivableNetCurrent,"Accounts receivable, net, current",accounts_receivable,Accounts Receivable,BS,current_assets,DR,1,MAGNITUDE,OPERATING,NWC_OPERATING_ASSET,,,ROIC_OPERATING_ASSET,,,,REVIEW
+,SEC_XBRL,InventoryNet,"Inventory, net",inventory,Inventory,BS,current_assets,DR,1,MAGNITUDE,OPERATING,NWC_OPERATING_ASSET,,,ROIC_OPERATING_ASSET,,,,REVIEW
+,SEC_XBRL,PropertyPlantAndEquipmentNet,"PP&E, net",ppe_net,"Property, Plant & Equipment, Net",BS,noncurrent_assets,DR,1,MAGNITUDE,OPERATING,,,,ROIC_OPERATING_ASSET,,,,REVIEW
+,SEC_XBRL,AccountsPayableCurrent,"Accounts payable, current",accounts_payable,Accounts Payable,BS,current_liabilities,CR,1,MAGNITUDE,OPERATING,NWC_OPERATING_LIABILITY,,,ROIC_OPERATING_LIABILITY,,,,REVIEW
+,SEC_XBRL,LongTermDebtNoncurrent,"Long-term debt, noncurrent",long_term_debt,Long-Term Debt,BS,noncurrent_liabilities,CR,1,MAGNITUDE,FINANCING,EXCLUDED,DEBT,,,,,,REVIEW
+,SEC_XBRL,CommonStocksIncludingAdditionalPaidInCapital,Common stock incl. APIC,common_stock,Common Stock,BS,equity,CR,1,MAGNITUDE,EQUITY,,,,,,,,REVIEW
+,SEC_XBRL,CommonStockValue,Common stock value,common_stock,Common Stock,BS,equity,CR,1,MAGNITUDE,EQUITY,,,,,,,,REVIEW
+,SEC_XBRL,RetainedEarningsAccumulatedDeficit,Retained earnings (accumulated deficit),retained_earnings,Retained Earnings,BS,equity,CR,1,MAGNITUDE,EQUITY,,,,,,,,REVIEW
+,SEC_XBRL,NetIncomeLoss,Net income (loss),cfs_net_income,Net Income per Cash Flow Statement,CFS,operating,CR,1,MAGNITUDE,,,,,,,CFO,,REVIEW
+,SEC_XBRL,DepreciationDepletionAndAmortization,"Depreciation, depletion and amortization",cfs_depreciation_amortization,Depreciation & Amortization Add-back,CFS,operating,DR,1,MAGNITUDE,,,,UFCF_ADDBACK,,,CFO,,REVIEW
+,SEC_XBRL,PaymentsToAcquirePropertyPlantAndEquipment,Payments to acquire PP&E,cfs_capex,Capital Expenditures,CFS,investing,DR,-1,MAGNITUDE,,,,UFCF_CAPEX,,,CFI,,REVIEW

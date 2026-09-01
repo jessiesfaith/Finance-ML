@@ -14,3 +14,6 @@ __pycache__/
 
 # Jupyter notebook checkpoints
 .ipynb_checkpoints/
+
+# SEC staging output — reviewed, never committed
+data/sec_staging/

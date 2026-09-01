@@ -525,3 +525,25 @@ MARKET_DATA or MODEL_OUTPUT per methodology). The legacy 33-column
 finance_scenario_report.csv is untouched beside them. Phase 11b (the
 .pbip semantic model + pages) consumes exactly these files; the pbix ->
 pbip conversion in Power BI Desktop is the one manual step.
+
+---
+
+## 2026-08-31 — Phase 12 (SEC / XBRL public-company path)
+
+### 57. SEC data flows through the SAME canonical pipeline, via staging
+sec_adapter.py translates EDGAR companyfacts JSON into the canonical
+files (10-K/FY facts only, latest filing per tag-year, ONES->MILLIONS
+with the conversion in lineage, XBRL tags resolved through the widened
+mapping key with source_system=SEC_XBRL) and writes to gitignored
+data/sec_staging/<company>/ - reviewed and mapping-completed before any
+promotion, never auto-merged. The starter tag mapping ships
+review_status=REVIEW: analyst approval is per company. Unmapped
+material tags are surfaced sorted by magnitude; a partially-mapped
+filer honestly fails C1 until the mapping is completed.
+
+### 58. Live EDGAR access is a local-machine step
+SEC blocks many hosted/proxy IPs (403 observed from this environment),
+so the live fetch runs from the analyst's machine; tests exercise the
+adapter fully on a labeled synthetic companyfacts fixture - no real SEC
+data is invented or committed. USER_AGENT carries a placeholder contact
+to be set by the user (SEC requests one; no personal data is embedded).

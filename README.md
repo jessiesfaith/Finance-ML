@@ -54,6 +54,7 @@ python src/build_valuation_inputs.py     # net debt, invested capital/ROIC, dilu
 python src/run_outliers.py               # deterministic outlier flags -> outlier_flags.csv
 python src/run_agent.py                  # analyst-review agent -> agent_review_log.csv
 python src/build_powerbi_exports.py      # curated, schema-locked Power BI report tables
+python src/ingest_sec.py --cik N --from Y1 --to Y2   # stage a public company from SEC EDGAR
 pytest                                   # verify nothing broke
 ```
 
