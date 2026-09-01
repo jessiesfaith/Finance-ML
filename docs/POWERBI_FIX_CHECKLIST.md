@@ -1,17 +1,19 @@
 # Power BI Fix Checklist — from the 2026-08-31 Model Audit
 
-> **STATUS UPDATE (Phase 11b, applied in code on the .pbip):** items 1-5
-> and the post-cutover literal retirement below have been implemented
-> directly in the Power BI project (TMDL + report JSON) — the glyph
-> rebinds and new `ROIC vs WACC Symbol` measure, the stray Hurdle card
-> deleted and the missing "=" card added, `PV FCF Years 1-5 ($B)` created
-> and bound, the duplicate Terminal Value section removed, the NPV
-> fontColor rebinds, `FCF Year 1..5` / `Equity Weight` / `Debt Weight` /
-> `Hurdle Rate (%)` now read pipeline data (new `client_fs_ufcf` table;
-> partition widened to the 33-column contract), plus 109 display folders
-> and measure descriptions. **What remains is VISUAL QA in Power BI
-> Desktop** — open `reports/ML Tool.pbip`, refresh, and verify the
-> checklist's "Verification after applying" section renders correctly.
+> **STATUS: COMPLETE (Desktop QA passed 2026-09-01, commit c06aa63).**
+> All items below — the glyph rebinds and new `ROIC vs WACC Symbol`
+> measure, the stray Hurdle card deleted and the missing "=" card added,
+> `PV FCF Years 1-5 ($B)` created and bound, the duplicate Terminal Value
+> section removed, the NPV fontColor rebinds, `FCF Year 1..5` /
+> `Equity Weight` / `Debt Weight` / `Hurdle Rate (%)` reading pipeline
+> data (new `client_fs_ufcf` table; partition widened to the 33-column
+> contract), plus 109 display folders and measure descriptions — were
+> applied in code on the .pbip (Phase 11b) and then verified by hand in
+> Power BI Desktop: the project opens, both tables refresh, and the
+> "Verification after applying" section renders correctly on live data.
+> The verification numbers in this file predate the DCF cutover
+> (DECISIONS #62); the post-refresh values are Base WACC 9.11, IRR 24.34
+> vs hurdle 11.11, ROIC 23.56, net debt $0.17B, FCF path 186.2→235.1.
 
 These fixes live in the report/model layer of `reports/ML Tool.pbix`, which cannot be
 edited from the pipeline. Apply them either **by hand in Power BI Desktop now** (steps
