@@ -51,6 +51,7 @@ python src/build_consolidation.py        # FX translation + eliminations -> cons
 python src/run_controls.py               # deterministic controls -> control_checks.csv
 python src/build_ufcf.py                 # NWC/NOPAT/UFCF walk + driver forecast -> ufcf_forecast.csv
 python src/build_valuation_inputs.py     # net debt, invested capital/ROIC, diluted shares
+python src/run_outliers.py               # deterministic outlier flags -> outlier_flags.csv
 pytest                                   # verify nothing broke
 ```
 

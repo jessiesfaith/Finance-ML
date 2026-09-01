@@ -389,3 +389,28 @@ Four cutovers now await one explicit approval each, all with derived
 values staged in valuation_inputs.csv/ufcf_forecast.csv: UFCF path,
 net debt, diluted shares, capital-structure weights (each re-prices
 the DCF).
+
+---
+
+## 2026-08-31 — Phase 7 (deterministic outlier engine)
+
+### 46. Outliers are questions, never conclusions
+financials/outliers.py runs PoP dollar+percent variance (BOTH bars must
+clear - big % on tiny balances and big $ on huge balances are noise
+alone), margin variance in points, working-capital/intensity ratios
+(DSO/DIO/DPO/NWC%rev/CapEx%rev), and NEW_ITEM detection for material
+IS/BS activity with no prior. Every flag carries deterministic
+possible-cause candidates ending in "an outlier is not a conclusion";
+review_status starts PENDING; nothing is auto-adjusted. The Phase 10
+agent interprets flags, a human concludes. Fixture: exactly 9 flags,
+including the elimination entity's new intercompany activity and three
+HIGH retained-earnings accumulations that C4 already proves are clean
+rolls - a worked example of outlier-is-not-error.
+
+### 47. Z-score is honest about its precondition
+ZSCORE requires >= 4 periods of history; with the fixture's 2 it logs
+"not applicable" and emits nothing, rather than inventing statistics.
+DIO/DPO use total operating costs as the cost base until clients report
+COGS distinctly enough to matter; thresholds live in one visible config
+(future: per-company profiles). Industry-deviation methods arrive with
+Phase 14 benchmark data.

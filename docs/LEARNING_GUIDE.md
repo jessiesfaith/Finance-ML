@@ -343,10 +343,29 @@ Run `python src/build_valuation_inputs.py`. The concepts:
   risk-free-rate choice a selectable, documented row instead of an
   implicit model call.
 
-## 15. What comes next
+## 15. The outlier engine (Phase 7)
 
-Outliers (Phase 7), adjustments and the reported/normalized/pro-forma
-views (Phase 8), M&A events (Phase 9), the analyst agent (Phase 10) —
-then the Power BI pages render the walks these layers already produce,
-and the four staged cutovers (UFCF, net debt, shares, weights) re-price
-the DCF one approved switch at a time.
+Run `python src/run_outliers.py` next to docs/OUTLIERS.md:
+
+- **Two bars, not one.** A movement flags only when BOTH the percent and
+  the dollar thresholds clear — revenue +$80M (6.7%) stays quiet, cash
+  +$41.6M (27.3%) flags. One bar alone drowns you in noise.
+- **The loudest flags are innocent.** Retained earnings jumps 53–89%
+  and flags HIGH — and Control C4 already proved those rolls tie
+  exactly. That's the design lesson: an outlier is a question; the
+  controls, the agent, and finally a human answer it.
+- **NEW_ITEM is the M&A hook.** The elimination entity's ±$50M
+  intercompany activity appearing from nowhere is exactly the
+  "goodwill/revenue jumped — was there a deal?" pattern Phase 9 pairs
+  with transaction events.
+- **Statistical honesty.** Z-score refuses to run on 2 periods of
+  history (needs 4) and says so, instead of inventing a standard
+  deviation from nothing.
+
+## 16. What comes next
+
+Adjustments and the reported/normalized/pro-forma views (Phase 8), M&A
+events (Phase 9), the analyst agent (Phase 10) — then the Power BI
+pages render the walks these layers already produce, and the four
+staged cutovers (UFCF, net debt, shares, weights) re-price the DCF one
+approved switch at a time.

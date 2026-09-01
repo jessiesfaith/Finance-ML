@@ -34,6 +34,12 @@ Phase 5 modules:
     scenarios — analyst-assumption layer loader (data/scenarios/):
                 scenario_master, driver_master, scenario_assumptions
 
+Phase 7 module:
+    outliers — deterministic outlier tests (PoP dollar+percent, margins,
+               working-capital ratios, new items, z-score with an honest
+               history precondition); flags are questions, never
+               conclusions, written to outlier_flags.csv
+
 Phase 6 modules:
     net_debt          — transparent net-debt build (classification-elected
                         membership; not every liability is debt)
@@ -65,6 +71,11 @@ from financials.capital_structure import market_value_weights
 from financials.invested_capital import invested_capital_components, roic
 from financials.net_debt import net_debt_components
 from financials.nwc import nwc_components
+from financials.outliers import (
+    flags_frame,
+    run_outlier_engine,
+    write_outlier_flags,
+)
 from financials.shares import load_shares_dilution, treasury_stock_method
 from financials.scenarios import load_scenarios
 from financials.sign_normalizer import normalize_sign
@@ -102,4 +113,7 @@ __all__ = [
     "treasury_stock_method",
     "load_shares_dilution",
     "market_value_weights",
+    "run_outlier_engine",
+    "flags_frame",
+    "write_outlier_flags",
 ]

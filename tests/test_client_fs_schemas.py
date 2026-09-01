@@ -24,6 +24,7 @@ def test_registry_covers_the_expected_tables():
         "control_checks",
         "ufcf_forecast",
         "valuation_inputs",
+        "outlier_flags",
         # Phase 5 scenario layer (data/scenarios/, analyst assumptions)
         "driver_master",
         "scenario_master",

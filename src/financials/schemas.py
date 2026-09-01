@@ -546,9 +546,38 @@ RISK_FREE_POLICY = TableSchema(
 
 MARKET_SCHEMAS = (RISK_FREE_POLICY,)
 
+OUTLIER_FLAGS = TableSchema(
+    table="outlier_flags",
+    filename="outlier_flags.csv",
+    columns=(
+        Column("company_id"),
+        Column("level", allowed=("CONSOLIDATED", "ENTITY")),
+        Column("entity_id"),
+        Column("period_id"),
+        Column("prior_period_id"),
+        Column("method", allowed=("POP_VARIANCE", "MARGIN_VARIANCE",
+                                  "RATIO_VARIANCE", "NEW_ITEM", "ZSCORE")),
+        Column("metric_name"),
+        Column("statement_type", allowed=STATEMENT_TYPES),
+        Column("baseline_value", kind="number"),
+        Column("current_value", kind="number"),
+        Column("variance_amount", kind="number"),
+        # % for POP/RATIO/ZSCORE (z units), percentage POINTS for MARGIN.
+        Column("variance_pct", kind="number"),
+        Column("threshold_desc"),
+        Column("severity", allowed=("MEDIUM", "HIGH")),
+        # Deterministic candidates only — an outlier is never concluded
+        # to be an error by the engine (docs/OUTLIERS.md).
+        Column("possible_causes"),
+        Column("review_status", allowed=("PENDING", "APPROVED", "REJECTED")),
+    ),
+    key=("company_id", "level", "entity_id", "period_id", "method",
+         "metric_name"),
+)
+
 OUTPUT_SCHEMAS = (
     CLIENT_FS_NORMALIZED, ENTITY_CONSOLIDATION, CONTROL_CHECKS, UFCF_FORECAST,
-    VALUATION_INPUTS,
+    VALUATION_INPUTS, OUTLIER_FLAGS,
 )
 
 SCHEMAS_BY_TABLE = {
