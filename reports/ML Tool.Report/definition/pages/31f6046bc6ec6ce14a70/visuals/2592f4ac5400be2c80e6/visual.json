@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "2592f4ac5400be2c80e6",
+  "position": {
+    "x": 456.66666666666669,
+    "y": 271.66666666666669,
+    "z": 48000,
+    "height": 71.666666666666671,
+    "width": 240,
+    "tabOrder": 48000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "Debt WACC Contribution"
+                }
+              },
+              "queryRef": "finance_scenario_report.Debt WACC Contribution",
+              "nativeQueryRef": "Debt WACC Contribution"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "finance_scenario_report"
+                  }
+                },
+                "Property": "Debt WACC Contribution"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

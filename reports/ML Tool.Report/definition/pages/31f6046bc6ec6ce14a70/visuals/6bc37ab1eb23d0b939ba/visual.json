@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "6bc37ab1eb23d0b939ba",
+  "position": {
+    "x": 2305.9523446219314,
+    "y": 205.35708836146773,
+    "z": 6000,
+    "height": 72,
+    "width": 140,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "Selected Treasury 2Y"
+                }
+              },
+              "queryRef": "finance_scenario_report.Selected Treasury 2Y",
+              "nativeQueryRef": "Treasury 2Y (%)",
+              "displayName": "Treasury 2Y (%)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "finance_scenario_report"
+                  }
+                },
+                "Property": "Selected Treasury 2Y"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

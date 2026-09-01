@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "5863e9b8181031e320ce",
+  "position": {
+    "x": 1493.2539512997582,
+    "y": 994.04761904761835,
+    "z": 31000,
+    "height": 76.785714285714278,
+    "width": 285.71428571428567,
+    "tabOrder": 30000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "FCF Years 1-5 % of EV"
+                }
+              },
+              "queryRef": "finance_scenario_report.FCF Years 1-5 % of EV",
+              "nativeQueryRef": "Years 1-5 FCF / EV (%)",
+              "displayName": "Years 1-5 FCF / EV (%)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "finance_scenario_report"
+                  }
+                },
+                "Property": "FCF Years 1-5 % of EV"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

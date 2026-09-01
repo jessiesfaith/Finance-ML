@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "15c581c18617b252066a",
+  "position": {
+    "x": 1514.9999999999998,
+    "y": 751.25000000000011,
+    "z": 90000,
+    "height": 80,
+    "width": 286,
+    "tabOrder": 90000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "Equity Value Change vs Base %"
+                }
+              },
+              "queryRef": "finance_scenario_report.Equity Value Change vs Base %",
+              "nativeQueryRef": "Equity Value Change vs Base (%)",
+              "displayName": "Equity Value Change vs Base (%)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "finance_scenario_report"
+                  }
+                },
+                "Property": "Equity Value Change vs Base %"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

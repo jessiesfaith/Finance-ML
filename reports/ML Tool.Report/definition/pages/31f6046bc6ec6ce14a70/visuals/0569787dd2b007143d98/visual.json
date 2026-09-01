@@ -1,0 +1,67 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "0569787dd2b007143d98",
+  "position": {
+    "x": 2309.2592592592591,
+    "y": 498.1481481481481,
+    "z": 15000,
+    "height": 75,
+    "width": 205,
+    "tabOrder": 14000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "finance_scenario_report"
+                        }
+                      },
+                      "Property": "equity_risk_premium_pct"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(finance_scenario_report.equity_risk_premium_pct)",
+              "nativeQueryRef": "Equity Risk Premium (%)",
+              "displayName": "Equity Risk Premium (%)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "finance_scenario_report"
+                      }
+                    },
+                    "Property": "equity_risk_premium_pct"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

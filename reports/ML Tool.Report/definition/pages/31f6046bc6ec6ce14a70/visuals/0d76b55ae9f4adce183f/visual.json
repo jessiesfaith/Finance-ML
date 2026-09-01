@@ -1,0 +1,67 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "0d76b55ae9f4adce183f",
+  "position": {
+    "x": 836.66665649414063,
+    "y": 1878.6666259765625,
+    "z": 160000,
+    "height": 86.36363636363636,
+    "width": 150,
+    "tabOrder": 160000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "finance_scenario_report"
+                        }
+                      },
+                      "Property": "ebit"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(finance_scenario_report.ebit)",
+              "nativeQueryRef": "EBIT ($M)",
+              "displayName": "EBIT ($M)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "finance_scenario_report"
+                      }
+                    },
+                    "Property": "ebit"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

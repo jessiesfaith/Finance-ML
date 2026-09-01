@@ -1,0 +1,67 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "61181f2ae8f307f88c07",
+  "position": {
+    "x": 673.98986816406284,
+    "y": 1359.8096656354708,
+    "z": 113000,
+    "height": 90.384615384615387,
+    "width": 225,
+    "tabOrder": 113000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "finance_scenario_report"
+                        }
+                      },
+                      "Property": "roic_wacc_spread_pct"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(finance_scenario_report.roic_wacc_spread_pct)",
+              "nativeQueryRef": "ROIC - WACC Spread (pts)",
+              "displayName": "ROIC - WACC Spread (pts)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "finance_scenario_report"
+                      }
+                    },
+                    "Property": "roic_wacc_spread_pct"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

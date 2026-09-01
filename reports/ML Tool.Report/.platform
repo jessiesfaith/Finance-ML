@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "ML Tool"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "beec0a5b-4156-4b69-866e-9d14a817b0c5"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "866c909e9a675374643a",
+  "position": {
+    "x": 195.63635346383759,
+    "y": 2469.768833764072,
+    "z": 153000,
+    "height": 77.272727272727266,
+    "width": 187.87878787878788,
+    "tabOrder": 153000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "Project IRR (%)"
+                }
+              },
+              "queryRef": "finance_scenario_report.Project IRR (%)",
+              "nativeQueryRef": "Project IRR (%)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

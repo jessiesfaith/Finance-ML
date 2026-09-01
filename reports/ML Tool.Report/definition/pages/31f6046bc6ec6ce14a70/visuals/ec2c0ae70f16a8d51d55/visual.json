@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "ec2c0ae70f16a8d51d55",
+  "position": {
+    "x": 775,
+    "y": 1216.6666666666667,
+    "z": 109000,
+    "height": 78.333333333333343,
+    "width": 218.33333333333334,
+    "tabOrder": 109000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "PV Terminal Value ($B)"
+                }
+              },
+              "queryRef": "finance_scenario_report.PV Terminal Value ($B)",
+              "nativeQueryRef": "PV Terminal Value ($B)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "finance_scenario_report"
+                  }
+                },
+                "Property": "PV Terminal Value ($B)"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

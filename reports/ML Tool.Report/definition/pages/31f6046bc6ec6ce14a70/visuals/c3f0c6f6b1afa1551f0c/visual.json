@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "c3f0c6f6b1afa1551f0c",
+  "position": {
+    "x": 1992.5,
+    "y": 123.75,
+    "z": 93000,
+    "height": 67.5,
+    "width": 288.75,
+    "tabOrder": 93000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "Risk-Free Rate Change vs Base"
+                }
+              },
+              "queryRef": "finance_scenario_report.Risk-Free Rate Change vs Base",
+              "nativeQueryRef": "Risk-Free Rate Change vs Base (pts)",
+              "displayName": "Risk-Free Rate Change vs Base (pts)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "finance_scenario_report"
+                  }
+                },
+                "Property": "Risk-Free Rate Change vs Base"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

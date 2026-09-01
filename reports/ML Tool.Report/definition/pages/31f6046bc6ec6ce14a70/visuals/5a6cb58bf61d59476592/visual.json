@@ -1,0 +1,67 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "5a6cb58bf61d59476592",
+  "position": {
+    "x": 1574.6666564941406,
+    "y": 1876.6666259765625,
+    "z": 164000,
+    "height": 86.36363636363636,
+    "width": 150,
+    "tabOrder": 164000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "finance_scenario_report"
+                        }
+                      },
+                      "Property": "nopat"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(finance_scenario_report.nopat)",
+              "nativeQueryRef": "NOPAT ($M)",
+              "displayName": "NOPAT ($M)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "finance_scenario_report"
+                      }
+                    },
+                    "Property": "nopat"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

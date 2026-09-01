@@ -1,0 +1,44 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "082386675fc8884496d4",
+  "position": {
+    "x": 378.24996757507324,
+    "y": 1878.1666259765625,
+    "z": 120000,
+    "height": 86.36363636363636,
+    "width": 150,
+    "tabOrder": 120000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "finance_scenario_report"
+                        }
+                      },
+                      "Property": "ebit_margin_pct"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(finance_scenario_report.ebit_margin_pct)",
+              "nativeQueryRef": "EBIT Margin (%)",
+              "displayName": "EBIT Margin (%)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

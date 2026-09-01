@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "6e610064b8fd5dd1acc9",
+  "position": {
+    "x": 1207.5396655854724,
+    "y": 1090.4761904761917,
+    "z": 32000,
+    "height": 74.999999999999986,
+    "width": 262.5,
+    "tabOrder": 31000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "DCF EV Reconciliation"
+                }
+              },
+              "queryRef": "finance_scenario_report.DCF EV Reconciliation",
+              "nativeQueryRef": "DCF Model Check ($M)",
+              "displayName": "DCF Model Check ($M)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "finance_scenario_report"
+                  }
+                },
+                "Property": "DCF EV Reconciliation"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

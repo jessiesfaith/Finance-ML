@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "18754315955db155f006",
+  "position": {
+    "x": 1811.2499999999998,
+    "y": 845.00000000000011,
+    "z": 101000,
+    "height": 72.5,
+    "width": 255,
+    "tabOrder": 101000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "Share Price Change vs Base $"
+                }
+              },
+              "queryRef": "finance_scenario_report.Share Price Change vs Base $",
+              "nativeQueryRef": "Share Price Change vs Base ($)",
+              "displayName": "Share Price Change vs Base ($)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "finance_scenario_report"
+                  }
+                },
+                "Property": "Share Price Change vs Base $"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

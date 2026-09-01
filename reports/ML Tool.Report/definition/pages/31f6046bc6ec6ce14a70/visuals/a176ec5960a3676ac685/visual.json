@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "a176ec5960a3676ac685",
+  "position": {
+    "x": 740.74074074074065,
+    "y": 1477.7777777777776,
+    "z": 131000,
+    "height": 75.925925925925924,
+    "width": 216.66666666666666,
+    "tabOrder": 131000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "IRR - Hurdle Spread (pts)"
+                }
+              },
+              "queryRef": "finance_scenario_report.IRR - Hurdle Spread (pts)",
+              "nativeQueryRef": "IRR - Hurdle Spread (pts)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "finance_scenario_report"
+                  }
+                },
+                "Property": "IRR - Hurdle Spread (pts)"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

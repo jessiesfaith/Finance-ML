@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "b30b2fc6ce705cbf6512",
+  "position": {
+    "x": 1495.6789935076674,
+    "y": 2248.1481481481483,
+    "z": 152000,
+    "height": 74.074074074074076,
+    "width": 148.14814814814815,
+    "tabOrder": 152000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "FCF Year 5"
+                }
+              },
+              "queryRef": "finance_scenario_report.FCF Year 5",
+              "nativeQueryRef": "FCF Y5 ($M)",
+              "displayName": "FCF Y5 ($M)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "finance_scenario_report"
+                  }
+                },
+                "Property": "FCF Year 5"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

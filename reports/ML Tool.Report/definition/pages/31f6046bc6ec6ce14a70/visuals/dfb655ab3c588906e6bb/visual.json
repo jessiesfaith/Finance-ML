@@ -1,0 +1,44 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "dfb655ab3c588906e6bb",
+  "position": {
+    "x": 176.99996757507324,
+    "y": 1878.1666259765625,
+    "z": 116000,
+    "height": 86.36363636363636,
+    "width": 150,
+    "tabOrder": 116000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "finance_scenario_report"
+                        }
+                      },
+                      "Property": "revenue"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(finance_scenario_report.revenue)",
+              "nativeQueryRef": "Revenue ($M)",
+              "displayName": "Revenue ($M)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

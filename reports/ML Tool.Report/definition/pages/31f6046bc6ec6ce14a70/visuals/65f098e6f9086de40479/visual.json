@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "65f098e6f9086de40479",
+  "position": {
+    "x": 299.59776253535836,
+    "y": 600.68972532776593,
+    "z": 66000,
+    "height": 38.888888888888886,
+    "width": 54.444444444444443,
+    "tabOrder": 66000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "WACC Multiply Symbol"
+                }
+              },
+              "queryRef": "finance_scenario_report.WACC Multiply Symbol",
+              "nativeQueryRef": "WACC Multiply Symbol"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "label": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

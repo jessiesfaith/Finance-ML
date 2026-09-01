@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "117913e261aa626e3a85",
+  "position": {
+    "x": 1995,
+    "y": 201.25,
+    "z": 94000,
+    "height": 71.25,
+    "width": 286.25,
+    "tabOrder": 94000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "Cost of Equity Change vs Base"
+                }
+              },
+              "queryRef": "finance_scenario_report.Cost of Equity Change vs Base",
+              "nativeQueryRef": "Cost of Equity Change vs Base (pts)",
+              "displayName": "Cost of Equity Change vs Base (pts)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "finance_scenario_report"
+                  }
+                },
+                "Property": "Cost of Equity Change vs Base"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
