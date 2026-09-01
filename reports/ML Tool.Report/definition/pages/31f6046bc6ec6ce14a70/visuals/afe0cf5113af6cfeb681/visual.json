@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "1e8154fdd89a7e54626c",
+  "name": "afe0cf5113af6cfeb681",
   "position": {
-    "x": 456.66666666666669,
-    "y": 995,
-    "z": 60000,
-    "height": 75,
-    "width": 240,
-    "tabOrder": 60000
+    "x": 710,
+    "y": 1216.6666666666667,
+    "z": 85000,
+    "height": 55,
+    "width": 50,
+    "tabOrder": 85000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,32 +23,14 @@
                       "Entity": "finance_scenario_report"
                     }
                   },
-                  "Property": "Diluted Shares (M)"
+                  "Property": "WACC Equals Symbol"
                 }
               },
-              "queryRef": "finance_scenario_report.Diluted Shares (M)",
-              "nativeQueryRef": "Diluted Shares (M)"
+              "queryRef": "finance_scenario_report.WACC Equals Symbol",
+              "nativeQueryRef": "WACC Equals Symbol"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "finance_scenario_report"
-                  }
-                },
-                "Property": "Diluted Shares (M)"
-              }
-            },
-            "direction": "Descending"
-          }
-        ],
-        "isDefaultSort": true
       }
     },
     "objects": {

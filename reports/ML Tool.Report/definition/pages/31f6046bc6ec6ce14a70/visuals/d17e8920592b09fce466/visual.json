@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "1e8154fdd89a7e54626c",
+  "name": "d17e8920592b09fce466",
   "position": {
-    "x": 456.66666666666669,
-    "y": 995,
-    "z": 60000,
-    "height": 75,
-    "width": 240,
-    "tabOrder": 60000
+    "x": 926.66666666666674,
+    "y": 1126.6666666666667,
+    "z": 24000,
+    "height": 70,
+    "width": 206.66666666666669,
+    "tabOrder": 23000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,11 @@
                       "Entity": "finance_scenario_report"
                     }
                   },
-                  "Property": "Diluted Shares (M)"
+                  "Property": "Terminal Value ($B)"
                 }
               },
-              "queryRef": "finance_scenario_report.Diluted Shares (M)",
-              "nativeQueryRef": "Diluted Shares (M)"
+              "queryRef": "finance_scenario_report.Terminal Value ($B)",
+              "nativeQueryRef": "Terminal Value ($B)1"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "finance_scenario_report"
                   }
                 },
-                "Property": "Diluted Shares (M)"
+                "Property": "Terminal Value ($B)"
               }
             },
             "direction": "Descending"
@@ -50,24 +50,6 @@
         ],
         "isDefaultSort": true
       }
-    },
-    "objects": {
-      "label": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ]
     },
     "drillFilterOtherVisuals": true
   }

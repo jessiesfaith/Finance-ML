@@ -107,16 +107,6 @@ table finance_scenario_report
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
-	/// Diluted share count in millions from the pipeline (treasury-stock
-	/// method); replaces the raw Sum(shares_outstanding) column binding so
-	/// the implied-price row reads 103.7, not a rounded 104.
-	measure 'Diluted Shares (M)' =
-			
-			SELECTEDVALUE(finance_scenario_report[shares_outstanding])
-		formatString: #,0.0
-		displayFolder: Valuation
-		lineageTag: 08523db3-ebad-49ce-b2ab-5378326c671a
-
 	/// MODEL OUTPUT today: a 10-year yield predicted by the internal model on synthetic data. Target: observed 10Y Treasury with source, maturity, and as-of date (see market_rf_policy).
 	measure 'Selected Risk-Free Rate' =
 			
@@ -1326,6 +1316,21 @@ table finance_scenario_report
 		displayFolder: Decision Colors
 		lineageTag: 40621376-ef45-41cb-8d1c-d0648098e0a8
 
+	measure 'Zero Value' = 0
+		formatString: 0
+		displayFolder: Other
+		lineageTag: c9b05837-ca37-41ed-8c5a-6f99c7b5e08d
+
+	/// Diluted share count in millions from the pipeline (treasury-stock
+	/// method); replaces the raw Sum(shares_outstanding) column binding so
+	/// the implied-price row reads 103.7, not a rounded 104.
+	measure 'Diluted Shares (M)' =
+			
+			SELECTEDVALUE(finance_scenario_report[shares_outstanding])
+		formatString: #,0.0
+		displayFolder: Valuation
+		lineageTag: 08523db3-ebad-49ce-b2ab-5378326c671a
+
 	measure 'PV FCF Years 1-5 ($B)' =
 			
 			DIVIDE(
@@ -1349,11 +1354,6 @@ table finance_scenario_report
 			    )
 		displayFolder: Formatting Symbols
 		lineageTag: 76cf6c49-cf15-4c38-8a8f-c5011c597825
-
-	measure 'Zero Value' = 0
-		formatString: 0
-		displayFolder: Other
-		lineageTag: c9b05837-ca37-41ed-8c5a-6f99c7b5e08d
 
 	column scenario
 		dataType: string
