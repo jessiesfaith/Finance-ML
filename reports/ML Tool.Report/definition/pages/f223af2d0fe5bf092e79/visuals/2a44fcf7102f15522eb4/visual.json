@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "2a44fcf7102f15522eb4",
+  "position": {
+    "x": 165,
+    "y": 380,
+    "height": 55,
+    "width": 1200,
+    "z": 18000,
+    "tabOrder": 18000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Risk-free = the internal model's 10Y prediction today (policy table at right; flips to observed FRED data at the live phase). Weights are market-value derived: E/(D+E) from diluted shares \u00d7 price and statement debt \u2014 DECISIONS #62.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

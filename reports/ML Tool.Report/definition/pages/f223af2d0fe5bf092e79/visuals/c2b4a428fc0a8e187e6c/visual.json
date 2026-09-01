@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "c2b4a428fc0a8e187e6c",
+  "position": {
+    "x": 1940,
+    "y": 600,
+    "height": 75,
+    "width": 210,
+    "z": 68000,
+    "tabOrder": 68000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "Cost of Debt Change vs Base"
+                }
+              },
+              "queryRef": "finance_scenario_report.Cost of Debt Change vs Base",
+              "nativeQueryRef": "Cost of Debt Change vs Base"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

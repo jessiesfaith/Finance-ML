@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "adc69c4d2b01908ebc52",
+  "position": {
+    "x": 165,
+    "y": 1360,
+    "height": 80,
+    "width": 550,
+    "z": 69000,
+    "tabOrder": 69000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "Investment Recommendation"
+                }
+              },
+              "queryRef": "finance_scenario_report.Investment Recommendation",
+              "nativeQueryRef": "Investment Recommendation"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

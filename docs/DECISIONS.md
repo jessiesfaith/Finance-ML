@@ -675,3 +675,24 @@ Page 1's symbol measures; 'UFCF Bridge Check ($M)' recomputes the
 bridge and must read 0.00; (f) layout JSON is scaffolding-only
 (positions on a 3000x3000 canvas) - spacing, column widths and polish
 stay human in Desktop, per the agreed division of labor.
+
+### 66. Pages 3 & 4 - the PAGE_FLOW design realized as clean pages
+"Page 3 - Market & Cost of Capital" and "Page 4 - Valuation &
+Decision" scaffolded in code; legacy Page 1 kept untouched as the
+combined original. Page 3: macro context row (labeled: informs the
+scenario, never plugged into WACC), inputs labeled by source
+(MODEL OUTPUT / ASSUMPTION / CALCULATED), then CAPM -> cost of debt ->
+weighted contributions -> WACC -> hurdle as equation rows, ending with
+the per-scenario cost-of-capital table + the cloned WACC chart; right
+rail shows the market_rf_policy methodology table (new TMDL table over
+reports/market_rf_policy.csv - the risk-free rate is a policy, not a
+typed number) and scenario deltas vs Base. Page 4: inputs from Pages
+2/3 -> per-year discounting -> terminal value -> EV -> equity -> per
+share (with DCF EV Reconciliation beside it) -> the three decision
+tests with correctly-paired comparison glyphs -> Investment
+Recommendation -> scenario results table + cloned price/EV charts.
+Implementation: 7 new measures (Selected Beta/ERP/Credit Spread/CPI/
+Unemployment mirroring the Base-fallback pattern; Hurdle Premium; ROIC
+WACC Spread), the previously undeclared npv column added to the model,
+everything else reuses the existing measure suite. Each new page
+carries its own scenario picker.

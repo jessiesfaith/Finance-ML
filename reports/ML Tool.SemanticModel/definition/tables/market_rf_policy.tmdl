@@ -1,0 +1,86 @@
+/// Curated pipeline export reports/market_rf_policy.csv: the risk-free
+/// rate METHODOLOGY - which rate, which maturity, which observation
+/// rule, from which source, and whether it is active. The report shows
+/// the policy so the risk-free number is never just a typed value.
+table market_rf_policy
+	lineageTag: 9980f5a0-0b77-46ee-b4e4-d9759dc97e5b
+
+	column rf_methodology_id
+		dataType: string
+		lineageTag: 12aa6fca-0c0a-4976-9f0d-432c15e7b44b
+		summarizeBy: none
+		sourceColumn: rf_methodology_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_metric_id
+		dataType: string
+		lineageTag: c64424c6-351d-412f-8dbc-08ae97b92b2a
+		summarizeBy: none
+		sourceColumn: source_metric_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column observation_rule
+		dataType: string
+		lineageTag: 6b22bb9f-13db-47ee-85b2-a8561881d5c4
+		summarizeBy: none
+		sourceColumn: observation_rule
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: 494a9b47-1354-4438-aea3-e07024e20d70
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 14fb8d7b-43be-47b8-9ab3-901420739367
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column active_flag
+		dataType: string
+		lineageTag: 37937152-5439-4eed-8031-87ae70213010
+		summarizeBy: none
+		sourceColumn: active_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 35d95c32-dbdd-4bd6-adc6-4872da1271ef
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column maturity_years
+		dataType: double
+		lineageTag: 3bce50f3-191e-49d4-a86b-fb287a0a5708
+		summarizeBy: none
+		sourceColumn: maturity_years
+
+		annotation SummarizationSetBy = Automatic
+
+	partition market_rf_policy = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\market_rf_policy.csv"),
+				    [Delimiter = ",", Columns = 8, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"rf_methodology_id", "source_metric_id", "observation_rule", "source", "description", "active_flag", "value_class", "maturity_years"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"maturity_years", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,125 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "6c551d154b8834b3886c",
+  "position": {
+    "x": 165,
+    "y": 1295,
+    "height": 190,
+    "width": 760,
+    "z": 59000,
+    "tabOrder": 59000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "scenario"
+                }
+              },
+              "queryRef": "finance_scenario_report.scenario",
+              "nativeQueryRef": "scenario"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "risk_free_rate_pct"
+                }
+              },
+              "queryRef": "finance_scenario_report.risk_free_rate_pct",
+              "nativeQueryRef": "risk_free_rate_pct"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "cost_of_equity_pct"
+                }
+              },
+              "queryRef": "finance_scenario_report.cost_of_equity_pct",
+              "nativeQueryRef": "cost_of_equity_pct"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "cost_of_debt_pct"
+                }
+              },
+              "queryRef": "finance_scenario_report.cost_of_debt_pct",
+              "nativeQueryRef": "cost_of_debt_pct"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "wacc_pct"
+                }
+              },
+              "queryRef": "finance_scenario_report.wacc_pct",
+              "nativeQueryRef": "wacc_pct"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "hurdle_rate_pct"
+                }
+              },
+              "queryRef": "finance_scenario_report.hurdle_rate_pct",
+              "nativeQueryRef": "hurdle_rate_pct"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "finance_scenario_report"
+                  }
+                },
+                "Property": "scenario"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

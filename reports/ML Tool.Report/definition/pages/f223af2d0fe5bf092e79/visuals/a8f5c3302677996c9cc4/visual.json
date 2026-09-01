@@ -1,0 +1,73 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "a8f5c3302677996c9cc4",
+  "position": {
+    "x": 955,
+    "y": 1295,
+    "z": 60000,
+    "height": 194.82758620689657,
+    "width": 313.7931034482759,
+    "tabOrder": 60000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "scenario"
+                }
+              },
+              "queryRef": "finance_scenario_report.scenario",
+              "nativeQueryRef": "scenario",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "Calculated WACC"
+                }
+              },
+              "queryRef": "finance_scenario_report.Calculated WACC",
+              "nativeQueryRef": "WACC (%)",
+              "displayName": "WACC (%)"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

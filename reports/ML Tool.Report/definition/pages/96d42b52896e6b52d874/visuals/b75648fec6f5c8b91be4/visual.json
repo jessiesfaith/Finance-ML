@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "b75648fec6f5c8b91be4",
+  "position": {
+    "x": 350,
+    "y": 220,
+    "height": 75,
+    "width": 175,
+    "z": 11000,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "Hurdle Rate (%)"
+                }
+              },
+              "queryRef": "finance_scenario_report.Hurdle Rate (%)",
+              "nativeQueryRef": "Hurdle Rate (%)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "d285916a313261a85a22",
+  "position": {
+    "x": 836,
+    "y": 1180,
+    "height": 75,
+    "width": 175,
+    "z": 64000,
+    "tabOrder": 64000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "IRR Margin Status"
+                }
+              },
+              "queryRef": "finance_scenario_report.IRR Margin Status",
+              "nativeQueryRef": "IRR Margin Status"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

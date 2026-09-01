@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "64012cd12a71727f6475",
+  "position": {
+    "x": 651,
+    "y": 855,
+    "height": 75,
+    "width": 175,
+    "z": 45000,
+    "tabOrder": 45000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "DCF Equity Value ($B)"
+                }
+              },
+              "queryRef": "finance_scenario_report.DCF Equity Value ($B)",
+              "nativeQueryRef": "DCF Equity Value ($B)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

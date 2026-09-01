@@ -1,0 +1,80 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "5aa14aa140ac2472ebde",
+  "position": {
+    "x": 1205,
+    "y": 1750,
+    "z": 74000,
+    "height": 194.82758620689657,
+    "width": 327.58620689655174,
+    "tabOrder": 74000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "scenario"
+                }
+              },
+              "queryRef": "finance_scenario_report.scenario",
+              "nativeQueryRef": "scenario",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "Enterprise Value Billions"
+                }
+              },
+              "queryRef": "finance_scenario_report.Enterprise Value Billions",
+              "nativeQueryRef": "Enterprise Value ($B)",
+              "displayName": "Enterprise Value ($B)"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

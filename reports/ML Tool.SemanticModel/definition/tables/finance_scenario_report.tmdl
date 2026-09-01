@@ -136,6 +136,104 @@ table finance_scenario_report
 		displayFolder: Cost of Capital & Market
 		lineageTag: b5e9f721-9dd2-43c5-8a64-f34301002dd0
 
+	/// ASSUMPTION: equity beta (1.20). At the live phase this comes from
+	/// peer-set regression; until then it is an explicit, labeled input.
+	measure 'Selected Beta' =
+			
+			IF(
+			    HASONEVALUE(finance_scenario_report[scenario]),
+			    SELECTEDVALUE(finance_scenario_report[beta]),
+			    CALCULATE(
+			        MAX(finance_scenario_report[beta]),
+			        finance_scenario_report[scenario] = "Base"
+			    )
+			)
+		formatString: 0.00
+		displayFolder: Cost of Capital & Market
+		lineageTag: 5e17120e-23dc-4f72-ba67-5c7f5cf662f3
+
+	/// ASSUMPTION: equity risk premium in points (4.50), dated and owned -
+	/// never an invented market observation.
+	measure 'Selected Equity Risk Premium' =
+			
+			IF(
+			    HASONEVALUE(finance_scenario_report[scenario]),
+			    SELECTEDVALUE(finance_scenario_report[equity_risk_premium_pct]),
+			    CALCULATE(
+			        MAX(finance_scenario_report[equity_risk_premium_pct]),
+			        finance_scenario_report[scenario] = "Base"
+			    )
+			)
+		formatString: 0.00
+		displayFolder: Cost of Capital & Market
+		lineageTag: 3d374613-ccc3-4b18-a8ba-fcc2c26b2ec6
+
+	/// ASSUMPTION: credit spread over the risk-free rate (2.00pts),
+	/// benchmarked against IG/HY OAS when live market data lands.
+	measure 'Selected Credit Spread' =
+			
+			IF(
+			    HASONEVALUE(finance_scenario_report[scenario]),
+			    SELECTEDVALUE(finance_scenario_report[credit_spread_pct]),
+			    CALCULATE(
+			        MAX(finance_scenario_report[credit_spread_pct]),
+			        finance_scenario_report[scenario] = "Base"
+			    )
+			)
+		formatString: 0.00
+		displayFolder: Cost of Capital & Market
+		lineageTag: f5162c3b-ab2a-475e-bcc3-af2c71ffb14d
+
+	/// MACRO CONTEXT: informs the scenario narrative and the assumptions -
+	/// never plugged into WACC directly (docs/MODEL_AUDIT.md map W).
+	measure 'Selected CPI' =
+			
+			IF(
+			    HASONEVALUE(finance_scenario_report[scenario]),
+			    SELECTEDVALUE(finance_scenario_report[cpi]),
+			    CALCULATE(
+			        MAX(finance_scenario_report[cpi]),
+			        finance_scenario_report[scenario] = "Base"
+			    )
+			)
+		formatString: 0.00
+		displayFolder: Cost of Capital & Market
+		lineageTag: 6b68a92e-9fa0-4ad8-ab73-bca7efaec1f2
+
+	/// MACRO CONTEXT: same role as CPI - context for the scenario, not a
+	/// WACC input.
+	measure 'Selected Unemployment' =
+			
+			IF(
+			    HASONEVALUE(finance_scenario_report[scenario]),
+			    SELECTEDVALUE(finance_scenario_report[unemployment]),
+			    CALCULATE(
+			        MAX(finance_scenario_report[unemployment]),
+			        finance_scenario_report[scenario] = "Base"
+			    )
+			)
+		formatString: 0.00
+		displayFolder: Cost of Capital & Market
+		lineageTag: 2ed51572-534b-427e-b228-bdb675b07982
+
+	/// Explicit assumption: the hurdle sits 2.00pts above WACC, so a
+	/// project must clear financing cost plus a margin of safety.
+	measure 'Hurdle Premium (pts)' =
+			
+			[Hurdle Rate (%)] - [Calculated WACC]
+		formatString: 0.00
+		displayFolder: Cost of Capital & Market
+		lineageTag: d95f7ae9-de5b-4bfb-ab7c-c55b47186099
+
+	/// Return on invested capital minus the cost of that capital -
+	/// positive means operations create value over financing cost.
+	measure 'ROIC WACC Spread (pts)' =
+			
+			[ROIC Check (%)] - [Calculated WACC]
+		formatString: 0.00
+		displayFolder: Capital Allocation
+		lineageTag: 2262db04-d0c7-46c8-bace-560f4392fc99
+
 	measure 'Selected Fed Funds' =
 			
 			IF(
@@ -1679,6 +1777,14 @@ table finance_scenario_report
 
 		annotation SummarizationSetBy = Automatic
 
+	column npv
+		dataType: double
+		lineageTag: bd4e1067-9078-459d-82ac-9cefb369a86b
+		summarizeBy: none
+		sourceColumn: npv
+
+		annotation SummarizationSetBy = Automatic
+
 	partition finance_scenario_report = m
 		mode: import
 		source =
@@ -1688,7 +1794,7 @@ table finance_scenario_report
 				    [Delimiter = ",", Columns = 33, QuoteStyle = QuoteStyle.None]
 				),
 				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted headers",{{"scenario_sort", Int64.Type}, {"treasury_2y", type number}, {"fed_funds", type number}, {"cpi", type number}, {"unemployment", type number}, {"risk_free_rate_pct", type number}, {"beta", type number}, {"equity_risk_premium_pct", type number}, {"equity_weight_pct", type number}, {"debt_weight_pct", type number}, {"credit_spread_pct", type number}, {"tax_rate_pct", type number}, {"cost_of_equity_pct", type number}, {"cost_of_debt_pct", type number}, {"wacc_pct", type number}, {"debt", type number}, {"cash", type number}, {"net_debt", type number}, {"shares_outstanding", type number}, {"terminal_growth_pct", type number}, {"enterprise_value", type number}, {"equity_value", type number}, {"implied_share_price", type number}, {"ebit", type number}, {"roic_pct", type number}, {"invested_capital", type number}, {"nopat", type number}, {"roic_wacc_spread_pct", type number}})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted headers",{{"scenario_sort", Int64.Type}, {"treasury_2y", type number}, {"fed_funds", type number}, {"cpi", type number}, {"unemployment", type number}, {"risk_free_rate_pct", type number}, {"beta", type number}, {"equity_risk_premium_pct", type number}, {"equity_weight_pct", type number}, {"debt_weight_pct", type number}, {"credit_spread_pct", type number}, {"tax_rate_pct", type number}, {"cost_of_equity_pct", type number}, {"cost_of_debt_pct", type number}, {"wacc_pct", type number}, {"debt", type number}, {"cash", type number}, {"net_debt", type number}, {"shares_outstanding", type number}, {"terminal_growth_pct", type number}, {"enterprise_value", type number}, {"equity_value", type number}, {"implied_share_price", type number}, {"ebit", type number}, {"roic_pct", type number}, {"invested_capital", type number}, {"nopat", type number}, {"roic_wacc_spread_pct", type number}, {"npv", type number}})
 				in
 				    #"Changed Type"
 

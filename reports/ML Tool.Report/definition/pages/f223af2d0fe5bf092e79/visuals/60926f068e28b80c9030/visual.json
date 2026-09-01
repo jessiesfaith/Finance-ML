@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "60926f068e28b80c9030",
+  "position": {
+    "x": 1720,
+    "y": 370,
+    "height": 60,
+    "width": 900,
+    "z": 63000,
+    "tabOrder": 63000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "The active row is the internal model on synthetic history \u2014 labeled MODEL_OUTPUT, never passed off as market data. The FRED rows activate at the live phase (owner's call), with source and observation date recorded on every WACC.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

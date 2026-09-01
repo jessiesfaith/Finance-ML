@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "dad8a86b9a16725f6f31",
+  "position": {
+    "x": 651,
+    "y": 900,
+    "height": 75,
+    "width": 175,
+    "z": 43000,
+    "tabOrder": 43000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "After Tax Debt Factor"
+                }
+              },
+              "queryRef": "finance_scenario_report.After Tax Debt Factor",
+              "nativeQueryRef": "After Tax Debt Factor"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

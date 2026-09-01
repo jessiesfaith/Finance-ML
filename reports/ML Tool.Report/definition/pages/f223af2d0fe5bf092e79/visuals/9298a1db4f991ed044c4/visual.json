@@ -1,0 +1,125 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "9298a1db4f991ed044c4",
+  "position": {
+    "x": 1720,
+    "y": 135,
+    "height": 220,
+    "width": 900,
+    "z": 62000,
+    "tabOrder": 62000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_rf_policy"
+                    }
+                  },
+                  "Property": "rf_methodology_id"
+                }
+              },
+              "queryRef": "market_rf_policy.rf_methodology_id",
+              "nativeQueryRef": "rf_methodology_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_rf_policy"
+                    }
+                  },
+                  "Property": "source"
+                }
+              },
+              "queryRef": "market_rf_policy.source",
+              "nativeQueryRef": "source"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_rf_policy"
+                    }
+                  },
+                  "Property": "observation_rule"
+                }
+              },
+              "queryRef": "market_rf_policy.observation_rule",
+              "nativeQueryRef": "observation_rule"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_rf_policy"
+                    }
+                  },
+                  "Property": "maturity_years"
+                }
+              },
+              "queryRef": "market_rf_policy.maturity_years",
+              "nativeQueryRef": "maturity_years"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_rf_policy"
+                    }
+                  },
+                  "Property": "active_flag"
+                }
+              },
+              "queryRef": "market_rf_policy.active_flag",
+              "nativeQueryRef": "active_flag"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_rf_policy"
+                    }
+                  },
+                  "Property": "value_class"
+                }
+              },
+              "queryRef": "market_rf_policy.value_class",
+              "nativeQueryRef": "value_class"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "market_rf_policy"
+                  }
+                },
+                "Property": "active_flag"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

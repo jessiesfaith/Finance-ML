@@ -133,3 +133,19 @@ vs DCF value, synergies, and integration costs join at Phase 9 (M&A).
 | ASSUMPTION | drivers with rationale + approval | `data/scenarios/` |
 | CALCULATED | one formula, shown on the page | pipeline modules |
 | MODEL OUTPUT | end of a visible chain | report edge |
+
+## Physical pages in ML Tool.pbip (as of 2026-09-01)
+
+The design pages above map onto the report file as:
+
+| Report tab | Content | This doc's design |
+|---|---|---|
+| Page 1 | the original combined market + valuation page, kept as-is | (legacy; predates this doc) |
+| Page 2 — Client Financials | statements → walk → forecast → handoff | PAGE 2 |
+| Page 3 — Market & Cost of Capital | macro context → labeled inputs → CAPM → WACC → hurdle | PAGE 1 |
+| Page 4 — Valuation & Decision | discounting → TV → EV → equity → per share → three tests → scenarios | PAGE 3 |
+
+Pages 3 and 4 are the clean, single-purpose versions of what legacy
+Page 1 does in one canvas; once they pass Desktop QA the owner can
+retire Page 1 (delete the tab) whenever they choose — nothing binds to
+it.

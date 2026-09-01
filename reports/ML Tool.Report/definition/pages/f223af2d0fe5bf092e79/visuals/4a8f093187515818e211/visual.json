@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "4a8f093187515818e211",
+  "position": {
+    "x": 1720,
+    "y": 515,
+    "height": 75,
+    "width": 210,
+    "z": 65000,
+    "tabOrder": 65000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "WACC Change vs Base"
+                }
+              },
+              "queryRef": "finance_scenario_report.WACC Change vs Base",
+              "nativeQueryRef": "WACC Change vs Base"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

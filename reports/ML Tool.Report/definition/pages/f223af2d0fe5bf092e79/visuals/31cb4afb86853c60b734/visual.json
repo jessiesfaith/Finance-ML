@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "31cb4afb86853c60b734",
+  "position": {
+    "x": 165,
+    "y": 135,
+    "height": 75,
+    "width": 175,
+    "z": 5000,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "Selected Treasury 2Y"
+                }
+              },
+              "queryRef": "finance_scenario_report.Selected Treasury 2Y",
+              "nativeQueryRef": "Selected Treasury 2Y"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

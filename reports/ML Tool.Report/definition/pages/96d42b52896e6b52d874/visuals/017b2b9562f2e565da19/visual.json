@@ -1,0 +1,153 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "017b2b9562f2e565da19",
+  "position": {
+    "x": 165,
+    "y": 1535,
+    "height": 190,
+    "width": 1010,
+    "z": 72000,
+    "tabOrder": 72000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "scenario"
+                }
+              },
+              "queryRef": "finance_scenario_report.scenario",
+              "nativeQueryRef": "scenario"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "wacc_pct"
+                }
+              },
+              "queryRef": "finance_scenario_report.wacc_pct",
+              "nativeQueryRef": "wacc_pct"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "hurdle_rate_pct"
+                }
+              },
+              "queryRef": "finance_scenario_report.hurdle_rate_pct",
+              "nativeQueryRef": "hurdle_rate_pct"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "enterprise_value"
+                }
+              },
+              "queryRef": "finance_scenario_report.enterprise_value",
+              "nativeQueryRef": "enterprise_value"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "equity_value"
+                }
+              },
+              "queryRef": "finance_scenario_report.equity_value",
+              "nativeQueryRef": "equity_value"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "implied_share_price"
+                }
+              },
+              "queryRef": "finance_scenario_report.implied_share_price",
+              "nativeQueryRef": "implied_share_price"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "npv"
+                }
+              },
+              "queryRef": "finance_scenario_report.npv",
+              "nativeQueryRef": "npv"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "project_irr_pct"
+                }
+              },
+              "queryRef": "finance_scenario_report.project_irr_pct",
+              "nativeQueryRef": "project_irr_pct"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "finance_scenario_report"
+                  }
+                },
+                "Property": "scenario"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

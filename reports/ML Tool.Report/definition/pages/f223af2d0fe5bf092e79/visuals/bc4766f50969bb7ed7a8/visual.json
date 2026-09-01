@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "bc4766f50969bb7ed7a8",
+  "position": {
+    "x": 408,
+    "y": 815,
+    "height": 75,
+    "width": 175,
+    "z": 36000,
+    "tabOrder": 36000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "Selected Cost of Equity"
+                }
+              },
+              "queryRef": "finance_scenario_report.Selected Cost of Equity",
+              "nativeQueryRef": "Selected Cost of Equity"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

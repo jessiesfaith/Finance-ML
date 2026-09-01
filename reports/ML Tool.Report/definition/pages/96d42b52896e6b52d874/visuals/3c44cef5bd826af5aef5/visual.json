@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "3c44cef5bd826af5aef5",
+  "position": {
+    "x": 651,
+    "y": 940,
+    "height": 75,
+    "width": 175,
+    "z": 50000,
+    "tabOrder": 50000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "DCF Implied Share Price"
+                }
+              },
+              "queryRef": "finance_scenario_report.DCF Implied Share Price",
+              "nativeQueryRef": "DCF Implied Share Price"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

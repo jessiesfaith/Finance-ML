@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "c968dfff6db92d4f7d1d",
+  "position": {
+    "x": 651,
+    "y": 1095,
+    "height": 75,
+    "width": 175,
+    "z": 57000,
+    "tabOrder": 57000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "ROIC WACC Spread (pts)"
+                }
+              },
+              "queryRef": "finance_scenario_report.ROIC WACC Spread (pts)",
+              "nativeQueryRef": "ROIC WACC Spread (pts)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

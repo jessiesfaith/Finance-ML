@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "a1c865a980d3ad6e5ac1",
+  "position": {
+    "x": 836,
+    "y": 1095,
+    "height": 75,
+    "width": 175,
+    "z": 58000,
+    "tabOrder": 58000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "ROIC Value Creation Status"
+                }
+              },
+              "queryRef": "finance_scenario_report.ROIC Value Creation Status",
+              "nativeQueryRef": "ROIC Value Creation Status"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
