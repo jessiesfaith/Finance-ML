@@ -87,15 +87,9 @@ def test_value_class_labels_are_valid_taxonomy():
 
 
 def test_committed_exports_match_a_fresh_rebuild(fresh_exports):
-    import io
+    from conftest import assert_matches_committed
     for name, frame in fresh_exports.items():
-        committed = pd.read_csv(
-            REPORTS_DIR / name, dtype=str, keep_default_na=False)
-        fresh = pd.read_csv(
-            io.StringIO(frame.to_csv(index=False)),
-            dtype=str, keep_default_na=False,
-        )
-        pd.testing.assert_frame_equal(committed, fresh, obj=name)
+        assert_matches_committed(frame, REPORTS_DIR / name)
 
 
 def test_statement_export_carries_the_view_machinery():

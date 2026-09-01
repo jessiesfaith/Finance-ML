@@ -116,9 +116,5 @@ def test_committed_output_matches_a_fresh_rebuild(normalized):
     proforma, _ = load_proforma_adjustments(events, strict=True)
     combined = apply_proforma(combined, proforma, tables["account_mapping"])
 
-    committed = pd.read_csv(DEFAULT_OUTPUT, dtype=str, keep_default_na=False)
-    fresh = pd.read_csv(
-        io.StringIO(combined.to_csv(index=False)),
-        dtype=str, keep_default_na=False,
-    )
-    pd.testing.assert_frame_equal(committed, fresh)
+    from conftest import assert_matches_committed
+    assert_matches_committed(combined, DEFAULT_OUTPUT)

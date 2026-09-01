@@ -112,9 +112,8 @@ def test_proforma_rows_carry_transaction_lineage(setup):
 
 def test_event_outlier_linkage_links_but_never_concludes(setup):
     tables, _, events, _, _ = setup
-    flags = pd.read_csv(
-        "/home/user/finance-ml/data/client_fs/outlier_flags.csv"
-    )
+    from financials.outliers import DEFAULT_OUTPUT as FLAGS_FILE
+    flags = pd.read_csv(FLAGS_FILE)
     links = link_events_to_outliers(events, flags, tables["period_master"])
     row = links.iloc[0]
     assert row["period_id"] == "FY2025"

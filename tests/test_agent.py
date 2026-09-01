@@ -106,9 +106,9 @@ def test_fx_exception_explained_via_cta_identity(findings):
 
 @pytest.fixture()
 def adjustments_copy(tmp_path):
+    from financials.adjustments import DEFAULT_ADJUSTMENTS_FILE
     src = pd.read_csv(
-        "/home/user/finance-ml/data/client_fs/adjustments.csv",
-        dtype=str, keep_default_na=False,
+        DEFAULT_ADJUSTMENTS_FILE, dtype=str, keep_default_na=False,
     )
     path = tmp_path / "adjustments.csv"
     src.to_csv(path, index=False)
@@ -169,9 +169,5 @@ def test_agent_refuses_forbidden_write_targets(tmp_path):
 
 
 def test_committed_review_log_matches_a_fresh_rebuild(findings):
-    committed = pd.read_csv(DEFAULT_LOG_FILE, dtype=str, keep_default_na=False)
-    fresh = pd.read_csv(
-        io.StringIO(findings.to_csv(index=False)),
-        dtype=str, keep_default_na=False,
-    )
-    pd.testing.assert_frame_equal(committed, fresh)
+    from conftest import assert_matches_committed
+    assert_matches_committed(findings, DEFAULT_LOG_FILE)
