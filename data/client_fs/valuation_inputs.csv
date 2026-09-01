@@ -1,0 +1,3 @@
+company_id,period_id,scenario,short_term_debt,long_term_debt,finance_leases,total_debt,cash_and_equivalents,restricted_cash,net_debt,operating_nwc,net_ppe,other_operating_assets,other_operating_liabilities,invested_capital,nopat,roic_basis,roic_pct,basic_shares_m,diluted_shares_m,reporting_currency
+COMP001,FY2024,ACTUAL,0.0,390.2,0.0,390.2,152.4,0.0,237.8,133.2,598.8,0.0,0.0,732.0,156.0375,ENDING,21.3166,,,USD
+COMP001,FY2025,ACTUAL,0.0,366.0,0.0,366.0,194.0,0.0,172.0,159.5,632.0,0.0,0.0,791.5,186.45,ENDING,23.5565,100.0,103.6667,USD

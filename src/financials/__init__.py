@@ -34,6 +34,14 @@ Phase 5 modules:
     scenarios — analyst-assumption layer loader (data/scenarios/):
                 scenario_master, driver_master, scenario_assumptions
 
+Phase 6 modules:
+    net_debt          — transparent net-debt build (classification-elected
+                        membership; not every liability is debt)
+    invested_capital  — invested-capital components + configurable-basis ROIC
+    shares            — treasury-stock-method dilution; stated counts must
+                        reproduce from their own inputs
+    capital_structure — market-value E/D weights (derived, not assumed)
+
 Later phases add: account mapping, sign normalization, FX translation,
 consolidation, controls, adjustments, outliers, NWC/UFCF/ROIC, shares,
 pro forma, and the analyst-review agent.
@@ -53,7 +61,11 @@ from financials.normalized_statements import (
     build_normalized_statements,
     write_normalized_statements,
 )
+from financials.capital_structure import market_value_weights
+from financials.invested_capital import invested_capital_components, roic
+from financials.net_debt import net_debt_components
 from financials.nwc import nwc_components
+from financials.shares import load_shares_dilution, treasury_stock_method
 from financials.scenarios import load_scenarios
 from financials.sign_normalizer import normalize_sign
 from financials.ufcf import (
@@ -84,4 +96,10 @@ __all__ = [
     "income_walk",
     "build_ufcf_forecast",
     "write_ufcf_forecast",
+    "net_debt_components",
+    "invested_capital_components",
+    "roic",
+    "treasury_stock_method",
+    "load_shares_dilution",
+    "market_value_weights",
 ]

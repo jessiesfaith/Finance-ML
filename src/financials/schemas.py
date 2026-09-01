@@ -181,6 +181,12 @@ ACCOUNT_MAPPING = TableSchema(
         Column("source_sign_convention", allowed=SIGN_CONVENTIONS),
         Column("operating_classification", required=False),
         Column("nwc_classification", required=False),
+        # Net-debt membership (Phase 6): DEBT / CASH_AND_EQUIVALENTS /
+        # RESTRICTED_CASH / EXCLUDED; blank = not part of net debt. Not
+        # every liability is debt — membership is an explicit election.
+        Column("netdebt_classification", required=False,
+               allowed=("", "DEBT", "CASH_AND_EQUIVALENTS",
+                        "RESTRICTED_CASH", "EXCLUDED")),
         Column("ufcf_classification", required=False),
         Column("roic_classification", required=False),
         Column("share_classification", required=False),
@@ -463,10 +469,90 @@ SCENARIO_ASSUMPTIONS = TableSchema(
 
 SCENARIO_SCHEMAS = (DRIVER_MASTER, SCENARIO_MASTER, SCENARIO_ASSUMPTIONS)
 
+SHARES_DILUTION = TableSchema(
+    table="shares_dilution",
+    filename="shares_dilution.csv",
+    columns=(
+        Column("company_id"),
+        Column("period_id"),
+        Column("scenario"),
+        Column("basic_shares_m", kind="number"),
+        Column("options_outstanding_m", kind="number"),
+        Column("weighted_avg_strike", kind="number"),
+        # Market price is MARKET DATA (synthetic + labeled until live).
+        Column("market_price", kind="number"),
+        # Calculated by financials/shares.py (treasury-stock method) and
+        # verified on every load — a stated count that doesn't reproduce
+        # from its own inputs refuses to load.
+        Column("incremental_option_shares_m", kind="number"),
+        Column("rsus_psus_m", kind="number"),
+        Column("convertible_shares_m", kind="number"),
+        Column("other_dilutive_shares_m", kind="number"),
+        Column("anti_dilutive_shares_excluded_m", kind="number"),
+        Column("diluted_shares_m", kind="number"),
+        Column("treasury_stock_method_flag", kind="flag", allowed=FLAGS),
+        Column("source_reference"),
+    ),
+    key=("company_id", "period_id", "scenario"),
+)
+
+VALUATION_INPUTS = TableSchema(
+    table="valuation_inputs",
+    filename="valuation_inputs.csv",
+    columns=(
+        Column("company_id"),
+        Column("period_id"),
+        Column("scenario"),
+        # Net-debt build (magnitudes)
+        Column("short_term_debt", kind="number"),
+        Column("long_term_debt", kind="number"),
+        Column("finance_leases", kind="number"),
+        Column("total_debt", kind="number"),
+        Column("cash_and_equivalents", kind="number"),
+        Column("restricted_cash", kind="number"),
+        Column("net_debt", kind="number"),
+        # Invested-capital build
+        Column("operating_nwc", kind="number"),
+        Column("net_ppe", kind="number"),
+        Column("other_operating_assets", kind="number"),
+        Column("other_operating_liabilities", kind="number"),
+        Column("invested_capital", kind="number"),
+        Column("nopat", kind="number"),
+        Column("roic_basis", allowed=("ENDING", "AVERAGE")),
+        Column("roic_pct", kind="number"),
+        # Share counts (blank where no share data exists for the period)
+        Column("basic_shares_m", kind="number", required=False),
+        Column("diluted_shares_m", kind="number", required=False),
+        Column("reporting_currency"),
+    ),
+    key=("company_id", "period_id", "scenario"),
+)
+
+RISK_FREE_POLICY = TableSchema(
+    table="risk_free_policy",
+    filename="risk_free_policy.csv",
+    columns=(
+        Column("rf_methodology_id"),
+        Column("source_metric_id"),
+        Column("maturity_years", kind="integer"),
+        Column("observation_rule", allowed=("SPOT_AS_OF", "TRAILING_AVG",
+                                            "MODEL_PREDICTION")),
+        Column("source"),
+        Column("description"),
+        Column("active_flag", kind="flag", allowed=FLAGS),
+    ),
+    key=("rf_methodology_id",),
+)
+
+MARKET_SCHEMAS = (RISK_FREE_POLICY,)
+
 OUTPUT_SCHEMAS = (
     CLIENT_FS_NORMALIZED, ENTITY_CONSOLIDATION, CONTROL_CHECKS, UFCF_FORECAST,
+    VALUATION_INPUTS,
 )
 
 SCHEMAS_BY_TABLE = {
-    s.table: s for s in ALL_SCHEMAS + OUTPUT_SCHEMAS + SCENARIO_SCHEMAS
+    s.table: s
+    for s in (ALL_SCHEMAS + OUTPUT_SCHEMAS + SCENARIO_SCHEMAS
+              + (SHARES_DILUTION,) + MARKET_SCHEMAS)
 }

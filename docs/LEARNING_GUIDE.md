@@ -318,8 +318,35 @@ the walk the client page will render. What to study:
 - **Honest blanks.** FY2024 has no cash-flow statement, so its CapEx and
   UFCF are blank — the engine never invents a number to finish a row.
 
-## 14. What comes next
+## 14. Net debt, invested capital, diluted shares (Phase 6)
 
-Net debt, invested capital, and diluted shares (Phase 6) complete the
-Page 2 hand-off to valuation; then the UFCF path replaces the DCF's
-hard-coded cash flows in one visible, approved cutover.
+Run `python src/build_valuation_inputs.py`. The concepts:
+
+- **Not every liability is debt.** Net-debt membership is an explicit
+  election in the mapping (`netdebt_classification`); AP never counts,
+  and restricted cash is shown but not netted by default. Result:
+  net debt 172.0, where the DCF still assumes 350.
+- **Invested capital is a build, not a number.** NWC 159.5 + net PP&E
+  632.0 = 791.5 — so real ROIC is 23.56%, not the 10% the report shows
+  from the manual $1.5B. Basis is configurable (ENDING vs AVERAGE)
+  because project ROIC differs from company ROIC.
+- **The treasury-stock method in one line.** Exercising 5M options at
+  $12 raises $60M, which buys back 60/18 = 3.33M shares, so only
+  5 × (1 − 12/18) = 1.6667M net shares appear. Anti-dilutive options
+  (strike ≥ price) are excluded, never allowed to shrink the count. And
+  the file must reproduce from its own inputs — a tampered share count
+  refuses to load.
+- **Weights should be derived.** E = price × diluted shares = 1,866.0 →
+  E/(D+E) = 83.6% vs the assumed 70/30. The comparison is displayed;
+  switching WACC to it is a deliberate approval, like every cutover.
+- **Methodology as data.** `data/market/risk_free_policy.csv` makes the
+  risk-free-rate choice a selectable, documented row instead of an
+  implicit model call.
+
+## 15. What comes next
+
+Outliers (Phase 7), adjustments and the reported/normalized/pro-forma
+views (Phase 8), M&A events (Phase 9), the analyst agent (Phase 10) —
+then the Power BI pages render the walks these layers already produce,
+and the four staged cutovers (UFCF, net debt, shares, weights) re-price
+the DCF one approved switch at a time.

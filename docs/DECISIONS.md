@@ -351,3 +351,41 @@ next page (Page 2 → UFCF path; Page 1 → WACC + hurdle; Page 3 → the
 capital-allocation decision). Driver-based forecasting, incremental
 with/without project analysis, and risk-adjusted capital allocation are
 recorded there as design requirements for the appraisal layer.
+
+---
+
+## 2026-08-31 — Phase 6 (net debt, invested capital, diluted shares, capital structure)
+
+### 42. Net-debt membership is an election, not an inference
+account_mapping gains netdebt_classification (DEBT / CASH_AND_
+EQUIVALENTS / RESTRICTED_CASH / EXCLUDED). Not every liability is debt:
+AP carries no election and never counts. Restricted cash is its own
+component and NOT netted by default. FY2025 consolidated: debt 366.0 −
+cash 194.0 = net debt 172.0 (vs the hard-coded 350).
+
+### 43. Invested capital is a component build with a configurable ROIC basis
+IC = operating NWC + net PP&E (+ other ROIC-classified items) from
+roic_classification: FY2025 = 159.5 + 632.0 = 791.5, so ROIC =
+186.45/791.5 = 23.56% ENDING basis (24.48% AVERAGE) — vs the old
+manually entered 1,500 → 10.0%. Basis is a parameter because
+project-level ROIC may differ from company-level.
+
+### 44. Diluted shares must reproduce from their own inputs
+shares_dilution.csv carries basic count, option tranche (5M @ $12),
+market price ($18, synthetic + labeled), RSUs, converts, and the
+anti-dilutive exclusion (1.5M @ $25). The loader recomputes the
+treasury-stock method (5 × (1 − 12/18) = 1.6667M → diluted 103.6667M)
+and REFUSES a file whose stated count disagrees — no silently
+reconciled share counts. Anti-dilutive options are excluded, never
+allowed to reduce dilution.
+
+### 45. Capital structure derived; rf methodology explicit; cutovers pending
+Market-value weights: E = 18.00 × 103.6667 = 1,866.0 → E/(D+E) = 83.6%
+vs the assumed 70/30 — derived and displayed, NOT yet switched into
+WACC. data/market/risk_free_policy.csv makes the rf methodology a
+selectable, documented row: SYNTHETIC_ML_10Y is the labeled current
+default; UST_10Y_SPOT (FRED DGS10) activates at the live-market phase.
+Four cutovers now await one explicit approval each, all with derived
+values staged in valuation_inputs.csv/ufcf_forecast.csv: UFCF path,
+net debt, diluted shares, capital-structure weights (each re-prices
+the DCF).

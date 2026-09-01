@@ -1,0 +1,2 @@
+company_id,period_id,scenario,basic_shares_m,options_outstanding_m,weighted_avg_strike,market_price,incremental_option_shares_m,rsus_psus_m,convertible_shares_m,other_dilutive_shares_m,anti_dilutive_shares_excluded_m,diluted_shares_m,treasury_stock_method_flag,source_reference
+COMP001,FY2025,ACTUAL,100.0,5.0,12.0,18.0,1.6667,2.0,0.0,0.0,1.5,103.6667,Y,equity_compensation_fy2025.xlsx (SYNTHETIC TEST DATA; 1.5M options @ $25 strike excluded as anti-dilutive; market price is a synthetic market input)
