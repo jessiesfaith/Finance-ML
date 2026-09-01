@@ -248,9 +248,12 @@ table client_fs_ufcf
 	/// must read 0.00. Same idea as DCF Model Check on Page 1.
 	measure 'UFCF Bridge Check ($M)' =
 			
-			[Client NOPAT ($M)] + [Client D&A ($M)]
-			    - [Client CapEx ($M)] - [Client Change in NWC ($M)]
-			    - [Client UFCF ($M)]
+			ROUND(
+			    [Client NOPAT ($M)] + [Client D&A ($M)]
+			        - [Client CapEx ($M)] - [Client Change in NWC ($M)]
+			        - [Client UFCF ($M)],
+			    6
+			) + 0
 		formatString: 0.00
 		displayFolder: Free Cash Flow
 		lineageTag: 8036f6d6-c425-4269-9581-147048ab1d34
