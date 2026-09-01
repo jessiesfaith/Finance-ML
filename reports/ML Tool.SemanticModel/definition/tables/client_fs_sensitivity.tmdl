@@ -1,0 +1,100 @@
+/// Curated pipeline export reports/client_fs_sensitivity.csv: implied
+/// share price across the WACC x terminal-growth grid. The center cell
+/// is test-pinned to the reported Base price.
+table client_fs_sensitivity
+	lineageTag: 05a8ec07-cdea-438e-812a-ac67f199a2af
+
+	column scenario
+		dataType: string
+		lineageTag: 65750f04-f2f1-45d4-aaa8-26663c39a58a
+		summarizeBy: none
+		sourceColumn: scenario
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 915207a5-39c8-4531-887f-b33166fb9c40
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column wacc_delta_pts
+		dataType: double
+		formatString: 0.00
+		lineageTag: a35cc645-a82c-4cc8-82d6-c13ff5a31f26
+		summarizeBy: none
+		sourceColumn: wacc_delta_pts
+
+		annotation SummarizationSetBy = Automatic
+
+	column wacc_pct
+		dataType: double
+		formatString: 0.00
+		lineageTag: 659a72b2-6723-428e-854e-c082e8872979
+		summarizeBy: none
+		sourceColumn: wacc_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column price_at_g_1_5
+		dataType: double
+		formatString: 0.00
+		lineageTag: 3680a4f4-0d33-483d-a7fd-69ed7474f2d0
+		summarizeBy: none
+		sourceColumn: price_at_g_1_5
+
+		annotation SummarizationSetBy = Automatic
+
+	column price_at_g_2_0
+		dataType: double
+		formatString: 0.00
+		lineageTag: ebbe1130-970e-48f9-ad62-9ded064c7fea
+		summarizeBy: none
+		sourceColumn: price_at_g_2_0
+
+		annotation SummarizationSetBy = Automatic
+
+	column price_at_g_2_5
+		dataType: double
+		formatString: 0.00
+		lineageTag: a2ed0623-f7be-4176-9185-4b04b17495ee
+		summarizeBy: none
+		sourceColumn: price_at_g_2_5
+
+		annotation SummarizationSetBy = Automatic
+
+	column price_at_g_3_0
+		dataType: double
+		formatString: 0.00
+		lineageTag: d5287dfe-0541-4e83-a05f-0adff5a6e453
+		summarizeBy: none
+		sourceColumn: price_at_g_3_0
+
+		annotation SummarizationSetBy = Automatic
+
+	column price_at_g_3_5
+		dataType: double
+		formatString: 0.00
+		lineageTag: 63b85178-6278-434f-a9a5-f96f07803444
+		summarizeBy: none
+		sourceColumn: price_at_g_3_5
+
+		annotation SummarizationSetBy = Automatic
+
+	partition client_fs_sensitivity = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\client_fs_sensitivity.csv"),
+				    [Delimiter = ",", Columns = 9, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"scenario", "wacc_delta_pts", "wacc_pct", "price_at_g_1_5", "price_at_g_2_0", "price_at_g_2_5", "price_at_g_3_0", "price_at_g_3_5", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"wacc_delta_pts", type number}, {"wacc_pct", type number}, {"price_at_g_1_5", type number}, {"price_at_g_2_0", type number}, {"price_at_g_2_5", type number}, {"price_at_g_3_0", type number}, {"price_at_g_3_5", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "43c9ca166d32a09dea57",
+  "position": {
+    "x": 165,
+    "y": 66,
+    "height": 24,
+    "width": 1500,
+    "z": 76000,
+    "tabOrder": 76000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "THE FLOW:  UFCF (Page 2) + WACC & hurdle (Page 3)  \u2192  discount each year  \u2192  + terminal value = EV  \u2192  \u2212 net debt = equity  \u2192  \u00f7 diluted shares = price  \u2192  three tests  \u2192  decision  \u2192  the sensitivity grid shows which assumptions carry it",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

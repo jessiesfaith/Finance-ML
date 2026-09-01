@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "e822b33f1e8ba1259f50",
+  "position": {
+    "x": 165,
+    "y": 1850,
+    "height": 34,
+    "width": 1550,
+    "z": 77000,
+    "tabOrder": 77000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "5 \u00b7 Sensitivity \u2014 implied share price across WACC \u00d7 terminal growth   (which assumptions carry the answer)",
+                    "textStyle": {
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "5d0f128f3a79e8265900",
+  "position": {
+    "x": 165,
+    "y": 3079,
+    "height": 300,
+    "width": 800,
+    "z": 32000,
+    "tabOrder": 32000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_history_rolling24"
+                    }
+                  },
+                  "Property": "observation_date"
+                }
+              },
+              "queryRef": "market_history_rolling24.observation_date",
+              "nativeQueryRef": "observation_date",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_rolling24"
+                        }
+                      },
+                      "Property": "gold_usd_oz_r24"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(market_history_rolling24.gold_usd_oz_r24)",
+              "nativeQueryRef": "Sum of gold_usd_oz_r24",
+              "displayName": "Gold"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

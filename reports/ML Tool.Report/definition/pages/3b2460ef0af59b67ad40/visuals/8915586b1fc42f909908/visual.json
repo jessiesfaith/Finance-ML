@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "8915586b1fc42f909908",
+  "position": {
+    "x": 165,
+    "y": 66,
+    "height": 24,
+    "width": 1500,
+    "z": 95000,
+    "tabOrder": 95000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "THE FLOW:  controls gate the statements  \u2192  Revenue \u2212 costs = EBITDA \u2212 D&A = EBIT \u00d7 (1\u2212tax) = NOPAT  \u2192  + D&A \u2212 CapEx \u2212 \u0394NWC = UFCF  \u2192  drivers repeat the walk per year  \u2192  UFCF path, net debt & diluted shares hand off to valuation",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

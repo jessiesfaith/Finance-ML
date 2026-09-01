@@ -3,7 +3,7 @@
   "name": "db2d3ddd1c1e6fbbe4e1",
   "position": {
     "x": 1015,
-    "y": 1280,
+    "y": 1355,
     "height": 58,
     "width": 800,
     "z": 17000,
@@ -30,10 +30,10 @@
                 "textRuns": [
                   {
                     "value": "Live source: https://fred.stlouisfed.org/series/UNRATE \u00b7 U6RATE  \u2014 charted today: labeled synthetic",
-                    "url": "https://fred.stlouisfed.org/series/UNRATE",
                     "textStyle": {
                       "fontSize": "8pt"
-                    }
+                    },
+                    "url": "https://fred.stlouisfed.org/series/UNRATE"
                   }
                 ]
               }

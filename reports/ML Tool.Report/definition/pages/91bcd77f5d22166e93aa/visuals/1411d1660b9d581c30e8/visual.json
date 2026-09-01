@@ -1,0 +1,47 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "1411d1660b9d581c30e8",
+  "position": {
+    "x": 165,
+    "y": 3430,
+    "height": 58,
+    "width": 800,
+    "z": 35000,
+    "tabOrder": 35000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Oil \u2014 WTI Crude ($/bbl)",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Live source: https://fred.stlouisfed.org/series/DCOILWTICO  \u2014 charted today: labeled synthetic",
+                    "textStyle": {
+                      "fontSize": "8pt"
+                    },
+                    "url": "https://fred.stlouisfed.org/series/DCOILWTICO"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

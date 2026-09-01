@@ -3,7 +3,7 @@
   "name": "d460c4b273208d1a5210",
   "position": {
     "x": 165,
-    "y": 500,
+    "y": 525,
     "height": 58,
     "width": 800,
     "z": 7000,
@@ -30,10 +30,10 @@
                 "textRuns": [
                   {
                     "value": "Live source: https://fred.stlouisfed.org/series/FEDFUNDS  \u2014 charted today: labeled synthetic",
-                    "url": "https://fred.stlouisfed.org/series/FEDFUNDS",
                     "textStyle": {
                       "fontSize": "8pt"
-                    }
+                    },
+                    "url": "https://fred.stlouisfed.org/series/FEDFUNDS"
                   }
                 ]
               }

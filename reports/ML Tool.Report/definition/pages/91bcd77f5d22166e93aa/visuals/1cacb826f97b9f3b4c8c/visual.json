@@ -1,0 +1,47 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "1cacb826f97b9f3b4c8c",
+  "position": {
+    "x": 165,
+    "y": 3845,
+    "height": 58,
+    "width": 800,
+    "z": 39000,
+    "tabOrder": 39000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Tech Sector Index \u2014 rate-sensitive growth",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Live source: https://fred.stlouisfed.org/series/NASDAQCOM \u00b7 live proxy: NASDAQ Composite  \u2014 charted today: labeled synthetic",
+                    "textStyle": {
+                      "fontSize": "8pt"
+                    },
+                    "url": "https://fred.stlouisfed.org/series/NASDAQCOM"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

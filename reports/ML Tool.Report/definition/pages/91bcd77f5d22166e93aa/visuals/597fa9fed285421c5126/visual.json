@@ -1,0 +1,98 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "597fa9fed285421c5126",
+  "position": {
+    "x": 1015,
+    "y": 2664,
+    "height": 300,
+    "width": 800,
+    "z": 30000,
+    "tabOrder": 30000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_history_rolling24"
+                    }
+                  },
+                  "Property": "observation_date"
+                }
+              },
+              "queryRef": "market_history_rolling24.observation_date",
+              "nativeQueryRef": "observation_date",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_rolling24"
+                        }
+                      },
+                      "Property": "ig_oas_r24"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(market_history_rolling24.ig_oas_r24)",
+              "nativeQueryRef": "Sum of ig_oas_r24",
+              "displayName": "IG corporate OAS"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_rolling24"
+                        }
+                      },
+                      "Property": "hy_oas_r24"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(market_history_rolling24.hy_oas_r24)",
+              "nativeQueryRef": "Sum of hy_oas_r24",
+              "displayName": "HY corporate OAS"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "895a7a7ed85b099c58a1",
+  "position": {
+    "x": 1015,
+    "y": 4675,
+    "height": 240,
+    "width": 800,
+    "z": 48000,
+    "tabOrder": 48000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Legend \u2014 abbreviations",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "YoY = year over year \u00b7 SA/SAAR = seasonally adjusted (annual rate) \u00b7 CPI / PCE / PPI = consumer / personal-consumption / producer price gauges \u00b7 U-3 / U-6 = headline / broadest unemployment \u00b7 JOLTS = job-openings survey \u00b7 PMI = purchasing managers index (50 = neutral)",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "OAS = option-adjusted spread \u00b7 IG / HY = investment-grade / high-yield \u00b7 WTI = West Texas Intermediate crude \u00b7 $/oz, $/bbl, $/lb = dollars per ounce / barrel / pound \u00b7 r24 = rolling 24-month mean \u00b7 pts = percentage points",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "e3553075e47e37eac2fb",
+  "position": {
+    "x": 1015,
+    "y": 2600,
+    "height": 58,
+    "width": 800,
+    "z": 29000,
+    "tabOrder": 29000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Bond Market \u2014 Credit Spreads (pts)",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Live source: https://fred.stlouisfed.org/series/BAMLC0A0CM \u00b7 BAMLH0A0HYM2  \u2014 charted today: labeled synthetic",
+                    "textStyle": {
+                      "fontSize": "8pt"
+                    },
+                    "url": "https://fred.stlouisfed.org/series/BAMLC0A0CM"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -30,10 +30,10 @@
                 "textRuns": [
                   {
                     "value": "Live source: https://fred.stlouisfed.org/series/T10Y2Y \u00b7 T10Y3M  \u2014 charted today: labeled synthetic",
-                    "url": "https://fred.stlouisfed.org/series/T10Y2Y",
                     "textStyle": {
                       "fontSize": "8pt"
-                    }
+                    },
+                    "url": "https://fred.stlouisfed.org/series/T10Y2Y"
                   }
                 ]
               }

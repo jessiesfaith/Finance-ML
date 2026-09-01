@@ -3,7 +3,7 @@
   "name": "b56dd0aebe9e41b2316e",
   "position": {
     "x": 1015,
-    "y": 1670,
+    "y": 1770,
     "height": 58,
     "width": 800,
     "z": 21000,
@@ -30,10 +30,10 @@
                 "textRuns": [
                   {
                     "value": "Live source: https://fred.stlouisfed.org/series/ICSA \u00b7 CCSA  \u2014 charted today: labeled synthetic",
-                    "url": "https://fred.stlouisfed.org/series/ICSA",
                     "textStyle": {
                       "fontSize": "8pt"
-                    }
+                    },
+                    "url": "https://fred.stlouisfed.org/series/ICSA"
                   }
                 ]
               }

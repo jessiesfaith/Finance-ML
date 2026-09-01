@@ -3,7 +3,7 @@
   "name": "455c69bfa8cb78144b61",
   "position": {
     "x": 165,
-    "y": 1670,
+    "y": 1770,
     "height": 58,
     "width": 800,
     "z": 19000,
@@ -30,10 +30,10 @@
                 "textRuns": [
                   {
                     "value": "Live source: https://fred.stlouisfed.org/series/UEMPMED  \u2014 charted today: labeled synthetic",
-                    "url": "https://fred.stlouisfed.org/series/UEMPMED",
                     "textStyle": {
                       "fontSize": "8pt"
-                    }
+                    },
+                    "url": "https://fred.stlouisfed.org/series/UEMPMED"
                   }
                 ]
               }

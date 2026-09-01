@@ -1,0 +1,47 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "128144fe28d5a4eb5aad",
+  "position": {
+    "x": 1015,
+    "y": 3015,
+    "height": 58,
+    "width": 800,
+    "z": 33000,
+    "tabOrder": 33000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Silver ($/oz) \u2014 gold's volatile sibling (ratio \u2248 70:1)",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Live source at cutover: LBMA precious-metal prices  \u2014 charted today: labeled synthetic",
+                    "textStyle": {
+                      "fontSize": "8pt"
+                    },
+                    "url": "https://www.lbma.org.uk/prices-and-data/precious-metal-prices"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

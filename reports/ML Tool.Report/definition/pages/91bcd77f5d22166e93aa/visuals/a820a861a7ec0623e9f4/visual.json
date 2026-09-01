@@ -3,7 +3,7 @@
   "name": "a820a861a7ec0623e9f4",
   "position": {
     "x": 165,
-    "y": 2450,
+    "y": 2600,
     "height": 58,
     "width": 800,
     "z": 27000,
@@ -29,11 +29,11 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/UMCSENT \u00b7 ISM: https://www.ismworld.org (Report on Business)  \u2014 charted today: labeled synthetic",
-                    "url": "https://fred.stlouisfed.org/series/UMCSENT",
+                    "value": "Live source: https://fred.stlouisfed.org/series/UMCSENT \u00b7 ISM: https://www.ismworld.org  \u2014 charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
-                    }
+                    },
+                    "url": "https://fred.stlouisfed.org/series/UMCSENT"
                   }
                 ]
               }

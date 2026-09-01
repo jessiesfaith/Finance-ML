@@ -3,7 +3,7 @@
   "name": "115b21486adf4868758a",
   "position": {
     "x": 165,
-    "y": 890,
+    "y": 940,
     "height": 58,
     "width": 800,
     "z": 11000,
@@ -30,10 +30,10 @@
                 "textRuns": [
                   {
                     "value": "Live source: https://fred.stlouisfed.org/series/PPIACO \u00b7 CPIAUCSL  \u2014 charted today: labeled synthetic",
-                    "url": "https://fred.stlouisfed.org/series/PPIACO",
                     "textStyle": {
                       "fontSize": "8pt"
-                    }
+                    },
+                    "url": "https://fred.stlouisfed.org/series/PPIACO"
                   }
                 ]
               }

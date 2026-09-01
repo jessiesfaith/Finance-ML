@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "d0b0a0816c1bc4301b05",
+  "position": {
+    "x": 165,
+    "y": 66,
+    "height": 24,
+    "width": 1500,
+    "z": 69000,
+    "tabOrder": 69000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "THE FLOW:  macro informs the scenario  \u2192  rf + \u03b2 \u00d7 ERP = cost of equity  \u00b7  rf + credit spread = cost of debt  \u2192  weight by E/D with the tax shield = WACC  \u2192  + 2pts = hurdle  \u2192  WACC & hurdle hand off to Page 4",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

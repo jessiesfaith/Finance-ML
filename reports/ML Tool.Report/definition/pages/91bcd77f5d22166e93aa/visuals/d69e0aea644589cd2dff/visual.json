@@ -3,7 +3,7 @@
   "name": "d69e0aea644589cd2dff",
   "position": {
     "x": 1015,
-    "y": 500,
+    "y": 525,
     "height": 58,
     "width": 800,
     "z": 9000,
@@ -30,10 +30,10 @@
                 "textRuns": [
                   {
                     "value": "Live source: https://fred.stlouisfed.org/series/CPIAUCSL \u00b7 CPILFESL \u00b7 PCEPI \u00b7 PCEPILFE  \u2014 charted today: labeled synthetic",
-                    "url": "https://fred.stlouisfed.org/series/CPIAUCSL",
                     "textStyle": {
                       "fontSize": "8pt"
-                    }
+                    },
+                    "url": "https://fred.stlouisfed.org/series/CPIAUCSL"
                   }
                 ]
               }

@@ -3,7 +3,7 @@
   "name": "e88d293b87f2d02310a1",
   "position": {
     "x": 165,
-    "y": 1280,
+    "y": 1355,
     "height": 58,
     "width": 800,
     "z": 15000,
@@ -30,10 +30,10 @@
                 "textRuns": [
                   {
                     "value": "Live source: https://fred.stlouisfed.org/series/GDPC1 \u00b7 INDPRO \u00b7 RSAFS  \u2014 charted today: labeled synthetic",
-                    "url": "https://fred.stlouisfed.org/series/GDPC1",
                     "textStyle": {
                       "fontSize": "8pt"
-                    }
+                    },
+                    "url": "https://fred.stlouisfed.org/series/GDPC1"
                   }
                 ]
               }

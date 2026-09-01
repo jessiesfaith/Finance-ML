@@ -1,0 +1,158 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "c0746f833b27c5bcfa0f",
+  "position": {
+    "x": 1015,
+    "y": 4324,
+    "height": 300,
+    "width": 800,
+    "z": 46000,
+    "tabOrder": 46000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_history_rolling24"
+                    }
+                  },
+                  "Property": "observation_date"
+                }
+              },
+              "queryRef": "market_history_rolling24.observation_date",
+              "nativeQueryRef": "observation_date",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_rolling24"
+                        }
+                      },
+                      "Property": "ai_co_1_px_r24"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(market_history_rolling24.ai_co_1_px_r24)",
+              "nativeQueryRef": "Sum of ai_co_1_px_r24",
+              "displayName": "A1"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_rolling24"
+                        }
+                      },
+                      "Property": "ai_co_2_px_r24"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(market_history_rolling24.ai_co_2_px_r24)",
+              "nativeQueryRef": "Sum of ai_co_2_px_r24",
+              "displayName": "A2"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_rolling24"
+                        }
+                      },
+                      "Property": "ai_co_3_px_r24"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(market_history_rolling24.ai_co_3_px_r24)",
+              "nativeQueryRef": "Sum of ai_co_3_px_r24",
+              "displayName": "A3"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_rolling24"
+                        }
+                      },
+                      "Property": "ai_co_4_px_r24"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(market_history_rolling24.ai_co_4_px_r24)",
+              "nativeQueryRef": "Sum of ai_co_4_px_r24",
+              "displayName": "A4"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_rolling24"
+                        }
+                      },
+                      "Property": "ai_co_5_px_r24"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(market_history_rolling24.ai_co_5_px_r24)",
+              "nativeQueryRef": "Sum of ai_co_5_px_r24",
+              "displayName": "A5"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

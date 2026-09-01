@@ -30,10 +30,10 @@
                 "textRuns": [
                   {
                     "value": "Live source: https://fred.stlouisfed.org/series/DGS3MO \u00b7 DGS2 \u00b7 DGS5 \u00b7 DGS10 \u00b7 DGS30  \u2014 charted today: labeled synthetic",
-                    "url": "https://fred.stlouisfed.org/series/DGS3MO",
                     "textStyle": {
                       "fontSize": "8pt"
-                    }
+                    },
+                    "url": "https://fred.stlouisfed.org/series/DGS3MO"
                   }
                 ]
               }

@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "e230bfa0a6a7e8440f58",
+  "name": "bf82ae9aaddf12dbae37",
   "position": {
-    "x": 1130,
-    "y": 15,
-    "height": 66,
-    "width": 640,
-    "z": 2000,
-    "tabOrder": 2000
+    "x": 1015,
+    "y": 3845,
+    "height": 58,
+    "width": 800,
+    "z": 41000,
+    "tabOrder": 41000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,9 +19,9 @@
               {
                 "textRuns": [
                   {
-                    "value": "SYNTHETIC seed-42/4242 history, honestly labeled \u2014 every series flips to its FRED release at the live-data cutover (ids in market_metric_master).",
+                    "value": "AI Thematic Index \u2014 owner defines the basket at cutover",
                     "textStyle": {
-                      "fontSize": "9pt"
+                      "fontSize": "13pt"
                     }
                   }
                 ]
@@ -29,9 +29,9 @@
               {
                 "textRuns": [
                   {
-                    "value": "Each line is a trailing 24-month mean: regime shape instead of monthly noise, at the cost of turning late. First 23 months are blank by design.",
+                    "value": "Live source at cutover: owner-defined constituent basket - no standard public series exists  \u2014 charted today: labeled synthetic",
                     "textStyle": {
-                      "fontSize": "9pt"
+                      "fontSize": "8pt"
                     }
                   }
                 ]

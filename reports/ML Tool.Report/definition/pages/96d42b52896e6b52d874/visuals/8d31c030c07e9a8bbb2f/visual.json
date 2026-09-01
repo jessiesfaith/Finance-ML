@@ -1,0 +1,125 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "8d31c030c07e9a8bbb2f",
+  "position": {
+    "x": 165,
+    "y": 1890,
+    "height": 230,
+    "width": 900,
+    "z": 78000,
+    "tabOrder": 78000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_sensitivity"
+                    }
+                  },
+                  "Property": "wacc_pct"
+                }
+              },
+              "queryRef": "client_fs_sensitivity.wacc_pct",
+              "nativeQueryRef": "wacc_pct"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_sensitivity"
+                    }
+                  },
+                  "Property": "price_at_g_1_5"
+                }
+              },
+              "queryRef": "client_fs_sensitivity.price_at_g_1_5",
+              "nativeQueryRef": "price_at_g_1_5"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_sensitivity"
+                    }
+                  },
+                  "Property": "price_at_g_2_0"
+                }
+              },
+              "queryRef": "client_fs_sensitivity.price_at_g_2_0",
+              "nativeQueryRef": "price_at_g_2_0"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_sensitivity"
+                    }
+                  },
+                  "Property": "price_at_g_2_5"
+                }
+              },
+              "queryRef": "client_fs_sensitivity.price_at_g_2_5",
+              "nativeQueryRef": "price_at_g_2_5"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_sensitivity"
+                    }
+                  },
+                  "Property": "price_at_g_3_0"
+                }
+              },
+              "queryRef": "client_fs_sensitivity.price_at_g_3_0",
+              "nativeQueryRef": "price_at_g_3_0"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_sensitivity"
+                    }
+                  },
+                  "Property": "price_at_g_3_5"
+                }
+              },
+              "queryRef": "client_fs_sensitivity.price_at_g_3_5",
+              "nativeQueryRef": "price_at_g_3_5"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "client_fs_sensitivity"
+                  }
+                },
+                "Property": "wacc_pct"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
