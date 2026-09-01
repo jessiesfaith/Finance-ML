@@ -547,3 +547,28 @@ so the live fetch runs from the analyst's machine; tests exercise the
 adapter fully on a labeled synthetic companyfacts fixture - no real SEC
 data is invented or committed. USER_AGENT carries a placeholder contact
 to be set by the user (SEC requests one; no personal data is embedded).
+
+---
+
+## 2026-08-31 — Phase 13 (market-data layer, live cutover gated)
+
+### 59. Append-only market observations with computed views
+data/market/ gains market_metric_master (units as published, native
+frequency, seasonal adjustment, source series, derivation rules) and
+market_observations keyed (metric, date, source, retrieval_timestamp) -
+revisions become NEW rows with newer vintages; "current" and
+"point-in-time" are computed views, never stored files.
+load_market_data() is a separate loader with a separate required-file
+set: a market refresh can never touch a client-FS load (refresh
+independence). The seed-42 history is re-platformed as 515 honestly
+labeled SYNTHETIC rows (source_reference to the generator, fixed
+vintage stamp), rebuild-locked by test.
+
+### 60. FRED adapter coded; the live flip stays gated
+fred_csv_url/parse_fred_csv/fetch_fred_series are implemented and
+parse-tested (gaps '.' stay absent - never forward-filled into facts).
+FRED, like EDGAR, returns 403 from hosted IPs (verified), so live
+fetches run from the analyst's machine - and the SYNTHETIC->FRED
+preferred_source flip happens per metric only after the reporting tool
+is finalized (DECISIONS #5), exactly the visible one-column cutover the
+architecture was built for.

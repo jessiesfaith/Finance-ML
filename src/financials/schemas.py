@@ -656,7 +656,56 @@ RISK_FREE_POLICY = TableSchema(
     key=("rf_methodology_id",),
 )
 
-MARKET_SCHEMAS = (RISK_FREE_POLICY,)
+MARKET_CATEGORIES = (
+    "INFLATION", "MONETARY_POLICY", "TREASURY_CURVE",
+    "REAL_RATES_BREAKEVENS", "GROWTH", "LABOR", "CREDIT", "EQUITY_RISK",
+    "FX_MARKET", "BENCHMARKING",
+)
+MARKET_UNITS = ("PCT", "PCT_POINTS", "INDEX", "THOUSANDS", "CCY_PER_CCY")
+MARKET_FREQUENCIES = ("DAILY", "WEEKLY", "MONTHLY", "QUARTERLY")
+REVISION_STATUSES = ("PRELIMINARY", "REVISED", "FINAL", "SYNTHETIC")
+
+MARKET_METRIC_MASTER = TableSchema(
+    table="market_metric_master",
+    filename="market_metric_master.csv",
+    columns=(
+        Column("metric_id"),
+        Column("metric_name"),
+        Column("category", allowed=MARKET_CATEGORIES),
+        # Values stored AS PUBLISHED, never rescaled on ingest.
+        Column("unit", allowed=MARKET_UNITS),
+        Column("frequency", allowed=MARKET_FREQUENCIES),
+        Column("seasonal_adjustment", allowed=("SA", "NSA", "NA")),
+        Column("preferred_source"),
+        Column("source_series_id", required=False),
+        Column("derived_flag", kind="flag", allowed=FLAGS),
+        Column("derivation_rule", required=False),
+        Column("description"),
+        Column("active_flag", kind="flag", allowed=FLAGS),
+    ),
+    key=("metric_id",),
+)
+
+MARKET_OBSERVATIONS = TableSchema(
+    table="market_observations",
+    filename="market_observations.csv",
+    columns=(
+        Column("metric_id"),
+        Column("observation_date", kind="date"),
+        Column("value", kind="number"),
+        Column("unit", allowed=MARKET_UNITS),
+        Column("source"),
+        Column("source_reference"),
+        # The vintage axis: when WE fetched it. Revisions become new rows
+        # with newer retrieval_timestamps — history is never overwritten.
+        Column("retrieval_timestamp"),
+        Column("frequency", allowed=MARKET_FREQUENCIES),
+        Column("revision_status", allowed=REVISION_STATUSES),
+    ),
+    key=("metric_id", "observation_date", "source", "retrieval_timestamp"),
+)
+
+MARKET_SCHEMAS = (RISK_FREE_POLICY, MARKET_METRIC_MASTER, MARKET_OBSERVATIONS)
 
 OUTLIER_FLAGS = TableSchema(
     table="outlier_flags",

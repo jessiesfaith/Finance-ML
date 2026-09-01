@@ -55,6 +55,7 @@ python src/run_outliers.py               # deterministic outlier flags -> outlie
 python src/run_agent.py                  # analyst-review agent -> agent_review_log.csv
 python src/build_powerbi_exports.py      # curated, schema-locked Power BI report tables
 python src/ingest_sec.py --cik N --from Y1 --to Y2   # stage a public company from SEC EDGAR
+python src/build_market_data.py          # append-only market observations (synthetic until cutover)
 pytest                                   # verify nothing broke
 ```
 

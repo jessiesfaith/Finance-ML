@@ -33,6 +33,9 @@ def test_registry_covers_the_expected_tables():
         # Phase 6 inputs
         "shares_dilution",
         "risk_free_policy",
+        # Phase 13 market layer (data/market/, independent loader)
+        "market_metric_master",
+        "market_observations",
         # Phase 8 input
         "adjustments",
         # Phase 9 inputs

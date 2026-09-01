@@ -1,0 +1,7 @@
+metric_id,metric_name,category,unit,frequency,seasonal_adjustment,preferred_source,source_series_id,derived_flag,derivation_rule,description,active_flag
+ust_2y,2-Year Treasury Constant Maturity Yield,TREASURY_CURVE,PCT,MONTHLY,NA,SYNTHETIC,DGS2,N,,Two-year Treasury yield. Currently the seed-42 synthetic series; flips to FRED DGS2 at the live-market cutover.,Y
+ust_10y,10-Year Treasury Constant Maturity Yield,TREASURY_CURVE,PCT,MONTHLY,NA,SYNTHETIC,DGS10,N,,Ten-year Treasury yield - the DCF risk-free benchmark per risk_free_policy. Synthetic until the live cutover (FRED DGS10).,Y
+fed_funds_eff,Effective Federal Funds Rate,MONETARY_POLICY,PCT,MONTHLY,NA,SYNTHETIC,FEDFUNDS,N,,Overnight policy rate. Context and scenario driver - never a direct WACC input (maturity mismatch).,Y
+cpi_yoy,CPI Inflation (year-over-year),INFLATION,PCT,MONTHLY,SA,SYNTHETIC,CPIAUCSL,N,,Headline CPI inflation rate. NOTE: the synthetic series stores the RATE directly; the live layer ingests the CPIAUCSL index and derives YoY (auditable direction). Never plugs into WACC.,Y
+unemployment_rate,Unemployment Rate (U-3),LABOR,PCT,MONTHLY,SA,SYNTHETIC,UNRATE,N,,Headline unemployment. Demand/wage context for operating assumptions - never a WACC input.,Y
+curve_spread_10y_2y,Treasury Curve Spread 10Y minus 2Y,TREASURY_CURVE,PCT_POINTS,MONTHLY,NA,DERIVED,,Y,ust_10y - ust_2y,"Curve slope: positive = normal, near zero = flat, negative = inverted. Derived from the two tenor metrics; FRED T10Y2Y is a future cross-check only.",Y
