@@ -105,6 +105,8 @@ table finance_scenario_report
 		displayFolder: Valuation
 		lineageTag: 51f93b43-faf3-4eb7-8f0b-8eef8a18b67a
 
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
 	/// Diluted share count in millions from the pipeline (treasury-stock
 	/// method); replaces the raw Sum(shares_outstanding) column binding so
 	/// the implied-price row reads 103.7, not a rounded 104.
@@ -114,8 +116,6 @@ table finance_scenario_report
 		formatString: #,0.0
 		displayFolder: Valuation
 		lineageTag: 08523db3-ebad-49ce-b2ab-5378326c671a
-
-		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
 	/// MODEL OUTPUT today: a 10-year yield predicted by the internal model on synthetic data. Target: observed 10Y Treasury with source, maturity, and as-of date (see market_rf_policy).
 	measure 'Selected Risk-Free Rate' =
