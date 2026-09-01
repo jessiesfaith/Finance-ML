@@ -1,0 +1,181 @@
+/// Curated pipeline export reports/client_fs_income_walk.csv: the income
+/// summary in all three views (REPORTED / NORMALIZED / PROFORMA) per
+/// period. The views are filters over one dataset, never separate books.
+table client_fs_income_walk
+	lineageTag: f11806e2-2faa-4c93-9876-29895cca911d
+
+	/// As filed: 314.8 in the fixture.
+	measure 'EBITDA Reported ($M)' =
+			
+			VAR LatestPeriod = CALCULATE(MAX(client_fs_income_walk[period_id]), ALL(client_fs_income_walk))
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_income_walk[ebitda]),
+			        FILTER(
+			            ALL(client_fs_income_walk),
+			            client_fs_income_walk[period_id] = LatestPeriod && client_fs_income_walk[view] = "REPORTED"
+			        )
+			    )
+		formatString: #,0.0
+		displayFolder: Three Views
+		lineageTag: db588ce0-c348-4256-9eb0-7297dd4a6b12
+
+	/// REPORTED plus APPROVED normalization adjustments (the
+	/// fixture's one-time restructuring add-back): 326.8.
+	/// Adjustments are additive rows - originals are never edited.
+	measure 'EBITDA Normalized ($M)' =
+			
+			VAR LatestPeriod = CALCULATE(MAX(client_fs_income_walk[period_id]), ALL(client_fs_income_walk))
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_income_walk[ebitda]),
+			        FILTER(
+			            ALL(client_fs_income_walk),
+			            client_fs_income_walk[period_id] = LatestPeriod && client_fs_income_walk[view] = "NORMALIZED"
+			        )
+			    )
+		formatString: #,0.0
+		displayFolder: Three Views
+		lineageTag: ed0accc2-6aca-47c5-8927-20a3debe218b
+
+	/// NORMALIZED plus transaction pro-forma effects (the fixture's
+	/// TXN-001 acquisition): 329.8.
+	measure 'EBITDA Pro Forma ($M)' =
+			
+			VAR LatestPeriod = CALCULATE(MAX(client_fs_income_walk[period_id]), ALL(client_fs_income_walk))
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_income_walk[ebitda]),
+			        FILTER(
+			            ALL(client_fs_income_walk),
+			            client_fs_income_walk[period_id] = LatestPeriod && client_fs_income_walk[view] = "PROFORMA"
+			        )
+			    )
+		formatString: #,0.0
+		displayFolder: Three Views
+		lineageTag: c5d088ac-f2a5-41c3-9e90-c47733de8a15
+
+	measure 'Net Income Reported ($M)' =
+			
+			VAR LatestPeriod = CALCULATE(MAX(client_fs_income_walk[period_id]), ALL(client_fs_income_walk))
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_income_walk[net_income]),
+			        FILTER(
+			            ALL(client_fs_income_walk),
+			            client_fs_income_walk[period_id] = LatestPeriod && client_fs_income_walk[view] = "REPORTED"
+			        )
+			    )
+		formatString: #,0.0
+		displayFolder: Three Views
+		lineageTag: 906ce500-78f6-4fe6-a840-32b413795fea
+
+	measure 'Net Income Normalized ($M)' =
+			
+			VAR LatestPeriod = CALCULATE(MAX(client_fs_income_walk[period_id]), ALL(client_fs_income_walk))
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_income_walk[net_income]),
+			        FILTER(
+			            ALL(client_fs_income_walk),
+			            client_fs_income_walk[period_id] = LatestPeriod && client_fs_income_walk[view] = "NORMALIZED"
+			        )
+			    )
+		formatString: #,0.0
+		displayFolder: Three Views
+		lineageTag: 0eba5b3c-e617-4c7c-957f-2ea56c19eb2d
+
+	measure 'Net Income Pro Forma ($M)' =
+			
+			VAR LatestPeriod = CALCULATE(MAX(client_fs_income_walk[period_id]), ALL(client_fs_income_walk))
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_income_walk[net_income]),
+			        FILTER(
+			            ALL(client_fs_income_walk),
+			            client_fs_income_walk[period_id] = LatestPeriod && client_fs_income_walk[view] = "PROFORMA"
+			        )
+			    )
+		formatString: #,0.0
+		displayFolder: Three Views
+		lineageTag: 0b45f5a0-a160-4042-a52c-915c9dca5ee1
+
+	column view
+		dataType: string
+		lineageTag: f14b1544-f7b0-4934-bb57-141d1531e105
+		summarizeBy: none
+		sourceColumn: view
+
+		annotation SummarizationSetBy = Automatic
+
+	column period_id
+		dataType: string
+		lineageTag: 61f9add1-e1a9-43d2-b320-9580e8efab7e
+		summarizeBy: none
+		sourceColumn: period_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue
+		dataType: double
+		lineageTag: ac0d5638-5623-41d5-b280-9b8e0c20fa57
+		summarizeBy: none
+		sourceColumn: revenue
+
+		annotation SummarizationSetBy = Automatic
+
+	column ebitda
+		dataType: double
+		lineageTag: 5e033cf2-3c8a-4754-98b2-be04757642b5
+		summarizeBy: none
+		sourceColumn: ebitda
+
+		annotation SummarizationSetBy = Automatic
+
+	column ebitda_margin_pct
+		dataType: double
+		lineageTag: 25c15b27-2eb6-43cf-a0f2-ea6d75f0fff1
+		summarizeBy: none
+		sourceColumn: ebitda_margin_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column ebit
+		dataType: double
+		lineageTag: 8fb9ff72-0772-48f5-b129-b317923ca1c1
+		summarizeBy: none
+		sourceColumn: ebit
+
+		annotation SummarizationSetBy = Automatic
+
+	column ebit_margin_pct
+		dataType: double
+		lineageTag: 0fbcdf4d-4633-4ebf-92b4-6973fadcf868
+		summarizeBy: none
+		sourceColumn: ebit_margin_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column net_income
+		dataType: double
+		lineageTag: 233aa0e8-6b90-4d8f-806f-f6cbd078c7a0
+		summarizeBy: none
+		sourceColumn: net_income
+
+		annotation SummarizationSetBy = Automatic
+
+	partition client_fs_income_walk = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\client_fs_income_walk.csv"),
+				    [Delimiter = ",", Columns = 11, QuoteStyle = QuoteStyle.None]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"view", "period_id", "revenue", "ebitda", "ebitda_margin_pct", "ebit", "ebit_margin_pct", "net_income"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"revenue", type number}, {"ebitda", type number}, {"ebitda_margin_pct", type number}, {"ebit", type number}, {"ebit_margin_pct", type number}, {"net_income", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

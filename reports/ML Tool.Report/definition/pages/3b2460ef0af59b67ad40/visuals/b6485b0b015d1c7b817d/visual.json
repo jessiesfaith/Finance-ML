@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "b6485b0b015d1c7b817d",
+  "position": {
+    "x": 1720,
+    "y": 795,
+    "height": 75,
+    "width": 175,
+    "z": 91000,
+    "tabOrder": 91000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_review"
+                    }
+                  },
+                  "Property": "Agent Findings Logged"
+                }
+              },
+              "queryRef": "client_fs_review.Agent Findings Logged",
+              "nativeQueryRef": "Agent Findings Logged"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

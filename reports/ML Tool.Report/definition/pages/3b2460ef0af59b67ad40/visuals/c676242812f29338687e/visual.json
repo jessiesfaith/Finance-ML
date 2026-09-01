@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "c676242812f29338687e",
+  "position": {
+    "x": 535,
+    "y": 1010,
+    "height": 75,
+    "width": 175,
+    "z": 56000,
+    "tabOrder": 56000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_ufcf"
+                    }
+                  },
+                  "Property": "Driver D&A (% of Revenue)"
+                }
+              },
+              "queryRef": "client_fs_ufcf.Driver D&A (% of Revenue)",
+              "nativeQueryRef": "Driver D&A (% of Revenue)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

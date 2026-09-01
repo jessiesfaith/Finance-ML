@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "6ec748c21e47d526770d",
+  "position": {
+    "x": 165,
+    "y": 1010,
+    "height": 75,
+    "width": 175,
+    "z": 54000,
+    "tabOrder": 54000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_ufcf"
+                    }
+                  },
+                  "Property": "Driver Revenue Growth (%)"
+                }
+              },
+              "queryRef": "client_fs_ufcf.Driver Revenue Growth (%)",
+              "nativeQueryRef": "Driver Revenue Growth (%)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

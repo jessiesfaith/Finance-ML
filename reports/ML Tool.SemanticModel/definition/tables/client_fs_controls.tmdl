@@ -1,0 +1,136 @@
+/// Curated pipeline export reports/client_fs_controls.csv: the C1-C10
+/// control run (balance checks, roll-forwards, consolidation recompute,
+/// source reconciliation). Display table; the CSV carries the full
+/// detail per underlying check row.
+table client_fs_controls
+	lineageTag: 21ce0ff9-cd43-4a04-bf99-40d643d3350f
+
+	/// 29 in the fixture. The statements on this page are usable
+	/// because these controls say so.
+	measure 'Controls PASS' =
+			
+			COUNTROWS(
+			    FILTER(ALL(client_fs_controls), client_fs_controls[status] = "PASS")
+			) + 0
+		formatString: 0
+		displayFolder: Controls
+		lineageTag: e0ce5415-b257-45ca-9e42-dcc69fe7be67
+
+	/// 5 legitimate exceptions awaiting analyst sign-off (missing
+	/// sub CFS, OCI without an AOCI account, an unexplained debt
+	/// delta, and the source's CTA-sized FX shortcut).
+	measure 'Controls REVIEW' =
+			
+			COUNTROWS(
+			    FILTER(ALL(client_fs_controls), client_fs_controls[status] = "REVIEW")
+			) + 0
+		formatString: 0
+		displayFolder: Controls
+		lineageTag: 66a69343-60df-4b8f-8502-3cf854f750b9
+
+	/// Must be 0. A failed control is never silently fixed -
+	/// it blocks the numbers until resolved.
+	measure 'Controls FAIL' =
+			
+			COUNTROWS(
+			    FILTER(ALL(client_fs_controls), client_fs_controls[status] = "FAIL")
+			) + 0
+		formatString: 0
+		displayFolder: Controls
+		lineageTag: c6dcd7d2-c8b1-4d95-ba06-ab9a193fda54
+
+	column control_id
+		dataType: string
+		lineageTag: 1333ce8e-0982-44aa-8075-1a379d2efb71
+		summarizeBy: none
+		sourceColumn: control_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column control_name
+		dataType: string
+		lineageTag: 3bad6a0c-1459-4c73-9f30-696193671454
+		summarizeBy: none
+		sourceColumn: control_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column control_category
+		dataType: string
+		lineageTag: d978e2f6-5bc0-4991-95fa-133bed358426
+		summarizeBy: none
+		sourceColumn: control_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column entity_id
+		dataType: string
+		lineageTag: 8358f69c-3041-4bd5-b208-d7c19132d5ce
+		summarizeBy: none
+		sourceColumn: entity_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column period_id
+		dataType: string
+		lineageTag: 60460cbc-f1da-4ee2-b0b4-d9338b73c54a
+		summarizeBy: none
+		sourceColumn: period_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 2936253e-8885-4c7c-813a-39c8e7090214
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column severity
+		dataType: string
+		lineageTag: 0c172f51-1bbf-45f6-b713-697480b11aa8
+		summarizeBy: none
+		sourceColumn: severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column agent_comment
+		dataType: string
+		lineageTag: ff629ea3-3c0f-4917-b50d-57bd2674a3f9
+		summarizeBy: none
+		sourceColumn: agent_comment
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_status
+		dataType: string
+		lineageTag: 572bb97d-020e-4fe0-b398-4e69f7b7e21d
+		summarizeBy: none
+		sourceColumn: review_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column variance_amount
+		dataType: double
+		lineageTag: d7909e83-7ddd-4f85-8299-0a14dc500b43
+		summarizeBy: none
+		sourceColumn: variance_amount
+
+		annotation SummarizationSetBy = Automatic
+
+	partition client_fs_controls = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\client_fs_controls.csv"),
+				    [Delimiter = ",", Columns = 19, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"control_id", "control_name", "control_category", "entity_id", "period_id", "status", "severity", "agent_comment", "review_status", "variance_amount"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"variance_amount", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

@@ -1,6 +1,347 @@
 table client_fs_ufcf
 	lineageTag: 8beca4d3-b8ad-4e6b-9cf6-dd491483ee63
 
+	/// The most recent period whose rows are ACTUAL statements. Every
+	/// 'Client ...' measure reads this year, so nothing on Page 2 is
+	/// hard-coded to a fiscal year.
+	measure 'Latest Actual Period' =
+			
+			CALCULATE(
+			    MAX(client_fs_ufcf[period_id]),
+			    FILTER(ALL(client_fs_ufcf), client_fs_ufcf[forecast_method] = "ACTUAL")
+			)
+		displayFolder: Income Walk
+		lineageTag: c0c35d5d-7d1e-4f02-a861-d9d4cadd8ecc
+
+	/// CLIENT F/S: consolidated revenue after mapping, sign normalization,
+	/// FX translation and eliminations (1,274.0 in the fixture).
+	measure 'Client Revenue ($M)' =
+			
+			VAR LatestActual = [Latest Actual Period]
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_ufcf[revenue]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = LatestActual)
+			    )
+		formatString: #,0.0
+		displayFolder: Income Walk
+		lineageTag: 1cc85026-48b6-4a28-b9ff-d74b2fc68a14
+
+	measure 'Client EBITDA ($M)' =
+			
+			VAR LatestActual = [Latest Actual Period]
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_ufcf[ebitda]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = LatestActual)
+			    )
+		formatString: #,0.0
+		displayFolder: Income Walk
+		lineageTag: 29af9bcd-0315-4f0e-9dff-1f1829de65d3
+
+	/// Revenue minus EBITDA: everything above the EBITDA line, shown so the
+	/// first equation row is complete on screen.
+	measure 'Client Operating Costs ($M)' =
+			
+			[Client Revenue ($M)] - [Client EBITDA ($M)]
+		formatString: #,0.0
+		displayFolder: Income Walk
+		lineageTag: 007aba34-0bab-475e-b8ac-da5651f09d86
+
+	measure 'Client D&A ($M)' =
+			
+			VAR LatestActual = [Latest Actual Period]
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_ufcf[da]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = LatestActual)
+			    )
+		formatString: #,0.0
+		displayFolder: Income Walk
+		lineageTag: f33b9fa5-8109-459f-ac9e-fd50ab1392d9
+
+	measure 'Client EBIT ($M)' =
+			
+			VAR LatestActual = [Latest Actual Period]
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_ufcf[ebit]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = LatestActual)
+			    )
+		formatString: #,0.0
+		displayFolder: Income Walk
+		lineageTag: 750dba3d-073d-4f6a-ad46-ba852f78f7b7
+
+	measure 'Client Tax Rate (%)' =
+			
+			VAR LatestActual = [Latest Actual Period]
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_ufcf[tax_rate_pct]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = LatestActual)
+			    )
+		formatString: 0.0
+		displayFolder: Income Walk
+		lineageTag: 5126fb29-8a9f-4eda-8aed-e942d1da18b5
+
+	measure 'Client After-Tax Factor' =
+			
+			1 - DIVIDE([Client Tax Rate (%)], 100)
+		formatString: 0.00
+		displayFolder: Income Walk
+		lineageTag: c6f16dc7-a6a2-44e5-b279-adee85d0ff08
+
+	/// EBIT x (1 - tax) as the pipeline computed it (src/financials/ufcf.py).
+	/// The card shows the pipeline's own number beside the on-page equation,
+	/// so the walk is verifiable, not decorative.
+	measure 'Client NOPAT ($M)' =
+			
+			VAR LatestActual = [Latest Actual Period]
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_ufcf[nopat]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = LatestActual)
+			    )
+		formatString: #,0.0
+		displayFolder: Income Walk
+		lineageTag: 3506aeb7-28c0-45e3-96ab-dddd1c3b4c1e
+
+	measure 'Client AR ($M)' =
+			
+			VAR LatestActual = [Latest Actual Period]
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_ufcf[accounts_receivable]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = LatestActual)
+			    )
+		formatString: #,0.0
+		displayFolder: Working Capital
+		lineageTag: e94e8377-5fe4-4414-8a16-16c60ecc5336
+
+	measure 'Client Inventory ($M)' =
+			
+			VAR LatestActual = [Latest Actual Period]
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_ufcf[inventory]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = LatestActual)
+			    )
+		formatString: #,0.0
+		displayFolder: Working Capital
+		lineageTag: 86e2c8c1-bf35-4571-aace-6348167b923d
+
+	measure 'Client Other Op CA ($M)' =
+			
+			VAR LatestActual = [Latest Actual Period]
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_ufcf[other_operating_current_assets]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = LatestActual)
+			    )
+		formatString: #,0.0
+		displayFolder: Working Capital
+		lineageTag: 43c93dfd-4c95-4e37-befb-a49d360fb81a
+
+	measure 'Client AP ($M)' =
+			
+			VAR LatestActual = [Latest Actual Period]
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_ufcf[accounts_payable]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = LatestActual)
+			    )
+		formatString: #,0.0
+		displayFolder: Working Capital
+		lineageTag: 2cef4d10-6435-448d-ba34-4a595dee9044
+
+	measure 'Client Other Op CL ($M)' =
+			
+			VAR LatestActual = [Latest Actual Period]
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_ufcf[other_operating_current_liabilities]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = LatestActual)
+			    )
+		formatString: #,0.0
+		displayFolder: Working Capital
+		lineageTag: 4edf7f08-110d-4e8c-a973-cfd0c06d772c
+
+	/// AR + inventory + other operating CA - AP - other operating CL
+	/// (159.5 in the fixture). Operating items only - no cash, no debt.
+	measure 'Client Operating NWC ($M)' =
+			
+			VAR LatestActual = [Latest Actual Period]
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_ufcf[operating_nwc]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = LatestActual)
+			    )
+		formatString: #,0.0
+		displayFolder: Working Capital
+		lineageTag: 76d10947-a20d-4b8c-ac4f-6f74db7c1c2f
+
+	/// Operating NWC of the prior ACTUAL year (133.2), so the change in NWC
+	/// is visible as a subtraction, not an unexplained number.
+	measure 'Client Prior NWC ($M)' =
+			
+			VAR LatestActual = [Latest Actual Period]
+			VAR PriorActual =
+			    CALCULATE(
+			        MAX(client_fs_ufcf[period_id]),
+			        FILTER(
+			            ALL(client_fs_ufcf),
+			            client_fs_ufcf[forecast_method] = "ACTUAL"
+			                && client_fs_ufcf[period_id] < LatestActual
+			        )
+			    )
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_ufcf[operating_nwc]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = PriorActual)
+			    )
+		formatString: #,0.0
+		displayFolder: Working Capital
+		lineageTag: ef3c31d4-980e-4f64-b333-1581995ebbe3
+
+	/// 159.5 - 133.2 = +26.3 in the fixture. An INCREASE in net working
+	/// capital is a use of cash, which is why the UFCF bridge subtracts it.
+	measure 'Client Change in NWC ($M)' =
+			
+			VAR LatestActual = [Latest Actual Period]
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_ufcf[delta_nwc]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = LatestActual)
+			    )
+		formatString: #,0.0
+		displayFolder: Working Capital
+		lineageTag: 7f02bdee-98a5-4188-9232-01094fa9f767
+
+	measure 'Client CapEx ($M)' =
+			
+			VAR LatestActual = [Latest Actual Period]
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_ufcf[capex]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = LatestActual)
+			    )
+		formatString: #,0.0
+		displayFolder: Free Cash Flow
+		lineageTag: 4fe01592-a91b-425e-ae82-92127349b333
+
+	/// NOPAT + D&A - CapEx - change in NWC (156.4 in the fixture). This is
+	/// the number the driver forecast extends and Page 1's DCF discounts -
+	/// it replaced the hard-coded fcf = [100, 110, 121, 133, 146].
+	measure 'Client UFCF ($M)' =
+			
+			VAR LatestActual = [Latest Actual Period]
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_ufcf[ufcf]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = LatestActual)
+			    )
+		formatString: #,0.0
+		displayFolder: Free Cash Flow
+		lineageTag: b2644fd7-f0ce-4cd9-8775-0297ef79ce10
+
+	/// Rebuilds UFCF from its parts and subtracts the pipeline's UFCF -
+	/// must read 0.00. Same idea as DCF Model Check on Page 1.
+	measure 'UFCF Bridge Check ($M)' =
+			
+			[Client NOPAT ($M)] + [Client D&A ($M)]
+			    - [Client CapEx ($M)] - [Client Change in NWC ($M)]
+			    - [Client UFCF ($M)]
+		formatString: 0.00
+		displayFolder: Free Cash Flow
+		lineageTag: 8036f6d6-c425-4269-9581-147048ab1d34
+
+	/// The first DRIVER_BASED year - the driver cards read their
+	/// assumptions from this row.
+	measure 'First Forecast Period' =
+			
+			CALCULATE(
+			    MIN(client_fs_ufcf[period_id]),
+			    FILTER(ALL(client_fs_ufcf), client_fs_ufcf[forecast_method] = "DRIVER_BASED")
+			)
+		displayFolder: Forecast Drivers
+		lineageTag: 697df77f-c45f-47be-95f1-eb83a5fbb9dd
+
+	/// ASSUMPTION from data/scenarios/scenario_assumptions.csv - every
+	/// driver carries a rationale and approval status, never arbitrary.
+	measure 'Driver Revenue Growth (%)' =
+			
+			VAR FirstForecast = [First Forecast Period]
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_ufcf[revenue_growth_pct]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = FirstForecast)
+			    )
+		formatString: 0.0
+		displayFolder: Forecast Drivers
+		lineageTag: 64593e6c-4a35-4c06-ab3d-cf81a06640a3
+
+	measure 'Driver EBITDA Margin (%)' =
+			
+			VAR FirstForecast = [First Forecast Period]
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_ufcf[ebitda_margin_pct]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = FirstForecast)
+			    )
+		formatString: 0.0
+		displayFolder: Forecast Drivers
+		lineageTag: 49bc60f9-d267-429b-aa8f-95cc029cc45e
+
+	measure 'Driver D&A (% of Revenue)' =
+			
+			VAR FirstForecast = [First Forecast Period]
+			VAR DA =
+			    CALCULATE(
+			        MAX(client_fs_ufcf[da]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = FirstForecast)
+			    )
+			VAR Revenue =
+			    CALCULATE(
+			        MAX(client_fs_ufcf[revenue]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = FirstForecast)
+			    )
+			RETURN
+			    100 * DIVIDE(DA, Revenue)
+		formatString: 0.0
+		displayFolder: Forecast Drivers
+		lineageTag: 4d86de39-e487-4983-8f9d-f1beb5ea644c
+
+	measure 'Driver CapEx (% of Revenue)' =
+			
+			VAR FirstForecast = [First Forecast Period]
+			VAR CapEx =
+			    CALCULATE(
+			        MAX(client_fs_ufcf[capex]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = FirstForecast)
+			    )
+			VAR Revenue =
+			    CALCULATE(
+			        MAX(client_fs_ufcf[revenue]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = FirstForecast)
+			    )
+			RETURN
+			    100 * DIVIDE(CapEx, Revenue)
+		formatString: 0.0
+		displayFolder: Forecast Drivers
+		lineageTag: 27330fb1-668f-459c-9c7f-ebe803256065
+
+	measure 'Driver Tax Rate (%)' =
+			
+			VAR FirstForecast = [First Forecast Period]
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_ufcf[tax_rate_pct]),
+			        FILTER(ALL(client_fs_ufcf), client_fs_ufcf[period_id] = FirstForecast)
+			    )
+		formatString: 0.0
+		displayFolder: Forecast Drivers
+		lineageTag: 40431e58-baa6-4aa4-a768-32e0b7b0b55c
+
 	column period_id
 		dataType: string
 		lineageTag: 0d5c2fc4-b22d-4a68-8f01-6f7411c0d710
@@ -65,6 +406,110 @@ table client_fs_ufcf
 
 		annotation SummarizationSetBy = Automatic
 
+	column scenario
+		dataType: string
+		lineageTag: 0c286332-d394-4bd3-a808-3f32158fb226
+		summarizeBy: none
+		sourceColumn: scenario
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_status
+		dataType: string
+		lineageTag: 0f6349e5-2c31-452f-91cf-e2e2fd334ea1
+		summarizeBy: none
+		sourceColumn: review_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue_growth_pct
+		dataType: double
+		lineageTag: ab7d7b70-8d64-43ac-89a3-cee910f5257e
+		summarizeBy: none
+		sourceColumn: revenue_growth_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column ebitda
+		dataType: double
+		lineageTag: afa21df9-8abc-49b2-ad52-99105623fc7b
+		summarizeBy: none
+		sourceColumn: ebitda
+
+		annotation SummarizationSetBy = Automatic
+
+	column ebitda_margin_pct
+		dataType: double
+		lineageTag: daed36ac-7349-4e41-ae7b-4b838d4ef448
+		summarizeBy: none
+		sourceColumn: ebitda_margin_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column ebit
+		dataType: double
+		lineageTag: 00b70aff-26cb-41a1-b906-1489db6c393e
+		summarizeBy: none
+		sourceColumn: ebit
+
+		annotation SummarizationSetBy = Automatic
+
+	column tax_rate_pct
+		dataType: double
+		lineageTag: e9fad007-437a-43a5-8ead-1593bc4137ed
+		summarizeBy: none
+		sourceColumn: tax_rate_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column accounts_receivable
+		dataType: double
+		lineageTag: c63cf9cd-7c08-4859-b5ac-cc1bbc1d510d
+		summarizeBy: none
+		sourceColumn: accounts_receivable
+
+		annotation SummarizationSetBy = Automatic
+
+	column inventory
+		dataType: double
+		lineageTag: 288b7e1d-0a41-4352-b29f-15b7aa3cc1f1
+		summarizeBy: none
+		sourceColumn: inventory
+
+		annotation SummarizationSetBy = Automatic
+
+	column other_operating_current_assets
+		dataType: double
+		lineageTag: ceed05cb-215b-4a47-8ab8-dbeab70d5c39
+		summarizeBy: none
+		sourceColumn: other_operating_current_assets
+
+		annotation SummarizationSetBy = Automatic
+
+	column accounts_payable
+		dataType: double
+		lineageTag: 04a13bdd-25f9-4772-a26e-604724378611
+		summarizeBy: none
+		sourceColumn: accounts_payable
+
+		annotation SummarizationSetBy = Automatic
+
+	column other_operating_current_liabilities
+		dataType: double
+		lineageTag: 8df78a3c-2d8e-46ea-8dc6-b68e21962759
+		summarizeBy: none
+		sourceColumn: other_operating_current_liabilities
+
+		annotation SummarizationSetBy = Automatic
+
+	column operating_nwc
+		dataType: double
+		lineageTag: 9278dca0-fb41-4d9b-8578-e6f476288bce
+		summarizeBy: none
+		sourceColumn: operating_nwc
+
+		annotation SummarizationSetBy = Automatic
+
 	partition client_fs_ufcf = m
 		mode: import
 		source =
@@ -74,8 +519,8 @@ table client_fs_ufcf
 				    [Delimiter = ",", Columns = 25, QuoteStyle = QuoteStyle.None]
 				),
 				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"period_id", "forecast_method", "revenue", "da", "nopat", "delta_nwc", "capex", "ufcf"}),
-				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"revenue", type number}, {"da", type number}, {"nopat", type number}, {"delta_nwc", type number}, {"capex", type number}, {"ufcf", type number}})
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"period_id", "forecast_method", "scenario", "review_status", "revenue", "revenue_growth_pct", "ebitda", "ebitda_margin_pct", "da", "ebit", "tax_rate_pct", "nopat", "accounts_receivable", "inventory", "other_operating_current_assets", "accounts_payable", "other_operating_current_liabilities", "operating_nwc", "delta_nwc", "capex", "ufcf"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"revenue", type number}, {"revenue_growth_pct", type number}, {"ebitda", type number}, {"ebitda_margin_pct", type number}, {"da", type number}, {"ebit", type number}, {"tax_rate_pct", type number}, {"nopat", type number}, {"accounts_receivable", type number}, {"inventory", type number}, {"other_operating_current_assets", type number}, {"accounts_payable", type number}, {"other_operating_current_liabilities", type number}, {"operating_nwc", type number}, {"delta_nwc", type number}, {"capex", type number}, {"ufcf", type number}})
 				in
 				    #"Changed Type"
 

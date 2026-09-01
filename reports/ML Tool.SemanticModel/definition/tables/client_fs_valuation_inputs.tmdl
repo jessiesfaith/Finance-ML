@@ -1,0 +1,257 @@
+/// Curated pipeline export reports/client_fs_valuation_inputs.csv:
+/// net-debt components, invested capital / ROIC, and the diluted-share
+/// build. Python writes it; the report only reads.
+table client_fs_valuation_inputs
+	lineageTag: 9878f1a3-4a41-48a6-aecb-ecb2fd538a63
+
+	/// CLIENT F/S: short-term + long-term debt + finance leases
+	/// (366.0 in the fixture), classified via account_mapping -
+	/// never a typed-in number.
+	measure 'Client Total Debt ($M)' =
+			
+			VAR LatestPeriod = CALCULATE(MAX(client_fs_valuation_inputs[period_id]), ALL(client_fs_valuation_inputs))
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_valuation_inputs[total_debt]),
+			        FILTER(
+			            ALL(client_fs_valuation_inputs),
+			            client_fs_valuation_inputs[period_id] = LatestPeriod
+			        )
+			    )
+		formatString: #,0.0
+		displayFolder: Capital Base
+		lineageTag: db05b542-e195-4718-9b25-5871e4753609
+
+	measure 'Client Cash ($M)' =
+			
+			VAR LatestPeriod = CALCULATE(MAX(client_fs_valuation_inputs[period_id]), ALL(client_fs_valuation_inputs))
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_valuation_inputs[cash_and_equivalents]),
+			        FILTER(
+			            ALL(client_fs_valuation_inputs),
+			            client_fs_valuation_inputs[period_id] = LatestPeriod
+			        )
+			    )
+		formatString: #,0.0
+		displayFolder: Capital Base
+		lineageTag: 2a685359-d523-421b-a979-851a790c92c1
+
+	/// Total debt - cash = 172.0. The same pipeline number Page 1
+	/// reads from finance_scenario_report.csv to bridge enterprise
+	/// value to equity value.
+	measure 'Client Net Debt ($M)' =
+			
+			VAR LatestPeriod = CALCULATE(MAX(client_fs_valuation_inputs[period_id]), ALL(client_fs_valuation_inputs))
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_valuation_inputs[net_debt]),
+			        FILTER(
+			            ALL(client_fs_valuation_inputs),
+			            client_fs_valuation_inputs[period_id] = LatestPeriod
+			        )
+			    )
+		formatString: #,0.0
+		displayFolder: Capital Base
+		lineageTag: 40b67213-f52d-4695-bdc4-d2baa5c0e1eb
+
+	/// Operating NWC + net PP&E (+ other operating, net) = 791.5 -
+	/// the capital base under ROIC, statement-derived.
+	measure 'Client Invested Capital ($M)' =
+			
+			VAR LatestPeriod = CALCULATE(MAX(client_fs_valuation_inputs[period_id]), ALL(client_fs_valuation_inputs))
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_valuation_inputs[invested_capital]),
+			        FILTER(
+			            ALL(client_fs_valuation_inputs),
+			            client_fs_valuation_inputs[period_id] = LatestPeriod
+			        )
+			    )
+		formatString: #,0.0
+		displayFolder: Capital Base
+		lineageTag: f8f8fc50-6092-4d95-b3fd-b05987be0822
+
+	measure 'Client ROIC (%)' =
+			
+			VAR LatestPeriod = CALCULATE(MAX(client_fs_valuation_inputs[period_id]), ALL(client_fs_valuation_inputs))
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_valuation_inputs[roic_pct]),
+			        FILTER(
+			            ALL(client_fs_valuation_inputs),
+			            client_fs_valuation_inputs[period_id] = LatestPeriod
+			        )
+			    )
+		formatString: 0.00
+		displayFolder: Capital Base
+		lineageTag: a01706f9-aeb6-4655-b132-f4ac5690f8d5
+
+	measure 'Client Basic Shares (M)' =
+			
+			VAR LatestPeriod = CALCULATE(MAX(client_fs_valuation_inputs[period_id]), ALL(client_fs_valuation_inputs))
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_valuation_inputs[basic_shares_m]),
+			        FILTER(
+			            ALL(client_fs_valuation_inputs),
+			            client_fs_valuation_inputs[period_id] = LatestPeriod
+			        )
+			    )
+		formatString: 0.0
+		displayFolder: Capital Base
+		lineageTag: c571d0ff-8ab7-46eb-b2e6-4f1c77817018
+
+	/// Basic shares + treasury-stock-method dilution = 103.7.
+	/// Divides equity value into the implied share price on Page 1.
+	measure 'Client Diluted Shares (M)' =
+			
+			VAR LatestPeriod = CALCULATE(MAX(client_fs_valuation_inputs[period_id]), ALL(client_fs_valuation_inputs))
+			RETURN
+			    CALCULATE(
+			        MAX(client_fs_valuation_inputs[diluted_shares_m]),
+			        FILTER(
+			            ALL(client_fs_valuation_inputs),
+			            client_fs_valuation_inputs[period_id] = LatestPeriod
+			        )
+			    )
+		formatString: 0.0
+		displayFolder: Capital Base
+		lineageTag: b02ba3c3-9a27-451b-8820-a5e4f0b6a052
+
+	/// In-the-money options exercised on paper; proceeds buy back
+	/// shares at the market price; the remainder dilutes.
+	measure 'Client TSM Dilution (M)' =
+			
+			[Client Diluted Shares (M)] - [Client Basic Shares (M)]
+		formatString: 0.0
+		displayFolder: Capital Base
+		lineageTag: bc5a0a0c-0694-4b94-9c13-3308361f601a
+
+	column period_id
+		dataType: string
+		lineageTag: 19f67200-6a24-46be-afb6-4b07011da0a4
+		summarizeBy: none
+		sourceColumn: period_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column roic_basis
+		dataType: string
+		lineageTag: aca86c01-97d9-4adc-a629-d8db1eff1679
+		summarizeBy: none
+		sourceColumn: roic_basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column short_term_debt
+		dataType: double
+		lineageTag: 49e4a8fc-dce5-4c36-bfd7-5af6f4845293
+		summarizeBy: none
+		sourceColumn: short_term_debt
+
+		annotation SummarizationSetBy = Automatic
+
+	column long_term_debt
+		dataType: double
+		lineageTag: 99bd605b-e586-4b85-b392-df3f0d01cfea
+		summarizeBy: none
+		sourceColumn: long_term_debt
+
+		annotation SummarizationSetBy = Automatic
+
+	column finance_leases
+		dataType: double
+		lineageTag: aa703a32-bdf8-4479-8469-db1643ec8517
+		summarizeBy: none
+		sourceColumn: finance_leases
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_debt
+		dataType: double
+		lineageTag: 6a67007a-8f56-46ec-8250-e5819016fcdd
+		summarizeBy: none
+		sourceColumn: total_debt
+
+		annotation SummarizationSetBy = Automatic
+
+	column cash_and_equivalents
+		dataType: double
+		lineageTag: 706a552d-c423-4372-8b0d-7575a6a30b64
+		summarizeBy: none
+		sourceColumn: cash_and_equivalents
+
+		annotation SummarizationSetBy = Automatic
+
+	column restricted_cash
+		dataType: double
+		lineageTag: d88ca471-e0fb-4651-8b55-82ab2321566a
+		summarizeBy: none
+		sourceColumn: restricted_cash
+
+		annotation SummarizationSetBy = Automatic
+
+	column net_debt
+		dataType: double
+		lineageTag: 6714ddf5-87d9-463a-9466-626826cbe49d
+		summarizeBy: none
+		sourceColumn: net_debt
+
+		annotation SummarizationSetBy = Automatic
+
+	column invested_capital
+		dataType: double
+		lineageTag: 6b49ed68-45e0-4997-bb24-c2e06c144415
+		summarizeBy: none
+		sourceColumn: invested_capital
+
+		annotation SummarizationSetBy = Automatic
+
+	column nopat
+		dataType: double
+		lineageTag: 513e393b-459f-4d05-a619-89e277f9333c
+		summarizeBy: none
+		sourceColumn: nopat
+
+		annotation SummarizationSetBy = Automatic
+
+	column roic_pct
+		dataType: double
+		lineageTag: 407e0c6d-7498-4580-8741-48a28acec19c
+		summarizeBy: none
+		sourceColumn: roic_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column basic_shares_m
+		dataType: double
+		lineageTag: dde2c6a8-0691-4b2b-b202-47ca78a06c7e
+		summarizeBy: none
+		sourceColumn: basic_shares_m
+
+		annotation SummarizationSetBy = Automatic
+
+	column diluted_shares_m
+		dataType: double
+		lineageTag: 2610e205-eb66-4060-95da-bfef2a7d4c96
+		summarizeBy: none
+		sourceColumn: diluted_shares_m
+
+		annotation SummarizationSetBy = Automatic
+
+	partition client_fs_valuation_inputs = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\client_fs_valuation_inputs.csv"),
+				    [Delimiter = ",", Columns = 22, QuoteStyle = QuoteStyle.None]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"period_id", "roic_basis", "short_term_debt", "long_term_debt", "finance_leases", "total_debt", "cash_and_equivalents", "restricted_cash", "net_debt", "invested_capital", "nopat", "roic_pct", "basic_shares_m", "diluted_shares_m"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"short_term_debt", type number}, {"long_term_debt", type number}, {"finance_leases", type number}, {"total_debt", type number}, {"cash_and_equivalents", type number}, {"restricted_cash", type number}, {"net_debt", type number}, {"invested_capital", type number}, {"nopat", type number}, {"roic_pct", type number}, {"basic_shares_m", type number}, {"diluted_shares_m", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

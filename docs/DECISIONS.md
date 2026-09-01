@@ -655,3 +655,23 @@ $2.99B / 103.7M = $28.86. With these, every input number on Page 1 is a
 pipeline read; the only remaining DAX literals are the explicit
 assumptions (beta, ERP, credit spread, terminal growth, initial
 investment, hurdle premium) documented as such in MODEL_AUDIT.md.
+
+### 65. Page 2 scaffolded in code against the curated exports only
+"Page 2 — Client Financials" added to the .pbip per docs/PAGE_FLOW.md:
+control gate -> income walk -> NWC build -> UFCF bridge -> driver
+forecast (history + forecast in one table) -> handoff row (UFCF path,
+net debt build, diluted-share build, invested capital/ROIC), with a
+right rail for the control run, the three views, the agent-review
+count, and the statement detail. Implementation decisions: (a) five
+new TMDL tables, one per curated CSV - the report still reads ONLY
+reports/client_fs_*.csv per the interface contract; (b) client_fs_ufcf's
+partition widened from 8 to 21 columns (columns only added, never
+renamed); (c) all walk measures anchor on 'Latest Actual Period' /
+'First Forecast Period' (MAX/MIN over forecast_method) so no measure
+hard-codes a fiscal year; (d) statements/controls/review partitions use
+QuoteStyle.Csv because those CSVs carry quoted commas - the older
+QuoteStyle.None tables are unquoted files; (e) operator glyphs reuse
+Page 1's symbol measures; 'UFCF Bridge Check ($M)' recomputes the
+bridge and must read 0.00; (f) layout JSON is scaffolding-only
+(positions on a 3000x3000 canvas) - spacing, column widths and polish
+stay human in Desktop, per the agreed division of labor.

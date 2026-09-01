@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "3dc8e773217f5ea57edb",
+  "position": {
+    "x": 165,
+    "y": 1725,
+    "height": 70,
+    "width": 1010,
+    "z": 79000,
+    "tabOrder": 79000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "UFCF path \u2192 discounted at WACC \u00b7 net debt \u2192 bridges EV to equity \u00b7 diluted shares \u2192 per-share price \u00b7 invested capital \u2192 ROIC.",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Page 1 reads these same pipeline numbers from finance_scenario_report.csv \u2014 nothing is retyped.",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
