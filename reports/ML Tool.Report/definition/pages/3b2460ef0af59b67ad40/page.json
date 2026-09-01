@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "3b2460ef0af59b67ad40",
+  "displayName": "Page 2 \u2014 Client Financials",
+  "displayOption": "ActualSize",
+  "height": 3000,
+  "width": 3000
+}

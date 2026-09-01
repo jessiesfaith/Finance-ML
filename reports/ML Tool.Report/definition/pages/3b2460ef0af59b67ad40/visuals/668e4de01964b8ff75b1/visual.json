@@ -1,0 +1,139 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "668e4de01964b8ff75b1",
+  "position": {
+    "x": 1720,
+    "y": 955,
+    "height": 700,
+    "width": 900,
+    "z": 94000,
+    "tabOrder": 94000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "entity_id"
+                }
+              },
+              "queryRef": "client_fs_statements.entity_id",
+              "nativeQueryRef": "entity_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "period_id"
+                }
+              },
+              "queryRef": "client_fs_statements.period_id",
+              "nativeQueryRef": "period_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "statement_type"
+                }
+              },
+              "queryRef": "client_fs_statements.statement_type",
+              "nativeQueryRef": "statement_type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "statement_section"
+                }
+              },
+              "queryRef": "client_fs_statements.statement_section",
+              "nativeQueryRef": "statement_section"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "standard_account_name"
+                }
+              },
+              "queryRef": "client_fs_statements.standard_account_name",
+              "nativeQueryRef": "standard_account_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "reported_or_adjusted"
+                }
+              },
+              "queryRef": "client_fs_statements.reported_or_adjusted",
+              "nativeQueryRef": "reported_or_adjusted"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "amount_reporting"
+                }
+              },
+              "queryRef": "client_fs_statements.amount_reporting",
+              "nativeQueryRef": "amount_reporting"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "client_fs_statements"
+                  }
+                },
+                "Property": "statement_type"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

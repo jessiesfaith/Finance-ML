@@ -1,0 +1,102 @@
+/// Curated pipeline export reports/client_fs_statements.csv: the
+/// consolidated statement detail with view flags and adjustment /
+/// transaction lineage. Full source lineage (file, sheet, row) lives
+/// one layer down in data/client_fs/client_fs_normalized.csv.
+table client_fs_statements
+	lineageTag: a4446162-3113-45cc-8848-2bf0e50ba320
+
+	column entity_id
+		dataType: string
+		lineageTag: 17fc8e23-2bd6-4340-b839-3702349b04fb
+		summarizeBy: none
+		sourceColumn: entity_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column period_id
+		dataType: string
+		lineageTag: f627ecae-9af2-4e41-86f1-bd173ce93a82
+		summarizeBy: none
+		sourceColumn: period_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column statement_type
+		dataType: string
+		lineageTag: 16fecb59-0053-44e8-a31b-62af480140a2
+		summarizeBy: none
+		sourceColumn: statement_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column statement_section
+		dataType: string
+		lineageTag: de98147b-b679-4481-ac6c-b27f2507c370
+		summarizeBy: none
+		sourceColumn: statement_section
+
+		annotation SummarizationSetBy = Automatic
+
+	column standard_account_id
+		dataType: string
+		lineageTag: f67f7e45-6e4c-4f7d-93de-7dc18fd71607
+		summarizeBy: none
+		sourceColumn: standard_account_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column standard_account_name
+		dataType: string
+		lineageTag: 88c88c12-a96c-4705-83f1-f4efac7ed729
+		summarizeBy: none
+		sourceColumn: standard_account_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column reported_or_adjusted
+		dataType: string
+		lineageTag: e3305235-e5d3-40b6-a8ef-be1dd2f727a1
+		summarizeBy: none
+		sourceColumn: reported_or_adjusted
+
+		annotation SummarizationSetBy = Automatic
+
+	column adjustment_id
+		dataType: string
+		lineageTag: 5c0e2361-7064-4016-ac09-39a6d1ddb515
+		summarizeBy: none
+		sourceColumn: adjustment_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column transaction_id
+		dataType: string
+		lineageTag: 00236b3a-9736-4bb4-9a72-1be0ac3b61bc
+		summarizeBy: none
+		sourceColumn: transaction_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount_reporting
+		dataType: double
+		lineageTag: 1889060d-36d1-4e4e-9238-e1efc02551b5
+		summarizeBy: none
+		sourceColumn: amount_reporting
+
+		annotation SummarizationSetBy = Automatic
+
+	partition client_fs_statements = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\client_fs_statements.csv"),
+				    [Delimiter = ",", Columns = 16, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"entity_id", "period_id", "statement_type", "statement_section", "standard_account_id", "standard_account_name", "reported_or_adjusted", "adjustment_id", "transaction_id", "amount_reporting"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"amount_reporting", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "0c6c0473be80b3d6ece4",
+  "position": {
+    "x": 2090,
+    "y": 640,
+    "height": 75,
+    "width": 175,
+    "z": 88000,
+    "tabOrder": 88000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_income_walk"
+                    }
+                  },
+                  "Property": "Net Income Pro Forma ($M)"
+                }
+              },
+              "queryRef": "client_fs_income_walk.Net Income Pro Forma ($M)",
+              "nativeQueryRef": "Net Income Pro Forma ($M)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,94 @@
+/// Curated pipeline export reports/client_fs_review.csv: the analyst
+/// agent's evidence-based findings with confidence, always < 1.0.
+table client_fs_review
+	lineageTag: b6fc714f-6527-421d-b199-6ab64d9a73cc
+
+	/// Findings are questions, never conclusions. The agent may
+	/// READ / ANALYZE / FLAG / EXPLAIN / PROPOSE - it never
+	/// deletes, overwrites, posts, or approves financial data.
+	measure 'Agent Findings Logged' =
+			
+			COUNTROWS(ALL(client_fs_review)) + 0
+		formatString: 0
+		displayFolder: Agent Review
+		lineageTag: b292f9a8-ac82-4c1d-82cc-0f0df05f517f
+
+	column review_id
+		dataType: string
+		lineageTag: 6eac4ac0-38cc-4596-84f9-129ee5dfeb8f
+		summarizeBy: none
+		sourceColumn: review_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_type
+		dataType: string
+		lineageTag: ab413022-ce17-4639-bc1c-84ac0ffd6757
+		summarizeBy: none
+		sourceColumn: item_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_reference
+		dataType: string
+		lineageTag: 0b165fd0-c75a-4e3e-a321-978d03bd39af
+		summarizeBy: none
+		sourceColumn: item_reference
+
+		annotation SummarizationSetBy = Automatic
+
+	column severity
+		dataType: string
+		lineageTag: ab37c094-2edb-4140-9216-d808765e7794
+		summarizeBy: none
+		sourceColumn: severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column explanation
+		dataType: string
+		lineageTag: d0f1b759-91d6-47f5-8d19-52ba0476cb42
+		summarizeBy: none
+		sourceColumn: explanation
+
+		annotation SummarizationSetBy = Automatic
+
+	column recommended_action
+		dataType: string
+		lineageTag: 95822d60-82f7-407b-af05-a99d59edc3a4
+		summarizeBy: none
+		sourceColumn: recommended_action
+
+		annotation SummarizationSetBy = Automatic
+
+	column interpreter
+		dataType: string
+		lineageTag: 393ec77d-58be-415d-8423-6df947b95ac3
+		summarizeBy: none
+		sourceColumn: interpreter
+
+		annotation SummarizationSetBy = Automatic
+
+	column agent_confidence
+		dataType: double
+		lineageTag: b6f20c0c-58ad-45f6-8a9c-035b8cce8014
+		summarizeBy: none
+		sourceColumn: agent_confidence
+
+		annotation SummarizationSetBy = Automatic
+
+	partition client_fs_review = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\client_fs_review.csv"),
+				    [Delimiter = ",", Columns = 16, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"review_id", "item_type", "item_reference", "severity", "explanation", "recommended_action", "interpreter", "agent_confidence"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"agent_confidence", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,125 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "b3d1bb1fad7f6781e028",
+  "position": {
+    "x": 1720,
+    "y": 135,
+    "height": 330,
+    "width": 900,
+    "z": 81000,
+    "tabOrder": 81000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_controls"
+                    }
+                  },
+                  "Property": "control_id"
+                }
+              },
+              "queryRef": "client_fs_controls.control_id",
+              "nativeQueryRef": "control_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_controls"
+                    }
+                  },
+                  "Property": "control_name"
+                }
+              },
+              "queryRef": "client_fs_controls.control_name",
+              "nativeQueryRef": "control_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_controls"
+                    }
+                  },
+                  "Property": "entity_id"
+                }
+              },
+              "queryRef": "client_fs_controls.entity_id",
+              "nativeQueryRef": "entity_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_controls"
+                    }
+                  },
+                  "Property": "period_id"
+                }
+              },
+              "queryRef": "client_fs_controls.period_id",
+              "nativeQueryRef": "period_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_controls"
+                    }
+                  },
+                  "Property": "status"
+                }
+              },
+              "queryRef": "client_fs_controls.status",
+              "nativeQueryRef": "status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_controls"
+                    }
+                  },
+                  "Property": "severity"
+                }
+              },
+              "queryRef": "client_fs_controls.severity",
+              "nativeQueryRef": "severity"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "client_fs_controls"
+                  }
+                },
+                "Property": "status"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "27e11ebfe50a8bbc856c",
+  "position": {
+    "x": 165,
+    "y": 965,
+    "height": 38,
+    "width": 1100,
+    "z": 53000,
+    "tabOrder": 53000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "4 \u00b7 Driver-Based Forecast \u2014 the same walk, repeated per year   (ASSUMPTION \u2192 CALCULATED)",
+                    "textStyle": {
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

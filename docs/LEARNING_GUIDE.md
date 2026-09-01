@@ -369,3 +369,26 @@ events (Phase 9), the analyst agent (Phase 10) — then the Power BI
 pages render the walks these layers already produce, and the four
 staged cutovers (UFCF, net debt, shares, weights) re-price the DCF one
 approved switch at a time.
+
+## 17. Page 2 — reading a report page as a proof (2026-09-01)
+
+Page 2 of the .pbip ("Page 2 — Client Financials") is the on-screen
+version of section 5's math, built so you can audit it by reading:
+
+- **Every card is a measure, every measure reads a curated CSV.** The
+  DAX pattern is always the same two steps: find the anchor row
+  (`Latest Actual Period` = MAX period where forecast_method = ACTUAL),
+  then pick one column from that row with
+  `CALCULATE(MAX(column), FILTER(ALL(table), period = anchor))`. The
+  `ALL()` matters: it makes the walk immune to accidental
+  cross-filtering when someone clicks the tables on the page.
+- **Equation rows are cards + operator cards.** The +, −, ×, ÷, =
+  glyphs are themselves tiny measures (`"+"` literals) on cards with
+  labels hidden — so a row like `NOPAT + D&A − CapEx − ΔNWC = UFCF`
+  is data-driven end to end, and `UFCF Bridge Check ($M)` recomputes
+  it and must show 0.00 (same trick as Page 1's DCF Model Check).
+- **Nothing is hard-coded to a year or a company.** Change the client,
+  rerun the pipeline, refresh — the page re-anchors itself.
+- **The gate comes first.** Controls PASS/REVIEW/FAIL cards sit above
+  the statements because that is the ICFR logic: numbers are only
+  usable because the controls say so.

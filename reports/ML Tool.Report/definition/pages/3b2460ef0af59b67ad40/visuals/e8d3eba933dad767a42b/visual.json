@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "e8d3eba933dad767a42b",
+  "position": {
+    "x": 165,
+    "y": 460,
+    "height": 75,
+    "width": 175,
+    "z": 18000,
+    "tabOrder": 18000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_ufcf"
+                    }
+                  },
+                  "Property": "Client EBIT ($M)"
+                }
+              },
+              "queryRef": "client_fs_ufcf.Client EBIT ($M)",
+              "nativeQueryRef": "Client EBIT ($M)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

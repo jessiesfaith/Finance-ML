@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "d973d74a7159c0f33672",
+  "position": {
+    "x": 1905,
+    "y": 555,
+    "height": 75,
+    "width": 175,
+    "z": 84000,
+    "tabOrder": 84000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_income_walk"
+                    }
+                  },
+                  "Property": "EBITDA Normalized ($M)"
+                }
+              },
+              "queryRef": "client_fs_income_walk.EBITDA Normalized ($M)",
+              "nativeQueryRef": "EBITDA Normalized ($M)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

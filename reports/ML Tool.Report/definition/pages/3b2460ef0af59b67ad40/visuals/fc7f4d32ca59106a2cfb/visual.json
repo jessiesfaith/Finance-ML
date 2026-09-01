@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "fc7f4d32ca59106a2cfb",
+  "position": {
+    "x": 1720,
+    "y": 510,
+    "height": 38,
+    "width": 900,
+    "z": 82000,
+    "tabOrder": 82000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Three Views \u2014 latest year: REPORTED \u2192 NORMALIZED \u2192 PRO FORMA",
+                    "textStyle": {
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

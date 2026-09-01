@@ -1,0 +1,167 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "5bba4c352e564ae73adc",
+  "position": {
+    "x": 165,
+    "y": 1100,
+    "height": 280,
+    "width": 1010,
+    "z": 59000,
+    "tabOrder": 59000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_ufcf"
+                    }
+                  },
+                  "Property": "period_id"
+                }
+              },
+              "queryRef": "client_fs_ufcf.period_id",
+              "nativeQueryRef": "period_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_ufcf"
+                    }
+                  },
+                  "Property": "forecast_method"
+                }
+              },
+              "queryRef": "client_fs_ufcf.forecast_method",
+              "nativeQueryRef": "forecast_method"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_ufcf"
+                    }
+                  },
+                  "Property": "revenue"
+                }
+              },
+              "queryRef": "client_fs_ufcf.revenue",
+              "nativeQueryRef": "revenue"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_ufcf"
+                    }
+                  },
+                  "Property": "ebitda"
+                }
+              },
+              "queryRef": "client_fs_ufcf.ebitda",
+              "nativeQueryRef": "ebitda"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_ufcf"
+                    }
+                  },
+                  "Property": "da"
+                }
+              },
+              "queryRef": "client_fs_ufcf.da",
+              "nativeQueryRef": "da"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_ufcf"
+                    }
+                  },
+                  "Property": "nopat"
+                }
+              },
+              "queryRef": "client_fs_ufcf.nopat",
+              "nativeQueryRef": "nopat"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_ufcf"
+                    }
+                  },
+                  "Property": "delta_nwc"
+                }
+              },
+              "queryRef": "client_fs_ufcf.delta_nwc",
+              "nativeQueryRef": "delta_nwc"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_ufcf"
+                    }
+                  },
+                  "Property": "capex"
+                }
+              },
+              "queryRef": "client_fs_ufcf.capex",
+              "nativeQueryRef": "capex"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_ufcf"
+                    }
+                  },
+                  "Property": "ufcf"
+                }
+              },
+              "queryRef": "client_fs_ufcf.ufcf",
+              "nativeQueryRef": "ufcf"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "client_fs_ufcf"
+                  }
+                },
+                "Property": "period_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "e5ea0d391d25322b34bb",
+  "position": {
+    "x": 950,
+    "y": 15,
+    "height": 60,
+    "width": 640,
+    "z": 2000,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "CLIENT F/S = statement-derived, full lineage \u00b7 ASSUMPTION = driver with rationale \u00b7 CALCULATED = one visible formula",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Base scenario \u00b7 consolidated \u00b7 latest actual year unless labeled. Python writes reports/client_fs_*.csv; this page only reads.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
