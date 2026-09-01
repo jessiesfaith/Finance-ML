@@ -21,3 +21,4 @@ data/sec_staging/
 # Power BI project local artifacts (per-machine cache/settings)
 reports/ML Tool.SemanticModel/.pbi/cache.abf
 reports/ML Tool.SemanticModel/.pbi/localSettings.json
+reports/ML Tool.Report/.pbi/localSettings.json
