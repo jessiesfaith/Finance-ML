@@ -508,6 +508,13 @@ def control_10_source_total(normalized, translated):
     raw = _source_rows(translated)
     group_cols = ["company_id", "entity_id", "period_id", "statement_type"]
 
+    # Phase 8 guard: only REPORTED rows reconcile to source — ADJUSTED
+    # rows are additive analyst deltas and must never be counted here.
+    if "reported_or_adjusted" in normalized.columns:
+        normalized = normalized[
+            normalized["reported_or_adjusted"] == "REPORTED"
+        ]
+
     norm_groups = dict(tuple(normalized.groupby(group_cols)))
     raw_groups = dict(tuple(raw.groupby(group_cols)))
 

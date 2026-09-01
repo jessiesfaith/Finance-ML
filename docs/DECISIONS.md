@@ -414,3 +414,28 @@ DIO/DPO use total operating costs as the cost base until clients report
 COGS distinctly enough to matter; thresholds live in one visible config
 (future: per-company profiles). Industry-deviation methods arrive with
 Phase 14 benchmark data.
+
+---
+
+## 2026-08-31 — Phase 8 (adjustment engine + the three views)
+
+### 48. Adjustments are additive rows; originals are never modified
+data/client_fs/adjustments.csv holds each adjustment with its quoted
+original, delta, and normalized amount (original + adjustment =
+normalized, verified on load; a quote that drifts from what REPORTED
+actually says fails loudly). An adjustment reaches the numbers ONLY
+when review_status=APPROVED and include_in_normalized=YES - it then
+becomes an ADJUSTED delta row in client_fs_normalized.csv
+(source_system=ADJUSTMENT, adjustment_id carried as lineage), so every
+view is still a plain SUM over rows. Proposals under REVIEW (ADJ-002)
+stay visible but outside every total. C10 now counts REPORTED rows
+only - the formal guard that adjustments never mutate source-derived
+rows, pinned by test.
+
+### 49. The three views are filters, not copies
+REPORTED / NORMALIZED / PRO FORMA are row filters over one combined
+frame (select_view), never separate datasets that could drift. Fixture
+FY2025: REPORTED EBITDA 314.8 / NI 167.4 -> NORMALIZED 326.8 / 176.4
+(+12 restructuring add-back, -3 tax effect at the normalized 25% rate -
+after-tax normalization done properly, as a paired adjustment).
+PRO FORMA equals NORMALIZED until Phase 9 adds transaction rows.

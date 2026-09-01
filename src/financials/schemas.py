@@ -467,6 +467,46 @@ SCENARIO_ASSUMPTIONS = TableSchema(
     key=("scenario_id", "target_type", "target_id", "company_id", "period_id"),
 )
 
+# Event classifications for adjustments / transactions (spec section 10).
+EVENT_CLASSIFICATIONS = (
+    "NORMAL_OPERATIONS", "ONE_TIME", "ACQUISITION", "DIVESTITURE",
+    "RESTRUCTURING", "IMPAIRMENT", "LITIGATION", "FX", "FINANCING",
+    "TAX", "ACCOUNTING_CHANGE", "OTHER",
+)
+
+ADJUSTMENTS = TableSchema(
+    table="adjustments",
+    filename="adjustments.csv",
+    columns=(
+        Column("adjustment_id"),
+        Column("company_id"),
+        Column("entity_id"),
+        Column("period_id"),
+        Column("standard_account_id"),
+        Column("adjustment_type",
+               allowed=("NORMALIZATION", "RECLASSIFICATION", "OTHER")),
+        # Canonical signs throughout: original + adjustment = normalized,
+        # verified on every load. The original REPORTED amount is quoted,
+        # never modified — adjustments are separate, additive rows.
+        Column("original_amount", kind="number"),
+        Column("adjustment_amount", kind="number"),
+        Column("normalized_amount", kind="number"),
+        Column("reporting_currency"),
+        Column("reason"),
+        Column("event_classification", allowed=EVENT_CLASSIFICATIONS),
+        Column("source_document"),
+        Column("source_reference"),
+        # Filled by the Phase 10 agent for agent-proposed adjustments;
+        # blank for analyst-entered ones.
+        Column("agent_confidence", kind="number", required=False),
+        Column("include_in_normalized", allowed=INCLUDE_FLAGS),
+        Column("review_status", allowed=REVIEW_STATUSES),
+        Column("reviewer", required=False),
+        Column("approval_timestamp", required=False),
+    ),
+    key=("adjustment_id",),
+)
+
 SCENARIO_SCHEMAS = (DRIVER_MASTER, SCENARIO_MASTER, SCENARIO_ASSUMPTIONS)
 
 SHARES_DILUTION = TableSchema(
@@ -583,5 +623,5 @@ OUTPUT_SCHEMAS = (
 SCHEMAS_BY_TABLE = {
     s.table: s
     for s in (ALL_SCHEMAS + OUTPUT_SCHEMAS + SCENARIO_SCHEMAS
-              + (SHARES_DILUTION,) + MARKET_SCHEMAS)
+              + (SHARES_DILUTION, ADJUSTMENTS) + MARKET_SCHEMAS)
 }

@@ -34,6 +34,12 @@ Phase 5 modules:
     scenarios — analyst-assumption layer loader (data/scenarios/):
                 scenario_master, driver_master, scenario_assumptions
 
+Phase 8 module:
+    adjustments — the adjustment engine + the three views (REPORTED /
+                  NORMALIZED / PRO FORMA): approved adjustments become
+                  additive ADJUSTED rows; originals are never modified;
+                  proposals under REVIEW stay outside every total
+
 Phase 7 module:
     outliers — deterministic outlier tests (PoP dollar+percent, margins,
                working-capital ratios, new items, z-score with an honest
@@ -54,6 +60,12 @@ pro forma, and the analyst-review agent.
 """
 
 from financials.account_mapper import resolve_mapping
+from financials.adjustments import (
+    apply_adjustments,
+    load_adjustments,
+    select_view,
+    view_income_summary,
+)
 from financials.consolidation import consolidate, write_consolidation
 from financials.controls import (
     apply_consolidation_status,
@@ -116,4 +128,8 @@ __all__ = [
     "run_outlier_engine",
     "flags_frame",
     "write_outlier_flags",
+    "load_adjustments",
+    "apply_adjustments",
+    "select_view",
+    "view_income_summary",
 ]

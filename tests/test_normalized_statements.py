@@ -99,12 +99,20 @@ def test_lineage_survives_normalization(normalized):
 
 
 def test_committed_output_matches_a_fresh_rebuild(normalized):
-    """data/client_fs/client_fs_normalized.csv must never go stale."""
-    committed = pd.read_csv(DEFAULT_OUTPUT, dtype=str, keep_default_na=False)
-
-    rebuilt_csv = normalized.to_csv(index=False)
-    fresh = pd.read_csv(
-        io.StringIO(rebuilt_csv), dtype=str, keep_default_na=False
+    """
+    data/client_fs/client_fs_normalized.csv must never go stale. Since
+    Phase 8 the committed file is REPORTED rows + applied ADJUSTED rows.
+    """
+    from financials.adjustments import apply_adjustments, load_adjustments
+    tables = load_client_fs(strict=True).tables
+    adjustments, _ = load_adjustments(tables, strict=True)
+    combined = apply_adjustments(
+        normalized, adjustments, tables["account_mapping"]
     )
 
+    committed = pd.read_csv(DEFAULT_OUTPUT, dtype=str, keep_default_na=False)
+    fresh = pd.read_csv(
+        io.StringIO(combined.to_csv(index=False)),
+        dtype=str, keep_default_na=False,
+    )
     pd.testing.assert_frame_equal(committed, fresh)

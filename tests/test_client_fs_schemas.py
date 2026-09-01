@@ -32,6 +32,8 @@ def test_registry_covers_the_expected_tables():
         # Phase 6 inputs
         "shares_dilution",
         "risk_free_policy",
+        # Phase 8 input
+        "adjustments",
     }
     assert set(SCHEMAS_BY_TABLE) == expected
 

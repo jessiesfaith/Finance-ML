@@ -26,6 +26,11 @@ from financials import (
     load_client_fs,
     write_normalized_statements,
 )
+from financials.adjustments import (
+    apply_adjustments,
+    load_adjustments,
+    view_income_summary,
+)
 from financials.normalized_statements import (
     balance_sheet_gap,
     cash_flow_by_entity_period,
@@ -38,7 +43,12 @@ logging.basicConfig(level=logging.INFO, format="%(name)s  %(message)s")
 def main():
     try:
         result = load_client_fs(strict=True)
-        normalized = build_normalized_statements(result.tables)
+        reported = build_normalized_statements(result.tables)
+        # Phase 8: append APPROVED adjustments as ADJUSTED delta rows.
+        adjustments, _ = load_adjustments(result.tables, strict=True)
+        normalized = apply_adjustments(
+            reported, adjustments, result.tables["account_mapping"],
+        )
     except ClientFSValidationError as exc:
         print()
         print("BUILD FAILED — fix these before continuing:")
@@ -54,16 +64,39 @@ def main():
     print(f"output       : {path}")
 
     print()
-    print("NET INCOME  (income-statement rows summed, canonical signs)")
-    print(net_income_by_entity_period(normalized).round(2).to_string())
+    print("NET INCOME  (REPORTED rows summed, canonical signs)")
+    print(net_income_by_entity_period(reported).round(2).to_string())
 
     print()
     print("CHANGE IN CASH  (cash-flow rows summed)")
-    print(cash_flow_by_entity_period(normalized).round(2).to_string())
+    print(cash_flow_by_entity_period(reported).round(2).to_string())
 
     print()
     print("BALANCE SHEET GAP  (assets - liabilities - equity; 0 = balanced)")
-    print(balance_sheet_gap(normalized).round(2).to_string())
+    print(balance_sheet_gap(reported).round(2).to_string())
+
+    # ------------------------------------------------
+    # THE THREE VIEWS (Phase 8)
+    # ------------------------------------------------
+    print()
+    print("REPORTED vs NORMALIZED vs PRO FORMA  (income summary, FY2025)")
+    print("-" * 60)
+    import pandas as pd
+    views = pd.concat([
+        view_income_summary(normalized, v)
+        for v in ("REPORTED", "NORMALIZED", "PROFORMA")
+    ])
+    print(views[views["period_id"] == "FY2025"].to_string(index=False))
+    not_applied = adjustments[
+        ~((adjustments["review_status"] == "APPROVED")
+          & (adjustments["include_in_normalized"] == "YES"))
+    ]
+    if len(not_applied):
+        print()
+        print("Adjustments NOT applied (awaiting review — visible, outside the numbers):")
+        for row in not_applied.itertuples():
+            print(f"  {row.adjustment_id}: {row.adjustment_amount:+.1f} "
+                  f"{row.standard_account_id} — {row.review_status}")
 
     # One audit example: the sign transformation on a magnitude-presented
     # expense, traceable end to end.

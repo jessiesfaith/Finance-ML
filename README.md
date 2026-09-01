@@ -46,7 +46,7 @@ python src/build_history_database.py     # load it into SQLite
 python models/train_treasury_model.py    # train + save the Treasury model
 python models/export_finance_report.py   # scenarios → valuation → report CSV
 python src/load_client_fs.py             # load + validate client financial statements
-python src/build_client_fs_normalized.py # map accounts + normalize signs -> normalized CSV
+python src/build_client_fs_normalized.py # map accounts, normalize signs, apply adjustments -> 3 views
 python src/build_consolidation.py        # FX translation + eliminations -> consolidation CSV
 python src/run_controls.py               # deterministic controls -> control_checks.csv
 python src/build_ufcf.py                 # NWC/NOPAT/UFCF walk + driver forecast -> ufcf_forecast.csv
