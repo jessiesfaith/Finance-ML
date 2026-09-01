@@ -53,6 +53,7 @@ python src/build_ufcf.py                 # NWC/NOPAT/UFCF walk + driver forecast
 python src/build_valuation_inputs.py     # net debt, invested capital/ROIC, diluted shares
 python src/run_outliers.py               # deterministic outlier flags -> outlier_flags.csv
 python src/run_agent.py                  # analyst-review agent -> agent_review_log.csv
+python src/build_powerbi_exports.py      # curated, schema-locked Power BI report tables
 pytest                                   # verify nothing broke
 ```
 

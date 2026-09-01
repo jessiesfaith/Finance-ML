@@ -508,3 +508,20 @@ NEW_ITEMs -> "MAY relate to TXN-001... causation is not concluded;
 restructuring already normalized by ADJ-001A/B" (0.7); C9 -> "equals
 the CTA, not a data error" (0.9). Confidence is bounded < 1.0 by test:
 the agent is never certain.
+
+---
+
+## 2026-08-31 — Phase 11a (curated Power BI exports)
+
+### 56. The report edge is one builder, seven locked files, labeled classes
+python src/build_powerbi_exports.py writes the full curated set
+(statements with view machinery, three-view income walk, UFCF walk,
+valuation inputs, controls, agent review, rf policy), each with exact
+columns frozen in EXPORT_COLUMNS, rebuild-locked by tests, and a
+value_class column carrying the six-class taxonomy (REPORTED rows =
+CLIENT_FS, adjustment/pro-forma rows = ANALYST_ASSUMPTION, engine
+outputs = CALCULATED, agent findings = MODEL_OUTPUT, rf rows =
+MARKET_DATA or MODEL_OUTPUT per methodology). The legacy 33-column
+finance_scenario_report.csv is untouched beside them. Phase 11b (the
+.pbip semantic model + pages) consumes exactly these files; the pbix ->
+pbip conversion in Power BI Desktop is the one manual step.

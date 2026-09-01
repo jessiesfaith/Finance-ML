@@ -25,7 +25,19 @@ rework. The curated layer absorbs all of that churn.
 
 | File | Consumed by | Locked by |
 |---|---|---|
-| `reports/finance_scenario_report.csv` | ML Tool.pbix | `tests/test_report_schema.py` (32 columns, 3 scenario rows) |
+| `reports/finance_scenario_report.csv` | ML Tool.pbix (Pages 1/3 today) | `tests/test_report_schema.py` (33 columns, 3 scenario rows) |
+| `reports/client_fs_statements.csv` | Page 2 — statement detail, three views via flags | `tests/test_powerbi_exports.py` |
+| `reports/client_fs_income_walk.csv` | Page 2 — Reported/Normalized/Pro Forma income summary | same |
+| `reports/client_fs_ufcf.csv` | Page 2 — NWC/NOPAT/UFCF walk + driver forecast | same |
+| `reports/client_fs_valuation_inputs.csv` | Pages 2/3 — net debt, invested capital/ROIC, shares | same |
+| `reports/client_fs_controls.csv` | Page 2/6 — control status strip + exceptions | same |
+| `reports/client_fs_review.csv` | Page 2/6 — agent findings with confidence | same |
+| `reports/market_rf_policy.csv` | Page 1 — risk-free methodology lineage | same |
+
+Every curated file is written only by `python src/build_powerbi_exports.py`,
+carries a `value_class` column (the six-class taxonomy) so the report can
+label every number's nature, and follows the same rule as the legacy file:
+columns are only ever ADDED, never renamed or removed.
 
 ## Rules during the financial-statement build (Phases 1–10)
 

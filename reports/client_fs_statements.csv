@@ -1,0 +1,76 @@
+company_id,entity_id,period_id,statement_type,statement_section,standard_account_id,standard_account_name,amount_reporting,reporting_currency,scenario,reported_or_adjusted,adjustment_id,transaction_id,include_in_normalized,include_in_proforma,value_class
+COMP001,ENT_PARENT,FY2024,IS,revenue,revenue,Revenue,900.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2024,IS,cogs,cogs,Cost of Goods Sold,-550.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2024,IS,operating_expenses,opex,Operating Expenses,-140.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2024,IS,depreciation_amortization,depreciation_amortization,Depreciation & Amortization,-45.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2024,IS,interest,interest_expense,Interest Expense,-22.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2024,IS,tax,income_tax_expense,Income Tax Expense,-36.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2024,BS,current_assets,cash,Cash and Cash Equivalents,120.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2024,BS,current_assets,accounts_receivable,Accounts Receivable,100.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2024,BS,current_assets,inventory,Inventory,70.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2024,BS,noncurrent_assets,ppe_net,"Property, Plant & Equipment, Net",480.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2024,BS,current_liabilities,accounts_payable,Accounts Payable,80.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2024,BS,noncurrent_liabilities,long_term_debt,Long-Term Debt,320.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2024,BS,equity,common_stock,Common Stock,200.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2024,BS,equity,retained_earnings,Retained Earnings,170.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,IS,revenue,revenue,Revenue,1000.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,IS,cogs,cogs,Cost of Goods Sold,-600.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,IS,operating_expenses,opex,Operating Expenses,-150.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,IS,depreciation_amortization,depreciation_amortization,Depreciation & Amortization,-50.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,IS,interest,interest_expense,Interest Expense,-20.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,IS,tax,income_tax_expense,Income Tax Expense,-45.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,BS,current_assets,cash,Cash and Cash Equivalents,150.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,BS,current_assets,accounts_receivable,Accounts Receivable,120.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,BS,current_assets,inventory,Inventory,80.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,BS,noncurrent_assets,ppe_net,"Property, Plant & Equipment, Net",500.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,BS,current_liabilities,accounts_payable,Accounts Payable,90.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,BS,noncurrent_liabilities,long_term_debt,Long-Term Debt,300.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,BS,equity,common_stock,Common Stock,200.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,BS,equity,retained_earnings,Retained Earnings,260.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,CFS,operating,cfs_net_income,Net Income per Cash Flow Statement,135.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,CFS,operating,cfs_depreciation_amortization,Depreciation & Amortization Add-back,50.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,CFS,operating,cfs_change_in_nwc,Change in Net Working Capital,-20.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,CFS,investing,cfs_capex,Capital Expenditures,-70.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,CFS,financing,cfs_dividends_paid,Dividends Paid,-45.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,CFS,financing,cfs_debt_repayment,Debt Repayments,-20.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,OCI,oci,oci_fx_translation,Foreign Currency Translation Adjustment,5.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,EQUITY,retained_earnings,re_beginning,Retained Earnings Beginning Balance,170.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,EQUITY,retained_earnings,re_net_income,Net Income per Equity Statement,135.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,EQUITY,retained_earnings,re_dividends,Dividends Declared,-45.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,EQUITY,retained_earnings,re_ending,Retained Earnings Ending Balance,260.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2024,IS,revenue,revenue,Revenue,294.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2024,IS,cogs,cogs,Cost of Goods Sold,-178.5,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2024,IS,operating_expenses,opex,Operating Expenses,-57.75,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2024,IS,depreciation_amortization,depreciation_amortization,Depreciation & Amortization,-14.7,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2024,IS,interest,interest_expense,Interest Expense,-6.3,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2024,IS,tax,income_tax_expense,Income Tax Expense,-8.4,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2024,BS,current_assets,cash,Cash and Cash Equivalents,32.4,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2024,BS,current_assets,accounts_receivable,Accounts Receivable,48.6,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2024,BS,current_assets,inventory,Inventory,27.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2024,BS,noncurrent_assets,ppe_net,"Property, Plant & Equipment, Net",118.8,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2024,BS,current_liabilities,accounts_payable,Accounts Payable,32.4,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2024,BS,noncurrent_liabilities,long_term_debt,Long-Term Debt,70.2,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2024,BS,equity,common_stock,Common Stock,86.4,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2024,BS,equity,retained_earnings,Retained Earnings,37.8,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2025,IS,revenue,revenue,Revenue,324.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2025,IS,cogs,cogs,Cost of Goods Sold,-194.4,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2025,IS,operating_expenses,opex,Operating Expenses,-64.8,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2025,IS,depreciation_amortization,depreciation_amortization,Depreciation & Amortization,-16.2,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2025,IS,interest,interest_expense,Interest Expense,-5.4,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2025,IS,tax,income_tax_expense,Income Tax Expense,-10.8,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2025,BS,current_assets,cash,Cash and Cash Equivalents,44.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2025,BS,current_assets,accounts_receivable,Accounts Receivable,55.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2025,BS,current_assets,inventory,Inventory,33.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2025,BS,noncurrent_assets,ppe_net,"Property, Plant & Equipment, Net",132.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2025,BS,current_liabilities,accounts_payable,Accounts Payable,38.5,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2025,BS,noncurrent_liabilities,long_term_debt,Long-Term Debt,66.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2025,BS,equity,common_stock,Common Stock,88.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_GMBH,FY2025,BS,equity,retained_earnings,Retained Earnings,71.5,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_ELIM,FY2025,IS,revenue,revenue,Revenue,-50.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_ELIM,FY2025,IS,cogs,cogs,Cost of Goods Sold,50.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_ELIM,FY2025,BS,current_assets,accounts_receivable,Accounts Receivable,-10.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_ELIM,FY2025,BS,current_liabilities,accounts_payable,Accounts Payable,-10.0,USD,ACTUAL,REPORTED,,,YES,YES,CLIENT_FS
+COMP001,ENT_PARENT,FY2025,IS,operating_expenses,opex,Operating Expenses,12.0,USD,ACTUAL,ADJUSTED,ADJ-001A,,YES,YES,ANALYST_ASSUMPTION
+COMP001,ENT_PARENT,FY2025,IS,tax,income_tax_expense,Income Tax Expense,-3.0,USD,ACTUAL,ADJUSTED,ADJ-001B,,YES,YES,ANALYST_ASSUMPTION
+COMP001,ENT_PARENT,FY2025,IS,operating_expenses,opex,Operating Expenses,3.0,USD,ACTUAL,ADJUSTED,PF-001A,TXN-001,NO,YES,ANALYST_ASSUMPTION
+COMP001,ENT_PARENT,FY2025,IS,tax,income_tax_expense,Income Tax Expense,-0.75,USD,ACTUAL,ADJUSTED,PF-001B,TXN-001,NO,YES,ANALYST_ASSUMPTION
