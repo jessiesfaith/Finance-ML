@@ -1,0 +1,17 @@
+benchmark_metric_id,peer_group_id,statistic,period_id,value,unit,source,source_reference,retrieval_timestamp
+ebitda_margin_pct,PG_SOFTWARE_US,COMPANY,FY2024,22.4246,PCT,INTERNAL_PIPELINE,financials pipeline (consolidated),2026-08-31T00:00:00Z
+ebit_margin_pct,PG_SOFTWARE_US,COMPANY,FY2024,17.4246,PCT,INTERNAL_PIPELINE,financials pipeline (consolidated),2026-08-31T00:00:00Z
+roic_pct,PG_SOFTWARE_US,COMPANY,FY2024,21.3166,PCT,INTERNAL_PIPELINE,financials pipeline (consolidated),2026-08-31T00:00:00Z
+nwc_pct_revenue,PG_SOFTWARE_US,COMPANY,FY2024,11.1558,PCT,INTERNAL_PIPELINE,financials pipeline (consolidated),2026-08-31T00:00:00Z
+dso_days,PG_SOFTWARE_US,COMPANY,FY2024,45.5508,DAYS,INTERNAL_PIPELINE,financials pipeline (consolidated),2026-08-31T00:00:00Z
+dio_days,PG_SOFTWARE_US,COMPANY,FY2024,38.3287,DAYS,INTERNAL_PIPELINE,financials pipeline (consolidated),2026-08-31T00:00:00Z
+dpo_days,PG_SOFTWARE_US,COMPANY,FY2024,44.4139,DAYS,INTERNAL_PIPELINE,financials pipeline (consolidated),2026-08-31T00:00:00Z
+revenue_growth_pct,PG_SOFTWARE_US,COMPANY,FY2025,6.7002,PCT,INTERNAL_PIPELINE,financials pipeline (consolidated),2026-08-31T00:00:00Z
+ebitda_margin_pct,PG_SOFTWARE_US,COMPANY,FY2025,24.7096,PCT,INTERNAL_PIPELINE,financials pipeline (consolidated),2026-08-31T00:00:00Z
+ebit_margin_pct,PG_SOFTWARE_US,COMPANY,FY2025,19.5133,PCT,INTERNAL_PIPELINE,financials pipeline (consolidated),2026-08-31T00:00:00Z
+roic_pct,PG_SOFTWARE_US,COMPANY,FY2025,23.5565,PCT,INTERNAL_PIPELINE,financials pipeline (consolidated),2026-08-31T00:00:00Z
+nwc_pct_revenue,PG_SOFTWARE_US,COMPANY,FY2025,12.5196,PCT,INTERNAL_PIPELINE,financials pipeline (consolidated),2026-08-31T00:00:00Z
+capex_pct_revenue,PG_SOFTWARE_US,COMPANY,FY2025,5.4945,PCT,INTERNAL_PIPELINE,financials pipeline (consolidated),2026-08-31T00:00:00Z
+dso_days,PG_SOFTWARE_US,COMPANY,FY2025,47.2724,DAYS,INTERNAL_PIPELINE,financials pipeline (consolidated),2026-08-31T00:00:00Z
+dio_days,PG_SOFTWARE_US,COMPANY,FY2025,42.9994,DAYS,INTERNAL_PIPELINE,financials pipeline (consolidated),2026-08-31T00:00:00Z
+dpo_days,PG_SOFTWARE_US,COMPANY,FY2025,45.0923,DAYS,INTERNAL_PIPELINE,financials pipeline (consolidated),2026-08-31T00:00:00Z

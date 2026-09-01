@@ -56,6 +56,7 @@ python src/run_agent.py                  # analyst-review agent -> agent_review_
 python src/build_powerbi_exports.py      # curated, schema-locked Power BI report tables
 python src/ingest_sec.py --cik N --from Y1 --to Y2   # stage a public company from SEC EDGAR
 python src/build_market_data.py          # append-only market observations (synthetic until cutover)
+python src/build_benchmarks.py           # company benchmark rows (peer slots await SEC data)
 pytest                                   # verify nothing broke
 ```
 

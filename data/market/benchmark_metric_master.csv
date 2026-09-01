@@ -1,0 +1,10 @@
+benchmark_metric_id,metric_name,unit,derivation_rule,description,active_flag
+revenue_growth_pct,Revenue growth,PCT,revenue(t) / revenue(t-1) - 1,Year-over-year consolidated revenue growth,Y
+ebitda_margin_pct,EBITDA margin,PCT,ebitda / revenue,EBITDA as a percent of revenue,Y
+ebit_margin_pct,EBIT margin,PCT,ebit / revenue,EBIT as a percent of revenue,Y
+roic_pct,Return on invested capital,PCT,nopat / invested_capital (ENDING basis),NOPAT over component-built invested capital,Y
+nwc_pct_revenue,Operating NWC intensity,PCT,operating_nwc / revenue,Working-capital tied up per revenue dollar,Y
+capex_pct_revenue,CapEx intensity,PCT,capex / revenue,Capital spend per revenue dollar,Y
+dso_days,Days sales outstanding,DAYS,accounts_receivable / revenue * days_in_period,Collection speed,Y
+dio_days,Days inventory outstanding,DAYS,inventory / operating_costs * days_in_period,Inventory holding period (operating-cost base),Y
+dpo_days,Days payables outstanding,DAYS,accounts_payable / operating_costs * days_in_period,Payment speed to suppliers,Y

@@ -705,7 +705,65 @@ MARKET_OBSERVATIONS = TableSchema(
     key=("metric_id", "observation_date", "source", "retrieval_timestamp"),
 )
 
-MARKET_SCHEMAS = (RISK_FREE_POLICY, MARKET_METRIC_MASTER, MARKET_OBSERVATIONS)
+BENCHMARK_STATISTICS = (
+    "COMPANY", "PEER_MEDIAN", "INDUSTRY_MEDIAN", "P25", "P75",
+)
+
+BENCHMARK_METRIC_MASTER = TableSchema(
+    table="benchmark_metric_master",
+    filename="benchmark_metric_master.csv",
+    columns=(
+        Column("benchmark_metric_id"),
+        Column("metric_name"),
+        Column("unit", allowed=("PCT", "PCT_POINTS", "DAYS", "RATIO")),
+        # The SAME derivation applies to the company and to peers —
+        # comparability is the whole game (Phase 12 SEC pipeline computes
+        # peer values through these definitions).
+        Column("derivation_rule"),
+        Column("description"),
+        Column("active_flag", kind="flag", allowed=FLAGS),
+    ),
+    key=("benchmark_metric_id",),
+)
+
+PEER_GROUP_MASTER = TableSchema(
+    table="peer_group_master",
+    filename="peer_group_master.csv",
+    columns=(
+        Column("peer_group_id"),
+        Column("peer_group_name"),
+        Column("definition"),
+        Column("membership_source"),
+        Column("active_flag", kind="flag", allowed=FLAGS),
+    ),
+    key=("peer_group_id",),
+)
+
+BENCHMARK_OBSERVATIONS = TableSchema(
+    table="benchmark_observations",
+    filename="benchmark_observations.csv",
+    columns=(
+        Column("benchmark_metric_id"),
+        Column("peer_group_id"),
+        Column("statistic", allowed=BENCHMARK_STATISTICS),
+        Column("period_id"),
+        Column("value", kind="number"),
+        Column("unit", allowed=("PCT", "PCT_POINTS", "DAYS", "RATIO")),
+        # COMPANY rows come from the INTERNAL_PIPELINE; every other
+        # statistic must cite an external source — invented peer values
+        # are structurally impossible (validated on load).
+        Column("source"),
+        Column("source_reference"),
+        Column("retrieval_timestamp"),
+    ),
+    key=("benchmark_metric_id", "peer_group_id", "statistic", "period_id",
+         "source"),
+)
+
+MARKET_SCHEMAS = (
+    RISK_FREE_POLICY, MARKET_METRIC_MASTER, MARKET_OBSERVATIONS,
+    BENCHMARK_METRIC_MASTER, PEER_GROUP_MASTER, BENCHMARK_OBSERVATIONS,
+)
 
 OUTLIER_FLAGS = TableSchema(
     table="outlier_flags",

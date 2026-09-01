@@ -1,0 +1,2 @@
+peer_group_id,peer_group_name,definition,membership_source,active_flag
+PG_SOFTWARE_US,US Software peers,Software companies with US listings comparable to COMP001 (company_master industry/subindustry),Peer membership to be populated by the Phase 12 SEC pipeline - no peers invented,Y

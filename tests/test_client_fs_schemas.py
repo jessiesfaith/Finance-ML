@@ -36,6 +36,10 @@ def test_registry_covers_the_expected_tables():
         # Phase 13 market layer (data/market/, independent loader)
         "market_metric_master",
         "market_observations",
+        # Phase 14 benchmarking (architecture; no peer values invented)
+        "benchmark_metric_master",
+        "peer_group_master",
+        "benchmark_observations",
         # Phase 8 input
         "adjustments",
         # Phase 9 inputs

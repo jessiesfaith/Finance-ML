@@ -572,3 +572,19 @@ fetches run from the analyst's machine - and the SYNTHETIC->FRED
 preferred_source flip happens per metric only after the reporting tool
 is finalized (DECISIONS #5), exactly the visible one-column cutover the
 architecture was built for.
+
+---
+
+## 2026-08-31 — Phase 14 (benchmarking architecture; plan complete)
+
+### 61. Company benchmarks are real; peer slots exist and stay empty
+benchmark_metric_master defines nine ratios with derivation rules that
+apply IDENTICALLY to the company and to future peers (comparability by
+construction); benchmark_observations carries COMPANY rows computed
+from the internal pipeline (FY2025: growth 6.70%, EBITDA margin 24.71%,
+ROIC 23.56%, DSO 47.3d ...) while PEER_MEDIAN/INDUSTRY_MEDIAN/P25/P75
+await the Phase 12 SEC pipeline. The no-invented-data rule is
+STRUCTURAL: a non-COMPANY statistic sourced INTERNAL_PIPELINE fails
+validation (invented_peer_data) - peers can only ever arrive with a
+cited external source. When bands exist, an assumption outside P25-P75
+becomes a REVIEW flag, never an auto-correction.
