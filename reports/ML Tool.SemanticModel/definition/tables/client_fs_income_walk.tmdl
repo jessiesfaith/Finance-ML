@@ -179,3 +179,4 @@ table client_fs_income_walk
 				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+

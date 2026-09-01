@@ -39,7 +39,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "EXPLAIN / PROPOSE \u2014 never delete, overwrite, post, or approve.",
+                    "value": "EXPLAIN / PROPOSE — never delete, overwrite, post, or approve.",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

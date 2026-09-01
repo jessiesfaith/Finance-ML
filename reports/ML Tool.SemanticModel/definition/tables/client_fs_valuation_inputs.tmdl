@@ -255,3 +255,4 @@ table client_fs_valuation_inputs
 				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+

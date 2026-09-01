@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "UFCF path \u2192 discounted at WACC \u00b7 net debt \u2192 bridges EV to equity \u00b7 diluted shares \u2192 per-share price \u00b7 invested capital \u2192 ROIC.",
+                    "value": "UFCF path → discounted at WACC · net debt → bridges EV to equity · diluted shares → per-share price · invested capital → ROIC.",
                     "textStyle": {
                       "fontSize": "10pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Page 1 reads these same pipeline numbers from finance_scenario_report.csv \u2014 nothing is retyped.",
+                    "value": "Page 1 reads these same pipeline numbers from finance_scenario_report.csv — nothing is retyped.",
                     "textStyle": {
                       "fontSize": "10pt"
                     }

@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "After-tax factor = 1 \u2212 tax rate (25.0% here, the pipeline's",
+                    "value": "After-tax factor = 1 − tax rate (25.0% here, the pipeline's",
                     "textStyle": {
                       "fontSize": "9pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "effective rate \u2014 normalized rate would slot in the same way).",
+                    "value": "effective rate — normalized rate would slot in the same way).",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

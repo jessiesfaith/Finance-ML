@@ -92,3 +92,4 @@ table client_fs_review
 				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+

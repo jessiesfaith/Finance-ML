@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "CLIENT F/S = statement-derived, full lineage \u00b7 ASSUMPTION = driver with rationale \u00b7 CALCULATED = one visible formula",
+                    "value": "CLIENT F/S = statement-derived, full lineage · ASSUMPTION = driver with rationale · CALCULATED = one visible formula",
                     "textStyle": {
                       "fontSize": "9pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Base scenario \u00b7 consolidated \u00b7 latest actual year unless labeled. Python writes reports/client_fs_*.csv; this page only reads.",
+                    "value": "Base scenario · consolidated · latest actual year unless labeled. Python writes reports/client_fs_*.csv; this page only reads.",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

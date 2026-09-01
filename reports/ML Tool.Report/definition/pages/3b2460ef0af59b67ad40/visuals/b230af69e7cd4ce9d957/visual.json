@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Control Gate \u2014 the statements below are usable because the controls say so",
+                    "value": "Control Gate — the statements below are usable because the controls say so",
                     "textStyle": {
                       "fontSize": "14pt"
                     }

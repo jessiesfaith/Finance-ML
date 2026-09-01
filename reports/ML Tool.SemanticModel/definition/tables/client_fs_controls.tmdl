@@ -134,3 +134,4 @@ table client_fs_controls
 				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+
