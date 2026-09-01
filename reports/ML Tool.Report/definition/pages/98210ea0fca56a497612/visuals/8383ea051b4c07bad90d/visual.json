@@ -4,7 +4,7 @@
   "position": {
     "x": 1000,
     "y": 15,
-    "height": 80,
+    "height": 95,
     "width": 720,
     "z": 2000,
     "tabOrder": 2000
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "To test a project: add one row to data/projects/project_master.csv (name, investment, horizon) and its levers to project_assumptions.csv, run  python src/build_project_appraisal.py, then Refresh here.",
+                    "value": "To test a project: fill the YELLOW cells in templates\\project_intake.xlsx (a worked example is beside them), then run  python src/ingest_project_intake.py  (validates and writes data/projects/, replacing by project_id), then  python src/build_project_appraisal.py  and Refresh here.",
                     "textStyle": {
                       "fontSize": "9pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Projects are judged with the SAME per-scenario tax, WACC and hurdle as the company DCF \u2014 one world, one ruler.",
+                    "value": "Projects are judged with the SAME per-scenario tax, WACC and hurdle as the company DCF \u2014 one world, one ruler. One-time setup: pip install openpyxl.",
                     "textStyle": {
                       "fontSize": "9pt"
                     }
