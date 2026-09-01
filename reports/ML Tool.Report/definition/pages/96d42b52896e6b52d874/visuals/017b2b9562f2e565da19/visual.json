@@ -107,20 +107,6 @@
                       "Entity": "finance_scenario_report"
                     }
                   },
-                  "Property": "npv"
-                }
-              },
-              "queryRef": "finance_scenario_report.npv",
-              "nativeQueryRef": "npv"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "finance_scenario_report"
-                    }
-                  },
                   "Property": "project_irr_pct"
                 }
               },
