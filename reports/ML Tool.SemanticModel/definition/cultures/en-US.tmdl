@@ -2230,7 +2230,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Cost of Debt (%)": {
+			          "Cost of Debt": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -2240,7 +2240,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Cost of Debt": {
+			          "Cost of Debt (%)": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -8349,16 +8349,6 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.452
 			          }
-			        },
-			        {
-			          "ROIC Range": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
 			        }
 			      ]
 			    },
@@ -8943,16 +8933,6 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.452
 			          }
-			        },
-			        {
-			          ".": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
 			        }
 			      ]
 			    },
@@ -9154,16 +9134,6 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.452
-			          }
-			        },
-			        {
-			          ".": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
 			          }
 			        }
 			      ]

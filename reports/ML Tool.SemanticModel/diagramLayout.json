@@ -20,6 +20,19 @@
             "width": 234
           },
           "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 284,
+            "y": 14
+          },
+          "nodeIndex": "client_fs_ufcf",
+          "nodeLineageTag": "8beca4d3-b8ad-4e6b-9cf6-dd491483ee63",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "All tables",

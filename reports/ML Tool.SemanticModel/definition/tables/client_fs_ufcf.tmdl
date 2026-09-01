@@ -80,3 +80,4 @@ table client_fs_ufcf
 				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+

@@ -8,14 +8,14 @@ table finance_scenario_report
 			    1000
 			)
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
-		lineageTag: 36ce741b-bde3-4261-84b2-0cb0a198b708
 		displayFolder: Valuation
+		lineageTag: 36ce741b-bde3-4261-84b2-0cb0a198b708
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
 	measure 'Measure 4'
-		lineageTag: 1f6a2b25-1cb4-46f1-9806-052e474841be
 		displayFolder: Other
+		lineageTag: 1f6a2b25-1cb4-46f1-9806-052e474841be
 
 		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
 
@@ -29,8 +29,8 @@ table finance_scenario_report
 			        finance_scenario_report[scenario] = "Base"
 			    )
 			)
-		lineageTag: a59a617e-fbfb-4216-970f-9e4fb23b2e42
 		displayFolder: Valuation
+		lineageTag: a59a617e-fbfb-4216-970f-9e4fb23b2e42
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -44,8 +44,8 @@ table finance_scenario_report
 			        finance_scenario_report[scenario] = "Base"
 			    )
 			)
-		lineageTag: afd61705-a8b8-4a4d-b1ac-d5da316b4103
 		displayFolder: Cost of Capital & Market
+		lineageTag: afd61705-a8b8-4a4d-b1ac-d5da316b4103
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -65,8 +65,8 @@ table finance_scenario_report
 			        finance_scenario_report[scenario] = "Base"
 			    )
 			)
-		lineageTag: 19d99471-91a1-4802-ad3f-532b0379d1ab
 		displayFolder: Valuation
+		lineageTag: 19d99471-91a1-4802-ad3f-532b0379d1ab
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -87,8 +87,8 @@ table finance_scenario_report
 			    )
 			)
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
-		lineageTag: 64644d82-aae7-4a03-a5a3-e9e823206a13
 		displayFolder: Valuation
+		lineageTag: 64644d82-aae7-4a03-a5a3-e9e823206a13
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
@@ -97,8 +97,8 @@ table finance_scenario_report
 			
 			0.35
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
-		lineageTag: 51f93b43-faf3-4eb7-8f0b-8eef8a18b67a
 		displayFolder: Valuation
+		lineageTag: 51f93b43-faf3-4eb7-8f0b-8eef8a18b67a
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
@@ -114,8 +114,8 @@ table finance_scenario_report
 			    )
 			)
 		formatString: 0.00
-		lineageTag: b929af84-a9ba-4c85-a513-cac123acfb23
 		displayFolder: Cost of Capital & Market
+		lineageTag: b929af84-a9ba-4c85-a513-cac123acfb23
 
 	measure 'Selected Treasury 2Y' =
 			
@@ -128,8 +128,8 @@ table finance_scenario_report
 			    )
 			)
 		formatString: 0.00
-		lineageTag: b5e9f721-9dd2-43c5-8a64-f34301002dd0
 		displayFolder: Cost of Capital & Market
+		lineageTag: b5e9f721-9dd2-43c5-8a64-f34301002dd0
 
 	measure 'Selected Fed Funds' =
 			
@@ -142,12 +142,12 @@ table finance_scenario_report
 			    )
 			)
 		formatString: 0.00
-		lineageTag: cabb4c18-47ef-4fc9-a463-a6ceb1c914e2
 		displayFolder: Cost of Capital & Market
+		lineageTag: cabb4c18-47ef-4fc9-a463-a6ceb1c914e2
 
 	measure Measure
-		lineageTag: 6257dd60-9fd9-4186-b06b-2f8cccdf58c1
 		displayFolder: Other
+		lineageTag: 6257dd60-9fd9-4186-b06b-2f8cccdf58c1
 
 		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
 
@@ -162,8 +162,8 @@ table finance_scenario_report
 			    )
 			)
 		formatString: 0.00
-		lineageTag: e86b0c64-506c-461a-b09e-288b3699dc57
 		displayFolder: Cost of Capital & Market
+		lineageTag: e86b0c64-506c-461a-b09e-288b3699dc57
 
 	measure 'Selected Cost of Debt' =
 			
@@ -176,31 +176,31 @@ table finance_scenario_report
 			    )
 			)
 		formatString: 0.00
-		lineageTag: f8bacb5d-3689-4667-9563-e5ddfc8f77e9
 		displayFolder: Cost of Capital & Market
+		lineageTag: f8bacb5d-3689-4667-9563-e5ddfc8f77e9
 
 	/// CALCULATED since the 2026-08-31 cutover: market value of equity / total capitalization (was an assumed 70%).
 	measure 'Equity Weight' =
 			
 			SELECTEDVALUE(finance_scenario_report[equity_weight_pct]) / 100
 		formatString: 0.00%;-0.00%;0.00%
-		lineageTag: 98ecae62-3c88-4df2-a4a5-e7cc49f37a6e
 		displayFolder: Cost of Capital & Market
+		lineageTag: 98ecae62-3c88-4df2-a4a5-e7cc49f37a6e
 
 	/// CALCULATED since the 2026-08-31 cutover: debt / total capitalization (was an assumed 30%).
 	measure 'Debt Weight' =
 			
 			SELECTEDVALUE(finance_scenario_report[debt_weight_pct]) / 100
 		formatString: 0.00%;-0.00%;0.00%
-		lineageTag: a819fe9d-c3fb-4e1d-917f-28ed6ead3729
 		displayFolder: Cost of Capital & Market
+		lineageTag: a819fe9d-c3fb-4e1d-917f-28ed6ead3729
 
 	measure 'Tax Rate' =
 			
 			SELECTEDVALUE(finance_scenario_report[tax_rate_pct]) / 100
 		formatString: 0%;-0%;0%
-		lineageTag: 376e4071-7b40-4c81-8406-2e640620dbc4
 		displayFolder: Cost of Capital & Market
+		lineageTag: 376e4071-7b40-4c81-8406-2e640620dbc4
 
 	/// CALCULATED: weighted average required return of debt and equity used to discount unlevered free cash flow.
 	measure 'Calculated WACC' =
@@ -220,8 +220,8 @@ table finance_scenario_report
 			        EquityWeight * CostEquity
 			        + DebtWeight * CostDebt * (1 - TaxRate)
 			    ) * 100
-		lineageTag: 89cf55fc-cad2-4f31-8acd-eff6013181c2
 		displayFolder: Cost of Capital & Market
+		lineageTag: 89cf55fc-cad2-4f31-8acd-eff6013181c2
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -233,8 +233,8 @@ table finance_scenario_report
 			    SELECTEDVALUE(finance_scenario_report[cost_of_equity_pct]) / 100
 			RETURN
 			    EquityWeight * CostEquity * 100
-		lineageTag: f854f773-f830-4f58-bb1d-384b16ee0293
 		displayFolder: Cost of Capital & Market
+		lineageTag: f854f773-f830-4f58-bb1d-384b16ee0293
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -248,8 +248,8 @@ table finance_scenario_report
 			    SELECTEDVALUE(finance_scenario_report[tax_rate_pct]) / 100
 			RETURN
 			    DebtWeight * CostDebt * (1 - TaxRate) * 100
-		lineageTag: 7120391e-9a47-4ce2-8886-585fa9a708f8
 		displayFolder: Cost of Capital & Market
+		lineageTag: 7120391e-9a47-4ce2-8886-585fa9a708f8
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -271,8 +271,8 @@ table finance_scenario_report
 			        client_fs_ufcf[ufcf]
 			    )
 		formatString: 0.0
-		lineageTag: bd62f282-08c4-455e-93cc-4d1cc1574144
 		displayFolder: Valuation
+		lineageTag: bd62f282-08c4-455e-93cc-4d1cc1574144
 
 	measure 'FCF Year 2' =
 			
@@ -291,8 +291,8 @@ table finance_scenario_report
 			        client_fs_ufcf[ufcf]
 			    )
 		formatString: 0.0
-		lineageTag: 1c01f057-0a11-48ea-84ba-b1289050184f
 		displayFolder: Valuation
+		lineageTag: 1c01f057-0a11-48ea-84ba-b1289050184f
 
 	measure 'FCF Year 3' =
 			
@@ -311,8 +311,8 @@ table finance_scenario_report
 			        client_fs_ufcf[ufcf]
 			    )
 		formatString: 0.0
-		lineageTag: a1948eca-980f-4d0e-a038-4b5b1ebbca6e
 		displayFolder: Valuation
+		lineageTag: a1948eca-980f-4d0e-a038-4b5b1ebbca6e
 
 	measure 'FCF Year 4' =
 			
@@ -331,8 +331,8 @@ table finance_scenario_report
 			        client_fs_ufcf[ufcf]
 			    )
 		formatString: 0.0
-		lineageTag: 2f39496e-d75c-493c-8f7f-0cd7d8e68e12
 		displayFolder: Valuation
+		lineageTag: 2f39496e-d75c-493c-8f7f-0cd7d8e68e12
 
 	measure 'FCF Year 5' =
 			
@@ -351,8 +351,8 @@ table finance_scenario_report
 			        client_fs_ufcf[ufcf]
 			    )
 		formatString: 0.0
-		lineageTag: 6860d4f8-a24c-44e1-93c9-fb01d7fabd12
 		displayFolder: Valuation
+		lineageTag: 6860d4f8-a24c-44e1-93c9-fb01d7fabd12
 
 	measure 'Selected Terminal Growth' =
 			
@@ -364,8 +364,8 @@ table finance_scenario_report
 			        finance_scenario_report[scenario] = "Base"
 			    )
 			)
-		lineageTag: 4ac8d20c-28bb-4c52-9c32-02203199ebee
 		displayFolder: Valuation
+		lineageTag: 4ac8d20c-28bb-4c52-9c32-02203199ebee
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -386,8 +386,8 @@ table finance_scenario_report
 			        FCF5 * (1 + GrowthRate),
 			        WACCRate - GrowthRate
 			    )
-		lineageTag: 88ccc624-9991-45d2-a6f5-99b62ba839c6
 		displayFolder: Valuation
+		lineageTag: 88ccc624-9991-45d2-a6f5-99b62ba839c6
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -405,8 +405,8 @@ table finance_scenario_report
 			        TerminalValue,
 			        (1 + WACCRate) ^ 5
 			    )
-		lineageTag: a8be89a3-5446-478b-afd0-ac841e5f3175
 		displayFolder: Valuation
+		lineageTag: a8be89a3-5446-478b-afd0-ac841e5f3175
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -419,8 +419,8 @@ table finance_scenario_report
 			        [FCF Year 1],
 			        (1 + WACCRate) ^ 1
 			    )
-		lineageTag: 0630293e-23da-47f6-9b0e-41f4e1a29ba7
 		displayFolder: Valuation
+		lineageTag: 0630293e-23da-47f6-9b0e-41f4e1a29ba7
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -433,8 +433,8 @@ table finance_scenario_report
 			        [FCF Year 2],
 			        (1 + WACCRate) ^ 2
 			    )
-		lineageTag: 56271dbc-bbba-4802-96d2-a57b297d17cd
 		displayFolder: Valuation
+		lineageTag: 56271dbc-bbba-4802-96d2-a57b297d17cd
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -447,8 +447,8 @@ table finance_scenario_report
 			        [FCF Year 3],
 			        (1 + WACCRate) ^ 3
 			    )
-		lineageTag: 7a8cf941-e254-4f61-8282-c00eca184083
 		displayFolder: Valuation
+		lineageTag: 7a8cf941-e254-4f61-8282-c00eca184083
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -461,8 +461,8 @@ table finance_scenario_report
 			        [FCF Year 4],
 			        (1 + WACCRate) ^ 4
 			    )
-		lineageTag: dba37e9c-7de6-4878-9178-f77a5313e116
 		displayFolder: Valuation
+		lineageTag: dba37e9c-7de6-4878-9178-f77a5313e116
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -475,8 +475,8 @@ table finance_scenario_report
 			        [FCF Year 5],
 			        (1 + WACCRate) ^ 5
 			    )
-		lineageTag: 600cb868-9e60-4534-9d74-11d4dcc0caa7
 		displayFolder: Valuation
+		lineageTag: 600cb868-9e60-4534-9d74-11d4dcc0caa7
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -487,8 +487,8 @@ table finance_scenario_report
 			+ [PV FCF Year 3]
 			+ [PV FCF Year 4]
 			+ [PV FCF Year 5]
-		lineageTag: 32e725ba-6a85-4d16-83e7-67f7c957d78c
 		displayFolder: Valuation
+		lineageTag: 32e725ba-6a85-4d16-83e7-67f7c957d78c
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -496,8 +496,8 @@ table finance_scenario_report
 	measure 'DCF Enterprise Value' =
 			
 			[PV FCF Years 1-5] + [PV Terminal Value]
-		lineageTag: e1264990-5c8e-4c84-bb53-4be917956178
 		displayFolder: Valuation
+		lineageTag: e1264990-5c8e-4c84-bb53-4be917956178
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -505,8 +505,8 @@ table finance_scenario_report
 			
 			[DCF Enterprise Value]
 			- SELECTEDVALUE(finance_scenario_report[net_debt])
-		lineageTag: 26ffc607-b422-4cf7-92ee-35acae7f4f6d
 		displayFolder: Valuation
+		lineageTag: 26ffc607-b422-4cf7-92ee-35acae7f4f6d
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -521,8 +521,8 @@ table finance_scenario_report
 			        EquityValue,
 			        SharesOutstanding
 			    )
-		lineageTag: 222bf99a-2953-4303-8a31-1a5b472de39d
 		displayFolder: Valuation
+		lineageTag: 222bf99a-2953-4303-8a31-1a5b472de39d
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -533,8 +533,8 @@ table finance_scenario_report
 			    [DCF Enterprise Value]
 			)
 		formatString: 0%;-0%;0%
-		lineageTag: 77443163-4d57-474c-bc63-be2e441aa729
 		displayFolder: Scenario Diagnostics
+		lineageTag: 77443163-4d57-474c-bc63-be2e441aa729
 
 	measure 'FCF Years 1-5 % of EV' =
 			
@@ -543,8 +543,8 @@ table finance_scenario_report
 			    [DCF Enterprise Value]
 			)
 		formatString: 0%;-0%;0%
-		lineageTag: a03fb28e-8b40-47ad-a328-58f17a53d673
 		displayFolder: Scenario Diagnostics
+		lineageTag: a03fb28e-8b40-47ad-a328-58f17a53d673
 
 	measure 'DCF EV Reconciliation' =
 			
@@ -558,8 +558,8 @@ table finance_scenario_report
 			        Difference
 			    )
 		formatString: #,0.00
-		lineageTag: 3a8d1557-342d-494f-b3f8-de603dfe7e92
 		displayFolder: Scenario Diagnostics
+		lineageTag: 3a8d1557-342d-494f-b3f8-de603dfe7e92
 
 	measure 'Share Price Change vs Base %' =
 			
@@ -577,8 +577,8 @@ table finance_scenario_report
 			        BasePrice
 			    )
 		formatString: 0.0%;-0.0%;0.0%
-		lineageTag: 2a09e2ad-31af-4689-a267-4a50749b8fd6
 		displayFolder: Scenario Diagnostics
+		lineageTag: 2a09e2ad-31af-4689-a267-4a50749b8fd6
 
 	measure 'Share Price Change vs Base $' =
 			
@@ -592,8 +592,8 @@ table finance_scenario_report
 			    )
 			RETURN
 			    CurrentPrice - BasePrice
-		lineageTag: 4ed7e6d1-cd1a-4cd6-bd57-9a95541bc9ee
 		displayFolder: Scenario Diagnostics
+		lineageTag: 4ed7e6d1-cd1a-4cd6-bd57-9a95541bc9ee
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -613,83 +613,83 @@ table finance_scenario_report
 			    )
 			RETURN
 			    LowPrice - HighPrice
-		lineageTag: 6563c311-158f-4bde-9a66-dd74df6c9063
 		displayFolder: Decision Display
+		lineageTag: 6563c311-158f-4bde-9a66-dd74df6c9063
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'WACC Multiply Symbol' = "×"
-		lineageTag: 3b33056c-818b-45f5-ae74-9ea0ee7a893d
 		displayFolder: Formatting Symbols
+		lineageTag: 3b33056c-818b-45f5-ae74-9ea0ee7a893d
 
 	measure 'WACC Equals Symbol' = "="
-		lineageTag: 6c145761-6d5a-412a-8980-a9d8e38ca27b
 		displayFolder: Formatting Symbols
+		lineageTag: 6c145761-6d5a-412a-8980-a9d8e38ca27b
 
 	measure 'Measure 2'
-		lineageTag: 1c299eb8-cc58-4c21-a07e-0b3c0b7230a6
 		displayFolder: Other
+		lineageTag: 1c299eb8-cc58-4c21-a07e-0b3c0b7230a6
 
 		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
 
 	measure 'Measure 3'
-		lineageTag: 113631e1-6bd4-4da6-8248-6397faf26fe4
 		displayFolder: Other
+		lineageTag: 113631e1-6bd4-4da6-8248-6397faf26fe4
 
 		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
 
 	measure 'Measure 5'
-		lineageTag: 273c43af-0c39-449f-ab76-99cabf5f0498
 		displayFolder: Other
+		lineageTag: 273c43af-0c39-449f-ab76-99cabf5f0498
 
 		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
 
 	measure 'After Tax Debt Factor' =
 			
 			1 - [Tax Rate]
-		lineageTag: 8afeb084-26c5-4f4b-93bb-2643d13c7654
 		displayFolder: Cost of Capital & Market
+		lineageTag: 8afeb084-26c5-4f4b-93bb-2643d13c7654
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Measure 6'
-		lineageTag: d59512db-59db-42d6-8f00-c6fff71fbb68
 		displayFolder: Other
+		lineageTag: d59512db-59db-42d6-8f00-c6fff71fbb68
 
 		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
 
 	measure 'WACC Plus Symbol' = "+"
-		lineageTag: 24f438aa-6ed0-4dc7-92fb-c932515de582
 		displayFolder: Formatting Symbols
+		lineageTag: 24f438aa-6ed0-4dc7-92fb-c932515de582
 
 	measure 'Minus Symbol' = "−"
-		lineageTag: a3ba9253-f88d-42ff-bdd5-2b14e2bb7506
 		displayFolder: Formatting Symbols
+		lineageTag: a3ba9253-f88d-42ff-bdd5-2b14e2bb7506
 
 	measure 'Divide Symbol' = "÷"
-		lineageTag: ccf64d40-498e-4a09-95bc-3eccc73ba5cf
 		displayFolder: Formatting Symbols
+		lineageTag: ccf64d40-498e-4a09-95bc-3eccc73ba5cf
 
 	measure 'Terminal Growth Factor' =
 			
 			1 + ([Selected Terminal Growth] / 100)
 		formatString: 0.000
-		lineageTag: 05efe15e-abd9-4bd1-ba63-62401c86f490
 		displayFolder: Valuation
+		lineageTag: 05efe15e-abd9-4bd1-ba63-62401c86f490
 
 	measure 'WACC Less Growth' =
 			
 			([Calculated WACC] - [Selected Terminal Growth]) / 100
 		formatString: 0.0000
-		lineageTag: afdcc2ac-1567-4289-b9b6-84dee1cb3643
 		displayFolder: Cost of Capital & Market
+		lineageTag: afdcc2ac-1567-4289-b9b6-84dee1cb3643
 
 	measure 'WACC Discount Factor Year 5' =
 			
 			(1 + ([Calculated WACC] / 100)) ^ 5
 		formatString: 0.000
-		lineageTag: d4565170-fdc0-4d64-b42a-73a2d2f42fd9
 		displayFolder: Valuation
+		lineageTag: d4565170-fdc0-4d64-b42a-73a2d2f42fd9
 
 	measure 'EV Change vs Base %' =
 			
@@ -706,8 +706,8 @@ table finance_scenario_report
 			RETURN
 			    DIVIDE(CurrentEV - BaseEV, BaseEV)
 		formatString: 0.0%;-0.0%;0.0%
-		lineageTag: 2a0dfb5a-d539-44b9-b71c-212baacda7e7
 		displayFolder: Scenario Diagnostics
+		lineageTag: 2a0dfb5a-d539-44b9-b71c-212baacda7e7
 
 	measure 'Equity Value Change vs Base %' =
 			
@@ -724,8 +724,8 @@ table finance_scenario_report
 			RETURN
 			    DIVIDE(CurrentEquity - BaseEquity, BaseEquity)
 		formatString: 0.0%;-0.0%;0.0%
-		lineageTag: 7deb88c4-521e-4dd5-bf97-b489e37d587d
 		displayFolder: Scenario Diagnostics
+		lineageTag: 7deb88c4-521e-4dd5-bf97-b489e37d587d
 
 	measure 'WACC Change vs Base' =
 			
@@ -741,8 +741,8 @@ table finance_scenario_report
 			
 			RETURN
 			    CurrentWACC - BaseWACC
-		lineageTag: 03f255ae-a86b-41c3-8160-5a4ca698523f
 		displayFolder: Scenario Diagnostics
+		lineageTag: 03f255ae-a86b-41c3-8160-5a4ca698523f
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -760,8 +760,8 @@ table finance_scenario_report
 			
 			RETURN
 			    CurrentRate - BaseRate
-		lineageTag: af20fa36-64b9-46ff-930f-f51e2fa84f30
 		displayFolder: Scenario Diagnostics
+		lineageTag: af20fa36-64b9-46ff-930f-f51e2fa84f30
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -779,8 +779,8 @@ table finance_scenario_report
 			
 			RETURN
 			    CurrentCOE - BaseCOE
-		lineageTag: d79f6afb-e56a-4c5e-b9fc-1bb38a51c24f
 		displayFolder: Scenario Diagnostics
+		lineageTag: d79f6afb-e56a-4c5e-b9fc-1bb38a51c24f
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -798,8 +798,8 @@ table finance_scenario_report
 			
 			RETURN
 			    CurrentCOD - BaseCOD
-		lineageTag: 702ea5e9-2f67-4686-8e14-d07bcdd42ab6
 		displayFolder: Scenario Diagnostics
+		lineageTag: 702ea5e9-2f67-4686-8e14-d07bcdd42ab6
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -809,8 +809,8 @@ table finance_scenario_report
 			    [DCF Enterprise Value],
 			    1000
 			)
-		lineageTag: 5062fb91-c722-4edc-8dfb-75fddcf3b03b
 		displayFolder: Valuation
+		lineageTag: 5062fb91-c722-4edc-8dfb-75fddcf3b03b
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -820,8 +820,8 @@ table finance_scenario_report
 			    [DCF Equity Value],
 			    1000
 			)
-		lineageTag: d226cdd4-d3bd-4910-b20a-97d411932f64
 		displayFolder: Valuation
+		lineageTag: d226cdd4-d3bd-4910-b20a-97d411932f64
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -831,8 +831,8 @@ table finance_scenario_report
 			    [PV Terminal Value],
 			    1000
 			)
-		lineageTag: ee677f95-1467-425f-9bda-192e52e6002b
 		displayFolder: Valuation
+		lineageTag: ee677f95-1467-425f-9bda-192e52e6002b
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -842,8 +842,8 @@ table finance_scenario_report
 			    [Terminal Value],
 			    1000
 			)
-		lineageTag: 139502fa-bb78-464c-aee0-89b6bcf486c5
 		displayFolder: Valuation
+		lineageTag: 139502fa-bb78-464c-aee0-89b6bcf486c5
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -853,8 +853,8 @@ table finance_scenario_report
 			    SELECTEDVALUE(finance_scenario_report[invested_capital]),
 			    "#,##0"
 			)
-		lineageTag: 1fe0f108-b517-4d5b-bcfb-bb3e3473cb0e
 		displayFolder: Other
+		lineageTag: 1fe0f108-b517-4d5b-bcfb-bb3e3473cb0e
 
 	/// CALCULATED: NOPAT / component-built invested capital (operating NWC + net PP&E). Statement-derived since the cutover.
 	measure 'ROIC Check (%)' =
@@ -863,8 +863,8 @@ table finance_scenario_report
 			    SELECTEDVALUE(finance_scenario_report[nopat]),
 			    SELECTEDVALUE(finance_scenario_report[invested_capital])
 			) * 100
-		lineageTag: ffb4ac0d-68fc-48be-ae91-c72524c3258c
 		displayFolder: ROIC
+		lineageTag: ffb4ac0d-68fc-48be-ae91-c72524c3258c
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -881,8 +881,8 @@ table finance_scenario_report
 			        ROIC < WACC, "Value Destroying",
 			        "Value Neutral"
 			    )
-		lineageTag: 35872bf0-5d06-4b08-9ad5-abc459c78a38
 		displayFolder: ROIC
+		lineageTag: 35872bf0-5d06-4b08-9ad5-abc459c78a38
 
 	/// ANALYST ASSUMPTION: WACC + 2.00pt project risk premium. Read from the versioned pipeline column since the cutover (was a DAX-only constant).
 	measure 'Hurdle Rate (%)' =
@@ -890,8 +890,8 @@ table finance_scenario_report
 			VALUE(
 			    SELECTEDVALUE(finance_scenario_report[hurdle_rate_pct])
 			)
-		lineageTag: b805ef31-b464-43cc-93bd-23f91a109687
 		displayFolder: Capital Allocation
+		lineageTag: b805ef31-b464-43cc-93bd-23f91a109687
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -900,8 +900,8 @@ table finance_scenario_report
 			
 			1500
 		formatString: 0
-		lineageTag: 996c7b91-7ea7-4d96-b375-8942d3e4888b
 		displayFolder: Capital Allocation
+		lineageTag: 996c7b91-7ea7-4d96-b375-8942d3e4888b
 
 	measure 'Project PV of Cash Flows ($M)' =
 			
@@ -912,8 +912,8 @@ table finance_scenario_report
 			    DIVIDE([FCF Year 3], (1 + r)^3) +
 			    DIVIDE([FCF Year 4], (1 + r)^4) +
 			    DIVIDE([FCF Year 5], (1 + r)^5)
-		lineageTag: f373881b-ef22-4986-9f2e-d10d10eceda8
 		displayFolder: Capital Allocation
+		lineageTag: f373881b-ef22-4986-9f2e-d10d10eceda8
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -927,8 +927,8 @@ table finance_scenario_report
 			        FCF5 * (1 + g),
 			        r - g
 			    )
-		lineageTag: 4fa7bc45-f690-4d9d-bbdb-4bcb2bde823c
 		displayFolder: Capital Allocation
+		lineageTag: 4fa7bc45-f690-4d9d-bbdb-4bcb2bde823c
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -941,8 +941,8 @@ table finance_scenario_report
 			        TV,
 			        (1 + r)^5
 			    )
-		lineageTag: 2751beae-9cff-4501-aaf3-1210346b8489
 		displayFolder: Capital Allocation
+		lineageTag: 2751beae-9cff-4501-aaf3-1210346b8489
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -952,8 +952,8 @@ table finance_scenario_report
 			[Project PV of Cash Flows ($M)]
 			+ [Project PV Terminal Value ($M)]
 			- [Initial Investment ($M)]
-		lineageTag: d6cc8f8c-97f5-4825-a587-b162dcc0374a
 		displayFolder: Capital Allocation
+		lineageTag: d6cc8f8c-97f5-4825-a587-b162dcc0374a
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -968,8 +968,8 @@ table finance_scenario_report
 			        "NEUTRAL"
 			    )
 			)
-		lineageTag: 65bc22a5-f97a-4c22-8fe3-45abdbe365cc
 		displayFolder: Capital Allocation
+		lineageTag: 65bc22a5-f97a-4c22-8fe3-45abdbe365cc
 
 	/// CALCULATED: the discount rate that zeroes project NPV, on the same hurdle-basis cash-flow set as the NPV panel.
 	measure 'Project IRR (%)' =
@@ -977,8 +977,8 @@ table finance_scenario_report
 			VALUE(
 			    SELECTEDVALUE(finance_scenario_report[project_irr_pct])
 			)
-		lineageTag: bfcca1aa-3b65-4ca4-ba20-49066b227016
 		displayFolder: Capital Allocation
+		lineageTag: bfcca1aa-3b65-4ca4-ba20-49066b227016
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -990,14 +990,14 @@ table finance_scenario_report
 			    "REJECT — IRR Below Hurdle"
 			)
 		formatString: 0
-		lineageTag: 06f0bacb-5bb2-4f16-82de-4c3454a049f6
 		displayFolder: Capital Allocation
+		lineageTag: 06f0bacb-5bb2-4f16-82de-4c3454a049f6
 
 	measure 'IRR - Hurdle Spread (pts)' =
 			
 			[Project IRR (%)] - [Hurdle Rate (%)]
-		lineageTag: 92d59c8a-5962-42d3-a761-af48ec24ba1b
 		displayFolder: Capital Allocation
+		lineageTag: 92d59c8a-5962-42d3-a761-af48ec24ba1b
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -1009,8 +1009,8 @@ table finance_scenario_report
 			    [IRR - Hurdle Spread (pts)] = 0, "BREAKEVEN",
 			    "FAIL — Below Hurdle"
 			)
-		lineageTag: b84e8692-62dd-49f7-9001-2fef7f2bedb1
 		displayFolder: Capital Allocation
+		lineageTag: b84e8692-62dd-49f7-9001-2fef7f2bedb1
 
 	measure 'IRR Investment Decision' =
 			
@@ -1019,8 +1019,8 @@ table finance_scenario_report
 			    "INVEST",
 			    "DO NOT INVEST"
 			)
-		lineageTag: 11b586a6-ab02-46f4-836c-a40f6e6887e2
 		displayFolder: Capital Allocation
+		lineageTag: 11b586a6-ab02-46f4-836c-a40f6e6887e2
 
 	/// MODEL OUTPUT: APPROVE only if NPV > 0 and IRR > hurdle and ROIC > WACC.
 	measure 'Investment Recommendation' =
@@ -1032,22 +1032,22 @@ table finance_scenario_report
 			    "APPROVE — Creates Value",
 			    "REJECT — Does Not Create Value"
 			)
-		lineageTag: 6f39faac-acf6-4dd9-b420-27a5bb88abdf
 		displayFolder: Capital Allocation
+		lineageTag: 6f39faac-acf6-4dd9-b420-27a5bb88abdf
 
 	measure 'ROIC Range Green' =
 			
 			"● Value Creating: ROIC > WACC"
-		lineageTag: d673c3b8-63d6-4380-a881-157bf14c1f71
 		displayFolder: Decision Display
+		lineageTag: d673c3b8-63d6-4380-a881-157bf14c1f71
 
 	measure 'IRR Decision Range' =
 			
 			"Strong: IRR > Hurdle Rate" & UNICHAR(10) &
 			"Break-even: IRR = Hurdle Rate" & UNICHAR(10) &
 			"Reject: IRR < Hurdle Rate"
-		lineageTag: 1fc6cf7c-f43a-405c-86cb-c2569dbf2a26
 		displayFolder: Decision Display
+		lineageTag: 1fc6cf7c-f43a-405c-86cb-c2569dbf2a26
 
 	measure 'NPV Decision Range' =
 			
@@ -1056,12 +1056,12 @@ table finance_scenario_report
 			"Break-even: NPV = $0"
 			    & UNICHAR(13) & UNICHAR(10) &
 			"Reject: NPV < $0"
-		lineageTag: aa9ee09d-7049-4ba3-864c-0b1e664f9043
 		displayFolder: Decision Display
+		lineageTag: aa9ee09d-7049-4ba3-864c-0b1e664f9043
 
 	measure 'Measure 7'
-		lineageTag: 18a3ebb0-6d4a-4390-9002-5bee62ee496b
 		displayFolder: Other
+		lineageTag: 18a3ebb0-6d4a-4390-9002-5bee62ee496b
 
 		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
 
@@ -1072,38 +1072,38 @@ table finance_scenario_report
 			"REVIEW: Mixed results across the three tests"
 			& UNICHAR(10) &
 			"REJECT: NPV < $0 AND ROIC < WACC AND IRR < Hurdle"
-		lineageTag: 37fd4f31-7961-4814-a63e-b45df007bdf4
 		displayFolder: Decision Display
+		lineageTag: 37fd4f31-7961-4814-a63e-b45df007bdf4
 
 	measure 'ROIC Range Green Color' =
 			
 			"#107C10"
-		lineageTag: 7a8e441b-3c12-449e-a3a8-18571fd7aba5
 		displayFolder: Decision Colors
+		lineageTag: 7a8e441b-3c12-449e-a3a8-18571fd7aba5
 
 	measure 'ROIC Range Neutral' =
 			
 			"● Break-even: ROIC = WACC"
-		lineageTag: 7e43dd12-08db-4d28-abc4-cf5cb990333d
 		displayFolder: Decision Display
+		lineageTag: 7e43dd12-08db-4d28-abc4-cf5cb990333d
 
 	measure 'ROIC Range Neutral Color' =
 			
 			"#404040"
-		lineageTag: 61c01568-6569-4328-a11a-f581d478d540
 		displayFolder: Decision Colors
+		lineageTag: 61c01568-6569-4328-a11a-f581d478d540
 
 	measure 'ROIC Range Red' =
 			
 			"● Value Destroying: ROIC < WACC"
-		lineageTag: a91fd283-55b1-4f18-bcee-5e454ef366a0
 		displayFolder: Decision Display
+		lineageTag: a91fd283-55b1-4f18-bcee-5e454ef366a0
 
 	measure 'ROIC Range Red Color' =
 			
 			"#C42B1C"
-		lineageTag: 8d01279b-d83d-49a7-bed0-c519af8e269e
 		displayFolder: Decision Colors
+		lineageTag: 8d01279b-d83d-49a7-bed0-c519af8e269e
 
 	measure 'ROIC Decision Range Display' =
 			
@@ -1112,8 +1112,8 @@ table finance_scenario_report
 			[ROIC Range Neutral]
 			    & UNICHAR(10) &
 			[ROIC Range Red]
-		lineageTag: f9bc9d3f-f580-468a-8741-ad7660a2a71b
 		displayFolder: Decision Display
+		lineageTag: f9bc9d3f-f580-468a-8741-ad7660a2a71b
 
 	measure 'ROIC Status Color' =
 			
@@ -1127,8 +1127,8 @@ table finance_scenario_report
 			        ROICValue < WACCValue, "#C42B1C",
 			        "#404040"
 			    )
-		lineageTag: 2187759d-29f9-492a-a956-94345ec71603
 		displayFolder: Decision Colors
+		lineageTag: 2187759d-29f9-492a-a956-94345ec71603
 
 	measure 'IRR Decision Range Display' =
 			
@@ -1137,8 +1137,8 @@ table finance_scenario_report
 			"● Break-even: IRR = Hurdle Rate"
 			    & UNICHAR(13) & UNICHAR(10) &
 			"● Reject: IRR < Hurdle Rate"
-		lineageTag: b50ae982-77b5-4e3e-ad19-deecf57e5d07
 		displayFolder: Decision Display
+		lineageTag: b50ae982-77b5-4e3e-ad19-deecf57e5d07
 
 	measure 'IRR Status Color' =
 			
@@ -1152,8 +1152,8 @@ table finance_scenario_report
 			        IRRValue < HurdleValue, "#C42B1C",
 			        "#404040"
 			    )
-		lineageTag: 5e8d5422-3b07-4b14-a6fc-a2b68146f79c
 		displayFolder: Decision Colors
+		lineageTag: 5e8d5422-3b07-4b14-a6fc-a2b68146f79c
 
 	measure 'NPV Decision Color' =
 			
@@ -1166,8 +1166,8 @@ table finance_scenario_report
 			        NPVValue < 0, "#C42B1C",
 			        "#404040"
 			    )
-		lineageTag: f34b1289-7162-4676-a6f8-1a29ecd87dcd
 		displayFolder: Decision Colors
+		lineageTag: f34b1289-7162-4676-a6f8-1a29ecd87dcd
 
 	measure 'Investment Recommendation Color' =
 			
@@ -1201,8 +1201,8 @@ table finance_scenario_report
 			        NOT PassNPV && NOT PassROIC && NOT PassIRR, "#C42B1C",
 			        "#0078D4"
 			    )
-		lineageTag: 8a93486d-9cf9-4f6c-a9ab-d4d33a386345
 		displayFolder: Decision Colors
+		lineageTag: 8a93486d-9cf9-4f6c-a9ab-d4d33a386345
 
 	measure 'IRR Investment Decision Color' =
 			
@@ -1217,8 +1217,8 @@ table finance_scenario_report
 			        IRRValue < HurdleValue, "#C42B1C",
 			        "#404040"
 			    )
-		lineageTag: b60cc9aa-3ccf-4054-a2a9-377ffc264e3c
 		displayFolder: Decision Colors
+		lineageTag: b60cc9aa-3ccf-4054-a2a9-377ffc264e3c
 
 	measure 'IRR Comparison Symbol' =
 			
@@ -1232,12 +1232,12 @@ table finance_scenario_report
 			        IRRValue < HurdleValue, "<",
 			        "="
 			    )
-		lineageTag: 86c366d0-a026-4173-8498-f8ce7aa3ee76
 		displayFolder: Formatting Symbols
+		lineageTag: 86c366d0-a026-4173-8498-f8ce7aa3ee76
 
 	measure 'Measure 8'
-		lineageTag: 83c02707-042e-41ae-b7db-1d5f8c7a7e2e
 		displayFolder: Other
+		lineageTag: 83c02707-042e-41ae-b7db-1d5f8c7a7e2e
 
 		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
 
@@ -1253,8 +1253,8 @@ table finance_scenario_report
 			        HurdleValue > IRRValue, ">",
 			        "="
 			    )
-		lineageTag: 8adcf421-b6ad-4bb3-989d-35e0cf9e1f0e
 		displayFolder: Formatting Symbols
+		lineageTag: 8adcf421-b6ad-4bb3-989d-35e0cf9e1f0e
 
 	measure 'NPV Comparison Symbol' =
 			
@@ -1266,14 +1266,14 @@ table finance_scenario_report
 			        NPVValue < 0, "<",
 			        "="
 			    )
-		lineageTag: f1488f90-f6f0-487c-8cef-3fcdb904759e
 		displayFolder: Formatting Symbols
+		lineageTag: f1488f90-f6f0-487c-8cef-3fcdb904759e
 
 	measure 'IRR Investment Range Green' =
 			
 			"● INVEST: IRR > Hurdle Rate"
-		lineageTag: 27a308e2-9a11-461c-9045-1904db5c2c86
 		displayFolder: Decision Display
+		lineageTag: 27a308e2-9a11-461c-9045-1904db5c2c86
 
 	measure 'IRR Investment Decision Range' =
 			
@@ -1282,8 +1282,8 @@ table finance_scenario_report
 			"REVIEW: IRR = Hurdle Rate"
 			& UNICHAR(13) & UNICHAR(10) &
 			"REJECT: IRR < Hurdle Rate"
-		lineageTag: ea536573-41a5-4d06-b969-95f5830055d5
 		displayFolder: Decision Display
+		lineageTag: ea536573-41a5-4d06-b969-95f5830055d5
 
 	measure 'IRR Margin Status Range' =
 			
@@ -1292,8 +1292,8 @@ table finance_scenario_report
 			"BREAK-EVEN: IRR = Hurdle Rate"
 			& UNICHAR(13) & UNICHAR(10) &
 			"FAIL: IRR < Hurdle Rate"
-		lineageTag: 13f2007f-8820-45e7-9a2e-1ff60993156c
 		displayFolder: Decision Display
+		lineageTag: 13f2007f-8820-45e7-9a2e-1ff60993156c
 
 	measure 'IRR Decision Color' =
 			
@@ -1308,8 +1308,8 @@ table finance_scenario_report
 			        IRRValue < HurdleValue, "#C42B1C",
 			        "#404040"
 			    )
-		lineageTag: 40621376-ef45-41cb-8d1c-d0648098e0a8
 		displayFolder: Decision Colors
+		lineageTag: 40621376-ef45-41cb-8d1c-d0648098e0a8
 
 	measure 'PV FCF Years 1-5 ($B)' =
 			
@@ -1318,8 +1318,8 @@ table finance_scenario_report
 			    1000
 			)
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
-		lineageTag: c02a3b46-14c0-403d-ae2c-f079ea1ec388
 		displayFolder: Valuation
+		lineageTag: c02a3b46-14c0-403d-ae2c-f079ea1ec388
 
 	measure 'ROIC vs WACC Symbol' =
 			
@@ -1332,13 +1332,13 @@ table finance_scenario_report
 			        ROICValue < WACCValue, "<",
 			        "="
 			    )
-		lineageTag: 76cf6c49-cf15-4c38-8a8f-c5011c597825
 		displayFolder: Formatting Symbols
+		lineageTag: 76cf6c49-cf15-4c38-8a8f-c5011c597825
 
 	measure 'Zero Value' = 0
 		formatString: 0
-		lineageTag: c9b05837-ca37-41ed-8c5a-6f99c7b5e08d
 		displayFolder: Other
+		lineageTag: c9b05837-ca37-41ed-8c5a-6f99c7b5e08d
 
 	column scenario
 		dataType: string
