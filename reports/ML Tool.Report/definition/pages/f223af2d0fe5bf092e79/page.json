@@ -4,5 +4,17 @@
   "displayName": "Page 3 \u2014 Market & Cost of Capital",
   "displayOption": "ActualSize",
   "height": 3000,
-  "width": 3000
+  "width": 3000,
+  "visualInteractions": [
+    {
+      "source": "9d94d4e2d0fe9c8f6bb4",
+      "target": "6c551d154b8834b3886c",
+      "type": "NoFilter"
+    },
+    {
+      "source": "9d94d4e2d0fe9c8f6bb4",
+      "target": "a8f5c3302677996c9cc4",
+      "type": "NoFilter"
+    }
+  ]
 }

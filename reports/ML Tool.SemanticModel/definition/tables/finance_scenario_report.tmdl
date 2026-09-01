@@ -990,9 +990,7 @@ table finance_scenario_report
 	/// ANALYST ASSUMPTION: WACC + 2.00pt project risk premium. Read from the versioned pipeline column since the cutover (was a DAX-only constant).
 	measure 'Hurdle Rate (%)' =
 			
-			VALUE(
-			    SELECTEDVALUE(finance_scenario_report[hurdle_rate_pct])
-			)
+			SELECTEDVALUE(finance_scenario_report[hurdle_rate_pct])
 		displayFolder: Capital Allocation
 		lineageTag: b805ef31-b464-43cc-93bd-23f91a109687
 
@@ -1077,9 +1075,7 @@ table finance_scenario_report
 	/// CALCULATED: the discount rate that zeroes project NPV, on the same hurdle-basis cash-flow set as the NPV panel.
 	measure 'Project IRR (%)' =
 			
-			VALUE(
-			    SELECTEDVALUE(finance_scenario_report[project_irr_pct])
-			)
+			SELECTEDVALUE(finance_scenario_report[project_irr_pct])
 		displayFolder: Capital Allocation
 		lineageTag: bfcca1aa-3b65-4ca4-ba20-49066b227016
 
@@ -1762,7 +1758,8 @@ table finance_scenario_report
 		annotation SummarizationSetBy = Automatic
 
 	column project_irr_pct
-		dataType: string
+		dataType: double
+		formatString: 0.00
 		lineageTag: b4386b0b-73e3-4f57-948a-389b27f7ab06
 		summarizeBy: none
 		sourceColumn: project_irr_pct
@@ -1770,7 +1767,8 @@ table finance_scenario_report
 		annotation SummarizationSetBy = Automatic
 
 	column hurdle_rate_pct
-		dataType: string
+		dataType: double
+		formatString: 0.00
 		lineageTag: dd0df80a-dcda-4403-b049-4f6ae0f474b9
 		summarizeBy: none
 		sourceColumn: hurdle_rate_pct
@@ -1786,7 +1784,7 @@ table finance_scenario_report
 				    [Delimiter = ",", Columns = 33, QuoteStyle = QuoteStyle.None]
 				),
 				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted headers",{{"scenario_sort", Int64.Type}, {"treasury_2y", type number}, {"fed_funds", type number}, {"cpi", type number}, {"unemployment", type number}, {"risk_free_rate_pct", type number}, {"beta", type number}, {"equity_risk_premium_pct", type number}, {"equity_weight_pct", type number}, {"debt_weight_pct", type number}, {"credit_spread_pct", type number}, {"tax_rate_pct", type number}, {"cost_of_equity_pct", type number}, {"cost_of_debt_pct", type number}, {"wacc_pct", type number}, {"debt", type number}, {"cash", type number}, {"net_debt", type number}, {"shares_outstanding", type number}, {"terminal_growth_pct", type number}, {"enterprise_value", type number}, {"equity_value", type number}, {"implied_share_price", type number}, {"ebit", type number}, {"roic_pct", type number}, {"invested_capital", type number}, {"nopat", type number}, {"roic_wacc_spread_pct", type number}})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted headers",{{"scenario_sort", Int64.Type}, {"treasury_2y", type number}, {"fed_funds", type number}, {"cpi", type number}, {"unemployment", type number}, {"risk_free_rate_pct", type number}, {"beta", type number}, {"equity_risk_premium_pct", type number}, {"equity_weight_pct", type number}, {"debt_weight_pct", type number}, {"credit_spread_pct", type number}, {"tax_rate_pct", type number}, {"cost_of_equity_pct", type number}, {"cost_of_debt_pct", type number}, {"wacc_pct", type number}, {"debt", type number}, {"cash", type number}, {"net_debt", type number}, {"shares_outstanding", type number}, {"terminal_growth_pct", type number}, {"enterprise_value", type number}, {"equity_value", type number}, {"implied_share_price", type number}, {"ebit", type number}, {"roic_pct", type number}, {"invested_capital", type number}, {"nopat", type number}, {"roic_wacc_spread_pct", type number}, {"hurdle_rate_pct", type number}, {"project_irr_pct", type number}})
 				in
 				    #"Changed Type"
 

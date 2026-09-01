@@ -4,5 +4,22 @@
   "displayName": "Page 4 \u2014 Valuation & Decision",
   "displayOption": "ActualSize",
   "height": 3000,
-  "width": 3000
+  "width": 3000,
+  "visualInteractions": [
+    {
+      "source": "6861f3323f7a126013ff",
+      "target": "017b2b9562f2e565da19",
+      "type": "NoFilter"
+    },
+    {
+      "source": "6861f3323f7a126013ff",
+      "target": "795a0424859793725808",
+      "type": "NoFilter"
+    },
+    {
+      "source": "6861f3323f7a126013ff",
+      "target": "5aa14aa140ac2472ebde",
+      "type": "NoFilter"
+    }
+  ]
 }
