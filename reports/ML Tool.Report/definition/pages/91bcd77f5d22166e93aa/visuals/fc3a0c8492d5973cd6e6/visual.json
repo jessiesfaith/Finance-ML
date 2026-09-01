@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Each line is a trailing 24-month mean: regime shape over monthly noise, at the cost of turning late. First 23 months blank by design.",
+                    "value": "Pick ONE window at left: 03M / 06M / 12M / 24M trailing means (blank until the window fills) or YTD (calendar year-to-date mean). No pick = the average across windows.",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

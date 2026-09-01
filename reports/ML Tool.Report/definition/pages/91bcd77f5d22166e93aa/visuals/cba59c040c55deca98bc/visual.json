@@ -6,8 +6,8 @@
     "y": 589,
     "height": 300,
     "width": 800,
-    "z": 10000,
-    "tabOrder": 10000
+    "z": 11000,
+    "tabOrder": 11000
   },
   "visual": {
     "visualType": "lineChart",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_rolling24"
+                      "Entity": "market_history_windows"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_rolling24.observation_date",
+              "queryRef": "market_history_windows.observation_date",
               "nativeQueryRef": "observation_date",
               "active": true
             }
@@ -41,17 +41,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "cpi_yoy_r24"
+                      "Property": "cpi_yoy"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.cpi_yoy_r24)",
-              "nativeQueryRef": "Sum of cpi_yoy_r24",
+              "queryRef": "Avg(market_history_windows.cpi_yoy)",
+              "nativeQueryRef": "Average of cpi_yoy",
               "displayName": "CPI"
             },
             {
@@ -61,17 +61,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "core_cpi_yoy_r24"
+                      "Property": "core_cpi_yoy"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.core_cpi_yoy_r24)",
-              "nativeQueryRef": "Sum of core_cpi_yoy_r24",
+              "queryRef": "Avg(market_history_windows.core_cpi_yoy)",
+              "nativeQueryRef": "Average of core_cpi_yoy",
               "displayName": "Core CPI"
             },
             {
@@ -81,17 +81,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "pce_yoy_r24"
+                      "Property": "pce_yoy"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.pce_yoy_r24)",
-              "nativeQueryRef": "Sum of pce_yoy_r24",
+              "queryRef": "Avg(market_history_windows.pce_yoy)",
+              "nativeQueryRef": "Average of pce_yoy",
               "displayName": "PCE"
             },
             {
@@ -101,17 +101,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "core_pce_yoy_r24"
+                      "Property": "core_pce_yoy"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.core_pce_yoy_r24)",
-              "nativeQueryRef": "Sum of core_pce_yoy_r24",
+              "queryRef": "Avg(market_history_windows.core_pce_yoy)",
+              "nativeQueryRef": "Average of core_pce_yoy",
               "displayName": "Core PCE"
             }
           ]

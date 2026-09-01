@@ -6,8 +6,8 @@
     "y": 4675,
     "height": 240,
     "width": 800,
-    "z": 47000,
-    "tabOrder": 47000
+    "z": 48000,
+    "tabOrder": 48000
   },
   "visual": {
     "visualType": "textbox",
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Rows 1\u20133 set the discount-rate world (Page 3); rows 2\u20134 are the price-and-wage story the Fed reacts to; rows 4\u20136 are the jobs engine \u2014 rates, duration, then the flow numbers the news leads with; row 7 closes macro with housing, surveys and credit.",
+                    "value": "Rows 1\u20133 set the discount-rate world (Page 3); rows 2\u20134 are the price-and-wage story the Fed reacts to; rows 4\u20136 are the jobs engine; row 7 closes macro with housing, surveys and credit; rows 8\u201311 are markets.",
                     "textStyle": {
                       "fontSize": "10pt"
                     }
@@ -39,7 +39,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Rows 8\u201311 are markets: metals catch the stress bid, oil rides demand, beef compounds CPI, and the equity panels show the rate-sensitivity of growth assets. One economy, many windows.",
+                    "value": "Short windows (03M) hug the raw data and turn fast; long windows (24M) show regime shape and turn late; YTD resets every January. Flip between them and watch the same 2020 shock sharpen or smooth \u2014 that is the smoothing trade-off made visible.",
                     "textStyle": {
                       "fontSize": "10pt"
                     }

@@ -6,8 +6,8 @@
     "y": 3494,
     "height": 300,
     "width": 800,
-    "z": 38000,
-    "tabOrder": 38000
+    "z": 39000,
+    "tabOrder": 39000
   },
   "visual": {
     "visualType": "lineChart",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_rolling24"
+                      "Entity": "market_history_windows"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_rolling24.observation_date",
+              "queryRef": "market_history_windows.observation_date",
               "nativeQueryRef": "observation_date",
               "active": true
             }
@@ -41,17 +41,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "beef_usd_lb_r24"
+                      "Property": "beef_usd_lb"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.beef_usd_lb_r24)",
-              "nativeQueryRef": "Sum of beef_usd_lb_r24",
+              "queryRef": "Avg(market_history_windows.beef_usd_lb)",
+              "nativeQueryRef": "Average of beef_usd_lb",
               "displayName": "Ground beef"
             }
           ]

@@ -6,8 +6,8 @@
     "y": 4324,
     "height": 300,
     "width": 800,
-    "z": 44000,
-    "tabOrder": 44000
+    "z": 45000,
+    "tabOrder": 45000
   },
   "visual": {
     "visualType": "lineChart",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_rolling24"
+                      "Entity": "market_history_windows"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_rolling24.observation_date",
+              "queryRef": "market_history_windows.observation_date",
               "nativeQueryRef": "observation_date",
               "active": true
             }
@@ -41,17 +41,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "tech_co_1_px_r24"
+                      "Property": "tech_co_1_px"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.tech_co_1_px_r24)",
-              "nativeQueryRef": "Sum of tech_co_1_px_r24",
+              "queryRef": "Avg(market_history_windows.tech_co_1_px)",
+              "nativeQueryRef": "Average of tech_co_1_px",
               "displayName": "T1"
             },
             {
@@ -61,17 +61,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "tech_co_2_px_r24"
+                      "Property": "tech_co_2_px"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.tech_co_2_px_r24)",
-              "nativeQueryRef": "Sum of tech_co_2_px_r24",
+              "queryRef": "Avg(market_history_windows.tech_co_2_px)",
+              "nativeQueryRef": "Average of tech_co_2_px",
               "displayName": "T2"
             },
             {
@@ -81,17 +81,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "tech_co_3_px_r24"
+                      "Property": "tech_co_3_px"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.tech_co_3_px_r24)",
-              "nativeQueryRef": "Sum of tech_co_3_px_r24",
+              "queryRef": "Avg(market_history_windows.tech_co_3_px)",
+              "nativeQueryRef": "Average of tech_co_3_px",
               "displayName": "T3"
             },
             {
@@ -101,17 +101,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "tech_co_4_px_r24"
+                      "Property": "tech_co_4_px"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.tech_co_4_px_r24)",
-              "nativeQueryRef": "Sum of tech_co_4_px_r24",
+              "queryRef": "Avg(market_history_windows.tech_co_4_px)",
+              "nativeQueryRef": "Average of tech_co_4_px",
               "displayName": "T4"
             },
             {
@@ -121,17 +121,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "tech_co_5_px_r24"
+                      "Property": "tech_co_5_px"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.tech_co_5_px_r24)",
-              "nativeQueryRef": "Sum of tech_co_5_px_r24",
+              "queryRef": "Avg(market_history_windows.tech_co_5_px)",
+              "nativeQueryRef": "Average of tech_co_5_px",
               "displayName": "T5"
             }
           ]

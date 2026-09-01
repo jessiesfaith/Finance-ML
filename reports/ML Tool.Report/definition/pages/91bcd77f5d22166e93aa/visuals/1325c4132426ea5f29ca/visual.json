@@ -6,8 +6,8 @@
     "y": 2249,
     "height": 300,
     "width": 800,
-    "z": 24000,
-    "tabOrder": 24000
+    "z": 25000,
+    "tabOrder": 25000
   },
   "visual": {
     "visualType": "lineChart",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_rolling24"
+                      "Entity": "market_history_windows"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_rolling24.observation_date",
+              "queryRef": "market_history_windows.observation_date",
               "nativeQueryRef": "observation_date",
               "active": true
             }
@@ -41,17 +41,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "payroll_chg_k_r24"
+                      "Property": "payroll_chg_k"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.payroll_chg_k_r24)",
-              "nativeQueryRef": "Sum of payroll_chg_k_r24",
+              "queryRef": "Avg(market_history_windows.payroll_chg_k)",
+              "nativeQueryRef": "Average of payroll_chg_k",
               "displayName": "Payroll change / month"
             },
             {
@@ -61,17 +61,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "jolts_openings_k_r24"
+                      "Property": "jolts_openings_k"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.jolts_openings_k_r24)",
-              "nativeQueryRef": "Sum of jolts_openings_k_r24",
+              "queryRef": "Avg(market_history_windows.jolts_openings_k)",
+              "nativeQueryRef": "Average of jolts_openings_k",
               "displayName": "JOLTS openings"
             }
           ]

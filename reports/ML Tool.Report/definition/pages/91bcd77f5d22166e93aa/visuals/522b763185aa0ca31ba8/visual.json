@@ -6,8 +6,8 @@
     "y": 3079,
     "height": 300,
     "width": 800,
-    "z": 34000,
-    "tabOrder": 34000
+    "z": 35000,
+    "tabOrder": 35000
   },
   "visual": {
     "visualType": "lineChart",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_rolling24"
+                      "Entity": "market_history_windows"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_rolling24.observation_date",
+              "queryRef": "market_history_windows.observation_date",
               "nativeQueryRef": "observation_date",
               "active": true
             }
@@ -41,17 +41,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "silver_usd_oz_r24"
+                      "Property": "silver_usd_oz"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.silver_usd_oz_r24)",
-              "nativeQueryRef": "Sum of silver_usd_oz_r24",
+              "queryRef": "Avg(market_history_windows.silver_usd_oz)",
+              "nativeQueryRef": "Average of silver_usd_oz",
               "displayName": "Silver"
             }
           ]

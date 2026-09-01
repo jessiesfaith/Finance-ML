@@ -6,8 +6,8 @@
     "y": 1004,
     "height": 300,
     "width": 800,
-    "z": 14000,
-    "tabOrder": 14000
+    "z": 15000,
+    "tabOrder": 15000
   },
   "visual": {
     "visualType": "lineChart",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_rolling24"
+                      "Entity": "market_history_windows"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_rolling24.observation_date",
+              "queryRef": "market_history_windows.observation_date",
               "nativeQueryRef": "observation_date",
               "active": true
             }
@@ -41,17 +41,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "ahe_yoy_r24"
+                      "Property": "ahe_yoy"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.ahe_yoy_r24)",
-              "nativeQueryRef": "Sum of ahe_yoy_r24",
+              "queryRef": "Avg(market_history_windows.ahe_yoy)",
+              "nativeQueryRef": "Average of ahe_yoy",
               "displayName": "Avg hourly earnings"
             },
             {
@@ -61,17 +61,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "cpi_yoy_r24"
+                      "Property": "cpi_yoy"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.cpi_yoy_r24)",
-              "nativeQueryRef": "Sum of cpi_yoy_r24",
+              "queryRef": "Avg(market_history_windows.cpi_yoy)",
+              "nativeQueryRef": "Average of cpi_yoy",
               "displayName": "CPI"
             }
           ]

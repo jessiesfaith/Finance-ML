@@ -6,8 +6,8 @@
     "y": 1419,
     "height": 300,
     "width": 800,
-    "z": 18000,
-    "tabOrder": 18000
+    "z": 19000,
+    "tabOrder": 19000
   },
   "visual": {
     "visualType": "lineChart",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_rolling24"
+                      "Entity": "market_history_windows"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_rolling24.observation_date",
+              "queryRef": "market_history_windows.observation_date",
               "nativeQueryRef": "observation_date",
               "active": true
             }
@@ -41,17 +41,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "unemployment_rate_r24"
+                      "Property": "unemployment_rate"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.unemployment_rate_r24)",
-              "nativeQueryRef": "Sum of unemployment_rate_r24",
+              "queryRef": "Avg(market_history_windows.unemployment_rate)",
+              "nativeQueryRef": "Average of unemployment_rate",
               "displayName": "U-3"
             },
             {
@@ -61,17 +61,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "u6_rate_r24"
+                      "Property": "u6_rate"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.u6_rate_r24)",
-              "nativeQueryRef": "Sum of u6_rate_r24",
+              "queryRef": "Avg(market_history_windows.u6_rate)",
+              "nativeQueryRef": "Average of u6_rate",
               "displayName": "U-6"
             }
           ]

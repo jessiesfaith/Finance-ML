@@ -6,8 +6,8 @@
     "y": 1834,
     "height": 300,
     "width": 800,
-    "z": 20000,
-    "tabOrder": 20000
+    "z": 21000,
+    "tabOrder": 21000
   },
   "visual": {
     "visualType": "lineChart",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_rolling24"
+                      "Entity": "market_history_windows"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_rolling24.observation_date",
+              "queryRef": "market_history_windows.observation_date",
               "nativeQueryRef": "observation_date",
               "active": true
             }
@@ -41,17 +41,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "unemp_duration_weeks_r24"
+                      "Property": "unemp_duration_weeks"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.unemp_duration_weeks_r24)",
-              "nativeQueryRef": "Sum of unemp_duration_weeks_r24",
+              "queryRef": "Avg(market_history_windows.unemp_duration_weeks)",
+              "nativeQueryRef": "Average of unemp_duration_weeks",
               "displayName": "Median weeks"
             }
           ]

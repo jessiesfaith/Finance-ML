@@ -59,3 +59,48 @@ def test_curve_spread_honors_its_derivation_rule(history):
 def test_committed_history_matches_a_fresh_rebuild(history):
     from conftest import assert_matches_committed
     assert_matches_committed(history, HISTORY_OUTPUT)
+
+
+# ------------------------------------------------
+# WINDOWED HISTORY (the Page 5 time-period toggle)
+# ------------------------------------------------
+
+def test_windowed_history_schema_and_coverage():
+    from financials.market_data import (
+        HISTORY_WINDOWS, WINDOWS_OUTPUT, load_market_data, windowed_history)
+    tables, _ = load_market_data(strict=True)
+    win = windowed_history(tables["market_observations"])
+    assert list(win.columns) == (["observation_date", "window"]
+                                 + list(HISTORY_METRICS)
+                                 + ["source", "value_class"])
+    assert set(win["window"]) == set(HISTORY_WINDOWS) | {"YTD"}
+    assert len(win) == 103 * 5
+
+    # 3M window: hand-recompute one value; blanks until the window fills.
+    w3 = win[win["window"] == "03M"].reset_index(drop=True)
+    assert w3["cpi_yoy"].iloc[:2].isna().all()
+    raw = win[win["window"] == "YTD"].reset_index(drop=True)  # Jan YTD = raw
+    hand = (raw["cpi_yoy"].iloc[0] * 0 +  # placeholder, real check below
+            0)
+    # YTD: January equals the month itself; March = mean of Jan..Mar.
+    tables_obs = tables["market_observations"]
+    latest = (tables_obs.sort_values("retrieval_timestamp")
+              .groupby(["metric_id", "observation_date"]).tail(1))
+    cpi = (latest[latest["metric_id"] == "cpi_yoy"]
+           .sort_values("observation_date")["value"].astype(float))
+    ytd = win[win["window"] == "YTD"].reset_index(drop=True)
+    assert ytd["cpi_yoy"].iloc[0] == pytest.approx(cpi.iloc[0], abs=2e-4)
+    assert ytd["cpi_yoy"].iloc[2] == pytest.approx(
+        cpi.iloc[:3].mean(), abs=2e-4)
+    assert w3["cpi_yoy"].iloc[2] == pytest.approx(
+        cpi.iloc[:3].mean(), abs=2e-4)
+
+    # The 24M rows must agree with the legacy rolling-24 export.
+    from financials.market_data import rolling_24m_history
+    legacy = rolling_24m_history(tables["market_observations"])
+    w24 = win[win["window"] == "24M"].reset_index(drop=True)
+    assert w24["cpi_yoy"].dropna().values == pytest.approx(
+        legacy["cpi_yoy_r24"].dropna().values)
+
+    from conftest import assert_matches_committed
+    assert_matches_committed(win, WINDOWS_OUTPUT)

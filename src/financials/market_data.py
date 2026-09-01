@@ -466,3 +466,49 @@ def rolling_24m_history(observations: pd.DataFrame) -> pd.DataFrame:
     out["source"] = "SYNTHETIC"
     out["value_class"] = "MARKET_DATA"
     return out
+
+
+# Windowed history (Page 5 toggle): the same series at several trailing
+# windows plus calendar year-to-date. Long format - one row per (month,
+# window) - so a single page picker swaps every chart at once. Labels
+# are zero-padded so they sort naturally in a picker.
+HISTORY_WINDOWS = {"03M": 3, "06M": 6, "12M": 12, "24M": 24}
+WINDOWS_OUTPUT = BASE_DIR / "reports" / "market_history_windows.csv"
+
+
+def windowed_history(observations: pd.DataFrame) -> pd.DataFrame:
+    """
+    For each window label: the trailing mean with min_periods equal to
+    the window (partial windows stay blank - same honesty rule as the
+    24-month export). YTD is the calendar year-to-date mean: January
+    equals the month itself, December averages the whole year.
+    """
+    latest = (observations.sort_values("retrieval_timestamp")
+              .groupby(["metric_id", "observation_date"]).tail(1))
+    wide = (latest.pivot(index="observation_date", columns="metric_id",
+                         values="value").sort_index())
+    wide["curve_spread_10y_2y"] = wide["ust_10y"] - wide["ust_2y"]
+    wide["curve_spread_10y_3m"] = wide["ust_10y"] - wide["ust_3m"]
+    wide = wide[list(HISTORY_METRICS)]
+
+    frames = []
+    for label, months in HISTORY_WINDOWS.items():
+        smoothed = wide.rolling(months, min_periods=months).mean()
+        smoothed.insert(0, "window", label)
+        frames.append(smoothed)
+    year = pd.Series(pd.to_datetime(wide.index).year, index=wide.index)
+    ytd = wide.groupby(year, group_keys=False).apply(
+        lambda g: g.expanding().mean())
+    ytd.insert(0, "window", "YTD")
+    frames.append(ytd)
+
+    out = pd.concat(frames)
+    out = out.reset_index().rename(columns={"index": "observation_date"})
+    out["observation_date"] = pd.to_datetime(
+        out["observation_date"]).dt.strftime("%Y-%m-%d")
+    for metric in HISTORY_METRICS:
+        out[metric] = out[metric].round(4)
+    out["source"] = "SYNTHETIC"
+    out["value_class"] = "MARKET_DATA"
+    return (out.sort_values(["window", "observation_date"])
+            .reset_index(drop=True))

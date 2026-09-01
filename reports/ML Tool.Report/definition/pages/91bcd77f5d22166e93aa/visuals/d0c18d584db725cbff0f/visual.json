@@ -6,8 +6,8 @@
     "y": 3909,
     "height": 300,
     "width": 800,
-    "z": 40000,
-    "tabOrder": 40000
+    "z": 41000,
+    "tabOrder": 41000
   },
   "visual": {
     "visualType": "lineChart",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_rolling24"
+                      "Entity": "market_history_windows"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_rolling24.observation_date",
+              "queryRef": "market_history_windows.observation_date",
               "nativeQueryRef": "observation_date",
               "active": true
             }
@@ -41,17 +41,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "tech_sector_idx_r24"
+                      "Property": "tech_sector_idx"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.tech_sector_idx_r24)",
-              "nativeQueryRef": "Sum of tech_sector_idx_r24",
+              "queryRef": "Avg(market_history_windows.tech_sector_idx)",
+              "nativeQueryRef": "Average of tech_sector_idx",
               "displayName": "Tech index (synthetic)"
             }
           ]

@@ -1,0 +1,469 @@
+/// Curated pipeline export reports/market_history_windows.csv: every
+/// Page 5 series smoothed at several trailing windows (03M/06M/12M/
+/// 24M, blank until the window fills) plus calendar YTD. Long format
+/// so one picker swaps every chart. SYNTHETIC until the live cutover.
+table market_history_windows
+	lineageTag: e56b1d0a-d2c9-43e2-bf32-8be1daef69bc
+
+	column observation_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 56ecef66-7ae8-43e8-88de-d6541882330a
+		summarizeBy: none
+		sourceColumn: observation_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column window
+		dataType: string
+		lineageTag: dfe48332-ca69-43a5-bb27-1f97127ecbf2
+		summarizeBy: none
+		sourceColumn: window
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: 7a8e3c42-2c0b-47ea-bdf6-619e646da854
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 34bb9374-861b-4e22-8c94-ef9c06119a84
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column ust_3m
+		dataType: double
+		formatString: 0.00
+		lineageTag: 6e2fc7a3-9ef2-4f32-b83c-8871ef475fe5
+		summarizeBy: none
+		sourceColumn: ust_3m
+
+		annotation SummarizationSetBy = Automatic
+
+	column ust_2y
+		dataType: double
+		formatString: 0.00
+		lineageTag: 2648eb18-566b-467d-a0e6-02ff98b150d8
+		summarizeBy: none
+		sourceColumn: ust_2y
+
+		annotation SummarizationSetBy = Automatic
+
+	column ust_5y
+		dataType: double
+		formatString: 0.00
+		lineageTag: f2b72f6f-b1de-482b-8a60-ac99d43e48aa
+		summarizeBy: none
+		sourceColumn: ust_5y
+
+		annotation SummarizationSetBy = Automatic
+
+	column ust_10y
+		dataType: double
+		formatString: 0.00
+		lineageTag: 93a9e873-98da-420a-80cb-9eb04be8dee6
+		summarizeBy: none
+		sourceColumn: ust_10y
+
+		annotation SummarizationSetBy = Automatic
+
+	column ust_30y
+		dataType: double
+		formatString: 0.00
+		lineageTag: f4a90799-8658-43dd-9eb7-47d74145b40b
+		summarizeBy: none
+		sourceColumn: ust_30y
+
+		annotation SummarizationSetBy = Automatic
+
+	column curve_spread_10y_2y
+		dataType: double
+		formatString: 0.00
+		lineageTag: b77ee0cc-6d44-4068-b98c-b764e15a942a
+		summarizeBy: none
+		sourceColumn: curve_spread_10y_2y
+
+		annotation SummarizationSetBy = Automatic
+
+	column curve_spread_10y_3m
+		dataType: double
+		formatString: 0.00
+		lineageTag: 3754b0cd-b13e-4b0c-a6f3-13e65989d1dc
+		summarizeBy: none
+		sourceColumn: curve_spread_10y_3m
+
+		annotation SummarizationSetBy = Automatic
+
+	column fed_funds_eff
+		dataType: double
+		formatString: 0.00
+		lineageTag: aea9ef25-39f6-4bd7-bd8a-6b7cbfcffcca
+		summarizeBy: none
+		sourceColumn: fed_funds_eff
+
+		annotation SummarizationSetBy = Automatic
+
+	column cpi_yoy
+		dataType: double
+		formatString: 0.00
+		lineageTag: 17472ec6-9967-4192-851c-9d6bc0c86054
+		summarizeBy: none
+		sourceColumn: cpi_yoy
+
+		annotation SummarizationSetBy = Automatic
+
+	column core_cpi_yoy
+		dataType: double
+		formatString: 0.00
+		lineageTag: 53a4ea45-9e4e-4d17-a9f5-884d7ecdb01f
+		summarizeBy: none
+		sourceColumn: core_cpi_yoy
+
+		annotation SummarizationSetBy = Automatic
+
+	column pce_yoy
+		dataType: double
+		formatString: 0.00
+		lineageTag: 73239c13-4029-40e2-aea3-e38a3556a824
+		summarizeBy: none
+		sourceColumn: pce_yoy
+
+		annotation SummarizationSetBy = Automatic
+
+	column core_pce_yoy
+		dataType: double
+		formatString: 0.00
+		lineageTag: bd6b2b7e-3445-4f56-9c31-d3281c0d51c9
+		summarizeBy: none
+		sourceColumn: core_pce_yoy
+
+		annotation SummarizationSetBy = Automatic
+
+	column ppi_yoy
+		dataType: double
+		formatString: 0.00
+		lineageTag: a5f1c3bb-a711-4297-a376-053198754621
+		summarizeBy: none
+		sourceColumn: ppi_yoy
+
+		annotation SummarizationSetBy = Automatic
+
+	column ahe_yoy
+		dataType: double
+		formatString: 0.00
+		lineageTag: a0f322b6-489f-4e03-b89c-1074689cf866
+		summarizeBy: none
+		sourceColumn: ahe_yoy
+
+		annotation SummarizationSetBy = Automatic
+
+	column gdp_growth_yoy
+		dataType: double
+		formatString: 0.00
+		lineageTag: 91f9f4a5-f7b7-4c10-8756-d76ebb897912
+		summarizeBy: none
+		sourceColumn: gdp_growth_yoy
+
+		annotation SummarizationSetBy = Automatic
+
+	column indprod_yoy
+		dataType: double
+		formatString: 0.00
+		lineageTag: dc8fd5a5-2332-4fc4-9e60-fae29fc2c41e
+		summarizeBy: none
+		sourceColumn: indprod_yoy
+
+		annotation SummarizationSetBy = Automatic
+
+	column retail_sales_yoy
+		dataType: double
+		formatString: 0.00
+		lineageTag: e13acff2-e899-4554-bd8e-bd892324edb1
+		summarizeBy: none
+		sourceColumn: retail_sales_yoy
+
+		annotation SummarizationSetBy = Automatic
+
+	column unemployment_rate
+		dataType: double
+		formatString: 0.00
+		lineageTag: e024fa6c-c9c8-47ff-bbcd-8ace89081f34
+		summarizeBy: none
+		sourceColumn: unemployment_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column u6_rate
+		dataType: double
+		formatString: 0.00
+		lineageTag: c5b677a3-4996-438b-ac71-db22b7f714e0
+		summarizeBy: none
+		sourceColumn: u6_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column participation_rate
+		dataType: double
+		formatString: 0.00
+		lineageTag: 7b79dd16-06a9-4cf0-847d-87db8bbacd15
+		summarizeBy: none
+		sourceColumn: participation_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column unemp_duration_weeks
+		dataType: double
+		formatString: 0.00
+		lineageTag: e315e110-7609-4157-8e50-4ae421f8a704
+		summarizeBy: none
+		sourceColumn: unemp_duration_weeks
+
+		annotation SummarizationSetBy = Automatic
+
+	column initial_claims_k
+		dataType: double
+		formatString: 0.00
+		lineageTag: daf02b5c-11c4-458e-810e-4b39b17ac862
+		summarizeBy: none
+		sourceColumn: initial_claims_k
+
+		annotation SummarizationSetBy = Automatic
+
+	column continuing_claims_k
+		dataType: double
+		formatString: 0.00
+		lineageTag: a1d125dd-2271-4aec-9b86-cd242e97918f
+		summarizeBy: none
+		sourceColumn: continuing_claims_k
+
+		annotation SummarizationSetBy = Automatic
+
+	column payroll_chg_k
+		dataType: double
+		formatString: 0.00
+		lineageTag: f4a75742-fd27-4a59-9c82-4d5b08a7777e
+		summarizeBy: none
+		sourceColumn: payroll_chg_k
+
+		annotation SummarizationSetBy = Automatic
+
+	column jolts_openings_k
+		dataType: double
+		formatString: 0.00
+		lineageTag: 9db19378-907f-4eb1-9bec-331c5eb67db8
+		summarizeBy: none
+		sourceColumn: jolts_openings_k
+
+		annotation SummarizationSetBy = Automatic
+
+	column housing_starts_k
+		dataType: double
+		formatString: 0.00
+		lineageTag: 3aab8eeb-4caa-4e7f-ad06-6d7003aaf0d3
+		summarizeBy: none
+		sourceColumn: housing_starts_k
+
+		annotation SummarizationSetBy = Automatic
+
+	column consumer_sentiment_idx
+		dataType: double
+		formatString: 0.00
+		lineageTag: af6a51b5-85eb-40a9-9491-1f53ab9b3de8
+		summarizeBy: none
+		sourceColumn: consumer_sentiment_idx
+
+		annotation SummarizationSetBy = Automatic
+
+	column ism_pmi_idx
+		dataType: double
+		formatString: 0.00
+		lineageTag: 20ac1175-2b6e-41cd-bb68-957d6122cd5c
+		summarizeBy: none
+		sourceColumn: ism_pmi_idx
+
+		annotation SummarizationSetBy = Automatic
+
+	column ig_oas
+		dataType: double
+		formatString: 0.00
+		lineageTag: 04457f28-a3b9-4f24-a744-011add65d4d0
+		summarizeBy: none
+		sourceColumn: ig_oas
+
+		annotation SummarizationSetBy = Automatic
+
+	column hy_oas
+		dataType: double
+		formatString: 0.00
+		lineageTag: cd0a33d0-25c2-4813-9ea4-b772684788a5
+		summarizeBy: none
+		sourceColumn: hy_oas
+
+		annotation SummarizationSetBy = Automatic
+
+	column gold_usd_oz
+		dataType: double
+		formatString: 0.00
+		lineageTag: b50165a6-dd5e-4b95-8dd7-d84945b6f514
+		summarizeBy: none
+		sourceColumn: gold_usd_oz
+
+		annotation SummarizationSetBy = Automatic
+
+	column silver_usd_oz
+		dataType: double
+		formatString: 0.00
+		lineageTag: e3762869-dadf-40eb-890b-56f4b2ae0461
+		summarizeBy: none
+		sourceColumn: silver_usd_oz
+
+		annotation SummarizationSetBy = Automatic
+
+	column oil_wti_usd_bbl
+		dataType: double
+		formatString: 0.00
+		lineageTag: 6319c9a6-3129-4971-b8e7-e74e1d9ec681
+		summarizeBy: none
+		sourceColumn: oil_wti_usd_bbl
+
+		annotation SummarizationSetBy = Automatic
+
+	column beef_usd_lb
+		dataType: double
+		formatString: 0.00
+		lineageTag: 528c51c3-1e5c-4462-9298-6ffe9e1a34d7
+		summarizeBy: none
+		sourceColumn: beef_usd_lb
+
+		annotation SummarizationSetBy = Automatic
+
+	column tech_sector_idx
+		dataType: double
+		formatString: 0.00
+		lineageTag: 03a44768-e996-45fc-a3aa-5e617d2c2d2f
+		summarizeBy: none
+		sourceColumn: tech_sector_idx
+
+		annotation SummarizationSetBy = Automatic
+
+	column ai_sector_idx
+		dataType: double
+		formatString: 0.00
+		lineageTag: 567f95eb-c352-46e3-abef-d974004e4c2a
+		summarizeBy: none
+		sourceColumn: ai_sector_idx
+
+		annotation SummarizationSetBy = Automatic
+
+	column tech_co_1_px
+		dataType: double
+		formatString: 0.00
+		lineageTag: 100233ae-81d2-4364-bb5d-31c9fcc5b1df
+		summarizeBy: none
+		sourceColumn: tech_co_1_px
+
+		annotation SummarizationSetBy = Automatic
+
+	column tech_co_2_px
+		dataType: double
+		formatString: 0.00
+		lineageTag: 16431574-2025-40f9-9b3a-5f9ce484cb98
+		summarizeBy: none
+		sourceColumn: tech_co_2_px
+
+		annotation SummarizationSetBy = Automatic
+
+	column tech_co_3_px
+		dataType: double
+		formatString: 0.00
+		lineageTag: 8415e1a7-b882-4b60-a4a3-5b3c2cfab56f
+		summarizeBy: none
+		sourceColumn: tech_co_3_px
+
+		annotation SummarizationSetBy = Automatic
+
+	column tech_co_4_px
+		dataType: double
+		formatString: 0.00
+		lineageTag: cfc256d2-d754-4576-8da1-afa2025c54f0
+		summarizeBy: none
+		sourceColumn: tech_co_4_px
+
+		annotation SummarizationSetBy = Automatic
+
+	column tech_co_5_px
+		dataType: double
+		formatString: 0.00
+		lineageTag: c19d0612-27f1-47a1-a1e8-13bb107f4916
+		summarizeBy: none
+		sourceColumn: tech_co_5_px
+
+		annotation SummarizationSetBy = Automatic
+
+	column ai_co_1_px
+		dataType: double
+		formatString: 0.00
+		lineageTag: 2f280031-db80-4ac7-a362-878adb882a8b
+		summarizeBy: none
+		sourceColumn: ai_co_1_px
+
+		annotation SummarizationSetBy = Automatic
+
+	column ai_co_2_px
+		dataType: double
+		formatString: 0.00
+		lineageTag: 5fcf1ad8-097a-4aa3-8166-c3ce768e92b1
+		summarizeBy: none
+		sourceColumn: ai_co_2_px
+
+		annotation SummarizationSetBy = Automatic
+
+	column ai_co_3_px
+		dataType: double
+		formatString: 0.00
+		lineageTag: 9b09edf6-6b99-4309-86e7-571ba9c83bbd
+		summarizeBy: none
+		sourceColumn: ai_co_3_px
+
+		annotation SummarizationSetBy = Automatic
+
+	column ai_co_4_px
+		dataType: double
+		formatString: 0.00
+		lineageTag: 90f8aa0e-3120-4aba-b803-3ed4ec763011
+		summarizeBy: none
+		sourceColumn: ai_co_4_px
+
+		annotation SummarizationSetBy = Automatic
+
+	column ai_co_5_px
+		dataType: double
+		formatString: 0.00
+		lineageTag: 5a8175b2-7ce0-42d8-a15c-a4365ebe5d5c
+		summarizeBy: none
+		sourceColumn: ai_co_5_px
+
+		annotation SummarizationSetBy = Automatic
+
+	partition market_history_windows = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\market_history_windows.csv"),
+				    [Delimiter = ",", Columns = 50, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"observation_date", "window", "ust_3m", "ust_2y", "ust_5y", "ust_10y", "ust_30y", "curve_spread_10y_2y", "curve_spread_10y_3m", "fed_funds_eff", "cpi_yoy", "core_cpi_yoy", "pce_yoy", "core_pce_yoy", "ppi_yoy", "ahe_yoy", "gdp_growth_yoy", "indprod_yoy", "retail_sales_yoy", "unemployment_rate", "u6_rate", "participation_rate", "unemp_duration_weeks", "initial_claims_k", "continuing_claims_k", "payroll_chg_k", "jolts_openings_k", "housing_starts_k", "consumer_sentiment_idx", "ism_pmi_idx", "ig_oas", "hy_oas", "gold_usd_oz", "silver_usd_oz", "oil_wti_usd_bbl", "beef_usd_lb", "tech_sector_idx", "ai_sector_idx", "tech_co_1_px", "tech_co_2_px", "tech_co_3_px", "tech_co_4_px", "tech_co_5_px", "ai_co_1_px", "ai_co_2_px", "ai_co_3_px", "ai_co_4_px", "ai_co_5_px", "source", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"observation_date", type date}, {"ust_3m", type number}, {"ust_2y", type number}, {"ust_5y", type number}, {"ust_10y", type number}, {"ust_30y", type number}, {"curve_spread_10y_2y", type number}, {"curve_spread_10y_3m", type number}, {"fed_funds_eff", type number}, {"cpi_yoy", type number}, {"core_cpi_yoy", type number}, {"pce_yoy", type number}, {"core_pce_yoy", type number}, {"ppi_yoy", type number}, {"ahe_yoy", type number}, {"gdp_growth_yoy", type number}, {"indprod_yoy", type number}, {"retail_sales_yoy", type number}, {"unemployment_rate", type number}, {"u6_rate", type number}, {"participation_rate", type number}, {"unemp_duration_weeks", type number}, {"initial_claims_k", type number}, {"continuing_claims_k", type number}, {"payroll_chg_k", type number}, {"jolts_openings_k", type number}, {"housing_starts_k", type number}, {"consumer_sentiment_idx", type number}, {"ism_pmi_idx", type number}, {"ig_oas", type number}, {"hy_oas", type number}, {"gold_usd_oz", type number}, {"silver_usd_oz", type number}, {"oil_wti_usd_bbl", type number}, {"beef_usd_lb", type number}, {"tech_sector_idx", type number}, {"ai_sector_idx", type number}, {"tech_co_1_px", type number}, {"tech_co_2_px", type number}, {"tech_co_3_px", type number}, {"tech_co_4_px", type number}, {"tech_co_5_px", type number}, {"ai_co_1_px", type number}, {"ai_co_2_px", type number}, {"ai_co_3_px", type number}, {"ai_co_4_px", type number}, {"ai_co_5_px", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

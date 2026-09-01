@@ -6,8 +6,8 @@
     "y": 1419,
     "height": 300,
     "width": 800,
-    "z": 16000,
-    "tabOrder": 16000
+    "z": 17000,
+    "tabOrder": 17000
   },
   "visual": {
     "visualType": "lineChart",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_rolling24"
+                      "Entity": "market_history_windows"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_rolling24.observation_date",
+              "queryRef": "market_history_windows.observation_date",
               "nativeQueryRef": "observation_date",
               "active": true
             }
@@ -41,17 +41,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "gdp_growth_yoy_r24"
+                      "Property": "gdp_growth_yoy"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.gdp_growth_yoy_r24)",
-              "nativeQueryRef": "Sum of gdp_growth_yoy_r24",
+              "queryRef": "Avg(market_history_windows.gdp_growth_yoy)",
+              "nativeQueryRef": "Average of gdp_growth_yoy",
               "displayName": "Real GDP"
             },
             {
@@ -61,17 +61,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "indprod_yoy_r24"
+                      "Property": "indprod_yoy"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.indprod_yoy_r24)",
-              "nativeQueryRef": "Sum of indprod_yoy_r24",
+              "queryRef": "Avg(market_history_windows.indprod_yoy)",
+              "nativeQueryRef": "Average of indprod_yoy",
               "displayName": "Industrial production"
             },
             {
@@ -81,17 +81,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "retail_sales_yoy_r24"
+                      "Property": "retail_sales_yoy"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.retail_sales_yoy_r24)",
-              "nativeQueryRef": "Sum of retail_sales_yoy_r24",
+              "queryRef": "Avg(market_history_windows.retail_sales_yoy)",
+              "nativeQueryRef": "Average of retail_sales_yoy",
               "displayName": "Retail sales"
             }
           ]

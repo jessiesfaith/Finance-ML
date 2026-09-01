@@ -781,3 +781,14 @@ python src/ingest_project_intake.py (validates with the standard
 fail-loud rules, UPSERTS by project_id, rolls back untouched on any
 rejection) -> build_project_appraisal -> refresh. Round-trip is
 tested, including the rejection path.
+
+### 74. Page 5 time-window toggle (03M / 06M / 12M / 24M / YTD)
+Owner asked to toggle the charting window. New long-format export
+market_history_windows.csv: every series smoothed at 3/6/12/24-month
+trailing windows (blank until the window fills, labels zero-padded so
+the picker sorts naturally) plus calendar YTD; the 24M rows are
+test-pinned to the legacy rolling-24 export so the two can never
+disagree. A window picker drives all 21 charts (Average aggregation:
+one window selected = that window exactly; none selected = the average
+across windows, stated on the page). The rolling-24 export stays -
+columns are only ever added, never removed.

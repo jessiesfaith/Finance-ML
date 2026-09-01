@@ -6,8 +6,8 @@
     "y": 4675,
     "height": 240,
     "width": 800,
-    "z": 48000,
-    "tabOrder": 48000
+    "z": 49000,
+    "tabOrder": 49000
   },
   "visual": {
     "visualType": "textbox",
@@ -39,7 +39,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "OAS = option-adjusted spread \u00b7 IG / HY = investment-grade / high-yield \u00b7 WTI = West Texas Intermediate crude \u00b7 $/oz, $/bbl, $/lb = dollars per ounce / barrel / pound \u00b7 r24 = rolling 24-month mean \u00b7 pts = percentage points",
+                    "value": "OAS = option-adjusted spread \u00b7 IG / HY = investment-grade / high-yield \u00b7 WTI = West Texas Intermediate crude \u00b7 $/oz, $/bbl, $/lb = dollars per ounce / barrel / pound \u00b7 03M/06M/12M/24M = trailing means \u00b7 YTD = calendar year-to-date mean \u00b7 pts = percentage points",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

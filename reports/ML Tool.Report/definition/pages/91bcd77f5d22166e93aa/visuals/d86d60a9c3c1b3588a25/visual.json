@@ -6,8 +6,8 @@
     "y": 3909,
     "height": 300,
     "width": 800,
-    "z": 42000,
-    "tabOrder": 42000
+    "z": 43000,
+    "tabOrder": 43000
   },
   "visual": {
     "visualType": "lineChart",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_rolling24"
+                      "Entity": "market_history_windows"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_rolling24.observation_date",
+              "queryRef": "market_history_windows.observation_date",
               "nativeQueryRef": "observation_date",
               "active": true
             }
@@ -41,17 +41,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "ai_sector_idx_r24"
+                      "Property": "ai_sector_idx"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.ai_sector_idx_r24)",
-              "nativeQueryRef": "Sum of ai_sector_idx_r24",
+              "queryRef": "Avg(market_history_windows.ai_sector_idx)",
+              "nativeQueryRef": "Average of ai_sector_idx",
               "displayName": "AI basket (synthetic)"
             }
           ]

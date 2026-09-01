@@ -6,8 +6,8 @@
     "y": 174,
     "height": 300,
     "width": 800,
-    "z": 6000,
-    "tabOrder": 6000
+    "z": 7000,
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "lineChart",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_rolling24"
+                      "Entity": "market_history_windows"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_rolling24.observation_date",
+              "queryRef": "market_history_windows.observation_date",
               "nativeQueryRef": "observation_date",
               "active": true
             }
@@ -41,17 +41,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "curve_spread_10y_2y_r24"
+                      "Property": "curve_spread_10y_2y"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.curve_spread_10y_2y_r24)",
-              "nativeQueryRef": "Sum of curve_spread_10y_2y_r24",
+              "queryRef": "Avg(market_history_windows.curve_spread_10y_2y)",
+              "nativeQueryRef": "Average of curve_spread_10y_2y",
               "displayName": "10Y \u2212 2Y"
             },
             {
@@ -61,17 +61,17 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_rolling24"
+                          "Entity": "market_history_windows"
                         }
                       },
-                      "Property": "curve_spread_10y_3m_r24"
+                      "Property": "curve_spread_10y_3m"
                     }
                   },
-                  "Function": 0
+                  "Function": 1
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.curve_spread_10y_3m_r24)",
-              "nativeQueryRef": "Sum of curve_spread_10y_3m_r24",
+              "queryRef": "Avg(market_history_windows.curve_spread_10y_3m)",
+              "nativeQueryRef": "Average of curve_spread_10y_3m",
               "displayName": "10Y \u2212 3M"
             }
           ]
