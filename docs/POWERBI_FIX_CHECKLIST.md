@@ -1,5 +1,18 @@
 # Power BI Fix Checklist — from the 2026-08-31 Model Audit
 
+> **STATUS UPDATE (Phase 11b, applied in code on the .pbip):** items 1-5
+> and the post-cutover literal retirement below have been implemented
+> directly in the Power BI project (TMDL + report JSON) — the glyph
+> rebinds and new `ROIC vs WACC Symbol` measure, the stray Hurdle card
+> deleted and the missing "=" card added, `PV FCF Years 1-5 ($B)` created
+> and bound, the duplicate Terminal Value section removed, the NPV
+> fontColor rebinds, `FCF Year 1..5` / `Equity Weight` / `Debt Weight` /
+> `Hurdle Rate (%)` now read pipeline data (new `client_fs_ufcf` table;
+> partition widened to the 33-column contract), plus 109 display folders
+> and measure descriptions. **What remains is VISUAL QA in Power BI
+> Desktop** — open `reports/ML Tool.pbip`, refresh, and verify the
+> checklist's "Verification after applying" section renders correctly.
+
 These fixes live in the report/model layer of `reports/ML Tool.pbix`, which cannot be
 edited from the pipeline. Apply them either **by hand in Power BI Desktop now** (steps
 below, ~15 minutes) or **in code at the .pbip conversion phase** (each item maps to a

@@ -1,0 +1,82 @@
+table client_fs_ufcf
+	lineageTag: 8beca4d3-b8ad-4e6b-9cf6-dd491483ee63
+
+	column period_id
+		dataType: string
+		lineageTag: 0d5c2fc4-b22d-4a68-8f01-6f7411c0d710
+		summarizeBy: none
+		sourceColumn: period_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column forecast_method
+		dataType: string
+		lineageTag: 0ff3c7bd-6083-43de-aa3c-860d6315b4c2
+		summarizeBy: none
+		sourceColumn: forecast_method
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue
+		dataType: double
+		lineageTag: 0182ddb9-07f3-4ca3-83dd-3a55ea62ce3c
+		summarizeBy: none
+		sourceColumn: revenue
+
+		annotation SummarizationSetBy = Automatic
+
+	column da
+		dataType: double
+		lineageTag: 19d59fc2-57a7-42ea-972e-d3786dd28fa2
+		summarizeBy: none
+		sourceColumn: da
+
+		annotation SummarizationSetBy = Automatic
+
+	column nopat
+		dataType: double
+		lineageTag: 51a877cd-0d41-43d1-ae90-e6ad3df87d19
+		summarizeBy: none
+		sourceColumn: nopat
+
+		annotation SummarizationSetBy = Automatic
+
+	column delta_nwc
+		dataType: double
+		lineageTag: 0d926947-9c0d-4251-83ba-7d357cdcd85f
+		summarizeBy: none
+		sourceColumn: delta_nwc
+
+		annotation SummarizationSetBy = Automatic
+
+	column capex
+		dataType: double
+		lineageTag: b46be549-a7a5-4d82-8415-d636f4021760
+		summarizeBy: none
+		sourceColumn: capex
+
+		annotation SummarizationSetBy = Automatic
+
+	column ufcf
+		dataType: double
+		lineageTag: ed72fce7-076b-40ca-879a-c23bb1868491
+		summarizeBy: none
+		sourceColumn: ufcf
+
+		annotation SummarizationSetBy = Automatic
+
+	partition client_fs_ufcf = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\client_fs_ufcf.csv"),
+				    [Delimiter = ",", Columns = 25, QuoteStyle = QuoteStyle.None]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"period_id", "forecast_method", "revenue", "da", "nopat", "delta_nwc", "capex", "ufcf"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"revenue", type number}, {"da", type number}, {"nopat", type number}, {"delta_nwc", type number}, {"capex", type number}, {"ufcf", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

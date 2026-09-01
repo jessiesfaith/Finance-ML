@@ -17,3 +17,7 @@ __pycache__/
 
 # SEC staging output — reviewed, never committed
 data/sec_staging/
+
+# Power BI project local artifacts (per-machine cache/settings)
+reports/ML Tool.SemanticModel/.pbi/cache.abf
+reports/ML Tool.SemanticModel/.pbi/localSettings.json

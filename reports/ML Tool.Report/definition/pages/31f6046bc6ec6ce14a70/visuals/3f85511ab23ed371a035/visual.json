@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "25d4a22653c4cd5e7e67",
+  "name": "3f85511ab23ed371a035",
   "position": {
-    "x": 300,
-    "y": 1126.6666666666667,
-    "z": 87000,
-    "height": 50,
-    "width": 51.666666666666671,
-    "tabOrder": 87000
+    "x": 675.0,
+    "y": 1474.1,
+    "z": 156000,
+    "height": 51.78571428571428,
+    "width": 60.71428571428571,
+    "tabOrder": 156000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,11 @@
                       "Entity": "finance_scenario_report"
                     }
                   },
-                  "Property": "WACC Multiply Symbol"
+                  "Property": "WACC Equals Symbol"
                 }
               },
-              "queryRef": "finance_scenario_report.WACC Multiply Symbol",
-              "nativeQueryRef": "WACC Multiply Symbol"
+              "queryRef": "finance_scenario_report.WACC Equals Symbol",
+              "nativeQueryRef": "WACC Equals Symbol"
             }
           ]
         }

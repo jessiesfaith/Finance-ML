@@ -23,11 +23,11 @@
                       "Entity": "finance_scenario_report"
                     }
                   },
-                  "Property": "Hurdle vs IRR Symbol"
+                  "Property": "ROIC vs WACC Symbol"
                 }
               },
               "queryRef": "finance_scenario_report.ROIC Comparison Symbol",
-              "nativeQueryRef": "Hurdle vs IRR Symbol"
+              "nativeQueryRef": "ROIC vs WACC Symbol"
             }
           ]
         }

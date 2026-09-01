@@ -5,7 +5,7 @@
     "x": 1268.5185185185185,
     "y": 2031.4814814814813,
     "z": 176001,
-    "height": 51.666666666666671,
+    "height": 51.66666666666667,
     "width": 55,
     "tabOrder": 176001
   },
@@ -63,7 +63,7 @@
                           "Entity": "finance_scenario_report"
                         }
                       },
-                      "Property": "NPV Comparison Symbol"
+                      "Property": "NPV Decision Color"
                     }
                   }
                 }

@@ -613,3 +613,25 @@ stale DAX FCF/weight literals in the PBIX are flagged as NOW ACTIVE in
 docs/POWERBI_FIX_CHECKLIST.md for the pbip phase. main was merged and
 pushed before the cutover per the owner's ordering; the cutover landed
 on the working branch and was merged after.
+
+---
+
+## 2026-08-31 — Phase 11b (semantic model + report fixes, code-first on the .pbip)
+
+### 63. The report is now source-controlled and pipeline-true
+With the owner's pbix->pbip conversion pushed, Phase 11b landed in code:
+TMDL - partition widened to the 33-column contract (the pbip still read
+32 and would have broken on refresh), hurdle_rate_pct column added,
+FCF Year 1..5 / Equity Weight / Debt Weight / Hurdle Rate (%) literals
+retired in favor of pipeline reads (new client_fs_ufcf table loads the
+curated UFCF export), PV FCF Years 1-5 ($B) twin created (kills the
+mixed $M/$B row), ROIC vs WACC Symbol measure added, 109 measures
+organized into display folders with descriptions on the key ones.
+Report JSON - the audit D1 glyph defect fixed (ROIC row -> ROIC vs WACC
+Symbol, IRR row -> IRR Comparison Symbol), the stray leading Hurdle
+card deleted and the missing "=" card added, the duplicate Terminal
+Value section (textbox + 12 cards) removed, both NPV symbol cards'
+fontColor rebound to NPV Decision Color. .pbi/cache.abf and
+localSettings.json gitignored. Layout JSON was touched only for
+bindings, deletions, and one cloned card - visual QA remains human, in
+Desktop, per the agreed division of labor.

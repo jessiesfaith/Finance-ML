@@ -9,11 +9,12 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["finance_scenario_report"]
+annotation PBI_QueryOrder = ["finance_scenario_report","client_fs_ufcf"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
 ref table finance_scenario_report
+ref table client_fs_ufcf
 
 ref cultureInfo en-US
 
