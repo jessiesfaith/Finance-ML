@@ -1,0 +1,227 @@
+/// Curated pipeline export reports/market_history_rolling24.csv:
+/// monthly macro history (SYNTHETIC seed-42 until the live FRED
+/// cutover) with each metric's rolling 24-month mean - blank until a
+/// full 24-month window exists. Python writes it; Page 5 only reads.
+table market_history_rolling24
+	lineageTag: 92ebf0a7-cbd2-47cb-b588-dbc97230069e
+
+	column observation_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 533f8ef3-5b46-44ff-9c92-cea38c3bdab8
+		summarizeBy: none
+		sourceColumn: observation_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column ust_2y
+		dataType: double
+		formatString: 0.00
+		lineageTag: 1bc4465b-48b1-45ed-96d1-246e84fe77eb
+		summarizeBy: none
+		sourceColumn: ust_2y
+
+		annotation SummarizationSetBy = Automatic
+
+	column ust_2y_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 94c02590-f11b-4ffa-847b-634fc8c92a7c
+		summarizeBy: none
+		sourceColumn: ust_2y_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column ust_10y
+		dataType: double
+		formatString: 0.00
+		lineageTag: a0834fc6-a0ae-4978-9ec5-5ccd8bee335b
+		summarizeBy: none
+		sourceColumn: ust_10y
+
+		annotation SummarizationSetBy = Automatic
+
+	column ust_10y_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 74ca0ccd-d02f-468d-b929-8ef03bb7c30a
+		summarizeBy: none
+		sourceColumn: ust_10y_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column curve_spread_10y_2y
+		dataType: double
+		formatString: 0.00
+		lineageTag: 24fbccc6-3944-4ed8-a9ad-1061b3d8bad1
+		summarizeBy: none
+		sourceColumn: curve_spread_10y_2y
+
+		annotation SummarizationSetBy = Automatic
+
+	column curve_spread_10y_2y_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 85963840-545b-4e1f-b77f-576dfddffb91
+		summarizeBy: none
+		sourceColumn: curve_spread_10y_2y_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column fed_funds_eff
+		dataType: double
+		formatString: 0.00
+		lineageTag: cc09b6d9-b49a-4bb4-bfdf-0fd2b4f3e169
+		summarizeBy: none
+		sourceColumn: fed_funds_eff
+
+		annotation SummarizationSetBy = Automatic
+
+	column fed_funds_eff_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 36762635-5de3-4828-b352-bdfa4b45fed7
+		summarizeBy: none
+		sourceColumn: fed_funds_eff_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column cpi_yoy
+		dataType: double
+		formatString: 0.00
+		lineageTag: 2b92b2b5-62b3-4f87-a86b-00eff2f19f30
+		summarizeBy: none
+		sourceColumn: cpi_yoy
+
+		annotation SummarizationSetBy = Automatic
+
+	column cpi_yoy_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 5b437013-87c8-4615-9244-afc8a714e502
+		summarizeBy: none
+		sourceColumn: cpi_yoy_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column pce_yoy
+		dataType: double
+		formatString: 0.00
+		lineageTag: ec98350a-f5a1-4d4a-987b-8d52cff3686e
+		summarizeBy: none
+		sourceColumn: pce_yoy
+
+		annotation SummarizationSetBy = Automatic
+
+	column pce_yoy_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 0ae7fa22-9f6f-47c5-9821-8e9e3aa3ce33
+		summarizeBy: none
+		sourceColumn: pce_yoy_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column gdp_growth_yoy
+		dataType: double
+		formatString: 0.00
+		lineageTag: 134d5b93-e425-43d3-87aa-1dcf2656189c
+		summarizeBy: none
+		sourceColumn: gdp_growth_yoy
+
+		annotation SummarizationSetBy = Automatic
+
+	column gdp_growth_yoy_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 7c75277e-e056-48fb-ad04-c4905414b7cd
+		summarizeBy: none
+		sourceColumn: gdp_growth_yoy_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column unemployment_rate
+		dataType: double
+		formatString: 0.00
+		lineageTag: 52d0d2ff-2b1d-47d9-91fe-5eb8d6008602
+		summarizeBy: none
+		sourceColumn: unemployment_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column unemployment_rate_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 559cce35-b336-4360-8fb2-6b85b585ad1c
+		summarizeBy: none
+		sourceColumn: unemployment_rate_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column ig_oas
+		dataType: double
+		formatString: 0.00
+		lineageTag: 72f6f167-bb36-4e77-a524-1a8c5017a87a
+		summarizeBy: none
+		sourceColumn: ig_oas
+
+		annotation SummarizationSetBy = Automatic
+
+	column ig_oas_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: b6e87574-394e-4fda-b0b3-d93a27b20b2c
+		summarizeBy: none
+		sourceColumn: ig_oas_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column hy_oas
+		dataType: double
+		formatString: 0.00
+		lineageTag: 955d6b3c-b72b-4159-8184-7bca4cb274dd
+		summarizeBy: none
+		sourceColumn: hy_oas
+
+		annotation SummarizationSetBy = Automatic
+
+	column hy_oas_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: ffb31b81-ec91-4a0e-8502-3bbada70b84a
+		summarizeBy: none
+		sourceColumn: hy_oas_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: 5ba3d714-27d9-4df4-b1a9-32b09d7ff3fb
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 577a8126-df26-4354-a525-647a17ae8a0d
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition market_history_rolling24 = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\market_history_rolling24.csv"),
+				    [Delimiter = ",", Columns = 23, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"observation_date", "ust_2y", "ust_2y_r24", "ust_10y", "ust_10y_r24", "curve_spread_10y_2y", "curve_spread_10y_2y_r24", "fed_funds_eff", "fed_funds_eff_r24", "cpi_yoy", "cpi_yoy_r24", "pce_yoy", "pce_yoy_r24", "gdp_growth_yoy", "gdp_growth_yoy_r24", "unemployment_rate", "unemployment_rate_r24", "ig_oas", "ig_oas_r24", "hy_oas", "hy_oas_r24", "source", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"observation_date", type date}, {"ust_2y", type number}, {"ust_2y_r24", type number}, {"ust_10y", type number}, {"ust_10y_r24", type number}, {"curve_spread_10y_2y", type number}, {"curve_spread_10y_2y_r24", type number}, {"fed_funds_eff", type number}, {"fed_funds_eff_r24", type number}, {"cpi_yoy", type number}, {"cpi_yoy_r24", type number}, {"pce_yoy", type number}, {"pce_yoy_r24", type number}, {"gdp_growth_yoy", type number}, {"gdp_growth_yoy_r24", type number}, {"unemployment_rate", type number}, {"unemployment_rate_r24", type number}, {"ig_oas", type number}, {"ig_oas_r24", type number}, {"hy_oas", type number}, {"hy_oas_r24", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

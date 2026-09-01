@@ -1,0 +1,98 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "cba59c040c55deca98bc",
+  "position": {
+    "x": 1015,
+    "y": 570,
+    "height": 330,
+    "width": 800,
+    "z": 10000,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_history_rolling24"
+                    }
+                  },
+                  "Property": "observation_date"
+                }
+              },
+              "queryRef": "market_history_rolling24.observation_date",
+              "nativeQueryRef": "observation_date",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_rolling24"
+                        }
+                      },
+                      "Property": "cpi_yoy_r24"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(market_history_rolling24.cpi_yoy_r24)",
+              "nativeQueryRef": "Sum of cpi_yoy_r24",
+              "displayName": "CPI YoY (24m avg)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_rolling24"
+                        }
+                      },
+                      "Property": "pce_yoy_r24"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(market_history_rolling24.pce_yoy_r24)",
+              "nativeQueryRef": "Sum of pce_yoy_r24",
+              "displayName": "PCE YoY (24m avg)"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

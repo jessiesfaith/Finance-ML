@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "30bbe7d62a0bbdfc114d",
+  "position": {
+    "x": 1015,
+    "y": 150,
+    "height": 330,
+    "width": 800,
+    "z": 6000,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_history_rolling24"
+                    }
+                  },
+                  "Property": "observation_date"
+                }
+              },
+              "queryRef": "market_history_rolling24.observation_date",
+              "nativeQueryRef": "observation_date",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_rolling24"
+                        }
+                      },
+                      "Property": "curve_spread_10y_2y_r24"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(market_history_rolling24.curve_spread_10y_2y_r24)",
+              "nativeQueryRef": "Sum of curve_spread_10y_2y_r24",
+              "displayName": "10Y-2Y spread (24m avg)"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

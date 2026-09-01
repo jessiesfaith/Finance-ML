@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "5d4376d315b30a8aad71",
+  "position": {
+    "x": 165,
+    "y": 1370,
+    "height": 60,
+    "width": 1650,
+    "z": 15000,
+    "tabOrder": 15000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Reading the page: yields, the curve, and the policy rate set the discount-rate world (Page 3); inflation and growth set the operating world the scenario drivers describe (Page 2); credit spreads benchmark the credit-spread assumption. The 2020 stress and the hiking cycle that follows are visible in every panel \u2014 one economy, seen through six windows.",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

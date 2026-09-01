@@ -392,3 +392,23 @@ version of section 5's math, built so you can audit it by reading:
 - **The gate comes first.** Controls PASS/REVIEW/FAIL cards sit above
   the statements because that is the ICFR logic: numbers are only
   usable because the controls say so.
+
+## 18. Rolling windows — smoothing as an honest trade-off (2026-09-01)
+
+Page 5 charts every macro series as a trailing 24-month mean
+(`rolling(24, min_periods=24).mean()`). Three lessons baked in:
+
+- **min_periods equals the window.** The first 23 months stay blank.
+  Pandas would happily average whatever it has, but a 12-month mean
+  labeled "24-month average" is a different statistic wearing the
+  wrong name — the same honesty rule as the z-score refusing to run
+  on 2 periods.
+- **Smoothing trades noise for lag.** The 24-month line shows regime
+  shape (the 2020 shock, the hiking cycle) but turns well after the
+  raw series does. Both columns ship in the export so the report can
+  overlay raw vs smoothed and show the lag rather than hide it.
+- **Derived synthetic series are labeled and formulaic.** The four
+  added series (PCE, GDP growth, IG/HY spreads) come from documented
+  formulas over the existing seed-42 history — coherent co-movement
+  for teaching, never passed off as market data, replaced by FRED at
+  the live cutover.
