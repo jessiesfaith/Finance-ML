@@ -4,7 +4,7 @@
   "position": {
     "x": 1015,
     "y": 1280,
-    "height": 34,
+    "height": 58,
     "width": 800,
     "z": 17000,
     "tabOrder": 17000
@@ -22,6 +22,17 @@
                     "value": "Unemployment (%) \u2014 U-3 vs the broader U-6",
                     "textStyle": {
                       "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Live source: https://fred.stlouisfed.org/series/UNRATE \u00b7 U6RATE  \u2014 charted today: labeled synthetic",
+                    "url": "https://fred.stlouisfed.org/series/UNRATE",
+                    "textStyle": {
+                      "fontSize": "8pt"
                     }
                   }
                 ]

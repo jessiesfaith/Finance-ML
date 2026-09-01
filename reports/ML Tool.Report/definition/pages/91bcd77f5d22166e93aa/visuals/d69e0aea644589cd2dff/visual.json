@@ -4,7 +4,7 @@
   "position": {
     "x": 1015,
     "y": 500,
-    "height": 34,
+    "height": 58,
     "width": 800,
     "z": 9000,
     "tabOrder": 9000
@@ -22,6 +22,17 @@
                     "value": "Consumer Inflation (%) \u2014 headline vs core",
                     "textStyle": {
                       "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Live source: https://fred.stlouisfed.org/series/CPIAUCSL \u00b7 CPILFESL \u00b7 PCEPI \u00b7 PCEPILFE  \u2014 charted today: labeled synthetic",
+                    "url": "https://fred.stlouisfed.org/series/CPIAUCSL",
+                    "textStyle": {
+                      "fontSize": "8pt"
                     }
                   }
                 ]

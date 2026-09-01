@@ -4,7 +4,7 @@
   "position": {
     "x": 1015,
     "y": 1670,
-    "height": 34,
+    "height": 58,
     "width": 800,
     "z": 21000,
     "tabOrder": 21000
@@ -22,6 +22,17 @@
                     "value": "Jobless Claims (thousands) \u2014 sign-ups vs still drawing",
                     "textStyle": {
                       "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Live source: https://fred.stlouisfed.org/series/ICSA \u00b7 CCSA  \u2014 charted today: labeled synthetic",
+                    "url": "https://fred.stlouisfed.org/series/ICSA",
+                    "textStyle": {
+                      "fontSize": "8pt"
                     }
                   }
                 ]

@@ -4,7 +4,7 @@
   "position": {
     "x": 165,
     "y": 1280,
-    "height": 34,
+    "height": 58,
     "width": 800,
     "z": 15000,
     "tabOrder": 15000
@@ -22,6 +22,17 @@
                     "value": "Growth & Activity (% YoY)",
                     "textStyle": {
                       "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Live source: https://fred.stlouisfed.org/series/GDPC1 \u00b7 INDPRO \u00b7 RSAFS  \u2014 charted today: labeled synthetic",
+                    "url": "https://fred.stlouisfed.org/series/GDPC1",
+                    "textStyle": {
+                      "fontSize": "8pt"
                     }
                   }
                 ]

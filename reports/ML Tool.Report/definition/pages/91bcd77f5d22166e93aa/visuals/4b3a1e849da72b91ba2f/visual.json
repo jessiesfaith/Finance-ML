@@ -4,7 +4,7 @@
   "position": {
     "x": 165,
     "y": 110,
-    "height": 34,
+    "height": 58,
     "width": 800,
     "z": 3000,
     "tabOrder": 3000
@@ -22,6 +22,17 @@
                     "value": "Treasury Yields (%) \u2014 the whole curve",
                     "textStyle": {
                       "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Live source: https://fred.stlouisfed.org/series/DGS3MO \u00b7 DGS2 \u00b7 DGS5 \u00b7 DGS10 \u00b7 DGS30  \u2014 charted today: labeled synthetic",
+                    "url": "https://fred.stlouisfed.org/series/DGS3MO",
+                    "textStyle": {
+                      "fontSize": "8pt"
                     }
                   }
                 ]

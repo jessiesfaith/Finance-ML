@@ -4,7 +4,7 @@
   "position": {
     "x": 1015,
     "y": 890,
-    "height": 34,
+    "height": 58,
     "width": 800,
     "z": 13000,
     "tabOrder": 13000
@@ -22,6 +22,17 @@
                     "value": "Wages vs Prices (%) \u2014 real-wage squeeze when they cross",
                     "textStyle": {
                       "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Live source: https://fred.stlouisfed.org/series/CES0500000003 \u00b7 CPIAUCSL  \u2014 charted today: labeled synthetic",
+                    "url": "https://fred.stlouisfed.org/series/CES0500000003",
+                    "textStyle": {
+                      "fontSize": "8pt"
                     }
                   }
                 ]
