@@ -687,9 +687,33 @@ OUTLIER_FLAGS = TableSchema(
          "metric_name"),
 )
 
+AGENT_REVIEW_LOG = TableSchema(
+    table="agent_review_log",
+    filename="agent_review_log.csv",
+    columns=(
+        Column("review_id"),
+        Column("run_id"),
+        Column("item_type", allowed=("CONTROL_EXCEPTION", "OUTLIER_FLAG")),
+        Column("item_reference"),
+        Column("company_id"),
+        Column("entity_id"),
+        Column("period_id"),
+        Column("severity", allowed=("LOW", "MEDIUM", "HIGH")),
+        Column("explanation"),
+        Column("recommended_action"),
+        Column("related_transaction_ids", required=False),
+        Column("related_adjustment_ids", required=False),
+        Column("related_control_ids", required=False),
+        # 0..1; the interpreter's own uncertainty, never authority.
+        Column("agent_confidence", kind="number"),
+        Column("interpreter"),
+    ),
+    key=("run_id", "review_id"),
+)
+
 OUTPUT_SCHEMAS = (
     CLIENT_FS_NORMALIZED, ENTITY_CONSOLIDATION, CONTROL_CHECKS, UFCF_FORECAST,
-    VALUATION_INPUTS, OUTLIER_FLAGS,
+    VALUATION_INPUTS, OUTLIER_FLAGS, AGENT_REVIEW_LOG,
 )
 
 SCHEMAS_BY_TABLE = {

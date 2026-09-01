@@ -473,3 +473,38 @@ counts the deterministic outlier flags there - the spec's
 always "may relate ... investigate together; causation is not
 concluded". The Phase 10 agent inherits these links as its starting
 material.
+
+---
+
+## 2026-08-31 — Phase 10 (analyst-review agent)
+
+### 53. Agent guardrails are code, not convention
+agents/financial_review_agent.py enforces spec section 27 structurally:
+the agent's only write targets are agent_review_log.csv and append-only
+proposals into adjustments.csv (any other path raises
+AgentGuardrailError); proposals are FORCED to review_status=REVIEW with
+approval fields stripped (attempting APPROVED raises); every write is
+append-only VERIFIED by re-reading pre-existing rows; overwriting an
+existing adjustment_id raises; a proposal without agent_confidence
+raises. Each guardrail is pinned by a test.
+
+### 54. Evidence packets first, interpretation second - and pluggable
+gather_evidence deterministically assembles one packet per open item
+(non-PASS control, outlier flag) carrying its related controls (period-
+wide for consolidated items), transaction events, existing adjustments
+(period-scoped so deal adjustments are always visible - prevents
+duplicate proposals), and narratives. The Interpreter is an interface:
+DeterministicInterpreter (pure rules, the default) ships now; an LLM
+interpreter (e.g. Claude via the Anthropic API) plugs into the same
+slot LATER, only after explicit approval and a key (spec #31 - no
+unapproved paid dependencies). The guardrails sit OUTSIDE the
+interpreter and cannot be bypassed by either.
+
+### 55. The agent cross-references before it speculates
+Fixture run: 14 findings, zero new proposals. Loud RE outliers ->
+"C4 proves the roll ties - benign" (0.9); consolidated cash ->
+"PARTIALLY explained - GmbH portion awaits its CFS" (0.7); ENT_ELIM
+NEW_ITEMs -> "MAY relate to TXN-001... causation is not concluded;
+restructuring already normalized by ADJ-001A/B" (0.7); C9 -> "equals
+the CTA, not a data error" (0.9). Confidence is bounded < 1.0 by test:
+the agent is never certain.
