@@ -17,6 +17,7 @@ Run it from the repo root with:
 from pathlib import Path
 
 import pandas as pd
+import pytest
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 REPORT_FILE = BASE_DIR / "reports" / "finance_scenario_report.csv"
@@ -108,6 +109,37 @@ def test_report_has_all_three_scenarios():
     )
 
     assert len(df) == 3, f"Expected exactly 3 scenario rows, found {len(df)}"
+
+
+def test_dcf_runs_on_statement_derived_inputs():
+    """
+    The 2026-08-31 cutover (DECISIONS #62): the DCF's inputs come from
+    the pipeline outputs, not placeholders. These pins fail if anyone
+    reintroduces a hard-coded input.
+    """
+    df = pd.read_csv(REPORT_FILE)
+    assert (df["debt"] == 366.0).all()                    # was 500
+    assert (df["cash"] == 194.0).all()                    # was 150
+    assert (df["net_debt"] == 172.0).all()                # was 350
+    assert (df["shares_outstanding"] == 103.6667).all()   # was 100 basic
+    assert (df["invested_capital"] == 791.5).all()        # was 1500
+    assert (df["revenue"] == 1274.0).all()                # was 1000
+    assert df["roic_pct"].iloc[0] == pytest.approx(23.5566, abs=1e-3)
+    assert df["equity_weight_pct"].iloc[0] == pytest.approx(83.6022, abs=1e-3)
+    assert df["debt_weight_pct"].iloc[0] == pytest.approx(16.3978, abs=1e-3)
+
+
+def test_fcf_path_matches_the_ufcf_forecast():
+    """The DCF's cash flows ARE the driver-based UFCF forecast."""
+    ufcf = pd.read_csv(
+        REPORT_FILE.parents[1] / "data" / "client_fs" / "ufcf_forecast.csv"
+    )
+    expected = ufcf.loc[
+        ufcf["forecast_method"] == "DRIVER_BASED", "ufcf"
+    ].tolist()
+    assert len(expected) == 5
+    assert expected[0] == pytest.approx(186.2438)
+    assert expected[-1] == pytest.approx(235.1286)
 
 
 def test_hurdle_rate_is_wacc_plus_two_points():

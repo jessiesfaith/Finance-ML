@@ -95,3 +95,25 @@ their **font color** to the symbol measure itself. Rebind fontColor → `NPV Dec
    reads `10.53 < 11.12 → FAIL`, consistent with the negative NPV that panel shows.
 3. EV row reads in one scale: `$0.47B + $1.69B = $2.16B`.
 4. Terminal Value appears exactly once, inside the DCF walk-through.
+
+## 6. POST-CUTOVER (2026-08-31): retire the stale DAX input literals — NOW ACTIVE
+
+The DCF cutover (DECISIONS #62) re-priced the report from derived
+inputs: Base EV is now ~$3.16B and the implied price ~$28.86. The CSV
+columns update on refresh, BUT several DAX measures are LITERALS that
+now disagree with the pipeline:
+
+- `FCF Year 1..5` (literals 100/110/121/133/146) vs the derived UFCF
+  path 186.2 / 197.4 / 209.3 / 221.8 / 235.1 — the DCF walk-through
+  rows and the `DCF EV Reconciliation` measure will visibly disagree
+  with `enterprise_value` until these read the new
+  `reports/client_fs_ufcf.csv` (or columns added to the legacy CSV).
+- `Equity Weight` (literal 0.70) and its Debt twin vs the derived
+  83.6 / 16.4 in `equity_weight_pct` / `debt_weight_pct`.
+- `Initial Investment ($M)` literal 1500 still matches the explicit
+  assumption — no change needed.
+
+Until the pbip phase replaces these literals with column references,
+treat the DAX-rebuilt walk-through numbers as stale; the CSV columns
+(`enterprise_value`, `equity_value`, `implied_share_price`, weights)
+are the pipeline-true values.

@@ -62,34 +62,60 @@ scenarios["risk_free_rate"] = (
 
 
 # ------------------------------------------------
-# CORPORATE FINANCE ASSUMPTIONS
-# These are the current model assumptions.
-# Later these can be replaced with dynamic company /
-# market data without changing the Power BI structure.
+# ANALYST / MARKET ASSUMPTIONS
+# Still explicit and documented (audit list AD): beta and the credit
+# spread until peer/market data lands, ERP and terminal growth by design.
 # ------------------------------------------------
 
 beta = 1.20
 equity_risk_premium = 0.045
-
-equity_weight = 0.70
-debt_weight = 0.30
-
 credit_spread = 0.020
-tax_rate = 0.25
-
-debt = 500
-cash = 150
-shares = 100
-
-fcf = [
-    100,
-    110,
-    121,
-    133,
-    146,
-]
-
 terminal_growth = 0.025
+
+
+# ------------------------------------------------
+# STATEMENT-DERIVED INPUTS — the 2026-08-31 cutover (DECISIONS #62)
+# The DCF no longer runs on hard-coded placeholders. Every input below
+# is read from the client-financials pipeline outputs, each rebuild-
+# locked by tests and traceable back to source statements
+# (file / sheet / row) through the lineage the pipeline preserves.
+# ------------------------------------------------
+
+CLIENT_FS_DIR = BASE_DIR / "data" / "client_fs"
+
+ufcf_forecast = pd.read_csv(CLIENT_FS_DIR / "ufcf_forecast.csv")
+valuation_inputs = pd.read_csv(CLIENT_FS_DIR / "valuation_inputs.csv")
+shares_dilution = pd.read_csv(CLIENT_FS_DIR / "shares_dilution.csv")
+scenario_assumptions = pd.read_csv(
+    BASE_DIR / "data" / "scenarios" / "scenario_assumptions.csv"
+)
+
+# Normalized tax rate: one source of truth, the analyst driver table.
+tax_rate = float(scenario_assumptions.loc[
+    scenario_assumptions["target_id"] == "TAX_RATE_PCT", "value"
+].iloc[0]) / 100
+
+# UFCF path: the driver-based forecast (Base scenario) replaces the old
+# fcf = [100, 110, 121, 133, 146] placeholder list.
+fcf = ufcf_forecast.loc[
+    ufcf_forecast["forecast_method"] == "DRIVER_BASED", "ufcf"
+].tolist()
+
+# Net-debt components from the consolidated balance sheet (was 500/150).
+latest_valuation = valuation_inputs.sort_values("period_id").iloc[-1]
+debt = float(latest_valuation["total_debt"])
+cash = float(latest_valuation["cash_and_equivalents"])
+
+# Diluted shares via the treasury-stock method (was a 100M basic count).
+share_row = shares_dilution.iloc[0]
+shares = float(share_row["diluted_shares_m"])
+
+# Market-value capital structure (was an assumed 70/30):
+# E = price x diluted shares; weights = E/(D+E) and D/(D+E).
+equity_market_value = float(share_row["market_price"]) * shares
+total_capitalization = equity_market_value + debt
+equity_weight = equity_market_value / total_capitalization
+debt_weight = debt / total_capitalization
 
 
 # ------------------------------------------------
@@ -246,19 +272,21 @@ scenarios["scenario_sort"] = (
 # ------------------------------------------------
 # FINAL REPORT
 # ------------------------------------------------
-# ROIC operating inputs
-revenue = 1000
-ebit_margin = 0.20
-invested_capital = 1500
+# ROIC inputs from the consolidated statements (latest actual period) —
+# replacing the old revenue 1000 / 20% margin / $1.5B invested capital.
+latest_actual = ufcf_forecast[
+    ufcf_forecast["forecast_method"] == "ACTUAL"
+].iloc[-1]
 
-# Operating profit
-ebit = revenue * ebit_margin
+revenue = float(latest_actual["revenue"])
+ebit = float(latest_actual["ebit"])
+ebit_margin = ebit / revenue
 
-# After-tax operating profit
-nopat = ebit * (1 - tax_rate)
-
-# Return on invested capital
-roic_pct = (nopat / invested_capital) * 100
+# Component-built invested capital (operating NWC + net PP&E) and the
+# ROIC computed on it (ENDING basis) — see valuation_inputs.csv.
+invested_capital = float(latest_valuation["invested_capital"])
+nopat = float(latest_valuation["nopat"])
+roic_pct = float(latest_valuation["roic_pct"])
 
 scenarios["revenue"] = revenue
 scenarios["ebit_margin_pct"] = ebit_margin * 100
@@ -278,6 +306,8 @@ scenarios["roic_wacc_spread_pct"] = (
 # Rate (%)" = Calculated WACC + 2.00), invisible to this pipeline.
 # Promoted here per the 2026-08-31 model audit (docs/MODEL_AUDIT.md,
 # finding D2) so one engine owns the project cash-flow set.
+# initial_investment stays an EXPLICIT project-budget assumption,
+# deliberately decoupled from invested capital (audit dependency map).
 initial_investment = 1500
 hurdle_premium = 0.02
 

@@ -588,3 +588,28 @@ STRUCTURAL: a non-COMPANY statistic sourced INTERNAL_PIPELINE fails
 validation (invented_peer_data) - peers can only ever arrive with a
 cited external source. When bands exist, an assumption outside P25-P75
 becomes a REVIEW flag, never an auto-correction.
+
+---
+
+## 2026-08-31 — The DCF cutover (owner-approved: "do 4 then the rest")
+
+### 62. The valuation now runs on statement-derived inputs
+models/export_finance_report.py reads its inputs from the pipeline
+outputs instead of literals: UFCF path from ufcf_forecast.csv
+(186.2->235.1), debt/cash from valuation_inputs.csv (366/194 -> net
+debt 172), diluted shares 103.6667M from shares_dilution.csv,
+market-value capital structure 83.6/16.4 derived from price x diluted
+shares vs total debt, ROIC block (revenue 1,274 / EBIT 248.6 / IC 791.5
+/ ROIC 23.56%) from the consolidated statements, and the normalized tax
+rate from scenario_assumptions.csv. Still explicit assumptions: beta,
+ERP, credit spread, terminal growth, initial_investment (project
+budget, decoupled from IC), hurdle premium.
+
+Re-pricing (Base): WACC 8.42% -> 9.11% (equity-heavier market-value
+weights), EV 2,160 -> 3,164, equity 1,810 -> 2,992, implied price
+18.10 -> 28.86; IRR 12.03% -> 24.34% vs hurdle 11.11% (bigger UFCF on
+the same 1,500 project budget). Cutover values pinned by tests; the
+stale DAX FCF/weight literals in the PBIX are flagged as NOW ACTIVE in
+docs/POWERBI_FIX_CHECKLIST.md for the pbip phase. main was merged and
+pushed before the cutover per the owner's ordering; the cutover landed
+on the working branch and was merged after.
