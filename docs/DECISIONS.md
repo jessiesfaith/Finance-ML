@@ -635,3 +635,23 @@ fontColor rebound to NPV Decision Color. .pbi/cache.abf and
 localSettings.json gitignored. Layout JSON was touched only for
 bindings, deletions, and one cloned card - visual QA remains human, in
 Desktop, per the agreed division of labor.
+
+## 2026-09-01 — Desktop QA pass + the two stragglers it caught
+
+### 64. QA screenshot review retired the last DAX input literal
+The owner's Desktop QA (commit c06aa63) confirmed the Phase 11b model
+refreshes and renders pipeline-true — but the QA screenshot caught two
+stragglers the audit's fix list missed, both fixed in code the same day:
+(a) `Net Debt Billions` was still a hard-coded 0.35 literal, so its card
+contradicted its own walk row (EV 3.16 - 0.17 = 2.99 was the real math
+on screen next to a card saying $0.35); it now reads
+DIVIDE(SELECTEDVALUE(net_debt), 1000) from the report CSV. (b) The
+implied-price row's share-count card was bound to a raw
+Sum(shares_outstanding) column aggregate — display format 0 rounded
+103.6667 to "104", and a Sum would triple-count if the scenario slicer
+were ever cleared; a new `Diluted Shares (M)` measure
+(SELECTEDVALUE, format #,0.0) replaces it, so the row reads
+$2.99B / 103.7M = $28.86. With these, every input number on Page 1 is a
+pipeline read; the only remaining DAX literals are the explicit
+assumptions (beta, ERP, credit spread, terminal growth, initial
+investment, hurdle premium) documented as such in MODEL_AUDIT.md.

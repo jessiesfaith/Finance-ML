@@ -93,12 +93,27 @@ table finance_scenario_report
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
 	/// CLIENT F/S + CALCULATED: debt less eligible cash; bridges enterprise to equity value. Derived from the consolidated balance sheet since the cutover.
+	/// Net debt from the pipeline (total debt 366 - cash 194 = 172, statement-derived);
+	/// was a hard-coded 0.35 literal until the 2026-09-01 fix.
 	measure 'Net Debt Billions' =
 			
-			0.35
+			DIVIDE(
+			    SELECTEDVALUE(finance_scenario_report[net_debt]),
+			    1000
+			)
 		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		displayFolder: Valuation
 		lineageTag: 51f93b43-faf3-4eb7-8f0b-8eef8a18b67a
+
+	/// Diluted share count in millions from the pipeline (treasury-stock
+	/// method); replaces the raw Sum(shares_outstanding) column binding so
+	/// the implied-price row reads 103.7, not a rounded 104.
+	measure 'Diluted Shares (M)' =
+			
+			SELECTEDVALUE(finance_scenario_report[shares_outstanding])
+		formatString: #,0.0
+		displayFolder: Valuation
+		lineageTag: 08523db3-ebad-49ce-b2ab-5378326c671a
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 

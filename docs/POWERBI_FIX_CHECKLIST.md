@@ -11,6 +11,10 @@
 > applied in code on the .pbip (Phase 11b) and then verified by hand in
 > Power BI Desktop: the project opens, both tables refresh, and the
 > "Verification after applying" section renders correctly on live data.
+> QA itself caught two stragglers, fixed in code 2026-09-01 (DECISIONS
+> #64): the `Net Debt Billions` 0.35 literal now reads the `net_debt`
+> column ($0.17B), and the share-count card reads a new
+> `Diluted Shares (M)` measure (103.7) instead of a rounded column Sum.
 > The verification numbers in this file predate the DCF cutover
 > (DECISIONS #62); the post-refresh values are Base WACC 9.11, IRR 24.34
 > vs hurdle 11.11, ROIC 23.56, net debt $0.17B, FCF path 186.2→235.1.

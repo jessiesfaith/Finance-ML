@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "1e8154fdd89a7e54626c",
   "position": {
-    "x": 456.66666666666669,
+    "x": 456.6666666666667,
     "y": 995,
     "z": 60000,
     "height": 75,
@@ -17,22 +17,17 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "finance_scenario_report"
-                        }
-                      },
-                      "Property": "shares_outstanding"
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
                     }
                   },
-                  "Function": 0
+                  "Property": "Diluted Shares (M)"
                 }
               },
-              "queryRef": "Sum(finance_scenario_report.shares_outstanding)",
-              "nativeQueryRef": "Sum of shares_outstanding"
+              "queryRef": "finance_scenario_report.Diluted Shares (M)",
+              "nativeQueryRef": "Diluted Shares (M)"
             }
           ]
         }
@@ -41,18 +36,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "finance_scenario_report"
-                      }
-                    },
-                    "Property": "shares_outstanding"
+                  "SourceRef": {
+                    "Entity": "finance_scenario_report"
                   }
                 },
-                "Function": 0
+                "Property": "Diluted Shares (M)"
               }
             },
             "direction": "Descending"
