@@ -114,8 +114,5 @@ def test_flags_are_questions_not_conclusions(frame):
 
 
 def test_committed_flags_match_a_fresh_rebuild(frame):
-    committed = pd.read_csv(DEFAULT_OUTPUT, dtype=str, keep_default_na=False)
-    fresh = pd.read_csv(
-        io.StringIO(frame.to_csv(index=False)), dtype=str, keep_default_na=False
-    )
-    pd.testing.assert_frame_equal(committed, fresh)
+    from conftest import assert_matches_committed
+    assert_matches_committed(frame, DEFAULT_OUTPUT)

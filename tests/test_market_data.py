@@ -38,10 +38,8 @@ def test_replatform_covers_the_full_synthetic_history(tables):
 
 
 def test_replatform_values_match_the_source_history(tables):
-    wide = pd.read_csv(
-        "/home/user/finance-ml/data/raw/macro_history.csv",
-        parse_dates=["date"],
-    )
+    from financials.market_data import SYNTHETIC_HISTORY
+    wide = pd.read_csv(SYNTHETIC_HISTORY, parse_dates=["date"])
     obs = tables["market_observations"]
     ust10 = obs[obs["metric_id"] == "ust_10y"].sort_values("observation_date")
     assert ust10.iloc[0]["value"] == pytest.approx(
@@ -80,15 +78,9 @@ def test_current_and_point_in_time_views(tables):
 
 
 def test_committed_observations_match_a_fresh_replatform(tables):
-    committed = pd.read_csv(
-        MARKET_DIR / "market_observations.csv",
-        dtype=str, keep_default_na=False,
-    )
-    fresh = pd.read_csv(
-        io.StringIO(replatform_synthetic_history().to_csv(index=False)),
-        dtype=str, keep_default_na=False,
-    )
-    pd.testing.assert_frame_equal(committed, fresh)
+    from conftest import assert_matches_committed
+    assert_matches_committed(replatform_synthetic_history(),
+                            MARKET_DIR / "market_observations.csv")
 
 
 # ------------------------------------------------

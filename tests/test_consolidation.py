@@ -95,9 +95,5 @@ def test_consolidated_balance_sheet_balances(consolidated):
 
 def test_committed_output_matches_a_fresh_rebuild(consolidated):
     """data/client_fs/entity_consolidation.csv must never go stale."""
-    committed = pd.read_csv(DEFAULT_OUTPUT, dtype=str, keep_default_na=False)
-    fresh = pd.read_csv(
-        io.StringIO(consolidated.to_csv(index=False)),
-        dtype=str, keep_default_na=False,
-    )
-    pd.testing.assert_frame_equal(committed, fresh)
+    from conftest import assert_matches_committed
+    assert_matches_committed(consolidated, DEFAULT_OUTPUT)

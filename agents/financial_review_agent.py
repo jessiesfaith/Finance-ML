@@ -237,7 +237,12 @@ class DeterministicInterpreter:
             if c["control_id"] == "C2" and c["status"] != "PASS"
         }) if consolidated_level else []
         event_ids = sorted({e["transaction_id"] for e in packet.related_events})
-        adj_ids = sorted({a["adjustment_id"] for a in packet.related_adjustments})
+        # Only APPROVED adjustments count as existing normalization
+        # coverage - a proposal under REVIEW is not "already normalized".
+        adj_ids = sorted({
+            a["adjustment_id"] for a in packet.related_adjustments
+            if a.get("review_status") == "APPROVED"
+        })
 
         if metric == "retained_earnings" and c4_pass:
             return self._finding(

@@ -168,8 +168,5 @@ def test_committed_valuation_inputs_match_a_fresh_rebuild(pipeline):
     scenario_tables, _ = load_scenarios(strict=True)
     frame = build_valuation_inputs(tables, consolidated, scenario_tables)
 
-    committed = pd.read_csv(OUTPUT, dtype=str, keep_default_na=False)
-    fresh = pd.read_csv(
-        io.StringIO(frame.to_csv(index=False)), dtype=str, keep_default_na=False
-    )
-    pd.testing.assert_frame_equal(committed, fresh)
+    from conftest import assert_matches_committed
+    assert_matches_committed(frame, OUTPUT)
