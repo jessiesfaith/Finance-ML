@@ -49,6 +49,7 @@ python src/load_client_fs.py             # load + validate client financial stat
 python src/build_client_fs_normalized.py # map accounts + normalize signs -> normalized CSV
 python src/build_consolidation.py        # FX translation + eliminations -> consolidation CSV
 python src/run_controls.py               # deterministic controls -> control_checks.csv
+python src/build_ufcf.py                 # NWC/NOPAT/UFCF walk + driver forecast -> ufcf_forecast.csv
 pytest                                   # verify nothing broke
 ```
 

@@ -283,13 +283,14 @@ def test_prior_period_map_skips_gap_years_and_non_annual(pipeline):
     tables, _, _, _ = pipeline
     pm = tables["period_master"].copy()
     gap = pm[pm["period_id"] == "FY2026"].copy()
-    gap["period_id"], gap["fiscal_year"] = "FY2028", 2028
+    gap["period_id"], gap["fiscal_year"] = "FY2032", 2032
     pm = pd.concat([pm, gap], ignore_index=True)
 
     prior = _prior_period_map(pm)
     assert prior["FY2025"] == "FY2024"
-    assert "FY2028" not in prior          # gap year: no prior link
+    assert "FY2032" not in prior          # gap year: no prior link
     assert prior.get("FY2026") == "FY2025"
+    assert prior.get("FY2030") == "FY2029"
 
 
 def test_unknown_balance_sheet_section_fails_loudly(pipeline):

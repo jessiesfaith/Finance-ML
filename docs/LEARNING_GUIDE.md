@@ -294,8 +294,32 @@ Run `python src/run_controls.py` next to docs/CONTROLS.md. What to study:
   exactly the right variance — the executable proof the controls detect
   what they claim to.
 
-## 13. What comes next
+## 13. NWC → NOPAT → UFCF (Phase 5)
 
-NWC → NOPAT → UFCF (Phase 5) starts replacing the valuation model's
-hard-coded inputs with statement-derived values, guarded by the controls
-built here.
+Run `python src/build_ufcf.py` next to docs/PAGE_FLOW.md — the output IS
+the walk the client page will render. What to study:
+
+- **The chain is one calculation.** Revenue − operating costs = EBITDA;
+  − D&A = EBIT; × (1 − tax) = NOPAT; + D&A − CapEx − ΔNWC = UFCF. Each
+  step is a few lines in `ufcf.py`/`nwc.py` reading the consolidated
+  statements — the first statement-derived UFCF in this project
+  (FY2025: 156.35), sitting where a hard-coded list used to be.
+- **Classification beats hard-coding.** NWC membership comes from
+  `account_mapping.nwc_classification` — cash and debt are excluded
+  because the mapping says so, not because code names them. A test
+  proves deleting cash/debt rows changes nothing.
+- **Two tax rates on purpose.** The reported effective rate (24.70% in
+  FY2024!) is what happened; the normalized driver rate (25%) is what
+  you forecast with. The walk shows both; NOPAT uses the driver.
+- **Drivers are data.** The forecast reads growth/margin/CapEx/tax from
+  `data/scenarios/scenario_assumptions.csv`, each with a rationale and
+  source — driver-based forecasting (volume × price thinking), never
+  "revenue grows 10% because I typed 10".
+- **Honest blanks.** FY2024 has no cash-flow statement, so its CapEx and
+  UFCF are blank — the engine never invents a number to finish a row.
+
+## 14. What comes next
+
+Net debt, invested capital, and diluted shares (Phase 6) complete the
+Page 2 hand-off to valuation; then the UFCF path replaces the DCF's
+hard-coded cash flows in one visible, approved cutover.

@@ -1,0 +1,9 @@
+driver_id,driver_name,unit,description
+REVENUE_GROWTH_PCT,Revenue growth,PCT,Year-over-year revenue growth applied to the prior period's revenue
+EBITDA_MARGIN_PCT,EBITDA margin,PCT,EBITDA as a percent of revenue
+DA_PCT_REVENUE,D&A as % of revenue,PCT,Depreciation & amortization as a percent of revenue
+CAPEX_PCT_REVENUE,CapEx as % of revenue,PCT,Capital expenditures as a percent of revenue
+TAX_RATE_PCT,Normalized tax rate,PCT,Analyst normalized tax rate applied to EBIT for NOPAT (kept separate from the reported effective rate)
+NWC_PCT_REVENUE,Operating NWC as % of revenue,PCT,Override for total operating NWC intensity; when absent the engine holds each NWC component at its last-actual percent of revenue
+TERMINAL_GROWTH_PCT,Terminal growth,PCT,Long-run growth for terminal value (consumed by the DCF layer)
+CREDIT_SPREAD_PCT,Company credit spread,PCT,Company borrowing premium over the risk-free benchmark (consumed by the WACC layer)

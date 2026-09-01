@@ -369,6 +369,104 @@ CONTROL_CHECKS = TableSchema(
 )
 
 
-OUTPUT_SCHEMAS = (CLIENT_FS_NORMALIZED, ENTITY_CONSOLIDATION, CONTROL_CHECKS)
+UFCF_FORECAST = TableSchema(
+    table="ufcf_forecast",
+    filename="ufcf_forecast.csv",
+    columns=(
+        Column("company_id"),
+        Column("period_id"),
+        Column("scenario"),
+        # Analyst-facing walk table: every value a positive magnitude,
+        # with the math UFCF = nopat + da - capex - delta_nwc.
+        Column("revenue", kind="number"),
+        Column("revenue_growth_pct", kind="number", required=False),
+        Column("ebitda", kind="number"),
+        Column("ebitda_margin_pct", kind="number"),
+        Column("da", kind="number"),
+        Column("ebit", kind="number"),
+        Column("ebit_margin_pct", kind="number"),
+        # The rate USED for NOPAT (analyst normalized). The reported
+        # effective rate stays visible in the income-walk output/docs.
+        Column("tax_rate_pct", kind="number"),
+        Column("nopat", kind="number"),
+        Column("accounts_receivable", kind="number", required=False),
+        Column("inventory", kind="number", required=False),
+        Column("other_operating_current_assets", kind="number", required=False),
+        Column("accounts_payable", kind="number", required=False),
+        Column("other_operating_current_liabilities", kind="number", required=False),
+        Column("operating_nwc", kind="number", required=False),
+        Column("delta_nwc", kind="number", required=False),
+        Column("capex", kind="number", required=False),
+        Column("ufcf", kind="number", required=False),
+        Column("reporting_currency"),
+        Column("forecast_method", allowed=("ACTUAL", "DRIVER_BASED")),
+        Column("review_status", allowed=REVIEW_STATUSES),
+    ),
+    key=("company_id", "period_id", "scenario"),
+)
 
-SCHEMAS_BY_TABLE = {s.table: s for s in ALL_SCHEMAS + OUTPUT_SCHEMAS}
+
+# ------------------------------------------------
+# SCENARIO / DRIVER TABLES (data/scenarios/ — kind C, analyst assumptions)
+# ------------------------------------------------
+
+SCENARIO_TYPES = ("BASE", "UPSIDE", "DOWNSIDE", "STRESS", "CUSTOM")
+SCENARIO_STATUSES = ("DRAFT", "APPROVED", "REJECTED")
+TARGET_TYPES = ("COMPANY_DRIVER", "MARKET_METRIC")
+OVERRIDE_TYPES = ("ABSOLUTE", "DELTA")
+
+DRIVER_MASTER = TableSchema(
+    table="driver_master",
+    filename="driver_master.csv",
+    columns=(
+        Column("driver_id"),
+        Column("driver_name"),
+        Column("unit"),
+        Column("description"),
+    ),
+    key=("driver_id",),
+)
+
+SCENARIO_MASTER = TableSchema(
+    table="scenario_master",
+    filename="scenario_master.csv",
+    columns=(
+        Column("scenario_id"),
+        Column("scenario_name"),
+        Column("scenario_type", allowed=SCENARIO_TYPES),
+        Column("as_of_date", kind="date"),
+        Column("narrative"),
+        Column("status", allowed=SCENARIO_STATUSES),
+        Column("scenario_sort", kind="integer"),
+        Column("created_by"),
+    ),
+    key=("scenario_id",),
+)
+
+SCENARIO_ASSUMPTIONS = TableSchema(
+    table="scenario_assumptions",
+    filename="scenario_assumptions.csv",
+    columns=(
+        Column("scenario_id"),
+        Column("target_type", allowed=TARGET_TYPES),
+        Column("target_id"),
+        Column("company_id", required=False),   # blank = every company
+        Column("period_id", required=False),    # blank = every forecast period
+        Column("override_type", allowed=OVERRIDE_TYPES),
+        Column("value", kind="number"),
+        Column("unit"),
+        Column("rationale"),
+        Column("source"),
+    ),
+    key=("scenario_id", "target_type", "target_id", "company_id", "period_id"),
+)
+
+SCENARIO_SCHEMAS = (DRIVER_MASTER, SCENARIO_MASTER, SCENARIO_ASSUMPTIONS)
+
+OUTPUT_SCHEMAS = (
+    CLIENT_FS_NORMALIZED, ENTITY_CONSOLIDATION, CONTROL_CHECKS, UFCF_FORECAST,
+)
+
+SCHEMAS_BY_TABLE = {
+    s.table: s for s in ALL_SCHEMAS + OUTPUT_SCHEMAS + SCENARIO_SCHEMAS
+}

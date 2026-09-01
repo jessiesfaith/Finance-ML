@@ -26,6 +26,14 @@ Phase 4 modules:
                source integrity) producing PASS/REVIEW/FAIL records in
                control_checks.csv; exceptions are surfaced, never fixed
 
+Phase 5 modules:
+    nwc       — operating NWC components + delta (classification-driven,
+                cash/debt excluded by design)
+    ufcf      — income walk, NOPAT (normalized vs reported effective tax
+                kept separate), driver-based UFCF forecast
+    scenarios — analyst-assumption layer loader (data/scenarios/):
+                scenario_master, driver_master, scenario_assumptions
+
 Later phases add: account mapping, sign normalization, FX translation,
 consolidation, controls, adjustments, outliers, NWC/UFCF/ROIC, shares,
 pro forma, and the analyst-review agent.
@@ -45,7 +53,14 @@ from financials.normalized_statements import (
     build_normalized_statements,
     write_normalized_statements,
 )
+from financials.nwc import nwc_components
+from financials.scenarios import load_scenarios
 from financials.sign_normalizer import normalize_sign
+from financials.ufcf import (
+    build_ufcf_forecast,
+    income_walk,
+    write_ufcf_forecast,
+)
 from financials.validator import Issue
 
 __all__ = [
@@ -64,4 +79,9 @@ __all__ = [
     "results_frame",
     "apply_consolidation_status",
     "write_control_checks",
+    "nwc_components",
+    "load_scenarios",
+    "income_walk",
+    "build_ufcf_forecast",
+    "write_ufcf_forecast",
 ]

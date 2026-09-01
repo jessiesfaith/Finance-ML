@@ -310,3 +310,44 @@ source_reference); balance-sheet identity helpers raise on an unknown
 statement_section instead of silently dropping the row; and C9 quotes
 the "equals the CTA" known cause only when the variance actually
 equals the CTA. Each fix is pinned by a regression test.
+
+---
+
+## 2026-08-31 — Phase 5 (NWC → NOPAT → UFCF + scenario/driver layer)
+
+### 38. UFCF is now statement-derived and driver-forecast — never a list
+`financials/nwc.py` + `financials/ufcf.py` compute the full walk from
+the consolidated statements (FY2025: revenue 1,274.0 → EBITDA 314.8 →
+EBIT 248.6 → NOPAT 186.45; NWC 133.2 → 159.5, ΔNWC 26.3; UFCF 156.35)
+and forecast FY2026–FY2030 from drivers in data/scenarios/ (Base: UFCF
+186.2 → 235.1). Output: data/client_fs/ufcf_forecast.csv, every
+intermediate visible, rebuild-locked. The hard-coded
+fcf = [100, 110, 121, 133, 146] in models/export_finance_report.py is
+NOT yet switched to these values — that cutover is a separate, explicit
+approval (it re-prices the whole DCF).
+
+### 39. Scenario/driver layer lives in data/scenarios/ (kind C)
+scenario_master + driver_master + scenario_assumptions, with COMPANY_
+DRIVER and MARKET_METRIC target types so one scenario can eventually
+hit UFCF and WACC coherently. Blank company_id = default,
+company-specific overrides win (the account_mapping precedence
+pattern). The legacy Lower/Higher scenarios migrate here when the
+market-metric side is wired (Phase 6 / market-prep C). NWC forecast
+method: components held at last-actual % of revenue unless an explicit
+NWC_PCT_REVENUE override exists.
+
+### 40. Two tax rates, never conflated
+The income walk reports the REPORTED EFFECTIVE rate (FY2025 25.00%,
+FY2024 24.70%); NOPAT everywhere uses the ANALYST NORMALIZED driver
+rate (25.0), and ufcf_forecast.tax_rate_pct records the rate actually
+used per row. FY2024's missing CFS means its capex/ufcf stay blank —
+the engine never invents a number to complete a row.
+
+### 41. Page flow contract
+docs/PAGE_FLOW.md is the Phase 11 build spec: every page reads left→
+right then top→bottom, starts with source-labeled inputs, flows through
+visible equation rows, and ends by handing exactly one thing to the
+next page (Page 2 → UFCF path; Page 1 → WACC + hurdle; Page 3 → the
+capital-allocation decision). Driver-based forecasting, incremental
+with/without project analysis, and risk-adjusted capital allocation are
+recorded there as design requirements for the appraisal layer.

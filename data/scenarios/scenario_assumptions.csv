@@ -1,0 +1,6 @@
+scenario_id,target_type,target_id,company_id,period_id,override_type,value,unit,rationale,source
+BASE,COMPANY_DRIVER,REVENUE_GROWTH_PCT,,,ABSOLUTE,6.0,PCT,FY2025 actual growth was 6.7%; base case assumes modest deceleration,ANALYST ASSUMPTION (synthetic fixture)
+BASE,COMPANY_DRIVER,EBITDA_MARGIN_PCT,,,ABSOLUTE,25.0,PCT,FY2025 actual margin 24.7%; base case holds ~flat with slight operating leverage,ANALYST ASSUMPTION (synthetic fixture)
+BASE,COMPANY_DRIVER,DA_PCT_REVENUE,,,ABSOLUTE,5.0,PCT,FY2025 actual 5.2% of revenue; consistent with stable asset intensity,ANALYST ASSUMPTION (synthetic fixture)
+BASE,COMPANY_DRIVER,CAPEX_PCT_REVENUE,,,ABSOLUTE,5.5,PCT,FY2025 actual 5.5% of revenue (parent CFS); maintenance-level spend,ANALYST ASSUMPTION (synthetic fixture)
+BASE,COMPANY_DRIVER,TAX_RATE_PCT,,,ABSOLUTE,25.0,PCT,Normalized rate; FY2025 reported effective rate was 25.0% (FY2024 24.7%),ANALYST ASSUMPTION (synthetic fixture)
