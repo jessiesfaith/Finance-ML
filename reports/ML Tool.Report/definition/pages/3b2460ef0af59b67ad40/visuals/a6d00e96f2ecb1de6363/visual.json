@@ -23,34 +23,16 @@
                       "Entity": "client_fs_ufcf"
                     }
                   },
-                  "Property": "Client Revenue ($M)"
+                  "Property": "Client Revenue Display"
                 }
               },
-              "queryRef": "client_fs_ufcf.Client Revenue ($M)",
-              "nativeQueryRef": "Client Revenue ($M)"
+              "queryRef": "client_fs_ufcf.Client Revenue Display",
+              "nativeQueryRef": "Client Revenue Display"
             }
           ]
         }
       }
     },
-    "drillFilterOtherVisuals": true,
-    "objects": {
-      "value": [
-        {
-          "properties": {
-            "displayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ]
-    }
+    "drillFilterOtherVisuals": true
   }
 }
