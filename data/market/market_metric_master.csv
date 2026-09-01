@@ -29,3 +29,19 @@ jolts_openings_k,JOLTS Job Openings,LABOR,THOUSANDS,MONTHLY,SA,SYNTHETIC,JTSJOL,
 housing_starts_k,Housing Starts (SAAR),GROWTH,THOUSANDS,MONTHLY,SA,SYNTHETIC,HOUST,N,,New residential construction starts; the most rate-sensitive activity gauge.,Y
 consumer_sentiment_idx,Consumer Sentiment (U. Michigan),GROWTH,INDEX,MONTHLY,NSA,SYNTHETIC,UMCSENT,N,,Household mood survey; moves with inflation and jobs headlines.,Y
 ism_pmi_idx,ISM Manufacturing PMI,GROWTH,INDEX,MONTHLY,SA,SYNTHETIC,,N,,Purchasing managers survey; above 50 = expansion. Published by ISM (not redistributed via FRED) - live sourcing decision deferred to the cutover.,Y
+gold_usd_oz,Gold Spot Price,COMMODITY,USD,MONTHLY,NA,SYNTHETIC,,N,,Dollars per troy ounce; the classic stress hedge - note the bid when unemployment spikes. FRED discontinued its LBMA series; live source chosen at cutover (LBMA or a licensed feed).,Y
+silver_usd_oz,Silver Spot Price,COMMODITY,USD,MONTHLY,NA,SYNTHETIC,,N,,Dollars per troy ounce; tracks gold at a ratio near 70:1. Live source chosen at cutover.,Y
+oil_wti_usd_bbl,WTI Crude Oil Price,COMMODITY,USD,MONTHLY,NA,SYNTHETIC,DCOILWTICO,N,,Dollars per barrel; demand-driven - watch the 2020 collapse and the inflation-era recovery. Flips to FRED DCOILWTICO at cutover.,Y
+beef_usd_lb,Ground Beef Retail Price,COMMODITY,USD,MONTHLY,NA,SYNTHETIC,APU0000703112,N,,Dollars per pound at retail; compounds with CPI - a grocery-aisle view of inflation. Flips to FRED APU0000703112 at cutover.,Y
+tech_sector_idx,Tech Sector Index (synthetic),EQUITY_RISK,INDEX,MONTHLY,NA,SYNTHETIC,NASDAQCOM,N,,Synthetic tech-sector index; rate-sensitive (drawdowns when yields rise). Live proxy at cutover: NASDAQ Composite (FRED NASDAQCOM).,Y
+ai_sector_idx,AI Thematic Index (synthetic basket),EQUITY_RISK,INDEX,MONTHLY,NA,SYNTHETIC,,N,,Synthetic AI-theme basket that steepens late-sample. No standard public series exists - the owner defines constituents and source at cutover.,Y
+tech_co_1_px,Tech Firm 1 (placeholder T1),EQUITY_RISK,USD,MONTHLY,NA,SYNTHETIC,,N,,PLACEHOLDER SLOT - never a real company's invented history. Owner assigns a real ticker and a live equity source at cutover.,Y
+tech_co_2_px,Tech Firm 2 (placeholder T2),EQUITY_RISK,USD,MONTHLY,NA,SYNTHETIC,,N,,PLACEHOLDER SLOT - see tech_co_1_px.,Y
+tech_co_3_px,Tech Firm 3 (placeholder T3),EQUITY_RISK,USD,MONTHLY,NA,SYNTHETIC,,N,,PLACEHOLDER SLOT - see tech_co_1_px.,Y
+tech_co_4_px,Tech Firm 4 (placeholder T4),EQUITY_RISK,USD,MONTHLY,NA,SYNTHETIC,,N,,PLACEHOLDER SLOT - see tech_co_1_px.,Y
+tech_co_5_px,Tech Firm 5 (placeholder T5),EQUITY_RISK,USD,MONTHLY,NA,SYNTHETIC,,N,,PLACEHOLDER SLOT - see tech_co_1_px.,Y
+ai_co_1_px,AI Firm 1 (placeholder A1),EQUITY_RISK,USD,MONTHLY,NA,SYNTHETIC,,N,,PLACEHOLDER SLOT - never a real company's invented history. Owner assigns a real ticker and a live equity source at cutover.,Y
+ai_co_2_px,AI Firm 2 (placeholder A2),EQUITY_RISK,USD,MONTHLY,NA,SYNTHETIC,,N,,PLACEHOLDER SLOT - see ai_co_1_px.,Y
+ai_co_3_px,AI Firm 3 (placeholder A3),EQUITY_RISK,USD,MONTHLY,NA,SYNTHETIC,,N,,PLACEHOLDER SLOT - see ai_co_1_px.,Y
+ai_co_4_px,AI Firm 4 (placeholder A4),EQUITY_RISK,USD,MONTHLY,NA,SYNTHETIC,,N,,PLACEHOLDER SLOT - see ai_co_1_px.,Y
+ai_co_5_px,AI Firm 5 (placeholder A5),EQUITY_RISK,USD,MONTHLY,NA,SYNTHETIC,,N,,PLACEHOLDER SLOT - see ai_co_1_px.,Y

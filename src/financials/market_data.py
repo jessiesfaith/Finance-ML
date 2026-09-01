@@ -206,6 +206,87 @@ def synthetic_headline_indicators(wide: pd.DataFrame,
     return pd.DataFrame(rows, columns=MARKET_OBSERVATIONS.column_names())
 
 
+# Third extension batch (owner request 2026-09-02): commodities, sector
+# indices, and firm-level price SLOTS. Separate seed-424242 stream so
+# all prior series stay byte-identical. HONESTY BOUNDARY: the firm
+# series carry placeholder names (TECH_CO_1..5, AI_CO_1..5), never real
+# tickers - inventing a price history for a named real company would
+# violate the no-invented-market-data rule even with a SYNTHETIC label.
+# The owner assigns real tickers + a live equity source at the cutover.
+_MARKETS_REFERENCE = "financials/market_data.py seed 424242 (commodities & equities)"
+
+
+def synthetic_market_prices(wide: pd.DataFrame,
+                            ext: pd.DataFrame) -> pd.DataFrame:
+    """
+    Sixteen price series derived from the macro world with documented
+    behavior: gold catches a stress bid (rises with the unemployment
+    gap), oil tracks growth and collapses in the 2020 shock, beef
+    compounds with CPI, equity indices grow with drawdowns when yields
+    rise, and the AI index steepens late-sample. Firm placeholders are
+    their sector index times idiosyncratic noise.
+    """
+    rng = np.random.default_rng(424242)
+    n = len(wide)
+    t_idx = np.arange(n)
+
+    def smooth(scale):
+        shocks = rng.normal(0.0, scale, n)
+        out = np.zeros(n)
+        for i in range(1, n):
+            out[i] = 0.85 * out[i - 1] + shocks[i]
+        return out
+
+    u_gap = wide["unemployment"] - wide["unemployment"].min()
+    cpi = wide["cpi"]
+    gdp = ext["gdp_growth_yoy"]
+    y10 = wide["treasury_10y"]
+
+    gold = 1300 * np.exp(0.004 * t_idx + 0.06 * smooth(0.5)) + 80 * u_gap
+    silver = gold / (72 + 6 * smooth(0.3))
+    oil = (58 + 8 * (gdp - 2.6) - 16 * (u_gap - 1).clip(lower=0)
+           + 6 * (cpi - 2).clip(lower=0) + smooth(2.5)).clip(lower=15)
+    beef = 3.7 * np.exp(np.cumsum(cpi.values / 1200.0)) + smooth(0.04)
+    tech = 100 * np.exp(0.010 * t_idx + 0.08 * smooth(0.6)
+                        - 0.05 * (y10 - y10.min()))
+    ai = 100 * np.exp(0.006 * t_idx + 0.020 * (t_idx - 60).clip(min=0)
+                      + 0.10 * smooth(0.6))
+
+    series = {
+        "gold_usd_oz": ("USD", gold),
+        "silver_usd_oz": ("USD", silver),
+        "oil_wti_usd_bbl": ("USD", oil),
+        "beef_usd_lb": ("USD", beef),
+        "tech_sector_idx": ("INDEX", tech),
+        "ai_sector_idx": ("INDEX", ai),
+    }
+    for i in range(1, 6):
+        scale = float(rng.uniform(0.4, 3.0))
+        series[f"tech_co_{i}_px"] = (
+            "USD", tech * scale * np.exp(0.12 * smooth(0.5)))
+    for i in range(1, 6):
+        scale = float(rng.uniform(0.2, 1.5))
+        series[f"ai_co_{i}_px"] = (
+            "USD", ai * scale * np.exp(0.16 * smooth(0.6)))
+
+    rows = []
+    for metric_id, (unit, values) in series.items():
+        values = pd.Series(values)
+        for date, value in zip(wide["date"], values):
+            rows.append({
+                "metric_id": metric_id,
+                "observation_date": date.strftime("%Y-%m-%d"),
+                "value": round(float(value), 6),
+                "unit": unit,
+                "source": "SYNTHETIC",
+                "source_reference": _MARKETS_REFERENCE,
+                "retrieval_timestamp": SYNTHETIC_RETRIEVAL,
+                "frequency": "MONTHLY",
+                "revision_status": "SYNTHETIC",
+            })
+    return pd.DataFrame(rows, columns=MARKET_OBSERVATIONS.column_names())
+
+
 def replatform_synthetic_history() -> pd.DataFrame:
     """Seed-42 history -> canonical observation rows, honestly labeled."""
     wide = pd.read_csv(SYNTHETIC_HISTORY, parse_dates=["date"])
@@ -229,7 +310,9 @@ def replatform_synthetic_history() -> pd.DataFrame:
                                 columns="metric_id",
                                 values="value").reset_index(drop=True)
     headline = synthetic_headline_indicators(wide, ext_wide)
-    frame = pd.concat([base, extensions, headline], ignore_index=True)
+    markets = synthetic_market_prices(wide, ext_wide)
+    frame = pd.concat([base, extensions, headline, markets],
+                      ignore_index=True)
     return frame.sort_values(
         ["metric_id", "observation_date"]).reset_index(drop=True)
 
@@ -348,6 +431,11 @@ HISTORY_METRICS = (
     "unemp_duration_weeks", "initial_claims_k", "continuing_claims_k",
     "payroll_chg_k", "jolts_openings_k", "housing_starts_k",
     "consumer_sentiment_idx", "ism_pmi_idx", "ig_oas", "hy_oas",
+    "gold_usd_oz", "silver_usd_oz", "oil_wti_usd_bbl", "beef_usd_lb",
+    "tech_sector_idx", "ai_sector_idx",
+    "tech_co_1_px", "tech_co_2_px", "tech_co_3_px", "tech_co_4_px",
+    "tech_co_5_px",
+    "ai_co_1_px", "ai_co_2_px", "ai_co_3_px", "ai_co_4_px", "ai_co_5_px",
 )
 HISTORY_OUTPUT = BASE_DIR / "reports" / "market_history_rolling24.csv"
 
