@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "e3553075e47e37eac2fb",
+  "name": "115b21486adf4868758a",
   "position": {
-    "x": 1015,
-    "y": 950,
+    "x": 165,
+    "y": 890,
     "height": 34,
     "width": 800,
-    "z": 13000,
-    "tabOrder": 13000
+    "z": 11000,
+    "tabOrder": 11000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Bond Market \u2014 Credit Spreads (pts)",
+                    "value": "Producer vs Consumer Inflation (%)",
                     "textStyle": {
                       "fontSize": "13pt"
                     }

@@ -3,8 +3,8 @@
   "name": "af90de010679396c72aa",
   "position": {
     "x": 165,
-    "y": 570,
-    "height": 330,
+    "y": 540,
+    "height": 300,
     "width": 800,
     "z": 8000,
     "tabOrder": 8000
@@ -52,7 +52,7 @@
               },
               "queryRef": "Sum(market_history_rolling24.fed_funds_eff_r24)",
               "nativeQueryRef": "Sum of fed_funds_eff_r24",
-              "displayName": "Fed funds (24m avg)"
+              "displayName": "Fed funds"
             }
           ]
         }

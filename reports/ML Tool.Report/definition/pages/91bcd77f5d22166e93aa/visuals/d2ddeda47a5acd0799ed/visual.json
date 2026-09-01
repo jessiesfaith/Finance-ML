@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "1d8b4f27c3ebb6e6a7b4",
+  "name": "d2ddeda47a5acd0799ed",
   "position": {
     "x": 165,
-    "y": 990,
-    "height": 330,
+    "y": 1710,
+    "height": 300,
     "width": 800,
-    "z": 12000,
-    "tabOrder": 12000
+    "z": 20000,
+    "tabOrder": 20000
   },
   "visual": {
     "visualType": "lineChart",
@@ -44,35 +44,15 @@
                           "Entity": "market_history_rolling24"
                         }
                       },
-                      "Property": "gdp_growth_yoy_r24"
+                      "Property": "unemp_duration_weeks_r24"
                     }
                   },
                   "Function": 0
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.gdp_growth_yoy_r24)",
-              "nativeQueryRef": "Sum of gdp_growth_yoy_r24",
-              "displayName": "Real GDP growth YoY (24m avg)"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "market_history_rolling24"
-                        }
-                      },
-                      "Property": "unemployment_rate_r24"
-                    }
-                  },
-                  "Function": 0
-                }
-              },
-              "queryRef": "Sum(market_history_rolling24.unemployment_rate_r24)",
-              "nativeQueryRef": "Sum of unemployment_rate_r24",
-              "displayName": "Unemployment (24m avg)"
+              "queryRef": "Sum(market_history_rolling24.unemp_duration_weeks_r24)",
+              "nativeQueryRef": "Sum of unemp_duration_weeks_r24",
+              "displayName": "Median weeks"
             }
           ]
         }

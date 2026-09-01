@@ -4,7 +4,7 @@
   "position": {
     "x": 1015,
     "y": 150,
-    "height": 330,
+    "height": 300,
     "width": 800,
     "z": 6000,
     "tabOrder": 6000
@@ -52,7 +52,27 @@
               },
               "queryRef": "Sum(market_history_rolling24.curve_spread_10y_2y_r24)",
               "nativeQueryRef": "Sum of curve_spread_10y_2y_r24",
-              "displayName": "10Y-2Y spread (24m avg)"
+              "displayName": "10Y \u2212 2Y"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_rolling24"
+                        }
+                      },
+                      "Property": "curve_spread_10y_3m_r24"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(market_history_rolling24.curve_spread_10y_3m_r24)",
+              "nativeQueryRef": "Sum of curve_spread_10y_3m_r24",
+              "displayName": "10Y \u2212 3M"
             }
           ]
         }

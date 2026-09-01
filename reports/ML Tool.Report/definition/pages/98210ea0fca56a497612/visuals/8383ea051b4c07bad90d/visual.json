@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "8383ea051b4c07bad90d",
+  "position": {
+    "x": 1000,
+    "y": 15,
+    "height": 80,
+    "width": 720,
+    "z": 2000,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "To test a project: add one row to data/projects/project_master.csv (name, investment, horizon) and its levers to project_assumptions.csv, run  python src/build_project_appraisal.py, then Refresh here.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Projects are judged with the SAME per-scenario tax, WACC and hurdle as the company DCF \u2014 one world, one ruler.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

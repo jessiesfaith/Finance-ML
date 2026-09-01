@@ -412,3 +412,23 @@ Page 5 charts every macro series as a trailing 24-month mean
   formulas over the existing seed-42 history — coherent co-movement
   for teaching, never passed off as market data, replaced by FRED at
   the live cutover.
+
+## 19. Appraising your own project (2026-09-01)
+
+Page 6 turns the report into a tool you can feed. The workflow:
+
+1. Describe the project in `data/projects/project_master.csv` — name,
+   initial investment, horizon — and what it CHANGES in
+   `project_assumptions.csv` (incremental revenue and/or cost savings,
+   margin, maintenance capex, NWC intensity). Levers you omit are zero.
+2. `python src/build_project_appraisal.py` — the engine builds the
+   incremental UFCF path (working capital comes back when the project
+   ends) and judges it per scenario with the SAME tax, WACC and hurdle
+   as the company DCF.
+3. Refresh the report; Page 6 shows the verdicts.
+
+The lesson baked into the fixtures: the big expansion earns an
+accounting return above WACC yet fails NPV and IRR — a return computed
+over a depreciating book value flatters late years while the cash
+never repays the hurdle. When the tests disagree, cash rules; that is
+why the recommendation logic never lets ROIC alone approve a project.

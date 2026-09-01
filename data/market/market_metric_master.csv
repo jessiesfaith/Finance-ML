@@ -9,3 +9,23 @@ pce_yoy,PCE Inflation (year-over-year),INFLATION,PCT,MONTHLY,SA,SYNTHETIC,PCEPI,
 gdp_growth_yoy,Real GDP Growth (year-over-year),GROWTH,PCT,MONTHLY,NA,SYNTHETIC,GDPC1,N,,Output growth context for scenarios and driver rationale. The live layer ingests quarterly GDPC1 and derives YoY; monthly synthetic until then. Never a WACC input.,Y
 ig_oas,Investment-Grade Corporate OAS,CREDIT,PCT_POINTS,MONTHLY,NA,SYNTHETIC,BAMLC0A0CM,N,,Investment-grade bond-market spread over Treasuries; the benchmark for the credit-spread assumption at the live cutover.,Y
 hy_oas,High-Yield Corporate OAS,CREDIT,PCT_POINTS,MONTHLY,NA,SYNTHETIC,BAMLH0A0HYM2,N,,High-yield bond-market spread; risk-appetite context. Widens in stress - see the 2020 spike in the synthetic history.,Y
+ust_3m,3-Month Treasury Bill Yield,TREASURY_CURVE,PCT,MONTHLY,NA,SYNTHETIC,DGS3MO,N,,Short end of the curve; tracks the policy rate closely. Synthetic until the live cutover.,Y
+ust_5y,5-Year Treasury Constant Maturity Yield,TREASURY_CURVE,PCT,MONTHLY,NA,SYNTHETIC,DGS5,N,,Belly of the curve between the 2Y and 10Y. Synthetic until the live cutover (FRED DGS5).,Y
+ust_30y,30-Year Treasury Constant Maturity Yield,TREASURY_CURVE,PCT,MONTHLY,NA,SYNTHETIC,DGS30,N,,Long bond; duration-sensitive end of the curve. Synthetic until the live cutover (FRED DGS30).,Y
+curve_spread_10y_3m,Treasury Curve Spread 10Y minus 3M,TREASURY_CURVE,PCT_POINTS,MONTHLY,NA,DERIVED,,Y,ust_10y - ust_3m,The recession-watch slope the news quotes most; negative = inverted. Derived from the two tenor metrics.,Y
+core_cpi_yoy,Core CPI Inflation (ex food and energy),INFLATION,PCT,MONTHLY,SA,SYNTHETIC,CPILFESL,N,,Headline CPI with the volatile food/energy stripped out; the trend readers watch. Synthetic stores the rate directly.,Y
+core_pce_yoy,Core PCE Inflation (ex food and energy),INFLATION,PCT,MONTHLY,SA,SYNTHETIC,PCEPILFE,N,,The Fed's 2% target is defined on this gauge. Synthetic stores the rate directly.,Y
+ppi_yoy,Producer Price Inflation (year-over-year),INFLATION,PCT,MONTHLY,SA,SYNTHETIC,PPIACO,N,,Pipeline inflation at the factory gate; tends to lead consumer prices with more volatility.,Y
+ahe_yoy,Average Hourly Earnings Growth (year-over-year),LABOR,PCT,MONTHLY,SA,SYNTHETIC,CES0500000003,N,,Wage growth from the Employment Situation report; compare against CPI for real wages.,Y
+retail_sales_yoy,Retail Sales Growth (year-over-year),GROWTH,PCT,MONTHLY,SA,SYNTHETIC,RSAFS,N,,Monthly consumer-spending pulse; the live layer ingests the dollar index and derives YoY.,Y
+indprod_yoy,Industrial Production Growth (year-over-year),GROWTH,PCT,MONTHLY,SA,SYNTHETIC,INDPRO,N,,Factory/mining/utilities output growth; the live layer derives YoY from the index.,Y
+u6_rate,U-6 Underemployment Rate,LABOR,PCT,MONTHLY,SA,SYNTHETIC,U6RATE,N,,Broadest slack measure: unemployed plus discouraged plus involuntary part-time. Always above U-3.,Y
+participation_rate,Labor Force Participation Rate,LABOR,PCT,MONTHLY,SA,SYNTHETIC,CIVPART,N,,Share of the population working or looking; slow-moving denominator behind the unemployment rate.,Y
+unemp_duration_weeks,Median Duration of Unemployment,LABOR,WEEKS,MONTHLY,SA,SYNTHETIC,UEMPMED,N,,Median weeks unemployed; rises with a lag after stress and is slow to heal.,Y
+initial_claims_k,Initial Jobless Claims (monthly avg),LABOR,THOUSANDS,MONTHLY,SA,SYNTHETIC,ICSA,N,,New unemployment sign-ups; the weekly Thursday release averaged monthly here. The fastest labor stress signal.,Y
+continuing_claims_k,Continuing Jobless Claims (monthly avg),LABOR,THOUSANDS,MONTHLY,SA,SYNTHETIC,CCSA,N,,People still drawing benefits; lags initial claims by design.,Y
+payroll_chg_k,Nonfarm Payroll Change (monthly),LABOR,THOUSANDS,MONTHLY,SA,SYNTHETIC,PAYEMS,N,,THE first-Friday headline: jobs added or lost in the month. The live layer differences the PAYEMS level.,Y
+jolts_openings_k,JOLTS Job Openings,LABOR,THOUSANDS,MONTHLY,SA,SYNTHETIC,JTSJOL,N,,Unfilled openings; openings-per-unemployed is the tightness ratio the Fed cites.,Y
+housing_starts_k,Housing Starts (SAAR),GROWTH,THOUSANDS,MONTHLY,SA,SYNTHETIC,HOUST,N,,New residential construction starts; the most rate-sensitive activity gauge.,Y
+consumer_sentiment_idx,Consumer Sentiment (U. Michigan),GROWTH,INDEX,MONTHLY,NSA,SYNTHETIC,UMCSENT,N,,Household mood survey; moves with inflation and jobs headlines.,Y
+ism_pmi_idx,ISM Manufacturing PMI,GROWTH,INDEX,MONTHLY,SA,SYNTHETIC,,N,,Purchasing managers survey; above 50 = expansion. Published by ISM (not redistributed via FRED) - live sourcing decision deferred to the cutover.,Y

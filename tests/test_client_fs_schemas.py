@@ -35,6 +35,9 @@ def test_registry_covers_the_expected_tables():
         "risk_free_policy",
         # Phase 13 market layer (data/market/, independent loader)
         "market_metric_master",
+        # Page 6 project intake (data/projects/)
+        "project_master",
+        "project_assumptions",
         "market_observations",
         # Phase 14 benchmarking (architecture; no peer values invented)
         "benchmark_metric_master",

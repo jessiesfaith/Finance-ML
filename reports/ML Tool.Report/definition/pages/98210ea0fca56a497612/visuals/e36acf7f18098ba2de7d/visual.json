@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "e36acf7f18098ba2de7d",
+  "position": {
+    "x": 165,
+    "y": 150,
+    "height": 110,
+    "width": 1550,
+    "z": 4000,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Incremental revenue & cost savings \u2192 EBITDA \u2192 less straight-line D&A (investment \u00f7 horizon) \u2192 \u00d7 (1 \u2212 tax) = NOPAT \u2192 + D&A \u2212 maintenance CapEx \u2212 \u0394NWC = incremental UFCF (final year recovers the NWC balance).",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Then three tests, read together: NPV at the hurdle > 0 \u00b7 IRR > hurdle \u00b7 incremental ROIC > WACC. All pass = APPROVE, all fail = REJECT, disagreement = REVIEW \u2014 and when the accounting return says yes but the cash tests say no, cash rules.",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

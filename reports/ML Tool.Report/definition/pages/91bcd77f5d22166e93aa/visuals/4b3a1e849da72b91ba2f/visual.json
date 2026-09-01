@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Treasury Yields (%)",
+                    "value": "Treasury Yields (%) \u2014 the whole curve",
                     "textStyle": {
                       "fontSize": "13pt"
                     }

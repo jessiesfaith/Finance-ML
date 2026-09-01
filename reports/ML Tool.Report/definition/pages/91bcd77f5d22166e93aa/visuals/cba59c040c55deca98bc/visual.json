@@ -3,8 +3,8 @@
   "name": "cba59c040c55deca98bc",
   "position": {
     "x": 1015,
-    "y": 570,
-    "height": 330,
+    "y": 540,
+    "height": 300,
     "width": 800,
     "z": 10000,
     "tabOrder": 10000
@@ -52,7 +52,27 @@
               },
               "queryRef": "Sum(market_history_rolling24.cpi_yoy_r24)",
               "nativeQueryRef": "Sum of cpi_yoy_r24",
-              "displayName": "CPI YoY (24m avg)"
+              "displayName": "CPI"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_rolling24"
+                        }
+                      },
+                      "Property": "core_cpi_yoy_r24"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(market_history_rolling24.core_cpi_yoy_r24)",
+              "nativeQueryRef": "Sum of core_cpi_yoy_r24",
+              "displayName": "Core CPI"
             },
             {
               "field": {
@@ -72,7 +92,27 @@
               },
               "queryRef": "Sum(market_history_rolling24.pce_yoy_r24)",
               "nativeQueryRef": "Sum of pce_yoy_r24",
-              "displayName": "PCE YoY (24m avg)"
+              "displayName": "PCE"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_rolling24"
+                        }
+                      },
+                      "Property": "core_pce_yoy_r24"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(market_history_rolling24.core_pce_yoy_r24)",
+              "nativeQueryRef": "Sum of core_pce_yoy_r24",
+              "displayName": "Core PCE"
             }
           ]
         }

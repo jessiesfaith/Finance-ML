@@ -4,7 +4,7 @@
   "position": {
     "x": 165,
     "y": 150,
-    "height": 330,
+    "height": 300,
     "width": 800,
     "z": 4000,
     "tabOrder": 4000
@@ -44,6 +44,26 @@
                           "Entity": "market_history_rolling24"
                         }
                       },
+                      "Property": "ust_3m_r24"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(market_history_rolling24.ust_3m_r24)",
+              "nativeQueryRef": "Sum of ust_3m_r24",
+              "displayName": "3M"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_rolling24"
+                        }
+                      },
                       "Property": "ust_2y_r24"
                     }
                   },
@@ -52,7 +72,27 @@
               },
               "queryRef": "Sum(market_history_rolling24.ust_2y_r24)",
               "nativeQueryRef": "Sum of ust_2y_r24",
-              "displayName": "2Y Treasury (24m avg)"
+              "displayName": "2Y"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_rolling24"
+                        }
+                      },
+                      "Property": "ust_5y_r24"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(market_history_rolling24.ust_5y_r24)",
+              "nativeQueryRef": "Sum of ust_5y_r24",
+              "displayName": "5Y"
             },
             {
               "field": {
@@ -72,7 +112,27 @@
               },
               "queryRef": "Sum(market_history_rolling24.ust_10y_r24)",
               "nativeQueryRef": "Sum of ust_10y_r24",
-              "displayName": "10Y Treasury (24m avg)"
+              "displayName": "10Y"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_rolling24"
+                        }
+                      },
+                      "Property": "ust_30y_r24"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(market_history_rolling24.ust_30y_r24)",
+              "nativeQueryRef": "Sum of ust_30y_r24",
+              "displayName": "30Y"
             }
           ]
         }

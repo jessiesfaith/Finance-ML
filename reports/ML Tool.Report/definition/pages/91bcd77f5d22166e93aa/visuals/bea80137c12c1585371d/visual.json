@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Curve Slope \u2014 10Y minus 2Y (pts)",
+                    "value": "Curve Slopes (pts) \u2014 negative = inverted",
                     "textStyle": {
                       "fontSize": "13pt"
                     }

@@ -661,7 +661,9 @@ MARKET_CATEGORIES = (
     "REAL_RATES_BREAKEVENS", "GROWTH", "LABOR", "CREDIT", "EQUITY_RISK",
     "FX_MARKET", "BENCHMARKING",
 )
-MARKET_UNITS = ("PCT", "PCT_POINTS", "INDEX", "THOUSANDS", "CCY_PER_CCY")
+MARKET_UNITS = (
+    "PCT", "PCT_POINTS", "INDEX", "THOUSANDS", "WEEKS", "CCY_PER_CCY",
+)
 MARKET_FREQUENCIES = ("DAILY", "WEEKLY", "MONTHLY", "QUARTERLY")
 REVISION_STATUSES = ("PRELIMINARY", "REVISED", "FINAL", "SYNTHETIC")
 
@@ -818,6 +820,48 @@ AGENT_REVIEW_LOG = TableSchema(
     key=("run_id", "review_id"),
 )
 
+# ----------------------------------------------------------------------
+# PROJECT APPRAISAL (Page 6): the owner's own investment cases.
+# A project is what it CHANGES - incremental revenue/savings vs the
+# without-project world - never a re-forecast of the whole company.
+# ----------------------------------------------------------------------
+
+PROJECT_ASSUMPTION_CODES = (
+    "INCR_REVENUE_Y1", "INCR_REVENUE_GROWTH_PCT", "INCR_EBITDA_MARGIN_PCT",
+    "COST_SAVINGS_Y1", "COST_SAVINGS_GROWTH_PCT",
+    "MAINT_CAPEX_PCT_REV", "NWC_PCT_REV",
+)
+
+PROJECT_MASTER = TableSchema(
+    table="project_master",
+    filename="project_master.csv",
+    columns=(
+        Column("project_id"),
+        Column("project_name"),
+        Column("category"),
+        Column("initial_investment", kind="number"),
+        Column("start_period"),
+        Column("horizon_years", kind="number"),
+        Column("rationale"),
+        Column("review_status", allowed=REVIEW_STATUSES),
+    ),
+    key=("project_id",),
+)
+
+PROJECT_ASSUMPTIONS = TableSchema(
+    table="project_assumptions",
+    filename="project_assumptions.csv",
+    columns=(
+        Column("project_id"),
+        Column("assumption_code", allowed=PROJECT_ASSUMPTION_CODES),
+        Column("value", kind="number"),
+        Column("unit"),
+        Column("rationale"),
+    ),
+    key=("project_id", "assumption_code"),
+)
+
+
 OUTPUT_SCHEMAS = (
     CLIENT_FS_NORMALIZED, ENTITY_CONSOLIDATION, CONTROL_CHECKS, UFCF_FORECAST,
     VALUATION_INPUTS, OUTLIER_FLAGS, AGENT_REVIEW_LOG,
@@ -827,5 +871,6 @@ SCHEMAS_BY_TABLE = {
     s.table: s
     for s in (ALL_SCHEMAS + OUTPUT_SCHEMAS + SCENARIO_SCHEMAS
               + (SHARES_DILUTION, ADJUSTMENTS, TRANSACTION_EVENTS,
-                 PROFORMA_ADJUSTMENTS) + MARKET_SCHEMAS)
+                 PROFORMA_ADJUSTMENTS) + MARKET_SCHEMAS
+              + (PROJECT_MASTER, PROJECT_ASSUMPTIONS))
 }

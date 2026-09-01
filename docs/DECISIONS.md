@@ -717,3 +717,35 @@ into the new curated export, schema-locked by tests/
 test_market_history.py. Page 5 carries six line charts (treasuries,
 curve slope, policy rate, CPI vs PCE, growth vs unemployment, credit
 spreads) with the smoothing trade-off written on the page.
+
+### 68. Page 5 widened to the full headline-release set (incl. 5Y Treasury)
+Owner asked for the 5Y Treasury and "everything the news talks about"
+in the monthly releases, with recommendations. Chosen set (19 new
+stored series + a second derived slope, all FRED-flippable ids in the
+master): the full curve 3M/2Y/5Y/10Y/30Y and 10Y-3M slope; core CPI,
+core PCE and PPI beside the existing gauges; the Employment Situation
+block (nonfarm payroll change, U-6, participation, average hourly
+earnings, median unemployment duration); weekly claims averaged
+monthly (initial = "sign-ups", continuing); retail sales, industrial
+production, housing starts; UMich sentiment and ISM PMI (ISM is not
+FRED-redistributed - live sourcing decided at cutover). Generated on a
+SEPARATE seed-4242 stream so the prior series stay byte-identical -
+append-only verified row-for-row (927 unchanged, 1,957 appended; now
+2,884). WEEKS added to the unit vocabulary. The rolling export widened
+to 30 metrics / 63 columns and Page 5 regenerated as 13 panels grouped
+release-by-release.
+
+### 69. Page 6 - project appraisal: incremental, per scenario, three tests
+The intake the owner asked for ("where can I test a project?"). New
+domain data/projects/ (project_master + project_assumptions, validated
+fail-loud like every other intake), engine src/financials/projects.py:
+incremental revenue/savings -> EBITDA -> straight-line D&A -> NOPAT ->
+UFCF with NWC recovered in the final year; NPV on the hurdle basis
+(consistent with audit D2), IRR by bisection with NPV(IRR)=0 pinned in
+tests, undiscounted payback, incremental ROIC = avg NOPAT / avg
+invested capital. Rates come from finance_scenario_report.csv so
+projects and the company are judged in the same world. Verdict = three
+tests read together (APPROVE / REVIEW / REJECT). The two fixture cases
+are chosen to teach: the expansion posts ROIC > WACC yet fails both
+cash tests (REVIEW - cash rules); the automation retrofit passes all
+three in every scenario with the margin thinning as rates rise.

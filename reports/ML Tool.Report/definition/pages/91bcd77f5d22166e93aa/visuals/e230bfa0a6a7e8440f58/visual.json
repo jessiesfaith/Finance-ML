@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "SYNTHETIC seed-42 history (the series the internal model trains on), honestly labeled \u2014 flips to FRED observations at the live-data cutover.",
+                    "value": "SYNTHETIC seed-42/4242 history, honestly labeled \u2014 every series flips to its FRED release at the live-data cutover (ids in market_metric_master).",
                     "textStyle": {
                       "fontSize": "9pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Each line is a trailing 24-month mean: it smooths month-to-month noise into regime shape, at the cost of turning after the raw series does.",
+                    "value": "Each line is a trailing 24-month mean: regime shape instead of monthly noise, at the cost of turning late. First 23 months are blank by design.",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

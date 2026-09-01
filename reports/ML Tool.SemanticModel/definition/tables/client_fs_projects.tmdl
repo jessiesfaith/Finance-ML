@@ -1,0 +1,237 @@
+/// Curated pipeline export reports/client_fs_projects.csv: the
+/// owner's investment cases appraised incrementally per scenario on
+/// the hurdle basis (NPV / IRR / payback / incremental ROIC + the
+/// three-test verdict). Python writes it; Page 6 only reads. Add a
+/// project in data/projects/ and rerun src/build_project_appraisal.py.
+table client_fs_projects
+	lineageTag: bd83e71f-55c6-4b5d-b6b4-bde86ebe1e16
+
+	column project_id
+		dataType: string
+		lineageTag: 6b6c9f77-b746-458b-880b-0c7cfde09910
+		summarizeBy: none
+		sourceColumn: project_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_name
+		dataType: string
+		lineageTag: a4e6c354-8a05-4661-aab9-6c216ffe8559
+		summarizeBy: none
+		sourceColumn: project_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: fb1c10c8-18d1-4b02-a737-4706b1fb6e1e
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column scenario
+		dataType: string
+		lineageTag: 74b40689-b118-41aa-8f1f-e858fc3d9ab5
+		summarizeBy: none
+		sourceColumn: scenario
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_status
+		dataType: string
+		lineageTag: 13e3922d-7ab1-4164-85dd-e40510589dd0
+		summarizeBy: none
+		sourceColumn: review_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column npv_test
+		dataType: string
+		lineageTag: db9b4d37-8f5d-44a3-a7f3-7358dda1f4e6
+		summarizeBy: none
+		sourceColumn: npv_test
+
+		annotation SummarizationSetBy = Automatic
+
+	column irr_test
+		dataType: string
+		lineageTag: f6fed5eb-6363-4005-acbc-e404862e178a
+		summarizeBy: none
+		sourceColumn: irr_test
+
+		annotation SummarizationSetBy = Automatic
+
+	column roic_test
+		dataType: string
+		lineageTag: 0d7e5cd3-9065-4e03-8d35-55594af95a95
+		summarizeBy: none
+		sourceColumn: roic_test
+
+		annotation SummarizationSetBy = Automatic
+
+	column recommendation
+		dataType: string
+		lineageTag: 2709b649-999d-427a-b72e-f5d804cde194
+		summarizeBy: none
+		sourceColumn: recommendation
+
+		annotation SummarizationSetBy = Automatic
+
+	column rationale
+		dataType: string
+		lineageTag: 2464c3ee-cb11-42d8-8fe8-58731a15059f
+		summarizeBy: none
+		sourceColumn: rationale
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: fa57446a-670b-4f1a-9794-85836d29fb69
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column initial_investment
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 21dbae1b-2fe8-4842-ae01-db7566ec0970
+		summarizeBy: none
+		sourceColumn: initial_investment
+
+		annotation SummarizationSetBy = Automatic
+
+	column horizon_years
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 186726ab-6806-49ac-9f27-b119f0340af7
+		summarizeBy: none
+		sourceColumn: horizon_years
+
+		annotation SummarizationSetBy = Automatic
+
+	column tax_rate_pct
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 041957c2-abcc-4709-805c-6f71e15bd9d1
+		summarizeBy: none
+		sourceColumn: tax_rate_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column wacc_pct
+		dataType: double
+		formatString: #,0.00
+		lineageTag: fb221dc3-5621-4f97-a5ae-f85bdec2552f
+		summarizeBy: none
+		sourceColumn: wacc_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column hurdle_rate_pct
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 1b71bdcb-f6e6-419f-9008-949af9bf8ff5
+		summarizeBy: none
+		sourceColumn: hurdle_rate_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column ufcf_y1
+		dataType: double
+		formatString: #,0.00
+		lineageTag: f51aaeeb-8e39-46e8-a7ed-580e087cf48f
+		summarizeBy: none
+		sourceColumn: ufcf_y1
+
+		annotation SummarizationSetBy = Automatic
+
+	column ufcf_y2
+		dataType: double
+		formatString: #,0.00
+		lineageTag: b14e2386-b327-4d91-b193-02f0f843596a
+		summarizeBy: none
+		sourceColumn: ufcf_y2
+
+		annotation SummarizationSetBy = Automatic
+
+	column ufcf_y3
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 395b15d4-3f0d-48e5-9b53-f92239117e00
+		summarizeBy: none
+		sourceColumn: ufcf_y3
+
+		annotation SummarizationSetBy = Automatic
+
+	column ufcf_y4
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 76230f55-bd7e-4e88-ab97-16af497639c2
+		summarizeBy: none
+		sourceColumn: ufcf_y4
+
+		annotation SummarizationSetBy = Automatic
+
+	column ufcf_y5
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 193e0a01-244c-405e-a2d5-5981af61a3dc
+		summarizeBy: none
+		sourceColumn: ufcf_y5
+
+		annotation SummarizationSetBy = Automatic
+
+	column npv_at_hurdle
+		dataType: double
+		formatString: #,0.00
+		lineageTag: e8a8e8da-cfd0-47f0-ba05-d62e5193647c
+		summarizeBy: none
+		sourceColumn: npv_at_hurdle
+
+		annotation SummarizationSetBy = Automatic
+
+	column irr_pct
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 5d8254ad-14ad-4d56-9b5b-5966f36d0d04
+		summarizeBy: none
+		sourceColumn: irr_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column payback_years
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 92ee1355-c79f-43e9-bc08-63ddfb625092
+		summarizeBy: none
+		sourceColumn: payback_years
+
+		annotation SummarizationSetBy = Automatic
+
+	column incr_roic_pct
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 21443542-4c0d-47c9-8867-043fa0f6f408
+		summarizeBy: none
+		sourceColumn: incr_roic_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	partition client_fs_projects = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\client_fs_projects.csv"),
+				    [Delimiter = ",", Columns = 25, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"project_id", "project_name", "category", "scenario", "review_status", "npv_test", "irr_test", "roic_test", "recommendation", "rationale", "value_class", "initial_investment", "horizon_years", "tax_rate_pct", "wacc_pct", "hurdle_rate_pct", "ufcf_y1", "ufcf_y2", "ufcf_y3", "ufcf_y4", "ufcf_y5", "npv_at_hurdle", "irr_pct", "payback_years", "incr_roic_pct"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"initial_investment", type number}, {"horizon_years", type number}, {"tax_rate_pct", type number}, {"wacc_pct", type number}, {"hurdle_rate_pct", type number}, {"ufcf_y1", type number}, {"ufcf_y2", type number}, {"ufcf_y3", type number}, {"ufcf_y4", type number}, {"ufcf_y5", type number}, {"npv_at_hurdle", type number}, {"irr_pct", type number}, {"payback_years", type number}, {"incr_roic_pct", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

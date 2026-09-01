@@ -1,0 +1,223 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "dd19503a6f1860828751",
+  "position": {
+    "x": 165,
+    "y": 330,
+    "height": 260,
+    "width": 1550,
+    "z": 6000,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_projects"
+                    }
+                  },
+                  "Property": "project_id"
+                }
+              },
+              "queryRef": "client_fs_projects.project_id",
+              "nativeQueryRef": "project_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_projects"
+                    }
+                  },
+                  "Property": "project_name"
+                }
+              },
+              "queryRef": "client_fs_projects.project_name",
+              "nativeQueryRef": "project_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_projects"
+                    }
+                  },
+                  "Property": "scenario"
+                }
+              },
+              "queryRef": "client_fs_projects.scenario",
+              "nativeQueryRef": "scenario"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_projects"
+                    }
+                  },
+                  "Property": "npv_at_hurdle"
+                }
+              },
+              "queryRef": "client_fs_projects.npv_at_hurdle",
+              "nativeQueryRef": "npv_at_hurdle"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_projects"
+                    }
+                  },
+                  "Property": "irr_pct"
+                }
+              },
+              "queryRef": "client_fs_projects.irr_pct",
+              "nativeQueryRef": "irr_pct"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_projects"
+                    }
+                  },
+                  "Property": "hurdle_rate_pct"
+                }
+              },
+              "queryRef": "client_fs_projects.hurdle_rate_pct",
+              "nativeQueryRef": "hurdle_rate_pct"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_projects"
+                    }
+                  },
+                  "Property": "payback_years"
+                }
+              },
+              "queryRef": "client_fs_projects.payback_years",
+              "nativeQueryRef": "payback_years"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_projects"
+                    }
+                  },
+                  "Property": "incr_roic_pct"
+                }
+              },
+              "queryRef": "client_fs_projects.incr_roic_pct",
+              "nativeQueryRef": "incr_roic_pct"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_projects"
+                    }
+                  },
+                  "Property": "wacc_pct"
+                }
+              },
+              "queryRef": "client_fs_projects.wacc_pct",
+              "nativeQueryRef": "wacc_pct"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_projects"
+                    }
+                  },
+                  "Property": "npv_test"
+                }
+              },
+              "queryRef": "client_fs_projects.npv_test",
+              "nativeQueryRef": "npv_test"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_projects"
+                    }
+                  },
+                  "Property": "irr_test"
+                }
+              },
+              "queryRef": "client_fs_projects.irr_test",
+              "nativeQueryRef": "irr_test"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_projects"
+                    }
+                  },
+                  "Property": "roic_test"
+                }
+              },
+              "queryRef": "client_fs_projects.roic_test",
+              "nativeQueryRef": "roic_test"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_projects"
+                    }
+                  },
+                  "Property": "recommendation"
+                }
+              },
+              "queryRef": "client_fs_projects.recommendation",
+              "nativeQueryRef": "recommendation"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "client_fs_projects"
+                  }
+                },
+                "Property": "project_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

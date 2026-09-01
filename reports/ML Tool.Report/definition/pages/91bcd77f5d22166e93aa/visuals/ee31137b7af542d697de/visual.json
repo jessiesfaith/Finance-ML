@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "597fa9fed285421c5126",
+  "name": "ee31137b7af542d697de",
   "position": {
-    "x": 1015,
-    "y": 990,
-    "height": 330,
+    "x": 165,
+    "y": 1320,
+    "height": 300,
     "width": 800,
-    "z": 14000,
-    "tabOrder": 14000
+    "z": 16000,
+    "tabOrder": 16000
   },
   "visual": {
     "visualType": "lineChart",
@@ -44,15 +44,15 @@
                           "Entity": "market_history_rolling24"
                         }
                       },
-                      "Property": "ig_oas_r24"
+                      "Property": "gdp_growth_yoy_r24"
                     }
                   },
                   "Function": 0
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.ig_oas_r24)",
-              "nativeQueryRef": "Sum of ig_oas_r24",
-              "displayName": "IG corporate OAS (24m avg)"
+              "queryRef": "Sum(market_history_rolling24.gdp_growth_yoy_r24)",
+              "nativeQueryRef": "Sum of gdp_growth_yoy_r24",
+              "displayName": "Real GDP"
             },
             {
               "field": {
@@ -64,15 +64,35 @@
                           "Entity": "market_history_rolling24"
                         }
                       },
-                      "Property": "hy_oas_r24"
+                      "Property": "indprod_yoy_r24"
                     }
                   },
                   "Function": 0
                 }
               },
-              "queryRef": "Sum(market_history_rolling24.hy_oas_r24)",
-              "nativeQueryRef": "Sum of hy_oas_r24",
-              "displayName": "HY corporate OAS (24m avg)"
+              "queryRef": "Sum(market_history_rolling24.indprod_yoy_r24)",
+              "nativeQueryRef": "Sum of indprod_yoy_r24",
+              "displayName": "Industrial production"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_rolling24"
+                        }
+                      },
+                      "Property": "retail_sales_yoy_r24"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(market_history_rolling24.retail_sales_yoy_r24)",
+              "nativeQueryRef": "Sum of retail_sales_yoy_r24",
+              "displayName": "Retail sales"
             }
           ]
         }

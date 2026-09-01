@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "d36dcf8bc59aedf8ecdf",
+  "position": {
+    "x": 165,
+    "y": 1200,
+    "height": 60,
+    "width": 1550,
+    "z": 12000,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "This page closes the loop the report teaches: statements (Page 2) fund projects; markets (Pages 3/5) price their risk; the same three-test discipline that judged the company (Page 4) judges each new dollar you put to work.",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "5d4376d315b30a8aad71",
   "position": {
-    "x": 165,
-    "y": 1370,
-    "height": 60,
-    "width": 1650,
-    "z": 15000,
-    "tabOrder": 15000
+    "x": 1015,
+    "y": 2450,
+    "height": 300,
+    "width": 800,
+    "z": 29000,
+    "tabOrder": 29000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,57 @@
               {
                 "textRuns": [
                   {
-                    "value": "Reading the page: yields, the curve, and the policy rate set the discount-rate world (Page 3); inflation and growth set the operating world the scenario drivers describe (Page 2); credit spreads benchmark the credit-spread assumption. The 2020 stress and the hiking cycle that follows are visible in every panel \u2014 one economy, seen through six windows.",
+                    "value": "Reading the page:",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Rows 1-2 set the discount-rate world Page 3 builds WACC in.",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Rows 2-4 are the price-and-wage story the Fed reacts to.",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Rows 4-6 are the jobs engine: rates first (U-3/U-6), then how long unemployment lasts, then the flow numbers the news leads with \u2014 claims, payrolls, openings.",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Row 7 closes with the most rate-sensitive activity and the surveys that front-run it all.",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Participation rate ships in the table for the denominator story; credit spreads live with the rest in the export too.",
                     "textStyle": {
                       "fontSize": "10pt"
                     }

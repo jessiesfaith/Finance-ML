@@ -111,6 +111,101 @@ def synthetic_macro_extensions(wide: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows, columns=MARKET_OBSERVATIONS.column_names())
 
 
+# Second extension batch (owner request 2026-09-01): the headline monthly
+# indicators the news cycle runs on. Same honesty contract - derived
+# deterministically from the base seed-42 history on a SEPARATE random
+# stream (seed 4242) so the earlier series stay byte-identical and the
+# observation store stays append-only. Replaced by FRED at the cutover.
+_HEADLINE_REFERENCE = "financials/market_data.py seed 4242 (headline indicators)"
+
+
+def synthetic_headline_indicators(wide: pd.DataFrame,
+                                  ext: pd.DataFrame) -> pd.DataFrame:
+    """
+    Nineteen more series, each a documented formula over the base
+    history (and the first extension batch, passed in as `ext` wide):
+    yields interpolate along the curve; core inflation damps headline;
+    claims, duration and U-6 stretch the unemployment gap; payrolls move
+    against the change in unemployment; housing starts fall when yields
+    rise. Plausible co-movement for the learning build - never
+    calibrated to any real market.
+    """
+    rng = np.random.default_rng(4242)
+    n = len(wide)
+
+    def smooth(scale):
+        shocks = rng.normal(0.0, scale, n)
+        out = np.zeros(n)
+        for i in range(1, n):
+            out[i] = 0.85 * out[i - 1] + shocks[i]
+        return out
+
+    u = wide["unemployment"]
+    u_gap = u - u.min()
+    du3 = u.diff().rolling(3, min_periods=1).mean().fillna(0.0)
+    cpi = wide["cpi"]
+    cpi_trend = cpi.rolling(12, min_periods=1).mean()
+    gdp = ext["gdp_growth_yoy"]
+    y10 = wide["treasury_10y"]
+
+    series = {
+        "ust_3m": ("PCT", wide["fed_funds"] + 0.05 + smooth(0.03)),
+        "ust_5y": ("PCT", 0.45 * wide["treasury_2y"]
+                   + 0.55 * y10 + smooth(0.04)),
+        "ust_30y": ("PCT", y10 + 0.45 + smooth(0.05)),
+        "core_cpi_yoy": ("PCT", 0.7 * cpi + 0.3 * cpi_trend
+                         + 0.10 + smooth(0.04)),
+        "core_pce_yoy": ("PCT", 0.7 * ext["pce_yoy"]
+                         + 0.3 * ext["pce_yoy"].rolling(12, min_periods=1).mean()
+                         + 0.05 + smooth(0.04)),
+        "ppi_yoy": ("PCT", 1.4 * cpi - 0.5 + smooth(0.30)),
+        "ahe_yoy": ("PCT", 2.8 + 0.45 * cpi_trend
+                    - 0.15 * u_gap + smooth(0.08)),
+        "retail_sales_yoy": ("PCT", 1.5 * gdp - 0.8 + smooth(0.50)),
+        "indprod_yoy": ("PCT", 1.2 * gdp - 1.0 + smooth(0.35)),
+        "u6_rate": ("PCT", 1.8 * u + 0.4 + smooth(0.08)),
+        "participation_rate": ("PCT", 63.0 - 0.25 * u_gap
+                               - 0.005 * np.arange(n) + smooth(0.05)),
+        "unemp_duration_weeks": ("WEEKS",
+                                 9.0 + 2.2 * u_gap.shift(3).fillna(0.0)
+                                 + smooth(0.25)),
+        "initial_claims_k": ("THOUSANDS",
+                             (210 + 120 * u_gap + 900 * du3.clip(lower=0)
+                              + smooth(15)).clip(lower=150)),
+        "continuing_claims_k": ("THOUSANDS",
+                                (1600 + 900 * u_gap.shift(1).fillna(0.0)
+                                 + smooth(60)).clip(lower=1100)),
+        "payroll_chg_k": ("THOUSANDS", 170 - 1500 * du3 + smooth(40)),
+        "jolts_openings_k": ("THOUSANDS",
+                             (7000 - 700 * u_gap + smooth(120))
+                             .clip(lower=4500)),
+        "housing_starts_k": ("THOUSANDS",
+                             (1450 - 260 * (y10 - y10.mean())
+                              - 120 * u_gap + smooth(35)).clip(lower=700)),
+        "consumer_sentiment_idx": ("INDEX",
+                                   95 - 6 * u_gap
+                                   - 5 * (cpi - 2).clip(lower=0)
+                                   + smooth(1.2)),
+        "ism_pmi_idx": ("INDEX", 51 + 1.8 * (gdp - 2.0) + smooth(0.5)),
+    }
+
+    rows = []
+    for metric_id, (unit, values) in series.items():
+        for date, value in zip(wide["date"], values):
+            rows.append({
+                "metric_id": metric_id,
+                "observation_date": date.strftime("%Y-%m-%d"),
+                "value": round(float(value), 6),
+                "unit": unit,
+                "source": "SYNTHETIC",
+                "source_reference": _HEADLINE_REFERENCE,
+                "retrieval_timestamp": SYNTHETIC_RETRIEVAL,
+                "frequency": "MONTHLY",
+                "revision_status": "SYNTHETIC",
+            })
+    return pd.DataFrame(rows, columns=MARKET_OBSERVATIONS.column_names())
+
+
 def replatform_synthetic_history() -> pd.DataFrame:
     """Seed-42 history -> canonical observation rows, honestly labeled."""
     wide = pd.read_csv(SYNTHETIC_HISTORY, parse_dates=["date"])
@@ -129,8 +224,12 @@ def replatform_synthetic_history() -> pd.DataFrame:
                 "revision_status": "SYNTHETIC",
             })
     base = pd.DataFrame(rows, columns=MARKET_OBSERVATIONS.column_names())
-    frame = pd.concat(
-        [base, synthetic_macro_extensions(wide)], ignore_index=True)
+    extensions = synthetic_macro_extensions(wide)
+    ext_wide = extensions.pivot(index="observation_date",
+                                columns="metric_id",
+                                values="value").reset_index(drop=True)
+    headline = synthetic_headline_indicators(wide, ext_wide)
+    frame = pd.concat([base, extensions, headline], ignore_index=True)
     return frame.sort_values(
         ["metric_id", "observation_date"]).reset_index(drop=True)
 
@@ -241,9 +340,14 @@ def fetch_fred_series(series_id: str, timeout=60) -> str:
 # The Page 5 curated export: monthly history with 24-month rolling means.
 ROLLING_WINDOW = 24
 HISTORY_METRICS = (
-    "ust_2y", "ust_10y", "curve_spread_10y_2y", "fed_funds_eff",
-    "cpi_yoy", "pce_yoy", "gdp_growth_yoy", "unemployment_rate",
-    "ig_oas", "hy_oas",
+    "ust_3m", "ust_2y", "ust_5y", "ust_10y", "ust_30y",
+    "curve_spread_10y_2y", "curve_spread_10y_3m", "fed_funds_eff",
+    "cpi_yoy", "core_cpi_yoy", "pce_yoy", "core_pce_yoy", "ppi_yoy",
+    "ahe_yoy", "gdp_growth_yoy", "indprod_yoy", "retail_sales_yoy",
+    "unemployment_rate", "u6_rate", "participation_rate",
+    "unemp_duration_weeks", "initial_claims_k", "continuing_claims_k",
+    "payroll_chg_k", "jolts_openings_k", "housing_starts_k",
+    "consumer_sentiment_idx", "ism_pmi_idx", "ig_oas", "hy_oas",
 )
 HISTORY_OUTPUT = BASE_DIR / "reports" / "market_history_rolling24.csv"
 
@@ -261,6 +365,7 @@ def rolling_24m_history(observations: pd.DataFrame) -> pd.DataFrame:
     wide = (latest.pivot(index="observation_date", columns="metric_id",
                          values="value").sort_index())
     wide["curve_spread_10y_2y"] = wide["ust_10y"] - wide["ust_2y"]
+    wide["curve_spread_10y_3m"] = wide["ust_10y"] - wide["ust_3m"]
 
     out = pd.DataFrame({"observation_date":
                         pd.to_datetime(wide.index).strftime("%Y-%m-%d")})

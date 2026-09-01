@@ -3,7 +3,7 @@
   "name": "d69e0aea644589cd2dff",
   "position": {
     "x": 1015,
-    "y": 530,
+    "y": 500,
     "height": 34,
     "width": 800,
     "z": 9000,
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Inflation \u2014 CPI vs PCE (%)",
+                    "value": "Consumer Inflation (%) \u2014 headline vs core",
                     "textStyle": {
                       "fontSize": "13pt"
                     }

@@ -1,0 +1,8 @@
+project_id,assumption_code,value,unit,rationale
+PROJ-001,INCR_REVENUE_Y1,120.0,USD_M,Contracted anchor tenants plus the ramp of regional accounts in year one.
+PROJ-001,INCR_REVENUE_GROWTH_PCT,5.0,PCT,Regional demand growth per the market study; deliberately below company growth.
+PROJ-001,INCR_EBITDA_MARGIN_PCT,28.0,PCT,Warehouse-level contribution margin after freight savings.
+PROJ-001,MAINT_CAPEX_PCT_REV,3.0,PCT,Racking and rolling-stock replacement cycle.
+PROJ-001,NWC_PCT_REV,12.0,PCT,Inventory and receivables to support incremental volume; recovered at end of life.
+PROJ-002,COST_SAVINGS_Y1,14.0,USD_M,Two shifts of pick labor plus error-rework elimination at current volumes.
+PROJ-002,COST_SAVINGS_GROWTH_PCT,2.0,PCT,Savings scale with modest volume growth.
