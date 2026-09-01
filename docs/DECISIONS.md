@@ -749,3 +749,35 @@ tests read together (APPROVE / REVIEW / REJECT). The two fixture cases
 are chosen to teach: the expansion posts ROIC > WACC yet fails both
 cash tests (REVIEW - cash rules); the automation retrofit passes all
 three in every scenario with the margin thinning as rates rise.
+
+### 70. Sensitivity grid on Page 4, center-pinned to the DCF
+WACC +/-1.0pt (rows) x terminal growth 1.5-3.5% (columns), implied
+share price in every cell; a test forces the center cell to equal the
+reported Base price so the grid and the DCF can never drift. The grid
+is the honest error bar: ~$22-$41 across plausible assumptions.
+
+### 71. Commodities, sector indices and the placeholder-ticker rule
+Gold, silver, WTI and retail beef plus a tech index (live proxy
+NASDAQCOM) and an AI thematic basket joined the market layer on a
+third seed stream (424242, prior series byte-identical). The owner
+also asked for top-5 tech and AI firm stock charts: implemented as
+PLACEHOLDER slots (T1-5 / A1-5) because attaching an invented price
+history to a real named company would break the no-invented-market-
+data rule even with a SYNTHETIC label. Real tickers + a live equity
+source are the owner's call at cutover. Page 5 is now 21 panels,
+height 5000.
+
+### 72. Card labels: the 'Selected ' prefix retired
+15 measures renamed (Selected Beta -> Beta etc.) across DAX, bindings
+and the culture file - the prefix was eating the distinguishing text
+on every card. One collision (Enterprise Value Billions) takes a
+trailing (Sel) so truncation eats the suffix, not the name.
+
+### 73. The report reads itself: flow strips, legends, and the intake form
+Pages 2/3/4 carry a one-line THE FLOW strip under the title; pages
+2-6 carry an abbreviation legend. Page 6's intake is now a form:
+templates/project_intake.xlsx (yellow cells + a worked example) ->
+python src/ingest_project_intake.py (validates with the standard
+fail-loud rules, UPSERTS by project_id, rolls back untouched on any
+rejection) -> build_project_appraisal -> refresh. Round-trip is
+tested, including the rejection path.

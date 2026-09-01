@@ -432,3 +432,24 @@ accounting return above WACC yet fails NPV and IRR — a return computed
 over a depreciating book value flatters late years while the cash
 never repays the hurdle. When the tests disagree, cash rules; that is
 why the recommendation logic never lets ROIC alone approve a project.
+
+## 20. Sensitivity: the error bar around one number (2026-09-02)
+
+A DCF outputs one price, but that precision is borrowed. Page 4's grid
+re-runs the identical math at +/-1pt of WACC and +/-1pt of terminal
+growth: $28.86 sits at the center of a ~$22-$41 range. Two lessons:
+(1) the two most powerful assumptions in any DCF are the discount rate
+and the terminal growth rate - everything else moves the price by
+cents; (2) pin recomputations to their source - the suite forces the
+grid's center cell to equal the reported price, so the page can never
+show a grid from one model version beside a price from another.
+
+## 21. Intake forms beat raw files (2026-09-02)
+
+Page 6's project intake went from "edit two CSVs" to "fill a form":
+the Excel template names every field, shows a worked example, and the
+ingest script validates with the same fail-loud rules as every other
+loader - and rolls back untouched if anything is rejected. The
+pipeline itself never changed; only the on-ramp did. That separation
+(strict core, friendly edge) is how production finance systems stay
+both usable and trustworthy.

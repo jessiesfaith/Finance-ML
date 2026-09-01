@@ -28,3 +28,16 @@ State at close: main = 28ce652, suite 195/195, six pages live and
 refreshing (owner mid review-and-reconcile of Pages 1-5; Page 6 fixture
 verdicts confirmed on screen). Desktop-vs-git rule in force: never both
 at once.
+
+## Status 2026-09-02: ALL FOUR DONE (plus mid-session additions)
+
+1. Calc flow -> THE FLOW strips on pages 2/3/4 (one line under each
+   title; further styling is Desktop polish, owner's lane).
+2. Legends -> on pages 2, 3, 4, 5, 6.
+3. Page 6 intake -> templates/project_intake.xlsx +
+   src/ingest_project_intake.py (upsert + rollback; round-trip tested).
+4. Sensitivity -> Page 4 grid, center-pinned to the Base price.
+Also: Page 5 widened to 21 panels (commodities, tech/AI indices,
+placeholder firm slots - DECISIONS #71); 'Selected ' prefix retired
+from 15 measures (#72). Owner still owes Desktop QA of all of today's
+changes; requires a full Refresh (partitions changed).

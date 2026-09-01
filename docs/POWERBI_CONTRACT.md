@@ -35,6 +35,7 @@ rework. The curated layer absorbs all of that churn.
 | `reports/market_rf_policy.csv` | Page 1 — risk-free methodology lineage | same |
 | `reports/market_history_rolling24.csv` | Page 5 — macro history, rolling 24-month averages | `tests/test_market_history.py` |
 | `reports/client_fs_projects.csv` | Page 6 — project appraisal per scenario | `tests/test_projects.py` |
+| `reports/client_fs_sensitivity.csv` | Page 4 — WACC × growth sensitivity grid | `tests/test_sensitivity.py` |
 
 Every curated file is written only by `python src/build_powerbi_exports.py`,
 carries a `value_class` column (the six-class taxonomy) so the report can
