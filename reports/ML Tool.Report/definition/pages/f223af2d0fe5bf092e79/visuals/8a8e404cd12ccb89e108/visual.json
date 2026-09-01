@@ -23,11 +23,11 @@
                       "Entity": "finance_scenario_report"
                     }
                   },
-                  "Property": "Selected Risk-Free Rate"
+                  "Property": "Risk-Free Rate"
                 }
               },
-              "queryRef": "finance_scenario_report.Selected Risk-Free Rate",
-              "nativeQueryRef": "Selected Risk-Free Rate"
+              "queryRef": "finance_scenario_report.Risk-Free Rate",
+              "nativeQueryRef": "Risk-Free Rate"
             }
           ]
         }

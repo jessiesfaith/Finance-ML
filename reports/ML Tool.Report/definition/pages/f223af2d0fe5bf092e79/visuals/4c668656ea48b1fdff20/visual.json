@@ -23,11 +23,11 @@
                       "Entity": "finance_scenario_report"
                     }
                   },
-                  "Property": "Selected Credit Spread"
+                  "Property": "Credit Spread"
                 }
               },
-              "queryRef": "finance_scenario_report.Selected Credit Spread",
-              "nativeQueryRef": "Selected Credit Spread"
+              "queryRef": "finance_scenario_report.Credit Spread",
+              "nativeQueryRef": "Credit Spread"
             }
           ]
         }

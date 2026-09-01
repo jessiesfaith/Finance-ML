@@ -1315,7 +1315,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "finance_scenario_report",
-			          "ConceptualProperty": "Selected Implied Share Price"
+			          "ConceptualProperty": "Implied Share Price"
 			        }
 			      },
 			      "State": "Generated",
@@ -1451,7 +1451,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "finance_scenario_report",
-			          "ConceptualProperty": "Selected WACC"
+			          "ConceptualProperty": "WACC"
 			        }
 			      },
 			      "State": "Generated",
@@ -1483,7 +1483,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "finance_scenario_report",
-			          "ConceptualProperty": "Selected Enterprise Value Billions"
+			          "ConceptualProperty": "Enterprise Value Billions (Sel)"
 			        }
 			      },
 			      "State": "Generated",
@@ -1521,7 +1521,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "finance_scenario_report",
-			          "ConceptualProperty": "Selected Equity Value Billions"
+			          "ConceptualProperty": "Equity Value Billions"
 			        }
 			      },
 			      "State": "Generated",
@@ -1603,7 +1603,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "finance_scenario_report",
-			          "ConceptualProperty": "Selected Risk-Free Rate"
+			          "ConceptualProperty": "Risk-Free Rate"
 			        }
 			      },
 			      "State": "Generated",
@@ -1735,7 +1735,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "finance_scenario_report",
-			          "ConceptualProperty": "Selected Treasury 2Y"
+			          "ConceptualProperty": "Treasury 2Y"
 			        }
 			      },
 			      "State": "Generated",
@@ -1767,7 +1767,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "finance_scenario_report",
-			          "ConceptualProperty": "Selected Fed Funds"
+			          "ConceptualProperty": "Fed Funds"
 			        }
 			      },
 			      "State": "Generated",
@@ -1981,7 +1981,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "finance_scenario_report",
-			          "ConceptualProperty": "Selected Cost of Equity"
+			          "ConceptualProperty": "Cost of Equity"
 			        }
 			      },
 			      "State": "Generated",
@@ -2113,7 +2113,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "finance_scenario_report",
-			          "ConceptualProperty": "Selected Cost of Debt"
+			          "ConceptualProperty": "Cost of Debt"
 			        }
 			      },
 			      "State": "Generated",
@@ -3684,7 +3684,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "finance_scenario_report",
-			          "ConceptualProperty": "Selected Terminal Growth"
+			          "ConceptualProperty": "Terminal Growth"
 			        }
 			      },
 			      "State": "Generated",

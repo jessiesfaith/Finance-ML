@@ -23,10 +23,10 @@
                       "Entity": "finance_scenario_report"
                     }
                   },
-                  "Property": "Selected WACC"
+                  "Property": "WACC"
                 }
               },
-              "queryRef": "finance_scenario_report.Selected WACC",
+              "queryRef": "finance_scenario_report.WACC",
               "nativeQueryRef": "WACC (%)",
               "displayName": "WACC (%)"
             }
@@ -43,7 +43,7 @@
                     "Entity": "finance_scenario_report"
                   }
                 },
-                "Property": "Selected WACC"
+                "Property": "WACC"
               }
             },
             "direction": "Descending"

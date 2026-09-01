@@ -23,10 +23,10 @@
                       "Entity": "finance_scenario_report"
                     }
                   },
-                  "Property": "Selected Implied Share Price"
+                  "Property": "Implied Share Price"
                 }
               },
-              "queryRef": "finance_scenario_report.Selected Implied Share Price",
+              "queryRef": "finance_scenario_report.Implied Share Price",
               "nativeQueryRef": "Share Price ($)",
               "displayName": "Share Price ($)"
             }
@@ -43,7 +43,7 @@
                     "Entity": "finance_scenario_report"
                   }
                 },
-                "Property": "Selected Implied Share Price"
+                "Property": "Implied Share Price"
               }
             },
             "direction": "Descending"

@@ -23,11 +23,11 @@
                       "Entity": "finance_scenario_report"
                     }
                   },
-                  "Property": "Selected Unemployment"
+                  "Property": "Unemployment"
                 }
               },
-              "queryRef": "finance_scenario_report.Selected Unemployment",
-              "nativeQueryRef": "Selected Unemployment"
+              "queryRef": "finance_scenario_report.Unemployment",
+              "nativeQueryRef": "Unemployment"
             }
           ]
         }

@@ -23,11 +23,11 @@
                       "Entity": "finance_scenario_report"
                     }
                   },
-                  "Property": "Selected Equity Risk Premium"
+                  "Property": "Equity Risk Premium"
                 }
               },
-              "queryRef": "finance_scenario_report.Selected Equity Risk Premium",
-              "nativeQueryRef": "Selected Equity Risk Premium"
+              "queryRef": "finance_scenario_report.Equity Risk Premium",
+              "nativeQueryRef": "Equity Risk Premium"
             }
           ]
         }

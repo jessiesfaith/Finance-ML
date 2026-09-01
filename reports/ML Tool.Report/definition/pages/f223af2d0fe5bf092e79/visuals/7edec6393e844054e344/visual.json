@@ -23,11 +23,11 @@
                       "Entity": "finance_scenario_report"
                     }
                   },
-                  "Property": "Selected Beta"
+                  "Property": "Beta"
                 }
               },
-              "queryRef": "finance_scenario_report.Selected Beta",
-              "nativeQueryRef": "Selected Beta"
+              "queryRef": "finance_scenario_report.Beta",
+              "nativeQueryRef": "Beta"
             }
           ]
         }

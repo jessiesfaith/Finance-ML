@@ -23,10 +23,10 @@
                       "Entity": "finance_scenario_report"
                     }
                   },
-                  "Property": "Selected Cost of Debt"
+                  "Property": "Cost of Debt"
                 }
               },
-              "queryRef": "finance_scenario_report.Selected Cost of Debt",
+              "queryRef": "finance_scenario_report.Cost of Debt",
               "nativeQueryRef": "Cost of Debt",
               "displayName": "Cost of Debt"
             }
@@ -43,7 +43,7 @@
                     "Entity": "finance_scenario_report"
                   }
                 },
-                "Property": "Selected Cost of Debt"
+                "Property": "Cost of Debt"
               }
             },
             "direction": "Descending"

@@ -23,11 +23,11 @@
                       "Entity": "finance_scenario_report"
                     }
                   },
-                  "Property": "Selected Terminal Growth"
+                  "Property": "Terminal Growth"
                 }
               },
-              "queryRef": "finance_scenario_report.Selected Terminal Growth",
-              "nativeQueryRef": "Selected Terminal Growth"
+              "queryRef": "finance_scenario_report.Terminal Growth",
+              "nativeQueryRef": "Terminal Growth"
             }
           ]
         }

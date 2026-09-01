@@ -19,7 +19,7 @@ table finance_scenario_report
 
 		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
 
-	measure 'Selected Implied Share Price' =
+	measure 'Implied Share Price' =
 			
 			IF(
 			    HASONEVALUE(finance_scenario_report[scenario]),
@@ -34,7 +34,7 @@ table finance_scenario_report
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Selected WACC' =
+	measure 'WACC' =
 			
 			IF(
 			    HASONEVALUE(finance_scenario_report[scenario]),
@@ -49,7 +49,7 @@ table finance_scenario_report
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Selected Enterprise Value Billions' =
+	measure 'Enterprise Value Billions (Sel)' =
 			
 			IF(
 			    HASONEVALUE(finance_scenario_report[scenario]),
@@ -70,7 +70,7 @@ table finance_scenario_report
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Selected Equity Value Billions' =
+	measure 'Equity Value Billions' =
 			
 			IF(
 			    HASONEVALUE(finance_scenario_report[scenario]),
@@ -108,7 +108,7 @@ table finance_scenario_report
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
 	/// MODEL OUTPUT today: a 10-year yield predicted by the internal model on synthetic data. Target: observed 10Y Treasury with source, maturity, and as-of date (see market_rf_policy).
-	measure 'Selected Risk-Free Rate' =
+	measure 'Risk-Free Rate' =
 			
 			IF(
 			    HASONEVALUE(finance_scenario_report[scenario]),
@@ -122,7 +122,7 @@ table finance_scenario_report
 		displayFolder: Cost of Capital & Market
 		lineageTag: b929af84-a9ba-4c85-a513-cac123acfb23
 
-	measure 'Selected Treasury 2Y' =
+	measure 'Treasury 2Y' =
 			
 			IF(
 			    HASONEVALUE(finance_scenario_report[scenario]),
@@ -138,7 +138,7 @@ table finance_scenario_report
 
 	/// ASSUMPTION: equity beta (1.20). At the live phase this comes from
 	/// peer-set regression; until then it is an explicit, labeled input.
-	measure 'Selected Beta' =
+	measure 'Beta' =
 			
 			IF(
 			    HASONEVALUE(finance_scenario_report[scenario]),
@@ -154,7 +154,7 @@ table finance_scenario_report
 
 	/// ASSUMPTION: equity risk premium in points (4.50), dated and owned -
 	/// never an invented market observation.
-	measure 'Selected Equity Risk Premium' =
+	measure 'Equity Risk Premium' =
 			
 			IF(
 			    HASONEVALUE(finance_scenario_report[scenario]),
@@ -170,7 +170,7 @@ table finance_scenario_report
 
 	/// ASSUMPTION: credit spread over the risk-free rate (2.00pts),
 	/// benchmarked against IG/HY OAS when live market data lands.
-	measure 'Selected Credit Spread' =
+	measure 'Credit Spread' =
 			
 			IF(
 			    HASONEVALUE(finance_scenario_report[scenario]),
@@ -186,7 +186,7 @@ table finance_scenario_report
 
 	/// MACRO CONTEXT: informs the scenario narrative and the assumptions -
 	/// never plugged into WACC directly (docs/MODEL_AUDIT.md map W).
-	measure 'Selected CPI' =
+	measure 'CPI' =
 			
 			IF(
 			    HASONEVALUE(finance_scenario_report[scenario]),
@@ -202,7 +202,7 @@ table finance_scenario_report
 
 	/// MACRO CONTEXT: same role as CPI - context for the scenario, not a
 	/// WACC input.
-	measure 'Selected Unemployment' =
+	measure 'Unemployment' =
 			
 			IF(
 			    HASONEVALUE(finance_scenario_report[scenario]),
@@ -234,7 +234,7 @@ table finance_scenario_report
 		displayFolder: Capital Allocation
 		lineageTag: 2262db04-d0c7-46c8-bace-560f4392fc99
 
-	measure 'Selected Fed Funds' =
+	measure 'Fed Funds' =
 			
 			IF(
 			    HASONEVALUE(finance_scenario_report[scenario]),
@@ -254,7 +254,7 @@ table finance_scenario_report
 
 		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
 
-	measure 'Selected Cost of Equity' =
+	measure 'Cost of Equity' =
 			
 			IF(
 			    HASONEVALUE(finance_scenario_report[scenario]),
@@ -268,7 +268,7 @@ table finance_scenario_report
 		displayFolder: Cost of Capital & Market
 		lineageTag: e86b0c64-506c-461a-b09e-288b3699dc57
 
-	measure 'Selected Cost of Debt' =
+	measure 'Cost of Debt' =
 			
 			IF(
 			    HASONEVALUE(finance_scenario_report[scenario]),
@@ -457,7 +457,7 @@ table finance_scenario_report
 		displayFolder: Valuation
 		lineageTag: 6860d4f8-a24c-44e1-93c9-fb01d7fabd12
 
-	measure 'Selected Terminal Growth' =
+	measure 'Terminal Growth' =
 			
 			IF(
 			    HASONEVALUE(finance_scenario_report[scenario]),
@@ -479,7 +479,7 @@ table finance_scenario_report
 			    [FCF Year 5]
 			
 			VAR GrowthRate =
-			    [Selected Terminal Growth] / 100
+			    [Terminal Growth] / 100
 			
 			VAR WACCRate =
 			    [Calculated WACC] / 100
@@ -775,14 +775,14 @@ table finance_scenario_report
 
 	measure 'Terminal Growth Factor' =
 			
-			1 + ([Selected Terminal Growth] / 100)
+			1 + ([Terminal Growth] / 100)
 		formatString: 0.000
 		displayFolder: Valuation
 		lineageTag: 05efe15e-abd9-4bd1-ba63-62401c86f490
 
 	measure 'WACC Less Growth' =
 			
-			([Calculated WACC] - [Selected Terminal Growth]) / 100
+			([Calculated WACC] - [Terminal Growth]) / 100
 		formatString: 0.0000
 		displayFolder: Cost of Capital & Market
 		lineageTag: afdcc2ac-1567-4289-b9b6-84dee1cb3643
@@ -797,11 +797,11 @@ table finance_scenario_report
 	measure 'EV Change vs Base %' =
 			
 			VAR CurrentEV =
-			    [Selected Enterprise Value Billions]
+			    [Enterprise Value Billions (Sel)]
 			
 			VAR BaseEV =
 			    CALCULATE(
-			        [Selected Enterprise Value Billions],
+			        [Enterprise Value Billions (Sel)],
 			        REMOVEFILTERS(finance_scenario_report[scenario]),
 			        finance_scenario_report[scenario] = "Base"
 			    )
@@ -815,11 +815,11 @@ table finance_scenario_report
 	measure 'Equity Value Change vs Base %' =
 			
 			VAR CurrentEquity =
-			    [Selected Equity Value Billions]
+			    [Equity Value Billions]
 			
 			VAR BaseEquity =
 			    CALCULATE(
-			        [Selected Equity Value Billions],
+			        [Equity Value Billions],
 			        REMOVEFILTERS(finance_scenario_report[scenario]),
 			        finance_scenario_report[scenario] = "Base"
 			    )
@@ -852,11 +852,11 @@ table finance_scenario_report
 	measure 'Risk-Free Rate Change vs Base' =
 			
 			VAR CurrentRate =
-			    [Selected Risk-Free Rate]
+			    [Risk-Free Rate]
 			
 			VAR BaseRate =
 			    CALCULATE(
-			        [Selected Risk-Free Rate],
+			        [Risk-Free Rate],
 			        REMOVEFILTERS(finance_scenario_report[scenario]),
 			        finance_scenario_report[scenario] = "Base"
 			    )
@@ -871,11 +871,11 @@ table finance_scenario_report
 	measure 'Cost of Equity Change vs Base' =
 			
 			VAR CurrentCOE =
-			    [Selected Cost of Equity]
+			    [Cost of Equity]
 			
 			VAR BaseCOE =
 			    CALCULATE(
-			        [Selected Cost of Equity],
+			        [Cost of Equity],
 			        REMOVEFILTERS(finance_scenario_report[scenario]),
 			        finance_scenario_report[scenario] = "Base"
 			    )
@@ -890,11 +890,11 @@ table finance_scenario_report
 	measure 'Cost of Debt Change vs Base' =
 			
 			VAR CurrentCOD =
-			    [Selected Cost of Debt]
+			    [Cost of Debt]
 			
 			VAR BaseCOD =
 			    CALCULATE(
-			        [Selected Cost of Debt],
+			        [Cost of Debt],
 			        REMOVEFILTERS(finance_scenario_report[scenario]),
 			        finance_scenario_report[scenario] = "Base"
 			    )
@@ -1021,7 +1021,7 @@ table finance_scenario_report
 	measure 'Project Terminal Value ($M)' =
 			
 			VAR FCF5 = [FCF Year 5]
-			VAR g = [Selected Terminal Growth] / 100
+			VAR g = [Terminal Growth] / 100
 			VAR r = [Hurdle Rate (%)] / 100
 			RETURN
 			    DIVIDE(

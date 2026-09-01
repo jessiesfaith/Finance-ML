@@ -23,11 +23,11 @@
                       "Entity": "finance_scenario_report"
                     }
                   },
-                  "Property": "Selected Fed Funds"
+                  "Property": "Fed Funds"
                 }
               },
-              "queryRef": "finance_scenario_report.Selected Fed Funds",
-              "nativeQueryRef": "Selected Fed Funds"
+              "queryRef": "finance_scenario_report.Fed Funds",
+              "nativeQueryRef": "Fed Funds"
             }
           ]
         }

@@ -23,11 +23,11 @@
                       "Entity": "finance_scenario_report"
                     }
                   },
-                  "Property": "Selected CPI"
+                  "Property": "CPI"
                 }
               },
-              "queryRef": "finance_scenario_report.Selected CPI",
-              "nativeQueryRef": "Selected CPI"
+              "queryRef": "finance_scenario_report.CPI",
+              "nativeQueryRef": "CPI"
             }
           ]
         }

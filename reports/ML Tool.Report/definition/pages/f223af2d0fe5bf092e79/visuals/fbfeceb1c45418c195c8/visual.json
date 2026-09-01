@@ -23,11 +23,11 @@
                       "Entity": "finance_scenario_report"
                     }
                   },
-                  "Property": "Selected Cost of Equity"
+                  "Property": "Cost of Equity"
                 }
               },
-              "queryRef": "finance_scenario_report.Selected Cost of Equity",
-              "nativeQueryRef": "Selected Cost of Equity"
+              "queryRef": "finance_scenario_report.Cost of Equity",
+              "nativeQueryRef": "Cost of Equity"
             }
           ]
         }
