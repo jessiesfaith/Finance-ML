@@ -507,6 +507,78 @@ ADJUSTMENTS = TableSchema(
     key=("adjustment_id",),
 )
 
+EVENT_TYPES = (
+    "ACQUISITION", "MERGER", "DIVESTITURE", "ASSET_SALE", "RESTRUCTURING",
+    "IMPAIRMENT", "DEBT_REFINANCING", "EQUITY_ISSUANCE", "MAJOR_INVESTMENT",
+    "OTHER",
+)
+
+TRANSACTION_EVENTS = TableSchema(
+    table="transaction_events",
+    filename="transaction_events.csv",
+    columns=(
+        Column("transaction_id"),
+        Column("company_id"),
+        Column("event_date", kind="date"),
+        Column("event_type", allowed=EVENT_TYPES),
+        Column("event_name"),
+        Column("target_or_asset"),
+        Column("purchase_price_or_proceeds", kind="number"),
+        Column("currency"),
+        Column("debt_assumed", kind="number"),
+        Column("cash_paid", kind="number"),
+        Column("equity_issued", kind="number"),
+        Column("goodwill_created", kind="number"),
+        Column("intangibles_created", kind="number"),
+        Column("expected_synergies", kind="number"),
+        Column("restructuring_costs", kind="number"),
+        Column("divested_revenue", kind="number"),
+        Column("divested_ebitda", kind="number"),
+        Column("narrative_summary"),
+        Column("source_document"),
+        Column("source_reference"),
+        # Y when deterministic outlier flags exist in the event's period —
+        # a LINK for investigation, never a causation conclusion.
+        Column("agent_outlier_flag", kind="flag", allowed=FLAGS),
+        Column("review_status", allowed=REVIEW_STATUSES),
+    ),
+    key=("transaction_id",),
+)
+
+PROFORMA_TYPES = (
+    "ACQUISITION", "DIVESTITURE", "COST_SYNERGY", "REVENUE_SYNERGY",
+    "RESTRUCTURING", "FINANCING", "RUN_RATE", "PURCHASE_ACCOUNTING",
+    "DISCONTINUED_OPS", "OTHER",
+)
+
+PROFORMA_ADJUSTMENTS = TableSchema(
+    table="proforma_adjustments",
+    filename="proforma_adjustments.csv",
+    columns=(
+        Column("proforma_id"),
+        Column("transaction_id"),
+        Column("company_id"),
+        Column("entity_id"),      # spec addition: pro forma rows land at
+        Column("period_id"),      # entity grain like every other layer
+        Column("standard_account_id"),
+        Column("proforma_type", allowed=PROFORMA_TYPES),
+        # Pro forma builds on NORMALIZED STANDALONE (spec section 12 flow),
+        # so reported_amount here quotes the NORMALIZED base — verified
+        # against the normalized view on every apply.
+        Column("reported_amount", kind="number"),
+        Column("proforma_adjustment", kind="number"),
+        Column("proforma_amount", kind="number"),
+        Column("reporting_currency"),
+        Column("synergy_flag", kind="flag", allowed=FLAGS),
+        Column("run_rate_flag", kind="flag", allowed=FLAGS),
+        Column("one_time_flag", kind="flag", allowed=FLAGS),
+        Column("source_document"),
+        Column("source_reference"),
+        Column("review_status", allowed=REVIEW_STATUSES),
+    ),
+    key=("proforma_id",),
+)
+
 SCENARIO_SCHEMAS = (DRIVER_MASTER, SCENARIO_MASTER, SCENARIO_ASSUMPTIONS)
 
 SHARES_DILUTION = TableSchema(
@@ -623,5 +695,6 @@ OUTPUT_SCHEMAS = (
 SCHEMAS_BY_TABLE = {
     s.table: s
     for s in (ALL_SCHEMAS + OUTPUT_SCHEMAS + SCENARIO_SCHEMAS
-              + (SHARES_DILUTION, ADJUSTMENTS) + MARKET_SCHEMAS)
+              + (SHARES_DILUTION, ADJUSTMENTS, TRANSACTION_EVENTS,
+                 PROFORMA_ADJUSTMENTS) + MARKET_SCHEMAS)
 }

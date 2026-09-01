@@ -104,11 +104,17 @@ def test_committed_output_matches_a_fresh_rebuild(normalized):
     Phase 8 the committed file is REPORTED rows + applied ADJUSTED rows.
     """
     from financials.adjustments import apply_adjustments, load_adjustments
+    from financials.proforma import (
+        apply_proforma, load_proforma_adjustments, load_transaction_events,
+    )
     tables = load_client_fs(strict=True).tables
     adjustments, _ = load_adjustments(tables, strict=True)
     combined = apply_adjustments(
         normalized, adjustments, tables["account_mapping"]
     )
+    events, _ = load_transaction_events(strict=True)
+    proforma, _ = load_proforma_adjustments(events, strict=True)
+    combined = apply_proforma(combined, proforma, tables["account_mapping"])
 
     committed = pd.read_csv(DEFAULT_OUTPUT, dtype=str, keep_default_na=False)
     fresh = pd.read_csv(

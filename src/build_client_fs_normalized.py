@@ -31,6 +31,11 @@ from financials.adjustments import (
     load_adjustments,
     view_income_summary,
 )
+from financials.proforma import (
+    apply_proforma,
+    load_proforma_adjustments,
+    load_transaction_events,
+)
 from financials.normalized_statements import (
     balance_sheet_gap,
     cash_flow_by_entity_period,
@@ -48,6 +53,12 @@ def main():
         adjustments, _ = load_adjustments(result.tables, strict=True)
         normalized = apply_adjustments(
             reported, adjustments, result.tables["account_mapping"],
+        )
+        # Phase 9: append APPROVED pro forma rows (transaction layer).
+        events, _ = load_transaction_events(strict=True)
+        proforma, _ = load_proforma_adjustments(events, strict=True)
+        normalized = apply_proforma(
+            normalized, proforma, result.tables["account_mapping"],
         )
     except ClientFSValidationError as exc:
         print()
@@ -97,6 +108,25 @@ def main():
         for row in not_applied.itertuples():
             print(f"  {row.adjustment_id}: {row.adjustment_amount:+.1f} "
                   f"{row.standard_account_id} — {row.review_status}")
+
+    # ------------------------------------------------
+    # TRANSACTION EVENTS ↔ OUTLIER LINKAGE (Phase 9)
+    # ------------------------------------------------
+    if len(events):
+        from financials.outliers import DEFAULT_OUTPUT as FLAGS_FILE
+        from financials.proforma import link_events_to_outliers
+        flags = pd.read_csv(FLAGS_FILE) if FLAGS_FILE.exists() else pd.DataFrame(
+            columns=["period_id", "metric_name"])
+        links = link_events_to_outliers(
+            events, flags, result.tables["period_master"])
+        print()
+        print("TRANSACTION EVENTS — investigation links, not conclusions")
+        print("-" * 60)
+        for row in links.itertuples():
+            print(f"  {row.transaction_id} ({row.event_name}) closed in "
+                  f"{row.period_id}: {row.outlier_flag_count} outlier "
+                  f"flag(s) in that period")
+            print(f"    {row.note}")
 
     # One audit example: the sign transformation on a magnitude-presented
     # expense, traceable end to end.

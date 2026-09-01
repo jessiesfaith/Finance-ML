@@ -439,3 +439,37 @@ FY2025: REPORTED EBITDA 314.8 / NI 167.4 -> NORMALIZED 326.8 / 176.4
 (+12 restructuring add-back, -3 tax effect at the normalized 25% rate -
 after-tax normalization done properly, as a paired adjustment).
 PRO FORMA equals NORMALIZED until Phase 9 adds transaction rows.
+
+---
+
+## 2026-08-31 — Phase 9 (M&A / transaction-event layer + pro forma)
+
+### 50. Transactions are events with reconciling consideration
+transaction_events.csv records each deal with price, consideration
+split, goodwill/intangibles, synergies, restructuring costs, narrative,
+and source document. Cash + debt assumed + equity issued must equal the
+purchase price (consideration_mismatch ERROR otherwise). Fixture
+TXN-001 (Project Rhine, 40 = 30 + 10 + 0) deliberately ties the story
+together: it explains the ENT_ELIM NEW_ITEM outliers and the ADJ-001
+restructuring normalization.
+
+### 51. Pro forma stacks on the VERIFIED normalized base
+proforma_adjustments.csv rows quote the NORMALIZED standalone amount
+they adjust; the quote is checked against the live NORMALIZED view on
+every apply (normalized_base_mismatch ERROR on drift), and base +
+adjustment = proforma is re-verified. Applied rows become ADJUSTED rows
+with transaction_id lineage, include_in_normalized=NO and
+include_in_proforma=YES - the NORMALIZED view never sees them, and the
+PRO FORMA view stays a plain SUM. FY2025: 314.8 / 326.8 / 329.8 EBITDA
+and 167.40 / 176.40 / 178.65 NI across the three views (synergy +3
+pre-tax, -0.75 tax effect - after-tax pairing as with ADJ-001).
+entity_id/period_id added to the spec's proforma column list so pro
+forma rows land at the same grain as every other layer.
+
+### 52. Events link to outliers; the pipeline never concludes causation
+link_events_to_outliers maps each event to its closing period and
+counts the deterministic outlier flags there - the spec's
+"goodwill/debt/revenue jumped + a deal closed" pattern - wording is
+always "may relate ... investigate together; causation is not
+concluded". The Phase 10 agent inherits these links as its starting
+material.

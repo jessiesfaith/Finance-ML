@@ -34,6 +34,12 @@ Phase 5 modules:
     scenarios — analyst-assumption layer loader (data/scenarios/):
                 scenario_master, driver_master, scenario_assumptions
 
+Phase 9 module:
+    proforma — transaction-event log + pro forma engine: deals with
+               consideration reconciliation, pro forma rows stacked on
+               the verified NORMALIZED base, and outlier↔event
+               investigation links that never conclude causation
+
 Phase 8 module:
     adjustments — the adjustment engine + the three views (REPORTED /
                   NORMALIZED / PRO FORMA): approved adjustments become
@@ -83,6 +89,12 @@ from financials.capital_structure import market_value_weights
 from financials.invested_capital import invested_capital_components, roic
 from financials.net_debt import net_debt_components
 from financials.nwc import nwc_components
+from financials.proforma import (
+    apply_proforma,
+    link_events_to_outliers,
+    load_proforma_adjustments,
+    load_transaction_events,
+)
 from financials.outliers import (
     flags_frame,
     run_outlier_engine,
@@ -132,4 +144,8 @@ __all__ = [
     "apply_adjustments",
     "select_view",
     "view_income_summary",
+    "load_transaction_events",
+    "load_proforma_adjustments",
+    "apply_proforma",
+    "link_events_to_outliers",
 ]

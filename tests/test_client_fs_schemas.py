@@ -34,6 +34,9 @@ def test_registry_covers_the_expected_tables():
         "risk_free_policy",
         # Phase 8 input
         "adjustments",
+        # Phase 9 inputs
+        "transaction_events",
+        "proforma_adjustments",
     }
     assert set(SCHEMAS_BY_TABLE) == expected
 
