@@ -73,5 +73,7 @@ def test_committed_observations_match_a_fresh_rebuild(tables):
         MARKET_DIR / "benchmark_observations.csv",
         dtype=str, keep_default_na=False,
     )
-    assert len(committed) == 17    # 9 metrics FY2025 + 8 FY2024 (no growth)
+    # 9 metrics in FY2025; FY2024 has 7 (no prior year for growth, and
+    # no CFS so CapEx intensity is honestly absent rather than invented).
+    assert len(committed) == 16
     assert list(committed.columns)[0] == "benchmark_metric_id"
