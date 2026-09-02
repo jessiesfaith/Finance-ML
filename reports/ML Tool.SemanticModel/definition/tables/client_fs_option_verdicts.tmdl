@@ -11,6 +11,14 @@ table client_fs_option_verdicts
 
 		annotation SummarizationSetBy = Automatic
 
+	column project_name
+		dataType: string
+		lineageTag: d5482e09-5be0-4bbf-a9d9-8bf5028d105e
+		summarizeBy: none
+		sourceColumn: project_name
+
+		annotation SummarizationSetBy = Automatic
+
 	column reading
 		dataType: string
 		lineageTag: b018b701-85d5-4ffe-a9df-ac8f963d784c
@@ -65,10 +73,10 @@ table client_fs_option_verdicts
 				let
 				  Source = Csv.Document(
 				    File.Contents("C:\dev\Finance-ML\reports\client_fs_option_verdicts.csv"),
-				    [Delimiter = ",", Columns = 7, QuoteStyle = QuoteStyle.Csv]
+				    [Delimiter = ",", Columns = 8, QuoteStyle = QuoteStyle.Csv]
 				),
 				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"project_id", "reading", "at_5pct", "at_7pct", "at_9pct", "at_11pct", "at_13pct"}),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"project_id", "project_name", "reading", "at_5pct", "at_7pct", "at_9pct", "at_11pct", "at_13pct"}),
 				  #"Changed Type" = #"Selected columns"
 				in
 				    #"Changed Type"

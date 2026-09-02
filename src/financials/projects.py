@@ -137,7 +137,7 @@ def _irr(investment, flows, lo=-0.95, hi=10.0, tol=1e-9):
 
 
 def _test_reasons(npv, irr_pct, roic_pct, hurdle, wacc,
-                  tests, category, recommendation):
+                  tests, category, recommendation, investment):
     """Plain-language WHY for each test and for the recommendation,
     assembled from the row's own numbers - never canned text."""
     npv_test, irr_test, roic_test = tests
@@ -173,6 +173,12 @@ def _test_reasons(npv, irr_pct, roic_pct, hurdle, wacc,
                "ruler for a risk-free use of cash: its return IS the "
                "after-tax cost of debt, the floor risky options must beat. "
                "Weigh it on safety and debt headroom instead")
+    elif str(category).upper() == "ACQUISITION" and npv <= 0:
+        rec = (f"{recommendation} AT THE ASKED PRICE - for an acquisition "
+               f"the amount IS the price, and this deal only creates value "
+               f"below ~${investment + npv:,.1f}M (where NPV crosses zero). "
+               "The decision: bid up to that ceiling or walk away - see "
+               "the sizing grid for the price ladder")
     elif recommendation == "REJECT":
         rec = ("REJECT: every test fails - value is destroyed at these "
                "assumptions")
@@ -241,7 +247,7 @@ def _appraise_debt_paydown(project, rates_row) -> dict:
                       "REJECT" if tests == ("FAIL",) * 3 else "REVIEW")
     npv_reason, irr_reason, roic_reason, rec_reason = _test_reasons(
         npv, irr * 100 if irr is not None else None, roic, hurdle, wacc,
-        tests, project["category"], recommendation)
+        tests, project["category"], recommendation, investment)
 
     row = {
         "project_id": pid,
@@ -343,7 +349,7 @@ def appraise_project(project, assumptions, rates_row) -> dict:
                       "REJECT" if tests == ("FAIL",) * 3 else "REVIEW")
     npv_reason, irr_reason, roic_reason, rec_reason = _test_reasons(
         npv, irr * 100 if irr is not None else None, roic, hurdle, wacc,
-        tests, project["category"], recommendation)
+        tests, project["category"], recommendation, investment)
 
     row = {
         "project_id": pid,
@@ -425,6 +431,7 @@ def build_option_sensitivity(master, assumptions, rates):
         for pct in FLOWS_DELIVERED_PCT:
             scale = 1.0 if contractual else pct / 100.0
             row = {"project_id": project["project_id"],
+                   "project_name": project["project_name"],
                    "flows_delivered_pct": pct}
             for rate in SENSITIVITY_RATES:
                 npv = -investment + sum(
@@ -434,6 +441,7 @@ def build_option_sensitivity(master, assumptions, rates):
             grid_rows.append(row)
 
         verdict = {"project_id": project["project_id"],
+                   "project_name": project["project_name"],
                    "reading": "DECISION at planned flows (NPV > 0?)"}
         for rate in SENSITIVITY_RATES:
             npv = -investment + sum(
@@ -443,9 +451,9 @@ def build_option_sensitivity(master, assumptions, rates):
                 "APPROVE" if npv > 0 else "REJECT")
         verdict_rows.append(verdict)
 
-    grid_cols = (["project_id", "flows_delivered_pct"]
+    grid_cols = (["project_id", "project_name", "flows_delivered_pct"]
                  + [rate_column(r) for r in SENSITIVITY_RATES])
-    verdict_cols = (["project_id", "reading"]
+    verdict_cols = (["project_id", "project_name", "reading"]
                     + ["at_" + f"{r:.0f}pct" for r in SENSITIVITY_RATES])
     return (pd.DataFrame(grid_rows, columns=grid_cols),
             pd.DataFrame(verdict_rows, columns=verdict_cols))
@@ -465,9 +473,9 @@ def build_option_sensitivity(master, assumptions, rates):
 AMOUNT_PCTS = (50, 75, 100, 125, 150)
 SIZING_OUTPUT = BASE_DIR / "reports" / "client_fs_option_sizing.csv"
 
-SIZING_COLUMNS = ["project_id", "category", "amount_pct", "investment_amt",
-                  "npv_at_hurdle", "pct_of_funding_capacity", "verdict",
-                  "sizing_note"]
+SIZING_COLUMNS = ["project_id", "project_name", "category", "amount_pct",
+                  "investment_amt", "npv_at_hurdle",
+                  "pct_of_funding_capacity", "verdict", "sizing_note"]
 
 
 def funding_capacity() -> float:
@@ -523,6 +531,7 @@ def build_option_sizing(master, assumptions, rates) -> pd.DataFrame:
                 for t, f in enumerate(scaled_flows, start=1))
             rows.append({
                 "project_id": project["project_id"],
+                "project_name": project["project_name"],
                 "category": project["category"],
                 "amount_pct": pct,
                 "investment_amt": round(amount, 2),

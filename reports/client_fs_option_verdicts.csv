@@ -1,6 +1,6 @@
-project_id,reading,at_5pct,at_7pct,at_9pct,at_11pct,at_13pct
-PROJ-001,DECISION at planned flows (NPV > 0?),APPROVE,REJECT,REJECT,REJECT,REJECT
-PROJ-002,DECISION at planned flows (NPV > 0?),APPROVE,APPROVE,APPROVE,APPROVE,APPROVE
-PROJ-003,DECISION at planned flows (NPV > 0?),APPROVE,APPROVE,APPROVE,APPROVE,APPROVE
-PROJ-004,DECISION at planned flows (NPV > 0?),REJECT,REJECT,REJECT,REJECT,REJECT
-PROJ-005,DECISION at planned flows (NPV > 0?),APPROVE,REJECT,REJECT,REJECT,REJECT
+project_id,project_name,reading,at_5pct,at_7pct,at_9pct,at_11pct,at_13pct
+PROJ-001,Distribution center expansion,DECISION at planned flows (NPV > 0?),APPROVE,REJECT,REJECT,REJECT,REJECT
+PROJ-002,Warehouse automation retrofit,DECISION at planned flows (NPV > 0?),APPROVE,APPROVE,APPROVE,APPROVE,APPROVE
+PROJ-003,New product line launch,DECISION at planned flows (NPV > 0?),APPROVE,APPROVE,APPROVE,APPROVE,APPROVE
+PROJ-004,Retire $45M of long-term debt,DECISION at planned flows (NPV > 0?),REJECT,REJECT,REJECT,REJECT,REJECT
+PROJ-005,Acquire regional competitor,DECISION at planned flows (NPV > 0?),APPROVE,REJECT,REJECT,REJECT,REJECT

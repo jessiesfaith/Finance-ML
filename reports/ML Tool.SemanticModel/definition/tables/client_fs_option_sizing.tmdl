@@ -12,6 +12,14 @@ table client_fs_option_sizing
 
 		annotation SummarizationSetBy = Automatic
 
+	column project_name
+		dataType: string
+		lineageTag: 25dd6d90-9c77-4f2e-97cc-4d449d384cef
+		summarizeBy: none
+		sourceColumn: project_name
+
+		annotation SummarizationSetBy = Automatic
+
 	column category
 		dataType: string
 		lineageTag: 524f26bb-5b1e-4497-b583-b3da67549e80
@@ -78,10 +86,10 @@ table client_fs_option_sizing
 				let
 				  Source = Csv.Document(
 				    File.Contents("C:\dev\Finance-ML\reports\client_fs_option_sizing.csv"),
-				    [Delimiter = ",", Columns = 8, QuoteStyle = QuoteStyle.Csv]
+				    [Delimiter = ",", Columns = 9, QuoteStyle = QuoteStyle.Csv]
 				),
 				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"project_id", "category", "amount_pct", "investment_amt", "npv_at_hurdle", "pct_of_funding_capacity", "verdict", "sizing_note"}),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"project_id", "project_name", "category", "amount_pct", "investment_amt", "npv_at_hurdle", "pct_of_funding_capacity", "verdict", "sizing_note"}),
 				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"amount_pct", type number}, {"investment_amt", type number}, {"npv_at_hurdle", type number}, {"pct_of_funding_capacity", type number}})
 				in
 				    #"Changed Type"

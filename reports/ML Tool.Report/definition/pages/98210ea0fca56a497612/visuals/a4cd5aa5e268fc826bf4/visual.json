@@ -38,6 +38,21 @@
                       "Entity": "client_fs_option_verdicts"
                     }
                   },
+                  "Property": "project_name"
+                }
+              },
+              "queryRef": "client_fs_option_verdicts.project_name",
+              "nativeQueryRef": "project_name",
+              "displayName": "name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_option_verdicts"
+                    }
+                  },
                   "Property": "at_5pct"
                 }
               },

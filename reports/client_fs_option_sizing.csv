@@ -1,26 +1,26 @@
-project_id,category,amount_pct,investment_amt,npv_at_hurdle,pct_of_funding_capacity,verdict,sizing_note
-PROJ-001,GROWTH_CAPEX,50,60.0,-7.79,9.2,REJECT,negative at every size under constant returns - resizing alone cannot fix a failing case; change the case or reject
-PROJ-001,GROWTH_CAPEX,75,90.0,-11.68,13.8,REJECT,negative at every size under constant returns - resizing alone cannot fix a failing case; change the case or reject
-PROJ-001,GROWTH_CAPEX,100,120.0,-15.57,18.4,REJECT,negative at every size under constant returns - resizing alone cannot fix a failing case; change the case or reject
-PROJ-001,GROWTH_CAPEX,125,150.0,-19.47,23.0,REJECT,negative at every size under constant returns - resizing alone cannot fix a failing case; change the case or reject
-PROJ-001,GROWTH_CAPEX,150,180.0,-23.36,27.6,REJECT,negative at every size under constant returns - resizing alone cannot fix a failing case; change the case or reject
-PROJ-002,COST_REDUCTION,50,22.5,1.7,3.5,APPROVE,scales roughly with size (constant-returns assumption) - fund in full if within capacity; more only if the market supports it
-PROJ-002,COST_REDUCTION,75,33.75,2.55,5.2,APPROVE,scales roughly with size (constant-returns assumption) - fund in full if within capacity; more only if the market supports it
-PROJ-002,COST_REDUCTION,100,45.0,3.41,6.9,APPROVE,scales roughly with size (constant-returns assumption) - fund in full if within capacity; more only if the market supports it
-PROJ-002,COST_REDUCTION,125,56.25,4.26,8.6,APPROVE,scales roughly with size (constant-returns assumption) - fund in full if within capacity; more only if the market supports it
-PROJ-002,COST_REDUCTION,150,67.5,5.11,10.4,APPROVE,scales roughly with size (constant-returns assumption) - fund in full if within capacity; more only if the market supports it
-PROJ-003,NEW_PRODUCT_LINE,50,30.0,7.28,4.6,APPROVE,scales roughly with size (constant-returns assumption) - fund in full if within capacity; more only if the market supports it
-PROJ-003,NEW_PRODUCT_LINE,75,45.0,10.92,6.9,APPROVE,scales roughly with size (constant-returns assumption) - fund in full if within capacity; more only if the market supports it
-PROJ-003,NEW_PRODUCT_LINE,100,60.0,14.56,9.2,APPROVE,scales roughly with size (constant-returns assumption) - fund in full if within capacity; more only if the market supports it
-PROJ-003,NEW_PRODUCT_LINE,125,75.0,18.21,11.5,APPROVE,scales roughly with size (constant-returns assumption) - fund in full if within capacity; more only if the market supports it
-PROJ-003,NEW_PRODUCT_LINE,150,90.0,21.85,13.8,APPROVE,scales roughly with size (constant-returns assumption) - fund in full if within capacity; more only if the market supports it
-PROJ-004,DEBT_PAYDOWN,50,22.5,-5.15,3.5,REJECT,"NPV per dollar is constant (linear) - size by liquidity comfort and the leverage policy, not by NPV"
-PROJ-004,DEBT_PAYDOWN,75,33.75,-7.72,5.2,REJECT,"NPV per dollar is constant (linear) - size by liquidity comfort and the leverage policy, not by NPV"
-PROJ-004,DEBT_PAYDOWN,100,45.0,-10.3,6.9,REJECT,"NPV per dollar is constant (linear) - size by liquidity comfort and the leverage policy, not by NPV"
-PROJ-004,DEBT_PAYDOWN,125,56.25,-12.87,8.6,REJECT,"NPV per dollar is constant (linear) - size by liquidity comfort and the leverage policy, not by NPV"
-PROJ-004,DEBT_PAYDOWN,150,67.5,-15.45,10.4,REJECT,"NPV per dollar is constant (linear) - size by liquidity comfort and the leverage policy, not by NPV"
-PROJ-005,ACQUISITION,50,75.0,54.5,11.5,APPROVE,the amount IS the price - flows don't change with it; read down the column for the price at which NPV turns positive: that is the maximum defensible bid
-PROJ-005,ACQUISITION,75,112.5,17.0,17.3,APPROVE,the amount IS the price - flows don't change with it; read down the column for the price at which NPV turns positive: that is the maximum defensible bid
-PROJ-005,ACQUISITION,100,150.0,-20.5,23.0,REJECT,the amount IS the price - flows don't change with it; read down the column for the price at which NPV turns positive: that is the maximum defensible bid
-PROJ-005,ACQUISITION,125,187.5,-58.0,28.8,REJECT,the amount IS the price - flows don't change with it; read down the column for the price at which NPV turns positive: that is the maximum defensible bid
-PROJ-005,ACQUISITION,150,225.0,-95.5,34.5,REJECT,the amount IS the price - flows don't change with it; read down the column for the price at which NPV turns positive: that is the maximum defensible bid
+project_id,project_name,category,amount_pct,investment_amt,npv_at_hurdle,pct_of_funding_capacity,verdict,sizing_note
+PROJ-001,Distribution center expansion,GROWTH_CAPEX,50,60.0,-7.79,9.2,REJECT,negative at every size under constant returns - resizing alone cannot fix a failing case; change the case or reject
+PROJ-001,Distribution center expansion,GROWTH_CAPEX,75,90.0,-11.68,13.8,REJECT,negative at every size under constant returns - resizing alone cannot fix a failing case; change the case or reject
+PROJ-001,Distribution center expansion,GROWTH_CAPEX,100,120.0,-15.57,18.4,REJECT,negative at every size under constant returns - resizing alone cannot fix a failing case; change the case or reject
+PROJ-001,Distribution center expansion,GROWTH_CAPEX,125,150.0,-19.47,23.0,REJECT,negative at every size under constant returns - resizing alone cannot fix a failing case; change the case or reject
+PROJ-001,Distribution center expansion,GROWTH_CAPEX,150,180.0,-23.36,27.6,REJECT,negative at every size under constant returns - resizing alone cannot fix a failing case; change the case or reject
+PROJ-002,Warehouse automation retrofit,COST_REDUCTION,50,22.5,1.7,3.5,APPROVE,scales roughly with size (constant-returns assumption) - fund in full if within capacity; more only if the market supports it
+PROJ-002,Warehouse automation retrofit,COST_REDUCTION,75,33.75,2.55,5.2,APPROVE,scales roughly with size (constant-returns assumption) - fund in full if within capacity; more only if the market supports it
+PROJ-002,Warehouse automation retrofit,COST_REDUCTION,100,45.0,3.41,6.9,APPROVE,scales roughly with size (constant-returns assumption) - fund in full if within capacity; more only if the market supports it
+PROJ-002,Warehouse automation retrofit,COST_REDUCTION,125,56.25,4.26,8.6,APPROVE,scales roughly with size (constant-returns assumption) - fund in full if within capacity; more only if the market supports it
+PROJ-002,Warehouse automation retrofit,COST_REDUCTION,150,67.5,5.11,10.4,APPROVE,scales roughly with size (constant-returns assumption) - fund in full if within capacity; more only if the market supports it
+PROJ-003,New product line launch,NEW_PRODUCT_LINE,50,30.0,7.28,4.6,APPROVE,scales roughly with size (constant-returns assumption) - fund in full if within capacity; more only if the market supports it
+PROJ-003,New product line launch,NEW_PRODUCT_LINE,75,45.0,10.92,6.9,APPROVE,scales roughly with size (constant-returns assumption) - fund in full if within capacity; more only if the market supports it
+PROJ-003,New product line launch,NEW_PRODUCT_LINE,100,60.0,14.56,9.2,APPROVE,scales roughly with size (constant-returns assumption) - fund in full if within capacity; more only if the market supports it
+PROJ-003,New product line launch,NEW_PRODUCT_LINE,125,75.0,18.21,11.5,APPROVE,scales roughly with size (constant-returns assumption) - fund in full if within capacity; more only if the market supports it
+PROJ-003,New product line launch,NEW_PRODUCT_LINE,150,90.0,21.85,13.8,APPROVE,scales roughly with size (constant-returns assumption) - fund in full if within capacity; more only if the market supports it
+PROJ-004,Retire $45M of long-term debt,DEBT_PAYDOWN,50,22.5,-5.15,3.5,REJECT,"NPV per dollar is constant (linear) - size by liquidity comfort and the leverage policy, not by NPV"
+PROJ-004,Retire $45M of long-term debt,DEBT_PAYDOWN,75,33.75,-7.72,5.2,REJECT,"NPV per dollar is constant (linear) - size by liquidity comfort and the leverage policy, not by NPV"
+PROJ-004,Retire $45M of long-term debt,DEBT_PAYDOWN,100,45.0,-10.3,6.9,REJECT,"NPV per dollar is constant (linear) - size by liquidity comfort and the leverage policy, not by NPV"
+PROJ-004,Retire $45M of long-term debt,DEBT_PAYDOWN,125,56.25,-12.87,8.6,REJECT,"NPV per dollar is constant (linear) - size by liquidity comfort and the leverage policy, not by NPV"
+PROJ-004,Retire $45M of long-term debt,DEBT_PAYDOWN,150,67.5,-15.45,10.4,REJECT,"NPV per dollar is constant (linear) - size by liquidity comfort and the leverage policy, not by NPV"
+PROJ-005,Acquire regional competitor,ACQUISITION,50,75.0,54.5,11.5,APPROVE,the amount IS the price - flows don't change with it; read down the column for the price at which NPV turns positive: that is the maximum defensible bid
+PROJ-005,Acquire regional competitor,ACQUISITION,75,112.5,17.0,17.3,APPROVE,the amount IS the price - flows don't change with it; read down the column for the price at which NPV turns positive: that is the maximum defensible bid
+PROJ-005,Acquire regional competitor,ACQUISITION,100,150.0,-20.5,23.0,REJECT,the amount IS the price - flows don't change with it; read down the column for the price at which NPV turns positive: that is the maximum defensible bid
+PROJ-005,Acquire regional competitor,ACQUISITION,125,187.5,-58.0,28.8,REJECT,the amount IS the price - flows don't change with it; read down the column for the price at which NPV turns positive: that is the maximum defensible bid
+PROJ-005,Acquire regional competitor,ACQUISITION,150,225.0,-95.5,34.5,REJECT,the amount IS the price - flows don't change with it; read down the column for the price at which NPV turns positive: that is the maximum defensible bid

@@ -38,6 +38,21 @@
                       "Entity": "client_fs_option_sizing"
                     }
                   },
+                  "Property": "project_name"
+                }
+              },
+              "queryRef": "client_fs_option_sizing.project_name",
+              "nativeQueryRef": "project_name",
+              "displayName": "name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_option_sizing"
+                    }
+                  },
                   "Property": "category"
                 }
               },

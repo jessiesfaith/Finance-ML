@@ -149,7 +149,8 @@ def test_grid_and_verdict_shape(sensitivity):
     from financials.projects import (FLOWS_DELIVERED_PCT, SENSITIVITY_RATES,
                                      rate_column)
     grid, verdicts = sensitivity
-    assert list(grid.columns) == (["project_id", "flows_delivered_pct"]
+    assert list(grid.columns) == (["project_id", "project_name",
+                                   "flows_delivered_pct"]
                                   + [rate_column(r) for r in SENSITIVITY_RATES])
     assert len(grid) == 5 * len(FLOWS_DELIVERED_PCT)
     assert len(verdicts) == 5
@@ -254,3 +255,11 @@ def test_committed_sizing_matches_a_fresh_rebuild(sizing):
     from financials.projects import SIZING_OUTPUT
     from conftest import assert_matches_committed
     assert_matches_committed(sizing, SIZING_OUTPUT)
+
+
+def test_acquisition_recommendation_states_the_breakeven_price(appraisal):
+    """The M&A decision is explicit: bid up to the NPV-zero price."""
+    row = appraisal[(appraisal["project_id"] == "PROJ-005")
+                    & (appraisal["scenario"] == "Base")].iloc[0]
+    assert "$129.5M" in row["recommendation_reason"]
+    assert "walk away" in row["recommendation_reason"]

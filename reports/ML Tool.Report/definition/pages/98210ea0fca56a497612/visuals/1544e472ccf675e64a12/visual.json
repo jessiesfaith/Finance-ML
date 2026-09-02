@@ -38,6 +38,21 @@
                       "Entity": "client_fs_projects"
                     }
                   },
+                  "Property": "project_name"
+                }
+              },
+              "queryRef": "client_fs_projects.project_name",
+              "nativeQueryRef": "project_name",
+              "displayName": "name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_projects"
+                    }
+                  },
                   "Property": "scenario"
                 }
               },

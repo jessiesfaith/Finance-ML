@@ -12,6 +12,14 @@ table client_fs_option_sensitivity
 
 		annotation SummarizationSetBy = Automatic
 
+	column project_name
+		dataType: string
+		lineageTag: 425a6d9e-09de-437f-86ca-100ccf9b5d08
+		summarizeBy: none
+		sourceColumn: project_name
+
+		annotation SummarizationSetBy = Automatic
+
 	column flows_delivered_pct
 		dataType: double
 		formatString: #,0.0
@@ -72,10 +80,10 @@ table client_fs_option_sensitivity
 				let
 				  Source = Csv.Document(
 				    File.Contents("C:\dev\Finance-ML\reports\client_fs_option_sensitivity.csv"),
-				    [Delimiter = ",", Columns = 7, QuoteStyle = QuoteStyle.Csv]
+				    [Delimiter = ",", Columns = 8, QuoteStyle = QuoteStyle.Csv]
 				),
 				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"project_id", "flows_delivered_pct", "npv_at_5pct", "npv_at_7pct", "npv_at_9pct", "npv_at_11pct", "npv_at_13pct"}),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"project_id", "project_name", "flows_delivered_pct", "npv_at_5pct", "npv_at_7pct", "npv_at_9pct", "npv_at_11pct", "npv_at_13pct"}),
 				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"flows_delivered_pct", type number}, {"npv_at_5pct", type number}, {"npv_at_7pct", type number}, {"npv_at_9pct", type number}, {"npv_at_11pct", type number}, {"npv_at_13pct", type number}})
 				in
 				    #"Changed Type"

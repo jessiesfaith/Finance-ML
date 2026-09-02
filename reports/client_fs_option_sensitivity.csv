@@ -1,26 +1,26 @@
-project_id,flows_delivered_pct,npv_at_5pct,npv_at_7pct,npv_at_9pct,npv_at_11pct,npv_at_13pct
-PROJ-001,80,-19.02,-25.27,-30.97,-36.19,-40.96
-PROJ-001,90,-6.4,-13.43,-19.85,-25.71,-31.08
-PROJ-001,100,6.22,-1.59,-8.72,-15.23,-21.2
-PROJ-001,110,18.84,10.25,2.41,-4.76,-11.32
-PROJ-001,120,31.47,22.09,13.54,5.72,-1.44
-PROJ-002,80,0.57,-1.87,-4.11,-6.17,-8.07
-PROJ-002,90,6.27,3.52,1.0,-1.31,-3.45
-PROJ-002,100,11.96,8.91,6.12,3.54,1.17
-PROJ-002,110,17.66,14.31,11.23,8.39,5.78
-PROJ-002,120,23.36,19.7,16.34,13.25,10.4
-PROJ-003,80,12.07,7.62,3.56,-0.15,-3.55
-PROJ-003,90,21.08,16.07,11.5,7.33,3.5
-PROJ-003,100,30.09,24.52,19.45,14.81,10.56
-PROJ-003,110,39.1,32.98,27.39,22.29,17.61
-PROJ-003,120,48.11,41.43,35.34,29.77,24.67
-PROJ-004,80,-0.19,-3.87,-7.17,-10.14,-12.82
-PROJ-004,90,-0.19,-3.87,-7.17,-10.14,-12.82
-PROJ-004,100,-0.19,-3.87,-7.17,-10.14,-12.82
-PROJ-004,110,-0.19,-3.87,-7.17,-10.14,-12.82
-PROJ-004,120,-0.19,-3.87,-7.17,-10.14,-12.82
-PROJ-005,80,-27.17,-34.03,-40.32,-46.1,-51.42
-PROJ-005,90,-11.81,-19.54,-26.61,-33.11,-39.09
-PROJ-005,100,3.54,-5.04,-12.9,-20.12,-26.77
-PROJ-005,110,18.89,9.46,0.81,-7.14,-14.45
-PROJ-005,120,34.25,23.95,14.52,5.85,-2.13
+project_id,project_name,flows_delivered_pct,npv_at_5pct,npv_at_7pct,npv_at_9pct,npv_at_11pct,npv_at_13pct
+PROJ-001,Distribution center expansion,80,-19.02,-25.27,-30.97,-36.19,-40.96
+PROJ-001,Distribution center expansion,90,-6.4,-13.43,-19.85,-25.71,-31.08
+PROJ-001,Distribution center expansion,100,6.22,-1.59,-8.72,-15.23,-21.2
+PROJ-001,Distribution center expansion,110,18.84,10.25,2.41,-4.76,-11.32
+PROJ-001,Distribution center expansion,120,31.47,22.09,13.54,5.72,-1.44
+PROJ-002,Warehouse automation retrofit,80,0.57,-1.87,-4.11,-6.17,-8.07
+PROJ-002,Warehouse automation retrofit,90,6.27,3.52,1.0,-1.31,-3.45
+PROJ-002,Warehouse automation retrofit,100,11.96,8.91,6.12,3.54,1.17
+PROJ-002,Warehouse automation retrofit,110,17.66,14.31,11.23,8.39,5.78
+PROJ-002,Warehouse automation retrofit,120,23.36,19.7,16.34,13.25,10.4
+PROJ-003,New product line launch,80,12.07,7.62,3.56,-0.15,-3.55
+PROJ-003,New product line launch,90,21.08,16.07,11.5,7.33,3.5
+PROJ-003,New product line launch,100,30.09,24.52,19.45,14.81,10.56
+PROJ-003,New product line launch,110,39.1,32.98,27.39,22.29,17.61
+PROJ-003,New product line launch,120,48.11,41.43,35.34,29.77,24.67
+PROJ-004,Retire $45M of long-term debt,80,-0.19,-3.87,-7.17,-10.14,-12.82
+PROJ-004,Retire $45M of long-term debt,90,-0.19,-3.87,-7.17,-10.14,-12.82
+PROJ-004,Retire $45M of long-term debt,100,-0.19,-3.87,-7.17,-10.14,-12.82
+PROJ-004,Retire $45M of long-term debt,110,-0.19,-3.87,-7.17,-10.14,-12.82
+PROJ-004,Retire $45M of long-term debt,120,-0.19,-3.87,-7.17,-10.14,-12.82
+PROJ-005,Acquire regional competitor,80,-27.17,-34.03,-40.32,-46.1,-51.42
+PROJ-005,Acquire regional competitor,90,-11.81,-19.54,-26.61,-33.11,-39.09
+PROJ-005,Acquire regional competitor,100,3.54,-5.04,-12.9,-20.12,-26.77
+PROJ-005,Acquire regional competitor,110,18.89,9.46,0.81,-7.14,-14.45
+PROJ-005,Acquire regional competitor,120,34.25,23.95,14.52,5.85,-2.13
