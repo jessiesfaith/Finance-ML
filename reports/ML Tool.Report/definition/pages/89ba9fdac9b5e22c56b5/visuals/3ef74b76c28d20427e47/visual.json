@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "3ef74b76c28d20427e47",
+  "position": {
+    "x": 350,
+    "y": 1835,
+    "height": 75,
+    "width": 170,
+    "z": 1004000,
+    "tabOrder": 1004000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "Market P/E (x)"
+                }
+              },
+              "queryRef": "client_fs_statements.Market P/E (x)",
+              "nativeQueryRef": "Market P/E (x)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

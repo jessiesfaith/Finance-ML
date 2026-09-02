@@ -340,6 +340,59 @@ table client_fs_statements
 		displayFolder: Calc Build-Out
 		lineageTag: d91187f8-a2c2-40d4-8d69-3c92751afd40
 
+	/// Earnings per share: net income over diluted shares -
+	/// 167.4 / 103.7 = $1.61 in the fixture.
+	measure 'EPS ($)' =
+			
+			DIVIDE([Net Income Reported ($M)], [Client Diluted Shares (M)])
+		formatString: "$"0.00
+		displayFolder: Calc Build-Out
+		lineageTag: f7f48b05-ee46-4bbe-ac52-a930c77e4c4b
+
+	/// What the market pays per dollar of earnings today:
+	/// $18.00 / $1.61 = 11.2x.
+	measure 'Market P/E (x)' =
+			
+			DIVIDE([Market Price per Share (Implied $)], [EPS ($)])
+		formatString: 0.0"x"
+		displayFolder: Calc Build-Out
+		lineageTag: 545a968a-81b9-4c1c-b007-af012a487292
+
+	/// ASSUMPTION: the peer-median earnings multiple. Peer comps
+	/// carry no P/E yet - until the benchmark layer supplies one at
+	/// the live cutover, this is an owned input on its own card.
+	measure 'Target P/E (x) (Assumption)' =
+			
+			15.0
+		formatString: 0.0"x"
+		displayFolder: Calc Build-Out
+		lineageTag: 94a0230f-56a0-418b-b569-2e59d38bbc93
+
+	/// The multiples valuation: what the share is worth if it traded
+	/// at the peer multiple - $1.61 x 15.0 = $24.22.
+	measure 'P/E Implied Price ($)' =
+			
+			[EPS ($)] * [Target P/E (x) (Assumption)]
+		formatString: "$"#,0.00
+		displayFolder: Calc Build-Out
+		lineageTag: 472d80d6-ccac-4203-8eff-649e6e848b15
+
+	measure 'P/E Implied Equity ($M)' =
+			
+			[P/E Implied Price ($)] * [Client Diluted Shares (M)]
+		formatString: #,0.0
+		displayFolder: Calc Build-Out
+		lineageTag: 0c556b11-60a1-4a86-ad81-d0887b0ae528
+
+	/// The multiple the DCF answer implies: $28.86 / $1.61 = 17.9x -
+	/// read it against the market's 11.2x and the peer target.
+	measure 'DCF Implied P/E (x)' =
+			
+			DIVIDE([DCF Implied Share Price], [EPS ($)])
+		formatString: 0.0"x"
+		displayFolder: Calc Build-Out
+		lineageTag: f89efc5b-c1aa-466c-ae93-71bacb57c7bd
+
 	column entity_id
 		dataType: string
 		lineageTag: 17fc8e23-2bd6-4340-b839-3702349b04fb

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "912a7bb06efc7527d32c",
+  "position": {
+    "x": 165,
+    "y": 1750,
+    "height": 75,
+    "width": 170,
+    "z": 997000,
+    "tabOrder": 997000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "EPS ($)"
+                }
+              },
+              "queryRef": "client_fs_statements.EPS ($)",
+              "nativeQueryRef": "EPS ($)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

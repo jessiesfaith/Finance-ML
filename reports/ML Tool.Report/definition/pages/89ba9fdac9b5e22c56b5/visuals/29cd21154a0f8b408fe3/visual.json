@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "29cd21154a0f8b408fe3",
+  "position": {
+    "x": 905,
+    "y": 1835,
+    "height": 75,
+    "width": 170,
+    "z": 1007000,
+    "tabOrder": 1007000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "DCF Implied P/E (x)"
+                }
+              },
+              "queryRef": "client_fs_statements.DCF Implied P/E (x)",
+              "nativeQueryRef": "DCF Implied P/E (x)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

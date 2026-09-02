@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "37dfd3beb71dcea1770d",
+  "position": {
+    "x": 1245,
+    "y": 1665,
+    "height": 240,
+    "width": 630,
+    "z": 1008000,
+    "tabOrder": 1008000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Three answers to 'what is a share worth':",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "the MARKET's ($18.00 \u2014 trading at 11.2\u00d7 earnings), the PEER MULTIPLE's ($24.22 at an assumed 15\u00d7), and the DCF's ($28.86, which implies 17.9\u00d7).",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The spread between them IS the investment debate. Multiples are a cross-check, not a substitute: fast and market-anchored, but they import the market's mood along with its information \u2014 the DCF prices the cash, the multiple prices the sentiment.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

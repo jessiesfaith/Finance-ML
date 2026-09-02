@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "fc7bb043ff5344bd0ae8",
+  "position": {
+    "x": 535,
+    "y": 1835,
+    "height": 75,
+    "width": 170,
+    "z": 1005000,
+    "tabOrder": 1005000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "P/E Implied Price ($)"
+                }
+              },
+              "queryRef": "client_fs_statements.P/E Implied Price ($)",
+              "nativeQueryRef": "P/E Implied Price ($)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

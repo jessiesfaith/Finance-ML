@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "c22670743eb2ea304102",
+  "position": {
+    "x": 165,
+    "y": 1480,
+    "z": 981000,
+    "height": 220,
+    "width": 800,
+    "tabOrder": 981000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "13 \u00b7 P/E Method (Comparable Multiples)",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "EPS = net income \u00f7 diluted shares = 167.4 \u00f7 103.7 = $1.61.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Value by multiple: price = EPS \u00d7 target P/E, the multiple peers trade at (here an ASSUMPTION of 15\u00d7 until peer comps carry it): $1.61 \u00d7 15 = $24.22.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The triangle: market $18.00 (11.2\u00d7) \u00b7 peer-multiple $24.22 (15\u00d7) \u00b7 DCF $28.86 (17.9\u00d7). Multiples cross-check the DCF \u2014 they are fast and market-anchored but import sentiment; the DCF prices cash flows directly.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\u2192 tab 8 \u00b7 Calc Build-Out, section 6",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

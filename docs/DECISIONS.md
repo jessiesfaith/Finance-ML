@@ -913,3 +913,12 @@ net debt build, the BOOK interest rate (25.4/366 = 6.94%) beside the
 market Kd 6.53%, implied market cap (E = D x We/Wd = 1,866 at the
 $18.00 input price), E/(E+D) = 83.60% derived on-page, closing at
 WACC 9.11. Eleven new measures, all statement-driven.
+
+### 84. P/E method joins the build-out as the multiples cross-check
+EPS = NI / diluted = $1.61; value by multiple = EPS x target P/E (an
+ASSUMPTION card at 15x until peer comps carry the multiple at cutover)
+= $24.22; and the comparison strip puts the three answers side by
+side - market $18.00 (11.2x), peer-multiple $24.22 (15x), DCF $28.86
+(17.9x) - with the caveat written on the page: multiples cross-check
+the DCF but import the market's sentiment with its information. Six
+new measures; Math Reference gains block 13.
