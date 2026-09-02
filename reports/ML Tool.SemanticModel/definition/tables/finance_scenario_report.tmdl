@@ -208,6 +208,23 @@ table finance_scenario_report
 		lineageTag: 376e4071-7b40-4c81-8406-2e640620dbc4
 
 	/// CALCULATED: weighted average required return of debt and equity used to discount unlevered free cash flow.
+	/// The scenario's WACC as exported by the pipeline (wacc_pct);
+	/// Base when no scenario is picked. Desktop refused to persist the
+	/// bare name WACC, hence the unit suffix.
+	measure 'WACC (%)' =
+			
+			IF(
+			    HASONEVALUE(finance_scenario_report[scenario]),
+			    SELECTEDVALUE(finance_scenario_report[wacc_pct]),
+			    CALCULATE(
+			        MAX(finance_scenario_report[wacc_pct]),
+			        finance_scenario_report[scenario] = "Base"
+			    )
+			)
+		formatString: 0.00
+		displayFolder: Cost of Capital & Market
+		lineageTag: ae0750b1-8e7e-4382-b70f-2bf0abc66dc4
+
 	measure 'Calculated WACC' =
 			
 			VAR EquityWeight =
