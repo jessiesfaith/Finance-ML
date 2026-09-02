@@ -1,0 +1,103 @@
+"""
+Structural integrity of the hand-authored Power BI project.
+
+Guards the failure modes Desktop has actually thrown at us:
+  * every visual.json must be valid JSON with a unique name,
+  * every measure/column a visual binds must exist in the model,
+  * measure names must be unique model-wide (case-insensitive) and must
+    not collide with a column in their own table - Desktop refuses the
+    model outright on such a clash ("The 'X' measure cannot be created
+    because a column with the same name already exists"),
+  * every partition sourceColumn must exist in its CSV.
+"""
+
+import glob
+import json
+import re
+from collections import Counter
+from pathlib import Path
+
+import pandas as pd
+
+SM = Path("reports/ML Tool.SemanticModel/definition")
+PAGES = Path("reports/ML Tool.Report/definition/pages")
+
+CSV_FOR_TABLE = {
+    "finance_scenario_report": "finance_scenario_report",
+    "client_fs_ufcf": "client_fs_ufcf",
+    "client_fs_statements": "client_fs_statements",
+    "client_fs_income_walk": "client_fs_income_walk",
+    "client_fs_valuation_inputs": "client_fs_valuation_inputs",
+    "client_fs_controls": "client_fs_controls",
+    "client_fs_review": "client_fs_review",
+    "client_fs_projects": "client_fs_projects",
+    "client_fs_sensitivity": "client_fs_sensitivity",
+    "market_rf_policy": "market_rf_policy",
+    "market_history_rolling24": "market_history_rolling24",
+    "market_history_windows": "market_history_windows",
+}
+
+
+def model_tables():
+    tables = {}
+    for f in sorted(glob.glob(str(SM / "tables" / "*.tmdl"))):
+        text = Path(f).read_text(encoding="utf-8")
+        name = re.search(r"^table (\S+)", text, re.M).group(1)
+        tables[name] = {
+            "measures": re.findall(r"measure '([^']+)'", text),
+            "columns": re.findall(r"^\tcolumn (\S+)", text, re.M),
+            "source_columns": re.findall(r"sourceColumn: (\S+)", text),
+        }
+    return tables
+
+
+def test_measure_names_never_collide_with_columns():
+    for table, info in model_tables().items():
+        columns = {c.lower() for c in info["columns"]}
+        clashes = [m for m in info["measures"] if m.lower() in columns]
+        assert not clashes, f"{table}: measure/column name clash {clashes}"
+
+
+def test_measure_names_unique_model_wide():
+    everything = [m.lower() for info in model_tables().values()
+                  for m in info["measures"]]
+    dupes = [m for m, n in Counter(everything).items() if n > 1]
+    assert not dupes, f"duplicate measure names: {dupes}"
+
+
+def test_every_source_column_exists_in_its_csv():
+    for table, info in model_tables().items():
+        csv = CSV_FOR_TABLE.get(table)
+        assert csv is not None, f"untracked model table {table}"
+        cols = set(pd.read_csv(f"reports/{csv}.csv", nrows=0).columns)
+        missing = [c for c in info["source_columns"] if c not in cols]
+        assert not missing, f"{table}: sourceColumn not in CSV {missing}"
+
+
+def test_every_visual_parses_resolves_and_is_unique():
+    tables = model_tables()
+    measures = {m for info in tables.values() for m in info["measures"]}
+    columns = {c for info in tables.values() for c in info["columns"]}
+    names = []
+    for f in glob.glob(str(PAGES / "*" / "visuals" / "*" / "visual.json")):
+        visual = json.loads(Path(f).read_text(encoding="utf-8"))
+        names.append(visual["name"])
+        bound = []
+
+        def walk(node):
+            if isinstance(node, dict):
+                if "Measure" in node and isinstance(node["Measure"], dict):
+                    bound.append(("m", node["Measure"].get("Property")))
+                if "Column" in node and isinstance(node["Column"], dict):
+                    bound.append(("c", node["Column"].get("Property")))
+                for value in node.values():
+                    walk(value)
+            elif isinstance(node, list):
+                for value in node:
+                    walk(value)
+
+        walk(visual["visual"].get("query", {}))
+        for kind, prop in bound:
+            pool = measures if kind == "m" else columns
+            assert prop in pool, f"{f}: unresolved binding {prop}"
+    assert len(names) == len(set(names)), "duplicate visual names"

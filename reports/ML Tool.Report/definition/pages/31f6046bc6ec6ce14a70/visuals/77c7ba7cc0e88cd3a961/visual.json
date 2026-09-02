@@ -32,7 +32,7 @@
                 }
               },
               "queryRef": "Sum(finance_scenario_report.beta)",
-              "nativeQueryRef": "Beta",
+              "nativeQueryRef": "Equity Beta",
               "displayName": "Beta"
             }
           ]

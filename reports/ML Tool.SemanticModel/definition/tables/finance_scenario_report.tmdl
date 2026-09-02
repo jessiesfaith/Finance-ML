@@ -138,7 +138,7 @@ table finance_scenario_report
 
 	/// ASSUMPTION: equity beta (1.20). At the live phase this comes from
 	/// peer-set regression; until then it is an explicit, labeled input.
-	measure 'Beta' =
+	measure 'Equity Beta' =
 			
 			IF(
 			    HASONEVALUE(finance_scenario_report[scenario]),
@@ -186,7 +186,7 @@ table finance_scenario_report
 
 	/// MACRO CONTEXT: informs the scenario narrative and the assumptions -
 	/// never plugged into WACC directly (docs/MODEL_AUDIT.md map W).
-	measure 'CPI' =
+	measure 'CPI Inflation' =
 			
 			IF(
 			    HASONEVALUE(finance_scenario_report[scenario]),
@@ -202,7 +202,7 @@ table finance_scenario_report
 
 	/// MACRO CONTEXT: same role as CPI - context for the scenario, not a
 	/// WACC input.
-	measure 'Unemployment' =
+	measure 'Unemployment Rate' =
 			
 			IF(
 			    HASONEVALUE(finance_scenario_report[scenario]),

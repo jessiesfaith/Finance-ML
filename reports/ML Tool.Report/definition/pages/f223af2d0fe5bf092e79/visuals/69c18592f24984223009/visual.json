@@ -23,11 +23,11 @@
                       "Entity": "finance_scenario_report"
                     }
                   },
-                  "Property": "Unemployment"
+                  "Property": "Unemployment Rate"
                 }
               },
-              "queryRef": "finance_scenario_report.Unemployment",
-              "nativeQueryRef": "Unemployment"
+              "queryRef": "finance_scenario_report.Unemployment Rate",
+              "nativeQueryRef": "Unemployment Rate"
             }
           ]
         }
