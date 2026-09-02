@@ -3,11 +3,11 @@
   "name": "115b21486adf4868758a",
   "position": {
     "x": 165,
-    "y": 940,
-    "height": 58,
+    "y": 1180,
+    "height": 56,
     "width": 800,
-    "z": 12000,
-    "tabOrder": 12000
+    "z": 16000,
+    "tabOrder": 16000
   },
   "visual": {
     "visualType": "textbox",
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/PPIACO · CPIAUCSL  — charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/PPIACO \u00b7 CPIAUCSL  \u2014 charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

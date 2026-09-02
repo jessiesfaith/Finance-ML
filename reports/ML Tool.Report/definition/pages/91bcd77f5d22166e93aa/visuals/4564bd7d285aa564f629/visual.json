@@ -3,11 +3,11 @@
   "name": "4564bd7d285aa564f629",
   "position": {
     "x": 1015,
-    "y": 2185,
-    "height": 58,
+    "y": 2785,
+    "height": 56,
     "width": 800,
-    "z": 26000,
-    "tabOrder": 26000
+    "z": 37000,
+    "tabOrder": 37000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Housing Starts (thousands, SAAR) — the rate-sensitive gauge",
+                    "value": "Housing Starts (thousands, SAAR) \u2014 the rate-sensitive gauge",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/HOUST  — charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/HOUST  \u2014 charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

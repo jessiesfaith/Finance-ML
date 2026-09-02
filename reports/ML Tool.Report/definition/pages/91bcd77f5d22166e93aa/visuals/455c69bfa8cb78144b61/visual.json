@@ -3,11 +3,11 @@
   "name": "455c69bfa8cb78144b61",
   "position": {
     "x": 165,
-    "y": 1770,
-    "height": 58,
+    "y": 2250,
+    "height": 56,
     "width": 800,
-    "z": 20000,
-    "tabOrder": 20000
+    "z": 28000,
+    "tabOrder": 28000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Median Unemployment Duration (weeks) — slow to heal",
+                    "value": "Median Unemployment Duration (weeks) \u2014 slow to heal",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/UEMPMED  — charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/UEMPMED  \u2014 charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

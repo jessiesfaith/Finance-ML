@@ -3,11 +3,11 @@
   "name": "b56dd0aebe9e41b2316e",
   "position": {
     "x": 1015,
-    "y": 1770,
-    "height": 58,
+    "y": 2250,
+    "height": 56,
     "width": 800,
-    "z": 22000,
-    "tabOrder": 22000
+    "z": 31000,
+    "tabOrder": 31000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Jobless Claims (thousands) — sign-ups vs still drawing",
+                    "value": "Jobless Claims (thousands) \u2014 sign-ups vs still drawing",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/ICSA · CCSA  — charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/ICSA \u00b7 CCSA  \u2014 charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

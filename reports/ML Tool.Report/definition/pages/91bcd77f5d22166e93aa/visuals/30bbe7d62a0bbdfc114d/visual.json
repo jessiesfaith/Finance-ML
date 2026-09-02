@@ -3,11 +3,11 @@
   "name": "30bbe7d62a0bbdfc114d",
   "position": {
     "x": 1015,
-    "y": 174,
-    "height": 300,
+    "y": 170,
+    "height": 280,
     "width": 800,
-    "z": 7000,
-    "tabOrder": 7000
+    "z": 8000,
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "lineChart",
@@ -52,7 +52,7 @@
               },
               "queryRef": "Avg(market_history_rolling24.curve_spread_10y_2y)",
               "nativeQueryRef": "Average of curve_spread_10y_2y",
-              "displayName": "10Y − 2Y"
+              "displayName": "10Y \u2212 2Y"
             },
             {
               "field": {
@@ -72,7 +72,7 @@
               },
               "queryRef": "Avg(market_history_rolling24.curve_spread_10y_3m)",
               "nativeQueryRef": "Average of curve_spread_10y_3m",
-              "displayName": "10Y − 3M"
+              "displayName": "10Y \u2212 3M"
             }
           ]
         }

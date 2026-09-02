@@ -3,11 +3,11 @@
   "name": "0f38a7321a3f03106699",
   "position": {
     "x": 165,
-    "y": 2185,
-    "height": 58,
+    "y": 2785,
+    "height": 56,
     "width": 800,
-    "z": 24000,
-    "tabOrder": 24000
+    "z": 34000,
+    "tabOrder": 34000
   },
   "visual": {
     "visualType": "textbox",
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/PAYEMS · JTSJOL  — charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/PAYEMS \u00b7 JTSJOL  \u2014 charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

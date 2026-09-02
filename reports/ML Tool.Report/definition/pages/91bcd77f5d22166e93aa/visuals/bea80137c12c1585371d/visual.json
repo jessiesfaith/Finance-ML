@@ -4,10 +4,10 @@
   "position": {
     "x": 1015,
     "y": 110,
-    "height": 58,
+    "height": 56,
     "width": 800,
-    "z": 6000,
-    "tabOrder": 6000
+    "z": 7000,
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Curve Slopes (pts) — negative = inverted",
+                    "value": "Curve Slopes (pts) \u2014 negative = inverted",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/T10Y2Y · T10Y3M  — charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/T10Y2Y \u00b7 T10Y3M  \u2014 charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

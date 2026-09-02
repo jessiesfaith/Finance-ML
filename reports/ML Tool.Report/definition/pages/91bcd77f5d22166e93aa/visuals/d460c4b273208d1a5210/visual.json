@@ -3,11 +3,11 @@
   "name": "d460c4b273208d1a5210",
   "position": {
     "x": 165,
-    "y": 525,
-    "height": 58,
+    "y": 645,
+    "height": 56,
     "width": 800,
-    "z": 8000,
-    "tabOrder": 8000
+    "z": 10000,
+    "tabOrder": 10000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Policy Rate — Effective Fed Funds (%)",
+                    "value": "Policy Rate \u2014 Effective Fed Funds (%)",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/FEDFUNDS  — charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/FEDFUNDS  \u2014 charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

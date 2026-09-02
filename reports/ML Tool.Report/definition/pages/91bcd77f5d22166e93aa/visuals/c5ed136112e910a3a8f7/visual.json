@@ -1,0 +1,125 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "c5ed136112e910a3a8f7",
+  "position": {
+    "x": 1015,
+    "y": 6878,
+    "height": 160,
+    "width": 800,
+    "z": 81000,
+    "tabOrder": 81000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_history_rolling24"
+                    }
+                  },
+                  "Property": "observation_date"
+                }
+              },
+              "queryRef": "market_history_rolling24.observation_date",
+              "nativeQueryRef": "observation_date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_history_rolling24"
+                    }
+                  },
+                  "Property": "tech_co_1_px"
+                }
+              },
+              "queryRef": "market_history_rolling24.tech_co_1_px",
+              "nativeQueryRef": "tech_co_1_px"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_history_rolling24"
+                    }
+                  },
+                  "Property": "tech_co_2_px"
+                }
+              },
+              "queryRef": "market_history_rolling24.tech_co_2_px",
+              "nativeQueryRef": "tech_co_2_px"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_history_rolling24"
+                    }
+                  },
+                  "Property": "tech_co_3_px"
+                }
+              },
+              "queryRef": "market_history_rolling24.tech_co_3_px",
+              "nativeQueryRef": "tech_co_3_px"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_history_rolling24"
+                    }
+                  },
+                  "Property": "tech_co_4_px"
+                }
+              },
+              "queryRef": "market_history_rolling24.tech_co_4_px",
+              "nativeQueryRef": "tech_co_4_px"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_history_rolling24"
+                    }
+                  },
+                  "Property": "tech_co_5_px"
+                }
+              },
+              "queryRef": "market_history_rolling24.tech_co_5_px",
+              "nativeQueryRef": "tech_co_5_px"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "market_history_rolling24"
+                  }
+                },
+                "Property": "observation_date"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

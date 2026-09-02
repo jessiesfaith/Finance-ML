@@ -1,222 +1,22 @@
-/// Curated pipeline export reports/market_history_rolling24.csv:
-/// monthly macro + market history (rates, inflation, labor, activity,
-/// surveys, credit, commodities, equity indices and placeholder firm
-/// slots) with rolling 24-month means. SYNTHETIC until the live
-/// cutover; firm slots never carry a real ticker's invented history.
+/// Curated pipeline export: monthly macro + market history with
+/// rolling 24-month means. SYNTHETIC until the live cutover; the
+/// placeholder firm slots never carry a real ticker's history.
 table market_history_rolling24
-	lineageTag: 2ffb0817-2816-45cd-88f3-1f996d064551
+	lineageTag: deb38a24-02d6-499e-ae1d-c9105d55bb15
 
 	column observation_date
 		dataType: dateTime
 		formatString: yyyy-mm-dd
-		lineageTag: d738ff33-2eb1-4cf7-b4b9-cd3575bf6df5
+		lineageTag: 00661875-fac4-4b7a-aff6-427aa141d6cf
 		summarizeBy: none
 		sourceColumn: observation_date
-
-		annotation SummarizationSetBy = Automatic
-
-		annotation UnderlyingDateTimeDataType = Date
-
-	column ust_2y
-		dataType: double
-		formatString: 0.00
-		lineageTag: b126622e-28fe-427b-a1ea-4f9684a3cd4f
-		summarizeBy: none
-		sourceColumn: ust_2y
-
-		annotation SummarizationSetBy = Automatic
-
-	column ust_2y_r24
-		dataType: double
-		formatString: 0.00
-		lineageTag: 05da7cbf-48e9-497f-ac5b-be66cb7ca8e2
-		summarizeBy: none
-		sourceColumn: ust_2y_r24
-
-		annotation SummarizationSetBy = Automatic
-
-	column ust_10y
-		dataType: double
-		formatString: 0.00
-		lineageTag: 3d462a10-3256-465d-82e1-2e7a642f8311
-		summarizeBy: none
-		sourceColumn: ust_10y
-
-		annotation SummarizationSetBy = Automatic
-
-	column ust_10y_r24
-		dataType: double
-		formatString: 0.00
-		lineageTag: eabdb0c5-68a6-43f9-a5ed-28993c11695d
-		summarizeBy: none
-		sourceColumn: ust_10y_r24
-
-		annotation SummarizationSetBy = Automatic
-
-	column curve_spread_10y_2y
-		dataType: double
-		formatString: 0.00
-		lineageTag: d399190c-e6ac-4abc-a8e2-21c07227c5a0
-		summarizeBy: none
-		sourceColumn: curve_spread_10y_2y
-
-		annotation SummarizationSetBy = Automatic
-
-	column curve_spread_10y_2y_r24
-		dataType: double
-		formatString: 0.00
-		lineageTag: f2faa06e-b063-4134-89ff-0bdd21189017
-		summarizeBy: none
-		sourceColumn: curve_spread_10y_2y_r24
-
-		annotation SummarizationSetBy = Automatic
-
-	column fed_funds_eff
-		dataType: double
-		formatString: 0.00
-		lineageTag: 2b7c6120-7da8-41a3-b810-5f94723917d6
-		summarizeBy: none
-		sourceColumn: fed_funds_eff
-
-		annotation SummarizationSetBy = Automatic
-
-	column fed_funds_eff_r24
-		dataType: double
-		formatString: 0.00
-		lineageTag: 502cbfe4-5d51-4f60-92d2-d69512d3ffee
-		summarizeBy: none
-		sourceColumn: fed_funds_eff_r24
-
-		annotation SummarizationSetBy = Automatic
-
-	column cpi_yoy
-		dataType: double
-		formatString: 0.00
-		lineageTag: 980475de-2523-43d8-885d-486931ef856c
-		summarizeBy: none
-		sourceColumn: cpi_yoy
-
-		annotation SummarizationSetBy = Automatic
-
-	column cpi_yoy_r24
-		dataType: double
-		formatString: 0.00
-		lineageTag: 11505241-13a7-4a84-8f20-be323abe83a3
-		summarizeBy: none
-		sourceColumn: cpi_yoy_r24
-
-		annotation SummarizationSetBy = Automatic
-
-	column pce_yoy
-		dataType: double
-		formatString: 0.00
-		lineageTag: e189e5d2-a011-4a98-8078-f7585976dd07
-		summarizeBy: none
-		sourceColumn: pce_yoy
-
-		annotation SummarizationSetBy = Automatic
-
-	column pce_yoy_r24
-		dataType: double
-		formatString: 0.00
-		lineageTag: 5ae80f08-3694-4417-820b-e1138d5ebe42
-		summarizeBy: none
-		sourceColumn: pce_yoy_r24
-
-		annotation SummarizationSetBy = Automatic
-
-	column gdp_growth_yoy
-		dataType: double
-		formatString: 0.00
-		lineageTag: d3513249-22f1-42bd-beb2-656e735588f2
-		summarizeBy: none
-		sourceColumn: gdp_growth_yoy
-
-		annotation SummarizationSetBy = Automatic
-
-	column gdp_growth_yoy_r24
-		dataType: double
-		formatString: 0.00
-		lineageTag: f3e9940a-a4a2-4d8e-8fcd-06b68f5109fb
-		summarizeBy: none
-		sourceColumn: gdp_growth_yoy_r24
-
-		annotation SummarizationSetBy = Automatic
-
-	column unemployment_rate
-		dataType: double
-		formatString: 0.00
-		lineageTag: 6626bfb5-1a12-4b0c-bf72-065309d78a17
-		summarizeBy: none
-		sourceColumn: unemployment_rate
-
-		annotation SummarizationSetBy = Automatic
-
-	column unemployment_rate_r24
-		dataType: double
-		formatString: 0.00
-		lineageTag: 02c774f3-743f-4f22-ba07-6096d44d5873
-		summarizeBy: none
-		sourceColumn: unemployment_rate_r24
-
-		annotation SummarizationSetBy = Automatic
-
-	column ig_oas
-		dataType: double
-		formatString: 0.00
-		lineageTag: 903b2543-938f-4cf1-95da-60c12c0cd967
-		summarizeBy: none
-		sourceColumn: ig_oas
-
-		annotation SummarizationSetBy = Automatic
-
-	column ig_oas_r24
-		dataType: double
-		formatString: 0.00
-		lineageTag: 99cbbd0d-237d-493a-8b57-659346d1a65b
-		summarizeBy: none
-		sourceColumn: ig_oas_r24
-
-		annotation SummarizationSetBy = Automatic
-
-	column hy_oas
-		dataType: double
-		formatString: 0.00
-		lineageTag: 2236c14b-4307-411b-b1ce-74b520fb0cd9
-		summarizeBy: none
-		sourceColumn: hy_oas
-
-		annotation SummarizationSetBy = Automatic
-
-	column hy_oas_r24
-		dataType: double
-		formatString: 0.00
-		lineageTag: b09288e1-2aec-4656-b22d-f783fea9be2b
-		summarizeBy: none
-		sourceColumn: hy_oas_r24
-
-		annotation SummarizationSetBy = Automatic
-
-	column source
-		dataType: string
-		lineageTag: e0448898-030f-4bfd-9390-42620197e264
-		summarizeBy: none
-		sourceColumn: source
-
-		annotation SummarizationSetBy = Automatic
-
-	column value_class
-		dataType: string
-		lineageTag: 933671f4-fa95-4656-999a-ca5d610119b0
-		summarizeBy: none
-		sourceColumn: value_class
 
 		annotation SummarizationSetBy = Automatic
 
 	column ust_3m
 		dataType: double
 		formatString: 0.00
-		lineageTag: cf82ed6f-fe30-40be-9d0a-b7fc823e96eb
+		lineageTag: d64a5f7e-9251-45f1-a297-c1595211e0f7
 		summarizeBy: none
 		sourceColumn: ust_3m
 
@@ -225,16 +25,34 @@ table market_history_rolling24
 	column ust_3m_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: d389210a-4bf9-46b3-88a0-89bf80fd2b19
+		lineageTag: 569e81fc-534f-48de-b8d0-1e8ed9da3f52
 		summarizeBy: none
 		sourceColumn: ust_3m_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column ust_2y
+		dataType: double
+		formatString: 0.00
+		lineageTag: d96b844f-619c-4e8c-b8b9-be432600cf00
+		summarizeBy: none
+		sourceColumn: ust_2y
+
+		annotation SummarizationSetBy = Automatic
+
+	column ust_2y_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: c9867ca9-fb57-45b8-a80e-b18f10ad7979
+		summarizeBy: none
+		sourceColumn: ust_2y_r24
 
 		annotation SummarizationSetBy = Automatic
 
 	column ust_5y
 		dataType: double
 		formatString: 0.00
-		lineageTag: af615540-0029-4333-a424-6bc55aab93bf
+		lineageTag: 490d420d-98ad-4360-b8d1-4b500c60332d
 		summarizeBy: none
 		sourceColumn: ust_5y
 
@@ -243,16 +61,34 @@ table market_history_rolling24
 	column ust_5y_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 8ef2dd28-c63c-4434-898f-98e97e056c89
+		lineageTag: 215a33c3-9326-4650-bf32-a1345fea99dc
 		summarizeBy: none
 		sourceColumn: ust_5y_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column ust_10y
+		dataType: double
+		formatString: 0.00
+		lineageTag: 2814e888-5150-48ab-9f39-a36af934a068
+		summarizeBy: none
+		sourceColumn: ust_10y
+
+		annotation SummarizationSetBy = Automatic
+
+	column ust_10y_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 54dba3e0-5865-4f14-87be-dd803bb97cfa
+		summarizeBy: none
+		sourceColumn: ust_10y_r24
 
 		annotation SummarizationSetBy = Automatic
 
 	column ust_30y
 		dataType: double
 		formatString: 0.00
-		lineageTag: a4124b17-5a2f-412f-8626-6a301564ade0
+		lineageTag: 10f1bffa-ffc4-4c2f-bb7d-76585e46094d
 		summarizeBy: none
 		sourceColumn: ust_30y
 
@@ -261,16 +97,34 @@ table market_history_rolling24
 	column ust_30y_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 3712b771-154d-4f39-b531-040573a14393
+		lineageTag: 53456b05-7582-4735-b380-1a3513e1ddc3
 		summarizeBy: none
 		sourceColumn: ust_30y_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column curve_spread_10y_2y
+		dataType: double
+		formatString: 0.00
+		lineageTag: fdd4987a-71aa-47bc-85d7-ab67e71c1cc7
+		summarizeBy: none
+		sourceColumn: curve_spread_10y_2y
+
+		annotation SummarizationSetBy = Automatic
+
+	column curve_spread_10y_2y_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: e44b4271-1090-40f4-a329-920289996d7d
+		summarizeBy: none
+		sourceColumn: curve_spread_10y_2y_r24
 
 		annotation SummarizationSetBy = Automatic
 
 	column curve_spread_10y_3m
 		dataType: double
 		formatString: 0.00
-		lineageTag: 8fbb7b85-5025-48c2-b105-44cef9fd11a7
+		lineageTag: 3175310b-95c8-4525-9c32-42c93185ccb7
 		summarizeBy: none
 		sourceColumn: curve_spread_10y_3m
 
@@ -279,16 +133,52 @@ table market_history_rolling24
 	column curve_spread_10y_3m_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 3ab9d45e-e621-4dd5-8532-640419dba4ad
+		lineageTag: 2143bf46-4174-4b04-96b5-3c313a7798f0
 		summarizeBy: none
 		sourceColumn: curve_spread_10y_3m_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column fed_funds_eff
+		dataType: double
+		formatString: 0.00
+		lineageTag: dcb5f59c-9971-4b9e-9dc5-d3f3f35d46b4
+		summarizeBy: none
+		sourceColumn: fed_funds_eff
+
+		annotation SummarizationSetBy = Automatic
+
+	column fed_funds_eff_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: dd33fc70-4c2b-4a9e-8785-66c6d22be2ee
+		summarizeBy: none
+		sourceColumn: fed_funds_eff_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column cpi_yoy
+		dataType: double
+		formatString: 0.00
+		lineageTag: 569d1bfc-d6f3-406b-8198-6f13589d89e3
+		summarizeBy: none
+		sourceColumn: cpi_yoy
+
+		annotation SummarizationSetBy = Automatic
+
+	column cpi_yoy_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: c1974ac1-9c12-49bc-9174-79df1aba95b9
+		summarizeBy: none
+		sourceColumn: cpi_yoy_r24
 
 		annotation SummarizationSetBy = Automatic
 
 	column core_cpi_yoy
 		dataType: double
 		formatString: 0.00
-		lineageTag: 42e015aa-5537-4e1e-a693-a371904323dc
+		lineageTag: 3d1dcb22-9a1a-4b23-b09e-7f623a649f3f
 		summarizeBy: none
 		sourceColumn: core_cpi_yoy
 
@@ -297,16 +187,34 @@ table market_history_rolling24
 	column core_cpi_yoy_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 4c87f684-d417-4ae1-9ef3-c49ac1e8e923
+		lineageTag: 0654e48c-9cf0-4fe1-ae73-06a4d5cf6f2e
 		summarizeBy: none
 		sourceColumn: core_cpi_yoy_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column pce_yoy
+		dataType: double
+		formatString: 0.00
+		lineageTag: 0fc7f8fb-472e-47bc-a9c8-7fe04fcb6e2a
+		summarizeBy: none
+		sourceColumn: pce_yoy
+
+		annotation SummarizationSetBy = Automatic
+
+	column pce_yoy_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 50d1ef0e-8c96-4855-8b98-88ad32df5b5b
+		summarizeBy: none
+		sourceColumn: pce_yoy_r24
 
 		annotation SummarizationSetBy = Automatic
 
 	column core_pce_yoy
 		dataType: double
 		formatString: 0.00
-		lineageTag: 8796dc2b-bfba-4def-bce3-b67be2431614
+		lineageTag: 5ddfb8da-c426-4517-8930-8a2133f811bc
 		summarizeBy: none
 		sourceColumn: core_pce_yoy
 
@@ -315,7 +223,7 @@ table market_history_rolling24
 	column core_pce_yoy_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 447d3c8f-6181-4ba3-bc8e-0186504c6015
+		lineageTag: 48718f76-17f5-45be-b8c6-58568458fbcd
 		summarizeBy: none
 		sourceColumn: core_pce_yoy_r24
 
@@ -324,7 +232,7 @@ table market_history_rolling24
 	column ppi_yoy
 		dataType: double
 		formatString: 0.00
-		lineageTag: 8e20ea45-ad09-42b7-a6f5-f26f28f719e2
+		lineageTag: 1ce850d3-2a6d-493e-8d46-fec6b243eceb
 		summarizeBy: none
 		sourceColumn: ppi_yoy
 
@@ -333,7 +241,7 @@ table market_history_rolling24
 	column ppi_yoy_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 121062e1-0e66-43dc-9784-c20b643ca5b7
+		lineageTag: 24f1bcd5-bb8e-4077-bd73-4153a5febd88
 		summarizeBy: none
 		sourceColumn: ppi_yoy_r24
 
@@ -342,7 +250,7 @@ table market_history_rolling24
 	column ahe_yoy
 		dataType: double
 		formatString: 0.00
-		lineageTag: bceaeb53-2a49-4c9c-8821-77262295a353
+		lineageTag: 65803657-a7c1-4e46-9e00-371a7dfc4382
 		summarizeBy: none
 		sourceColumn: ahe_yoy
 
@@ -351,16 +259,34 @@ table market_history_rolling24
 	column ahe_yoy_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 31161186-5985-4a1a-ab57-3a3201ecb21a
+		lineageTag: 6dc681f2-c19d-41f7-8824-2c09a39d9726
 		summarizeBy: none
 		sourceColumn: ahe_yoy_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column gdp_growth_yoy
+		dataType: double
+		formatString: 0.00
+		lineageTag: fe54bfce-db66-4f77-b39f-d35376be60e3
+		summarizeBy: none
+		sourceColumn: gdp_growth_yoy
+
+		annotation SummarizationSetBy = Automatic
+
+	column gdp_growth_yoy_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: b30a61e9-3d5d-401b-92f7-c2cc238c5a6c
+		summarizeBy: none
+		sourceColumn: gdp_growth_yoy_r24
 
 		annotation SummarizationSetBy = Automatic
 
 	column indprod_yoy
 		dataType: double
 		formatString: 0.00
-		lineageTag: 9dbd268a-7993-40a3-9484-0862cb56c10f
+		lineageTag: c47ebd7b-3a9b-47db-80e9-8e872d96e374
 		summarizeBy: none
 		sourceColumn: indprod_yoy
 
@@ -369,7 +295,7 @@ table market_history_rolling24
 	column indprod_yoy_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: e44eb917-a95c-4ed1-9a9a-57fad42bcb37
+		lineageTag: 14e5afe4-6c2b-4cfe-a51c-fe67d72edb7c
 		summarizeBy: none
 		sourceColumn: indprod_yoy_r24
 
@@ -378,7 +304,7 @@ table market_history_rolling24
 	column retail_sales_yoy
 		dataType: double
 		formatString: 0.00
-		lineageTag: 8272c387-acd0-4e9c-9565-063be53470f4
+		lineageTag: 96e89daf-d9f6-43dc-8220-9e200c174832
 		summarizeBy: none
 		sourceColumn: retail_sales_yoy
 
@@ -387,16 +313,34 @@ table market_history_rolling24
 	column retail_sales_yoy_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 0d9f3e95-d6ae-41ff-bc9c-fa1b9a13ba3d
+		lineageTag: 83de926b-7f61-40cc-9566-9a026ce5625f
 		summarizeBy: none
 		sourceColumn: retail_sales_yoy_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column unemployment_rate
+		dataType: double
+		formatString: 0.00
+		lineageTag: cd43d6ed-b873-4478-a736-cc303da2e4d5
+		summarizeBy: none
+		sourceColumn: unemployment_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column unemployment_rate_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 3cc6f2a0-c6ec-48ed-898b-a3af8987819e
+		summarizeBy: none
+		sourceColumn: unemployment_rate_r24
 
 		annotation SummarizationSetBy = Automatic
 
 	column u6_rate
 		dataType: double
 		formatString: 0.00
-		lineageTag: bf6873b0-fd31-498c-897e-f41b9dec407a
+		lineageTag: 40ad29e2-3959-4bae-99f2-eab1a6bc70c3
 		summarizeBy: none
 		sourceColumn: u6_rate
 
@@ -405,7 +349,7 @@ table market_history_rolling24
 	column u6_rate_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: a92906c1-af46-48ef-bcfe-d35db8127fc0
+		lineageTag: ebb080de-1e36-4399-92c9-9b641133e1b7
 		summarizeBy: none
 		sourceColumn: u6_rate_r24
 
@@ -414,7 +358,7 @@ table market_history_rolling24
 	column participation_rate
 		dataType: double
 		formatString: 0.00
-		lineageTag: af6231f4-8d72-4970-992f-8e18e53e8a3d
+		lineageTag: 536e6421-dcb7-47e0-a103-c076d428fb64
 		summarizeBy: none
 		sourceColumn: participation_rate
 
@@ -423,7 +367,7 @@ table market_history_rolling24
 	column participation_rate_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 3109b734-2b66-4bb2-865a-59f1c10161ef
+		lineageTag: 8b9f986b-c90d-4260-a5bb-0707df97996b
 		summarizeBy: none
 		sourceColumn: participation_rate_r24
 
@@ -432,7 +376,7 @@ table market_history_rolling24
 	column unemp_duration_weeks
 		dataType: double
 		formatString: 0.00
-		lineageTag: d49c3302-9bd3-41cb-9369-871d4ea6be5c
+		lineageTag: 31500cdb-3555-4885-9083-84f2b468ce06
 		summarizeBy: none
 		sourceColumn: unemp_duration_weeks
 
@@ -441,7 +385,7 @@ table market_history_rolling24
 	column unemp_duration_weeks_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 616759cb-5a41-4cab-96fe-055894f85adf
+		lineageTag: 6717a3ad-8889-4181-9143-a9fae5977f53
 		summarizeBy: none
 		sourceColumn: unemp_duration_weeks_r24
 
@@ -450,7 +394,7 @@ table market_history_rolling24
 	column initial_claims_k
 		dataType: double
 		formatString: 0.00
-		lineageTag: cc865c6e-b799-4d11-87fe-aa6bc3a1a116
+		lineageTag: 99e5db32-8415-4ce6-80d8-acc08c9d4b0c
 		summarizeBy: none
 		sourceColumn: initial_claims_k
 
@@ -459,7 +403,7 @@ table market_history_rolling24
 	column initial_claims_k_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: a60884a6-297d-419f-9e2e-cd01eabbfb79
+		lineageTag: c4c7948e-a24d-40c4-b5fa-87bd98dec2de
 		summarizeBy: none
 		sourceColumn: initial_claims_k_r24
 
@@ -468,7 +412,7 @@ table market_history_rolling24
 	column continuing_claims_k
 		dataType: double
 		formatString: 0.00
-		lineageTag: 8455ec72-e09d-4f5b-8a0f-1b7648b552dc
+		lineageTag: 85274a20-8f91-4044-85f3-93005fe6ffc6
 		summarizeBy: none
 		sourceColumn: continuing_claims_k
 
@@ -477,7 +421,7 @@ table market_history_rolling24
 	column continuing_claims_k_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 872078e6-9553-4560-98c9-f2394e1de4e4
+		lineageTag: 5d03b06c-2218-4aab-a323-48479fc73e8c
 		summarizeBy: none
 		sourceColumn: continuing_claims_k_r24
 
@@ -486,7 +430,7 @@ table market_history_rolling24
 	column payroll_chg_k
 		dataType: double
 		formatString: 0.00
-		lineageTag: dad9b832-7004-4d8f-99f0-ba90cb25e914
+		lineageTag: 6a449f20-dfd4-45a2-b854-b8ba00722d8c
 		summarizeBy: none
 		sourceColumn: payroll_chg_k
 
@@ -495,7 +439,7 @@ table market_history_rolling24
 	column payroll_chg_k_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 2ef7ff7c-a5ff-4c49-a6eb-0a829ba1bf1d
+		lineageTag: 018858e8-8dc5-4e6b-8378-86d97413842d
 		summarizeBy: none
 		sourceColumn: payroll_chg_k_r24
 
@@ -504,7 +448,7 @@ table market_history_rolling24
 	column jolts_openings_k
 		dataType: double
 		formatString: 0.00
-		lineageTag: 7b4ec23a-6ca2-4a95-922a-307e40f357ed
+		lineageTag: 40b9caf1-a2de-4b32-b9fa-1b0fe022f994
 		summarizeBy: none
 		sourceColumn: jolts_openings_k
 
@@ -513,7 +457,7 @@ table market_history_rolling24
 	column jolts_openings_k_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 74ef23b0-39ab-4137-bf88-c223a635d40f
+		lineageTag: 90a09d8f-6b1c-4212-8232-294d00b7b5e9
 		summarizeBy: none
 		sourceColumn: jolts_openings_k_r24
 
@@ -522,7 +466,7 @@ table market_history_rolling24
 	column housing_starts_k
 		dataType: double
 		formatString: 0.00
-		lineageTag: b873cd9d-9741-4865-9453-31a1dfea0e64
+		lineageTag: ad157dc5-d997-43f9-8778-614c9eb84d6e
 		summarizeBy: none
 		sourceColumn: housing_starts_k
 
@@ -531,7 +475,7 @@ table market_history_rolling24
 	column housing_starts_k_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 0e43a9ce-3213-465c-8c76-677bb1a37323
+		lineageTag: 00f11cc8-d04d-44fe-9e7f-bfe39c04d3a6
 		summarizeBy: none
 		sourceColumn: housing_starts_k_r24
 
@@ -540,7 +484,7 @@ table market_history_rolling24
 	column consumer_sentiment_idx
 		dataType: double
 		formatString: 0.00
-		lineageTag: 3f435e20-9f5a-44f4-ae78-5f79b1327304
+		lineageTag: 7dc77d03-a50d-4a7c-962a-22aea0402415
 		summarizeBy: none
 		sourceColumn: consumer_sentiment_idx
 
@@ -549,7 +493,7 @@ table market_history_rolling24
 	column consumer_sentiment_idx_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 51ec5d58-f8c9-4411-88f2-1033476958ef
+		lineageTag: f881fbf3-0c54-41c1-adfa-394e336a6049
 		summarizeBy: none
 		sourceColumn: consumer_sentiment_idx_r24
 
@@ -558,7 +502,7 @@ table market_history_rolling24
 	column ism_pmi_idx
 		dataType: double
 		formatString: 0.00
-		lineageTag: 11d8ae74-20e2-453a-a612-d73c333bdbc7
+		lineageTag: 44199daa-5760-4f63-b96a-521a288148e4
 		summarizeBy: none
 		sourceColumn: ism_pmi_idx
 
@@ -567,16 +511,52 @@ table market_history_rolling24
 	column ism_pmi_idx_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 888932f8-0725-4e4f-b419-3c87160b712f
+		lineageTag: 4c719b84-ac71-492c-8d99-53eeade28f07
 		summarizeBy: none
 		sourceColumn: ism_pmi_idx_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column ig_oas
+		dataType: double
+		formatString: 0.00
+		lineageTag: 92b944ee-4246-4153-bf9f-3529021b24e9
+		summarizeBy: none
+		sourceColumn: ig_oas
+
+		annotation SummarizationSetBy = Automatic
+
+	column ig_oas_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 94a857fe-167a-4eb6-873c-2da828896e07
+		summarizeBy: none
+		sourceColumn: ig_oas_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column hy_oas
+		dataType: double
+		formatString: 0.00
+		lineageTag: 613d393e-ebc0-47c1-ab90-ce0d34b42dee
+		summarizeBy: none
+		sourceColumn: hy_oas
+
+		annotation SummarizationSetBy = Automatic
+
+	column hy_oas_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 41cb34c3-cba4-4aca-8174-402b3f302be3
+		summarizeBy: none
+		sourceColumn: hy_oas_r24
 
 		annotation SummarizationSetBy = Automatic
 
 	column gold_usd_oz
 		dataType: double
 		formatString: 0.00
-		lineageTag: 7abf9504-51e0-458a-b5e3-068aa81aaa35
+		lineageTag: bea61cb7-8ac9-4b0b-92ab-5dbdd53399ae
 		summarizeBy: none
 		sourceColumn: gold_usd_oz
 
@@ -585,7 +565,7 @@ table market_history_rolling24
 	column gold_usd_oz_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: e0d2a147-f0f7-4fc6-a508-b043c169208a
+		lineageTag: 71a7a322-49a7-43a6-8377-a140413c7dfd
 		summarizeBy: none
 		sourceColumn: gold_usd_oz_r24
 
@@ -594,7 +574,7 @@ table market_history_rolling24
 	column silver_usd_oz
 		dataType: double
 		formatString: 0.00
-		lineageTag: c702f0ea-ef84-4122-8958-df849edabfb8
+		lineageTag: c3770a72-4df6-42a0-809e-86ff21f35f77
 		summarizeBy: none
 		sourceColumn: silver_usd_oz
 
@@ -603,7 +583,7 @@ table market_history_rolling24
 	column silver_usd_oz_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: b5877f40-8860-42d1-9c28-30d04dc8160a
+		lineageTag: 956366d9-864c-4d19-a2cc-3ab20f88e2d8
 		summarizeBy: none
 		sourceColumn: silver_usd_oz_r24
 
@@ -612,7 +592,7 @@ table market_history_rolling24
 	column oil_wti_usd_bbl
 		dataType: double
 		formatString: 0.00
-		lineageTag: fcfcef99-4c1b-4bc1-9b47-08a2da358150
+		lineageTag: 81e8c584-0cdd-49e8-939c-8ada092b912f
 		summarizeBy: none
 		sourceColumn: oil_wti_usd_bbl
 
@@ -621,7 +601,7 @@ table market_history_rolling24
 	column oil_wti_usd_bbl_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 9737a87b-2cb1-4753-ae41-79dfdf046a53
+		lineageTag: 17a6fe80-779d-469d-8940-99a435fdf409
 		summarizeBy: none
 		sourceColumn: oil_wti_usd_bbl_r24
 
@@ -630,7 +610,7 @@ table market_history_rolling24
 	column brent_usd_bbl
 		dataType: double
 		formatString: 0.00
-		lineageTag: fd93c821-0381-444a-80df-37d93bd3371c
+		lineageTag: e18df99e-0896-4534-8d6b-c6fe4db46f8c
 		summarizeBy: none
 		sourceColumn: brent_usd_bbl
 
@@ -639,7 +619,7 @@ table market_history_rolling24
 	column brent_usd_bbl_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 48dad70c-531e-401d-9fed-4466d875d361
+		lineageTag: d7e08af1-2a56-4a35-9b75-9f646d4c99d9
 		summarizeBy: none
 		sourceColumn: brent_usd_bbl_r24
 
@@ -648,7 +628,7 @@ table market_history_rolling24
 	column beef_usd_lb
 		dataType: double
 		formatString: 0.00
-		lineageTag: 1fb0138b-fb51-4d87-a832-d6f8044904af
+		lineageTag: fa3ebd01-b627-489f-9c91-22d692af73a3
 		summarizeBy: none
 		sourceColumn: beef_usd_lb
 
@@ -657,7 +637,7 @@ table market_history_rolling24
 	column beef_usd_lb_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 5a3245bc-d780-4d9a-a692-ef1e27b2da36
+		lineageTag: d55949d2-a9c9-49d5-8f7e-e0376fbfedc1
 		summarizeBy: none
 		sourceColumn: beef_usd_lb_r24
 
@@ -666,7 +646,7 @@ table market_history_rolling24
 	column tech_sector_idx
 		dataType: double
 		formatString: 0.00
-		lineageTag: b1b05564-7379-4b4d-a478-08f6a1f6b72a
+		lineageTag: 9dcc3d6b-4923-4a55-a87a-0a2dc674c2e6
 		summarizeBy: none
 		sourceColumn: tech_sector_idx
 
@@ -675,7 +655,7 @@ table market_history_rolling24
 	column tech_sector_idx_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 32fa8896-bde0-4d42-b79f-d930dba1ce17
+		lineageTag: b4d518d5-cfb8-4fae-9416-44ac8a699b22
 		summarizeBy: none
 		sourceColumn: tech_sector_idx_r24
 
@@ -684,7 +664,7 @@ table market_history_rolling24
 	column ai_sector_idx
 		dataType: double
 		formatString: 0.00
-		lineageTag: 425a8b84-1239-4139-ab83-e7dc56f3234c
+		lineageTag: 1ba0bb82-7d1c-4e08-bb77-c824fe347cc1
 		summarizeBy: none
 		sourceColumn: ai_sector_idx
 
@@ -693,16 +673,106 @@ table market_history_rolling24
 	column ai_sector_idx_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: b4f89a51-dbc9-40f2-9cff-5dcf1b767aa2
+		lineageTag: 3e734fdb-f1cb-4526-9b9f-0e2b6c47d374
 		summarizeBy: none
 		sourceColumn: ai_sector_idx_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column dow_idx
+		dataType: double
+		formatString: 0.00
+		lineageTag: d16caefd-5212-47a7-bb8d-4f4f95d76ed7
+		summarizeBy: none
+		sourceColumn: dow_idx
+
+		annotation SummarizationSetBy = Automatic
+
+	column dow_idx_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 7ba76d49-dd1b-44fa-93c4-d88788c036e8
+		summarizeBy: none
+		sourceColumn: dow_idx_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column sp500_idx
+		dataType: double
+		formatString: 0.00
+		lineageTag: ebfb591a-eb40-4bab-9baf-afb41ee76723
+		summarizeBy: none
+		sourceColumn: sp500_idx
+
+		annotation SummarizationSetBy = Automatic
+
+	column sp500_idx_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: f0bf8e95-481b-4a96-ae66-ee86c2542021
+		summarizeBy: none
+		sourceColumn: sp500_idx_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column nasdaq_idx
+		dataType: double
+		formatString: 0.00
+		lineageTag: c4ceb1fe-70a6-43a0-9846-13ac217df530
+		summarizeBy: none
+		sourceColumn: nasdaq_idx
+
+		annotation SummarizationSetBy = Automatic
+
+	column nasdaq_idx_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 78d704bc-c104-464e-9d5d-c4f5c926d545
+		summarizeBy: none
+		sourceColumn: nasdaq_idx_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column russell2000_idx
+		dataType: double
+		formatString: 0.00
+		lineageTag: ec706392-7b96-459a-9b87-6c498f76ccce
+		summarizeBy: none
+		sourceColumn: russell2000_idx
+
+		annotation SummarizationSetBy = Automatic
+
+	column russell2000_idx_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: f4e6f979-a32c-4db0-af0e-de933621f08f
+		summarizeBy: none
+		sourceColumn: russell2000_idx_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column btc_usd
+		dataType: double
+		formatString: 0.00
+		lineageTag: 03bb56ee-cb7b-49d0-9adc-37b1706850f9
+		summarizeBy: none
+		sourceColumn: btc_usd
+
+		annotation SummarizationSetBy = Automatic
+
+	column btc_usd_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 31ea1a2f-b4cf-4858-ac55-966e8774bf47
+		summarizeBy: none
+		sourceColumn: btc_usd_r24
 
 		annotation SummarizationSetBy = Automatic
 
 	column tech_co_1_px
 		dataType: double
 		formatString: 0.00
-		lineageTag: 8e51f657-5697-4f96-b3d3-268736a9ba12
+		lineageTag: ed56d1c9-fabb-4559-a1d3-0a77fbd87e50
 		summarizeBy: none
 		sourceColumn: tech_co_1_px
 
@@ -711,7 +781,7 @@ table market_history_rolling24
 	column tech_co_1_px_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 1711ae95-45b5-442b-9a06-e73bf1c3636c
+		lineageTag: 2607558f-e418-4813-bc15-f7acb2afa191
 		summarizeBy: none
 		sourceColumn: tech_co_1_px_r24
 
@@ -720,7 +790,7 @@ table market_history_rolling24
 	column tech_co_2_px
 		dataType: double
 		formatString: 0.00
-		lineageTag: 74d57b33-b1c7-4cfa-99f7-24059ad2d0a7
+		lineageTag: 4dad867a-74f1-4ae5-ba8c-1a66bca005f6
 		summarizeBy: none
 		sourceColumn: tech_co_2_px
 
@@ -729,7 +799,7 @@ table market_history_rolling24
 	column tech_co_2_px_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 7a21ca66-22a3-40d5-adb4-62cce2ad1b88
+		lineageTag: b3f2915f-43ca-4522-9ba0-f229cda9ee95
 		summarizeBy: none
 		sourceColumn: tech_co_2_px_r24
 
@@ -738,7 +808,7 @@ table market_history_rolling24
 	column tech_co_3_px
 		dataType: double
 		formatString: 0.00
-		lineageTag: 983770dc-613d-49f6-80a5-dce3747a2dd3
+		lineageTag: 06c13784-26df-4353-8cc9-adfc38e7e267
 		summarizeBy: none
 		sourceColumn: tech_co_3_px
 
@@ -747,7 +817,7 @@ table market_history_rolling24
 	column tech_co_3_px_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 4d15531b-a0f9-4f0c-9002-cc49532648c9
+		lineageTag: ab9ab81d-17e2-415f-88d8-6fb9377dbef9
 		summarizeBy: none
 		sourceColumn: tech_co_3_px_r24
 
@@ -756,7 +826,7 @@ table market_history_rolling24
 	column tech_co_4_px
 		dataType: double
 		formatString: 0.00
-		lineageTag: 6d93d63a-4e41-4848-8697-9c6cca0b610d
+		lineageTag: 44fc7d46-e9f3-4021-b39e-efc27af5e1d4
 		summarizeBy: none
 		sourceColumn: tech_co_4_px
 
@@ -765,7 +835,7 @@ table market_history_rolling24
 	column tech_co_4_px_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: a853d1b4-b4d9-4bb1-b3c9-8f933e078f97
+		lineageTag: c687e131-970e-4340-9357-8bc521f6bb21
 		summarizeBy: none
 		sourceColumn: tech_co_4_px_r24
 
@@ -774,7 +844,7 @@ table market_history_rolling24
 	column tech_co_5_px
 		dataType: double
 		formatString: 0.00
-		lineageTag: 6224b13c-9595-41ed-8bd3-aae7d618a58a
+		lineageTag: b1d3ba6c-2c16-47fd-beca-35809f448e2c
 		summarizeBy: none
 		sourceColumn: tech_co_5_px
 
@@ -783,7 +853,7 @@ table market_history_rolling24
 	column tech_co_5_px_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 4f348c05-4b1b-4bd3-8e5c-4533a67dbfc9
+		lineageTag: 42f9e3b5-0d6b-4cf6-9078-a92d3f9c1be8
 		summarizeBy: none
 		sourceColumn: tech_co_5_px_r24
 
@@ -792,7 +862,7 @@ table market_history_rolling24
 	column ai_co_1_px
 		dataType: double
 		formatString: 0.00
-		lineageTag: 762afb5f-2a50-445a-8891-ebfe2e23963c
+		lineageTag: 7a3fa1e6-7ef2-4964-b5ad-3094140de94b
 		summarizeBy: none
 		sourceColumn: ai_co_1_px
 
@@ -801,7 +871,7 @@ table market_history_rolling24
 	column ai_co_1_px_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 945ad2c9-ad75-4eb0-9c57-845321797752
+		lineageTag: 400689ed-c2b2-4e58-80d0-e139af64ec68
 		summarizeBy: none
 		sourceColumn: ai_co_1_px_r24
 
@@ -810,7 +880,7 @@ table market_history_rolling24
 	column ai_co_2_px
 		dataType: double
 		formatString: 0.00
-		lineageTag: 6207aa1f-b80e-4ba6-a507-18a8b5d25447
+		lineageTag: 1dc9bcf3-672c-4854-a72d-494fa8ef0edb
 		summarizeBy: none
 		sourceColumn: ai_co_2_px
 
@@ -819,7 +889,7 @@ table market_history_rolling24
 	column ai_co_2_px_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 662a50ea-ce55-4624-aea6-0d2871f56371
+		lineageTag: eb7f770c-989e-43a1-9ec7-396094cfd5fe
 		summarizeBy: none
 		sourceColumn: ai_co_2_px_r24
 
@@ -828,7 +898,7 @@ table market_history_rolling24
 	column ai_co_3_px
 		dataType: double
 		formatString: 0.00
-		lineageTag: 53e00608-9d86-4d22-afff-bf3dd1334fc3
+		lineageTag: 5dc73998-5261-44b3-9e98-d12b0b6d3b6d
 		summarizeBy: none
 		sourceColumn: ai_co_3_px
 
@@ -837,7 +907,7 @@ table market_history_rolling24
 	column ai_co_3_px_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 0cde52aa-e8f1-4069-8baa-e849944cf2e2
+		lineageTag: ba5bd637-2bc2-4fac-a3e4-935686a575cf
 		summarizeBy: none
 		sourceColumn: ai_co_3_px_r24
 
@@ -846,7 +916,7 @@ table market_history_rolling24
 	column ai_co_4_px
 		dataType: double
 		formatString: 0.00
-		lineageTag: dd5dc52f-8104-4e15-bdee-12c5dc02ad75
+		lineageTag: a4f6bb97-8cf8-475f-a5bd-f20fc2f51416
 		summarizeBy: none
 		sourceColumn: ai_co_4_px
 
@@ -855,7 +925,7 @@ table market_history_rolling24
 	column ai_co_4_px_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 61701e27-958e-4197-896a-44ed048a1346
+		lineageTag: 63aa58e1-31e4-41c1-831d-5ef448e5aa24
 		summarizeBy: none
 		sourceColumn: ai_co_4_px_r24
 
@@ -864,7 +934,7 @@ table market_history_rolling24
 	column ai_co_5_px
 		dataType: double
 		formatString: 0.00
-		lineageTag: 72e7c7d3-2dad-4e61-aebf-c36abc9535ac
+		lineageTag: dc9e2173-efcb-4003-be2e-64f1c85c1a40
 		summarizeBy: none
 		sourceColumn: ai_co_5_px
 
@@ -873,9 +943,25 @@ table market_history_rolling24
 	column ai_co_5_px_r24
 		dataType: double
 		formatString: 0.00
-		lineageTag: 80ef8f60-b0bd-4821-9176-9b5b7516ec89
+		lineageTag: 25461cf9-2553-4dc5-9480-e94f08a2bda9
 		summarizeBy: none
 		sourceColumn: ai_co_5_px_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: 1e7d7d1c-b6d7-4d5b-a6be-5bab0646bc93
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 87c90621-0e44-48a3-98b3-3a6c4a86eeb0
+		summarizeBy: none
+		sourceColumn: value_class
 
 		annotation SummarizationSetBy = Automatic
 
@@ -885,13 +971,12 @@ table market_history_rolling24
 				let
 				  Source = Csv.Document(
 				    File.Contents("C:\dev\Finance-ML\reports\market_history_rolling24.csv"),
-				    [Delimiter = ",", Columns = 97, QuoteStyle = QuoteStyle.Csv]
+				    [Delimiter = ",", Columns = 107, QuoteStyle = QuoteStyle.Csv]
 				),
 				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"observation_date", "ust_3m", "ust_3m_r24", "ust_2y", "ust_2y_r24", "ust_5y", "ust_5y_r24", "ust_10y", "ust_10y_r24", "ust_30y", "ust_30y_r24", "curve_spread_10y_2y", "curve_spread_10y_2y_r24", "curve_spread_10y_3m", "curve_spread_10y_3m_r24", "fed_funds_eff", "fed_funds_eff_r24", "cpi_yoy", "cpi_yoy_r24", "core_cpi_yoy", "core_cpi_yoy_r24", "pce_yoy", "pce_yoy_r24", "core_pce_yoy", "core_pce_yoy_r24", "ppi_yoy", "ppi_yoy_r24", "ahe_yoy", "ahe_yoy_r24", "gdp_growth_yoy", "gdp_growth_yoy_r24", "indprod_yoy", "indprod_yoy_r24", "retail_sales_yoy", "retail_sales_yoy_r24", "unemployment_rate", "unemployment_rate_r24", "u6_rate", "u6_rate_r24", "participation_rate", "participation_rate_r24", "unemp_duration_weeks", "unemp_duration_weeks_r24", "initial_claims_k", "initial_claims_k_r24", "continuing_claims_k", "continuing_claims_k_r24", "payroll_chg_k", "payroll_chg_k_r24", "jolts_openings_k", "jolts_openings_k_r24", "housing_starts_k", "housing_starts_k_r24", "consumer_sentiment_idx", "consumer_sentiment_idx_r24", "ism_pmi_idx", "ism_pmi_idx_r24", "ig_oas", "ig_oas_r24", "hy_oas", "hy_oas_r24", "gold_usd_oz", "gold_usd_oz_r24", "silver_usd_oz", "silver_usd_oz_r24", "oil_wti_usd_bbl", "oil_wti_usd_bbl_r24", "brent_usd_bbl", "brent_usd_bbl_r24", "beef_usd_lb", "beef_usd_lb_r24", "tech_sector_idx", "tech_sector_idx_r24", "ai_sector_idx", "ai_sector_idx_r24", "tech_co_1_px", "tech_co_1_px_r24", "tech_co_2_px", "tech_co_2_px_r24", "tech_co_3_px", "tech_co_3_px_r24", "tech_co_4_px", "tech_co_4_px_r24", "tech_co_5_px", "tech_co_5_px_r24", "ai_co_1_px", "ai_co_1_px_r24", "ai_co_2_px", "ai_co_2_px_r24", "ai_co_3_px", "ai_co_3_px_r24", "ai_co_4_px", "ai_co_4_px_r24", "ai_co_5_px", "ai_co_5_px_r24", "source", "value_class"}),
-				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"observation_date", type date}, {"ust_3m", type number}, {"ust_3m_r24", type number}, {"ust_2y", type number}, {"ust_2y_r24", type number}, {"ust_5y", type number}, {"ust_5y_r24", type number}, {"ust_10y", type number}, {"ust_10y_r24", type number}, {"ust_30y", type number}, {"ust_30y_r24", type number}, {"curve_spread_10y_2y", type number}, {"curve_spread_10y_2y_r24", type number}, {"curve_spread_10y_3m", type number}, {"curve_spread_10y_3m_r24", type number}, {"fed_funds_eff", type number}, {"fed_funds_eff_r24", type number}, {"cpi_yoy", type number}, {"cpi_yoy_r24", type number}, {"core_cpi_yoy", type number}, {"core_cpi_yoy_r24", type number}, {"pce_yoy", type number}, {"pce_yoy_r24", type number}, {"core_pce_yoy", type number}, {"core_pce_yoy_r24", type number}, {"ppi_yoy", type number}, {"ppi_yoy_r24", type number}, {"ahe_yoy", type number}, {"ahe_yoy_r24", type number}, {"gdp_growth_yoy", type number}, {"gdp_growth_yoy_r24", type number}, {"indprod_yoy", type number}, {"indprod_yoy_r24", type number}, {"retail_sales_yoy", type number}, {"retail_sales_yoy_r24", type number}, {"unemployment_rate", type number}, {"unemployment_rate_r24", type number}, {"u6_rate", type number}, {"u6_rate_r24", type number}, {"participation_rate", type number}, {"participation_rate_r24", type number}, {"unemp_duration_weeks", type number}, {"unemp_duration_weeks_r24", type number}, {"initial_claims_k", type number}, {"initial_claims_k_r24", type number}, {"continuing_claims_k", type number}, {"continuing_claims_k_r24", type number}, {"payroll_chg_k", type number}, {"payroll_chg_k_r24", type number}, {"jolts_openings_k", type number}, {"jolts_openings_k_r24", type number}, {"housing_starts_k", type number}, {"housing_starts_k_r24", type number}, {"consumer_sentiment_idx", type number}, {"consumer_sentiment_idx_r24", type number}, {"ism_pmi_idx", type number}, {"ism_pmi_idx_r24", type number}, {"ig_oas", type number}, {"ig_oas_r24", type number}, {"hy_oas", type number}, {"hy_oas_r24", type number}, {"gold_usd_oz", type number}, {"gold_usd_oz_r24", type number}, {"silver_usd_oz", type number}, {"silver_usd_oz_r24", type number}, {"oil_wti_usd_bbl", type number}, {"oil_wti_usd_bbl_r24", type number}, {"brent_usd_bbl", type number}, {"brent_usd_bbl_r24", type number}, {"beef_usd_lb", type number}, {"beef_usd_lb_r24", type number}, {"tech_sector_idx", type number}, {"tech_sector_idx_r24", type number}, {"ai_sector_idx", type number}, {"ai_sector_idx_r24", type number}, {"tech_co_1_px", type number}, {"tech_co_1_px_r24", type number}, {"tech_co_2_px", type number}, {"tech_co_2_px_r24", type number}, {"tech_co_3_px", type number}, {"tech_co_3_px_r24", type number}, {"tech_co_4_px", type number}, {"tech_co_4_px_r24", type number}, {"tech_co_5_px", type number}, {"tech_co_5_px_r24", type number}, {"ai_co_1_px", type number}, {"ai_co_1_px_r24", type number}, {"ai_co_2_px", type number}, {"ai_co_2_px_r24", type number}, {"ai_co_3_px", type number}, {"ai_co_3_px_r24", type number}, {"ai_co_4_px", type number}, {"ai_co_4_px_r24", type number}, {"ai_co_5_px", type number}, {"ai_co_5_px_r24", type number}})
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"observation_date", "ust_3m", "ust_3m_r24", "ust_2y", "ust_2y_r24", "ust_5y", "ust_5y_r24", "ust_10y", "ust_10y_r24", "ust_30y", "ust_30y_r24", "curve_spread_10y_2y", "curve_spread_10y_2y_r24", "curve_spread_10y_3m", "curve_spread_10y_3m_r24", "fed_funds_eff", "fed_funds_eff_r24", "cpi_yoy", "cpi_yoy_r24", "core_cpi_yoy", "core_cpi_yoy_r24", "pce_yoy", "pce_yoy_r24", "core_pce_yoy", "core_pce_yoy_r24", "ppi_yoy", "ppi_yoy_r24", "ahe_yoy", "ahe_yoy_r24", "gdp_growth_yoy", "gdp_growth_yoy_r24", "indprod_yoy", "indprod_yoy_r24", "retail_sales_yoy", "retail_sales_yoy_r24", "unemployment_rate", "unemployment_rate_r24", "u6_rate", "u6_rate_r24", "participation_rate", "participation_rate_r24", "unemp_duration_weeks", "unemp_duration_weeks_r24", "initial_claims_k", "initial_claims_k_r24", "continuing_claims_k", "continuing_claims_k_r24", "payroll_chg_k", "payroll_chg_k_r24", "jolts_openings_k", "jolts_openings_k_r24", "housing_starts_k", "housing_starts_k_r24", "consumer_sentiment_idx", "consumer_sentiment_idx_r24", "ism_pmi_idx", "ism_pmi_idx_r24", "ig_oas", "ig_oas_r24", "hy_oas", "hy_oas_r24", "gold_usd_oz", "gold_usd_oz_r24", "silver_usd_oz", "silver_usd_oz_r24", "oil_wti_usd_bbl", "oil_wti_usd_bbl_r24", "brent_usd_bbl", "brent_usd_bbl_r24", "beef_usd_lb", "beef_usd_lb_r24", "tech_sector_idx", "tech_sector_idx_r24", "ai_sector_idx", "ai_sector_idx_r24", "dow_idx", "dow_idx_r24", "sp500_idx", "sp500_idx_r24", "nasdaq_idx", "nasdaq_idx_r24", "russell2000_idx", "russell2000_idx_r24", "btc_usd", "btc_usd_r24", "tech_co_1_px", "tech_co_1_px_r24", "tech_co_2_px", "tech_co_2_px_r24", "tech_co_3_px", "tech_co_3_px_r24", "tech_co_4_px", "tech_co_4_px_r24", "tech_co_5_px", "tech_co_5_px_r24", "ai_co_1_px", "ai_co_1_px_r24", "ai_co_2_px", "ai_co_2_px_r24", "ai_co_3_px", "ai_co_3_px_r24", "ai_co_4_px", "ai_co_4_px_r24", "ai_co_5_px", "ai_co_5_px_r24", "source", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"observation_date", type date}, {"ust_3m", type number}, {"ust_3m_r24", type number}, {"ust_2y", type number}, {"ust_2y_r24", type number}, {"ust_5y", type number}, {"ust_5y_r24", type number}, {"ust_10y", type number}, {"ust_10y_r24", type number}, {"ust_30y", type number}, {"ust_30y_r24", type number}, {"curve_spread_10y_2y", type number}, {"curve_spread_10y_2y_r24", type number}, {"curve_spread_10y_3m", type number}, {"curve_spread_10y_3m_r24", type number}, {"fed_funds_eff", type number}, {"fed_funds_eff_r24", type number}, {"cpi_yoy", type number}, {"cpi_yoy_r24", type number}, {"core_cpi_yoy", type number}, {"core_cpi_yoy_r24", type number}, {"pce_yoy", type number}, {"pce_yoy_r24", type number}, {"core_pce_yoy", type number}, {"core_pce_yoy_r24", type number}, {"ppi_yoy", type number}, {"ppi_yoy_r24", type number}, {"ahe_yoy", type number}, {"ahe_yoy_r24", type number}, {"gdp_growth_yoy", type number}, {"gdp_growth_yoy_r24", type number}, {"indprod_yoy", type number}, {"indprod_yoy_r24", type number}, {"retail_sales_yoy", type number}, {"retail_sales_yoy_r24", type number}, {"unemployment_rate", type number}, {"unemployment_rate_r24", type number}, {"u6_rate", type number}, {"u6_rate_r24", type number}, {"participation_rate", type number}, {"participation_rate_r24", type number}, {"unemp_duration_weeks", type number}, {"unemp_duration_weeks_r24", type number}, {"initial_claims_k", type number}, {"initial_claims_k_r24", type number}, {"continuing_claims_k", type number}, {"continuing_claims_k_r24", type number}, {"payroll_chg_k", type number}, {"payroll_chg_k_r24", type number}, {"jolts_openings_k", type number}, {"jolts_openings_k_r24", type number}, {"housing_starts_k", type number}, {"housing_starts_k_r24", type number}, {"consumer_sentiment_idx", type number}, {"consumer_sentiment_idx_r24", type number}, {"ism_pmi_idx", type number}, {"ism_pmi_idx_r24", type number}, {"ig_oas", type number}, {"ig_oas_r24", type number}, {"hy_oas", type number}, {"hy_oas_r24", type number}, {"gold_usd_oz", type number}, {"gold_usd_oz_r24", type number}, {"silver_usd_oz", type number}, {"silver_usd_oz_r24", type number}, {"oil_wti_usd_bbl", type number}, {"oil_wti_usd_bbl_r24", type number}, {"brent_usd_bbl", type number}, {"brent_usd_bbl_r24", type number}, {"beef_usd_lb", type number}, {"beef_usd_lb_r24", type number}, {"tech_sector_idx", type number}, {"tech_sector_idx_r24", type number}, {"ai_sector_idx", type number}, {"ai_sector_idx_r24", type number}, {"dow_idx", type number}, {"dow_idx_r24", type number}, {"sp500_idx", type number}, {"sp500_idx_r24", type number}, {"nasdaq_idx", type number}, {"nasdaq_idx_r24", type number}, {"russell2000_idx", type number}, {"russell2000_idx_r24", type number}, {"btc_usd", type number}, {"btc_usd_r24", type number}, {"tech_co_1_px", type number}, {"tech_co_1_px_r24", type number}, {"tech_co_2_px", type number}, {"tech_co_2_px_r24", type number}, {"tech_co_3_px", type number}, {"tech_co_3_px_r24", type number}, {"tech_co_4_px", type number}, {"tech_co_4_px_r24", type number}, {"tech_co_5_px", type number}, {"tech_co_5_px_r24", type number}, {"ai_co_1_px", type number}, {"ai_co_1_px_r24", type number}, {"ai_co_2_px", type number}, {"ai_co_2_px_r24", type number}, {"ai_co_3_px", type number}, {"ai_co_3_px_r24", type number}, {"ai_co_4_px", type number}, {"ai_co_4_px_r24", type number}, {"ai_co_5_px", type number}, {"ai_co_5_px_r24", type number}})
 				in
 				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
-

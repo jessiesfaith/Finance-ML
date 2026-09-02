@@ -3,11 +3,11 @@
   "name": "e88d293b87f2d02310a1",
   "position": {
     "x": 165,
-    "y": 1355,
-    "height": 58,
+    "y": 1715,
+    "height": 56,
     "width": 800,
-    "z": 16000,
-    "tabOrder": 16000
+    "z": 22000,
+    "tabOrder": 22000
   },
   "visual": {
     "visualType": "textbox",
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/GDPC1 · INDPRO · RSAFS  — charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/GDPC1 \u00b7 INDPRO \u00b7 RSAFS  \u2014 charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

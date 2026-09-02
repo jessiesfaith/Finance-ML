@@ -319,6 +319,61 @@ def synthetic_brent(wide: pd.DataFrame,
     return pd.DataFrame(rows, columns=MARKET_OBSERVATIONS.column_names())
 
 
+# Fifth extension batch (owner request 2026-09-02): headline index
+# LEVELS - Dow, S&P 500, NASDAQ, Russell 2000, Bitcoin. Separate seed
+# stream; prior series byte-identical. The NASDAQ level is the tech
+# index rescaled (same drawdowns, headline scale); the others follow
+# documented formulas over the macro world. All SYNTHETIC-labeled with
+# live ids registered in the master.
+_INDEX_REFERENCE = "financials/market_data.py seed 2424242 (index levels)"
+
+
+def synthetic_index_levels(wide: pd.DataFrame,
+                           markets_wide: pd.DataFrame) -> pd.DataFrame:
+    rng = np.random.default_rng(2424242)
+    n = len(wide)
+    t_idx = np.arange(n)
+
+    def smooth(scale):
+        shocks = rng.normal(0.0, scale, n)
+        out = np.zeros(n)
+        for i in range(1, n):
+            out[i] = 0.85 * out[i - 1] + shocks[i]
+        return out
+
+    y10_gap = wide["treasury_10y"] - wide["treasury_10y"].min()
+    u_gap = wide["unemployment"] - wide["unemployment"].min()
+
+    series = {
+        "dow_idx": ("INDEX", 25000 * np.exp(
+            0.0050 * t_idx + 0.04 * smooth(0.6) - 0.024 * y10_gap)),
+        "sp500_idx": ("INDEX", 2700 * np.exp(
+            0.0060 * t_idx + 0.05 * smooth(0.6) - 0.030 * y10_gap)),
+        "nasdaq_idx": ("INDEX",
+                       70 * markets_wide["tech_sector_idx"].values),
+        "russell2000_idx": ("INDEX", 1500 * np.exp(
+            0.0045 * t_idx + 0.07 * smooth(0.7) - 0.05 * u_gap)),
+        "btc_usd": ("USD", 8000 * np.exp(
+            0.010 * t_idx + 0.30 * smooth(1.0))),
+    }
+    rows = []
+    for metric_id, (unit, values) in series.items():
+        values = pd.Series(values)
+        for date, value in zip(wide["date"], values):
+            rows.append({
+                "metric_id": metric_id,
+                "observation_date": date.strftime("%Y-%m-%d"),
+                "value": round(float(value), 6),
+                "unit": unit,
+                "source": "SYNTHETIC",
+                "source_reference": _INDEX_REFERENCE,
+                "retrieval_timestamp": SYNTHETIC_RETRIEVAL,
+                "frequency": "MONTHLY",
+                "revision_status": "SYNTHETIC",
+            })
+    return pd.DataFrame(rows, columns=MARKET_OBSERVATIONS.column_names())
+
+
 def replatform_synthetic_history() -> pd.DataFrame:
     """Seed-42 history -> canonical observation rows, honestly labeled."""
     wide = pd.read_csv(SYNTHETIC_HISTORY, parse_dates=["date"])
@@ -347,7 +402,8 @@ def replatform_synthetic_history() -> pd.DataFrame:
                                  columns="metric_id",
                                  values="value").reset_index(drop=True)
     brent = synthetic_brent(wide, markets_wide)
-    frame = pd.concat([base, extensions, headline, markets, brent],
+    indices = synthetic_index_levels(wide, markets_wide)
+    frame = pd.concat([base, extensions, headline, markets, brent, indices],
                       ignore_index=True)
     return frame.sort_values(
         ["metric_id", "observation_date"]).reset_index(drop=True)
@@ -469,6 +525,7 @@ HISTORY_METRICS = (
     "consumer_sentiment_idx", "ism_pmi_idx", "ig_oas", "hy_oas",
     "gold_usd_oz", "silver_usd_oz", "oil_wti_usd_bbl", "brent_usd_bbl", "beef_usd_lb",
     "tech_sector_idx", "ai_sector_idx",
+    "dow_idx", "sp500_idx", "nasdaq_idx", "russell2000_idx", "btc_usd",
     "tech_co_1_px", "tech_co_2_px", "tech_co_3_px", "tech_co_4_px",
     "tech_co_5_px",
     "ai_co_1_px", "ai_co_2_px", "ai_co_3_px", "ai_co_4_px", "ai_co_5_px",

@@ -3,11 +3,11 @@
   "name": "e3553075e47e37eac2fb",
   "position": {
     "x": 1015,
-    "y": 2600,
-    "height": 58,
+    "y": 3320,
+    "height": 56,
     "width": 800,
-    "z": 30000,
-    "tabOrder": 30000
+    "z": 43000,
+    "tabOrder": 43000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Bond Market — Credit Spreads (pts)",
+                    "value": "Bond Market \u2014 Credit Spreads (pts)",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/BAMLC0A0CM · BAMLH0A0HYM2  — charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/BAMLC0A0CM \u00b7 BAMLH0A0HYM2  \u2014 charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

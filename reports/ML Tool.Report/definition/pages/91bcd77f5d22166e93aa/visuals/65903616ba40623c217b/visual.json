@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "65903616ba40623c217b",
   "position": {
-    "x": 165,
-    "y": 3015,
-    "height": 58,
+    "x": 1015,
+    "y": 4925,
+    "height": 56,
     "width": 800,
-    "z": 32000,
-    "tabOrder": 32000
+    "z": 61000,
+    "tabOrder": 61000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Gold ($/oz) — the stress hedge",
+                    "value": "Gold ($/oz) \u2014 the stress hedge",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source at cutover: LBMA precious-metal prices (FRED series discontinued)  — charted today: labeled synthetic",
+                    "value": "Live source at cutover: LBMA precious-metal prices (FRED series discontinued)  \u2014 charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

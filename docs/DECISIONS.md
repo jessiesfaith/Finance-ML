@@ -849,3 +849,15 @@ via the new src/fetch_equity_prices.py, run on the owner's machine
 (hosted egress blocks market sites), staged to data/market_staging/
 (gitignored) for review; on "wire the real tickers" the firm panels
 bind to the fetched series. Store grows append-only 4,532 -> 4,635.
+
+### 79. Headline indices + the numbers under every chart
+Owner request: Dow, S&P 500, NASDAQ, Russell 2000 and Bitcoin as level
+charts, and "the actual numbers, not just a line" under every graph.
+Five index-level series join the synthetic layer (seed 2424242; NASDAQ
+= the tech index rescaled so drawdowns match; live ids DJIA / SP500 /
+NASDAQCOM / CBBTCUSD registered; Russell's live source is the owner's
+call - index data licensing). Page 5 rebuilt as 27 chart+table pairs:
+under each chart sits a flat table of the same columns, newest month
+first, driven by the same date slicer, scrolling for the rest of the
+period. Store grows append-only 4,635 -> 5,150; exports widen to 52
+metrics (107 / 57 columns); page height 8000.

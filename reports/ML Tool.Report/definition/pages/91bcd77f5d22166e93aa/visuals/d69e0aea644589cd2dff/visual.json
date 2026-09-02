@@ -3,11 +3,11 @@
   "name": "d69e0aea644589cd2dff",
   "position": {
     "x": 1015,
-    "y": 525,
-    "height": 58,
+    "y": 645,
+    "height": 56,
     "width": 800,
-    "z": 10000,
-    "tabOrder": 10000
+    "z": 13000,
+    "tabOrder": 13000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Consumer Inflation (%) — headline vs core",
+                    "value": "Consumer Inflation (%) \u2014 headline vs core",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/CPIAUCSL · CPILFESL · PCEPI · PCEPILFE  — charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/CPIAUCSL \u00b7 CPILFESL \u00b7 PCEPI \u00b7 PCEPILFE  \u2014 charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

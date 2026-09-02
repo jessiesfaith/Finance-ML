@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "880675b22ede3ec40674",
   "position": {
-    "x": 165,
-    "y": 4260,
-    "height": 58,
+    "x": 1015,
+    "y": 6530,
+    "height": 56,
     "width": 800,
-    "z": 44000,
-    "tabOrder": 44000
+    "z": 79000,
+    "tabOrder": 79000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Top-5 Tech Firms — PLACEHOLDER slots T1–T5",
+                    "value": "Top-5 Tech Firms \u2014 PLACEHOLDER slots (cutover: NVDA GOOGL AAPL AMZN MSFT)",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Placeholder tickers - real names + a live equity source are assigned at cutover; no invented history is attached to a real company",
+                    "value": "Real prices arrive via src/fetch_equity_prices.py on the owner's machine - no invented history under a real name",
                     "textStyle": {
                       "fontSize": "8pt"
                     }

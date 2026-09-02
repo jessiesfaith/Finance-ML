@@ -3,11 +3,11 @@
   "name": "895a7a7ed85b099c58a1",
   "position": {
     "x": 1015,
-    "y": 4675,
-    "height": 240,
+    "y": 7600,
+    "height": 220,
     "width": 800,
-    "z": 49000,
-    "tabOrder": 49000
+    "z": 86000,
+    "tabOrder": 86000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Legend — abbreviations",
+                    "value": "Legend \u2014 abbreviations",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "YoY = year over year · SA/SAAR = seasonally adjusted (annual rate) · CPI / PCE / PPI = consumer / personal-consumption / producer price gauges · U-3 / U-6 = headline / broadest unemployment · JOLTS = job-openings survey · PMI = purchasing managers index (50 = neutral)",
+                    "value": "YoY = year over year \u00b7 SA/SAAR = seasonally adjusted (annual rate) \u00b7 CPI/PCE/PPI = consumer / personal-consumption / producer price gauges \u00b7 U-3/U-6 = headline / broadest unemployment \u00b7 JOLTS = job-openings survey \u00b7 PMI = purchasing managers index (50 = neutral)",
                     "textStyle": {
                       "fontSize": "9pt"
                     }
@@ -39,7 +39,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "OAS = option-adjusted spread · IG / HY = investment-grade / high-yield · WTI = West Texas Intermediate crude · $/oz, $/bbl, $/lb = dollars per ounce / barrel / pound · 03M/06M/12M/24M = trailing means · YTD = calendar year-to-date mean · pts = percentage points",
+                    "value": "OAS = option-adjusted spread \u00b7 IG/HY = investment-grade / high-yield \u00b7 WTI/Brent = US / global crude benchmarks \u00b7 $/oz, $/bbl, $/lb = dollars per ounce / barrel / pound \u00b7 level = the index itself, not a return",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

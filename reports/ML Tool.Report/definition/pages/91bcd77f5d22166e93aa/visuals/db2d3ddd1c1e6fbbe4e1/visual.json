@@ -3,11 +3,11 @@
   "name": "db2d3ddd1c1e6fbbe4e1",
   "position": {
     "x": 1015,
-    "y": 1355,
-    "height": 58,
+    "y": 1715,
+    "height": 56,
     "width": 800,
-    "z": 18000,
-    "tabOrder": 18000
+    "z": 25000,
+    "tabOrder": 25000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Unemployment (%) — U-3 vs the broader U-6",
+                    "value": "Unemployment (%) \u2014 U-3 vs the broader U-6",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/UNRATE · U6RATE  — charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/UNRATE \u00b7 U6RATE  \u2014 charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

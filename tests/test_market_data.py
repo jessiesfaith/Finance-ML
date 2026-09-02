@@ -31,7 +31,7 @@ def tables():
 
 def test_replatform_covers_the_full_synthetic_history(tables):
     obs = tables["market_observations"]
-    assert len(obs) == 4635                      # 103 months x 45 stored metrics
+    assert len(obs) == 5150                      # 103 months x 50 stored metrics
     assert set(obs["source"]) == {"SYNTHETIC"}
     assert set(obs["revision_status"]) == {"SYNTHETIC"}
     assert set(obs["source_reference"]) == {
@@ -40,6 +40,7 @@ def test_replatform_covers_the_full_synthetic_history(tables):
         "financials/market_data.py seed 4242 (headline indicators)",
         "financials/market_data.py seed 424242 (commodities & equities)",
         "financials/market_data.py seed 24242 (brent)",
+        "financials/market_data.py seed 2424242 (index levels)",
     }
 
 
@@ -73,14 +74,14 @@ def test_unknown_metric_and_unit_mismatch_fail_loudly(tmp_path, tables):
 def test_current_and_point_in_time_views(tables):
     obs = tables["market_observations"]
     view = current_view(obs)
-    assert len(view) == 45
+    assert len(view) == 50
     assert set(view["observation_date"].astype(str).str[:10]) == {"2026-07-31"}
 
     # Nothing was retrieved before the synthetic vintage stamp.
     empty = point_in_time_view(obs, "2020-01-01T00:00:00Z")
     assert len(empty) == 0
     full = point_in_time_view(obs, "2026-09-01T00:00:00Z")
-    assert len(full) == 45
+    assert len(full) == 50
 
 
 def test_committed_observations_match_a_fresh_replatform(tables):
