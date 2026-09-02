@@ -3,7 +3,7 @@
   "name": "12fd22f9080acb282b3e",
   "position": {
     "x": 735,
-    "y": 1360,
+    "y": 1530,
     "height": 80,
     "width": 700,
     "z": 70000,
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "NPV and IRR are read together — a small project can post a",
+                    "value": "NPV and IRR are read together \u2014 a small project can post a",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

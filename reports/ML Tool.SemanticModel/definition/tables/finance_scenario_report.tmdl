@@ -225,6 +225,15 @@ table finance_scenario_report
 		displayFolder: Cost of Capital & Market
 		lineageTag: ae0750b1-8e7e-4382-b70f-2bf0abc66dc4
 
+	/// The unit bridge, shown as a card so the $M-to-$B step is visible
+	/// arithmetic instead of a silent conversion.
+	measure 'Thousand ($M per $B)' =
+			
+			1000
+		formatString: #,0
+		displayFolder: Valuation
+		lineageTag: 3b894608-e4cb-4ab1-b808-ab953ed2346e
+
 	measure 'Calculated WACC' =
 			
 			VAR EquityWeight =

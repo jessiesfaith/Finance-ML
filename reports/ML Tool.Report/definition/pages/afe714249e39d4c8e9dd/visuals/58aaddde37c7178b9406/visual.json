@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "58aaddde37c7178b9406",
+  "position": {
+    "x": 165,
+    "y": 1080,
+    "height": 80,
+    "width": 1550,
+    "z": 53000,
+    "tabOrder": 53000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Reading the position: profitable (\u224824.7% EBITDA margin), value-creating (ROIC \u224814.4pts above WACC), strongly cash-generative (\u2248$156M UFCF), lightly levered (\u22480.55x vs a 2.0x policy) \u2014 leaving \u2248$458M of debt headroom plus \u2248$194M cash on hand.",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Conclusion for Step 5: the client can fund any single option on the table \u2014 the question is never CAN they act, only WHICH action creates the most value per dollar and risk.",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -6,3 +6,8 @@ PROJ-001,MAINT_CAPEX_PCT_REV,3.0,PCT,Racking and rolling-stock replacement cycle
 PROJ-001,NWC_PCT_REV,12.0,PCT,Inventory and receivables to support incremental volume; recovered at end of life.
 PROJ-002,COST_SAVINGS_Y1,14.0,USD_M,Two shifts of pick labor plus error-rework elimination at current volumes.
 PROJ-002,COST_SAVINGS_GROWTH_PCT,2.0,PCT,Savings scale with modest volume growth.
+PROJ-003,INCR_REVENUE_Y1,75.0,USD_M,Pilot commitments plus channel fill in year one.
+PROJ-003,INCR_REVENUE_GROWTH_PCT,10.0,PCT,Category growing faster than the core; share ramp.
+PROJ-003,INCR_EBITDA_MARGIN_PCT,32.0,PCT,Premium price point; shared plant absorbs overhead.
+PROJ-003,MAINT_CAPEX_PCT_REV,4.0,PCT,Tooling refresh cycle.
+PROJ-003,NWC_PCT_REV,10.0,PCT,Lighter inventory than the core line; recovered at end of life.

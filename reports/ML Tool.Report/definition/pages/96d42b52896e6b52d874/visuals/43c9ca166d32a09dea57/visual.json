@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "THE FLOW:  UFCF (Page 2) + WACC & hurdle (Page 3)  →  discount each year  →  + terminal value = EV  →  − net debt = equity  →  ÷ diluted shares = price  →  three tests  →  decision  →  the sensitivity grid shows which assumptions carry it",
+                    "value": "STEP 6 \u2014 DECIDE:  UFCF (Step 1) + WACC & hurdle (Step 3)  \u2192  discount each year  \u2192  sum the PVs  \u2192  + terminal value = EV  \u2192  \u2212 net debt = equity  \u2192  \u00f7 shares = price  \u2192  three tests, read beside the Step 5 options  \u2192  recommendation + sensitivity",
                     "textStyle": {
                       "fontSize": "10pt"
                     }

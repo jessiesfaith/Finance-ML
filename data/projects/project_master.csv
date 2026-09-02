@@ -1,3 +1,5 @@
 project_id,project_name,category,initial_investment,start_period,horizon_years,rationale,review_status
 PROJ-001,Distribution center expansion,GROWTH_CAPEX,120.0,FY2026,5,Adds regional capacity; incremental volume priced at current list with freight savings baked into the margin assumption.,APPROVED
 PROJ-002,Warehouse automation retrofit,COST_REDUCTION,45.0,FY2026,5,Robotics retrofit of the pick lines; labor and error-rework savings ramp with utilization.,REVIEW
+PROJ-003,New product line launch,NEW_PRODUCT_LINE,60.0,FY2026,5,Adjacent product line; launch tooling and initial marketing capitalized; revenue ramp anchored on pilot-customer commitments.,REVIEW
+PROJ-004,Retire $45M of long-term debt,DEBT_PAYDOWN,45.0,FY2026,5,Use surplus cash to retire term debt; earns the after-tax coupon risk-free and restores borrowing headroom.,REVIEW

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "8687adb636aca6e93358",
+  "position": {
+    "x": 350,
+    "y": 100,
+    "height": 75,
+    "width": 175,
+    "z": 4000,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_controls"
+                    }
+                  },
+                  "Property": "Controls REVIEW"
+                }
+              },
+              "queryRef": "client_fs_controls.Controls REVIEW",
+              "nativeQueryRef": "Controls REVIEW"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

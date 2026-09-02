@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "afe714249e39d4c8e9dd",
+  "displayName": "2 \u00b7 Current Position",
+  "displayOption": "ActualSize",
+  "height": 3000,
+  "width": 3000
+}

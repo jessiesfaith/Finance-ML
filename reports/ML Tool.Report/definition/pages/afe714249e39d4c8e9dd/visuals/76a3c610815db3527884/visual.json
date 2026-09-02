@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "76a3c610815db3527884",
+  "position": {
+    "x": 165,
+    "y": 1180,
+    "height": 90,
+    "width": 1550,
+    "z": 54000,
+    "tabOrder": 54000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Legend \u2014 abbreviations",
+                    "textStyle": {
+                      "fontSize": "11pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "EBITDA = earnings before interest, taxes, depreciation & amortization \u00b7 NOPAT = net operating profit after tax \u00b7 CapEx = capital expenditure \u00b7 \u0394NWC = change in net working capital \u00b7 UFCF = unlevered free cash flow \u00b7 ROIC = return on invested capital \u00b7 WACC = weighted average cost of capital \u00b7 x = times (multiple of EBITDA) \u00b7 $M = millions",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

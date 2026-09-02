@@ -40,7 +40,7 @@ def pick(frame, project, scenario):
 
 def test_schema_and_coverage(appraisal):
     assert list(appraisal.columns) == OUTPUT_COLUMNS
-    assert len(appraisal) == 6                   # 2 projects x 3 scenarios
+    assert len(appraisal) == 12                  # 4 options x 3 scenarios
     assert set(appraisal["value_class"]) == {"CALCULATED"}
 
 
@@ -105,3 +105,29 @@ def test_bad_intake_fails_loudly(tmp_path):
 def test_committed_export_matches_a_fresh_rebuild(appraisal):
     from conftest import assert_matches_committed
     assert_matches_committed(appraisal, DEFAULT_OUTPUT)
+
+
+def test_new_product_line_approves_across_scenarios(appraisal):
+    rows = appraisal[appraisal["project_id"] == "PROJ-003"]
+    assert set(rows["recommendation"]) == {"APPROVE"}
+    assert (rows["npv_at_hurdle"] > 0).all()
+
+
+def test_debt_paydown_irr_is_exactly_the_after_tax_cost_of_debt(appraisal):
+    """
+    Retiring debt at par = buying back your own bond: coupon saved each
+    year, capacity restored at horizon, so IRR == Kd x (1 - tax). It
+    reads REJECT at the equity hurdle by construction - right
+    arithmetic, wrong ruler for a risk-free use of cash; the page
+    carries that caveat.
+    """
+    from financials.projects import load_rates
+    rates = load_rates().set_index("scenario")
+    rows = appraisal[appraisal["project_id"] == "PROJ-004"]
+    assert set(rows["recommendation"]) == {"REJECT"}
+    for _, row in rows.iterrows():
+        r = rates.loc[row["scenario"]]
+        expected = float(r["cost_of_debt_pct"]) * (1 - float(r["tax_rate_pct"]) / 100)
+        assert row["irr_pct"] == pytest.approx(expected, abs=1e-2)
+        assert row["incr_roic_pct"] == pytest.approx(expected, abs=1e-2)
+

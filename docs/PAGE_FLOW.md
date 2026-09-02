@@ -134,7 +134,24 @@ vs DCF value, synergies, and integration costs join at Phase 9 (M&A).
 | CALCULATED | one formula, shown on the page | pipeline modules |
 | MODEL OUTPUT | end of a visible chain | report edge |
 
-## Physical pages in ML Tool.pbip (as of 2026-09-01)
+## Engagement flow (owner redesign, 2026-09-02)
+
+The tabs now follow a consulting engagement, not the build order:
+
+| Step | Tab | Question it answers |
+|---|---|---|
+| 1 | Client Financials | what do the books say? |
+| 2 | Current Position | how healthy is the client; how much capacity? |
+| 3 | Market & Cost of Capital | what world are they in; what does money cost? |
+| 4 | Macro History (Reference) | the context behind Step 3, on demand |
+| 5 | Options | grow / automate / launch / pay down debt - what could they do? |
+| 6 | Valuation & Recommendation | what is it worth; what should they do? |
+
+Design rule (owner's, enforced everywhere): every equation row begins
+with either the visible RESULT of the row above - repeated even if
+redundant - or a number wearing its source label. No orphan numbers.
+
+## Physical pages in ML Tool.pbip (superseded mapping, 2026-09-01)
 
 The design pages above map onto the report file as:
 

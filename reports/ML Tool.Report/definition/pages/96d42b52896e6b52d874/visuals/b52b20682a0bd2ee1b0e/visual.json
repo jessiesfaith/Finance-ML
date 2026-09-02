@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "b52b20682a0bd2ee1b0e",
+  "position": {
+    "x": 941,
+    "y": 765,
+    "height": 75,
+    "width": 130,
+    "z": 200008,
+    "tabOrder": 200008
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "PV FCF Year 5"
+                }
+              },
+              "queryRef": "finance_scenario_report.PV FCF Year 5",
+              "nativeQueryRef": "PV FCF Year 5"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -3,7 +3,7 @@
   "name": "42c164c5fb146b358a65",
   "position": {
     "x": 165,
-    "y": 1750,
+    "y": 1920,
     "height": 70,
     "width": 1010,
     "z": 75000,
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Ends with: the capital-allocation decision, and which assumptions it depends on. The planned next layer is the sensitivity grid (WACC × terminal growth) and project/M&A cases run through this same page.",
+                    "value": "Ends with: the capital-allocation decision, and which assumptions it depends on. The planned next layer is the sensitivity grid (WACC \u00d7 terminal growth) and project/M&A cases run through this same page.",
                     "textStyle": {
                       "fontSize": "10pt"
                     }

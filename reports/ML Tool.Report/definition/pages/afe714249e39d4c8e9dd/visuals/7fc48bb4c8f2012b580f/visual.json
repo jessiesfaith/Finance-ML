@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "7fc48bb4c8f2012b580f",
+  "position": {
+    "x": 165,
+    "y": 66,
+    "height": 24,
+    "width": 1500,
+    "z": 2000,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "STEP 2 \u2014 THE HEALTH CHECK:  the books (Step 1)  \u2192  profitability  \u2192  returns vs cost of capital  \u2192  cash generation  \u2192  leverage  \u2192  capacity to act  \u2192  funds the options (Step 5)",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

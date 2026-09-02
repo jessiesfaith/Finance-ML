@@ -3,7 +3,7 @@
   "name": "e822b33f1e8ba1259f50",
   "position": {
     "x": 165,
-    "y": 1850,
+    "y": 2020,
     "height": 34,
     "width": 1550,
     "z": 77000,
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "5 · Sensitivity — implied share price across WACC × terminal growth   (which assumptions carry the answer)",
+                    "value": "5 \u00b7 Sensitivity \u2014 implied share price across WACC \u00d7 terminal growth   (which assumptions carry the answer)",
                     "textStyle": {
                       "fontSize": "14pt"
                     }

@@ -3,7 +3,7 @@
   "name": "5fe43b13678ba124765d",
   "position": {
     "x": 165,
-    "y": 2150,
+    "y": 2320,
     "height": 110,
     "width": 1550,
     "z": 80000,
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Legend — abbreviations",
+                    "value": "Legend \u2014 abbreviations",
                     "textStyle": {
                       "fontSize": "11pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "PV = present value · TV = terminal value · DCF = discounted cash flow · EV = enterprise value · NPV = net present value · IRR = internal rate of return · hurdle = WACC + 2pts · ROIC = return on invested capital · $B / $M = billions / millions of dollars",
+                    "value": "PV = present value \u00b7 TV = terminal value \u00b7 DCF = discounted cash flow \u00b7 EV = enterprise value \u00b7 NPV = net present value \u00b7 IRR = internal rate of return \u00b7 hurdle = WACC + 2pts \u00b7 ROIC = return on invested capital \u00b7 $B / $M = billions / millions of dollars",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

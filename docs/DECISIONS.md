@@ -792,3 +792,32 @@ disagree. A window picker drives all 21 charts (Average aggregation:
 one window selected = that window exactly; none selected = the average
 across windows, stated on the page). The rolling-24 export stays -
 columns are only ever added, never removed.
+
+### 75. The report reflows to the consulting engagement (owner design)
+The owner articulated the flow a consultant actually works - review
+the books, assess the current position, understand the market, lay out
+the options, recommend - and a math rule: every row starts from the
+row above's visible result (redundant repetition welcome) or a
+source-labeled number. Applied: tabs reordered 1-Client Financials,
+2-Current Position (NEW health-check page: margin walk, ROIC vs WACC,
+restated UFCF bridge, net debt build, Net Debt/EBITDA 0.55x vs a 2.0x
+policy ASSUMPTION card, ~$458M debt headroom + cash - "the budget the
+options draw from"), 3-Market & Cost of Capital, 4-Macro History
+(reference), 5-Options, 6-Valuation & Recommendation, legacy last.
+STEP-numbered flow strips cross-reference the steps. Chain repairs on
+the valuation page: the five PVs now visibly sum to PV FCF 1-5 and
+divide by a visible 1000 card into the $B figure the EV row starts
+from.
+
+### 76. Two more option types: new product line and debt paydown
+PROJ-003 (NEW_PRODUCT_LINE, $60M, revenue levers - APPROVE in every
+scenario, IRR 18.9%) and PROJ-004 (DEBT_PAYDOWN, $45M). Paying down
+debt is modeled as buying back your own bond at par: after-tax coupon
+saved yearly, capacity restored at horizon - so its IRR equals the
+after-tax cost of debt EXACTLY (test-pinned per scenario, ~4.9% Base).
+It reads REJECT at the equity hurdle by construction; the Options page
+states the ruler problem: that return is the risk-free FLOOR every
+risky option must beat, weighed on safety and headroom, not hurdle
+math. The four-option landscape now spans REVIEW / APPROVE-thin /
+APPROVE-strong / REJECT-with-caveat - a full capital-allocation
+conversation.

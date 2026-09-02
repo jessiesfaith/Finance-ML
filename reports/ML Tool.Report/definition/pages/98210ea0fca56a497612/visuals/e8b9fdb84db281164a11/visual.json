@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "e8b9fdb84db281164a11",
+  "position": {
+    "x": 165,
+    "y": 565,
+    "z": 301000,
+    "height": 50,
+    "width": 1550,
+    "tabOrder": 301000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Reading the debt-paydown row: REJECT at the equity hurdle is the right arithmetic and the wrong ruler \u2014 retiring debt earns exactly the after-tax cost of debt (\u22484.9%), risk-free. That return is the FLOOR every risky option above must beat; weigh the paydown on safety and headroom, not hurdle math.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

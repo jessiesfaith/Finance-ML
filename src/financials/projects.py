@@ -102,7 +102,7 @@ def load_rates(path=None) -> pd.DataFrame:
             "first; projects are judged with the same rates as the company DCF")
     frame = pd.read_csv(path)
     needed = {"scenario", "scenario_sort", "tax_rate_pct", "wacc_pct",
-              "hurdle_rate_pct"}
+              "hurdle_rate_pct", "cost_of_debt_pct"}
     missing = needed - set(frame.columns)
     if missing:
         raise ValueError(f"{path} lacks required columns: {sorted(missing)}")
@@ -135,6 +135,77 @@ def _irr(investment, flows, lo=-0.95, hi=10.0, tol=1e-9):
     return (lo + hi) / 2
 
 
+def _appraise_debt_paydown(project, rates_row) -> dict:
+    """
+    Paying down debt as a competing use of cash. Economically it is
+    buying back your own bond at par: each year saves the after-tax
+    coupon on the amount retired, and at the horizon the borrowing
+    capacity is restored - so its IRR IS the after-tax cost of debt,
+    exactly. Judged on the same three tests for comparability, it will
+    read REJECT at the equity hurdle: right arithmetic, wrong ruler for
+    a risk-free use of cash. The page says so - the paydown return is
+    the FLOOR every risky project must beat, and the option is weighed
+    on safety and headroom, not hurdle math.
+    """
+    pid = project["project_id"]
+    horizon = int(project["horizon_years"])
+    investment = float(project["initial_investment"])
+    tax = float(rates_row["tax_rate_pct"]) / 100.0
+    wacc = float(rates_row["wacc_pct"])
+    hurdle = float(rates_row["hurdle_rate_pct"])
+    kd_after_tax = float(rates_row["cost_of_debt_pct"]) / 100.0 * (1 - tax)
+
+    saved = investment * kd_after_tax        # after-tax interest avoided
+    flows = [saved] * horizon
+    flows[-1] += investment                  # capacity restored at horizon
+
+    npv = -investment + sum(
+        f / (1 + hurdle / 100.0) ** t for t, f in enumerate(flows, start=1))
+    irr = _irr(investment, flows)
+    roic = kd_after_tax * 100.0              # saved NOPAT / capital retired
+
+    payback = None
+    cumulative = 0.0
+    for t, f in enumerate(flows, start=1):
+        if cumulative + f >= investment and f > 0:
+            payback = round(t - 1 + (investment - cumulative) / f, 2)
+            break
+        cumulative += f
+
+    npv_test = "PASS" if npv > 0 else "FAIL"
+    irr_test = "PASS" if irr is not None and irr * 100 > hurdle else "FAIL"
+    roic_test = "PASS" if roic > wacc else "FAIL"
+    tests = (npv_test, irr_test, roic_test)
+    recommendation = ("APPROVE" if tests == ("PASS",) * 3 else
+                      "REJECT" if tests == ("FAIL",) * 3 else "REVIEW")
+
+    row = {
+        "project_id": pid,
+        "project_name": project["project_name"],
+        "category": project["category"],
+        "scenario": rates_row["scenario"],
+        "review_status": project["review_status"],
+        "initial_investment": round(investment, 4),
+        "horizon_years": horizon,
+        "tax_rate_pct": round(tax * 100, 4),
+        "wacc_pct": round(wacc, 4),
+        "hurdle_rate_pct": round(hurdle, 4),
+        "npv_at_hurdle": round(npv, 4),
+        "irr_pct": round(irr * 100, 4) if irr is not None else None,
+        "payback_years": payback,
+        "incr_roic_pct": round(roic, 4),
+        "npv_test": npv_test,
+        "irr_test": irr_test,
+        "roic_test": roic_test,
+        "recommendation": recommendation,
+        "rationale": project["rationale"],
+        "value_class": "CALCULATED",
+    }
+    for t in range(1, MAX_HORIZON + 1):
+        row[f"ufcf_y{t}"] = round(flows[t - 1], 4) if t <= horizon else None
+    return row
+
+
 def appraise_project(project, assumptions, rates_row) -> dict:
     pid = project["project_id"]
     horizon = int(project["horizon_years"])
@@ -142,6 +213,9 @@ def appraise_project(project, assumptions, rates_row) -> dict:
     tax = float(rates_row["tax_rate_pct"]) / 100.0
     wacc = float(rates_row["wacc_pct"])
     hurdle = float(rates_row["hurdle_rate_pct"])
+
+    if str(project["category"]).upper() == "DEBT_PAYDOWN":
+        return _appraise_debt_paydown(project, rates_row)
 
     rev1 = _value(assumptions, pid, "INCR_REVENUE_Y1")
     rev_g = _value(assumptions, pid, "INCR_REVENUE_GROWTH_PCT")

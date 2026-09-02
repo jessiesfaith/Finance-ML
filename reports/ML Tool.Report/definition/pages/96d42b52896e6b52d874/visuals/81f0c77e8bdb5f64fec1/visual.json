@@ -3,7 +3,7 @@
   "name": "81f0c77e8bdb5f64fec1",
   "position": {
     "x": 1085,
-    "y": 1890,
+    "y": 2060,
     "height": 160,
     "width": 630,
     "z": 79000,
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Rows: WACC from −1.0pt to +1.0pt around Base (9.11). Columns: terminal growth 1.5% → 3.5% (Base 2.5% center).",
+                    "value": "Rows: WACC from \u22121.0pt to +1.0pt around Base (9.11). Columns: terminal growth 1.5% \u2192 3.5% (Base 2.5% center).",
                     "textStyle": {
                       "fontSize": "9pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "The center cell IS the Base DCF price ($28.86) — a test forces the grid and the DCF to agree forever.",
+                    "value": "The center cell IS the Base DCF price ($28.86) \u2014 a test forces the grid and the DCF to agree forever.",
                     "textStyle": {
                       "fontSize": "9pt"
                     }
@@ -39,7 +39,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Read the spread: ~$22 to ~$41 across the grid. That range is how much of the valuation is assumption rather than arithmetic — the honest error bar around one number.",
+                    "value": "Read the spread: ~$22 to ~$41 across the grid. That range is how much of the valuation is assumption rather than arithmetic \u2014 the honest error bar around one number.",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

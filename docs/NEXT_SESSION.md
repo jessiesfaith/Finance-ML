@@ -41,3 +41,9 @@ Also: Page 5 widened to 21 panels (commodities, tech/AI indices,
 placeholder firm slots - DECISIONS #71); 'Selected ' prefix retired
 from 15 measures (#72). Owner still owes Desktop QA of all of today's
 changes; requires a full Refresh (partitions changed).
+
+## Status 2026-09-02 (later): engagement reflow shipped
+Owner-designed flow live (DECISIONS #75-76): tabs = engagement steps,
+new Current Position page, chain rule enforced, options grown to four
+types incl. debt paydown (IRR == after-tax Kd, pinned). Awaiting owner
+Desktop QA of the reflow. M&A module remains the open build offer.

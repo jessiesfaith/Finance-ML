@@ -354,6 +354,55 @@ table client_fs_ufcf
 		displayFolder: Income Walk
 		lineageTag: f996abd2-2979-40c7-87bf-62d22e18489f
 
+	measure 'Client EBITDA Margin (%)' =
+			
+			100 * DIVIDE([Client EBITDA ($M)], [Client Revenue ($M)])
+		formatString: 0.0
+		displayFolder: Current Position
+		lineageTag: d8b2bdae-2e18-4d62-973e-35d886e0a183
+
+	/// The leverage multiple lenders and boards speak in: years of EBITDA
+	/// needed to repay net debt (0.55x in the fixture - lightly levered).
+	measure 'Net Debt / EBITDA (x)' =
+			
+			DIVIDE([Client Net Debt ($M)], [Client EBITDA ($M)])
+		formatString: 0.00"x"
+		displayFolder: Current Position
+		lineageTag: 4f61e89f-fa1d-4691-b361-31a2429e1b37
+
+	/// ASSUMPTION: the leverage ceiling the client is comfortable with.
+	/// An owner call, shown as its own card so the capacity math starts
+	/// from a labeled source.
+	measure 'Leverage Policy (x)' =
+			
+			2.0
+		formatString: 0.0"x"
+		displayFolder: Current Position
+		lineageTag: 91db74fd-53ce-4ce9-926b-0f690ad0fab4
+
+	measure 'Debt Capacity at Policy ($M)' =
+			
+			[Leverage Policy (x)] * [Client EBITDA ($M)]
+		formatString: #,0.0
+		displayFolder: Current Position
+		lineageTag: f13f2853-b552-4f30-89b9-d4cb78bdab2b
+
+	/// How much MORE debt the balance sheet could carry at policy - the
+	/// budget the Step 5 options draw from (alongside cash on hand).
+	measure 'Debt Headroom ($M)' =
+			
+			[Debt Capacity at Policy ($M)] - [Client Net Debt ($M)]
+		formatString: #,0.0
+		displayFolder: Current Position
+		lineageTag: d7b7775c-93fd-4706-98c7-cdcdb4c9af6e
+
+	measure 'NWC % of Revenue (%)' =
+			
+			100 * DIVIDE([Client Operating NWC ($M)], [Client Revenue ($M)])
+		formatString: 0.0
+		displayFolder: Current Position
+		lineageTag: 6b3326a1-b9d3-43e9-9594-05510a5d121a
+
 	column period_id
 		dataType: string
 		lineageTag: 0d5c2fc4-b22d-4a68-8f01-6f7411c0d710

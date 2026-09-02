@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "9a2013e5e736a75dd5a4",
+  "position": {
+    "x": 165,
+    "y": 985,
+    "height": 75,
+    "width": 175,
+    "z": 47000,
+    "tabOrder": 47000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_ufcf"
+                    }
+                  },
+                  "Property": "Debt Capacity at Policy ($M)"
+                }
+              },
+              "queryRef": "client_fs_ufcf.Debt Capacity at Policy ($M)",
+              "nativeQueryRef": "Debt Capacity at Policy ($M)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
