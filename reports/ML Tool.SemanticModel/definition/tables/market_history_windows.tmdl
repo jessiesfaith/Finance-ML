@@ -22,6 +22,15 @@ table market_history_windows
 
 		annotation SummarizationSetBy = Automatic
 
+	column months_ago
+		dataType: int64
+		formatString: 0
+		lineageTag: 3b699c3e-d136-4836-adc0-dc6d04956850
+		summarizeBy: none
+		sourceColumn: months_ago
+
+		annotation SummarizationSetBy = Automatic
+
 	column source
 		dataType: string
 		lineageTag: 7a8e3c42-2c0b-47ea-bdf6-619e646da854
@@ -458,11 +467,11 @@ table market_history_windows
 				let
 				  Source = Csv.Document(
 				    File.Contents("C:\dev\Finance-ML\reports\market_history_windows.csv"),
-				    [Delimiter = ",", Columns = 50, QuoteStyle = QuoteStyle.Csv]
+				    [Delimiter = ",", Columns = 51, QuoteStyle = QuoteStyle.Csv]
 				),
 				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"observation_date", "window", "ust_3m", "ust_2y", "ust_5y", "ust_10y", "ust_30y", "curve_spread_10y_2y", "curve_spread_10y_3m", "fed_funds_eff", "cpi_yoy", "core_cpi_yoy", "pce_yoy", "core_pce_yoy", "ppi_yoy", "ahe_yoy", "gdp_growth_yoy", "indprod_yoy", "retail_sales_yoy", "unemployment_rate", "u6_rate", "participation_rate", "unemp_duration_weeks", "initial_claims_k", "continuing_claims_k", "payroll_chg_k", "jolts_openings_k", "housing_starts_k", "consumer_sentiment_idx", "ism_pmi_idx", "ig_oas", "hy_oas", "gold_usd_oz", "silver_usd_oz", "oil_wti_usd_bbl", "beef_usd_lb", "tech_sector_idx", "ai_sector_idx", "tech_co_1_px", "tech_co_2_px", "tech_co_3_px", "tech_co_4_px", "tech_co_5_px", "ai_co_1_px", "ai_co_2_px", "ai_co_3_px", "ai_co_4_px", "ai_co_5_px", "source", "value_class"}),
-				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"observation_date", type date}, {"ust_3m", type number}, {"ust_2y", type number}, {"ust_5y", type number}, {"ust_10y", type number}, {"ust_30y", type number}, {"curve_spread_10y_2y", type number}, {"curve_spread_10y_3m", type number}, {"fed_funds_eff", type number}, {"cpi_yoy", type number}, {"core_cpi_yoy", type number}, {"pce_yoy", type number}, {"core_pce_yoy", type number}, {"ppi_yoy", type number}, {"ahe_yoy", type number}, {"gdp_growth_yoy", type number}, {"indprod_yoy", type number}, {"retail_sales_yoy", type number}, {"unemployment_rate", type number}, {"u6_rate", type number}, {"participation_rate", type number}, {"unemp_duration_weeks", type number}, {"initial_claims_k", type number}, {"continuing_claims_k", type number}, {"payroll_chg_k", type number}, {"jolts_openings_k", type number}, {"housing_starts_k", type number}, {"consumer_sentiment_idx", type number}, {"ism_pmi_idx", type number}, {"ig_oas", type number}, {"hy_oas", type number}, {"gold_usd_oz", type number}, {"silver_usd_oz", type number}, {"oil_wti_usd_bbl", type number}, {"beef_usd_lb", type number}, {"tech_sector_idx", type number}, {"ai_sector_idx", type number}, {"tech_co_1_px", type number}, {"tech_co_2_px", type number}, {"tech_co_3_px", type number}, {"tech_co_4_px", type number}, {"tech_co_5_px", type number}, {"ai_co_1_px", type number}, {"ai_co_2_px", type number}, {"ai_co_3_px", type number}, {"ai_co_4_px", type number}, {"ai_co_5_px", type number}})
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"observation_date", "window", "months_ago", "ust_3m", "ust_2y", "ust_5y", "ust_10y", "ust_30y", "curve_spread_10y_2y", "curve_spread_10y_3m", "fed_funds_eff", "cpi_yoy", "core_cpi_yoy", "pce_yoy", "core_pce_yoy", "ppi_yoy", "ahe_yoy", "gdp_growth_yoy", "indprod_yoy", "retail_sales_yoy", "unemployment_rate", "u6_rate", "participation_rate", "unemp_duration_weeks", "initial_claims_k", "continuing_claims_k", "payroll_chg_k", "jolts_openings_k", "housing_starts_k", "consumer_sentiment_idx", "ism_pmi_idx", "ig_oas", "hy_oas", "gold_usd_oz", "silver_usd_oz", "oil_wti_usd_bbl", "beef_usd_lb", "tech_sector_idx", "ai_sector_idx", "tech_co_1_px", "tech_co_2_px", "tech_co_3_px", "tech_co_4_px", "tech_co_5_px", "ai_co_1_px", "ai_co_2_px", "ai_co_3_px", "ai_co_4_px", "ai_co_5_px", "source", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"observation_date", type date}, {"months_ago", Int64.Type}, {"ust_3m", type number}, {"ust_2y", type number}, {"ust_5y", type number}, {"ust_10y", type number}, {"ust_30y", type number}, {"curve_spread_10y_2y", type number}, {"curve_spread_10y_3m", type number}, {"fed_funds_eff", type number}, {"cpi_yoy", type number}, {"core_cpi_yoy", type number}, {"pce_yoy", type number}, {"core_pce_yoy", type number}, {"ppi_yoy", type number}, {"ahe_yoy", type number}, {"gdp_growth_yoy", type number}, {"indprod_yoy", type number}, {"retail_sales_yoy", type number}, {"unemployment_rate", type number}, {"u6_rate", type number}, {"participation_rate", type number}, {"unemp_duration_weeks", type number}, {"initial_claims_k", type number}, {"continuing_claims_k", type number}, {"payroll_chg_k", type number}, {"jolts_openings_k", type number}, {"housing_starts_k", type number}, {"consumer_sentiment_idx", type number}, {"ism_pmi_idx", type number}, {"ig_oas", type number}, {"hy_oas", type number}, {"gold_usd_oz", type number}, {"silver_usd_oz", type number}, {"oil_wti_usd_bbl", type number}, {"beef_usd_lb", type number}, {"tech_sector_idx", type number}, {"ai_sector_idx", type number}, {"tech_co_1_px", type number}, {"tech_co_2_px", type number}, {"tech_co_3_px", type number}, {"tech_co_4_px", type number}, {"tech_co_5_px", type number}, {"ai_co_1_px", type number}, {"ai_co_2_px", type number}, {"ai_co_3_px", type number}, {"ai_co_4_px", type number}, {"ai_co_5_px", type number}})
 				in
 				    #"Changed Type"
 

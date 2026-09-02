@@ -70,9 +70,12 @@ def test_windowed_history_schema_and_coverage():
         HISTORY_WINDOWS, WINDOWS_OUTPUT, load_market_data, windowed_history)
     tables, _ = load_market_data(strict=True)
     win = windowed_history(tables["market_observations"])
-    assert list(win.columns) == (["observation_date", "window"]
+    assert list(win.columns) == (["observation_date", "window", "months_ago"]
                                  + list(HISTORY_METRICS)
                                  + ["source", "value_class"])
+    latest = win[win["months_ago"] == 0]
+    assert set(latest["observation_date"]) == {"2026-07-31"}
+    assert win["months_ago"].max() == 102
     assert set(win["window"]) == set(HISTORY_WINDOWS) | {"YTD"}
     assert len(win) == 103 * 5
 

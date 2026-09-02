@@ -506,6 +506,11 @@ def windowed_history(observations: pd.DataFrame) -> pd.DataFrame:
     out = out.reset_index().rename(columns={"index": "observation_date"})
     out["observation_date"] = pd.to_datetime(
         out["observation_date"]).dt.strftime("%Y-%m-%d")
+    # Zoom helper: 0 = the latest month, 1 = the month before, ... so a
+    # "last N months" view is a simple filter months_ago <= N-1.
+    dates = sorted(out["observation_date"].unique(), reverse=True)
+    out.insert(2, "months_ago",
+               out["observation_date"].map({d: i for i, d in enumerate(dates)}))
     for metric in HISTORY_METRICS:
         out[metric] = out[metric].round(4)
     out["source"] = "SYNTHETIC"
