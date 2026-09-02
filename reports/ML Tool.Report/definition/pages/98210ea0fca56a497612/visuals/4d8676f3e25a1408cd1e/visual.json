@@ -5,8 +5,8 @@
     "x": 165,
     "y": 66,
     "z": 300000,
-    "height": 24,
-    "width": 1500,
+    "height": 40,
+    "width": 810,
     "tabOrder": 300000
   },
   "visual": {
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "STEP 5 \u2014 THE OPTIONS:  each candidate use of cash \u2014 grow, automate, launch a product line, or pay down debt \u2014 builds its incremental case and faces the same three tests, weighed against Step 2's capacity and Step 3's prices",
+                    "value": "STEP 5 \u2014 THE OPTIONS: grow, automate, launch, or de-lever \u2014 each builds its incremental case and faces the same three tests, weighed against Step 2's capacity and Step 3's prices.",
                     "textStyle": {
                       "fontSize": "10pt"
                     }
