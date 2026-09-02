@@ -26,3 +26,6 @@ reports/ML Tool.Report/.pbi/localSettings.json
 # Office lock files (created while a workbook/doc is open)
 ~$*
 **/~$*
+
+# Live equity fetches - staged for review, never committed
+data/market_staging/

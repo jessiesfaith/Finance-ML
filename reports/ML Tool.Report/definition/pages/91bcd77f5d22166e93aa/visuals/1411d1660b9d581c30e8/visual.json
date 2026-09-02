@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Oil — WTI Crude ($/bbl)",
+                    "value": "Oil \u2014 WTI & Brent Crude ($/bbl)",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/DCOILWTICO  — charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/DCOILWTICO \u00b7 DCOILBRENTEU  \u2014 charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

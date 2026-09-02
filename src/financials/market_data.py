@@ -287,6 +287,38 @@ def synthetic_market_prices(wide: pd.DataFrame,
     return pd.DataFrame(rows, columns=MARKET_OBSERVATIONS.column_names())
 
 
+# Fourth extension batch (owner watchlist 2026-09-02): Brent crude only.
+# Separate seed stream so all prior series stay byte-identical. The 15
+# real companies on the same watchlist get NO synthetic series - a real
+# name never carries an invented history; their data arrives via
+# src/fetch_equity_prices.py run on the owner's machine.
+_BRENT_REFERENCE = "financials/market_data.py seed 24242 (brent)"
+
+
+def synthetic_brent(wide: pd.DataFrame,
+                    markets_wide: pd.DataFrame) -> pd.DataFrame:
+    """Brent rides WTI at a modest premium (quality/freight spread)."""
+    rng = np.random.default_rng(24242)
+    n = len(wide)
+    shocks = rng.normal(0.0, 0.8, n)
+    smooth = np.zeros(n)
+    for i in range(1, n):
+        smooth[i] = 0.85 * smooth[i - 1] + shocks[i]
+    brent = (markets_wide["oil_wti_usd_bbl"].values + 3.5 + smooth).clip(min=17)
+    rows = [{
+        "metric_id": "brent_usd_bbl",
+        "observation_date": date.strftime("%Y-%m-%d"),
+        "value": round(float(value), 6),
+        "unit": "USD",
+        "source": "SYNTHETIC",
+        "source_reference": _BRENT_REFERENCE,
+        "retrieval_timestamp": SYNTHETIC_RETRIEVAL,
+        "frequency": "MONTHLY",
+        "revision_status": "SYNTHETIC",
+    } for date, value in zip(wide["date"], brent)]
+    return pd.DataFrame(rows, columns=MARKET_OBSERVATIONS.column_names())
+
+
 def replatform_synthetic_history() -> pd.DataFrame:
     """Seed-42 history -> canonical observation rows, honestly labeled."""
     wide = pd.read_csv(SYNTHETIC_HISTORY, parse_dates=["date"])
@@ -311,7 +343,11 @@ def replatform_synthetic_history() -> pd.DataFrame:
                                 values="value").reset_index(drop=True)
     headline = synthetic_headline_indicators(wide, ext_wide)
     markets = synthetic_market_prices(wide, ext_wide)
-    frame = pd.concat([base, extensions, headline, markets],
+    markets_wide = markets.pivot(index="observation_date",
+                                 columns="metric_id",
+                                 values="value").reset_index(drop=True)
+    brent = synthetic_brent(wide, markets_wide)
+    frame = pd.concat([base, extensions, headline, markets, brent],
                       ignore_index=True)
     return frame.sort_values(
         ["metric_id", "observation_date"]).reset_index(drop=True)
@@ -431,7 +467,7 @@ HISTORY_METRICS = (
     "unemp_duration_weeks", "initial_claims_k", "continuing_claims_k",
     "payroll_chg_k", "jolts_openings_k", "housing_starts_k",
     "consumer_sentiment_idx", "ism_pmi_idx", "ig_oas", "hy_oas",
-    "gold_usd_oz", "silver_usd_oz", "oil_wti_usd_bbl", "beef_usd_lb",
+    "gold_usd_oz", "silver_usd_oz", "oil_wti_usd_bbl", "brent_usd_bbl", "beef_usd_lb",
     "tech_sector_idx", "ai_sector_idx",
     "tech_co_1_px", "tech_co_2_px", "tech_co_3_px", "tech_co_4_px",
     "tech_co_5_px",

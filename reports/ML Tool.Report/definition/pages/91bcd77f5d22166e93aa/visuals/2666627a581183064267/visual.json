@@ -53,6 +53,26 @@
               "queryRef": "Avg(market_history_rolling24.oil_wti_usd_bbl)",
               "nativeQueryRef": "Average of oil_wti_usd_bbl",
               "displayName": "WTI"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_windows"
+                        }
+                      },
+                      "Property": "brent_usd_bbl"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(market_history_windows.brent_usd_bbl)",
+              "nativeQueryRef": "Average of brent_usd_bbl",
+              "displayName": "Brent"
             }
           ]
         }

@@ -834,3 +834,18 @@ rises with delivery, the paydown breaks even at ~5% because that IS
 its IRR, and the strip must agree with the grid cell-for-cell. The
 Options page renders grid then strip, with a how-to-read note calling
 out PROJ-001's fragility and PROJ-003's robustness.
+
+### 78. The owner's real-company watchlist - real names, real data only
+Owner named 15 companies (Big Oil: VLO COP EOG KMI XOM; Big
+Financials: BAC C JPM MS GS; Big Tech: NVDA GOOGL AAPL AMZN MSFT) plus
+Brent crude. Brent is a commodity, so it joins the synthetic layer
+(seed 24242, rides WTI at a premium; FRED DCOILBRENTEU at cutover) and
+the oil panel now charts WTI + Brent. The companies are registered in
+the metric master as the official watchlist (preferred_source STOOQ,
+symbols recorded, active N) with the Big Tech five recorded as the
+T1-T5 slot assignments - but carry NO synthetic observations: a real
+name never wears an invented history. Their real monthly closes arrive
+via the new src/fetch_equity_prices.py, run on the owner's machine
+(hosted egress blocks market sites), staged to data/market_staging/
+(gitignored) for review; on "wire the real tickers" the firm panels
+bind to the fetched series. Store grows append-only 4,532 -> 4,635.

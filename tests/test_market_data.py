@@ -31,7 +31,7 @@ def tables():
 
 def test_replatform_covers_the_full_synthetic_history(tables):
     obs = tables["market_observations"]
-    assert len(obs) == 4532                      # 103 months x 44 stored metrics
+    assert len(obs) == 4635                      # 103 months x 45 stored metrics
     assert set(obs["source"]) == {"SYNTHETIC"}
     assert set(obs["revision_status"]) == {"SYNTHETIC"}
     assert set(obs["source_reference"]) == {
@@ -39,6 +39,7 @@ def test_replatform_covers_the_full_synthetic_history(tables):
         "financials/market_data.py seed 42 (macro extensions)",
         "financials/market_data.py seed 4242 (headline indicators)",
         "financials/market_data.py seed 424242 (commodities & equities)",
+        "financials/market_data.py seed 24242 (brent)",
     }
 
 
@@ -72,14 +73,14 @@ def test_unknown_metric_and_unit_mismatch_fail_loudly(tmp_path, tables):
 def test_current_and_point_in_time_views(tables):
     obs = tables["market_observations"]
     view = current_view(obs)
-    assert len(view) == 44
+    assert len(view) == 45
     assert set(view["observation_date"].astype(str).str[:10]) == {"2026-07-31"}
 
     # Nothing was retrieved before the synthetic vintage stamp.
     empty = point_in_time_view(obs, "2020-01-01T00:00:00Z")
     assert len(empty) == 0
     full = point_in_time_view(obs, "2026-09-01T00:00:00Z")
-    assert len(full) == 44
+    assert len(full) == 45
 
 
 def test_committed_observations_match_a_fresh_replatform(tables):
@@ -107,3 +108,30 @@ def test_fred_csv_parses_and_never_fills_gaps():
     assert set(rows["source"]) == {"FRED"}
     assert set(rows["revision_status"]) == {"FINAL"}
     assert (rows["source_reference"] == "fredgraph.csv id=DGS10").all()
+
+
+# ------------------------------------------------
+# EQUITY ADAPTER (parse-level; live fetch runs on the owner's machine)
+# ------------------------------------------------
+
+def test_stooq_csv_parses_real_names_with_real_labels():
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path("src").resolve()))
+    from fetch_equity_prices import parse_stooq_csv, watchlist
+
+    csv_text = ("Date,Open,High,Low,Close,Volume\n"
+                "2026-06-30,210.0,231.0,205.0,220.5,123456\n"
+                "2026-07-31,221.0,229.0,214.0,,0\n"        # no close -> absent
+                "2026-08-29,222.0,240.0,220.0,227.3,98765\n")
+    rows = parse_stooq_csv(csv_text, "nvda_px", "nvda.us",
+                           "2026-09-02T12:00:00Z")
+    assert len(rows) == 2
+    assert rows.iloc[0]["value"] == pytest.approx(220.5)
+    assert set(rows["source"]) == {"STOOQ"}
+    assert set(rows["revision_status"]) == {"FINAL"}
+    assert (rows["source_reference"] == "stooq.com nvda.us monthly close").all()
+
+    symbols = dict(watchlist())
+    assert symbols["nvda_px"] == "nvda.us"
+    assert len(symbols) == 15                    # the owner's watchlist
