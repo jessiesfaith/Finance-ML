@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_windows"
+                      "Entity": "market_history_rolling24"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_windows.observation_date",
+              "queryRef": "market_history_rolling24.observation_date",
               "nativeQueryRef": "observation_date",
               "active": true
             }
@@ -41,7 +41,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_windows"
+                          "Entity": "market_history_rolling24"
                         }
                       },
                       "Property": "unemployment_rate"
@@ -50,7 +50,7 @@
                   "Function": 1
                 }
               },
-              "queryRef": "Avg(market_history_windows.unemployment_rate)",
+              "queryRef": "Avg(market_history_rolling24.unemployment_rate)",
               "nativeQueryRef": "Average of unemployment_rate",
               "displayName": "U-3"
             },
@@ -61,7 +61,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_windows"
+                          "Entity": "market_history_rolling24"
                         }
                       },
                       "Property": "u6_rate"
@@ -70,7 +70,7 @@
                   "Function": 1
                 }
               },
-              "queryRef": "Avg(market_history_windows.u6_rate)",
+              "queryRef": "Avg(market_history_rolling24.u6_rate)",
               "nativeQueryRef": "Average of u6_rate",
               "displayName": "U-6"
             }

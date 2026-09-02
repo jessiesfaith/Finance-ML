@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_windows"
+                      "Entity": "market_history_rolling24"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_windows.observation_date",
+              "queryRef": "market_history_rolling24.observation_date",
               "nativeQueryRef": "observation_date",
               "active": true
             }
@@ -41,7 +41,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_windows"
+                          "Entity": "market_history_rolling24"
                         }
                       },
                       "Property": "ust_3m"
@@ -50,7 +50,7 @@
                   "Function": 1
                 }
               },
-              "queryRef": "Avg(market_history_windows.ust_3m)",
+              "queryRef": "Avg(market_history_rolling24.ust_3m)",
               "nativeQueryRef": "Average of ust_3m",
               "displayName": "3M"
             },
@@ -61,7 +61,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_windows"
+                          "Entity": "market_history_rolling24"
                         }
                       },
                       "Property": "ust_2y"
@@ -70,7 +70,7 @@
                   "Function": 1
                 }
               },
-              "queryRef": "Avg(market_history_windows.ust_2y)",
+              "queryRef": "Avg(market_history_rolling24.ust_2y)",
               "nativeQueryRef": "Average of ust_2y",
               "displayName": "2Y"
             },
@@ -81,7 +81,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_windows"
+                          "Entity": "market_history_rolling24"
                         }
                       },
                       "Property": "ust_5y"
@@ -90,7 +90,7 @@
                   "Function": 1
                 }
               },
-              "queryRef": "Avg(market_history_windows.ust_5y)",
+              "queryRef": "Avg(market_history_rolling24.ust_5y)",
               "nativeQueryRef": "Average of ust_5y",
               "displayName": "5Y"
             },
@@ -101,7 +101,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_windows"
+                          "Entity": "market_history_rolling24"
                         }
                       },
                       "Property": "ust_10y"
@@ -110,7 +110,7 @@
                   "Function": 1
                 }
               },
-              "queryRef": "Avg(market_history_windows.ust_10y)",
+              "queryRef": "Avg(market_history_rolling24.ust_10y)",
               "nativeQueryRef": "Average of ust_10y",
               "displayName": "10Y"
             },
@@ -121,7 +121,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_windows"
+                          "Entity": "market_history_rolling24"
                         }
                       },
                       "Property": "ust_30y"
@@ -130,7 +130,7 @@
                   "Function": 1
                 }
               },
-              "queryRef": "Avg(market_history_windows.ust_30y)",
+              "queryRef": "Avg(market_history_rolling24.ust_30y)",
               "nativeQueryRef": "Average of ust_30y",
               "displayName": "30Y"
             }

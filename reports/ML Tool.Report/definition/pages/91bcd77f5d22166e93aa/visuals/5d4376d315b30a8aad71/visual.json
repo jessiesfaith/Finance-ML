@@ -39,7 +39,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Short windows (03M) hug the raw data and turn fast; long windows (24M) show regime shape and turn late; YTD resets every January. Flip between them and watch the same 2020 shock sharpen or smooth \u2014 that is the smoothing trade-off made visible.",
+                    "value": "Zoomed out, look for the 2020 shock and the hiking cycle after it; zoomed in, you are reading the raw monthly data. (The model also carries 24-month rolling means \u2014 the _r24 columns \u2014 if a smoothed overlay is ever wanted.)",
                     "textStyle": {
                       "fontSize": "10pt"
                     }

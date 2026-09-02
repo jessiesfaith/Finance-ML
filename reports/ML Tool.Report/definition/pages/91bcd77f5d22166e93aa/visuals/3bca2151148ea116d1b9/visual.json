@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_windows"
+                      "Entity": "market_history_rolling24"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_windows.observation_date",
+              "queryRef": "market_history_rolling24.observation_date",
               "nativeQueryRef": "observation_date",
               "active": true
             }
@@ -41,7 +41,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_windows"
+                          "Entity": "market_history_rolling24"
                         }
                       },
                       "Property": "initial_claims_k"
@@ -50,7 +50,7 @@
                   "Function": 1
                 }
               },
-              "queryRef": "Avg(market_history_windows.initial_claims_k)",
+              "queryRef": "Avg(market_history_rolling24.initial_claims_k)",
               "nativeQueryRef": "Average of initial_claims_k",
               "displayName": "Initial claims"
             },
@@ -61,7 +61,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_windows"
+                          "Entity": "market_history_rolling24"
                         }
                       },
                       "Property": "continuing_claims_k"
@@ -70,7 +70,7 @@
                   "Function": 1
                 }
               },
-              "queryRef": "Avg(market_history_windows.continuing_claims_k)",
+              "queryRef": "Avg(market_history_rolling24.continuing_claims_k)",
               "nativeQueryRef": "Average of continuing_claims_k",
               "displayName": "Continuing claims"
             }

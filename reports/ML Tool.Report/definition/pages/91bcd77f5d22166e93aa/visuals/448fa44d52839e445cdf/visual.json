@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_windows"
+                      "Entity": "market_history_rolling24"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_windows.observation_date",
+              "queryRef": "market_history_rolling24.observation_date",
               "nativeQueryRef": "observation_date",
               "active": true
             }
@@ -41,7 +41,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_windows"
+                          "Entity": "market_history_rolling24"
                         }
                       },
                       "Property": "ppi_yoy"
@@ -50,7 +50,7 @@
                   "Function": 1
                 }
               },
-              "queryRef": "Avg(market_history_windows.ppi_yoy)",
+              "queryRef": "Avg(market_history_rolling24.ppi_yoy)",
               "nativeQueryRef": "Average of ppi_yoy",
               "displayName": "PPI"
             },
@@ -61,7 +61,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_windows"
+                          "Entity": "market_history_rolling24"
                         }
                       },
                       "Property": "cpi_yoy"
@@ -70,7 +70,7 @@
                   "Function": 1
                 }
               },
-              "queryRef": "Avg(market_history_windows.cpi_yoy)",
+              "queryRef": "Avg(market_history_rolling24.cpi_yoy)",
               "nativeQueryRef": "Average of cpi_yoy",
               "displayName": "CPI"
             }

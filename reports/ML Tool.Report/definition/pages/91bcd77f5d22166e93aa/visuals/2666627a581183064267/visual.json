@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_windows"
+                      "Entity": "market_history_rolling24"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_windows.observation_date",
+              "queryRef": "market_history_rolling24.observation_date",
               "nativeQueryRef": "observation_date",
               "active": true
             }
@@ -41,7 +41,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_windows"
+                          "Entity": "market_history_rolling24"
                         }
                       },
                       "Property": "oil_wti_usd_bbl"
@@ -50,7 +50,7 @@
                   "Function": 1
                 }
               },
-              "queryRef": "Avg(market_history_windows.oil_wti_usd_bbl)",
+              "queryRef": "Avg(market_history_rolling24.oil_wti_usd_bbl)",
               "nativeQueryRef": "Average of oil_wti_usd_bbl",
               "displayName": "WTI"
             }

@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_windows"
+                      "Entity": "market_history_rolling24"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_windows.observation_date",
+              "queryRef": "market_history_rolling24.observation_date",
               "nativeQueryRef": "observation_date",
               "active": true
             }
@@ -41,7 +41,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_windows"
+                          "Entity": "market_history_rolling24"
                         }
                       },
                       "Property": "consumer_sentiment_idx"
@@ -50,7 +50,7 @@
                   "Function": 1
                 }
               },
-              "queryRef": "Avg(market_history_windows.consumer_sentiment_idx)",
+              "queryRef": "Avg(market_history_rolling24.consumer_sentiment_idx)",
               "nativeQueryRef": "Average of consumer_sentiment_idx",
               "displayName": "Consumer sentiment"
             },
@@ -61,7 +61,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_windows"
+                          "Entity": "market_history_rolling24"
                         }
                       },
                       "Property": "ism_pmi_idx"
@@ -70,7 +70,7 @@
                   "Function": 1
                 }
               },
-              "queryRef": "Avg(market_history_windows.ism_pmi_idx)",
+              "queryRef": "Avg(market_history_rolling24.ism_pmi_idx)",
               "nativeQueryRef": "Average of ism_pmi_idx",
               "displayName": "ISM manufacturing PMI"
             }

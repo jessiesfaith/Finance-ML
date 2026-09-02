@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_windows"
+                      "Entity": "market_history_rolling24"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_windows.observation_date",
+              "queryRef": "market_history_rolling24.observation_date",
               "nativeQueryRef": "observation_date",
               "active": true
             }
@@ -41,7 +41,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_windows"
+                          "Entity": "market_history_rolling24"
                         }
                       },
                       "Property": "curve_spread_10y_2y"
@@ -50,7 +50,7 @@
                   "Function": 1
                 }
               },
-              "queryRef": "Avg(market_history_windows.curve_spread_10y_2y)",
+              "queryRef": "Avg(market_history_rolling24.curve_spread_10y_2y)",
               "nativeQueryRef": "Average of curve_spread_10y_2y",
               "displayName": "10Y \u2212 2Y"
             },
@@ -61,7 +61,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_windows"
+                          "Entity": "market_history_rolling24"
                         }
                       },
                       "Property": "curve_spread_10y_3m"
@@ -70,7 +70,7 @@
                   "Function": 1
                 }
               },
-              "queryRef": "Avg(market_history_windows.curve_spread_10y_3m)",
+              "queryRef": "Avg(market_history_rolling24.curve_spread_10y_3m)",
               "nativeQueryRef": "Average of curve_spread_10y_3m",
               "displayName": "10Y \u2212 3M"
             }

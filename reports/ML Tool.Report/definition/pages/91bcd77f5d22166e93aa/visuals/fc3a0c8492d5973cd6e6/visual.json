@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Pick ONE window at left: 03M / 06M / 12M / 24M trailing means (blank until the window fills) or YTD (calendar year-to-date mean). No pick = the average across windows.",
+                    "value": "Charts show plain monthly values. ONE control: the date slicer at left picks the time period \u2014 drag its ends, or switch it to Relative date (Format pane \u2192 Slicer settings \u2192 Options \u2192 Style) for Last 3 / 6 / 12 months or This year.",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

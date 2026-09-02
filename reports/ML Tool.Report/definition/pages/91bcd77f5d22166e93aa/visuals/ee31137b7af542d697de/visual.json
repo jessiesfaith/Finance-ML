@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_windows"
+                      "Entity": "market_history_rolling24"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_windows.observation_date",
+              "queryRef": "market_history_rolling24.observation_date",
               "nativeQueryRef": "observation_date",
               "active": true
             }
@@ -41,7 +41,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_windows"
+                          "Entity": "market_history_rolling24"
                         }
                       },
                       "Property": "gdp_growth_yoy"
@@ -50,7 +50,7 @@
                   "Function": 1
                 }
               },
-              "queryRef": "Avg(market_history_windows.gdp_growth_yoy)",
+              "queryRef": "Avg(market_history_rolling24.gdp_growth_yoy)",
               "nativeQueryRef": "Average of gdp_growth_yoy",
               "displayName": "Real GDP"
             },
@@ -61,7 +61,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_windows"
+                          "Entity": "market_history_rolling24"
                         }
                       },
                       "Property": "indprod_yoy"
@@ -70,7 +70,7 @@
                   "Function": 1
                 }
               },
-              "queryRef": "Avg(market_history_windows.indprod_yoy)",
+              "queryRef": "Avg(market_history_rolling24.indprod_yoy)",
               "nativeQueryRef": "Average of indprod_yoy",
               "displayName": "Industrial production"
             },
@@ -81,7 +81,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "market_history_windows"
+                          "Entity": "market_history_rolling24"
                         }
                       },
                       "Property": "retail_sales_yoy"
@@ -90,7 +90,7 @@
                   "Function": 1
                 }
               },
-              "queryRef": "Avg(market_history_windows.retail_sales_yoy)",
+              "queryRef": "Avg(market_history_rolling24.retail_sales_yoy)",
               "nativeQueryRef": "Average of retail_sales_yoy",
               "displayName": "Retail sales"
             }
