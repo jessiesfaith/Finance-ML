@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "MARKET = dated, sourced observation \u00b7 ASSUMPTION = owned input with rationale \u00b7 MODEL OUTPUT = labeled prediction",
+                    "value": "MARKET = dated, sourced observation · ASSUMPTION = owned input with rationale · MODEL OUTPUT = labeled prediction",
                     "textStyle": {
                       "fontSize": "9pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Rates in %/points. Pick a scenario at left \u2014 every card follows it (Base when nothing is picked).",
+                    "value": "Rates in %/points. Pick a scenario at left — every card follows it (Base when nothing is picked).",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

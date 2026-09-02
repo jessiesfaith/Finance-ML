@@ -14,6 +14,8 @@ table market_history_windows
 
 		annotation SummarizationSetBy = Automatic
 
+		annotation UnderlyingDateTimeDataType = Date
+
 	column window
 		dataType: string
 		lineageTag: dfe48332-ca69-43a5-bb27-1f97127ecbf2
@@ -476,3 +478,4 @@ table market_history_windows
 				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+

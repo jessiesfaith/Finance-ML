@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "THE FLOW:  controls gate the statements  \u2192  Revenue \u2212 costs = EBITDA \u2212 D&A = EBIT \u00d7 (1\u2212tax) = NOPAT  \u2192  + D&A \u2212 CapEx \u2212 \u0394NWC = UFCF  \u2192  drivers repeat the walk per year  \u2192  UFCF path, net debt & diluted shares hand off to valuation",
+                    "value": "THE FLOW:  controls gate the statements  →  Revenue − costs = EBITDA − D&A = EBIT × (1−tax) = NOPAT  →  + D&A − CapEx − ΔNWC = UFCF  →  drivers repeat the walk per year  →  UFCF path, net debt & diluted shares hand off to valuation",
                     "textStyle": {
                       "fontSize": "10pt"
                     }

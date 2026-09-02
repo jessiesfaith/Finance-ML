@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Jobless Claims (thousands) \u2014 sign-ups vs still drawing",
+                    "value": "Jobless Claims (thousands) — sign-ups vs still drawing",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/ICSA \u00b7 CCSA  \u2014 charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/ICSA · CCSA  — charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

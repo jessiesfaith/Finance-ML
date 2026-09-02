@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Legend \u2014 abbreviations",
+                    "value": "Legend — abbreviations",
                     "textStyle": {
                       "fontSize": "11pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "rf = risk-free rate \u00b7 \u03b2 (beta) = equity sensitivity to the market \u00b7 ERP = equity risk premium \u00b7 CAPM = capital asset pricing model \u00b7 E / D = equity / debt weights (market values)",
+                    "value": "rf = risk-free rate · β (beta) = equity sensitivity to the market · ERP = equity risk premium · CAPM = capital asset pricing model · E / D = equity / debt weights (market values)",
                     "textStyle": {
                       "fontSize": "9pt"
                     }
@@ -39,7 +39,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "WACC = weighted average cost of capital \u00b7 tax shield = debt cost \u00d7 (1 \u2212 tax) \u00b7 hurdle = WACC + 2pts \u00b7 OAS = option-adjusted spread (credit benchmark) \u00b7 pts = percentage points",
+                    "value": "WACC = weighted average cost of capital · tax shield = debt cost × (1 − tax) · hurdle = WACC + 2pts · OAS = option-adjusted spread (credit benchmark) · pts = percentage points",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

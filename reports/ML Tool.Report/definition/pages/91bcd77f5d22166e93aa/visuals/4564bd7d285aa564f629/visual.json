@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Housing Starts (thousands, SAAR) \u2014 the rate-sensitive gauge",
+                    "value": "Housing Starts (thousands, SAAR) — the rate-sensitive gauge",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/HOUST  \u2014 charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/HOUST  — charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

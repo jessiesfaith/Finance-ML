@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Beef \u2014 Retail Ground Beef ($/lb): inflation in the grocery aisle",
+                    "value": "Beef — Retail Ground Beef ($/lb): inflation in the grocery aisle",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/APU0000703112  \u2014 charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/APU0000703112  — charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

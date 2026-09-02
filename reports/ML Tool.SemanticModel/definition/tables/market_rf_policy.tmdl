@@ -84,3 +84,4 @@ table market_rf_policy
 				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+

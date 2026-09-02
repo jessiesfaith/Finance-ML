@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Median Unemployment Duration (weeks) \u2014 slow to heal",
+                    "value": "Median Unemployment Duration (weeks) — slow to heal",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/UEMPMED  \u2014 charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/UEMPMED  — charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

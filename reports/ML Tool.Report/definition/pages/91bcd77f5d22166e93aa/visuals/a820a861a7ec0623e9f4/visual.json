@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Surveys (index) \u2014 sentiment & ISM PMI (50 = neutral)",
+                    "value": "Surveys (index) — sentiment & ISM PMI (50 = neutral)",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/UMCSENT \u00b7 ISM: https://www.ismworld.org  \u2014 charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/UMCSENT · ISM: https://www.ismworld.org  — charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

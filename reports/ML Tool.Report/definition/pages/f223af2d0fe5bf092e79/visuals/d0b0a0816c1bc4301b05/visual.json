@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "THE FLOW:  macro informs the scenario  \u2192  rf + \u03b2 \u00d7 ERP = cost of equity  \u00b7  rf + credit spread = cost of debt  \u2192  weight by E/D with the tax shield = WACC  \u2192  + 2pts = hurdle  \u2192  WACC & hurdle hand off to Page 4",
+                    "value": "THE FLOW:  macro informs the scenario  →  rf + β × ERP = cost of equity  ·  rf + credit spread = cost of debt  →  weight by E/D with the tax shield = WACC  →  + 2pts = hurdle  →  WACC & hurdle hand off to Page 4",
                     "textStyle": {
                       "fontSize": "10pt"
                     }

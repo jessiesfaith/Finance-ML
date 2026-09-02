@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Projects are judged with the SAME per-scenario tax, WACC and hurdle as the company DCF \u2014 one world, one ruler. One-time setup: pip install openpyxl.",
+                    "value": "Projects are judged with the SAME per-scenario tax, WACC and hurdle as the company DCF — one world, one ruler. One-time setup: pip install openpyxl.",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

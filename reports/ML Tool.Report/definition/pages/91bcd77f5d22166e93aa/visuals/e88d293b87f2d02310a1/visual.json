@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/GDPC1 \u00b7 INDPRO \u00b7 RSAFS  \u2014 charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/GDPC1 · INDPRO · RSAFS  — charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

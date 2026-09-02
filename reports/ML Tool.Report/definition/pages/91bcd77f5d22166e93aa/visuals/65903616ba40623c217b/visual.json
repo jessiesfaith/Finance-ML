@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Gold ($/oz) \u2014 the stress hedge",
+                    "value": "Gold ($/oz) — the stress hedge",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source at cutover: LBMA precious-metal prices (FRED series discontinued)  \u2014 charted today: labeled synthetic",
+                    "value": "Live source at cutover: LBMA precious-metal prices (FRED series discontinued)  — charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

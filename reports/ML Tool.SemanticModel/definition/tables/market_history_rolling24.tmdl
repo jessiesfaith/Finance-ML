@@ -15,23 +15,7 @@ table market_history_rolling24
 
 		annotation SummarizationSetBy = Automatic
 
-	column ust_3m
-		dataType: double
-		formatString: 0.00
-		lineageTag: cf82ed6f-fe30-40be-9d0a-b7fc823e96eb
-		summarizeBy: none
-		sourceColumn: ust_3m
-
-		annotation SummarizationSetBy = Automatic
-
-	column ust_3m_r24
-		dataType: double
-		formatString: 0.00
-		lineageTag: d389210a-4bf9-46b3-88a0-89bf80fd2b19
-		summarizeBy: none
-		sourceColumn: ust_3m_r24
-
-		annotation SummarizationSetBy = Automatic
+		annotation UnderlyingDateTimeDataType = Date
 
 	column ust_2y
 		dataType: double
@@ -48,24 +32,6 @@ table market_history_rolling24
 		lineageTag: 05da7cbf-48e9-497f-ac5b-be66cb7ca8e2
 		summarizeBy: none
 		sourceColumn: ust_2y_r24
-
-		annotation SummarizationSetBy = Automatic
-
-	column ust_5y
-		dataType: double
-		formatString: 0.00
-		lineageTag: af615540-0029-4333-a424-6bc55aab93bf
-		summarizeBy: none
-		sourceColumn: ust_5y
-
-		annotation SummarizationSetBy = Automatic
-
-	column ust_5y_r24
-		dataType: double
-		formatString: 0.00
-		lineageTag: 8ef2dd28-c63c-4434-898f-98e97e056c89
-		summarizeBy: none
-		sourceColumn: ust_5y_r24
 
 		annotation SummarizationSetBy = Automatic
 
@@ -87,24 +53,6 @@ table market_history_rolling24
 
 		annotation SummarizationSetBy = Automatic
 
-	column ust_30y
-		dataType: double
-		formatString: 0.00
-		lineageTag: a4124b17-5a2f-412f-8626-6a301564ade0
-		summarizeBy: none
-		sourceColumn: ust_30y
-
-		annotation SummarizationSetBy = Automatic
-
-	column ust_30y_r24
-		dataType: double
-		formatString: 0.00
-		lineageTag: 3712b771-154d-4f39-b531-040573a14393
-		summarizeBy: none
-		sourceColumn: ust_30y_r24
-
-		annotation SummarizationSetBy = Automatic
-
 	column curve_spread_10y_2y
 		dataType: double
 		formatString: 0.00
@@ -120,24 +68,6 @@ table market_history_rolling24
 		lineageTag: f2faa06e-b063-4134-89ff-0bdd21189017
 		summarizeBy: none
 		sourceColumn: curve_spread_10y_2y_r24
-
-		annotation SummarizationSetBy = Automatic
-
-	column curve_spread_10y_3m
-		dataType: double
-		formatString: 0.00
-		lineageTag: 8fbb7b85-5025-48c2-b105-44cef9fd11a7
-		summarizeBy: none
-		sourceColumn: curve_spread_10y_3m
-
-		annotation SummarizationSetBy = Automatic
-
-	column curve_spread_10y_3m_r24
-		dataType: double
-		formatString: 0.00
-		lineageTag: 3ab9d45e-e621-4dd5-8532-640419dba4ad
-		summarizeBy: none
-		sourceColumn: curve_spread_10y_3m_r24
 
 		annotation SummarizationSetBy = Automatic
 
@@ -177,24 +107,6 @@ table market_history_rolling24
 
 		annotation SummarizationSetBy = Automatic
 
-	column core_cpi_yoy
-		dataType: double
-		formatString: 0.00
-		lineageTag: 42e015aa-5537-4e1e-a693-a371904323dc
-		summarizeBy: none
-		sourceColumn: core_cpi_yoy
-
-		annotation SummarizationSetBy = Automatic
-
-	column core_cpi_yoy_r24
-		dataType: double
-		formatString: 0.00
-		lineageTag: 4c87f684-d417-4ae1-9ef3-c49ac1e8e923
-		summarizeBy: none
-		sourceColumn: core_cpi_yoy_r24
-
-		annotation SummarizationSetBy = Automatic
-
 	column pce_yoy
 		dataType: double
 		formatString: 0.00
@@ -210,6 +122,184 @@ table market_history_rolling24
 		lineageTag: 5ae80f08-3694-4417-820b-e1138d5ebe42
 		summarizeBy: none
 		sourceColumn: pce_yoy_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column gdp_growth_yoy
+		dataType: double
+		formatString: 0.00
+		lineageTag: d3513249-22f1-42bd-beb2-656e735588f2
+		summarizeBy: none
+		sourceColumn: gdp_growth_yoy
+
+		annotation SummarizationSetBy = Automatic
+
+	column gdp_growth_yoy_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: f3e9940a-a4a2-4d8e-8fcd-06b68f5109fb
+		summarizeBy: none
+		sourceColumn: gdp_growth_yoy_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column unemployment_rate
+		dataType: double
+		formatString: 0.00
+		lineageTag: 6626bfb5-1a12-4b0c-bf72-065309d78a17
+		summarizeBy: none
+		sourceColumn: unemployment_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column unemployment_rate_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 02c774f3-743f-4f22-ba07-6096d44d5873
+		summarizeBy: none
+		sourceColumn: unemployment_rate_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column ig_oas
+		dataType: double
+		formatString: 0.00
+		lineageTag: 903b2543-938f-4cf1-95da-60c12c0cd967
+		summarizeBy: none
+		sourceColumn: ig_oas
+
+		annotation SummarizationSetBy = Automatic
+
+	column ig_oas_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 99cbbd0d-237d-493a-8b57-659346d1a65b
+		summarizeBy: none
+		sourceColumn: ig_oas_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column hy_oas
+		dataType: double
+		formatString: 0.00
+		lineageTag: 2236c14b-4307-411b-b1ce-74b520fb0cd9
+		summarizeBy: none
+		sourceColumn: hy_oas
+
+		annotation SummarizationSetBy = Automatic
+
+	column hy_oas_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: b09288e1-2aec-4656-b22d-f783fea9be2b
+		summarizeBy: none
+		sourceColumn: hy_oas_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: e0448898-030f-4bfd-9390-42620197e264
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 933671f4-fa95-4656-999a-ca5d610119b0
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column ust_3m
+		dataType: double
+		formatString: 0.00
+		lineageTag: cf82ed6f-fe30-40be-9d0a-b7fc823e96eb
+		summarizeBy: none
+		sourceColumn: ust_3m
+
+		annotation SummarizationSetBy = Automatic
+
+	column ust_3m_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: d389210a-4bf9-46b3-88a0-89bf80fd2b19
+		summarizeBy: none
+		sourceColumn: ust_3m_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column ust_5y
+		dataType: double
+		formatString: 0.00
+		lineageTag: af615540-0029-4333-a424-6bc55aab93bf
+		summarizeBy: none
+		sourceColumn: ust_5y
+
+		annotation SummarizationSetBy = Automatic
+
+	column ust_5y_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 8ef2dd28-c63c-4434-898f-98e97e056c89
+		summarizeBy: none
+		sourceColumn: ust_5y_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column ust_30y
+		dataType: double
+		formatString: 0.00
+		lineageTag: a4124b17-5a2f-412f-8626-6a301564ade0
+		summarizeBy: none
+		sourceColumn: ust_30y
+
+		annotation SummarizationSetBy = Automatic
+
+	column ust_30y_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 3712b771-154d-4f39-b531-040573a14393
+		summarizeBy: none
+		sourceColumn: ust_30y_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column curve_spread_10y_3m
+		dataType: double
+		formatString: 0.00
+		lineageTag: 8fbb7b85-5025-48c2-b105-44cef9fd11a7
+		summarizeBy: none
+		sourceColumn: curve_spread_10y_3m
+
+		annotation SummarizationSetBy = Automatic
+
+	column curve_spread_10y_3m_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 3ab9d45e-e621-4dd5-8532-640419dba4ad
+		summarizeBy: none
+		sourceColumn: curve_spread_10y_3m_r24
+
+		annotation SummarizationSetBy = Automatic
+
+	column core_cpi_yoy
+		dataType: double
+		formatString: 0.00
+		lineageTag: 42e015aa-5537-4e1e-a693-a371904323dc
+		summarizeBy: none
+		sourceColumn: core_cpi_yoy
+
+		annotation SummarizationSetBy = Automatic
+
+	column core_cpi_yoy_r24
+		dataType: double
+		formatString: 0.00
+		lineageTag: 4c87f684-d417-4ae1-9ef3-c49ac1e8e923
+		summarizeBy: none
+		sourceColumn: core_cpi_yoy_r24
 
 		annotation SummarizationSetBy = Automatic
 
@@ -267,24 +357,6 @@ table market_history_rolling24
 
 		annotation SummarizationSetBy = Automatic
 
-	column gdp_growth_yoy
-		dataType: double
-		formatString: 0.00
-		lineageTag: d3513249-22f1-42bd-beb2-656e735588f2
-		summarizeBy: none
-		sourceColumn: gdp_growth_yoy
-
-		annotation SummarizationSetBy = Automatic
-
-	column gdp_growth_yoy_r24
-		dataType: double
-		formatString: 0.00
-		lineageTag: f3e9940a-a4a2-4d8e-8fcd-06b68f5109fb
-		summarizeBy: none
-		sourceColumn: gdp_growth_yoy_r24
-
-		annotation SummarizationSetBy = Automatic
-
 	column indprod_yoy
 		dataType: double
 		formatString: 0.00
@@ -318,24 +390,6 @@ table market_history_rolling24
 		lineageTag: 0d9f3e95-d6ae-41ff-bc9c-fa1b9a13ba3d
 		summarizeBy: none
 		sourceColumn: retail_sales_yoy_r24
-
-		annotation SummarizationSetBy = Automatic
-
-	column unemployment_rate
-		dataType: double
-		formatString: 0.00
-		lineageTag: 6626bfb5-1a12-4b0c-bf72-065309d78a17
-		summarizeBy: none
-		sourceColumn: unemployment_rate
-
-		annotation SummarizationSetBy = Automatic
-
-	column unemployment_rate_r24
-		dataType: double
-		formatString: 0.00
-		lineageTag: 02c774f3-743f-4f22-ba07-6096d44d5873
-		summarizeBy: none
-		sourceColumn: unemployment_rate_r24
 
 		annotation SummarizationSetBy = Automatic
 
@@ -516,42 +570,6 @@ table market_history_rolling24
 		lineageTag: 888932f8-0725-4e4f-b419-3c87160b712f
 		summarizeBy: none
 		sourceColumn: ism_pmi_idx_r24
-
-		annotation SummarizationSetBy = Automatic
-
-	column ig_oas
-		dataType: double
-		formatString: 0.00
-		lineageTag: 903b2543-938f-4cf1-95da-60c12c0cd967
-		summarizeBy: none
-		sourceColumn: ig_oas
-
-		annotation SummarizationSetBy = Automatic
-
-	column ig_oas_r24
-		dataType: double
-		formatString: 0.00
-		lineageTag: 99cbbd0d-237d-493a-8b57-659346d1a65b
-		summarizeBy: none
-		sourceColumn: ig_oas_r24
-
-		annotation SummarizationSetBy = Automatic
-
-	column hy_oas
-		dataType: double
-		formatString: 0.00
-		lineageTag: 2236c14b-4307-411b-b1ce-74b520fb0cd9
-		summarizeBy: none
-		sourceColumn: hy_oas
-
-		annotation SummarizationSetBy = Automatic
-
-	column hy_oas_r24
-		dataType: double
-		formatString: 0.00
-		lineageTag: b09288e1-2aec-4656-b22d-f783fea9be2b
-		summarizeBy: none
-		sourceColumn: hy_oas_r24
 
 		annotation SummarizationSetBy = Automatic
 
@@ -843,22 +861,6 @@ table market_history_rolling24
 
 		annotation SummarizationSetBy = Automatic
 
-	column source
-		dataType: string
-		lineageTag: e0448898-030f-4bfd-9390-42620197e264
-		summarizeBy: none
-		sourceColumn: source
-
-		annotation SummarizationSetBy = Automatic
-
-	column value_class
-		dataType: string
-		lineageTag: 933671f4-fa95-4656-999a-ca5d610119b0
-		summarizeBy: none
-		sourceColumn: value_class
-
-		annotation SummarizationSetBy = Automatic
-
 	partition market_history_rolling24 = m
 		mode: import
 		source =
@@ -874,3 +876,4 @@ table market_history_rolling24
 				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+

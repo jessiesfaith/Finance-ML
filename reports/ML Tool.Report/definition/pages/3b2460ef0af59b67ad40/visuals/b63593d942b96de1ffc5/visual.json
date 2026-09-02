@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Legend \u2014 abbreviations",
+                    "value": "Legend — abbreviations",
                     "textStyle": {
                       "fontSize": "11pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "F/S = financial statements \u00b7 AR / AP = accounts receivable / payable \u00b7 EBITDA = earnings before interest, taxes, depreciation & amortization \u00b7 D&A = depreciation & amortization \u00b7 EBIT = EBITDA \u2212 D&A \u00b7 NOPAT = net operating profit after tax",
+                    "value": "F/S = financial statements · AR / AP = accounts receivable / payable · EBITDA = earnings before interest, taxes, depreciation & amortization · D&A = depreciation & amortization · EBIT = EBITDA − D&A · NOPAT = net operating profit after tax",
                     "textStyle": {
                       "fontSize": "9pt"
                     }
@@ -39,7 +39,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "NWC = net working capital (\u0394NWC = its change) \u00b7 CapEx = capital expenditure \u00b7 UFCF = unlevered free cash flow \u00b7 TSM = treasury-stock method \u00b7 IC = invested capital \u00b7 ROIC = return on invested capital \u00b7 $M = millions",
+                    "value": "NWC = net working capital (ΔNWC = its change) · CapEx = capital expenditure · UFCF = unlevered free cash flow · TSM = treasury-stock method · IC = invested capital · ROIC = return on invested capital · $M = millions",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

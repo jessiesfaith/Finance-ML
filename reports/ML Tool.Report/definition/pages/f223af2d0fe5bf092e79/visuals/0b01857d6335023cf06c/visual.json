@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Macro Context \u2014 informs the scenario and the assumptions; never plugged into WACC directly",
+                    "value": "Macro Context — informs the scenario and the assumptions; never plugged into WACC directly",
                     "textStyle": {
                       "fontSize": "14pt"
                     }

@@ -34,7 +34,7 @@ table finance_scenario_report
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'WACC' =
+	measure WACC =
 			
 			IF(
 			    HASONEVALUE(finance_scenario_report[scenario]),
@@ -135,104 +135,6 @@ table finance_scenario_report
 		formatString: 0.00
 		displayFolder: Cost of Capital & Market
 		lineageTag: b5e9f721-9dd2-43c5-8a64-f34301002dd0
-
-	/// ASSUMPTION: equity beta (1.20). At the live phase this comes from
-	/// peer-set regression; until then it is an explicit, labeled input.
-	measure 'Equity Beta' =
-			
-			IF(
-			    HASONEVALUE(finance_scenario_report[scenario]),
-			    SELECTEDVALUE(finance_scenario_report[beta]),
-			    CALCULATE(
-			        MAX(finance_scenario_report[beta]),
-			        finance_scenario_report[scenario] = "Base"
-			    )
-			)
-		formatString: 0.00
-		displayFolder: Cost of Capital & Market
-		lineageTag: 5e17120e-23dc-4f72-ba67-5c7f5cf662f3
-
-	/// ASSUMPTION: equity risk premium in points (4.50), dated and owned -
-	/// never an invented market observation.
-	measure 'Equity Risk Premium' =
-			
-			IF(
-			    HASONEVALUE(finance_scenario_report[scenario]),
-			    SELECTEDVALUE(finance_scenario_report[equity_risk_premium_pct]),
-			    CALCULATE(
-			        MAX(finance_scenario_report[equity_risk_premium_pct]),
-			        finance_scenario_report[scenario] = "Base"
-			    )
-			)
-		formatString: 0.00
-		displayFolder: Cost of Capital & Market
-		lineageTag: 3d374613-ccc3-4b18-a8ba-fcc2c26b2ec6
-
-	/// ASSUMPTION: credit spread over the risk-free rate (2.00pts),
-	/// benchmarked against IG/HY OAS when live market data lands.
-	measure 'Credit Spread' =
-			
-			IF(
-			    HASONEVALUE(finance_scenario_report[scenario]),
-			    SELECTEDVALUE(finance_scenario_report[credit_spread_pct]),
-			    CALCULATE(
-			        MAX(finance_scenario_report[credit_spread_pct]),
-			        finance_scenario_report[scenario] = "Base"
-			    )
-			)
-		formatString: 0.00
-		displayFolder: Cost of Capital & Market
-		lineageTag: f5162c3b-ab2a-475e-bcc3-af2c71ffb14d
-
-	/// MACRO CONTEXT: informs the scenario narrative and the assumptions -
-	/// never plugged into WACC directly (docs/MODEL_AUDIT.md map W).
-	measure 'CPI Inflation' =
-			
-			IF(
-			    HASONEVALUE(finance_scenario_report[scenario]),
-			    SELECTEDVALUE(finance_scenario_report[cpi]),
-			    CALCULATE(
-			        MAX(finance_scenario_report[cpi]),
-			        finance_scenario_report[scenario] = "Base"
-			    )
-			)
-		formatString: 0.00
-		displayFolder: Cost of Capital & Market
-		lineageTag: 6b68a92e-9fa0-4ad8-ab73-bca7efaec1f2
-
-	/// MACRO CONTEXT: same role as CPI - context for the scenario, not a
-	/// WACC input.
-	measure 'Unemployment Rate' =
-			
-			IF(
-			    HASONEVALUE(finance_scenario_report[scenario]),
-			    SELECTEDVALUE(finance_scenario_report[unemployment]),
-			    CALCULATE(
-			        MAX(finance_scenario_report[unemployment]),
-			        finance_scenario_report[scenario] = "Base"
-			    )
-			)
-		formatString: 0.00
-		displayFolder: Cost of Capital & Market
-		lineageTag: 2ed51572-534b-427e-b228-bdb675b07982
-
-	/// Explicit assumption: the hurdle sits 2.00pts above WACC, so a
-	/// project must clear financing cost plus a margin of safety.
-	measure 'Hurdle Premium (pts)' =
-			
-			[Hurdle Rate (%)] - [Calculated WACC]
-		formatString: 0.00
-		displayFolder: Cost of Capital & Market
-		lineageTag: d95f7ae9-de5b-4bfb-ab7c-c55b47186099
-
-	/// Return on invested capital minus the cost of that capital -
-	/// positive means operations create value over financing cost.
-	measure 'ROIC WACC Spread (pts)' =
-			
-			[ROIC Check (%)] - [Calculated WACC]
-		formatString: 0.00
-		displayFolder: Capital Allocation
-		lineageTag: 2262db04-d0c7-46c8-bace-560f4392fc99
 
 	measure 'Fed Funds' =
 			
@@ -1448,6 +1350,104 @@ table finance_scenario_report
 			    )
 		displayFolder: Formatting Symbols
 		lineageTag: 76cf6c49-cf15-4c38-8a8f-c5011c597825
+
+	/// ASSUMPTION: equity beta (1.20). At the live phase this comes from
+	/// peer-set regression; until then it is an explicit, labeled input.
+	measure 'Equity Beta' =
+			
+			IF(
+			    HASONEVALUE(finance_scenario_report[scenario]),
+			    SELECTEDVALUE(finance_scenario_report[beta]),
+			    CALCULATE(
+			        MAX(finance_scenario_report[beta]),
+			        finance_scenario_report[scenario] = "Base"
+			    )
+			)
+		formatString: 0.00
+		displayFolder: Cost of Capital & Market
+		lineageTag: 5e17120e-23dc-4f72-ba67-5c7f5cf662f3
+
+	/// ASSUMPTION: equity risk premium in points (4.50), dated and owned -
+	/// never an invented market observation.
+	measure 'Equity Risk Premium' =
+			
+			IF(
+			    HASONEVALUE(finance_scenario_report[scenario]),
+			    SELECTEDVALUE(finance_scenario_report[equity_risk_premium_pct]),
+			    CALCULATE(
+			        MAX(finance_scenario_report[equity_risk_premium_pct]),
+			        finance_scenario_report[scenario] = "Base"
+			    )
+			)
+		formatString: 0.00
+		displayFolder: Cost of Capital & Market
+		lineageTag: 3d374613-ccc3-4b18-a8ba-fcc2c26b2ec6
+
+	/// ASSUMPTION: credit spread over the risk-free rate (2.00pts),
+	/// benchmarked against IG/HY OAS when live market data lands.
+	measure 'Credit Spread' =
+			
+			IF(
+			    HASONEVALUE(finance_scenario_report[scenario]),
+			    SELECTEDVALUE(finance_scenario_report[credit_spread_pct]),
+			    CALCULATE(
+			        MAX(finance_scenario_report[credit_spread_pct]),
+			        finance_scenario_report[scenario] = "Base"
+			    )
+			)
+		formatString: 0.00
+		displayFolder: Cost of Capital & Market
+		lineageTag: f5162c3b-ab2a-475e-bcc3-af2c71ffb14d
+
+	/// MACRO CONTEXT: informs the scenario narrative and the assumptions -
+	/// never plugged into WACC directly (docs/MODEL_AUDIT.md map W).
+	measure 'CPI Inflation' =
+			
+			IF(
+			    HASONEVALUE(finance_scenario_report[scenario]),
+			    SELECTEDVALUE(finance_scenario_report[cpi]),
+			    CALCULATE(
+			        MAX(finance_scenario_report[cpi]),
+			        finance_scenario_report[scenario] = "Base"
+			    )
+			)
+		formatString: 0.00
+		displayFolder: Cost of Capital & Market
+		lineageTag: 6b68a92e-9fa0-4ad8-ab73-bca7efaec1f2
+
+	/// MACRO CONTEXT: same role as CPI - context for the scenario, not a
+	/// WACC input.
+	measure 'Unemployment Rate' =
+			
+			IF(
+			    HASONEVALUE(finance_scenario_report[scenario]),
+			    SELECTEDVALUE(finance_scenario_report[unemployment]),
+			    CALCULATE(
+			        MAX(finance_scenario_report[unemployment]),
+			        finance_scenario_report[scenario] = "Base"
+			    )
+			)
+		formatString: 0.00
+		displayFolder: Cost of Capital & Market
+		lineageTag: 2ed51572-534b-427e-b228-bdb675b07982
+
+	/// Explicit assumption: the hurdle sits 2.00pts above WACC, so a
+	/// project must clear financing cost plus a margin of safety.
+	measure 'Hurdle Premium (pts)' =
+			
+			[Hurdle Rate (%)] - [Calculated WACC]
+		formatString: 0.00
+		displayFolder: Cost of Capital & Market
+		lineageTag: d95f7ae9-de5b-4bfb-ab7c-c55b47186099
+
+	/// Return on invested capital minus the cost of that capital -
+	/// positive means operations create value over financing cost.
+	measure 'ROIC WACC Spread (pts)' =
+			
+			[ROIC Check (%)] - [Calculated WACC]
+		formatString: 0.00
+		displayFolder: Capital Allocation
+		lineageTag: 2262db04-d0c7-46c8-bace-560f4392fc99
 
 	column scenario
 		dataType: string

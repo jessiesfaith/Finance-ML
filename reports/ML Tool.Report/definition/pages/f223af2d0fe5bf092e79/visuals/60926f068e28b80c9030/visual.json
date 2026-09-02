@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "The active row is the internal model on synthetic history \u2014 labeled MODEL_OUTPUT, never passed off as market data. The FRED rows activate at the live phase (owner's call), with source and observation date recorded on every WACC.",
+                    "value": "The active row is the internal model on synthetic history — labeled MODEL_OUTPUT, never passed off as market data. The FRED rows activate at the live phase (owner's call), with source and observation date recorded on every WACC.",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

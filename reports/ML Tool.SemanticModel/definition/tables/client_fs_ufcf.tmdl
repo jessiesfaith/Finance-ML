@@ -13,15 +13,6 @@ table client_fs_ufcf
 		displayFolder: Income Walk
 		lineageTag: c0c35d5d-7d1e-4f02-a861-d9d4cadd8ecc
 
-	/// Text twin of Client Revenue ($M): FORMAT() returns a string, so the
-	/// card can never auto-abbreviate it to "1.3K" (same pattern as Page
-	/// 1's Invested Capital Display).
-	measure 'Client Revenue Display' =
-			
-			FORMAT([Client Revenue ($M)], "#,0.0")
-		displayFolder: Income Walk
-		lineageTag: f996abd2-2979-40c7-87bf-62d22e18489f
-
 	/// CLIENT F/S: consolidated revenue after mapping, sign normalization,
 	/// FX translation and eliminations (1,274.0 in the fixture).
 	measure 'Client Revenue ($M)' =
@@ -353,6 +344,15 @@ table client_fs_ufcf
 		formatString: 0.0
 		displayFolder: Forecast Drivers
 		lineageTag: 40431e58-baa6-4aa4-a768-32e0b7b0b55c
+
+	/// Text twin of Client Revenue ($M): FORMAT() returns a string, so the
+	/// card can never auto-abbreviate it to "1.3K" (same pattern as Page
+	/// 1's Invested Capital Display).
+	measure 'Client Revenue Display' =
+			
+			FORMAT([Client Revenue ($M)], "#,0.0")
+		displayFolder: Income Walk
+		lineageTag: f996abd2-2979-40c7-87bf-62d22e18489f
 
 	column period_id
 		dataType: string

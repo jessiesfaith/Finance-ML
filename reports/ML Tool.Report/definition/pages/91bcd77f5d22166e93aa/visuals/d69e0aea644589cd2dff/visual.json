@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Consumer Inflation (%) \u2014 headline vs core",
+                    "value": "Consumer Inflation (%) — headline vs core",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/CPIAUCSL \u00b7 CPILFESL \u00b7 PCEPI \u00b7 PCEPILFE  \u2014 charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/CPIAUCSL · CPILFESL · PCEPI · PCEPILFE  — charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

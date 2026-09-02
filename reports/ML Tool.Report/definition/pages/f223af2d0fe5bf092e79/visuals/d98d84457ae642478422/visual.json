@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "cost of debt \u00d7 (1 \u2212 tax rate) \u2014 the tax shield.",
+                    "value": "cost of debt × (1 − tax rate) — the tax shield.",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

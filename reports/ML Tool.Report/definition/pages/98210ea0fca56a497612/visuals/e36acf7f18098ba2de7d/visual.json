@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Incremental revenue & cost savings \u2192 EBITDA \u2192 less straight-line D&A (investment \u00f7 horizon) \u2192 \u00d7 (1 \u2212 tax) = NOPAT \u2192 + D&A \u2212 maintenance CapEx \u2212 \u0394NWC = incremental UFCF (final year recovers the NWC balance).",
+                    "value": "Incremental revenue & cost savings → EBITDA → less straight-line D&A (investment ÷ horizon) → × (1 − tax) = NOPAT → + D&A − maintenance CapEx − ΔNWC = incremental UFCF (final year recovers the NWC balance).",
                     "textStyle": {
                       "fontSize": "10pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Then three tests, read together: NPV at the hurdle > 0 \u00b7 IRR > hurdle \u00b7 incremental ROIC > WACC. All pass = APPROVE, all fail = REJECT, disagreement = REVIEW \u2014 and when the accounting return says yes but the cash tests say no, cash rules.",
+                    "value": "Then three tests, read together: NPV at the hurdle > 0 · IRR > hurdle · incremental ROIC > WACC. All pass = APPROVE, all fail = REJECT, disagreement = REVIEW — and when the accounting return says yes but the cash tests say no, cash rules.",
                     "textStyle": {
                       "fontSize": "10pt"
                     }

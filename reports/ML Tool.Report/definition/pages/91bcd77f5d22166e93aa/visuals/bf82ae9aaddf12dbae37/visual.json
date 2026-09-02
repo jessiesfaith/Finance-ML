@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "AI Thematic Index \u2014 owner defines the basket at cutover",
+                    "value": "AI Thematic Index — owner defines the basket at cutover",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source at cutover: owner-defined constituent basket - no standard public series exists  \u2014 charted today: labeled synthetic",
+                    "value": "Live source at cutover: owner-defined constituent basket - no standard public series exists  — charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     }

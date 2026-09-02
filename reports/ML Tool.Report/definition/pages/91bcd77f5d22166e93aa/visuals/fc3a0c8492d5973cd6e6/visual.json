@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "SYNTHETIC seed history, honestly labeled \u2014 every series flips to its live source at the cutover (ids in market_metric_master).",
+                    "value": "SYNTHETIC seed history, honestly labeled — every series flips to its live source at the cutover (ids in market_metric_master).",
                     "textStyle": {
                       "fontSize": "9pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Charts show plain monthly values. ONE control: the date slicer at left picks the time period \u2014 drag its ends, or switch it to Relative date (Format pane \u2192 Slicer settings \u2192 Options \u2192 Style) for Last 3 / 6 / 12 months or This year.",
+                    "value": "Charts show plain monthly values. ONE control: the date slicer at left picks the time period — drag its ends, or switch it to Relative date (Format pane → Slicer settings → Options → Style) for Last 3 / 6 / 12 months or This year.",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Tech Sector Index \u2014 rate-sensitive growth",
+                    "value": "Tech Sector Index — rate-sensitive growth",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/NASDAQCOM \u00b7 live proxy: NASDAQ Composite  \u2014 charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/NASDAQCOM · live proxy: NASDAQ Composite  — charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

@@ -235,3 +235,4 @@ table client_fs_projects
 				    #"Changed Type"
 
 	annotation PBI_ResultType = Table
+

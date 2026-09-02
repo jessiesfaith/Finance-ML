@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Silver ($/oz) \u2014 gold's volatile sibling (ratio \u2248 70:1)",
+                    "value": "Silver ($/oz) — gold's volatile sibling (ratio ≈ 70:1)",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source at cutover: LBMA precious-metal prices  \u2014 charted today: labeled synthetic",
+                    "value": "Live source at cutover: LBMA precious-metal prices  — charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

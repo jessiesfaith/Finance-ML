@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "5 \u00b7 Sensitivity \u2014 implied share price across WACC \u00d7 terminal growth   (which assumptions carry the answer)",
+                    "value": "5 · Sensitivity — implied share price across WACC × terminal growth   (which assumptions carry the answer)",
                     "textStyle": {
                       "fontSize": "14pt"
                     }

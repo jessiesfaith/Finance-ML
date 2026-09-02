@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Treasury Yields (%) \u2014 the whole curve",
+                    "value": "Treasury Yields (%) — the whole curve",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/DGS3MO \u00b7 DGS2 \u00b7 DGS5 \u00b7 DGS10 \u00b7 DGS30  \u2014 charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/DGS3MO · DGS2 · DGS5 · DGS10 · DGS30  — charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

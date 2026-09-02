@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Bond Market \u2014 Credit Spreads (pts)",
+                    "value": "Bond Market — Credit Spreads (pts)",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/BAMLC0A0CM \u00b7 BAMLH0A0HYM2  \u2014 charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/BAMLC0A0CM · BAMLH0A0HYM2  — charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "1 \u00b7 Discount Each Year \u2014 PV = FCF \u00f7 (1 + WACC)^t",
+                    "value": "1 · Discount Each Year — PV = FCF ÷ (1 + WACC)^t",
                     "textStyle": {
                       "fontSize": "14pt"
                     }

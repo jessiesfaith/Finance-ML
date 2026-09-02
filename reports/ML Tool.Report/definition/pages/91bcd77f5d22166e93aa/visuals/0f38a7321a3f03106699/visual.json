@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/PAYEMS \u00b7 JTSJOL  \u2014 charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/PAYEMS · JTSJOL  — charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

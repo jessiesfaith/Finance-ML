@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Policy Rate \u2014 Effective Fed Funds (%)",
+                    "value": "Policy Rate — Effective Fed Funds (%)",
                     "textStyle": {
                       "fontSize": "13pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Live source: https://fred.stlouisfed.org/series/FEDFUNDS  \u2014 charted today: labeled synthetic",
+                    "value": "Live source: https://fred.stlouisfed.org/series/FEDFUNDS  — charted today: labeled synthetic",
                     "textStyle": {
                       "fontSize": "8pt"
                     },

@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Risk-free = the internal model's 10Y prediction today (policy table at right; flips to observed FRED data at the live phase). Weights are market-value derived: E/(D+E) from diluted shares \u00d7 price and statement debt \u2014 DECISIONS #62.",
+                    "value": "Risk-free = the internal model's 10Y prediction today (policy table at right; flips to observed FRED data at the live phase). Weights are market-value derived: E/(D+E) from diluted shares × price and statement debt — DECISIONS #62.",
                     "textStyle": {
                       "fontSize": "9pt"
                     }
