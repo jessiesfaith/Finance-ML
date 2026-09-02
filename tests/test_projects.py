@@ -154,7 +154,9 @@ def test_grid_and_verdict_shape(sensitivity):
                                   + [rate_column(r) for r in SENSITIVITY_RATES])
     assert len(grid) == 5 * len(FLOWS_DELIVERED_PCT)
     assert len(verdicts) == 5
-    assert set(verdicts.columns[2:]) == {
+    assert list(verdicts.columns[:3]) == ["project_id", "project_name",
+                                          "reading"]
+    assert set(verdicts.columns[3:]) == {
         "at_" + f"{r:.0f}pct" for r in SENSITIVITY_RATES}
 
 
