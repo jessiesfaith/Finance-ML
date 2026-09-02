@@ -3,7 +3,7 @@
   "name": "1544e472ccf675e64a12",
   "position": {
     "x": 165,
-    "y": 660,
+    "y": 940,
     "height": 240,
     "width": 1200,
     "z": 8000,
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "client_fs_projects.project_id",
-              "nativeQueryRef": "project_id"
+              "nativeQueryRef": "project_id",
+              "displayName": "project"
             },
             {
               "field": {
@@ -55,7 +56,8 @@
                 }
               },
               "queryRef": "client_fs_projects.initial_investment",
-              "nativeQueryRef": "initial_investment"
+              "nativeQueryRef": "initial_investment",
+              "displayName": "investment $M"
             },
             {
               "field": {
@@ -69,7 +71,8 @@
                 }
               },
               "queryRef": "client_fs_projects.ufcf_y1",
-              "nativeQueryRef": "ufcf_y1"
+              "nativeQueryRef": "ufcf_y1",
+              "displayName": "UFCF Y1"
             },
             {
               "field": {
@@ -83,7 +86,8 @@
                 }
               },
               "queryRef": "client_fs_projects.ufcf_y2",
-              "nativeQueryRef": "ufcf_y2"
+              "nativeQueryRef": "ufcf_y2",
+              "displayName": "UFCF Y2"
             },
             {
               "field": {
@@ -97,7 +101,8 @@
                 }
               },
               "queryRef": "client_fs_projects.ufcf_y3",
-              "nativeQueryRef": "ufcf_y3"
+              "nativeQueryRef": "ufcf_y3",
+              "displayName": "UFCF Y3"
             },
             {
               "field": {
@@ -111,7 +116,8 @@
                 }
               },
               "queryRef": "client_fs_projects.ufcf_y4",
-              "nativeQueryRef": "ufcf_y4"
+              "nativeQueryRef": "ufcf_y4",
+              "displayName": "UFCF Y4"
             },
             {
               "field": {
@@ -125,7 +131,8 @@
                 }
               },
               "queryRef": "client_fs_projects.ufcf_y5",
-              "nativeQueryRef": "ufcf_y5"
+              "nativeQueryRef": "ufcf_y5",
+              "displayName": "UFCF Y5"
             },
             {
               "field": {
@@ -139,7 +146,8 @@
                 }
               },
               "queryRef": "client_fs_projects.npv_at_hurdle",
-              "nativeQueryRef": "npv_at_hurdle"
+              "nativeQueryRef": "npv_at_hurdle",
+              "displayName": "NPV @ hurdle"
             }
           ]
         }

@@ -41,7 +41,8 @@
                 }
               },
               "queryRef": "finance_scenario_report.wacc_pct",
-              "nativeQueryRef": "wacc_pct"
+              "nativeQueryRef": "wacc_pct",
+              "displayName": "WACC %"
             },
             {
               "field": {
@@ -55,7 +56,8 @@
                 }
               },
               "queryRef": "finance_scenario_report.hurdle_rate_pct",
-              "nativeQueryRef": "hurdle_rate_pct"
+              "nativeQueryRef": "hurdle_rate_pct",
+              "displayName": "hurdle %"
             },
             {
               "field": {
@@ -69,7 +71,8 @@
                 }
               },
               "queryRef": "finance_scenario_report.enterprise_value",
-              "nativeQueryRef": "enterprise_value"
+              "nativeQueryRef": "enterprise_value",
+              "displayName": "EV $M"
             },
             {
               "field": {
@@ -83,7 +86,8 @@
                 }
               },
               "queryRef": "finance_scenario_report.equity_value",
-              "nativeQueryRef": "equity_value"
+              "nativeQueryRef": "equity_value",
+              "displayName": "equity $M"
             },
             {
               "field": {
@@ -97,7 +101,8 @@
                 }
               },
               "queryRef": "finance_scenario_report.implied_share_price",
-              "nativeQueryRef": "implied_share_price"
+              "nativeQueryRef": "implied_share_price",
+              "displayName": "share price $"
             },
             {
               "field": {
@@ -111,7 +116,8 @@
                 }
               },
               "queryRef": "finance_scenario_report.project_irr_pct",
-              "nativeQueryRef": "project_irr_pct"
+              "nativeQueryRef": "project_irr_pct",
+              "displayName": "IRR %"
             }
           ]
         }

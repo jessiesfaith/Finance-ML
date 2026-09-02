@@ -3,7 +3,7 @@
   "name": "3e70efbd7bb06e5d8995",
   "position": {
     "x": 1385,
-    "y": 660,
+    "y": 940,
     "height": 200,
     "width": 330,
     "z": 9000,
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Year 5 jumps where working capital comes back — inventory and receivables sell down when the project ends.",
+                    "value": "Year 5 jumps where working capital comes back \u2014 inventory and receivables sell down when the project ends.",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

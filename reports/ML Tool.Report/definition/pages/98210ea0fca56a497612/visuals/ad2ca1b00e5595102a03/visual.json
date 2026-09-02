@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "b3d1bb1fad7f6781e028",
+  "name": "ad2ca1b00e5595102a03",
   "position": {
-    "x": 1720,
-    "y": 135,
-    "height": 330,
-    "width": 900,
-    "z": 81000,
-    "tabOrder": 81000
+    "x": 165,
+    "y": 600,
+    "z": 501000,
+    "height": 230,
+    "width": 1550,
+    "tabOrder": 501000
   },
   "visual": {
     "visualType": "tableEx",
@@ -20,88 +20,89 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "client_fs_controls"
+                      "Entity": "client_fs_projects"
                     }
                   },
-                  "Property": "control_id"
+                  "Property": "project_id"
                 }
               },
-              "queryRef": "client_fs_controls.control_id",
-              "nativeQueryRef": "control_id",
-              "displayName": "control"
+              "queryRef": "client_fs_projects.project_id",
+              "nativeQueryRef": "project_id",
+              "displayName": "project"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "client_fs_controls"
+                      "Entity": "client_fs_projects"
                     }
                   },
-                  "Property": "control_name"
+                  "Property": "scenario"
                 }
               },
-              "queryRef": "client_fs_controls.control_name",
-              "nativeQueryRef": "control_name",
-              "displayName": "check"
+              "queryRef": "client_fs_projects.scenario",
+              "nativeQueryRef": "scenario"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "client_fs_controls"
+                      "Entity": "client_fs_projects"
                     }
                   },
-                  "Property": "entity_id"
+                  "Property": "npv_reason"
                 }
               },
-              "queryRef": "client_fs_controls.entity_id",
-              "nativeQueryRef": "entity_id",
-              "displayName": "entity"
+              "queryRef": "client_fs_projects.npv_reason",
+              "nativeQueryRef": "npv_reason",
+              "displayName": "why NPV"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "client_fs_controls"
+                      "Entity": "client_fs_projects"
                     }
                   },
-                  "Property": "period_id"
+                  "Property": "irr_reason"
                 }
               },
-              "queryRef": "client_fs_controls.period_id",
-              "nativeQueryRef": "period_id",
-              "displayName": "period"
+              "queryRef": "client_fs_projects.irr_reason",
+              "nativeQueryRef": "irr_reason",
+              "displayName": "why IRR"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "client_fs_controls"
+                      "Entity": "client_fs_projects"
                     }
                   },
-                  "Property": "status"
+                  "Property": "roic_reason"
                 }
               },
-              "queryRef": "client_fs_controls.status",
-              "nativeQueryRef": "status"
+              "queryRef": "client_fs_projects.roic_reason",
+              "nativeQueryRef": "roic_reason",
+              "displayName": "why ROIC"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "client_fs_controls"
+                      "Entity": "client_fs_projects"
                     }
                   },
-                  "Property": "severity"
+                  "Property": "recommendation_reason"
                 }
               },
-              "queryRef": "client_fs_controls.severity",
-              "nativeQueryRef": "severity"
+              "queryRef": "client_fs_projects.recommendation_reason",
+              "nativeQueryRef": "recommendation_reason",
+              "displayName": "why \u2014 and what to review"
             }
           ]
         }
@@ -113,13 +114,13 @@
               "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "client_fs_controls"
+                    "Entity": "client_fs_projects"
                   }
                 },
-                "Property": "status"
+                "Property": "project_id"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
         ]
       }

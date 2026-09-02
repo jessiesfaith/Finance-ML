@@ -3,7 +3,7 @@
   "name": "8ef646810570fb26f005",
   "position": {
     "x": 165,
-    "y": 1670,
+    "y": 1950,
     "height": 200,
     "width": 1550,
     "z": 11000,
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "client_fs_projects.project_id",
-              "nativeQueryRef": "project_id"
+              "nativeQueryRef": "project_id",
+              "displayName": "project"
             },
             {
               "field": {
@@ -41,7 +42,8 @@
                 }
               },
               "queryRef": "client_fs_projects.project_name",
-              "nativeQueryRef": "project_name"
+              "nativeQueryRef": "project_name",
+              "displayName": "name"
             },
             {
               "field": {
@@ -69,7 +71,8 @@
                 }
               },
               "queryRef": "client_fs_projects.initial_investment",
-              "nativeQueryRef": "initial_investment"
+              "nativeQueryRef": "initial_investment",
+              "displayName": "investment $M"
             },
             {
               "field": {
@@ -83,7 +86,8 @@
                 }
               },
               "queryRef": "client_fs_projects.horizon_years",
-              "nativeQueryRef": "horizon_years"
+              "nativeQueryRef": "horizon_years",
+              "displayName": "horizon yrs"
             },
             {
               "field": {
@@ -97,7 +101,8 @@
                 }
               },
               "queryRef": "client_fs_projects.review_status",
-              "nativeQueryRef": "review_status"
+              "nativeQueryRef": "review_status",
+              "displayName": "status"
             },
             {
               "field": {

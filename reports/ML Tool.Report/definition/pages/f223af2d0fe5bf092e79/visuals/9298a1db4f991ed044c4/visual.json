@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "market_rf_policy.rf_methodology_id",
-              "nativeQueryRef": "rf_methodology_id"
+              "nativeQueryRef": "rf_methodology_id",
+              "displayName": "methodology"
             },
             {
               "field": {
@@ -55,7 +56,8 @@
                 }
               },
               "queryRef": "market_rf_policy.observation_rule",
-              "nativeQueryRef": "observation_rule"
+              "nativeQueryRef": "observation_rule",
+              "displayName": "rule"
             },
             {
               "field": {
@@ -69,7 +71,8 @@
                 }
               },
               "queryRef": "market_rf_policy.maturity_years",
-              "nativeQueryRef": "maturity_years"
+              "nativeQueryRef": "maturity_years",
+              "displayName": "maturity yrs"
             },
             {
               "field": {
@@ -83,7 +86,8 @@
                 }
               },
               "queryRef": "market_rf_policy.active_flag",
-              "nativeQueryRef": "active_flag"
+              "nativeQueryRef": "active_flag",
+              "displayName": "active"
             },
             {
               "field": {
@@ -97,7 +101,8 @@
                 }
               },
               "queryRef": "market_rf_policy.value_class",
-              "nativeQueryRef": "value_class"
+              "nativeQueryRef": "value_class",
+              "displayName": "class"
             }
           ]
         }

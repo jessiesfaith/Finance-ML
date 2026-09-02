@@ -47,8 +47,9 @@ OUTPUT_COLUMNS = [
     "initial_investment", "horizon_years", "tax_rate_pct", "wacc_pct",
     "hurdle_rate_pct", "ufcf_y1", "ufcf_y2", "ufcf_y3", "ufcf_y4", "ufcf_y5",
     "npv_at_hurdle", "irr_pct", "payback_years", "incr_roic_pct",
-    "npv_test", "irr_test", "roic_test", "recommendation", "rationale",
-    "value_class",
+    "npv_test", "irr_test", "roic_test", "recommendation",
+    "npv_reason", "irr_reason", "roic_reason", "recommendation_reason",
+    "rationale", "value_class",
 ]
 
 
@@ -135,6 +136,66 @@ def _irr(investment, flows, lo=-0.95, hi=10.0, tol=1e-9):
     return (lo + hi) / 2
 
 
+def _test_reasons(npv, irr_pct, roic_pct, hurdle, wacc,
+                  tests, category, recommendation):
+    """Plain-language WHY for each test and for the recommendation,
+    assembled from the row's own numbers - never canned text."""
+    npv_test, irr_test, roic_test = tests
+    if npv_test == "PASS":
+        npv_reason = (f"PASS: NPV +{npv:,.1f} at the {hurdle:.2f}% hurdle - "
+                      "discounted flows repay the investment with value left over")
+    else:
+        npv_reason = (f"FAIL: NPV {npv:,.1f} at the {hurdle:.2f}% hurdle - "
+                      "discounted flows never repay the investment at this rate")
+    if irr_pct is None:
+        irr_reason = "FAIL: no rate makes these flows break even"
+    elif irr_test == "PASS":
+        irr_reason = (f"PASS: IRR {irr_pct:.1f}% clears the {hurdle:.2f}% "
+                      f"hurdle by {irr_pct - hurdle:.1f}pts")
+    else:
+        irr_reason = (f"FAIL: IRR {irr_pct:.1f}% falls "
+                      f"{hurdle - irr_pct:.1f}pts short of the "
+                      f"{hurdle:.2f}% hurdle")
+    if roic_pct is None:
+        roic_reason = "FAIL: no measurable capital base"
+    elif roic_test == "PASS":
+        roic_reason = (f"PASS: avg return on invested capital {roic_pct:.1f}% "
+                       f"exceeds the {wacc:.2f}% cost of capital")
+    else:
+        roic_reason = (f"FAIL: avg return {roic_pct:.1f}% is below the "
+                       f"{wacc:.2f}% cost of capital")
+
+    if recommendation == "APPROVE":
+        rec = ("APPROVE: all three tests pass - the option earns more than "
+               "its money costs on every ruler")
+    elif str(category).upper() == "DEBT_PAYDOWN":
+        rec = ("REJECT at the equity hurdle by construction - the wrong "
+               "ruler for a risk-free use of cash: its return IS the "
+               "after-tax cost of debt, the floor risky options must beat. "
+               "Weigh it on safety and debt headroom instead")
+    elif recommendation == "REJECT":
+        rec = ("REJECT: every test fails - value is destroyed at these "
+               "assumptions")
+    else:
+        failed = [n for n, r in zip(("NPV", "IRR", "ROIC"), tests)
+                  if r == "FAIL"]
+        passed = [n for n, r in zip(("NPV", "IRR", "ROIC"), tests)
+                  if r == "PASS"]
+        if npv_test == "FAIL" and roic_test == "PASS":
+            rec = ("REVIEW: the tests disagree - accounting ROIC beats WACC "
+                   "but the cash never repays the hurdle, and cash rules. "
+                   "To review: can early-year flows be raised (price, "
+                   "volume, margin), can the investment be phased or "
+                   "reduced - or reject. Stress it in the sensitivity grid "
+                   "below")
+        else:
+            rec = (f"REVIEW: {' & '.join(failed)} fail while "
+                   f"{' & '.join(passed)} pass - resolve the disagreement "
+                   "before committing; stress the failing test's drivers "
+                   "in the sensitivity grid below")
+    return npv_reason, irr_reason, roic_reason, rec
+
+
 def _appraise_debt_paydown(project, rates_row) -> dict:
     """
     Paying down debt as a competing use of cash. Economically it is
@@ -178,6 +239,9 @@ def _appraise_debt_paydown(project, rates_row) -> dict:
     tests = (npv_test, irr_test, roic_test)
     recommendation = ("APPROVE" if tests == ("PASS",) * 3 else
                       "REJECT" if tests == ("FAIL",) * 3 else "REVIEW")
+    npv_reason, irr_reason, roic_reason, rec_reason = _test_reasons(
+        npv, irr * 100 if irr is not None else None, roic, hurdle, wacc,
+        tests, project["category"], recommendation)
 
     row = {
         "project_id": pid,
@@ -198,6 +262,10 @@ def _appraise_debt_paydown(project, rates_row) -> dict:
         "irr_test": irr_test,
         "roic_test": roic_test,
         "recommendation": recommendation,
+        "npv_reason": npv_reason,
+        "irr_reason": irr_reason,
+        "roic_reason": roic_reason,
+        "recommendation_reason": rec_reason,
         "rationale": project["rationale"],
         "value_class": "CALCULATED",
     }
@@ -265,6 +333,9 @@ def appraise_project(project, assumptions, rates_row) -> dict:
     tests = (npv_test, irr_test, roic_test)
     recommendation = ("APPROVE" if tests == ("PASS",) * 3 else
                       "REJECT" if tests == ("FAIL",) * 3 else "REVIEW")
+    npv_reason, irr_reason, roic_reason, rec_reason = _test_reasons(
+        npv, irr * 100 if irr is not None else None, roic, hurdle, wacc,
+        tests, project["category"], recommendation)
 
     row = {
         "project_id": pid,
@@ -285,6 +356,10 @@ def appraise_project(project, assumptions, rates_row) -> dict:
         "irr_test": irr_test,
         "roic_test": roic_test,
         "recommendation": recommendation,
+        "npv_reason": npv_reason,
+        "irr_reason": irr_reason,
+        "roic_reason": roic_reason,
+        "recommendation_reason": rec_reason,
         "rationale": project["rationale"],
         "value_class": "CALCULATED",
     }

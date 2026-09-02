@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "client_fs_statements.entity_id",
-              "nativeQueryRef": "entity_id"
+              "nativeQueryRef": "entity_id",
+              "displayName": "entity"
             },
             {
               "field": {
@@ -41,7 +42,8 @@
                 }
               },
               "queryRef": "client_fs_statements.period_id",
-              "nativeQueryRef": "period_id"
+              "nativeQueryRef": "period_id",
+              "displayName": "period"
             },
             {
               "field": {
@@ -55,7 +57,8 @@
                 }
               },
               "queryRef": "client_fs_statements.statement_type",
-              "nativeQueryRef": "statement_type"
+              "nativeQueryRef": "statement_type",
+              "displayName": "stmt"
             },
             {
               "field": {
@@ -69,7 +72,8 @@
                 }
               },
               "queryRef": "client_fs_statements.statement_section",
-              "nativeQueryRef": "statement_section"
+              "nativeQueryRef": "statement_section",
+              "displayName": "section"
             },
             {
               "field": {
@@ -83,7 +87,8 @@
                 }
               },
               "queryRef": "client_fs_statements.standard_account_name",
-              "nativeQueryRef": "standard_account_name"
+              "nativeQueryRef": "standard_account_name",
+              "displayName": "account"
             },
             {
               "field": {
@@ -97,7 +102,8 @@
                 }
               },
               "queryRef": "client_fs_statements.reported_or_adjusted",
-              "nativeQueryRef": "reported_or_adjusted"
+              "nativeQueryRef": "reported_or_adjusted",
+              "displayName": "view"
             },
             {
               "field": {
@@ -111,7 +117,8 @@
                 }
               },
               "queryRef": "client_fs_statements.amount_reporting",
-              "nativeQueryRef": "amount_reporting"
+              "nativeQueryRef": "amount_reporting",
+              "displayName": "amount $"
             }
           ]
         }

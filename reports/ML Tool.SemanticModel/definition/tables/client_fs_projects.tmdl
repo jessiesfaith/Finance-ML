@@ -78,6 +78,38 @@ table client_fs_projects
 
 		annotation SummarizationSetBy = Automatic
 
+	column npv_reason
+		dataType: string
+		lineageTag: d3723880-ae37-45f2-bf8b-d2cc69840fb3
+		summarizeBy: none
+		sourceColumn: npv_reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column irr_reason
+		dataType: string
+		lineageTag: cb1120f1-1c46-4f70-8717-9be0e1f78cd6
+		summarizeBy: none
+		sourceColumn: irr_reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column roic_reason
+		dataType: string
+		lineageTag: cb810bb2-9ea8-44c2-98d4-d1764d03774f
+		summarizeBy: none
+		sourceColumn: roic_reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column recommendation_reason
+		dataType: string
+		lineageTag: 188913df-b654-4c9b-85f0-76a2c52cc182
+		summarizeBy: none
+		sourceColumn: recommendation_reason
+
+		annotation SummarizationSetBy = Automatic
+
 	column rationale
 		dataType: string
 		lineageTag: 2464c3ee-cb11-42d8-8fe8-58731a15059f
@@ -226,10 +258,10 @@ table client_fs_projects
 				let
 				  Source = Csv.Document(
 				    File.Contents("C:\dev\Finance-ML\reports\client_fs_projects.csv"),
-				    [Delimiter = ",", Columns = 25, QuoteStyle = QuoteStyle.Csv]
+				    [Delimiter = ",", Columns = 29, QuoteStyle = QuoteStyle.Csv]
 				),
 				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"project_id", "project_name", "category", "scenario", "review_status", "npv_test", "irr_test", "roic_test", "recommendation", "rationale", "value_class", "initial_investment", "horizon_years", "tax_rate_pct", "wacc_pct", "hurdle_rate_pct", "ufcf_y1", "ufcf_y2", "ufcf_y3", "ufcf_y4", "ufcf_y5", "npv_at_hurdle", "irr_pct", "payback_years", "incr_roic_pct"}),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"project_id", "project_name", "category", "scenario", "review_status", "npv_test", "irr_test", "roic_test", "recommendation", "npv_reason", "irr_reason", "roic_reason", "recommendation_reason", "rationale", "value_class", "initial_investment", "horizon_years", "tax_rate_pct", "wacc_pct", "hurdle_rate_pct", "ufcf_y1", "ufcf_y2", "ufcf_y3", "ufcf_y4", "ufcf_y5", "npv_at_hurdle", "irr_pct", "payback_years", "incr_roic_pct"}),
 				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"initial_investment", type number}, {"horizon_years", type number}, {"tax_rate_pct", type number}, {"wacc_pct", type number}, {"hurdle_rate_pct", type number}, {"ufcf_y1", type number}, {"ufcf_y2", type number}, {"ufcf_y3", type number}, {"ufcf_y4", type number}, {"ufcf_y5", type number}, {"npv_at_hurdle", type number}, {"irr_pct", type number}, {"payback_years", type number}, {"incr_roic_pct", type number}})
 				in
 				    #"Changed Type"

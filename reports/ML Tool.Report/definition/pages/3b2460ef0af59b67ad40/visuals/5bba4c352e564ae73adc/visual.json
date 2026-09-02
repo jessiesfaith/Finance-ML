@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "client_fs_ufcf.period_id",
-              "nativeQueryRef": "period_id"
+              "nativeQueryRef": "period_id",
+              "displayName": "period"
             },
             {
               "field": {
@@ -41,7 +42,8 @@
                 }
               },
               "queryRef": "client_fs_ufcf.forecast_method",
-              "nativeQueryRef": "forecast_method"
+              "nativeQueryRef": "forecast_method",
+              "displayName": "method"
             },
             {
               "field": {
@@ -69,7 +71,8 @@
                 }
               },
               "queryRef": "client_fs_ufcf.ebitda",
-              "nativeQueryRef": "ebitda"
+              "nativeQueryRef": "ebitda",
+              "displayName": "EBITDA"
             },
             {
               "field": {
@@ -83,7 +86,8 @@
                 }
               },
               "queryRef": "client_fs_ufcf.da",
-              "nativeQueryRef": "da"
+              "nativeQueryRef": "da",
+              "displayName": "D&A"
             },
             {
               "field": {
@@ -97,7 +101,8 @@
                 }
               },
               "queryRef": "client_fs_ufcf.nopat",
-              "nativeQueryRef": "nopat"
+              "nativeQueryRef": "nopat",
+              "displayName": "NOPAT"
             },
             {
               "field": {
@@ -111,7 +116,8 @@
                 }
               },
               "queryRef": "client_fs_ufcf.delta_nwc",
-              "nativeQueryRef": "delta_nwc"
+              "nativeQueryRef": "delta_nwc",
+              "displayName": "\u0394NWC"
             },
             {
               "field": {
@@ -125,7 +131,8 @@
                 }
               },
               "queryRef": "client_fs_ufcf.capex",
-              "nativeQueryRef": "capex"
+              "nativeQueryRef": "capex",
+              "displayName": "CapEx"
             },
             {
               "field": {
@@ -139,7 +146,8 @@
                 }
               },
               "queryRef": "client_fs_ufcf.ufcf",
-              "nativeQueryRef": "ufcf"
+              "nativeQueryRef": "ufcf",
+              "displayName": "UFCF"
             }
           ]
         }

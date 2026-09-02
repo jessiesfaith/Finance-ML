@@ -861,3 +861,23 @@ under each chart sits a flat table of the same columns, newest month
 first, driven by the same date slicer, scrolling for the rest of the
 period. Store grows append-only 4,635 -> 5,150; exports widen to 52
 metrics (107 / 57 columns); page height 8000.
+
+### 80. Number matrices flipped: dates across, like the charts
+Owner's reading rule: time runs left-to-right everywhere. The Page 5
+number tables became matrices - series down the rows, months across
+the columns - fed by a new long-format export (one row per panel x
+series x month, the panel map shared between builder and page so a
+chart and its numbers can never disagree) with a model relationship so
+the one date slicer drives charts and matrices together.
+
+### 81. Every verdict explains itself; headers speak English
+Owner request: "NPV fail because... recommendation review - why, and
+what to review." Four reason columns join the appraisal export, each
+sentence assembled from the row's own numbers (never canned): the test
+margins in points, the REVIEW rows naming which tests disagree and
+what to stress (price/volume/margin, phasing, or reject - pointing at
+the sensitivity grid), and the paydown's wrong-ruler caveat inline. A
+WHY table sits under the verdicts. Separately, every table header
+sheds its plumbing: _pct -> %, at_ dropped, snake_case -> plain words -
+done as display-name overrides in the visuals so the CSV contract
+(columns only ever added, never renamed) stays intact.

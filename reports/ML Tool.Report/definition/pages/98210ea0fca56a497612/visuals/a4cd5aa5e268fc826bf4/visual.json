@@ -3,7 +3,7 @@
   "name": "a4cd5aa5e268fc826bf4",
   "position": {
     "x": 165,
-    "y": 1510,
+    "y": 1790,
     "height": 150,
     "width": 1000,
     "z": 404000,
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "client_fs_option_verdicts.project_id",
-              "nativeQueryRef": "project_id"
+              "nativeQueryRef": "project_id",
+              "displayName": "project"
             },
             {
               "field": {
@@ -41,7 +42,8 @@
                 }
               },
               "queryRef": "client_fs_option_verdicts.at_5pct",
-              "nativeQueryRef": "at_5pct"
+              "nativeQueryRef": "at_5pct",
+              "displayName": "5%"
             },
             {
               "field": {
@@ -55,7 +57,8 @@
                 }
               },
               "queryRef": "client_fs_option_verdicts.at_7pct",
-              "nativeQueryRef": "at_7pct"
+              "nativeQueryRef": "at_7pct",
+              "displayName": "7%"
             },
             {
               "field": {
@@ -69,7 +72,8 @@
                 }
               },
               "queryRef": "client_fs_option_verdicts.at_9pct",
-              "nativeQueryRef": "at_9pct"
+              "nativeQueryRef": "at_9pct",
+              "displayName": "9%"
             },
             {
               "field": {
@@ -83,7 +87,8 @@
                 }
               },
               "queryRef": "client_fs_option_verdicts.at_11pct",
-              "nativeQueryRef": "at_11pct"
+              "nativeQueryRef": "at_11pct",
+              "displayName": "11%"
             },
             {
               "field": {
@@ -97,7 +102,8 @@
                 }
               },
               "queryRef": "client_fs_option_verdicts.at_13pct",
-              "nativeQueryRef": "at_13pct"
+              "nativeQueryRef": "at_13pct",
+              "displayName": "13%"
             }
           ]
         }

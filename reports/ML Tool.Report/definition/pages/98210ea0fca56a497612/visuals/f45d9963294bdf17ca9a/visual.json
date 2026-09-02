@@ -3,7 +3,7 @@
   "name": "f45d9963294bdf17ca9a",
   "position": {
     "x": 165,
-    "y": 974,
+    "y": 1254,
     "height": 470,
     "width": 1000,
     "z": 401000,
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "client_fs_option_sensitivity.project_id",
-              "nativeQueryRef": "project_id"
+              "nativeQueryRef": "project_id",
+              "displayName": "project"
             },
             {
               "field": {
@@ -41,7 +42,8 @@
                 }
               },
               "queryRef": "client_fs_option_sensitivity.flows_delivered_pct",
-              "nativeQueryRef": "flows_delivered_pct"
+              "nativeQueryRef": "flows_delivered_pct",
+              "displayName": "flows delivered %"
             },
             {
               "field": {
@@ -55,7 +57,8 @@
                 }
               },
               "queryRef": "client_fs_option_sensitivity.npv_at_5pct",
-              "nativeQueryRef": "npv_at_5pct"
+              "nativeQueryRef": "npv_at_5pct",
+              "displayName": "NPV @ 5%"
             },
             {
               "field": {
@@ -69,7 +72,8 @@
                 }
               },
               "queryRef": "client_fs_option_sensitivity.npv_at_7pct",
-              "nativeQueryRef": "npv_at_7pct"
+              "nativeQueryRef": "npv_at_7pct",
+              "displayName": "NPV @ 7%"
             },
             {
               "field": {
@@ -83,7 +87,8 @@
                 }
               },
               "queryRef": "client_fs_option_sensitivity.npv_at_9pct",
-              "nativeQueryRef": "npv_at_9pct"
+              "nativeQueryRef": "npv_at_9pct",
+              "displayName": "NPV @ 9%"
             },
             {
               "field": {
@@ -97,7 +102,8 @@
                 }
               },
               "queryRef": "client_fs_option_sensitivity.npv_at_11pct",
-              "nativeQueryRef": "npv_at_11pct"
+              "nativeQueryRef": "npv_at_11pct",
+              "displayName": "NPV @ 11%"
             },
             {
               "field": {
@@ -111,7 +117,8 @@
                 }
               },
               "queryRef": "client_fs_option_sensitivity.npv_at_13pct",
-              "nativeQueryRef": "npv_at_13pct"
+              "nativeQueryRef": "npv_at_13pct",
+              "displayName": "NPV @ 13%"
             }
           ]
         }

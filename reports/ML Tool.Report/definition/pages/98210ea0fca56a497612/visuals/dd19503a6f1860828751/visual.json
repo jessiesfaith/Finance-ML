@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "client_fs_projects.project_id",
-              "nativeQueryRef": "project_id"
+              "nativeQueryRef": "project_id",
+              "displayName": "project"
             },
             {
               "field": {
@@ -41,7 +42,8 @@
                 }
               },
               "queryRef": "client_fs_projects.project_name",
-              "nativeQueryRef": "project_name"
+              "nativeQueryRef": "project_name",
+              "displayName": "name"
             },
             {
               "field": {
@@ -69,7 +71,8 @@
                 }
               },
               "queryRef": "client_fs_projects.npv_at_hurdle",
-              "nativeQueryRef": "npv_at_hurdle"
+              "nativeQueryRef": "npv_at_hurdle",
+              "displayName": "NPV @ hurdle"
             },
             {
               "field": {
@@ -83,7 +86,8 @@
                 }
               },
               "queryRef": "client_fs_projects.irr_pct",
-              "nativeQueryRef": "irr_pct"
+              "nativeQueryRef": "irr_pct",
+              "displayName": "IRR %"
             },
             {
               "field": {
@@ -97,7 +101,8 @@
                 }
               },
               "queryRef": "client_fs_projects.hurdle_rate_pct",
-              "nativeQueryRef": "hurdle_rate_pct"
+              "nativeQueryRef": "hurdle_rate_pct",
+              "displayName": "hurdle %"
             },
             {
               "field": {
@@ -111,7 +116,8 @@
                 }
               },
               "queryRef": "client_fs_projects.payback_years",
-              "nativeQueryRef": "payback_years"
+              "nativeQueryRef": "payback_years",
+              "displayName": "payback yrs"
             },
             {
               "field": {
@@ -125,7 +131,8 @@
                 }
               },
               "queryRef": "client_fs_projects.incr_roic_pct",
-              "nativeQueryRef": "incr_roic_pct"
+              "nativeQueryRef": "incr_roic_pct",
+              "displayName": "ROIC %"
             },
             {
               "field": {
@@ -139,7 +146,8 @@
                 }
               },
               "queryRef": "client_fs_projects.wacc_pct",
-              "nativeQueryRef": "wacc_pct"
+              "nativeQueryRef": "wacc_pct",
+              "displayName": "WACC %"
             },
             {
               "field": {
@@ -153,7 +161,8 @@
                 }
               },
               "queryRef": "client_fs_projects.npv_test",
-              "nativeQueryRef": "npv_test"
+              "nativeQueryRef": "npv_test",
+              "displayName": "NPV test"
             },
             {
               "field": {
@@ -167,7 +176,8 @@
                 }
               },
               "queryRef": "client_fs_projects.irr_test",
-              "nativeQueryRef": "irr_test"
+              "nativeQueryRef": "irr_test",
+              "displayName": "IRR test"
             },
             {
               "field": {
@@ -181,7 +191,8 @@
                 }
               },
               "queryRef": "client_fs_projects.roic_test",
-              "nativeQueryRef": "roic_test"
+              "nativeQueryRef": "roic_test",
+              "displayName": "ROIC test"
             },
             {
               "field": {

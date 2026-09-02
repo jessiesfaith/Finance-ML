@@ -41,7 +41,8 @@
                 }
               },
               "queryRef": "finance_scenario_report.risk_free_rate_pct",
-              "nativeQueryRef": "risk_free_rate_pct"
+              "nativeQueryRef": "risk_free_rate_pct",
+              "displayName": "risk-free %"
             },
             {
               "field": {
@@ -55,7 +56,8 @@
                 }
               },
               "queryRef": "finance_scenario_report.cost_of_equity_pct",
-              "nativeQueryRef": "cost_of_equity_pct"
+              "nativeQueryRef": "cost_of_equity_pct",
+              "displayName": "cost of equity %"
             },
             {
               "field": {
@@ -69,7 +71,8 @@
                 }
               },
               "queryRef": "finance_scenario_report.cost_of_debt_pct",
-              "nativeQueryRef": "cost_of_debt_pct"
+              "nativeQueryRef": "cost_of_debt_pct",
+              "displayName": "cost of debt %"
             },
             {
               "field": {
@@ -83,7 +86,8 @@
                 }
               },
               "queryRef": "finance_scenario_report.wacc_pct",
-              "nativeQueryRef": "wacc_pct"
+              "nativeQueryRef": "wacc_pct",
+              "displayName": "WACC %"
             },
             {
               "field": {
@@ -97,7 +101,8 @@
                 }
               },
               "queryRef": "finance_scenario_report.hurdle_rate_pct",
-              "nativeQueryRef": "hurdle_rate_pct"
+              "nativeQueryRef": "hurdle_rate_pct",
+              "displayName": "hurdle %"
             }
           ]
         }
