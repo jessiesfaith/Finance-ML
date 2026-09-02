@@ -9,7 +9,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["finance_scenario_report","client_fs_ufcf","client_fs_statements","client_fs_income_walk","client_fs_valuation_inputs","client_fs_controls","client_fs_review","market_rf_policy","market_history_rolling24","client_fs_projects","client_fs_sensitivity","market_history_windows","client_fs_option_sensitivity","client_fs_option_verdicts","market_history_long"]
+annotation PBI_QueryOrder = ["finance_scenario_report","client_fs_ufcf","client_fs_statements","client_fs_income_walk","client_fs_valuation_inputs","client_fs_controls","client_fs_review","market_rf_policy","market_history_rolling24","client_fs_projects","client_fs_sensitivity","market_history_windows","client_fs_option_sensitivity","client_fs_option_verdicts","market_history_long","client_fs_option_sizing"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
@@ -28,6 +28,7 @@ ref table market_history_windows
 ref table client_fs_option_sensitivity
 ref table client_fs_option_verdicts
 ref table market_history_long
+ref table client_fs_option_sizing
 
 ref cultureInfo en-US
 

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "30a5708105a27bbf8f86",
+  "position": {
+    "x": 418,
+    "y": 2060,
+    "height": 75,
+    "width": 185,
+    "z": 943000,
+    "tabOrder": 943000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "Cash Generated per Month ($M)"
+                }
+              },
+              "queryRef": "client_fs_statements.Cash Generated per Month ($M)",
+              "nativeQueryRef": "Cash Generated per Month ($M)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

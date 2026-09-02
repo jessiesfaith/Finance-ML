@@ -1,0 +1,66 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "d2f7339805b361909c38",
+  "position": {
+    "x": 1015,
+    "y": 990,
+    "z": 12000,
+    "height": 178,
+    "width": 800,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "10 \u00b7 ROIC & the Three Tests",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "ROIC = NOPAT \u00f7 invested capital (operating NWC + net PP&E). Company: 186.45 \u00f7 791.5 = 23.6% vs WACC 9.11% \u2192 value creating.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The three tests, read together: NPV > 0 \u00b7 IRR > hurdle \u00b7 ROIC > WACC. All pass = APPROVE; all fail = REJECT; split = REVIEW \u2014 and when accounting return says yes but cash says no, cash rules.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\u2192 tabs 2 (company) and 5 (per option)",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

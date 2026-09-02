@@ -881,3 +881,21 @@ WHY table sits under the verdicts. Separately, every table header
 sheds its plumbing: _pct -> %, at_ dropped, snake_case -> plain words -
 done as display-name overrides in the visuals so the CSV contract
 (columns only ever added, never renamed) stays intact.
+
+### 82. Health ratios, the acquisition option, sizing scenarios, Math page
+Owner batch: (a) Current Position gains Liquidity (current/quick/cash
+ratios from the statement detail), Solvency (debt/equity, interest
+coverage), and Unit Economics (contribution margin with COGS stated as
+the variable-cost proxy; ARR from an owned 65% recurring-share
+ASSUMPTION card; burn/runway honestly N/A - the fixture self-funds
+~$13M/mo). (b) M&A becomes a real option type: ACQUISITION levers
+(target EBITDA, growth, synergies, integration cost), price amortized
+straight-line; PROJ-005 fixture REJECTS at 5x - honest. (c) NEW sizing
+engine: amount scenarios 50-150% per option with honest per-category
+semantics - an acquisition's amount is the PRICE against fixed flows
+(max defensible bid ~= $129M for PROJ-005), paydown is linear, others
+constant-returns - plus share of funding capacity (headroom + cash).
+(d) "7 - Math Reference" page: every formula derived from scratch with
+fixture numbers and tab references, including the terminal-value
+geometric-series derivation and the provenance of g; a TV note sits
+beside the valuation walk.

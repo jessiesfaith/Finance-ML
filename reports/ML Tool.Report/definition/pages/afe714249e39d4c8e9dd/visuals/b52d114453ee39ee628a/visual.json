@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "b52d114453ee39ee628a",
+  "position": {
+    "x": 165,
+    "y": 1300,
+    "height": 34,
+    "width": 1400,
+    "z": 901000,
+    "tabOrder": 901000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "F \u00b7 Liquidity \u2014 can the bills be paid?   (from the balance sheet, Step 1)",
+                    "textStyle": {
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

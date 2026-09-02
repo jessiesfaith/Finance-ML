@@ -1,0 +1,146 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "944785ccdf806ca9f7e4",
+  "position": {
+    "x": 165,
+    "y": 1990,
+    "height": 330,
+    "width": 1000,
+    "z": 948000,
+    "tabOrder": 948000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_option_sizing"
+                    }
+                  },
+                  "Property": "project_id"
+                }
+              },
+              "queryRef": "client_fs_option_sizing.project_id",
+              "nativeQueryRef": "project_id",
+              "displayName": "project"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_option_sizing"
+                    }
+                  },
+                  "Property": "category"
+                }
+              },
+              "queryRef": "client_fs_option_sizing.category",
+              "nativeQueryRef": "category",
+              "displayName": "category"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_option_sizing"
+                    }
+                  },
+                  "Property": "amount_pct"
+                }
+              },
+              "queryRef": "client_fs_option_sizing.amount_pct",
+              "nativeQueryRef": "amount_pct",
+              "displayName": "amount %"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_option_sizing"
+                    }
+                  },
+                  "Property": "investment_amt"
+                }
+              },
+              "queryRef": "client_fs_option_sizing.investment_amt",
+              "nativeQueryRef": "investment_amt",
+              "displayName": "investment $M"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_option_sizing"
+                    }
+                  },
+                  "Property": "npv_at_hurdle"
+                }
+              },
+              "queryRef": "client_fs_option_sizing.npv_at_hurdle",
+              "nativeQueryRef": "npv_at_hurdle",
+              "displayName": "NPV @ hurdle"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_option_sizing"
+                    }
+                  },
+                  "Property": "pct_of_funding_capacity"
+                }
+              },
+              "queryRef": "client_fs_option_sizing.pct_of_funding_capacity",
+              "nativeQueryRef": "pct_of_funding_capacity",
+              "displayName": "% of capacity"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_option_sizing"
+                    }
+                  },
+                  "Property": "verdict"
+                }
+              },
+              "queryRef": "client_fs_option_sizing.verdict",
+              "nativeQueryRef": "verdict",
+              "displayName": "verdict"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "client_fs_option_sizing"
+                  }
+                },
+                "Property": "project_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

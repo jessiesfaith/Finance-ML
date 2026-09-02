@@ -292,6 +292,11 @@ def appraise_project(project, assumptions, rates_row) -> dict:
     sav_g = _value(assumptions, pid, "COST_SAVINGS_GROWTH_PCT")
     capex_pct = _value(assumptions, pid, "MAINT_CAPEX_PCT_REV")
     nwc_pct = _value(assumptions, pid, "NWC_PCT_REV")
+    acq1 = _value(assumptions, pid, "ACQUIRED_EBITDA_Y1")
+    acq_g = _value(assumptions, pid, "ACQUIRED_EBITDA_GROWTH_PCT")
+    syn1 = _value(assumptions, pid, "SYNERGY_Y1")
+    syn_g = _value(assumptions, pid, "SYNERGY_GROWTH_PCT")
+    integration1 = _value(assumptions, pid, "INTEGRATION_COST_Y1")
 
     da = investment / horizon
     flows, nopats, capitals = [], [], []
@@ -299,7 +304,10 @@ def appraise_project(project, assumptions, rates_row) -> dict:
     for t in range(1, horizon + 1):
         revenue = rev1 * (1 + rev_g / 100.0) ** (t - 1)
         savings = sav1 * (1 + sav_g / 100.0) ** (t - 1)
-        ebitda = revenue * margin / 100.0 + savings
+        acquired = acq1 * (1 + acq_g / 100.0) ** (t - 1)
+        synergy = syn1 * (1 + syn_g / 100.0) ** (t - 1)
+        ebitda = (revenue * margin / 100.0 + savings + acquired + synergy
+                  - (integration1 if t == 1 else 0.0))
         nopat = (ebitda - da) * (1 - tax)
         nwc = nwc_pct / 100.0 * revenue
         delta_nwc = nwc - nwc_prev
@@ -441,3 +449,86 @@ def build_option_sensitivity(master, assumptions, rates):
                     + ["at_" + f"{r:.0f}pct" for r in SENSITIVITY_RATES])
     return (pd.DataFrame(grid_rows, columns=grid_cols),
             pd.DataFrame(verdict_rows, columns=verdict_cols))
+
+
+# ----------------------------------------------------------------------
+# Option sizing (Step 5): "how much?" - amount scenarios per option.
+# Semantics differ honestly by category:
+#   ACQUISITION  - the amount is the PRICE: it varies, the target's flows
+#                  do not, so the grid reveals the maximum defensible price.
+#   DEBT_PAYDOWN - flows scale with the amount retired (linear), so NPV
+#                  per dollar is constant; size it by liquidity, not NPV.
+#   everything else - amount and flows scale together (constant returns
+#                  to scale - a stated simplification).
+# ----------------------------------------------------------------------
+
+AMOUNT_PCTS = (50, 75, 100, 125, 150)
+SIZING_OUTPUT = BASE_DIR / "reports" / "client_fs_option_sizing.csv"
+
+SIZING_COLUMNS = ["project_id", "category", "amount_pct", "investment_amt",
+                  "npv_at_hurdle", "pct_of_funding_capacity", "verdict",
+                  "sizing_note"]
+
+
+def funding_capacity() -> float:
+    """Debt headroom at the 2.0x policy plus cash on hand, from the same
+    curated exports the Current Position page reads."""
+    vi = pd.read_csv(BASE_DIR / "reports" / "client_fs_valuation_inputs.csv")
+    latest = vi.sort_values("period_id").iloc[-1]
+    uf = pd.read_csv(BASE_DIR / "reports" / "client_fs_ufcf.csv")
+    ebitda = float(uf[uf["forecast_method"] == "ACTUAL"]
+                   .sort_values("period_id")["ebitda"].iloc[-1])
+    headroom = 2.0 * ebitda - float(latest["net_debt"])
+    return headroom + float(latest["cash_and_equivalents"])
+
+
+def _sizing_note(category, base_npv):
+    category = str(category).upper()
+    if category == "ACQUISITION":
+        return ("the amount IS the price - flows don't change with it; "
+                "read down the column for the price at which NPV turns "
+                "positive: that is the maximum defensible bid")
+    if category == "DEBT_PAYDOWN":
+        return ("NPV per dollar is constant (linear) - size by liquidity "
+                "comfort and the leverage policy, not by NPV")
+    if base_npv > 0:
+        return ("scales roughly with size (constant-returns assumption) - "
+                "fund in full if within capacity; more only if the market "
+                "supports it")
+    return ("negative at every size under constant returns - resizing "
+            "alone cannot fix a failing case; change the case or reject")
+
+
+def build_option_sizing(master, assumptions, rates) -> pd.DataFrame:
+    base = rates[rates["scenario"] == "Base"].iloc[0]
+    hurdle = float(base["hurdle_rate_pct"]) / 100.0
+    capacity = funding_capacity()
+    rows = []
+    for _, project in master.sort_values("project_id").iterrows():
+        investment = float(project["initial_investment"])
+        category = str(project["category"]).upper()
+        flows = _base_flows(project, assumptions, base)
+        base_npv = -investment + sum(
+            f / (1 + hurdle) ** t for t, f in enumerate(flows, start=1))
+        note = _sizing_note(category, base_npv)
+        for pct in AMOUNT_PCTS:
+            scale = pct / 100.0
+            amount = investment * scale
+            if category == "ACQUISITION":
+                scaled_flows = flows            # price moves, flows don't
+            else:
+                scaled_flows = [f * scale for f in flows]
+            npv = -amount + sum(
+                f / (1 + hurdle) ** t
+                for t, f in enumerate(scaled_flows, start=1))
+            rows.append({
+                "project_id": project["project_id"],
+                "category": project["category"],
+                "amount_pct": pct,
+                "investment_amt": round(amount, 2),
+                "npv_at_hurdle": round(npv, 2),
+                "pct_of_funding_capacity": round(100 * amount / capacity, 1),
+                "verdict": "APPROVE" if npv > 0 else "REJECT",
+                "sizing_note": note,
+            })
+    return pd.DataFrame(rows, columns=SIZING_COLUMNS)

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "a32ebd9c6975ed591854",
+  "position": {
+    "x": 1250,
+    "y": 530,
+    "z": 950000,
+    "height": 150,
+    "width": 460,
+    "tabOrder": 950000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "The formula behind this section: TV = FCF\u2085 \u00d7 (1+g) \u00f7 (WACC \u2212 g) \u2014 an infinite growing stream collapses to one number because each year's term shrinks by (1+g)/(1+WACC).",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "= 235.1 \u00d7 1.025 \u00f7 0.0661 = $3.65B, then \u00f7 1.0911\u2075 to bring it home. Full derivation: tab 7 \u00b7 Math Reference.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

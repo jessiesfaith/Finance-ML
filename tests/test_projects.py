@@ -40,7 +40,7 @@ def pick(frame, project, scenario):
 
 def test_schema_and_coverage(appraisal):
     assert list(appraisal.columns) == OUTPUT_COLUMNS
-    assert len(appraisal) == 12                  # 4 options x 3 scenarios
+    assert len(appraisal) == 15                  # 5 options x 3 scenarios
     assert set(appraisal["value_class"]) == {"CALCULATED"}
 
 
@@ -151,8 +151,8 @@ def test_grid_and_verdict_shape(sensitivity):
     grid, verdicts = sensitivity
     assert list(grid.columns) == (["project_id", "flows_delivered_pct"]
                                   + [rate_column(r) for r in SENSITIVITY_RATES])
-    assert len(grid) == 4 * len(FLOWS_DELIVERED_PCT)
-    assert len(verdicts) == 4
+    assert len(grid) == 5 * len(FLOWS_DELIVERED_PCT)
+    assert len(verdicts) == 5
     assert set(verdicts.columns[2:]) == {
         "at_" + f"{r:.0f}pct" for r in SENSITIVITY_RATES}
 
@@ -197,3 +197,60 @@ def test_committed_sensitivity_matches_a_fresh_rebuild(sensitivity):
     grid, verdicts = sensitivity
     assert_matches_committed(grid, SENSITIVITY_OUTPUT)
     assert_matches_committed(verdicts, VERDICT_STRIP_OUTPUT)
+
+
+# ------------------------------------------------
+# OPTION SIZING ("how much?" scenarios)
+# ------------------------------------------------
+
+@pytest.fixture(scope="module")
+def sizing():
+    from financials.projects import build_option_sizing
+    tables, _ = load_projects(strict=True)
+    return build_option_sizing(
+        tables["project_master"], tables["project_assumptions"], load_rates())
+
+
+def test_sizing_shape_and_verdicts(sizing):
+    from financials.projects import AMOUNT_PCTS, SIZING_COLUMNS
+    assert list(sizing.columns) == SIZING_COLUMNS
+    assert len(sizing) == 5 * len(AMOUNT_PCTS)
+    assert ((sizing["npv_at_hurdle"] > 0)
+            == (sizing["verdict"] == "APPROVE")).all()
+
+
+def test_acquisition_price_scenarios_flows_stay_fixed(sizing):
+    """The amount is the PRICE: NPV falls dollar-for-dollar as it rises."""
+    acq = sizing[sizing["project_id"] == "PROJ-005"].sort_values("amount_pct")
+    assert acq["npv_at_hurdle"].is_monotonic_decreasing
+    # price down $37.5 (150->112.5) lifts NPV by exactly that amount
+    npv = acq.set_index("amount_pct")["npv_at_hurdle"]
+    assert npv[75] - npv[100] == pytest.approx(37.5, abs=0.02)
+    assert npv[75] > 0                    # the deal works at a lower price
+
+
+def test_paydown_scales_linearly(sizing):
+    pay = sizing[sizing["project_id"] == "PROJ-004"].set_index("amount_pct")
+    assert pay.loc[150, "npv_at_hurdle"] == pytest.approx(
+        1.5 * pay.loc[100, "npv_at_hurdle"], rel=1e-6)
+
+
+def test_product_line_scales_proportionally(sizing):
+    pl = sizing[sizing["project_id"] == "PROJ-003"].set_index("amount_pct")
+    assert pl.loc[50, "npv_at_hurdle"] == pytest.approx(
+        0.5 * pl.loc[100, "npv_at_hurdle"], rel=1e-6)
+
+
+def test_capacity_share_uses_headroom_plus_cash(sizing):
+    from financials.projects import funding_capacity
+    capacity = funding_capacity()
+    row = sizing[(sizing["project_id"] == "PROJ-001")
+                 & (sizing["amount_pct"] == 100)].iloc[0]
+    assert row["pct_of_funding_capacity"] == pytest.approx(
+        100 * 120.0 / capacity, abs=0.05)
+
+
+def test_committed_sizing_matches_a_fresh_rebuild(sizing):
+    from financials.projects import SIZING_OUTPUT
+    from conftest import assert_matches_committed
+    assert_matches_committed(sizing, SIZING_OUTPUT)

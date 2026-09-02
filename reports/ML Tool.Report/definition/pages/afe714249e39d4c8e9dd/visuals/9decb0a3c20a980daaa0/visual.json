@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "9decb0a3c20a980daaa0",
+  "position": {
+    "x": 408,
+    "y": 1745,
+    "height": 75,
+    "width": 175,
+    "z": 926000,
+    "tabOrder": 926000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "Interest Expense ($M)"
+                }
+              },
+              "queryRef": "client_fs_statements.Interest Expense ($M)",
+              "nativeQueryRef": "Interest Expense ($M)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

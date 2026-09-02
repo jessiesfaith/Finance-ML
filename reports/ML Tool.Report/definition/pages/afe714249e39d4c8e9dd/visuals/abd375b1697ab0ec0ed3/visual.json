@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "abd375b1697ab0ec0ed3",
+  "position": {
+    "x": 408,
+    "y": 1430,
+    "height": 75,
+    "width": 175,
+    "z": 909000,
+    "tabOrder": 909000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "Current Liabilities ($M)"
+                }
+              },
+              "queryRef": "client_fs_statements.Current Liabilities ($M)",
+              "nativeQueryRef": "Current Liabilities ($M)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "67d4a45a07d0f32e59c1",
+  "position": {
+    "x": 408,
+    "y": 1890,
+    "height": 75,
+    "width": 175,
+    "z": 932000,
+    "tabOrder": 932000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "COGS ($M)"
+                }
+              },
+              "queryRef": "client_fs_statements.COGS ($M)",
+              "nativeQueryRef": "COGS ($M)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

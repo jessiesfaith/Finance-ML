@@ -831,6 +831,10 @@ PROJECT_ASSUMPTION_CODES = (
     "INCR_REVENUE_Y1", "INCR_REVENUE_GROWTH_PCT", "INCR_EBITDA_MARGIN_PCT",
     "COST_SAVINGS_Y1", "COST_SAVINGS_GROWTH_PCT",
     "MAINT_CAPEX_PCT_REV", "NWC_PCT_REV",
+    # Acquisition (M&A) levers: the target's EBITDA stream, synergies,
+    # and one-time integration cost; purchase price = initial_investment.
+    "ACQUIRED_EBITDA_Y1", "ACQUIRED_EBITDA_GROWTH_PCT",
+    "SYNERGY_Y1", "SYNERGY_GROWTH_PCT", "INTEGRATION_COST_Y1",
 )
 
 PROJECT_MASTER = TableSchema(

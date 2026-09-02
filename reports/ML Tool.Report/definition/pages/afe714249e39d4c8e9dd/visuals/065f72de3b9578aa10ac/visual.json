@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "065f72de3b9578aa10ac",
+  "position": {
+    "x": 1115,
+    "y": 1890,
+    "height": 190,
+    "width": 430,
+    "z": 945000,
+    "tabOrder": 945000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Contribution uses COGS as the variable-cost proxy \u2014 the books don't tag fixed vs variable; assumption stated.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "ARR needs revenue tagged recurring vs one-time; until the client provides it, the 65% share is an owned ASSUMPTION card.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Runway is N/A on purpose: there is no burn \u2014 the business funds itself (~$13M of cash generated per month).",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

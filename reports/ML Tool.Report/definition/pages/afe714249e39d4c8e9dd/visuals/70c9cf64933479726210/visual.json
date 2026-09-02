@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "70c9cf64933479726210",
+  "position": {
+    "x": 613,
+    "y": 2060,
+    "height": 75,
+    "width": 185,
+    "z": 944000,
+    "tabOrder": 944000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "Cash Runway"
+                }
+              },
+              "queryRef": "client_fs_statements.Cash Runway",
+              "nativeQueryRef": "Cash Runway"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

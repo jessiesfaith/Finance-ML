@@ -11,3 +11,8 @@ PROJ-003,INCR_REVENUE_GROWTH_PCT,10.0,PCT,Category growing faster than the core;
 PROJ-003,INCR_EBITDA_MARGIN_PCT,32.0,PCT,Premium price point; shared plant absorbs overhead.
 PROJ-003,MAINT_CAPEX_PCT_REV,4.0,PCT,Tooling refresh cycle.
 PROJ-003,NWC_PCT_REV,10.0,PCT,Lighter inventory than the core line; recovered at end of life.
+PROJ-005,ACQUIRED_EBITDA_Y1,30.0,USD_M,Target's current EBITDA per its reviewed financials.
+PROJ-005,ACQUIRED_EBITDA_GROWTH_PCT,5.0,PCT,Target grows with its regional market.
+PROJ-005,SYNERGY_Y1,5.0,USD_M,Shared distribution and procurement; ramps as integration lands.
+PROJ-005,SYNERGY_GROWTH_PCT,10.0,PCT,Synergies compound as systems merge.
+PROJ-005,INTEGRATION_COST_Y1,8.0,USD_M,One-time systems and severance cost.

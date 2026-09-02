@@ -1,0 +1,89 @@
+/// Curated export: amount scenarios per option - the PRICE grid for
+/// an acquisition, linear sizing for debt paydown, constant-returns
+/// scaling elsewhere - with capacity share and verdicts.
+table client_fs_option_sizing
+	lineageTag: db9d8320-4781-400e-87d5-c040cc7a1108
+
+	column project_id
+		dataType: string
+		lineageTag: 7d6f5d50-fe51-49d2-a957-a00755ef8ecf
+		summarizeBy: none
+		sourceColumn: project_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 524f26bb-5b1e-4497-b583-b3da67549e80
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column verdict
+		dataType: string
+		lineageTag: a96207b9-c44c-4003-9f9e-36aaf40dff15
+		summarizeBy: none
+		sourceColumn: verdict
+
+		annotation SummarizationSetBy = Automatic
+
+	column sizing_note
+		dataType: string
+		lineageTag: ca2c5015-2be0-40dd-8a18-0ce5a7fb49f9
+		summarizeBy: none
+		sourceColumn: sizing_note
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount_pct
+		dataType: double
+		formatString: #,0.0
+		lineageTag: b2c8d7d8-12c4-48cf-bcc5-62544c011a4c
+		summarizeBy: none
+		sourceColumn: amount_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column investment_amt
+		dataType: double
+		formatString: #,0.0
+		lineageTag: 47cbd720-ae3c-427a-bcca-429a1bc445e5
+		summarizeBy: none
+		sourceColumn: investment_amt
+
+		annotation SummarizationSetBy = Automatic
+
+	column npv_at_hurdle
+		dataType: double
+		formatString: #,0.0
+		lineageTag: e1d0d51e-5aae-450a-b2c3-60de2121ad12
+		summarizeBy: none
+		sourceColumn: npv_at_hurdle
+
+		annotation SummarizationSetBy = Automatic
+
+	column pct_of_funding_capacity
+		dataType: double
+		formatString: #,0.0
+		lineageTag: e49457da-9247-41de-8577-800313e88601
+		summarizeBy: none
+		sourceColumn: pct_of_funding_capacity
+
+		annotation SummarizationSetBy = Automatic
+
+	partition client_fs_option_sizing = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\client_fs_option_sizing.csv"),
+				    [Delimiter = ",", Columns = 8, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"project_id", "category", "amount_pct", "investment_amt", "npv_at_hurdle", "pct_of_funding_capacity", "verdict", "sizing_note"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"amount_pct", type number}, {"investment_amt", type number}, {"npv_at_hurdle", type number}, {"pct_of_funding_capacity", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

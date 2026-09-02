@@ -5,6 +5,232 @@
 table client_fs_statements
 	lineageTag: a4446162-3113-45cc-8848-2bf0e50ba320
 
+	/// Anchor: the latest period in the statement detail - every ratio
+	/// below reads this year, nothing hard-coded.
+	measure 'Stmt Latest Period' =
+			
+			CALCULATE(MAX(client_fs_statements[period_id]), ALL(client_fs_statements))
+		displayFolder: Ratios
+		lineageTag: 61de7d89-77ce-41e1-a876-06ef8a7d3943
+
+	measure 'Current Assets ($M)' =
+			
+			CALCULATE(
+			    SUM(client_fs_statements[amount_reporting]),
+			    FILTER(
+			        ALL(client_fs_statements),
+			        client_fs_statements[period_id] = [Stmt Latest Period]
+			            && client_fs_statements[reported_or_adjusted] = "REPORTED"
+			            && client_fs_statements[statement_section] = "current_assets"
+			    )
+			)
+		formatString: #,0.0
+		displayFolder: Ratios
+		lineageTag: 56c7a3cf-e914-43c8-b70f-df41061a147f
+
+	measure 'Current Liabilities ($M)' =
+			
+			CALCULATE(
+			    SUM(client_fs_statements[amount_reporting]),
+			    FILTER(
+			        ALL(client_fs_statements),
+			        client_fs_statements[period_id] = [Stmt Latest Period]
+			            && client_fs_statements[reported_or_adjusted] = "REPORTED"
+			            && client_fs_statements[statement_section] = "current_liabilities"
+			    )
+			)
+		formatString: #,0.0
+		displayFolder: Ratios
+		lineageTag: 21cf25de-3b7f-43ca-a4cb-3d91a6ce07c0
+
+	measure 'Cash (BS) ($M)' =
+			
+			CALCULATE(
+			    SUM(client_fs_statements[amount_reporting]),
+			    FILTER(
+			        ALL(client_fs_statements),
+			        client_fs_statements[period_id] = [Stmt Latest Period]
+			            && client_fs_statements[reported_or_adjusted] = "REPORTED"
+			            && client_fs_statements[standard_account_id] = "cash"
+			    )
+			)
+		formatString: #,0.0
+		displayFolder: Ratios
+		lineageTag: d8d784a2-3be2-4212-8ae8-772648e6d328
+
+	measure 'Inventory (BS) ($M)' =
+			
+			CALCULATE(
+			    SUM(client_fs_statements[amount_reporting]),
+			    FILTER(
+			        ALL(client_fs_statements),
+			        client_fs_statements[period_id] = [Stmt Latest Period]
+			            && client_fs_statements[reported_or_adjusted] = "REPORTED"
+			            && client_fs_statements[standard_account_id] = "inventory"
+			    )
+			)
+		formatString: #,0.0
+		displayFolder: Ratios
+		lineageTag: 88e2f1c6-cc0c-4605-af12-1b289ff572e3
+
+	/// Current assets excluding inventory - what could pay bills fast.
+	measure 'Quick Assets ($M)' =
+			
+			[Current Assets ($M)] - [Inventory (BS) ($M)]
+		formatString: #,0.0
+		displayFolder: Ratios
+		lineageTag: 9dad2141-69b9-421f-b041-9b312e661f02
+
+	measure 'Total Equity ($M)' =
+			
+			CALCULATE(
+			    SUM(client_fs_statements[amount_reporting]),
+			    FILTER(
+			        ALL(client_fs_statements),
+			        client_fs_statements[period_id] = [Stmt Latest Period]
+			            && client_fs_statements[reported_or_adjusted] = "REPORTED"
+			            && client_fs_statements[statement_section] = "equity"
+			    )
+			)
+		formatString: #,0.0
+		displayFolder: Ratios
+		lineageTag: 129052a3-6373-4d77-941f-8f3d9be50482
+
+	/// Canonical IS signs make expenses negative; flipped positive for
+	/// display and the coverage ratio.
+	measure 'Interest Expense ($M)' =
+			
+			-1 *
+			CALCULATE(
+			    SUM(client_fs_statements[amount_reporting]),
+			    FILTER(
+			        ALL(client_fs_statements),
+			        client_fs_statements[period_id] = [Stmt Latest Period]
+			            && client_fs_statements[reported_or_adjusted] = "REPORTED"
+			            && client_fs_statements[standard_account_id] = "interest_expense"
+			    )
+			)
+		formatString: #,0.0
+		displayFolder: Ratios
+		lineageTag: c014d002-288e-4ba2-a059-b97c03f07ca2
+
+	measure 'COGS ($M)' =
+			
+			-1 *
+			CALCULATE(
+			    SUM(client_fs_statements[amount_reporting]),
+			    FILTER(
+			        ALL(client_fs_statements),
+			        client_fs_statements[period_id] = [Stmt Latest Period]
+			            && client_fs_statements[reported_or_adjusted] = "REPORTED"
+			            && client_fs_statements[standard_account_id] = "cogs"
+			    )
+			)
+		formatString: #,0.0
+		displayFolder: Ratios
+		lineageTag: 05e55824-01a3-47c9-89d8-fef37e8e42dc
+
+	/// Liquidity: can current assets cover current liabilities? Below
+	/// 1.0x means bills come due faster than assets turn to cash.
+	measure 'Current Ratio (x)' =
+			
+			DIVIDE([Current Assets ($M)], [Current Liabilities ($M)])
+		formatString: 0.00"x"
+		displayFolder: Ratios
+		lineageTag: 431f19c4-4a28-40ac-8208-5485678cae98
+
+	measure 'Quick Ratio (x)' =
+			
+			DIVIDE([Quick Assets ($M)], [Current Liabilities ($M)])
+		formatString: 0.00"x"
+		displayFolder: Ratios
+		lineageTag: 96447789-e7b1-4a95-b10e-d1801780657d
+
+	measure 'Cash Ratio (x)' =
+			
+			DIVIDE([Cash (BS) ($M)], [Current Liabilities ($M)])
+		formatString: 0.00"x"
+		displayFolder: Ratios
+		lineageTag: 51dc0de2-24b6-43c8-959e-610352e9bafd
+
+	/// Solvency: how the capital structure splits between lenders and
+	/// owners, at book value.
+	measure 'Debt / Equity (x)' =
+			
+			DIVIDE([Client Total Debt ($M)], [Total Equity ($M)])
+		formatString: 0.00"x"
+		displayFolder: Ratios
+		lineageTag: 1a1f3883-b524-481f-918f-8e2f5c08480e
+
+	/// EBIT over interest expense - how many times operating profit
+	/// covers the interest bill.
+	measure 'Interest Coverage (x)' =
+			
+			DIVIDE([Client EBIT ($M)], [Interest Expense ($M)])
+		formatString: 0.0"x"
+		displayFolder: Ratios
+		lineageTag: 4e2dba46-e5d4-49fc-a5fd-8d092729e453
+
+	/// APPROXIMATION: COGS stands in for variable cost - the books do
+	/// not tag fixed vs variable, so this is gross-margin-as-contribution
+	/// with the assumption stated.
+	measure 'Contribution ($M)' =
+			
+			[Client Revenue ($M)] - [COGS ($M)]
+		formatString: #,0.0
+		displayFolder: Ratios
+		lineageTag: 609547fe-cb4d-4c13-9db2-f20c41f30ab8
+
+	measure 'Contribution Margin (%)' =
+			
+			100 * DIVIDE([Contribution ($M)], [Client Revenue ($M)])
+		formatString: 0.0
+		displayFolder: Ratios
+		lineageTag: 34fd9354-6236-4b9f-9d29-04f75d7a79a2
+
+	/// ASSUMPTION: share of revenue that recurs. The statements do not
+	/// tag recurring vs one-time - until the client provides the split,
+	/// this is an owned input shown on its own card.
+	measure 'Recurring Share (%) (Assumption)' =
+			
+			65.0
+		formatString: 0.0
+		displayFolder: Ratios
+		lineageTag: 581cf667-40ac-4476-aedd-2bb977b3dea8
+
+	/// Annual recurring revenue = the assumed recurring share times
+	/// revenue. Quality-of-revenue lens, honest about its assumption.
+	measure 'ARR ($M)' =
+			
+			DIVIDE([Recurring Share (%) (Assumption)], 100)
+			    * [Client Revenue ($M)]
+		formatString: #,0.0
+		displayFolder: Ratios
+		lineageTag: 69f1f5ff-5e82-4205-b781-9479ed016917
+
+	/// UFCF spread monthly. Positive = the business FUNDS itself;
+	/// negative would be a burn rate.
+	measure 'Cash Generated per Month ($M)' =
+			
+			DIVIDE([Client UFCF ($M)], 12)
+		formatString: #,0.0
+		displayFolder: Ratios
+		lineageTag: eaa5eec9-5527-460a-b3a2-f0944ed321d5
+
+	/// Months of cash left at the current burn - N/A when there is no
+	/// burn, stated rather than a fake number.
+	measure 'Cash Runway' =
+			
+			IF(
+			    [Client UFCF ($M)] >= 0,
+			    "N/A - self-funding: cash grows ~$" &
+			        FORMAT([Cash Generated per Month ($M)], "0.0") & "M/mo",
+			    FORMAT(DIVIDE([Cash (BS) ($M)],
+			        -[Cash Generated per Month ($M)]), "0.0") & " months of cash"
+			)
+		displayFolder: Ratios
+		lineageTag: b7e3c487-06bb-453d-b435-2359ddbf448a
+
 	column entity_id
 		dataType: string
 		lineageTag: 17fc8e23-2bd6-4340-b839-3702349b04fb

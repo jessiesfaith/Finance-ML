@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "f14b4961add325416047",
+  "position": {
+    "x": 165,
+    "y": 2160,
+    "height": 60,
+    "width": 1550,
+    "z": 946000,
+    "tabOrder": 946000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "CR/QR = current/quick ratio \u00b7 D/E = debt to equity \u00b7 coverage = EBIT \u00f7 interest \u00b7 CM = contribution margin \u00b7 ARR = annual recurring revenue \u00b7 runway = months of cash at the current burn",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

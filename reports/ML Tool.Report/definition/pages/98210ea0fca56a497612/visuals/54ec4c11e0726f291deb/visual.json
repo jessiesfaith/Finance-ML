@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "54ec4c11e0726f291deb",
+  "position": {
+    "x": 165,
+    "y": 1950,
+    "height": 34,
+    "width": 1550,
+    "z": 947000,
+    "tabOrder": 947000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Sizing \u2014 how much?  Amount scenarios per option (50% \u2192 150% of the case as filed)",
+                    "textStyle": {
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

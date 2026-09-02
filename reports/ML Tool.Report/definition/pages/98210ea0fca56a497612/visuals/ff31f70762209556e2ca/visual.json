@@ -1,0 +1,66 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "ff31f70762209556e2ca",
+  "position": {
+    "x": 1185,
+    "y": 1990,
+    "height": 240,
+    "width": 530,
+    "z": 949000,
+    "tabOrder": 949000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Three sizing rules, honestly different:",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "ACQUISITION \u2014 the amount IS the price; flows don't move. Read down PROJ-005: REJECT at $150M, APPROVE at $112.5M \u2014 the maximum defensible bid sits near $129M.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "DEBT PAYDOWN \u2014 NPV per dollar is constant; size by liquidity and the leverage policy, not NPV.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Everything else scales with constant returns (stated simplification): fund approved cases in full within capacity \u2014 capacity = debt headroom + cash (Step 2).",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

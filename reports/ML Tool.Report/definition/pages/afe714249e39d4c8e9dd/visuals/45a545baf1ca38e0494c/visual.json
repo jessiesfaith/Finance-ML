@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "45a545baf1ca38e0494c",
+  "position": {
+    "x": 1115,
+    "y": 1345,
+    "height": 120,
+    "width": 430,
+    "z": 917000,
+    "tabOrder": 917000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Quick assets = current assets \u2212 inventory (inventory sells slowest). All three far above 1.0x here: bills are covered many times over.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

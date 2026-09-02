@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "c0f8a24411aac6fd31df",
+  "position": {
+    "x": 165,
+    "y": 1180,
+    "z": 13000,
+    "height": 224,
+    "width": 800,
+    "tabOrder": 13000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "11 \u00b7 Health Ratios",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Liquidity: current = CA/CL (472/118.5 = 3.98x) \u00b7 quick = (CA \u2212 inventory)/CL (3.03x) \u00b7 cash = cash/CL (1.64x).",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Solvency: debt/equity = 366/619.5 = 0.59x \u00b7 interest coverage = EBIT/interest = 248.6/25.4 = 9.8x \u00b7 net debt/EBITDA = 172/314.8 = 0.55x.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Unit economics: contribution = revenue \u2212 COGS (variable-cost proxy) = 529.6 \u2192 41.6% margin \u00b7 ARR = recurring share (assumption 65%) \u00d7 revenue = 828.1 \u00b7 runway = cash \u00f7 monthly burn (N/A \u2014 no burn; ~$13M generated/mo).",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\u2192 tab 2 \u00b7 Current Position, sections D\u2013H",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

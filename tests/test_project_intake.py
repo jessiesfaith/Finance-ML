@@ -56,7 +56,7 @@ def test_round_trip_parses_upserts_and_appraises(tmp_path):
     assert issues == []
     frame = build_project_appraisal(
         tables["project_master"], tables["project_assumptions"], load_rates())
-    assert len(frame) == 15                      # 5 options x 3 scenarios
+    assert len(frame) == 18                      # 6 options x 3 scenarios
     assert "PROJ-777" in set(frame["project_id"])
 
 

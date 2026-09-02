@@ -21,8 +21,10 @@ from financials.loader import ClientFSValidationError
 from financials.projects import (
     DEFAULT_OUTPUT,
     SENSITIVITY_OUTPUT,
+    SIZING_OUTPUT,
     VERDICT_STRIP_OUTPUT,
     build_option_sensitivity,
+    build_option_sizing,
     build_project_appraisal,
     load_projects,
     load_rates,
@@ -48,6 +50,9 @@ def main():
         tables["project_master"], tables["project_assumptions"], rates)
     grid.to_csv(SENSITIVITY_OUTPUT, index=False)
     verdicts.to_csv(VERDICT_STRIP_OUTPUT, index=False)
+    sizing = build_option_sizing(
+        tables["project_master"], tables["project_assumptions"], rates)
+    sizing.to_csv(SIZING_OUTPUT, index=False)
 
     print()
     print("PROJECT APPRAISAL — incremental, per scenario, hurdle basis")
@@ -59,6 +64,7 @@ def main():
     print(f"written: {DEFAULT_OUTPUT}")
     print(f"sensitivity grid: {len(grid)} rows -> {SENSITIVITY_OUTPUT}")
     print(f"verdict strips  : {len(verdicts)} rows -> {VERDICT_STRIP_OUTPUT}")
+    print(f"sizing grid     : {len(sizing)} rows -> {SIZING_OUTPUT}")
 
 
 if __name__ == "__main__":

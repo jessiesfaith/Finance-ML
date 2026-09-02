@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "e195ca8d1bb804fe9baa",
+  "position": {
+    "x": 651,
+    "y": 1745,
+    "height": 75,
+    "width": 175,
+    "z": 928000,
+    "tabOrder": 928000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "Interest Coverage (x)"
+                }
+              },
+              "queryRef": "client_fs_statements.Interest Coverage (x)",
+              "nativeQueryRef": "Interest Coverage (x)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

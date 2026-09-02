@@ -39,6 +39,7 @@ rework. The curated layer absorbs all of that churn.
 | `reports/market_history_windows.csv` | Page 5 — windowed history behind the 03M/06M/12M/24M/YTD toggle | `tests/test_market_history.py` |
 | `reports/client_fs_option_sensitivity.csv` | Options page — per-option NPV grid (rates × delivery) | `tests/test_projects.py` |
 | `reports/client_fs_option_verdicts.csv` | Options page — APPROVE/REJECT strip under each grid | `tests/test_projects.py` |
+| `reports/client_fs_option_sizing.csv` | Options page — amount scenarios per option (price grid for M&A) | `tests/test_projects.py` |
 
 Every curated file is written only by `python src/build_powerbi_exports.py`,
 carries a `value_class` column (the six-class taxonomy) so the report can
