@@ -22,3 +22,7 @@ data/sec_staging/
 reports/ML Tool.SemanticModel/.pbi/cache.abf
 reports/ML Tool.SemanticModel/.pbi/localSettings.json
 reports/ML Tool.Report/.pbi/localSettings.json
+
+# Office lock files (created while a workbook/doc is open)
+~$*
+**/~$*
