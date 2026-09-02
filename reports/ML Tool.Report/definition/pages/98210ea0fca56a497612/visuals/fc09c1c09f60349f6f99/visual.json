@@ -3,7 +3,7 @@
   "name": "fc09c1c09f60349f6f99",
   "position": {
     "x": 165,
-    "y": 1280,
+    "y": 1980,
     "height": 110,
     "width": 1550,
     "z": 13000,
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Legend — abbreviations",
+                    "value": "Legend \u2014 abbreviations",
                     "textStyle": {
                       "fontSize": "11pt"
                     }
@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "NPV = net present value at the hurdle rate · IRR = internal rate of return (the rate where NPV = 0) · payback = years to recover the investment, undiscounted · incr ROIC = average incremental NOPAT ÷ average invested capital · NWC = net working capital · hurdle = WACC + 2pts",
+                    "value": "NPV = net present value at the hurdle rate \u00b7 IRR = internal rate of return (the rate where NPV = 0) \u00b7 payback = years to recover the investment, undiscounted \u00b7 incr ROIC = average incremental NOPAT \u00f7 average invested capital \u00b7 NWC = net working capital \u00b7 hurdle = WACC + 2pts",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "8ef646810570fb26f005",
+  "name": "f45d9963294bdf17ca9a",
   "position": {
     "x": 165,
-    "y": 1670,
-    "height": 200,
-    "width": 1550,
-    "z": 11000,
-    "tabOrder": 11000
+    "y": 974,
+    "height": 470,
+    "width": 1000,
+    "z": 401000,
+    "tabOrder": 401000
   },
   "visual": {
     "visualType": "tableEx",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "client_fs_projects"
+                      "Entity": "client_fs_option_sensitivity"
                     }
                   },
                   "Property": "project_id"
                 }
               },
-              "queryRef": "client_fs_projects.project_id",
+              "queryRef": "client_fs_option_sensitivity.project_id",
               "nativeQueryRef": "project_id"
             },
             {
@@ -34,84 +34,84 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "client_fs_projects"
+                      "Entity": "client_fs_option_sensitivity"
                     }
                   },
-                  "Property": "project_name"
+                  "Property": "flows_delivered_pct"
                 }
               },
-              "queryRef": "client_fs_projects.project_name",
-              "nativeQueryRef": "project_name"
+              "queryRef": "client_fs_option_sensitivity.flows_delivered_pct",
+              "nativeQueryRef": "flows_delivered_pct"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "client_fs_projects"
+                      "Entity": "client_fs_option_sensitivity"
                     }
                   },
-                  "Property": "category"
+                  "Property": "npv_at_5pct"
                 }
               },
-              "queryRef": "client_fs_projects.category",
-              "nativeQueryRef": "category"
+              "queryRef": "client_fs_option_sensitivity.npv_at_5pct",
+              "nativeQueryRef": "npv_at_5pct"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "client_fs_projects"
+                      "Entity": "client_fs_option_sensitivity"
                     }
                   },
-                  "Property": "initial_investment"
+                  "Property": "npv_at_7pct"
                 }
               },
-              "queryRef": "client_fs_projects.initial_investment",
-              "nativeQueryRef": "initial_investment"
+              "queryRef": "client_fs_option_sensitivity.npv_at_7pct",
+              "nativeQueryRef": "npv_at_7pct"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "client_fs_projects"
+                      "Entity": "client_fs_option_sensitivity"
                     }
                   },
-                  "Property": "horizon_years"
+                  "Property": "npv_at_9pct"
                 }
               },
-              "queryRef": "client_fs_projects.horizon_years",
-              "nativeQueryRef": "horizon_years"
+              "queryRef": "client_fs_option_sensitivity.npv_at_9pct",
+              "nativeQueryRef": "npv_at_9pct"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "client_fs_projects"
+                      "Entity": "client_fs_option_sensitivity"
                     }
                   },
-                  "Property": "review_status"
+                  "Property": "npv_at_11pct"
                 }
               },
-              "queryRef": "client_fs_projects.review_status",
-              "nativeQueryRef": "review_status"
+              "queryRef": "client_fs_option_sensitivity.npv_at_11pct",
+              "nativeQueryRef": "npv_at_11pct"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "client_fs_projects"
+                      "Entity": "client_fs_option_sensitivity"
                     }
                   },
-                  "Property": "rationale"
+                  "Property": "npv_at_13pct"
                 }
               },
-              "queryRef": "client_fs_projects.rationale",
-              "nativeQueryRef": "rationale"
+              "queryRef": "client_fs_option_sensitivity.npv_at_13pct",
+              "nativeQueryRef": "npv_at_13pct"
             }
           ]
         }
@@ -123,7 +123,7 @@
               "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "client_fs_projects"
+                    "Entity": "client_fs_option_sensitivity"
                   }
                 },
                 "Property": "project_id"

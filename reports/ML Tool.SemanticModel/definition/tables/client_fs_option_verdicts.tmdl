@@ -1,0 +1,76 @@
+/// Curated export: the APPROVE / REJECT strip under each option's
+/// grid - the NPV>0 call at each discount rate, at planned flows.
+table client_fs_option_verdicts
+	lineageTag: 9d277ddf-5e08-424a-9d34-8d41765f4ee8
+
+	column project_id
+		dataType: string
+		lineageTag: d678bb7c-2b0b-4f7d-a328-e8c2bf52f1ec
+		summarizeBy: none
+		sourceColumn: project_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column reading
+		dataType: string
+		lineageTag: b018b701-85d5-4ffe-a9df-ac8f963d784c
+		summarizeBy: none
+		sourceColumn: reading
+
+		annotation SummarizationSetBy = Automatic
+
+	column at_5pct
+		dataType: string
+		lineageTag: 19607e10-8ac9-4dde-893f-bd5a9d81cf7c
+		summarizeBy: none
+		sourceColumn: at_5pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column at_7pct
+		dataType: string
+		lineageTag: 0e80f16d-9dc4-4110-8878-d6a7ab6a5466
+		summarizeBy: none
+		sourceColumn: at_7pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column at_9pct
+		dataType: string
+		lineageTag: 8e622bff-29bd-48c3-bf28-04afceb7e987
+		summarizeBy: none
+		sourceColumn: at_9pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column at_11pct
+		dataType: string
+		lineageTag: 781b1384-2640-49b6-b30c-b7082ae0d3ca
+		summarizeBy: none
+		sourceColumn: at_11pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column at_13pct
+		dataType: string
+		lineageTag: 7c27fcad-bb5f-4f2e-bb3f-b28a1cd2a6d7
+		summarizeBy: none
+		sourceColumn: at_13pct
+
+		annotation SummarizationSetBy = Automatic
+
+	partition client_fs_option_verdicts = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\client_fs_option_verdicts.csv"),
+				    [Delimiter = ",", Columns = 7, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"project_id", "reading", "at_5pct", "at_7pct", "at_9pct", "at_11pct", "at_13pct"}),
+				  #"Changed Type" = #"Selected columns"
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

@@ -20,6 +20,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from financials.loader import ClientFSValidationError
 from financials.projects import (
     DEFAULT_OUTPUT,
+    SENSITIVITY_OUTPUT,
+    VERDICT_STRIP_OUTPUT,
+    build_option_sensitivity,
     build_project_appraisal,
     load_projects,
     load_rates,
@@ -41,6 +44,10 @@ def main():
     frame = build_project_appraisal(
         tables["project_master"], tables["project_assumptions"], rates)
     frame.to_csv(DEFAULT_OUTPUT, index=False)
+    grid, verdicts = build_option_sensitivity(
+        tables["project_master"], tables["project_assumptions"], rates)
+    grid.to_csv(SENSITIVITY_OUTPUT, index=False)
+    verdicts.to_csv(VERDICT_STRIP_OUTPUT, index=False)
 
     print()
     print("PROJECT APPRAISAL — incremental, per scenario, hurdle basis")
@@ -50,6 +57,8 @@ def main():
     print(frame[show].to_string(index=False))
     print()
     print(f"written: {DEFAULT_OUTPUT}")
+    print(f"sensitivity grid: {len(grid)} rows -> {SENSITIVITY_OUTPUT}")
+    print(f"verdict strips  : {len(verdicts)} rows -> {VERDICT_STRIP_OUTPUT}")
 
 
 if __name__ == "__main__":

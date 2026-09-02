@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "ec23675b25dcc44b22f4",
+  "position": {
+    "x": 1185,
+    "y": 974,
+    "height": 240,
+    "width": 530,
+    "z": 402000,
+    "tabOrder": 402000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "How to read: pick your discount rate column \u2014 11% sits at the hurdle; middle row (100) is the case as filed; rows above and below stress execution.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The expansion (PROJ-001) only turns positive below ~5% \u2014 the fragility its REVIEW verdict flagged. The product line (PROJ-003) stays positive in every cell \u2014 robustness.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The paydown (PROJ-004) reads \u22120.2 at 5%: its IRR IS ~4.9%, so it breaks even at its own floor; its rows don't scale because the flows are contractual.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

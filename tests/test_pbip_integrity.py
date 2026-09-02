@@ -35,6 +35,8 @@ CSV_FOR_TABLE = {
     "market_rf_policy": "market_rf_policy",
     "market_history_rolling24": "market_history_rolling24",
     "market_history_windows": "market_history_windows",
+    "client_fs_option_sensitivity": "client_fs_option_sensitivity",
+    "client_fs_option_verdicts": "client_fs_option_verdicts",
 }
 
 

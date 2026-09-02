@@ -131,3 +131,69 @@ def test_debt_paydown_irr_is_exactly_the_after_tax_cost_of_debt(appraisal):
         assert row["irr_pct"] == pytest.approx(expected, abs=1e-2)
         assert row["incr_roic_pct"] == pytest.approx(expected, abs=1e-2)
 
+
+
+# ------------------------------------------------
+# OPTION SENSITIVITY (the deal tables under Step 5)
+# ------------------------------------------------
+
+@pytest.fixture(scope="module")
+def sensitivity():
+    from financials.projects import build_option_sensitivity
+    tables, _ = load_projects(strict=True)
+    return build_option_sensitivity(
+        tables["project_master"], tables["project_assumptions"], load_rates())
+
+
+def test_grid_and_verdict_shape(sensitivity):
+    from financials.projects import (FLOWS_DELIVERED_PCT, SENSITIVITY_RATES,
+                                     rate_column)
+    grid, verdicts = sensitivity
+    assert list(grid.columns) == (["project_id", "flows_delivered_pct"]
+                                  + [rate_column(r) for r in SENSITIVITY_RATES])
+    assert len(grid) == 4 * len(FLOWS_DELIVERED_PCT)
+    assert len(verdicts) == 4
+    assert set(verdicts.columns[2:]) == {
+        "at_" + f"{r:.0f}pct" for r in SENSITIVITY_RATES}
+
+
+def test_paydown_breaks_even_at_its_own_floor(sensitivity):
+    """NPV ~ 0 at 5% because the paydown's IRR IS ~4.9% - the floor."""
+    grid, _ = sensitivity
+    row = grid[(grid["project_id"] == "PROJ-004")
+               & (grid["flows_delivered_pct"] == 100)].iloc[0]
+    assert abs(row["npv_at_5pct"]) < 1.0
+    paydown = grid[grid["project_id"] == "PROJ-004"]
+    assert paydown["npv_at_9pct"].nunique() == 1   # contractual: rows equal
+
+
+def test_grid_monotonicity(sensitivity):
+    from financials.projects import SENSITIVITY_RATES, rate_column
+    grid, _ = sensitivity
+    cols = [rate_column(r) for r in SENSITIVITY_RATES]
+    for _, row in grid.iterrows():
+        values = [row[c] for c in cols]
+        assert values == sorted(values, reverse=True)   # NPV falls with rate
+    for pid in ("PROJ-001", "PROJ-002", "PROJ-003"):
+        block = grid[grid["project_id"] == pid].sort_values(
+            "flows_delivered_pct")
+        assert block["npv_at_9pct"].is_monotonic_increasing
+
+
+def test_verdict_strip_matches_the_grid(sensitivity):
+    from financials.projects import SENSITIVITY_RATES, rate_column
+    grid, verdicts = sensitivity
+    for _, verdict in verdicts.iterrows():
+        base = grid[(grid["project_id"] == verdict["project_id"])
+                    & (grid["flows_delivered_pct"] == 100)].iloc[0]
+        for rate in SENSITIVITY_RATES:
+            expected = "APPROVE" if base[rate_column(rate)] > 0 else "REJECT"
+            assert verdict["at_" + f"{rate:.0f}pct"] == expected
+
+
+def test_committed_sensitivity_matches_a_fresh_rebuild(sensitivity):
+    from financials.projects import SENSITIVITY_OUTPUT, VERDICT_STRIP_OUTPUT
+    from conftest import assert_matches_committed
+    grid, verdicts = sensitivity
+    assert_matches_committed(grid, SENSITIVITY_OUTPUT)
+    assert_matches_committed(verdicts, VERDICT_STRIP_OUTPUT)

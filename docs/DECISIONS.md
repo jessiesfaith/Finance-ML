@@ -821,3 +821,16 @@ risky option must beat, weighed on safety and headroom, not hurdle
 math. The four-option landscape now spans REVIEW / APPROVE-thin /
 APPROVE-strong / REJECT-with-caveat - a full capital-allocation
 conversation.
+
+### 77. Deal-style sensitivity tables under every option
+Owner's reading convention: rates or amounts across the columns, NPV
+in the cells, and an explicit APPROVE / REJECT strip stated underneath.
+Built as two curated exports recomputed with the appraisal: a grid
+(rows = project x 80-120% of planned flows delivered, columns = NPV at
+5/7/9/11/13% discount rates; a DEBT_PAYDOWN's rows do not scale - its
+flows are contractual) and a one-row-per-option verdict strip (NPV>0
+at each rate, at planned flows). Test-pinned: NPV falls with rate,
+rises with delivery, the paydown breaks even at ~5% because that IS
+its IRR, and the strip must agree with the grid cell-for-cell. The
+Options page renders grid then strip, with a how-to-read note calling
+out PROJ-001's fragility and PROJ-003's robustness.

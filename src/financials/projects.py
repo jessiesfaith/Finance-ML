@@ -299,3 +299,70 @@ def build_project_appraisal(master, assumptions, rates) -> pd.DataFrame:
         for _, rates_row in rates.iterrows():
             rows.append(appraise_project(project, assumptions, rates_row))
     return pd.DataFrame(rows, columns=OUTPUT_COLUMNS)
+
+
+# ----------------------------------------------------------------------
+# Option sensitivity (Step 5): the classic deal table - discount rates
+# across the columns, delivery of the planned cash flows down the rows,
+# NPV in the cells, and an explicit APPROVE / REJECT strip underneath.
+# ----------------------------------------------------------------------
+
+SENSITIVITY_RATES = (5.0, 7.0, 9.0, 11.0, 13.0)
+FLOWS_DELIVERED_PCT = (80, 90, 100, 110, 120)
+SENSITIVITY_OUTPUT = BASE_DIR / "reports" / "client_fs_option_sensitivity.csv"
+VERDICT_STRIP_OUTPUT = BASE_DIR / "reports" / "client_fs_option_verdicts.csv"
+
+
+def rate_column(rate: float) -> str:
+    return "npv_at_" + f"{rate:.0f}pct"
+
+
+def _base_flows(project, assumptions, base_rates_row):
+    """The option's Base-scenario annual flows, via the appraisal engine."""
+    row = appraise_project(project, assumptions, base_rates_row)
+    horizon = int(project["horizon_years"])
+    return [row[f"ufcf_y{t}"] for t in range(1, horizon + 1)]
+
+
+def build_option_sensitivity(master, assumptions, rates):
+    """
+    Returns (grid, verdicts). Grid rows: project x flows-delivered %,
+    columns: NPV at each discount rate. A DEBT_PAYDOWN's flows are
+    contractual, so its rows do not scale with delivery %. Verdicts:
+    one row per project - APPROVE where NPV > 0 at that column's rate,
+    judged at 100% delivery.
+    """
+    base = rates[rates["scenario"] == "Base"].iloc[0]
+    grid_rows, verdict_rows = [], []
+    for _, project in master.sort_values("project_id").iterrows():
+        investment = float(project["initial_investment"])
+        contractual = str(project["category"]).upper() == "DEBT_PAYDOWN"
+        flows = _base_flows(project, assumptions, base)
+
+        for pct in FLOWS_DELIVERED_PCT:
+            scale = 1.0 if contractual else pct / 100.0
+            row = {"project_id": project["project_id"],
+                   "flows_delivered_pct": pct}
+            for rate in SENSITIVITY_RATES:
+                npv = -investment + sum(
+                    (f * scale) / (1 + rate / 100.0) ** t
+                    for t, f in enumerate(flows, start=1))
+                row[rate_column(rate)] = round(npv, 2)
+            grid_rows.append(row)
+
+        verdict = {"project_id": project["project_id"],
+                   "reading": "DECISION at planned flows (NPV > 0?)"}
+        for rate in SENSITIVITY_RATES:
+            npv = -investment + sum(
+                f / (1 + rate / 100.0) ** t
+                for t, f in enumerate(flows, start=1))
+            verdict["at_" + f"{rate:.0f}pct"] = (
+                "APPROVE" if npv > 0 else "REJECT")
+        verdict_rows.append(verdict)
+
+    grid_cols = (["project_id", "flows_delivered_pct"]
+                 + [rate_column(r) for r in SENSITIVITY_RATES])
+    verdict_cols = (["project_id", "reading"]
+                    + ["at_" + f"{r:.0f}pct" for r in SENSITIVITY_RATES])
+    return (pd.DataFrame(grid_rows, columns=grid_cols),
+            pd.DataFrame(verdict_rows, columns=verdict_cols))

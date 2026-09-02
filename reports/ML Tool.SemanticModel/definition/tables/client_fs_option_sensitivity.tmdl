@@ -1,0 +1,83 @@
+/// Curated export: per-option NPV grid - discount rates across the
+/// columns, %% of planned flows delivered down the rows. Test-pinned
+/// to the appraisal engine.
+table client_fs_option_sensitivity
+	lineageTag: a8eacdac-bc53-4a3f-b407-f3f8ae082151
+
+	column project_id
+		dataType: string
+		lineageTag: 94c017a8-5cd1-43cb-b299-598033719f5f
+		summarizeBy: none
+		sourceColumn: project_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column flows_delivered_pct
+		dataType: double
+		formatString: #,0.0
+		lineageTag: efc289e5-ecc0-47b6-a3c9-8577ec69e31d
+		summarizeBy: none
+		sourceColumn: flows_delivered_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column npv_at_5pct
+		dataType: double
+		formatString: #,0.0
+		lineageTag: 12f308fe-5000-4822-9f13-4243fb6d15d3
+		summarizeBy: none
+		sourceColumn: npv_at_5pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column npv_at_7pct
+		dataType: double
+		formatString: #,0.0
+		lineageTag: 4de6ed3e-febc-48f8-9b6a-636c976f6423
+		summarizeBy: none
+		sourceColumn: npv_at_7pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column npv_at_9pct
+		dataType: double
+		formatString: #,0.0
+		lineageTag: c8a93c12-67b3-4b52-a2f5-37cf4dd42cf9
+		summarizeBy: none
+		sourceColumn: npv_at_9pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column npv_at_11pct
+		dataType: double
+		formatString: #,0.0
+		lineageTag: 1f3188b5-994d-4009-8fa7-5d6a9928ad0e
+		summarizeBy: none
+		sourceColumn: npv_at_11pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column npv_at_13pct
+		dataType: double
+		formatString: #,0.0
+		lineageTag: 85ca5bea-03db-4324-bbe7-7619c2ca259b
+		summarizeBy: none
+		sourceColumn: npv_at_13pct
+
+		annotation SummarizationSetBy = Automatic
+
+	partition client_fs_option_sensitivity = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\client_fs_option_sensitivity.csv"),
+				    [Delimiter = ",", Columns = 7, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"project_id", "flows_delivered_pct", "npv_at_5pct", "npv_at_7pct", "npv_at_9pct", "npv_at_11pct", "npv_at_13pct"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {{"flows_delivered_pct", type number}, {"npv_at_5pct", type number}, {"npv_at_7pct", type number}, {"npv_at_9pct", type number}, {"npv_at_11pct", type number}, {"npv_at_13pct", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "8ef646810570fb26f005",
+  "name": "a4cd5aa5e268fc826bf4",
   "position": {
     "x": 165,
-    "y": 1670,
-    "height": 200,
-    "width": 1550,
-    "z": 11000,
-    "tabOrder": 11000
+    "y": 1510,
+    "height": 150,
+    "width": 1000,
+    "z": 404000,
+    "tabOrder": 404000
   },
   "visual": {
     "visualType": "tableEx",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "client_fs_projects"
+                      "Entity": "client_fs_option_verdicts"
                     }
                   },
                   "Property": "project_id"
                 }
               },
-              "queryRef": "client_fs_projects.project_id",
+              "queryRef": "client_fs_option_verdicts.project_id",
               "nativeQueryRef": "project_id"
             },
             {
@@ -34,84 +34,70 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "client_fs_projects"
+                      "Entity": "client_fs_option_verdicts"
                     }
                   },
-                  "Property": "project_name"
+                  "Property": "at_5pct"
                 }
               },
-              "queryRef": "client_fs_projects.project_name",
-              "nativeQueryRef": "project_name"
+              "queryRef": "client_fs_option_verdicts.at_5pct",
+              "nativeQueryRef": "at_5pct"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "client_fs_projects"
+                      "Entity": "client_fs_option_verdicts"
                     }
                   },
-                  "Property": "category"
+                  "Property": "at_7pct"
                 }
               },
-              "queryRef": "client_fs_projects.category",
-              "nativeQueryRef": "category"
+              "queryRef": "client_fs_option_verdicts.at_7pct",
+              "nativeQueryRef": "at_7pct"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "client_fs_projects"
+                      "Entity": "client_fs_option_verdicts"
                     }
                   },
-                  "Property": "initial_investment"
+                  "Property": "at_9pct"
                 }
               },
-              "queryRef": "client_fs_projects.initial_investment",
-              "nativeQueryRef": "initial_investment"
+              "queryRef": "client_fs_option_verdicts.at_9pct",
+              "nativeQueryRef": "at_9pct"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "client_fs_projects"
+                      "Entity": "client_fs_option_verdicts"
                     }
                   },
-                  "Property": "horizon_years"
+                  "Property": "at_11pct"
                 }
               },
-              "queryRef": "client_fs_projects.horizon_years",
-              "nativeQueryRef": "horizon_years"
+              "queryRef": "client_fs_option_verdicts.at_11pct",
+              "nativeQueryRef": "at_11pct"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "client_fs_projects"
+                      "Entity": "client_fs_option_verdicts"
                     }
                   },
-                  "Property": "review_status"
+                  "Property": "at_13pct"
                 }
               },
-              "queryRef": "client_fs_projects.review_status",
-              "nativeQueryRef": "review_status"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "client_fs_projects"
-                    }
-                  },
-                  "Property": "rationale"
-                }
-              },
-              "queryRef": "client_fs_projects.rationale",
-              "nativeQueryRef": "rationale"
+              "queryRef": "client_fs_option_verdicts.at_13pct",
+              "nativeQueryRef": "at_13pct"
             }
           ]
         }
@@ -123,7 +109,7 @@
               "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "client_fs_projects"
+                    "Entity": "client_fs_option_verdicts"
                   }
                 },
                 "Property": "project_id"
