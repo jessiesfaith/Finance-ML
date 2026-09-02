@@ -231,6 +231,115 @@ table client_fs_statements
 		displayFolder: Ratios
 		lineageTag: b7e3c487-06bb-453d-b435-2359ddbf448a
 
+	/// Operating expenses from the IS detail (canonical sign
+	/// flipped positive for the build-out row).
+	measure 'Opex ($M)' =
+			
+			-1 *
+			CALCULATE(
+			    SUM(client_fs_statements[amount_reporting]),
+			    FILTER(
+			        ALL(client_fs_statements),
+			        client_fs_statements[period_id] = [Stmt Latest Period]
+			            && client_fs_statements[reported_or_adjusted] = "REPORTED"
+			            && client_fs_statements[standard_account_id] = "opex"
+			    )
+			)
+		formatString: #,0.0
+		displayFolder: Calc Build-Out
+		lineageTag: c13f7174-c0ff-4764-8d7b-4e824b311a1f
+
+	/// EBITDA rebuilt line-by-line from the statements; must equal
+	/// the pipeline's EBITDA - the check card proves it.
+	measure 'EBITDA (Built) ($M)' =
+			
+			[Client Revenue ($M)] - [COGS ($M)] - [Opex ($M)]
+		formatString: #,0.0
+		displayFolder: Calc Build-Out
+		lineageTag: 99266664-ed00-4796-8dbe-a85162a6ae8a
+
+	/// Rebuilt minus pipeline - must read 0.00.
+	measure 'EBITDA Build Check ($M)' =
+			
+			ROUND([EBITDA (Built) ($M)] - [Client EBITDA ($M)], 6) + 0
+		formatString: 0.00
+		displayFolder: Calc Build-Out
+		lineageTag: 20a3dd9c-6baf-4aee-a563-c9a22c009c83
+
+	/// Operating cash flow, indirect method: start at net income, add
+	/// back the non-cash D&A, subtract the cash tied up in working
+	/// capital. Taxes and interest are already inside net income.
+	measure 'OCF Indirect ($M)' =
+			
+			[Net Income Reported ($M)] + [Client D&A ($M)]
+			    - [Client Change in NWC ($M)]
+		formatString: #,0.0
+		displayFolder: Calc Build-Out
+		lineageTag: 77604651-1a5a-47d0-8188-cd716aeda920
+
+	/// Free cash flow TO EQUITY-side readers: what is left after
+	/// reinvestment, with interest already paid inside net income.
+	measure 'Levered FCF ($M)' =
+			
+			[OCF Indirect ($M)] - [Client CapEx ($M)]
+		formatString: #,0.0
+		displayFolder: Calc Build-Out
+		lineageTag: 0d83a6b1-1f2c-463a-9a19-b3ea857b0acd
+
+	/// Interest x (1 - tax): what debt truly costs after the shield.
+	/// The exact wedge between levered FCF and UFCF.
+	measure 'After-Tax Interest ($M)' =
+			
+			[Interest Expense ($M)] * [Client After-Tax Factor]
+		formatString: #,0.0
+		displayFolder: Calc Build-Out
+		lineageTag: 67bb1c85-3ea5-402e-b0cb-1258fc31fac0
+
+	/// Levered FCF + after-tax interest must equal UFCF exactly -
+	/// the two cash-flow definitions differ ONLY by where debt is
+	/// charged (in the flows vs in the WACC).
+	measure 'FCF Bridge Check ($M)' =
+			
+			ROUND([Levered FCF ($M)] + [After-Tax Interest ($M)]
+			    - [Client UFCF ($M)], 6) + 0
+		formatString: 0.00
+		displayFolder: Calc Build-Out
+		lineageTag: fab0c2d3-794f-48b8-8ba0-85b1e9b9b16a
+
+	/// Backed out of the pipeline's market-value weights: since
+	/// E/(E+D) and D/(E+D) are known and D = 366, E = D x We/Wd.
+	measure 'Market Cap (Implied) ($M)' =
+			
+			DIVIDE([Client Total Debt ($M)] * [Equity Weight], [Debt Weight])
+		formatString: #,0.0
+		displayFolder: Calc Build-Out
+		lineageTag: 9ac29854-e801-4204-8965-e2a7639b2510
+
+	/// The market price the weights were built from - $18.00 in the
+	/// fixture (the shares_dilution input), vs the DCF's $28.86.
+	measure 'Market Price per Share (Implied $)' =
+			
+			DIVIDE([Market Cap (Implied) ($M)], [Client Diluted Shares (M)])
+		formatString: "$"#,0.00
+		displayFolder: Calc Build-Out
+		lineageTag: 7e96ab1e-fb56-436b-9617-6a6725cfbd9b
+
+	measure 'Capital E plus D ($M)' =
+			
+			[Market Cap (Implied) ($M)] + [Client Total Debt ($M)]
+		formatString: #,0.0
+		displayFolder: Calc Build-Out
+		lineageTag: 39b1431a-dae8-47fb-9922-825ef7ce890f
+
+	/// The company-side cost of debt: actual interest paid over debt
+	/// carried (6.94%) - compare with the market-built Kd of 6.53%.
+	measure 'Book Interest Rate (%)' =
+			
+			100 * DIVIDE([Interest Expense ($M)], [Client Total Debt ($M)])
+		formatString: 0.00
+		displayFolder: Calc Build-Out
+		lineageTag: d91187f8-a2c2-40d4-8d69-3c92751afd40
+
 	column entity_id
 		dataType: string
 		lineageTag: 17fc8e23-2bd6-4340-b839-3702349b04fb

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "a087f8a0860ae38b0e7f",
+  "position": {
+    "x": 401,
+    "y": 530,
+    "height": 75,
+    "width": 170,
+    "z": 30000,
+    "tabOrder": 30000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "After-Tax Interest ($M)"
+                }
+              },
+              "queryRef": "client_fs_statements.After-Tax Interest ($M)",
+              "nativeQueryRef": "After-Tax Interest ($M)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

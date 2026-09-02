@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "973be304ec665234b9ef",
+  "position": {
+    "x": 401,
+    "y": 1105,
+    "height": 75,
+    "width": 170,
+    "z": 65000,
+    "tabOrder": 65000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "Market Price per Share (Implied $)"
+                }
+              },
+              "queryRef": "client_fs_statements.Market Price per Share (Implied $)",
+              "nativeQueryRef": "Market Price per Share (Implied $)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

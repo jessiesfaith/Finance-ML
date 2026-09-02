@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "430899163094d4eef2f9",
+  "position": {
+    "x": 873,
+    "y": 135,
+    "height": 75,
+    "width": 170,
+    "z": 10000,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "EBITDA (Built) ($M)"
+                }
+              },
+              "queryRef": "client_fs_statements.EBITDA (Built) ($M)",
+              "nativeQueryRef": "EBITDA (Built) ($M)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "aa3ef6428d88708ee29a",
+  "position": {
+    "x": 165,
+    "y": 1560,
+    "height": 55,
+    "width": 1550,
+    "z": 89000,
+    "tabOrder": 89000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Flow of the page: statements \u2192 EBITDA \u2192 OCF \u2192 FCF (both definitions, reconciled exactly) \u2192 DCF price \u00b7 and the balance sheet that prices the money. Live data later drops straight into these same rows.",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

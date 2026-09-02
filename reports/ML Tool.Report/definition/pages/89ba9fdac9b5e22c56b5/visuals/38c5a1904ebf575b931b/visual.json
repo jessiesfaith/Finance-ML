@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "38c5a1904ebf575b931b",
+  "position": {
+    "x": 637,
+    "y": 290,
+    "height": 75,
+    "width": 170,
+    "z": 18000,
+    "tabOrder": 18000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_ufcf"
+                    }
+                  },
+                  "Property": "Client Change in NWC ($M)"
+                }
+              },
+              "queryRef": "client_fs_ufcf.Client Change in NWC ($M)",
+              "nativeQueryRef": "Client Change in NWC ($M)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

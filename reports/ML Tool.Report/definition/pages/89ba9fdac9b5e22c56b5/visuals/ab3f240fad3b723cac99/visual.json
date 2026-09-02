@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "ab3f240fad3b723cac99",
+  "position": {
+    "x": 637,
+    "y": 935,
+    "height": 75,
+    "width": 170,
+    "z": 55000,
+    "tabOrder": 55000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_valuation_inputs"
+                    }
+                  },
+                  "Property": "Client Net Debt ($M)"
+                }
+              },
+              "queryRef": "client_fs_valuation_inputs.Client Net Debt ($M)",
+              "nativeQueryRef": "Client Net Debt ($M)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

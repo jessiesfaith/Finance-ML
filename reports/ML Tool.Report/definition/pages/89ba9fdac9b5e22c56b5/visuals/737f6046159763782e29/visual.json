@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "737f6046159763782e29",
+  "position": {
+    "x": 1245,
+    "y": 1020,
+    "height": 75,
+    "width": 630,
+    "z": 62000,
+    "tabOrder": 62000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Book rate (what interest the client actually pays: 25.4 \u00f7 366 = 6.94%) beside the market-built Kd (4.53 + 2.00 = 6.53%) \u2014 the company-side and market-side views of the same cost.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

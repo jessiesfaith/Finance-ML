@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "41169232b03962118f37",
+  "position": {
+    "x": 637,
+    "y": 1190,
+    "height": 75,
+    "width": 170,
+    "z": 72000,
+    "tabOrder": 72000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "Capital E plus D ($M)"
+                }
+              },
+              "queryRef": "client_fs_statements.Capital E plus D ($M)",
+              "nativeQueryRef": "Capital E plus D ($M)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

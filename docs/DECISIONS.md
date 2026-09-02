@@ -899,3 +899,17 @@ constant-returns - plus share of funding capacity (headroom + cash).
 fixture numbers and tab references, including the terminal-value
 geometric-series derivation and the provenance of g; a TV note sits
 beside the valuation walk.
+
+### 83. Calc Build-Out page - EBITDA/OCF/FCF/DCF and the B/S behind WACC
+Owner wants to review HOW every calc is generated from the example
+data before live data lands. New "8 - Calc Build-Out" page, all live
+cards in chained rows: EBITDA rebuilt from the IS (with a 0.00 check
+vs the pipeline), OCF by the indirect method (NI + D&A - dNWC =
+207.3), FCF in BOTH definitions with the exact bridge - levered FCF
+137.3 + after-tax interest 19.05 = UFCF 156.35 to the penny (the
+levered/unlevered reconciliation promised earlier, now proved by a
+check card) - the compact DCF walk, and the balance sheet behind WACC:
+net debt build, the BOOK interest rate (25.4/366 = 6.94%) beside the
+market Kd 6.53%, implied market cap (E = D x We/Wd = 1,866 at the
+$18.00 input price), E/(E+D) = 83.60% derived on-page, closing at
+WACC 9.11. Eleven new measures, all statement-driven.

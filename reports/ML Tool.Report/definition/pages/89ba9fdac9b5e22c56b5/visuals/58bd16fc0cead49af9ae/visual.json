@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "58bd16fc0cead49af9ae",
+  "position": {
+    "x": 873,
+    "y": 695,
+    "height": 75,
+    "width": 170,
+    "z": 42000,
+    "tabOrder": 42000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "Net Debt Billions"
+                }
+              },
+              "queryRef": "finance_scenario_report.Net Debt Billions",
+              "nativeQueryRef": "Net Debt Billions"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

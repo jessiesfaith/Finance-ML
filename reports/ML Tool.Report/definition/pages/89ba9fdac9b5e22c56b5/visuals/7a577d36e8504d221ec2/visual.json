@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "7a577d36e8504d221ec2",
+  "position": {
+    "x": 817,
+    "y": 1020,
+    "height": 75,
+    "width": 170,
+    "z": 61000,
+    "tabOrder": 61000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "finance_scenario_report"
+                    }
+                  },
+                  "Property": "Cost of Debt"
+                }
+              },
+              "queryRef": "finance_scenario_report.Cost of Debt",
+              "nativeQueryRef": "Cost of Debt"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

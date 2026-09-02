@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "89ba9fdac9b5e22c56b5",
+  "displayName": "8 \u00b7 Calc Build-Out",
+  "displayOption": "ActualSize",
+  "height": 3000,
+  "width": 3000
+}

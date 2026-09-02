@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "f29ea8f430fcd05a2f62",
+  "position": {
+    "x": 1245,
+    "y": 1105,
+    "height": 240,
+    "width": 630,
+    "z": 88000,
+    "tabOrder": 88000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "E \u00f7 (E+D) is exactly your 'equity divided by equity plus debt': 1,866 \u00f7 2,232 = 83.60%; debt takes the rest, 16.40%.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Market cap uses the MARKET price the weights were built from ($18.00 input), not the DCF's $28.86 answer \u2014 weights must come from what the market says today, or the model would be assuming its own conclusion.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Full weighted-average row with the tax shield lives on tab 3; the contributions (8.31 + 0.80 = 9.11) close the loop here.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

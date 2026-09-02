@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "ff79f22259fac35dd4e3",
+  "position": {
+    "x": 817,
+    "y": 530,
+    "height": 75,
+    "width": 170,
+    "z": 33000,
+    "tabOrder": 33000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "FCF Bridge Check ($M)"
+                }
+              },
+              "queryRef": "client_fs_statements.FCF Bridge Check ($M)",
+              "nativeQueryRef": "FCF Bridge Check ($M)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

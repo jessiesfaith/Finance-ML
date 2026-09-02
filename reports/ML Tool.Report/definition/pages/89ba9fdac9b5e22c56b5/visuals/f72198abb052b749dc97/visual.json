@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "f72198abb052b749dc97",
+  "position": {
+    "x": 637,
+    "y": 1020,
+    "height": 75,
+    "width": 170,
+    "z": 60000,
+    "tabOrder": 60000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "Book Interest Rate (%)"
+                }
+              },
+              "queryRef": "client_fs_statements.Book Interest Rate (%)",
+              "nativeQueryRef": "Book Interest Rate (%)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

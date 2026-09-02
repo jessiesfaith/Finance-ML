@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "2741be5d66e847d4c27b",
+  "position": {
+    "x": 165,
+    "y": 1190,
+    "height": 75,
+    "width": 170,
+    "z": 68000,
+    "tabOrder": 68000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "Market Cap (Implied) ($M)"
+                }
+              },
+              "queryRef": "client_fs_statements.Market Cap (Implied) ($M)",
+              "nativeQueryRef": "Market Cap (Implied) ($M)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
