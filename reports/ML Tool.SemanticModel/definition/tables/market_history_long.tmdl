@@ -1,0 +1,54 @@
+/// Curated pipeline export: one row per (panel, series, month) with
+/// the raw monthly value - feeds the number matrices under each
+/// Page 5 chart, dates across the columns like the charts.
+table market_history_long
+	lineageTag: 93683c46-9aad-4c02-afc4-992f6f1fef24
+
+	column observation_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 127290ce-00db-409e-93c6-0833cb6fe5db
+		summarizeBy: none
+		sourceColumn: observation_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column panel
+		dataType: string
+		lineageTag: 2791c481-81b1-4e09-8670-999a54542072
+		summarizeBy: none
+		sourceColumn: panel
+
+		annotation SummarizationSetBy = Automatic
+
+	column series
+		dataType: string
+		lineageTag: 4daac81c-886e-4827-b4c4-673dd609ad82
+		summarizeBy: none
+		sourceColumn: series
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		formatString: #,0.00
+		lineageTag: d66bb6d9-05d9-484b-b2ee-9ea957110af5
+		summarizeBy: none
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+	partition market_history_long = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\market_history_long.csv"),
+				    [Delimiter = ",", Columns = 4, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Promoted headers", {{"observation_date", type date}, {"value", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

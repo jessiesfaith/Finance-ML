@@ -10,102 +10,129 @@
     "tabOrder": 15000
   },
   "visual": {
-    "visualType": "tableEx",
+    "visualType": "pivotTable",
     "query": {
       "queryState": {
-        "Values": {
+        "Rows": {
           "projections": [
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_rolling24"
+                      "Entity": "market_history_long"
+                    }
+                  },
+                  "Property": "series"
+                }
+              },
+              "queryRef": "market_history_long.series",
+              "nativeQueryRef": "series",
+              "active": true
+            }
+          ]
+        },
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_history_long"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_rolling24.observation_date",
-              "nativeQueryRef": "observation_date"
-            },
+              "queryRef": "market_history_long.observation_date",
+              "nativeQueryRef": "observation_date",
+              "displayName": "date"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
             {
               "field": {
-                "Column": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "market_history_rolling24"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_long"
+                        }
+                      },
+                      "Property": "value"
                     }
                   },
-                  "Property": "cpi_yoy"
+                  "Function": 0
                 }
               },
-              "queryRef": "market_history_rolling24.cpi_yoy",
-              "nativeQueryRef": "cpi_yoy"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "market_history_rolling24"
-                    }
-                  },
-                  "Property": "core_cpi_yoy"
-                }
-              },
-              "queryRef": "market_history_rolling24.core_cpi_yoy",
-              "nativeQueryRef": "core_cpi_yoy"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "market_history_rolling24"
-                    }
-                  },
-                  "Property": "pce_yoy"
-                }
-              },
-              "queryRef": "market_history_rolling24.pce_yoy",
-              "nativeQueryRef": "pce_yoy"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "market_history_rolling24"
-                    }
-                  },
-                  "Property": "core_pce_yoy"
-                }
-              },
-              "queryRef": "market_history_rolling24.core_pce_yoy",
-              "nativeQueryRef": "core_pce_yoy"
+              "queryRef": "Sum(market_history_long.value)",
+              "nativeQueryRef": "Sum of value"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "market_history_rolling24"
-                  }
-                },
-                "Property": "observation_date"
-              }
-            },
-            "direction": "Descending"
-          }
-        ]
       }
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "panelfilterinflation",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "market_history_long"
+              }
+            },
+            "Property": "panel"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "m",
+              "Entity": "market_history_long",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "m"
+                          }
+                        },
+                        "Property": "panel"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'inflation'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
   }
 }

@@ -1,0 +1,3 @@
+relationship 94f6e2b8-4b6b-4671-bd41-bb88ddd6116b
+	fromColumn: market_history_long.observation_date
+	toColumn: market_history_rolling24.observation_date

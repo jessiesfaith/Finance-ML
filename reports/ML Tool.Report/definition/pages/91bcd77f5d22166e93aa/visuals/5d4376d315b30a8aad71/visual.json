@@ -39,7 +39,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Every chart's actual numbers sit right below it, newest month first, filtered by the same date slicer \u2014 read the shape on the line, verify the level in the table.",
+                    "value": "Every chart's actual numbers sit right below it with the DATES RUNNING ACROSS, oldest to newest like the chart itself \u2014 scroll the matrix left-right; the date slicer drives chart and numbers together.",
                     "textStyle": {
                       "fontSize": "10pt"
                     }

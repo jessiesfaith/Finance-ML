@@ -107,3 +107,26 @@ def test_windowed_history_schema_and_coverage():
 
     from conftest import assert_matches_committed
     assert_matches_committed(win, WINDOWS_OUTPUT)
+
+
+def test_long_history_matches_the_wide_values():
+    from financials.market_data import (
+        LONG_OUTPUT, PAGE5_PANELS, load_market_data, long_history,
+        rolling_24m_history)
+    tables, _ = load_market_data(strict=True)
+    long_frame = long_history(tables["market_observations"])
+    total_series = sum(len(v) for v in PAGE5_PANELS.values())
+    assert list(long_frame.columns) == ["observation_date", "panel",
+                                        "series", "value"]
+    assert len(long_frame) == 103 * total_series
+
+    wide = rolling_24m_history(tables["market_observations"])
+    spot = long_frame[(long_frame["panel"] == "inflation")
+                      & (long_frame["series"] == "CPI")
+                      & (long_frame["observation_date"] == "2026-07-31")]
+    assert len(spot) == 1
+    assert spot.iloc[0]["value"] == pytest.approx(
+        wide["cpi_yoy"].iloc[-1], abs=2e-4)
+
+    from conftest import assert_matches_committed
+    assert_matches_committed(long_frame, LONG_OUTPUT)

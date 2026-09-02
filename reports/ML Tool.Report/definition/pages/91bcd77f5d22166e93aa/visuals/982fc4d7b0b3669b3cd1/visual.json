@@ -10,74 +10,129 @@
     "tabOrder": 27000
   },
   "visual": {
-    "visualType": "tableEx",
+    "visualType": "pivotTable",
     "query": {
       "queryState": {
-        "Values": {
+        "Rows": {
           "projections": [
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_rolling24"
+                      "Entity": "market_history_long"
+                    }
+                  },
+                  "Property": "series"
+                }
+              },
+              "queryRef": "market_history_long.series",
+              "nativeQueryRef": "series",
+              "active": true
+            }
+          ]
+        },
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_history_long"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_rolling24.observation_date",
-              "nativeQueryRef": "observation_date"
-            },
+              "queryRef": "market_history_long.observation_date",
+              "nativeQueryRef": "observation_date",
+              "displayName": "date"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
             {
               "field": {
-                "Column": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "market_history_rolling24"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_long"
+                        }
+                      },
+                      "Property": "value"
                     }
                   },
-                  "Property": "unemployment_rate"
+                  "Function": 0
                 }
               },
-              "queryRef": "market_history_rolling24.unemployment_rate",
-              "nativeQueryRef": "unemployment_rate"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "market_history_rolling24"
-                    }
-                  },
-                  "Property": "u6_rate"
-                }
-              },
-              "queryRef": "market_history_rolling24.u6_rate",
-              "nativeQueryRef": "u6_rate"
+              "queryRef": "Sum(market_history_long.value)",
+              "nativeQueryRef": "Sum of value"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "market_history_rolling24"
-                  }
-                },
-                "Property": "observation_date"
-              }
-            },
-            "direction": "Descending"
-          }
-        ]
       }
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "panelfilterunemployment",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "market_history_long"
+              }
+            },
+            "Property": "panel"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "m",
+              "Entity": "market_history_long",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "m"
+                          }
+                        },
+                        "Property": "panel"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'unemployment'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
   }
 }

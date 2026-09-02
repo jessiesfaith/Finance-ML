@@ -610,3 +610,74 @@ def windowed_history(observations: pd.DataFrame) -> pd.DataFrame:
     out["value_class"] = "MARKET_DATA"
     return (out.sort_values(["window", "observation_date"])
             .reset_index(drop=True))
+
+
+# Panel -> series map for Page 5 (single source of truth shared by the
+# long export below and the report generator, so a chart and its
+# number matrix can never disagree about what they show).
+PAGE5_PANELS = {
+    "treasuries": [("ust_3m", "3M"), ("ust_2y", "2Y"), ("ust_5y", "5Y"),
+                   ("ust_10y", "10Y"), ("ust_30y", "30Y")],
+    "curve": [("curve_spread_10y_2y", "10Y - 2Y"),
+              ("curve_spread_10y_3m", "10Y - 3M")],
+    "policy": [("fed_funds_eff", "Fed funds")],
+    "inflation": [("cpi_yoy", "CPI"), ("core_cpi_yoy", "Core CPI"),
+                  ("pce_yoy", "PCE"), ("core_pce_yoy", "Core PCE")],
+    "producer": [("ppi_yoy", "PPI"), ("cpi_yoy", "CPI")],
+    "wages": [("ahe_yoy", "Avg hourly earnings"), ("cpi_yoy", "CPI")],
+    "activity": [("gdp_growth_yoy", "Real GDP"),
+                 ("indprod_yoy", "Industrial production"),
+                 ("retail_sales_yoy", "Retail sales")],
+    "unemployment": [("unemployment_rate", "U-3"), ("u6_rate", "U-6")],
+    "duration": [("unemp_duration_weeks", "Median weeks")],
+    "claims": [("initial_claims_k", "Initial claims"),
+               ("continuing_claims_k", "Continuing claims")],
+    "jobs": [("payroll_chg_k", "Payroll change / month"),
+             ("jolts_openings_k", "JOLTS openings")],
+    "housing": [("housing_starts_k", "Housing starts")],
+    "surveys": [("consumer_sentiment_idx", "Consumer sentiment"),
+                ("ism_pmi_idx", "ISM manufacturing PMI")],
+    "credit": [("ig_oas", "IG corporate OAS"), ("hy_oas", "HY corporate OAS")],
+    "dow": [("dow_idx", "Dow")],
+    "sp500": [("sp500_idx", "S&P 500")],
+    "nasdaq": [("nasdaq_idx", "NASDAQ")],
+    "russell": [("russell2000_idx", "Russell 2000")],
+    "bitcoin": [("btc_usd", "Bitcoin")],
+    "gold": [("gold_usd_oz", "Gold")],
+    "silver": [("silver_usd_oz", "Silver")],
+    "oil": [("oil_wti_usd_bbl", "WTI"), ("brent_usd_bbl", "Brent")],
+    "beef": [("beef_usd_lb", "Ground beef")],
+    "techidx": [("tech_sector_idx", "Tech index (synthetic)")],
+    "aiidx": [("ai_sector_idx", "AI basket (synthetic)")],
+    "techfirms": [(f"tech_co_{i}_px", f"T{i}") for i in range(1, 6)],
+    "aifirms": [(f"ai_co_{i}_px", f"A{i}") for i in range(1, 6)],
+}
+LONG_OUTPUT = BASE_DIR / "reports" / "market_history_long.csv"
+
+
+def long_history(observations: pd.DataFrame) -> pd.DataFrame:
+    """
+    One row per (panel, series, month) with the raw monthly value - the
+    shape a matrix visual needs to put dates ACROSS the columns, so the
+    number tables read in the same direction as the line charts.
+    """
+    latest = (observations.sort_values("retrieval_timestamp")
+              .groupby(["metric_id", "observation_date"]).tail(1))
+    wide = (latest.pivot(index="observation_date", columns="metric_id",
+                         values="value").sort_index())
+    wide["curve_spread_10y_2y"] = wide["ust_10y"] - wide["ust_2y"]
+    wide["curve_spread_10y_3m"] = wide["ust_10y"] - wide["ust_3m"]
+    dates = pd.to_datetime(wide.index).strftime("%Y-%m-%d")
+
+    rows = []
+    for panel, series_list in PAGE5_PANELS.items():
+        for metric, label in series_list:
+            values = wide[metric].round(4).values
+            for date, value in zip(dates, values):
+                rows.append({"observation_date": date, "panel": panel,
+                             "series": label, "value": value})
+    return (pd.DataFrame(rows,
+                         columns=["observation_date", "panel", "series",
+                                  "value"])
+            .sort_values(["panel", "series", "observation_date"])
+            .reset_index(drop=True))

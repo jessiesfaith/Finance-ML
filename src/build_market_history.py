@@ -22,8 +22,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from financials.loader import ClientFSValidationError
 from financials.market_data import (
     HISTORY_OUTPUT,
+    LONG_OUTPUT,
     WINDOWS_OUTPUT,
     load_market_data,
+    long_history,
     rolling_24m_history,
     windowed_history,
 )
@@ -44,6 +46,8 @@ def main():
     history.to_csv(HISTORY_OUTPUT, index=False)
     windows = windowed_history(tables["market_observations"])
     windows.to_csv(WINDOWS_OUTPUT, index=False)
+    long_frame = long_history(tables["market_observations"])
+    long_frame.to_csv(LONG_OUTPUT, index=False)
 
     windowed = history.dropna(subset=["cpi_yoy_r24"])
     print()

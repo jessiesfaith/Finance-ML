@@ -10,116 +10,129 @@
     "tabOrder": 6000
   },
   "visual": {
-    "visualType": "tableEx",
+    "visualType": "pivotTable",
     "query": {
       "queryState": {
-        "Values": {
+        "Rows": {
           "projections": [
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "market_history_rolling24"
+                      "Entity": "market_history_long"
+                    }
+                  },
+                  "Property": "series"
+                }
+              },
+              "queryRef": "market_history_long.series",
+              "nativeQueryRef": "series",
+              "active": true
+            }
+          ]
+        },
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_history_long"
                     }
                   },
                   "Property": "observation_date"
                 }
               },
-              "queryRef": "market_history_rolling24.observation_date",
-              "nativeQueryRef": "observation_date"
-            },
+              "queryRef": "market_history_long.observation_date",
+              "nativeQueryRef": "observation_date",
+              "displayName": "date"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
             {
               "field": {
-                "Column": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "market_history_rolling24"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "market_history_long"
+                        }
+                      },
+                      "Property": "value"
                     }
                   },
-                  "Property": "ust_3m"
+                  "Function": 0
                 }
               },
-              "queryRef": "market_history_rolling24.ust_3m",
-              "nativeQueryRef": "ust_3m"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "market_history_rolling24"
-                    }
-                  },
-                  "Property": "ust_2y"
-                }
-              },
-              "queryRef": "market_history_rolling24.ust_2y",
-              "nativeQueryRef": "ust_2y"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "market_history_rolling24"
-                    }
-                  },
-                  "Property": "ust_5y"
-                }
-              },
-              "queryRef": "market_history_rolling24.ust_5y",
-              "nativeQueryRef": "ust_5y"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "market_history_rolling24"
-                    }
-                  },
-                  "Property": "ust_10y"
-                }
-              },
-              "queryRef": "market_history_rolling24.ust_10y",
-              "nativeQueryRef": "ust_10y"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "market_history_rolling24"
-                    }
-                  },
-                  "Property": "ust_30y"
-                }
-              },
-              "queryRef": "market_history_rolling24.ust_30y",
-              "nativeQueryRef": "ust_30y"
+              "queryRef": "Sum(market_history_long.value)",
+              "nativeQueryRef": "Sum of value"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "market_history_rolling24"
-                  }
-                },
-                "Property": "observation_date"
-              }
-            },
-            "direction": "Descending"
-          }
-        ]
       }
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "panelfiltertreasuries",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "market_history_long"
+              }
+            },
+            "Property": "panel"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "m",
+              "Entity": "market_history_long",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "m"
+                          }
+                        },
+                        "Property": "panel"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'treasuries'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
   }
 }
