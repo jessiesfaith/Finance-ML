@@ -669,6 +669,11 @@ def long_history(observations: pd.DataFrame) -> pd.DataFrame:
     wide["curve_spread_10y_2y"] = wide["ust_10y"] - wide["ust_2y"]
     wide["curve_spread_10y_3m"] = wide["ust_10y"] - wide["ust_3m"]
     dates = pd.to_datetime(wide.index).strftime("%Y-%m-%d")
+    # 0 = newest month; the model sorts observation_date by this so the
+    # number matrices open on the most recent data (Power BI has no
+    # scroll-position setting, and matrices ignore visual-level sorts
+    # on their Columns bucket)
+    ranks = {date: len(dates) - 1 - i for i, date in enumerate(dates)}
 
     rows = []
     for panel, series_list in PAGE5_PANELS.items():
@@ -676,9 +681,10 @@ def long_history(observations: pd.DataFrame) -> pd.DataFrame:
             values = wide[metric].round(4).values
             for date, value in zip(dates, values):
                 rows.append({"observation_date": date, "panel": panel,
-                             "series": label, "value": value})
+                             "series": label, "value": value,
+                             "recency_rank": ranks[date]})
     return (pd.DataFrame(rows,
                          columns=["observation_date", "panel", "series",
-                                  "value"])
+                                  "value", "recency_rank"])
             .sort_values(["panel", "series", "observation_date"])
             .reset_index(drop=True))

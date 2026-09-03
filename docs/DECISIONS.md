@@ -995,3 +995,16 @@ python src/chat_server.py); pin it with
 start msedge --app=http://127.0.0.1:8547. Five offline tests cover
 the page, flag API, rebuild round-trip, disabled-chat message, and
 reset.
+
+### 91. Newest-first matrices need a model-level sort, not a visual one
+QA showed the Macro History matrices still opened on 2018: pivot
+tables ignore a visual-level sortDefinition on their Columns bucket,
+so #86's descending sort never rendered. The mechanism matrices DO
+respect is Sort By Column: market_history_long gains a hidden
+recency_rank (0 = newest month, appended - columns only ever ADDED)
+and observation_date sorts by it in the model, so every matrix opens
+on the most recent month at the left. The stranded visual sorts were
+removed (they would have re-flipped the order to oldest-first).
+Power BI has no scroll-position property, so "scrolled to the far
+right" is delivered as newest-first ordering - same data on screen at
+open, reading newest -> oldest.

@@ -10,6 +10,7 @@ table market_history_long
 		lineageTag: 127290ce-00db-409e-93c6-0833cb6fe5db
 		summarizeBy: none
 		sourceColumn: observation_date
+		sortByColumn: recency_rank
 
 		annotation SummarizationSetBy = Automatic
 
@@ -38,16 +39,27 @@ table market_history_long
 
 		annotation SummarizationSetBy = Automatic
 
+	/// 0 = newest month; observation_date sorts by this so matrices
+	/// default to the most recent data (hidden - a sort key, not data)
+	column recency_rank
+		dataType: int64
+		isHidden
+		lineageTag: 6a7b0c1d-2e3f-4a5b-8c9d-0e1f2a3b4c5d
+		summarizeBy: none
+		sourceColumn: recency_rank
+
+		annotation SummarizationSetBy = Automatic
+
 	partition market_history_long = m
 		mode: import
 		source =
 				let
 				  Source = Csv.Document(
 				    File.Contents("C:\dev\Finance-ML\reports\market_history_long.csv"),
-				    [Delimiter = ",", Columns = 4, QuoteStyle = QuoteStyle.Csv]
+				    [Delimiter = ",", Columns = 5, QuoteStyle = QuoteStyle.Csv]
 				),
 				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				  #"Changed Type" = Table.TransformColumnTypes(#"Promoted headers", {{"observation_date", type date}, {"value", type number}})
+				  #"Changed Type" = Table.TransformColumnTypes(#"Promoted headers", {{"observation_date", type date}, {"value", type number}, {"recency_rank", Int64.Type}})
 				in
 				    #"Changed Type"
 

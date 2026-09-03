@@ -117,8 +117,13 @@ def test_long_history_matches_the_wide_values():
     long_frame = long_history(tables["market_observations"])
     total_series = sum(len(v) for v in PAGE5_PANELS.values())
     assert list(long_frame.columns) == ["observation_date", "panel",
-                                        "series", "value"]
+                                        "series", "value", "recency_rank"]
     assert len(long_frame) == 103 * total_series
+    # rank 0 = the newest month, so matrices open on the latest data
+    newest = long_frame[long_frame["recency_rank"] == 0]
+    assert set(newest["observation_date"]) == {"2026-07-31"}
+    oldest = long_frame["recency_rank"].max()
+    assert oldest == 102
 
     wide = rolling_24m_history(tables["market_observations"])
     spot = long_frame[(long_frame["panel"] == "inflation")
