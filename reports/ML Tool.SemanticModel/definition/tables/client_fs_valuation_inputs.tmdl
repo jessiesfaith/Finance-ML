@@ -7,7 +7,7 @@ table client_fs_valuation_inputs
 	/// CLIENT F/S: short-term + long-term debt + finance leases
 	/// (366.0 in the fixture), classified via account_mapping -
 	/// never a typed-in number.
-	measure 'Client Total Debt ($M)' =
+	measure 'Total Debt ($M)' =
 			
 			VAR LatestPeriod = CALCULATE(MAX(client_fs_valuation_inputs[period_id]), ALL(client_fs_valuation_inputs))
 			RETURN
@@ -22,7 +22,7 @@ table client_fs_valuation_inputs
 		displayFolder: Capital Base
 		lineageTag: db05b542-e195-4718-9b25-5871e4753609
 
-	measure 'Client Cash ($M)' =
+	measure 'Cash ($M)' =
 			
 			VAR LatestPeriod = CALCULATE(MAX(client_fs_valuation_inputs[period_id]), ALL(client_fs_valuation_inputs))
 			RETURN
@@ -40,7 +40,7 @@ table client_fs_valuation_inputs
 	/// Total debt - cash = 172.0. The same pipeline number Page 1
 	/// reads from finance_scenario_report.csv to bridge enterprise
 	/// value to equity value.
-	measure 'Client Net Debt ($M)' =
+	measure 'Net Debt ($M)' =
 			
 			VAR LatestPeriod = CALCULATE(MAX(client_fs_valuation_inputs[period_id]), ALL(client_fs_valuation_inputs))
 			RETURN
@@ -57,7 +57,7 @@ table client_fs_valuation_inputs
 
 	/// Operating NWC + net PP&E (+ other operating, net) = 791.5 -
 	/// the capital base under ROIC, statement-derived.
-	measure 'Client Invested Capital ($M)' =
+	measure 'Invested Capital ($M)' =
 			
 			VAR LatestPeriod = CALCULATE(MAX(client_fs_valuation_inputs[period_id]), ALL(client_fs_valuation_inputs))
 			RETURN
@@ -72,7 +72,7 @@ table client_fs_valuation_inputs
 		displayFolder: Capital Base
 		lineageTag: f8f8fc50-6092-4d95-b3fd-b05987be0822
 
-	measure 'Client ROIC (%)' =
+	measure 'ROIC (%)' =
 			
 			VAR LatestPeriod = CALCULATE(MAX(client_fs_valuation_inputs[period_id]), ALL(client_fs_valuation_inputs))
 			RETURN
@@ -87,7 +87,7 @@ table client_fs_valuation_inputs
 		displayFolder: Capital Base
 		lineageTag: a01706f9-aeb6-4655-b132-f4ac5690f8d5
 
-	measure 'Client Basic Shares (M)' =
+	measure 'Basic Shares (M)' =
 			
 			VAR LatestPeriod = CALCULATE(MAX(client_fs_valuation_inputs[period_id]), ALL(client_fs_valuation_inputs))
 			RETURN
@@ -104,7 +104,7 @@ table client_fs_valuation_inputs
 
 	/// Basic shares + treasury-stock-method dilution = 103.7.
 	/// Divides equity value into the implied share price on Page 1.
-	measure 'Client Diluted Shares (M)' =
+	measure 'Shares Diluted (M)' =
 			
 			VAR LatestPeriod = CALCULATE(MAX(client_fs_valuation_inputs[period_id]), ALL(client_fs_valuation_inputs))
 			RETURN
@@ -121,9 +121,9 @@ table client_fs_valuation_inputs
 
 	/// In-the-money options exercised on paper; proceeds buy back
 	/// shares at the market price; the remainder dilutes.
-	measure 'Client TSM Dilution (M)' =
+	measure 'TSM Dilution (M)' =
 			
-			[Client Diluted Shares (M)] - [Client Basic Shares (M)]
+			[Shares Diluted (M)] - [Basic Shares (M)]
 		formatString: 0.0
 		displayFolder: Capital Base
 		lineageTag: bc5a0a0c-0694-4b94-9c13-3308361f601a

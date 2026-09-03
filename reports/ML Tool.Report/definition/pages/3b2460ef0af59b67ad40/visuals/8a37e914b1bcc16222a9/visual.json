@@ -23,11 +23,11 @@
                       "Entity": "client_fs_ufcf"
                     }
                   },
-                  "Property": "Client AP ($M)"
+                  "Property": "AP ($M)"
                 }
               },
-              "queryRef": "client_fs_ufcf.Client AP ($M)",
-              "nativeQueryRef": "Client AP ($M)",
+              "queryRef": "client_fs_ufcf.AP ($M)",
+              "nativeQueryRef": "AP ($M)",
               "displayName": "AP ($M)"
             }
           ]

@@ -23,11 +23,11 @@
                       "Entity": "client_fs_ufcf"
                     }
                   },
-                  "Property": "Client CapEx ($M)"
+                  "Property": "CapEx ($M)"
                 }
               },
-              "queryRef": "client_fs_ufcf.Client CapEx ($M)",
-              "nativeQueryRef": "Client CapEx ($M)",
+              "queryRef": "client_fs_ufcf.CapEx ($M)",
+              "nativeQueryRef": "CapEx ($M)",
               "displayName": "CapEx ($M)"
             }
           ]

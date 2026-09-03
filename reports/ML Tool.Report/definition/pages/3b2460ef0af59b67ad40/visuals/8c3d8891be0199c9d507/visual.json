@@ -23,11 +23,11 @@
                       "Entity": "client_fs_valuation_inputs"
                     }
                   },
-                  "Property": "Client Diluted Shares (M)"
+                  "Property": "Shares Diluted (M)"
                 }
               },
-              "queryRef": "client_fs_valuation_inputs.Client Diluted Shares (M)",
-              "nativeQueryRef": "Client Diluted Shares (M)",
+              "queryRef": "client_fs_valuation_inputs.Shares Diluted (M)",
+              "nativeQueryRef": "Shares Diluted (M)",
               "displayName": "Diluted Shares (M)"
             }
           ]

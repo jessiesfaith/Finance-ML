@@ -23,11 +23,11 @@
                       "Entity": "client_fs_ufcf"
                     }
                   },
-                  "Property": "Client Change in NWC ($M)"
+                  "Property": "Change in NWC ($M)"
                 }
               },
-              "queryRef": "client_fs_ufcf.Client Change in NWC ($M)",
-              "nativeQueryRef": "Client Change in NWC ($M)",
+              "queryRef": "client_fs_ufcf.Change in NWC ($M)",
+              "nativeQueryRef": "Change in NWC ($M)",
               "displayName": "Change in NWC ($M)"
             }
           ]

@@ -23,11 +23,11 @@
                       "Entity": "client_fs_ufcf"
                     }
                   },
-                  "Property": "Client Inventory ($M)"
+                  "Property": "Inventory ($M)"
                 }
               },
-              "queryRef": "client_fs_ufcf.Client Inventory ($M)",
-              "nativeQueryRef": "Client Inventory ($M)",
+              "queryRef": "client_fs_ufcf.Inventory ($M)",
+              "nativeQueryRef": "Inventory ($M)",
               "displayName": "Inventory ($M)"
             }
           ]

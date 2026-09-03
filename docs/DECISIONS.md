@@ -1017,3 +1017,17 @@ The sortByColumn came off observation_date; recency_rank stays in the
 export unused (curated columns are only ever added), available if the
 call ever reverses. Page legend updated to say both surfaces read the
 same direction.
+
+### 93. "Client" comes off the measure names, not just the labels
+QA showed #f24b2e5's projection-level displayName overrides do not
+render on the new card visual - the header still read "Client X". So
+the 28 Client-prefixed measures were renamed for real (definitions,
+every DAX reference, every visual binding - 69 visuals). Two special
+cases: 'Client Diluted Shares (M)' -> 'Shares Diluted (M)' (the bare
+name was already taken by another table's measure, and measure names
+are unique model-wide), and the revenue pair - the FORMAT text twin
+shown on cards takes the clean name 'Revenue ($M)' while the numeric
+measure becomes 'Revenue Amount ($M)'. The tab-1 title still says
+"Client Financials" - that is the page's name, not a card header.
+Integrity tests (uniqueness, collisions, binding resolution) are the
+proof the rename left nothing dangling.

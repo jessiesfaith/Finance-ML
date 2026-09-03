@@ -23,11 +23,11 @@
                       "Entity": "client_fs_ufcf"
                     }
                   },
-                  "Property": "Client EBITDA Margin (%)"
+                  "Property": "EBITDA Margin (%)"
                 }
               },
-              "queryRef": "client_fs_ufcf.Client EBITDA Margin (%)",
-              "nativeQueryRef": "Client EBITDA Margin (%)",
+              "queryRef": "client_fs_ufcf.EBITDA Margin (%)",
+              "nativeQueryRef": "EBITDA Margin (%)",
               "displayName": "EBITDA Margin (%)"
             }
           ]

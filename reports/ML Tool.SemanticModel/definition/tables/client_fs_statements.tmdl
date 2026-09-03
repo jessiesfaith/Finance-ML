@@ -157,7 +157,7 @@ table client_fs_statements
 	/// owners, at book value.
 	measure 'Debt / Equity (x)' =
 			
-			DIVIDE([Client Total Debt ($M)], [Total Equity ($M)])
+			DIVIDE([Total Debt ($M)], [Total Equity ($M)])
 		formatString: 0.00"x"
 		displayFolder: Ratios
 		lineageTag: 1a1f3883-b524-481f-918f-8e2f5c08480e
@@ -166,7 +166,7 @@ table client_fs_statements
 	/// covers the interest bill.
 	measure 'Interest Coverage (x)' =
 			
-			DIVIDE([Client EBIT ($M)], [Interest Expense ($M)])
+			DIVIDE([EBIT ($M)], [Interest Expense ($M)])
 		formatString: 0.0"x"
 		displayFolder: Ratios
 		lineageTag: 4e2dba46-e5d4-49fc-a5fd-8d092729e453
@@ -176,14 +176,14 @@ table client_fs_statements
 	/// with the assumption stated.
 	measure 'Contribution ($M)' =
 			
-			[Client Revenue ($M)] - [COGS ($M)]
+			[Revenue Amount ($M)] - [COGS ($M)]
 		formatString: #,0.0
 		displayFolder: Ratios
 		lineageTag: 609547fe-cb4d-4c13-9db2-f20c41f30ab8
 
 	measure 'Contribution Margin (%)' =
 			
-			100 * DIVIDE([Contribution ($M)], [Client Revenue ($M)])
+			100 * DIVIDE([Contribution ($M)], [Revenue Amount ($M)])
 		formatString: 0.0
 		displayFolder: Ratios
 		lineageTag: 34fd9354-6236-4b9f-9d29-04f75d7a79a2
@@ -203,7 +203,7 @@ table client_fs_statements
 	measure 'ARR ($M)' =
 			
 			DIVIDE([Recurring Share (%) (Assumption)], 100)
-			    * [Client Revenue ($M)]
+			    * [Revenue Amount ($M)]
 		formatString: #,0.0
 		displayFolder: Ratios
 		lineageTag: 69f1f5ff-5e82-4205-b781-9479ed016917
@@ -212,7 +212,7 @@ table client_fs_statements
 	/// negative would be a burn rate.
 	measure 'Cash Generated per Month ($M)' =
 			
-			DIVIDE([Client UFCF ($M)], 12)
+			DIVIDE([UFCF ($M)], 12)
 		formatString: #,0.0
 		displayFolder: Ratios
 		lineageTag: eaa5eec9-5527-460a-b3a2-f0944ed321d5
@@ -222,7 +222,7 @@ table client_fs_statements
 	measure 'Cash Runway' =
 			
 			IF(
-			    [Client UFCF ($M)] >= 0,
+			    [UFCF ($M)] >= 0,
 			    "N/A - self-funding: cash grows ~$" &
 			        FORMAT([Cash Generated per Month ($M)], "0.0") & "M/mo",
 			    FORMAT(DIVIDE([Cash (BS) ($M)],
@@ -253,7 +253,7 @@ table client_fs_statements
 	/// the pipeline's EBITDA - the check card proves it.
 	measure 'EBITDA (Built) ($M)' =
 			
-			[Client Revenue ($M)] - [COGS ($M)] - [Opex ($M)]
+			[Revenue Amount ($M)] - [COGS ($M)] - [Opex ($M)]
 		formatString: #,0.0
 		displayFolder: Calc Build-Out
 		lineageTag: 99266664-ed00-4796-8dbe-a85162a6ae8a
@@ -261,7 +261,7 @@ table client_fs_statements
 	/// Rebuilt minus pipeline - must read 0.00.
 	measure 'EBITDA Build Check ($M)' =
 			
-			ROUND([EBITDA (Built) ($M)] - [Client EBITDA ($M)], 6) + 0
+			ROUND([EBITDA (Built) ($M)] - [EBITDA ($M)], 6) + 0
 		formatString: 0.00
 		displayFolder: Calc Build-Out
 		lineageTag: 20a3dd9c-6baf-4aee-a563-c9a22c009c83
@@ -271,8 +271,8 @@ table client_fs_statements
 	/// capital. Taxes and interest are already inside net income.
 	measure 'OCF Indirect ($M)' =
 			
-			[Net Income Reported ($M)] + [Client D&A ($M)]
-			    - [Client Change in NWC ($M)]
+			[Net Income Reported ($M)] + [D&A ($M)]
+			    - [Change in NWC ($M)]
 		formatString: #,0.0
 		displayFolder: Calc Build-Out
 		lineageTag: 77604651-1a5a-47d0-8188-cd716aeda920
@@ -281,7 +281,7 @@ table client_fs_statements
 	/// reinvestment, with interest already paid inside net income.
 	measure 'Levered FCF ($M)' =
 			
-			[OCF Indirect ($M)] - [Client CapEx ($M)]
+			[OCF Indirect ($M)] - [CapEx ($M)]
 		formatString: #,0.0
 		displayFolder: Calc Build-Out
 		lineageTag: 0d83a6b1-1f2c-463a-9a19-b3ea857b0acd
@@ -290,7 +290,7 @@ table client_fs_statements
 	/// The exact wedge between levered FCF and UFCF.
 	measure 'After-Tax Interest ($M)' =
 			
-			[Interest Expense ($M)] * [Client After-Tax Factor]
+			[Interest Expense ($M)] * [After-Tax Factor]
 		formatString: #,0.0
 		displayFolder: Calc Build-Out
 		lineageTag: 67bb1c85-3ea5-402e-b0cb-1258fc31fac0
@@ -301,7 +301,7 @@ table client_fs_statements
 	measure 'FCF Bridge Check ($M)' =
 			
 			ROUND([Levered FCF ($M)] + [After-Tax Interest ($M)]
-			    - [Client UFCF ($M)], 6) + 0
+			    - [UFCF ($M)], 6) + 0
 		formatString: 0.00
 		displayFolder: Calc Build-Out
 		lineageTag: fab0c2d3-794f-48b8-8ba0-85b1e9b9b16a
@@ -310,7 +310,7 @@ table client_fs_statements
 	/// E/(E+D) and D/(E+D) are known and D = 366, E = D x We/Wd.
 	measure 'Market Cap (Implied) ($M)' =
 			
-			DIVIDE([Client Total Debt ($M)] * [Equity Weight], [Debt Weight])
+			DIVIDE([Total Debt ($M)] * [Equity Weight], [Debt Weight])
 		formatString: #,0.0
 		displayFolder: Calc Build-Out
 		lineageTag: 9ac29854-e801-4204-8965-e2a7639b2510
@@ -319,14 +319,14 @@ table client_fs_statements
 	/// fixture (the shares_dilution input), vs the DCF's $28.86.
 	measure 'Market Price per Share (Implied $)' =
 			
-			DIVIDE([Market Cap (Implied) ($M)], [Client Diluted Shares (M)])
+			DIVIDE([Market Cap (Implied) ($M)], [Shares Diluted (M)])
 		formatString: "$"#,0.00
 		displayFolder: Calc Build-Out
 		lineageTag: 7e96ab1e-fb56-436b-9617-6a6725cfbd9b
 
 	measure 'Capital E plus D ($M)' =
 			
-			[Market Cap (Implied) ($M)] + [Client Total Debt ($M)]
+			[Market Cap (Implied) ($M)] + [Total Debt ($M)]
 		formatString: #,0.0
 		displayFolder: Calc Build-Out
 		lineageTag: 39b1431a-dae8-47fb-9922-825ef7ce890f
@@ -335,7 +335,7 @@ table client_fs_statements
 	/// carried (6.94%) - compare with the market-built Kd of 6.53%.
 	measure 'Book Interest Rate (%)' =
 			
-			100 * DIVIDE([Interest Expense ($M)], [Client Total Debt ($M)])
+			100 * DIVIDE([Interest Expense ($M)], [Total Debt ($M)])
 		formatString: 0.00
 		displayFolder: Calc Build-Out
 		lineageTag: d91187f8-a2c2-40d4-8d69-3c92751afd40
@@ -344,7 +344,7 @@ table client_fs_statements
 	/// 167.4 / 103.7 = $1.61 in the fixture.
 	measure 'EPS ($)' =
 			
-			DIVIDE([Net Income Reported ($M)], [Client Diluted Shares (M)])
+			DIVIDE([Net Income Reported ($M)], [Shares Diluted (M)])
 		formatString: "$"0.00
 		displayFolder: Calc Build-Out
 		lineageTag: f7f48b05-ee46-4bbe-ac52-a930c77e4c4b
@@ -379,7 +379,7 @@ table client_fs_statements
 
 	measure 'P/E Implied Equity ($M)' =
 			
-			[P/E Implied Price ($)] * [Client Diluted Shares (M)]
+			[P/E Implied Price ($)] * [Shares Diluted (M)]
 		formatString: #,0.0
 		displayFolder: Calc Build-Out
 		lineageTag: 0c556b11-60a1-4a86-ad81-d0887b0ae528
@@ -454,7 +454,7 @@ table client_fs_statements
 	/// the asset base consumes as depreciation.
 	measure 'D&A % of Revenue (%)' =
 			
-			100 * DIVIDE([Client D&A ($M)], [Client Revenue ($M)])
+			100 * DIVIDE([D&A ($M)], [Revenue Amount ($M)])
 		formatString: 0.0
 		displayFolder: Ratios
 		lineageTag: 5fb910fc-73f9-4c02-bd76-cd41b30721d8
@@ -463,7 +463,7 @@ table client_fs_statements
 	/// rebuilt faster than it wears; well below 1.0x it is aging.
 	measure 'CapEx / D&A (x)' =
 			
-			DIVIDE([Client CapEx ($M)], [Client D&A ($M)])
+			DIVIDE([CapEx ($M)], [D&A ($M)])
 		formatString: 0.00"x"
 		displayFolder: Ratios
 		lineageTag: 2ac6edfa-b6aa-408c-aa33-9ccbf6730df5
@@ -507,7 +507,7 @@ table client_fs_statements
 	measure 'Runway Read' =
 			
 			IF(
-			    [Client UFCF ($M)] >= 0,
+			    [UFCF ($M)] >= 0,
 			    "GREEN: self-funded",
 			    "RED: burning cash"
 			)

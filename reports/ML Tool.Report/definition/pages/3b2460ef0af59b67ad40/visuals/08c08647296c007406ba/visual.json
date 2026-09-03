@@ -23,11 +23,11 @@
                       "Entity": "client_fs_ufcf"
                     }
                   },
-                  "Property": "Client Prior NWC ($M)"
+                  "Property": "Prior NWC ($M)"
                 }
               },
-              "queryRef": "client_fs_ufcf.Client Prior NWC ($M)",
-              "nativeQueryRef": "Client Prior NWC ($M)",
+              "queryRef": "client_fs_ufcf.Prior NWC ($M)",
+              "nativeQueryRef": "Prior NWC ($M)",
               "displayName": "Prior NWC ($M)"
             }
           ]

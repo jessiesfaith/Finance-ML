@@ -23,11 +23,11 @@
                       "Entity": "client_fs_valuation_inputs"
                     }
                   },
-                  "Property": "Client Total Debt ($M)"
+                  "Property": "Total Debt ($M)"
                 }
               },
-              "queryRef": "client_fs_valuation_inputs.Client Total Debt ($M)",
-              "nativeQueryRef": "Client Total Debt ($M)",
+              "queryRef": "client_fs_valuation_inputs.Total Debt ($M)",
+              "nativeQueryRef": "Total Debt ($M)",
               "displayName": "Total Debt ($M)"
             }
           ]

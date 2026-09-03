@@ -23,11 +23,11 @@
                       "Entity": "client_fs_ufcf"
                     }
                   },
-                  "Property": "Client NOPAT ($M)"
+                  "Property": "NOPAT ($M)"
                 }
               },
-              "queryRef": "client_fs_ufcf.Client NOPAT ($M)",
-              "nativeQueryRef": "Client NOPAT ($M)",
+              "queryRef": "client_fs_ufcf.NOPAT ($M)",
+              "nativeQueryRef": "NOPAT ($M)",
               "displayName": "NOPAT ($M)"
             }
           ]

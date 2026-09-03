@@ -23,11 +23,11 @@
                       "Entity": "client_fs_valuation_inputs"
                     }
                   },
-                  "Property": "Client Basic Shares (M)"
+                  "Property": "Basic Shares (M)"
                 }
               },
-              "queryRef": "client_fs_valuation_inputs.Client Basic Shares (M)",
-              "nativeQueryRef": "Client Basic Shares (M)",
+              "queryRef": "client_fs_valuation_inputs.Basic Shares (M)",
+              "nativeQueryRef": "Basic Shares (M)",
               "displayName": "Basic Shares (M)"
             }
           ]

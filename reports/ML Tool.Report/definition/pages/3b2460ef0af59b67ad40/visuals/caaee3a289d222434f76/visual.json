@@ -23,11 +23,11 @@
                       "Entity": "client_fs_ufcf"
                     }
                   },
-                  "Property": "Client After-Tax Factor"
+                  "Property": "After-Tax Factor"
                 }
               },
-              "queryRef": "client_fs_ufcf.Client After-Tax Factor",
-              "nativeQueryRef": "Client After-Tax Factor",
+              "queryRef": "client_fs_ufcf.After-Tax Factor",
+              "nativeQueryRef": "After-Tax Factor",
               "displayName": "After-Tax Factor"
             }
           ]

@@ -23,11 +23,11 @@
                       "Entity": "client_fs_ufcf"
                     }
                   },
-                  "Property": "Client EBITDA ($M)"
+                  "Property": "EBITDA ($M)"
                 }
               },
-              "queryRef": "client_fs_ufcf.Client EBITDA ($M)",
-              "nativeQueryRef": "Client EBITDA ($M)",
+              "queryRef": "client_fs_ufcf.EBITDA ($M)",
+              "nativeQueryRef": "EBITDA ($M)",
               "displayName": "EBITDA ($M)"
             }
           ]

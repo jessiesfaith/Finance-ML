@@ -23,11 +23,11 @@
                       "Entity": "client_fs_valuation_inputs"
                     }
                   },
-                  "Property": "Client Net Debt ($M)"
+                  "Property": "Net Debt ($M)"
                 }
               },
-              "queryRef": "client_fs_valuation_inputs.Client Net Debt ($M)",
-              "nativeQueryRef": "Client Net Debt ($M)",
+              "queryRef": "client_fs_valuation_inputs.Net Debt ($M)",
+              "nativeQueryRef": "Net Debt ($M)",
               "displayName": "Net Debt ($M)"
             }
           ]

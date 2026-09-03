@@ -23,11 +23,11 @@
                       "Entity": "client_fs_ufcf"
                     }
                   },
-                  "Property": "Client Revenue Display"
+                  "Property": "Revenue ($M)"
                 }
               },
-              "queryRef": "client_fs_ufcf.Client Revenue Display",
-              "nativeQueryRef": "Client Revenue Display",
+              "queryRef": "client_fs_ufcf.Revenue ($M)",
+              "nativeQueryRef": "Revenue ($M)",
               "displayName": "Revenue ($M)"
             }
           ]

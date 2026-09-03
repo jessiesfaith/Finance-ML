@@ -23,11 +23,11 @@
                       "Entity": "client_fs_ufcf"
                     }
                   },
-                  "Property": "Client UFCF ($M)"
+                  "Property": "UFCF ($M)"
                 }
               },
-              "queryRef": "client_fs_ufcf.Client UFCF ($M)",
-              "nativeQueryRef": "Client UFCF ($M)",
+              "queryRef": "client_fs_ufcf.UFCF ($M)",
+              "nativeQueryRef": "UFCF ($M)",
               "displayName": "UFCF ($M)"
             }
           ]

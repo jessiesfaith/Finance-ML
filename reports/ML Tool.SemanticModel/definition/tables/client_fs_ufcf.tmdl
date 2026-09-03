@@ -15,7 +15,7 @@ table client_fs_ufcf
 
 	/// CLIENT F/S: consolidated revenue after mapping, sign normalization,
 	/// FX translation and eliminations (1,274.0 in the fixture).
-	measure 'Client Revenue ($M)' =
+	measure 'Revenue Amount ($M)' =
 			
 			VAR LatestActual = [Latest Actual Period]
 			RETURN
@@ -27,7 +27,7 @@ table client_fs_ufcf
 		displayFolder: Income Walk
 		lineageTag: 1cc85026-48b6-4a28-b9ff-d74b2fc68a14
 
-	measure 'Client EBITDA ($M)' =
+	measure 'EBITDA ($M)' =
 			
 			VAR LatestActual = [Latest Actual Period]
 			RETURN
@@ -41,14 +41,14 @@ table client_fs_ufcf
 
 	/// Revenue minus EBITDA: everything above the EBITDA line, shown so the
 	/// first equation row is complete on screen.
-	measure 'Client Operating Costs ($M)' =
+	measure 'Operating Costs ($M)' =
 			
-			[Client Revenue ($M)] - [Client EBITDA ($M)]
+			[Revenue Amount ($M)] - [EBITDA ($M)]
 		formatString: #,0.0
 		displayFolder: Income Walk
 		lineageTag: 007aba34-0bab-475e-b8ac-da5651f09d86
 
-	measure 'Client D&A ($M)' =
+	measure 'D&A ($M)' =
 			
 			VAR LatestActual = [Latest Actual Period]
 			RETURN
@@ -60,7 +60,7 @@ table client_fs_ufcf
 		displayFolder: Income Walk
 		lineageTag: f33b9fa5-8109-459f-ac9e-fd50ab1392d9
 
-	measure 'Client EBIT ($M)' =
+	measure 'EBIT ($M)' =
 			
 			VAR LatestActual = [Latest Actual Period]
 			RETURN
@@ -72,7 +72,7 @@ table client_fs_ufcf
 		displayFolder: Income Walk
 		lineageTag: 750dba3d-073d-4f6a-ad46-ba852f78f7b7
 
-	measure 'Client Tax Rate (%)' =
+	measure 'Tax Rate (%)' =
 			
 			VAR LatestActual = [Latest Actual Period]
 			RETURN
@@ -84,9 +84,9 @@ table client_fs_ufcf
 		displayFolder: Income Walk
 		lineageTag: 5126fb29-8a9f-4eda-8aed-e942d1da18b5
 
-	measure 'Client After-Tax Factor' =
+	measure 'After-Tax Factor' =
 			
-			1 - DIVIDE([Client Tax Rate (%)], 100)
+			1 - DIVIDE([Tax Rate (%)], 100)
 		formatString: 0.00
 		displayFolder: Income Walk
 		lineageTag: c6f16dc7-a6a2-44e5-b279-adee85d0ff08
@@ -94,7 +94,7 @@ table client_fs_ufcf
 	/// EBIT x (1 - tax) as the pipeline computed it (src/financials/ufcf.py).
 	/// The card shows the pipeline's own number beside the on-page equation,
 	/// so the walk is verifiable, not decorative.
-	measure 'Client NOPAT ($M)' =
+	measure 'NOPAT ($M)' =
 			
 			VAR LatestActual = [Latest Actual Period]
 			RETURN
@@ -106,7 +106,7 @@ table client_fs_ufcf
 		displayFolder: Income Walk
 		lineageTag: 3506aeb7-28c0-45e3-96ab-dddd1c3b4c1e
 
-	measure 'Client AR ($M)' =
+	measure 'AR ($M)' =
 			
 			VAR LatestActual = [Latest Actual Period]
 			RETURN
@@ -118,7 +118,7 @@ table client_fs_ufcf
 		displayFolder: Working Capital
 		lineageTag: e94e8377-5fe4-4414-8a16-16c60ecc5336
 
-	measure 'Client Inventory ($M)' =
+	measure 'Inventory ($M)' =
 			
 			VAR LatestActual = [Latest Actual Period]
 			RETURN
@@ -130,7 +130,7 @@ table client_fs_ufcf
 		displayFolder: Working Capital
 		lineageTag: 86e2c8c1-bf35-4571-aace-6348167b923d
 
-	measure 'Client Other Op CA ($M)' =
+	measure 'Other Op CA ($M)' =
 			
 			VAR LatestActual = [Latest Actual Period]
 			RETURN
@@ -142,7 +142,7 @@ table client_fs_ufcf
 		displayFolder: Working Capital
 		lineageTag: 43c93dfd-4c95-4e37-befb-a49d360fb81a
 
-	measure 'Client AP ($M)' =
+	measure 'AP ($M)' =
 			
 			VAR LatestActual = [Latest Actual Period]
 			RETURN
@@ -154,7 +154,7 @@ table client_fs_ufcf
 		displayFolder: Working Capital
 		lineageTag: 2cef4d10-6435-448d-ba34-4a595dee9044
 
-	measure 'Client Other Op CL ($M)' =
+	measure 'Other Op CL ($M)' =
 			
 			VAR LatestActual = [Latest Actual Period]
 			RETURN
@@ -168,7 +168,7 @@ table client_fs_ufcf
 
 	/// AR + inventory + other operating CA - AP - other operating CL
 	/// (159.5 in the fixture). Operating items only - no cash, no debt.
-	measure 'Client Operating NWC ($M)' =
+	measure 'Operating NWC ($M)' =
 			
 			VAR LatestActual = [Latest Actual Period]
 			RETURN
@@ -182,7 +182,7 @@ table client_fs_ufcf
 
 	/// Operating NWC of the prior ACTUAL year (133.2), so the change in NWC
 	/// is visible as a subtraction, not an unexplained number.
-	measure 'Client Prior NWC ($M)' =
+	measure 'Prior NWC ($M)' =
 			
 			VAR LatestActual = [Latest Actual Period]
 			VAR PriorActual =
@@ -205,7 +205,7 @@ table client_fs_ufcf
 
 	/// 159.5 - 133.2 = +26.3 in the fixture. An INCREASE in net working
 	/// capital is a use of cash, which is why the UFCF bridge subtracts it.
-	measure 'Client Change in NWC ($M)' =
+	measure 'Change in NWC ($M)' =
 			
 			VAR LatestActual = [Latest Actual Period]
 			RETURN
@@ -217,7 +217,7 @@ table client_fs_ufcf
 		displayFolder: Working Capital
 		lineageTag: 7f02bdee-98a5-4188-9232-01094fa9f767
 
-	measure 'Client CapEx ($M)' =
+	measure 'CapEx ($M)' =
 			
 			VAR LatestActual = [Latest Actual Period]
 			RETURN
@@ -232,7 +232,7 @@ table client_fs_ufcf
 	/// NOPAT + D&A - CapEx - change in NWC (156.4 in the fixture). This is
 	/// the number the driver forecast extends and Page 1's DCF discounts -
 	/// it replaced the hard-coded fcf = [100, 110, 121, 133, 146].
-	measure 'Client UFCF ($M)' =
+	measure 'UFCF ($M)' =
 			
 			VAR LatestActual = [Latest Actual Period]
 			RETURN
@@ -249,9 +249,9 @@ table client_fs_ufcf
 	measure 'UFCF Bridge Check ($M)' =
 			
 			ROUND(
-			    [Client NOPAT ($M)] + [Client D&A ($M)]
-			        - [Client CapEx ($M)] - [Client Change in NWC ($M)]
-			        - [Client UFCF ($M)],
+			    [NOPAT ($M)] + [D&A ($M)]
+			        - [CapEx ($M)] - [Change in NWC ($M)]
+			        - [UFCF ($M)],
 			    6
 			) + 0
 		formatString: 0.00
@@ -348,15 +348,15 @@ table client_fs_ufcf
 	/// Text twin of Client Revenue ($M): FORMAT() returns a string, so the
 	/// card can never auto-abbreviate it to "1.3K" (same pattern as Page
 	/// 1's Invested Capital Display).
-	measure 'Client Revenue Display' =
+	measure 'Revenue ($M)' =
 			
-			FORMAT([Client Revenue ($M)], "#,0.0")
+			FORMAT([Revenue Amount ($M)], "#,0.0")
 		displayFolder: Income Walk
 		lineageTag: f996abd2-2979-40c7-87bf-62d22e18489f
 
-	measure 'Client EBITDA Margin (%)' =
+	measure 'EBITDA Margin (%)' =
 			
-			100 * DIVIDE([Client EBITDA ($M)], [Client Revenue ($M)])
+			100 * DIVIDE([EBITDA ($M)], [Revenue Amount ($M)])
 		formatString: 0.0
 		displayFolder: Current Position
 		lineageTag: d8b2bdae-2e18-4d62-973e-35d886e0a183
@@ -365,7 +365,7 @@ table client_fs_ufcf
 	/// needed to repay net debt (0.55x in the fixture - lightly levered).
 	measure 'Net Debt / EBITDA (x)' =
 			
-			DIVIDE([Client Net Debt ($M)], [Client EBITDA ($M)])
+			DIVIDE([Net Debt ($M)], [EBITDA ($M)])
 		formatString: 0.00"x"
 		displayFolder: Current Position
 		lineageTag: 4f61e89f-fa1d-4691-b361-31a2429e1b37
@@ -382,7 +382,7 @@ table client_fs_ufcf
 
 	measure 'Debt Capacity at Policy ($M)' =
 			
-			[Leverage Policy (x)] * [Client EBITDA ($M)]
+			[Leverage Policy (x)] * [EBITDA ($M)]
 		formatString: #,0.0
 		displayFolder: Current Position
 		lineageTag: f13f2853-b552-4f30-89b9-d4cb78bdab2b
@@ -391,14 +391,14 @@ table client_fs_ufcf
 	/// budget the Step 5 options draw from (alongside cash on hand).
 	measure 'Debt Headroom ($M)' =
 			
-			[Debt Capacity at Policy ($M)] - [Client Net Debt ($M)]
+			[Debt Capacity at Policy ($M)] - [Net Debt ($M)]
 		formatString: #,0.0
 		displayFolder: Current Position
 		lineageTag: d7b7775c-93fd-4706-98c7-cdcdb4c9af6e
 
 	measure 'NWC % of Revenue (%)' =
 			
-			100 * DIVIDE([Client Operating NWC ($M)], [Client Revenue ($M)])
+			100 * DIVIDE([Operating NWC ($M)], [Revenue Amount ($M)])
 		formatString: 0.0
 		displayFolder: Current Position
 		lineageTag: 6b3326a1-b9d3-43e9-9594-05510a5d121a

@@ -23,11 +23,11 @@
                       "Entity": "client_fs_ufcf"
                     }
                   },
-                  "Property": "Client Other Op CL ($M)"
+                  "Property": "Other Op CL ($M)"
                 }
               },
-              "queryRef": "client_fs_ufcf.Client Other Op CL ($M)",
-              "nativeQueryRef": "Client Other Op CL ($M)",
+              "queryRef": "client_fs_ufcf.Other Op CL ($M)",
+              "nativeQueryRef": "Other Op CL ($M)",
               "displayName": "Other Op CL ($M)"
             }
           ]

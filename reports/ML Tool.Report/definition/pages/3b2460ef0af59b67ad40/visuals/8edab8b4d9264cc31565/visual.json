@@ -23,11 +23,11 @@
                       "Entity": "client_fs_valuation_inputs"
                     }
                   },
-                  "Property": "Client Cash ($M)"
+                  "Property": "Cash ($M)"
                 }
               },
-              "queryRef": "client_fs_valuation_inputs.Client Cash ($M)",
-              "nativeQueryRef": "Client Cash ($M)",
+              "queryRef": "client_fs_valuation_inputs.Cash ($M)",
+              "nativeQueryRef": "Cash ($M)",
               "displayName": "Cash ($M)"
             }
           ]

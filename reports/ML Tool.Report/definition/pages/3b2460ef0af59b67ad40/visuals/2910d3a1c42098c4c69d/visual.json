@@ -23,11 +23,11 @@
                       "Entity": "client_fs_ufcf"
                     }
                   },
-                  "Property": "Client Operating NWC ($M)"
+                  "Property": "Operating NWC ($M)"
                 }
               },
-              "queryRef": "client_fs_ufcf.Client Operating NWC ($M)",
-              "nativeQueryRef": "Client Operating NWC ($M)",
+              "queryRef": "client_fs_ufcf.Operating NWC ($M)",
+              "nativeQueryRef": "Operating NWC ($M)",
               "displayName": "Operating NWC ($M)"
             }
           ]

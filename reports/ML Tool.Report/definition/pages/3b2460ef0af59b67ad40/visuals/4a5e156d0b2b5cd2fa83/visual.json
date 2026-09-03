@@ -23,11 +23,11 @@
                       "Entity": "client_fs_valuation_inputs"
                     }
                   },
-                  "Property": "Client TSM Dilution (M)"
+                  "Property": "TSM Dilution (M)"
                 }
               },
-              "queryRef": "client_fs_valuation_inputs.Client TSM Dilution (M)",
-              "nativeQueryRef": "Client TSM Dilution (M)",
+              "queryRef": "client_fs_valuation_inputs.TSM Dilution (M)",
+              "nativeQueryRef": "TSM Dilution (M)",
               "displayName": "TSM Dilution (M)"
             }
           ]

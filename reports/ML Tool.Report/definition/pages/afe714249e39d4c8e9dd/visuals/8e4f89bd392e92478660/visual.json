@@ -23,11 +23,11 @@
                       "Entity": "client_fs_ufcf"
                     }
                   },
-                  "Property": "Client EBIT ($M)"
+                  "Property": "EBIT ($M)"
                 }
               },
-              "queryRef": "client_fs_ufcf.Client EBIT ($M)",
-              "nativeQueryRef": "Client EBIT ($M)",
+              "queryRef": "client_fs_ufcf.EBIT ($M)",
+              "nativeQueryRef": "EBIT ($M)",
               "displayName": "EBIT ($M)"
             }
           ]

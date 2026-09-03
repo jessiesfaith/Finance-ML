@@ -23,11 +23,11 @@
                       "Entity": "client_fs_valuation_inputs"
                     }
                   },
-                  "Property": "Client ROIC (%)"
+                  "Property": "ROIC (%)"
                 }
               },
-              "queryRef": "client_fs_valuation_inputs.Client ROIC (%)",
-              "nativeQueryRef": "Client ROIC (%)",
+              "queryRef": "client_fs_valuation_inputs.ROIC (%)",
+              "nativeQueryRef": "ROIC (%)",
               "displayName": "ROIC (%)"
             }
           ]

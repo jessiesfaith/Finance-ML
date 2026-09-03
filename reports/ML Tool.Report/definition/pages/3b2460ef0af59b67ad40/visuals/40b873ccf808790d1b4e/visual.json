@@ -23,11 +23,11 @@
                       "Entity": "client_fs_ufcf"
                     }
                   },
-                  "Property": "Client Operating Costs ($M)"
+                  "Property": "Operating Costs ($M)"
                 }
               },
-              "queryRef": "client_fs_ufcf.Client Operating Costs ($M)",
-              "nativeQueryRef": "Client Operating Costs ($M)",
+              "queryRef": "client_fs_ufcf.Operating Costs ($M)",
+              "nativeQueryRef": "Operating Costs ($M)",
               "displayName": "Operating Costs ($M)"
             }
           ]

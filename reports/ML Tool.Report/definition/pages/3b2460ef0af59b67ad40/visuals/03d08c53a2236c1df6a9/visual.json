@@ -23,11 +23,11 @@
                       "Entity": "client_fs_ufcf"
                     }
                   },
-                  "Property": "Client AR ($M)"
+                  "Property": "AR ($M)"
                 }
               },
-              "queryRef": "client_fs_ufcf.Client AR ($M)",
-              "nativeQueryRef": "Client AR ($M)",
+              "queryRef": "client_fs_ufcf.AR ($M)",
+              "nativeQueryRef": "AR ($M)",
               "displayName": "AR ($M)"
             }
           ]

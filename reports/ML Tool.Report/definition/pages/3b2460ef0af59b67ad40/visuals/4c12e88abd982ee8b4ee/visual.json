@@ -23,11 +23,11 @@
                       "Entity": "client_fs_valuation_inputs"
                     }
                   },
-                  "Property": "Client Invested Capital ($M)"
+                  "Property": "Invested Capital ($M)"
                 }
               },
-              "queryRef": "client_fs_valuation_inputs.Client Invested Capital ($M)",
-              "nativeQueryRef": "Client Invested Capital ($M)",
+              "queryRef": "client_fs_valuation_inputs.Invested Capital ($M)",
+              "nativeQueryRef": "Invested Capital ($M)",
               "displayName": "Invested Capital ($M)"
             }
           ]
