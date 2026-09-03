@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "client_fs_valuation_inputs.Client ROIC (%)",
-              "nativeQueryRef": "Client ROIC (%)"
+              "nativeQueryRef": "Client ROIC (%)",
+              "displayName": "ROIC (%)"
             }
           ]
         }

@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "client_fs_valuation_inputs.Client Cash ($M)",
-              "nativeQueryRef": "Client Cash ($M)"
+              "nativeQueryRef": "Client Cash ($M)",
+              "displayName": "Cash ($M)"
             }
           ]
         }

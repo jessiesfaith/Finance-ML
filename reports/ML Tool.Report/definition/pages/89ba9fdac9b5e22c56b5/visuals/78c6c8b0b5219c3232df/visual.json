@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "client_fs_valuation_inputs.Client Diluted Shares (M)",
-              "nativeQueryRef": "Client Diluted Shares (M)"
+              "nativeQueryRef": "Client Diluted Shares (M)",
+              "displayName": "Diluted Shares (M)"
             }
           ]
         }

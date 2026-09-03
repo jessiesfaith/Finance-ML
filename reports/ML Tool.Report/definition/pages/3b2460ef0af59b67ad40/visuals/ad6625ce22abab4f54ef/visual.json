@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "client_fs_valuation_inputs.Client Basic Shares (M)",
-              "nativeQueryRef": "Client Basic Shares (M)"
+              "nativeQueryRef": "Client Basic Shares (M)",
+              "displayName": "Basic Shares (M)"
             }
           ]
         }

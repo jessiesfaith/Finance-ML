@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "client_fs_ufcf.Client CapEx ($M)",
-              "nativeQueryRef": "Client CapEx ($M)"
+              "nativeQueryRef": "Client CapEx ($M)",
+              "displayName": "CapEx ($M)"
             }
           ]
         }

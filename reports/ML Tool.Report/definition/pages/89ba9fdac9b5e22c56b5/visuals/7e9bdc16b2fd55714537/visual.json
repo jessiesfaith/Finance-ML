@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "client_fs_ufcf.Client UFCF ($M)",
-              "nativeQueryRef": "Client UFCF ($M)"
+              "nativeQueryRef": "Client UFCF ($M)",
+              "displayName": "UFCF ($M)"
             }
           ]
         }

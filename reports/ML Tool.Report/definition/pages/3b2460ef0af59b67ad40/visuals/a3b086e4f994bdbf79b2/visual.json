@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "client_fs_ufcf.Client D&A ($M)",
-              "nativeQueryRef": "Client D&A ($M)"
+              "nativeQueryRef": "Client D&A ($M)",
+              "displayName": "D&A ($M)"
             }
           ]
         }

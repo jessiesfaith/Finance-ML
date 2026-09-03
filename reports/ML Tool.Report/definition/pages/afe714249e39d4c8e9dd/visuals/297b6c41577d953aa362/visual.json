@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "client_fs_ufcf.Client Revenue Display",
-              "nativeQueryRef": "Client Revenue Display"
+              "nativeQueryRef": "Client Revenue Display",
+              "displayName": "Revenue ($M)"
             }
           ]
         }

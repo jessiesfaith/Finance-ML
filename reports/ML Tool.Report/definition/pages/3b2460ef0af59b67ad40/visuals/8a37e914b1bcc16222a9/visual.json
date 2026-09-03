@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "client_fs_ufcf.Client AP ($M)",
-              "nativeQueryRef": "Client AP ($M)"
+              "nativeQueryRef": "Client AP ($M)",
+              "displayName": "AP ($M)"
             }
           ]
         }

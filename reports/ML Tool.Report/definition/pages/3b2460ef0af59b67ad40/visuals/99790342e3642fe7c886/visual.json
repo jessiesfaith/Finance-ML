@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "client_fs_valuation_inputs.Client Net Debt ($M)",
-              "nativeQueryRef": "Client Net Debt ($M)"
+              "nativeQueryRef": "Client Net Debt ($M)",
+              "displayName": "Net Debt ($M)"
             }
           ]
         }

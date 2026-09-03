@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "client_fs_ufcf.Client Inventory ($M)",
-              "nativeQueryRef": "Client Inventory ($M)"
+              "nativeQueryRef": "Client Inventory ($M)",
+              "displayName": "Inventory ($M)"
             }
           ]
         }

@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "client_fs_ufcf.Client Other Op CL ($M)",
-              "nativeQueryRef": "Client Other Op CL ($M)"
+              "nativeQueryRef": "Client Other Op CL ($M)",
+              "displayName": "Other Op CL ($M)"
             }
           ]
         }

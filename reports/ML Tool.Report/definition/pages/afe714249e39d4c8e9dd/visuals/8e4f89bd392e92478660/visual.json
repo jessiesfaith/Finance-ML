@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "client_fs_ufcf.Client EBIT ($M)",
-              "nativeQueryRef": "Client EBIT ($M)"
+              "nativeQueryRef": "Client EBIT ($M)",
+              "displayName": "EBIT ($M)"
             }
           ]
         }

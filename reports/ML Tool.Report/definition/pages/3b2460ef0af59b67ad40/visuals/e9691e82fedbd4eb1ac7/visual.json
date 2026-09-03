@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "client_fs_ufcf.Client Change in NWC ($M)",
-              "nativeQueryRef": "Client Change in NWC ($M)"
+              "nativeQueryRef": "Client Change in NWC ($M)",
+              "displayName": "Change in NWC ($M)"
             }
           ]
         }
