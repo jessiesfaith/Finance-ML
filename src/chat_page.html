@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finance-ML Analyst</title>
+<style>
+  :root {
+    --bg: #0f1420; --panel: #171e2e; --panel2: #1d2638; --line: #2a3550;
+    --text: #e8edf7; --dim: #93a0b8; --accent: #5b9cf5;
+    --red: #f26d6d; --yellow: #e8c04a; --green: #57c98a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; height: 100vh; display: flex; flex-direction: column;
+    background: var(--bg); color: var(--text);
+    font: 14px/1.5 "Segoe UI", system-ui, sans-serif;
+  }
+  header {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    padding: 10px 14px; background: var(--panel);
+    border-bottom: 1px solid var(--line);
+  }
+  header h1 { font-size: 15px; margin: 0 8px 0 0; font-weight: 600; }
+  .pill {
+    border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px;
+    background: var(--panel2); cursor: pointer; font-size: 12.5px;
+    color: var(--text);
+  }
+  .pill b { font-weight: 700; }
+  .pill.red b { color: var(--red); } .pill.yellow b { color: var(--yellow); }
+  .pill.green b { color: var(--green); }
+  .btn {
+    border: 1px solid var(--line); border-radius: 6px; padding: 3px 10px;
+    background: var(--panel2); color: var(--text); cursor: pointer;
+    font-size: 12.5px;
+  }
+  .btn:hover, .pill:hover { border-color: var(--accent); }
+  .spacer { flex: 1; }
+  #banner {
+    display: none; padding: 8px 14px; background: #3a2b16;
+    color: #f0d9a8; border-bottom: 1px solid #5a441f; font-size: 13px;
+  }
+  #flagdrawer {
+    display: none; max-height: 38vh; overflow-y: auto;
+    background: var(--panel); border-bottom: 1px solid var(--line);
+    padding: 6px 14px 10px;
+  }
+  .flag { padding: 5px 8px; border-left: 3px solid var(--line);
+          margin: 4px 0; background: var(--panel2); border-radius: 4px; }
+  .flag.RED { border-left-color: var(--red); }
+  .flag.YELLOW { border-left-color: var(--yellow); }
+  .flag.GREEN { border-left-color: var(--green); }
+  .flag .h { font-weight: 600; }
+  .flag .a { color: var(--dim); font-size: 12.5px; }
+  #chat { flex: 1; overflow-y: auto; padding: 14px; }
+  .msg { max-width: 860px; margin: 0 auto 12px; padding: 10px 14px;
+         border-radius: 10px; white-space: normal; }
+  .msg.you { background: #24406e; margin-left: 80px; }
+  .msg.bot { background: var(--panel2); border: 1px solid var(--line);
+             margin-right: 40px; }
+  .msg .who { font-size: 11px; color: var(--dim); margin-bottom: 3px;
+              text-transform: uppercase; letter-spacing: .05em; }
+  .msg code { background: #0d1119; border-radius: 4px; padding: 1px 5px;
+              font-size: 12.5px; }
+  .msg pre { background: #0d1119; padding: 8px; border-radius: 6px;
+             overflow-x: auto; }
+  .msg h3, .msg h4 { margin: 10px 0 4px; }
+  .msg ul { margin: 4px 0; padding-left: 22px; }
+  .msg p { margin: 6px 0; }
+  #thinking { display: none; color: var(--dim); font-style: italic;
+              max-width: 860px; margin: 0 auto 12px; }
+  footer { padding: 10px 14px; background: var(--panel);
+           border-top: 1px solid var(--line); }
+  #inputrow { display: flex; gap: 8px; max-width: 900px; margin: 0 auto; }
+  #q {
+    flex: 1; resize: none; border: 1px solid var(--line); border-radius: 8px;
+    background: var(--panel2); color: var(--text); padding: 9px 12px;
+    font: inherit; min-height: 42px; max-height: 140px;
+  }
+  #q:focus { outline: none; border-color: var(--accent); }
+  #send { background: var(--accent); border: none; color: #0b1220;
+          font-weight: 600; border-radius: 8px; padding: 0 18px;
+          cursor: pointer; }
+  #send:disabled { opacity: .45; cursor: default; }
+  .hint { text-align: center; color: var(--dim); font-size: 11.5px;
+          margin-top: 6px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Finance-ML Analyst</h1>
+  <span class="pill red"    id="pill-red"    title="show/hide flags">RED <b>–</b></span>
+  <span class="pill yellow" id="pill-yellow" title="show/hide flags">YELLOW <b>–</b></span>
+  <span class="pill green"  id="pill-green"  title="show/hide flags">GREEN <b>–</b></span>
+  <button class="btn" id="rebuild" title="re-run src/build_flags.py after a data refresh">Rebuild flags</button>
+  <span class="spacer"></span>
+  <button class="btn" id="newchat">New chat</button>
+</header>
+<div id="banner"></div>
+<div id="flagdrawer"></div>
+<div id="chat">
+  <div class="msg bot"><div class="who">analyst</div>
+    <div>Ask about any number on the report — ratios, flags, WACC, an
+    option verdict, or where a figure comes from in the Python/SQL.
+    Every answer cites its file. Click a colored pill to see the flag
+    feed.</div></div>
+</div>
+<div id="thinking">analyst is reading the files…</div>
+<footer>
+  <div id="inputrow">
+    <textarea id="q" placeholder="e.g. why is PROJ-001 marked REVIEW, and what would change the call?"></textarea>
+    <button id="send">Send</button>
+  </div>
+  <div class="hint">Enter to send · Shift+Enter for a new line ·
+    grounded in reports/*.csv + the repo's PY/SQL/docs · questions use
+    the Claude API (a few cents each); flags are free</div>
+</footer>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+
+function esc(s) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+// minimal markdown: fenced code, headers, bold, inline code, bullets
+function md(s) {
+  s = esc(s);
+  s = s.replace(/```([\s\S]*?)```/g, (_, c) => "<pre>" + c.trim() + "</pre>");
+  const lines = s.split("\n");
+  let out = [], inList = false;
+  for (let line of lines) {
+    if (/^\s*[-*] /.test(line)) {
+      if (!inList) { out.push("<ul>"); inList = true; }
+      out.push("<li>" + line.replace(/^\s*[-*] /, "") + "</li>");
+      continue;
+    }
+    if (inList) { out.push("</ul>"); inList = false; }
+    if (/^####? /.test(line)) out.push("<h4>" + line.replace(/^#+ /, "") + "</h4>");
+    else if (/^<pre>/.test(line)) out.push(line);
+    else if (line.trim() === "") out.push("");
+    else out.push("<p>" + line + "</p>");
+  }
+  if (inList) out.push("</ul>");
+  s = out.join("\n");
+  s = s.replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
+  s = s.replace(/`([^`\n]+?)`/g, "<code>$1</code>");
+  return s;
+}
+
+function addMsg(cls, who, html) {
+  const div = document.createElement("div");
+  div.className = "msg " + cls;
+  div.innerHTML = '<div class="who">' + who + "</div><div>" + html + "</div>";
+  $("chat").appendChild(div);
+  $("chat").scrollTop = $("chat").scrollHeight;
+}
+
+let flagData = { rows: [], counts: {} };
+function renderFlags() {
+  const c = flagData.counts;
+  $("pill-red").innerHTML = "RED <b>" + (c.RED ?? 0) + "</b>";
+  $("pill-yellow").innerHTML = "YELLOW <b>" + (c.YELLOW ?? 0) + "</b>";
+  $("pill-green").innerHTML = "GREEN <b>" + (c.GREEN ?? 0) + "</b>";
+  const d = $("flagdrawer");
+  d.innerHTML = "";
+  for (const r of flagData.rows) {
+    const div = document.createElement("div");
+    div.className = "flag " + r.color;
+    div.innerHTML = '<div class="h">' + esc(r.headline) + "</div>" +
+      '<div class="a">' + esc(r.detail) + " → " +
+      esc(r.recommended_action) + " (tab " + esc(r.source_tab) + ")</div>";
+    d.appendChild(div);
+  }
+}
+async function loadFlags(rebuild) {
+  const res = rebuild
+    ? await fetch("/api/rebuild-flags", { method: "POST" })
+    : await fetch("/api/flags");
+  const data = await res.json();
+  if (data.error) { alert(data.error); return; }
+  flagData = data;
+  renderFlags();
+}
+for (const id of ["pill-red", "pill-yellow", "pill-green"]) {
+  $(id).onclick = () => {
+    const d = $("flagdrawer");
+    d.style.display = d.style.display === "block" ? "none" : "block";
+  };
+}
+$("rebuild").onclick = async () => {
+  $("rebuild").disabled = true; $("rebuild").textContent = "Rebuilding…";
+  try { await loadFlags(true); }
+  finally { $("rebuild").disabled = false;
+            $("rebuild").textContent = "Rebuild flags"; }
+};
+
+let busy = false;
+async function send() {
+  const q = $("q").value.trim();
+  if (!q || busy) return;
+  busy = true; $("send").disabled = true; $("q").value = "";
+  addMsg("you", "you", esc(q));
+  $("thinking").style.display = "block";
+  try {
+    const res = await fetch("/api/ask", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question: q }),
+    });
+    const data = await res.json();
+    addMsg("bot", "analyst", md(data.reply ?? data.error ?? "no reply"));
+  } catch (e) {
+    addMsg("bot", "analyst",
+      "Lost the local server — is chat_server.py still running? (" +
+      esc(String(e)) + ")");
+  } finally {
+    $("thinking").style.display = "none";
+    busy = false; $("send").disabled = false; $("q").focus();
+  }
+}
+$("send").onclick = send;
+$("q").addEventListener("keydown", e => {
+  if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); }
+});
+$("newchat").onclick = async () => {
+  await fetch("/api/reset", { method: "POST" });
+  $("chat").innerHTML = "";
+  addMsg("bot", "analyst", "Fresh conversation — the flags and data " +
+    "bundle are unchanged.");
+};
+
+(async () => {
+  await loadFlags(false);
+  const st = await (await fetch("/api/status")).json();
+  if (!st.chat_ready) {
+    const b = $("banner");
+    b.textContent = st.chat_error;
+    b.style.display = "block";
+    $("q").placeholder = "chat disabled — flags above still work";
+  }
+  $("q").focus();
+})();
+</script>
+</body>
+</html>

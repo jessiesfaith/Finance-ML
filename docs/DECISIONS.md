@@ -980,3 +980,18 @@ READ - ANALYZE - EXPLAIN, never write/approve, every number cited
 from a file, assumptions labeled, synthetic data never attributed to
 real firms. Needs ANTHROPIC_API_KEY on the owner's machine; the
 pipeline and tests never call the network.
+
+### 90. Chat page: the assistant in a browser window beside the report
+src/chat_server.py serves src/chat_page.html on 127.0.0.1 only
+(stdlib http.server - zero new dependencies; nothing leaves the
+machine except the same Claude API calls the terminal assistant
+makes). The page pins the red/green flag feed on top (count pills ->
+drawer; Rebuild button re-runs the flags engine after a data refresh)
+with the grounded chat below - same brain, bundle, and READ/ANALYZE/
+EXPLAIN guardrails as chat_assistant.py, which it imports rather than
+duplicates. No API key = chat disabled with a banner naming the fix;
+flags still work free. Launch: double-click start_chat.bat (or
+python src/chat_server.py); pin it with
+start msedge --app=http://127.0.0.1:8547. Five offline tests cover
+the page, flag API, rebuild round-trip, disabled-chat message, and
+reset.
