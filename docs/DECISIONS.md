@@ -1008,3 +1008,12 @@ removed (they would have re-flipped the order to oldest-first).
 Power BI has no scroll-position property, so "scrolled to the far
 right" is delivered as newest-first ordering - same data on screen at
 open, reading newest -> oldest.
+
+### 92. Owner's call: matrices stay chronological, like the charts
+Seeing #91 rendered, the owner chose consistency over recency: the
+flat data reads oldest -> newest left to right, the same direction as
+the line chart above it, and you scroll right for the latest month.
+The sortByColumn came off observation_date; recency_rank stays in the
+export unused (curated columns are only ever added), available if the
+call ever reverses. Page legend updated to say both surfaces read the
+same direction.

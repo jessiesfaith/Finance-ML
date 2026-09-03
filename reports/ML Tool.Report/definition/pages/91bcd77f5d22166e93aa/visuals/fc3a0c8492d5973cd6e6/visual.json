@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "ONE control: the date slicer at left drives every chart AND every number matrix. Matrices read NEWEST month first, left to right \u2014 no scrolling to reach today.",
+                    "value": "ONE control: the date slicer at left drives every chart AND every number matrix. Both read oldest -> newest, left to right - scroll a matrix right to reach the latest month.",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

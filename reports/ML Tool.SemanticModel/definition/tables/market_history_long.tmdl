@@ -10,7 +10,6 @@ table market_history_long
 		lineageTag: 127290ce-00db-409e-93c6-0833cb6fe5db
 		summarizeBy: none
 		sourceColumn: observation_date
-		sortByColumn: recency_rank
 
 		annotation SummarizationSetBy = Automatic
 
@@ -39,8 +38,9 @@ table market_history_long
 
 		annotation SummarizationSetBy = Automatic
 
-	/// 0 = newest month; observation_date sorts by this so matrices
-	/// default to the most recent data (hidden - a sort key, not data)
+	/// 0 = newest month. Not wired to anything by default (owner's
+	/// call: matrices read oldest -> newest like the charts); kept
+	/// because curated columns are only ever added, never removed.
 	column recency_rank
 		dataType: int64
 		isHidden
