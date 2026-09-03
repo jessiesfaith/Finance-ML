@@ -1,0 +1,66 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "a11f7c52f51624cc8cff",
+  "position": {
+    "x": 165,
+    "y": 2250,
+    "height": 200,
+    "width": 1695,
+    "z": 1216000,
+    "tabOrder": 1216000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Targets & the CFO read \u2014 what each verdict card is checking",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Liquidity: current ratio healthy at 1.5\u20133.0x (< 1.0x = trouble; far above 3.0x = capital sitting idle) \u00b7 quick \u2265 1.0x or bills depend on selling inventory \u00b7 cash \u2265 0.2x for immediate cover.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Solvency: debt/equity above ~2.0x means lenders own the downside \u00b7 interest coverage \u2265 3.0x comfortable, < 1.5x danger \u00b7 net debt/EBITDA vs the 2.0x policy is the borrowing ceiling.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "D&A % of revenue: > 8% = capital-intensive \u2014 CFO reviews capex discipline, asset utilization, impairment risk, and whether depreciation schedules match real asset lives; < 3% = asset-light OR under-investing \u2014 check CapEx \u00f7 D&A: at 1.06x here the asset base is being replenished slightly faster than it wears. Margins: contribution < 20% = thin pricing power; > 50% = high operating leverage (volume swings amplify profit).",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

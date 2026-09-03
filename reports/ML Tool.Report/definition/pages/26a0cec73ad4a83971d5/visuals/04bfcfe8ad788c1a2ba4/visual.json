@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "04bfcfe8ad788c1a2ba4",
+  "position": {
+    "x": 1015,
+    "y": 130,
+    "z": 4000,
+    "height": 300,
+    "width": 800,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "2 \u00b7 Cost of Debt & the Tax Shield \u2014 from scratch",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "A lender starts from the same floor, rf, and adds a markup for the chance of not being repaid \u2014 the credit spread. Kd = rf + spread = 4.53 + 2.00 = 6.53%.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Now the tax twist: the state taxes profit AFTER interest, so every $1 of interest shrinks taxable profit by $1 and saves tax \u00d7 $1 = $0.25. The firm's true cost is what is left: Kd \u00d7 (1 \u2212 tax) = 6.53 \u00d7 0.75 = 4.90%.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Book cross-check from the statements themselves: interest expense \u00f7 total debt = 25.4 \u00f7 366.0 = 6.94% \u2014 close to the market build, as it should be.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\u2192 tab 3 and tab 8 \u00b7 Calc Build-Out",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

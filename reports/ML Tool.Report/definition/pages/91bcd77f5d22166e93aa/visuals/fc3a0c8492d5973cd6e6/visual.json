@@ -29,7 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "ONE control: the date slicer at left sets the period for every chart AND every number table (newest month on top; tables scroll). Switch it to Relative date for Last 3/6/12 months or This year.",
+                    "value": "ONE control: the date slicer at left drives every chart AND every number matrix. Matrices read NEWEST month first, left to right \u2014 no scrolling to reach today.",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

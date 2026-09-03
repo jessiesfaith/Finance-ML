@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "9b453a89e67fc0c86214",
+  "position": {
+    "x": 165,
+    "y": 68,
+    "height": 60,
+    "width": 2600,
+    "z": 2000,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Every health check, option verdict and open control finding, computed fresh from the same curated CSVs the other tabs read (src/build_flags.py). RED = act now \u00b7 YELLOW = review \u00b7 GREEN = the check ran and passed. Thresholds are the same ones on the tab-2 verdict cards and tab-5 three tests \u2014 one rulebook, two surfaces.",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

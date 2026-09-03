@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "b8fb4c3812c0983150f2",
+  "position": {
+    "x": 1560,
+    "y": 760,
+    "height": 75,
+    "width": 300,
+    "z": 1206000,
+    "tabOrder": 1206000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "Leverage Status"
+                }
+              },
+              "queryRef": "client_fs_statements.Leverage Status",
+              "nativeQueryRef": "Leverage Status"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

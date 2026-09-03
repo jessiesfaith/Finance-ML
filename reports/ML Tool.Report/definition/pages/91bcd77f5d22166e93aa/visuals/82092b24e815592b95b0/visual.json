@@ -1,13 +1,70 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "82092b24e815592b95b0",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "panelfilteraifirms",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "market_history_long"
+              }
+            },
+            "Property": "panel"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "m",
+              "Entity": "market_history_long",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "m"
+                          }
+                        },
+                        "Property": "panel"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'aifirms'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
   "position": {
-    "x": 165,
-    "y": 7413,
-    "height": 160,
+    "x": 1015,
+    "y": 8128,
+    "height": 210,
     "width": 800,
-    "z": 84000,
-    "tabOrder": 84000
+    "z": 87000,
+    "tabOrder": 87000
   },
   "visual": {
     "visualType": "pivotTable",
@@ -74,65 +131,47 @@
             }
           ]
         }
-      }
-    },
-    "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "panelfilteraifirms",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "market_history_long"
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "market_history_long"
+                  }
+                },
+                "Property": "observation_date"
               }
             },
-            "Property": "panel"
+            "direction": "Descending"
           }
-        },
-        "type": "Categorical",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "m",
-              "Entity": "market_history_long",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "In": {
-                  "Expressions": [
-                    {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Source": "m"
-                          }
-                        },
-                        "Property": "panel"
-                      }
-                    }
-                  ],
-                  "Values": [
-                    [
-                      {
-                        "Literal": {
-                          "Value": "'aifirms'"
-                        }
-                      }
-                    ]
-                  ]
+        ]
+      }
+    },
+    "objects": {
+      "subTotals": [
+        {
+          "properties": {
+            "rowSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "columnSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
-          ]
+          }
         }
-      }
-    ]
+      ]
+    },
+    "drillFilterOtherVisuals": true
   }
 }

@@ -166,3 +166,16 @@ Pages 3 and 4 are the clean, single-purpose versions of what legacy
 Page 1 does in one canvas; once they pass Desktop QA the owner can
 retire Page 1 (delete the tab) whenever they choose — nothing binds to
 it.
+
+---
+
+## TAB 6b — Flags & Alerts (added #88)
+
+**Starts with:** three count cards (Red / Yellow / Green Flags).
+**Flows:** the RED+YELLOW table — what was found, why it matters, what
+to do, which tab shows it — then the GREEN table (checks that ran and
+passed). Feed = reports/client_fs_flags.csv, rebuilt by
+`python src/build_flags.py` from the same curated CSVs the other tabs
+read; thresholds identical to tab 2's verdict cards and tab 5's three
+tests. **Ends by handing** the review list to the human — the engine
+never approves.

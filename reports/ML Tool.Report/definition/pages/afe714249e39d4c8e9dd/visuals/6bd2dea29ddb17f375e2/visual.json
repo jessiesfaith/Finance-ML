@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "6bd2dea29ddb17f375e2",
+  "position": {
+    "x": 1560,
+    "y": 1660,
+    "height": 75,
+    "width": 300,
+    "z": 1204000,
+    "tabOrder": 1204000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "Debt / Equity Status"
+                }
+              },
+              "queryRef": "client_fs_statements.Debt / Equity Status",
+              "nativeQueryRef": "Debt / Equity Status"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

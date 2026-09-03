@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "8c1d44634e2c0b79cc2e",
+  "position": {
+    "x": 165,
+    "y": 770,
+    "z": 7000,
+    "height": 300,
+    "width": 800,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "5 \u00b7 Working Capital & UFCF \u2014 from scratch",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Profit is not cash, because of timing: customers pay later (AR), inventory is bought before it sells, suppliers are paid later (AP). Net working capital is the money trapped in that gap: NWC = AR + inventory + other op CA \u2212 AP \u2212 other op CL = 165.0 + 113.0 \u2212 118.5 = 159.5.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Growing the business widens the gap, so the CHANGE uses cash: \u0394NWC = 159.5 \u2212 133.2 = +26.3 this year.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Free cash is what the operation generates after reinvestment, before any financing: UFCF = NOPAT + D&A \u2212 capex \u2212 \u0394NWC = 186.5 + 66.2 \u2212 70.0 \u2212 26.3 = 156.4 ($156.35M exactly).",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\u2192 tab 1, walk section; bridge to levered FCF on tab 8",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

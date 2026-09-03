@@ -3,11 +3,11 @@
   "name": "895a7a7ed85b099c58a1",
   "position": {
     "x": 1015,
-    "y": 7600,
+    "y": 8370,
     "height": 220,
     "width": 800,
-    "z": 86000,
-    "tabOrder": 86000
+    "z": 89000,
+    "tabOrder": 89000
   },
   "visual": {
     "visualType": "textbox",
@@ -39,7 +39,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "OAS = option-adjusted spread \u00b7 IG/HY = investment-grade / high-yield \u00b7 WTI/Brent = US / global crude benchmarks \u00b7 $/oz, $/bbl, $/lb = dollars per ounce / barrel / pound \u00b7 level = the index itself, not a return",
+                    "value": "OAS = option-adjusted spread \u00b7 IG/HY = investment-grade / high-yield \u00b7 WTI/Brent = US / global crude \u00b7 $/oz, $/bbl, $/lb = dollars per unit \u00b7 level = the index itself",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

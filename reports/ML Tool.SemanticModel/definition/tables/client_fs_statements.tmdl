@@ -393,6 +393,127 @@ table client_fs_statements
 		displayFolder: Calc Build-Out
 		lineageTag: f89efc5b-c1aa-466c-ae93-71bacb57c7bd
 
+	/// Thresholds are conventional guardrails (stated, not laws):
+	/// below 1.0x = liquidity trouble; 1.5-3.0x = healthy band;
+	/// far above = cash possibly under-deployed.
+	measure 'Current Ratio Status' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Current Ratio (x)] < 1.0, "TROUBLE: < 1.0x",
+			    [Current Ratio (x)] < 1.5, "WATCH: < 1.5x",
+			    [Current Ratio (x)] <= 3.0, "OK: 1.5-3.0x band",
+			    "HIGH: > 3.0x (lazy cash?)"
+			)
+		displayFolder: Ratios
+		lineageTag: 940cf026-9dcf-4081-8525-09041ed70c32
+
+	measure 'Quick Ratio Status' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Quick Ratio (x)] < 1.0, "TROUBLE: < 1.0x",
+			    "OK: >= 1.0x target"
+			)
+		displayFolder: Ratios
+		lineageTag: 10e93e81-3346-4699-b6e8-08a4eb4a601c
+
+	measure 'Cash Ratio Status' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Cash Ratio (x)] < 0.2, "WATCH: < 0.2x",
+			    "OK: >= 0.2x target"
+			)
+		displayFolder: Ratios
+		lineageTag: 464920e3-2f48-4a1d-9a01-4a9dea7f732a
+
+	measure 'Debt / Equity Status' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Debt / Equity (x)] > 2.0, "HEAVY: > 2.0x",
+			    [Debt / Equity (x)] > 1.0, "GEARED: > 1.0x",
+			    "OK: <= 1.0x"
+			)
+		displayFolder: Ratios
+		lineageTag: b0ea85e7-4644-4f1c-8001-b7163e6e46ba
+
+	measure 'Coverage Status' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Interest Coverage (x)] < 1.5, "DANGER: < 1.5x",
+			    [Interest Coverage (x)] < 3.0, "WATCH: < 3.0x",
+			    "OK: >= 3.0x target"
+			)
+		displayFolder: Ratios
+		lineageTag: a9ed2952-4869-476d-82f2-311ae2e1a788
+
+	/// Capital intensity of the P&L: how much of each revenue dollar
+	/// the asset base consumes as depreciation.
+	measure 'D&A % of Revenue (%)' =
+			
+			100 * DIVIDE([Client D&A ($M)], [Client Revenue ($M)])
+		formatString: 0.0
+		displayFolder: Ratios
+		lineageTag: 5fb910fc-73f9-4c02-bd76-cd41b30721d8
+
+	/// The replenishment ratio: above 1.0x the asset base is being
+	/// rebuilt faster than it wears; well below 1.0x it is aging.
+	measure 'CapEx / D&A (x)' =
+			
+			DIVIDE([Client CapEx ($M)], [Client D&A ($M)])
+		formatString: 0.00"x"
+		displayFolder: Ratios
+		lineageTag: 2ac6edfa-b6aa-408c-aa33-9ccbf6730df5
+
+	/// The CFO read on capital intensity, with the cross-check named:
+	/// the CapEx/D&A ratio says whether the asset base is being
+	/// rebuilt (fixture: 70.0/66.2 = 1.06x - replenishing).
+	measure 'D&A Intensity Read' =
+			
+			SWITCH(
+			    TRUE(),
+			    [D&A % of Revenue (%)] > 8, "HIGH: > 8% of revenue",
+			    [D&A % of Revenue (%)] < 3, "LOW: < 3% of revenue",
+			    "MODERATE: 3-8%"
+			)
+		displayFolder: Ratios
+		lineageTag: 0a09ee2b-1912-42f3-824c-7510a4bd3351
+
+	measure 'Leverage Status' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Net Debt / EBITDA (x)] > 3.0, "HEAVY: > 3.0x",
+			    [Net Debt / EBITDA (x)] > 2.0, "OVER POLICY: > 2.0x",
+			    "OK: within 2.0x policy"
+			)
+		displayFolder: Ratios
+		lineageTag: bc383553-33bb-4810-9ea8-66aff150513e
+
+	measure 'Contribution Margin Read' =
+			
+			SWITCH(
+			    TRUE(),
+			    [Contribution Margin (%)] < 20, "THIN: < 20%",
+			    [Contribution Margin (%)] < 50, "MODERATE: 20-50%",
+			    "STRONG: > 50%"
+			)
+		displayFolder: Ratios
+		lineageTag: 59669dc9-550a-4d4e-96ec-268c74d40418
+
+	measure 'Runway Read' =
+			
+			IF(
+			    [Client UFCF ($M)] >= 0,
+			    "GREEN: self-funded",
+			    "RED: burning cash"
+			)
+		displayFolder: Ratios
+		lineageTag: 77e9d7b4-82c3-42cc-b9ed-2e14e8c1de98
+
 	column entity_id
 		dataType: string
 		lineageTag: 17fc8e23-2bd6-4340-b839-3702349b04fb

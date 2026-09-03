@@ -1,0 +1,66 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "eb26eff0bb807590ca1b",
+  "position": {
+    "x": 1015,
+    "y": 1730,
+    "z": 14000,
+    "height": 300,
+    "width": 800,
+    "tabOrder": 14000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "12 \u00b7 Option Math \u2014 from scratch",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Value only what a decision CHANGES. Money already spent (sunk) never counts; the project's own new revenue, savings and costs do. Those increments walk the same chain as blocks 4\u20135: \u0394EBITDA \u2192 \u0394NOPAT \u2192 \u0394UFCF, with the investment amortized straight-line and NWC recovered at the end.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Special cases from the same principle: paying down debt changes only the interest bill, so its return IS the after-tax rate saved (Kd \u00d7 (1 \u2212 tax) = 4.90%); an acquisition changes flows by the target's earnings + synergies \u2212 integration, so the breakeven bid is the price where NPV crosses zero (= investment + NPV at the asked price: $129.5M vs the $150M ask).",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\u2192 tab 5 \u00b7 Options, incl. sensitivity and sizing strips",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

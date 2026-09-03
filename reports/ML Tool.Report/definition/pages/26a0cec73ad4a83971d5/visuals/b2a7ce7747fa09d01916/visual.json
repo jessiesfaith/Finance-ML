@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "b2a7ce7747fa09d01916",
+  "position": {
+    "x": 1015,
+    "y": 770,
+    "z": 8000,
+    "height": 300,
+    "width": 800,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "6 \u00b7 Discounting (Present Value) \u2014 from scratch",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Start from a bank account: $1 today at rate r grows to (1+r) next year, (1+r)\u00b2 the year after \u2014 compounding. Run it backwards: a cash flow arriving in year t is worth CF \u00f7 (1+r)\u1d57 today, because that smaller amount, deposited now, becomes exactly CF by year t.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "PV = CF \u00f7 (1 + r)\u1d57 \u2014 one (1+r) haircut per year of waiting.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Year 1: 186.2 \u00f7 1.0911 = 170.7.  Year 5: 235.1 \u00f7 1.0911\u2075 = 235.1 \u00f7 1.546 = 152.1. The rate r is the WACC from block 3.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\u2192 tab 6 \u00b7 Valuation & Recommendation",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

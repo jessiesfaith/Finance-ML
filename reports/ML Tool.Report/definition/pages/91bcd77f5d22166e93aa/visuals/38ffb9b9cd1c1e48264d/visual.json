@@ -1,13 +1,70 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "38ffb9b9cd1c1e48264d",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "panelfilterinflation",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "market_history_long"
+              }
+            },
+            "Property": "panel"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "m",
+              "Entity": "market_history_long",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "m"
+                          }
+                        },
+                        "Property": "panel"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'inflation'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
   "position": {
-    "x": 1015,
-    "y": 993,
-    "height": 160,
+    "x": 165,
+    "y": 1638,
+    "height": 210,
     "width": 800,
-    "z": 15000,
-    "tabOrder": 15000
+    "z": 18000,
+    "tabOrder": 18000
   },
   "visual": {
     "visualType": "pivotTable",
@@ -74,65 +131,47 @@
             }
           ]
         }
-      }
-    },
-    "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "panelfilterinflation",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "market_history_long"
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "market_history_long"
+                  }
+                },
+                "Property": "observation_date"
               }
             },
-            "Property": "panel"
+            "direction": "Descending"
           }
-        },
-        "type": "Categorical",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "m",
-              "Entity": "market_history_long",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "In": {
-                  "Expressions": [
-                    {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Source": "m"
-                          }
-                        },
-                        "Property": "panel"
-                      }
-                    }
-                  ],
-                  "Values": [
-                    [
-                      {
-                        "Literal": {
-                          "Value": "'inflation'"
-                        }
-                      }
-                    ]
-                  ]
+        ]
+      }
+    },
+    "objects": {
+      "subTotals": [
+        {
+          "properties": {
+            "rowSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "columnSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
-          ]
+          }
         }
-      }
-    ]
+      ]
+    },
+    "drillFilterOtherVisuals": true
   }
 }

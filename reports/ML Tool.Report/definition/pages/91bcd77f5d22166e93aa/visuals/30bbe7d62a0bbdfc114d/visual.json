@@ -52,7 +52,7 @@
               },
               "queryRef": "Avg(market_history_rolling24.curve_spread_10y_2y)",
               "nativeQueryRef": "Average of curve_spread_10y_2y",
-              "displayName": "10Y \u2212 2Y"
+              "displayName": "10Y - 2Y"
             },
             {
               "field": {
@@ -72,7 +72,7 @@
               },
               "queryRef": "Avg(market_history_rolling24.curve_spread_10y_3m)",
               "nativeQueryRef": "Average of curve_spread_10y_3m",
-              "displayName": "10Y \u2212 3M"
+              "displayName": "10Y - 3M"
             }
           ]
         }

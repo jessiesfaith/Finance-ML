@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "160483307222534d6fdf",
+  "position": {
+    "x": 165,
+    "y": 2050,
+    "z": 15000,
+    "height": 300,
+    "width": 800,
+    "tabOrder": 15000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "13 \u00b7 P/E Method (Comparable Multiples) \u2014 from scratch",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "A share is a claim on earnings, so ask: what do buyers pay per $1 of earnings? That going rate is the P/E multiple, observable from peer companies' prices.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "First earnings per share: EPS = net income \u00f7 diluted shares = 167.4 \u00f7 103.7 = $1.61. Then price = EPS \u00d7 target P/E = 1.61 \u00d7 15.0 = $24.22 (the 15\u00d7 is a stated ASSUMPTION standing in for a peer set).",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Cross-check against the DCF: the model's cash-flow price $28.86 implies 17.9\u00d7 \u2014 the market pays 15\u00d7 \u2014 the gap IS the debate: is growth worth 3 extra turns of earnings?",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\u2192 tab 6 \u00b7 Valuation & Recommendation, three-price triangle",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,114 @@
+/// Curated export: the red/green notification feed - every
+/// health check, option verdict and open control finding as one
+/// row, colored RED (act) / YELLOW (review) / GREEN (confirmed).
+table client_fs_flags
+	lineageTag: 35784a6d-2e00-4d6c-95a9-3aee1f33c3a0
+
+	measure 'Red Flags' =
+			
+			CALCULATE(COUNTROWS(client_fs_flags), client_fs_flags[color] = "RED")
+		formatString: 0
+		displayFolder: Flags
+		lineageTag: 8298018f-7b42-4e29-9a35-8b4ad420d17f
+
+	measure 'Yellow Flags' =
+			
+			CALCULATE(COUNTROWS(client_fs_flags), client_fs_flags[color] = "YELLOW")
+		formatString: 0
+		displayFolder: Flags
+		lineageTag: 3c3aca3d-9745-41a5-94e6-5ea8a10d8d7a
+
+	measure 'Green Flags' =
+			
+			CALCULATE(COUNTROWS(client_fs_flags), client_fs_flags[color] = "GREEN")
+		formatString: 0
+		displayFolder: Flags
+		lineageTag: 94dc6887-98fa-423a-ab9d-d7758b9def12
+
+	column flag_id
+		dataType: string
+		lineageTag: c92f1433-02fa-414a-adb7-86afb39c9dc6
+		summarizeBy: none
+		sourceColumn: flag_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column color
+		dataType: string
+		lineageTag: 0ff58717-5402-4756-8c45-bede16972b7f
+		summarizeBy: none
+		sourceColumn: color
+
+		annotation SummarizationSetBy = Automatic
+
+	column area
+		dataType: string
+		lineageTag: 05fc996c-890b-4e72-9b80-0e4c701d1b2d
+		summarizeBy: none
+		sourceColumn: area
+
+		annotation SummarizationSetBy = Automatic
+
+	column headline
+		dataType: string
+		lineageTag: 7400cf4f-da59-44e8-81a1-d960e9f8e2ab
+		summarizeBy: none
+		sourceColumn: headline
+
+		annotation SummarizationSetBy = Automatic
+
+	column detail
+		dataType: string
+		lineageTag: 0361730c-44a0-4e01-bbd3-84ab17900b75
+		summarizeBy: none
+		sourceColumn: detail
+
+		annotation SummarizationSetBy = Automatic
+
+	column recommended_action
+		dataType: string
+		lineageTag: 0b2878de-a1de-4f56-acf5-e2b68a04374a
+		summarizeBy: none
+		sourceColumn: recommended_action
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_tab
+		dataType: string
+		lineageTag: 4ce12ba9-af56-4022-b690-bf39ec221143
+		summarizeBy: none
+		sourceColumn: source_tab
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_file
+		dataType: string
+		lineageTag: c95f4b11-0e22-4858-8fc2-ab6157d31cc9
+		summarizeBy: none
+		sourceColumn: source_file
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 318f6166-7abc-4d9b-bb1f-127e01b0eb61
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition client_fs_flags = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\client_fs_flags.csv"),
+				    [Delimiter = ",", Columns = 9, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"flag_id", "color", "area", "headline", "detail", "recommended_action", "source_tab", "source_file", "value_class"}),
+				  #"Changed Type" = #"Selected columns"
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

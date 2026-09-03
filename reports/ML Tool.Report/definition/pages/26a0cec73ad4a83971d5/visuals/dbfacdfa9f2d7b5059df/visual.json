@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "dbfacdfa9f2d7b5059df",
+  "position": {
+    "x": 1015,
+    "y": 1090,
+    "z": 10000,
+    "height": 300,
+    "width": 800,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "8 \u00b7 Enterprise \u2192 Equity \u2192 Per Share \u2014 from scratch",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The DCF above priced the OPERATION \u2014 the cash machine that both lenders and owners share. That total is enterprise value: EV = \u03a3 PV(FCF years 1\u20135) + PV(TV) = 0.81 + 2.36 = $3.16B.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Lenders stand first in line: their claim (net debt = debt \u2212 cash) comes off the top before owners see anything. Equity = EV \u2212 net debt = 3.16 \u2212 0.17 = $2.99B.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Owners split that pot per share, counting every share that could exist (diluted): price = 2,986 \u00f7 103.7 = $28.80 \u2192 $28.86 with the engine's unrounded chain.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\u2192 tab 6 \u00b7 Valuation & Recommendation",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

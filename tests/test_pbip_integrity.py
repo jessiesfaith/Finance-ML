@@ -38,6 +38,7 @@ CSV_FOR_TABLE = {
     "market_history_long": "market_history_long",
     "client_fs_option_sensitivity": "client_fs_option_sensitivity",
     "client_fs_option_verdicts": "client_fs_option_verdicts",
+    "client_fs_flags": "client_fs_flags",
     "client_fs_option_sizing": "client_fs_option_sizing",
 }
 

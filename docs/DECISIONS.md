@@ -922,3 +922,61 @@ side - market $18.00 (11.2x), peer-multiple $24.22 (15x), DCF $28.86
 (17.9x) - with the caveat written on the page: multiples cross-check
 the DCF but import the market's sentiment with its information. Six
 new measures; Math Reference gains block 13.
+
+### 85. Every formula on Math Reference derived from scratch
+The user asked that each block "start the math from scratch" the way
+the terminal-value block already did. All 13 blocks now open with a
+plain-language first principle (what return makes an investor hand
+over cash; profit is not cash because of timing; a bank account run
+backwards), build the formula out of that intuition, then plug in the
+fixture's pipeline numbers. The formulas never change with the data;
+the numbers re-derive when the builders rerun.
+
+### 86. Macro History matrices read newest-first, no scrolling
+PBIR has no "scroll position" property, so "default to the most
+recent data" is delivered by sorting every number matrix DESCENDING
+on observation_date - the newest month is the first column you see.
+Height raised to ~210px with row/column subtotals disabled (kills the
+Total row, which summed monthly rates into nonsense anyway) so 1-2
+series panels fit with no vertical scrollbar. A 28th panel adds the
+risk-free rate (10Y Treasury per market_rf_policy) as its own
+chart + matrix, closing the loop with tab 3's discount-rate build.
+
+### 87. Verdict cards on every Current Position row
+Every ratio row now ends in a status card (x=1560 column): liquidity
+(current/quick/cash vs 1.5-3.0x band, 1.0x, 0.2x), solvency
+(D/E vs 1.0x/2.0x, coverage vs 1.5x/3.0x, net-debt policy 2.0x),
+margins (contribution 20/50 bands), runway (self-funded vs burning),
+and the new D&A row: D&A / Revenue with CapEx / D&A (1.06x) and an
+intensity read (>8% capital-intensive - CFO reviews capex discipline,
+utilization, impairment, depreciation lives; <3% asset-light or
+under-invested). Card texts are short verdicts; the full thresholds
+live in the "Targets & the CFO read" block at the page foot. Measures
+carry the thresholds so the flags engine (#88) reads the same rules.
+
+### 88. Flags engine: the deterministic notification layer
+New src/financials/flags.py + build_flags.py emit
+reports/client_fs_flags.csv - every health check, option verdict and
+open control finding as one row, RED (act) / YELLOW (review) / GREEN
+(confirmed healthy). It reads ONLY the curated exports (same files
+Power BI reads) and mirrors the tab-2/tab-5 thresholds - one
+rulebook, two surfaces. The analyst agent's findings fold in with
+severity mapping HIGH->RED, else YELLOW, and the agent's own
+"No action needed" verdicts -> GREEN (reviewed and benign). New
+report tab "6b - Flags & Alerts" surfaces the feed with RED+YELLOW
+and GREEN tables plus count cards. Rate-fragility flags fire when an
+APPROVE/REVIEW project flips to REJECT anywhere in its sensitivity
+strip (PROJ-001 does).
+
+### 89. Chat assistant: grounded Q&A over the repo's own files
+src/chat_assistant.py is a CLI analyst: --flags prints the
+notification feed offline and free; --ask / interactive mode call the
+Claude API (model claude-opus-5, official anthropic SDK) with a
+cached grounding bundle - all curated CSVs inline, big histories
+summarized, key docs, and a file inventory - plus a read-only
+read_project_file tool jailed to the repo, so it can quote the PY /
+SQL / ML / CSV sources verbatim. Guardrails mirror the review agent:
+READ - ANALYZE - EXPLAIN, never write/approve, every number cited
+from a file, assumptions labeled, synthetic data never attributed to
+real firms. Needs ANTHROPIC_API_KEY on the owner's machine; the
+pipeline and tests never call the network.

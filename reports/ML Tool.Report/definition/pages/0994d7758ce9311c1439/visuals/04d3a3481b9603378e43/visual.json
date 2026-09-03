@@ -1,0 +1,211 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "04d3a3481b9603378e43",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "colorfiltert-act",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "client_fs_flags"
+              }
+            },
+            "Property": "color"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f",
+              "Entity": "client_fs_flags",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "f"
+                          }
+                        },
+                        "Property": "color"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'RED'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'YELLOW'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "position": {
+    "x": 165,
+    "y": 295,
+    "height": 620,
+    "width": 2670,
+    "z": 7000,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_flags"
+                    }
+                  },
+                  "Property": "flag_id"
+                }
+              },
+              "queryRef": "client_fs_flags.flag_id",
+              "nativeQueryRef": "flag_id",
+              "displayName": "flag",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_flags"
+                    }
+                  },
+                  "Property": "color"
+                }
+              },
+              "queryRef": "client_fs_flags.color",
+              "nativeQueryRef": "color",
+              "displayName": "color"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_flags"
+                    }
+                  },
+                  "Property": "area"
+                }
+              },
+              "queryRef": "client_fs_flags.area",
+              "nativeQueryRef": "area",
+              "displayName": "area"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_flags"
+                    }
+                  },
+                  "Property": "headline"
+                }
+              },
+              "queryRef": "client_fs_flags.headline",
+              "nativeQueryRef": "headline",
+              "displayName": "what was found"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_flags"
+                    }
+                  },
+                  "Property": "detail"
+                }
+              },
+              "queryRef": "client_fs_flags.detail",
+              "nativeQueryRef": "detail",
+              "displayName": "why it matters"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_flags"
+                    }
+                  },
+                  "Property": "recommended_action"
+                }
+              },
+              "queryRef": "client_fs_flags.recommended_action",
+              "nativeQueryRef": "recommended_action",
+              "displayName": "what to do"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_flags"
+                    }
+                  },
+                  "Property": "source_tab"
+                }
+              },
+              "queryRef": "client_fs_flags.source_tab",
+              "nativeQueryRef": "source_tab",
+              "displayName": "see tab"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "client_fs_flags"
+                  }
+                },
+                "Property": "flag_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

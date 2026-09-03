@@ -3,11 +3,11 @@
   "name": "5d4376d315b30a8aad71",
   "position": {
     "x": 165,
-    "y": 7600,
+    "y": 8370,
     "height": 220,
     "width": 800,
-    "z": 85000,
-    "tabOrder": 85000
+    "z": 88000,
+    "tabOrder": 88000
   },
   "visual": {
     "visualType": "textbox",
@@ -29,17 +29,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Rows 1\u20133 set the discount-rate world (Step 3); rows 2\u20134 are the price-and-wage story; rows 4\u20137 are the jobs engine, housing, surveys and credit; rows 8\u20139 are the headline indices and Bitcoin; rows 10\u201314 are commodities, sectors and the firm watchlist.",
-                    "textStyle": {
-                      "fontSize": "10pt"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "Every chart's actual numbers sit right below it with the DATES RUNNING ACROSS, oldest to newest like the chart itself \u2014 scroll the matrix left-right; the date slicer drives chart and numbers together.",
+                    "value": "Rows 1\u20134 set the discount-rate world (Step 3, incl. the risk-free 10Y itself); rows 3\u20134 the price-and-wage story; rows 5\u20138 the jobs engine, housing, surveys and credit; rows 8\u201310 the headline indices and Bitcoin; rows 11\u201314 commodities, sectors and the firm watchlist.",
                     "textStyle": {
                       "fontSize": "10pt"
                     }

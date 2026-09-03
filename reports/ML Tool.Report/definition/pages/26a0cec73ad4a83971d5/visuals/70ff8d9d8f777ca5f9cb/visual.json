@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "70ff8d9d8f777ca5f9cb",
+  "position": {
+    "x": 165,
+    "y": 450,
+    "z": 5000,
+    "height": 300,
+    "width": 800,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "3 \u00b7 WACC & the Hurdle \u2014 from scratch",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The firm's money comes from two pockets: equity holders (demand Ke) and lenders (cost after tax Kd \u00d7 (1 \u2212 tax)). A blended dollar of capital costs the weighted average of the two demands \u2014 weighted by how much of the firm each pocket funds, at MARKET values (today's actual claims, not old book entries).",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "WACC = E/(D+E) \u00d7 Ke + D/(D+E) \u00d7 Kd \u00d7 (1 \u2212 tax) = 83.60% \u00d7 9.93 + 16.40% \u00d7 6.53 \u00d7 0.75 = 8.31 + 0.80 = 9.11%.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The hurdle adds a management safety cushion for optimism in project forecasts: hurdle = WACC + 2.00pts = 11.11% (the premium is a stated ASSUMPTION).",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\u2192 tab 3 \u00b7 Market & Cost of Capital",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

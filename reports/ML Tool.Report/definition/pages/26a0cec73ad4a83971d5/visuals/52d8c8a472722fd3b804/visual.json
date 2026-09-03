@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "52d8c8a472722fd3b804",
+  "position": {
+    "x": 165,
+    "y": 1730,
+    "z": 13000,
+    "height": 300,
+    "width": 800,
+    "tabOrder": 13000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "11 \u00b7 Health Ratios \u2014 from scratch",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Each ratio answers a survival question. Can we pay this year's bills? current = CA \u00f7 CL = 472 \u00f7 118.5 = 3.98x. Even if inventory won't sell? quick = (CA \u2212 inventory) \u00f7 CL = 3.03x. With cash alone? cash ratio = 194 \u00f7 118.5 = 1.64x.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Who owns the downside? debt/equity = 366 \u00f7 619.5 = 0.59x \u2014 lenders' claim per $1 of owners' claim. Does profit cover the interest bill? coverage = EBIT \u00f7 interest = 248.6 \u00f7 25.4 = 9.8x.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "How much borrowing is left? policy caps net debt at 2.0 \u00d7 EBITDA; headroom = 2.0 \u00d7 314.8 \u2212 172.0 = $457.6M. Targets for every ratio are on tab 2's verdict cards.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\u2192 tab 2 \u00b7 Current Position",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

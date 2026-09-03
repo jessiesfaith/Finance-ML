@@ -621,6 +621,7 @@ PAGE5_PANELS = {
     "curve": [("curve_spread_10y_2y", "10Y - 2Y"),
               ("curve_spread_10y_3m", "10Y - 3M")],
     "policy": [("fed_funds_eff", "Fed funds")],
+    "riskfree": [("ust_10y", "10Y Treasury (risk-free per policy)")],
     "inflation": [("cpi_yoy", "CPI"), ("core_cpi_yoy", "Core CPI"),
                   ("pce_yoy", "PCE"), ("core_pce_yoy", "Core PCE")],
     "producer": [("ppi_yoy", "PPI"), ("cpi_yoy", "CPI")],

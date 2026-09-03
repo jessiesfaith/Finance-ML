@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "8fa887cf03dc1143f7c2",
+  "position": {
+    "x": 165,
+    "y": 130,
+    "z": 3000,
+    "height": 300,
+    "width": 800,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "1 \u00b7 Cost of Equity (CAPM) \u2014 from scratch",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Start with the question: what return makes an investor hand over cash? At minimum, what a riskless government bond pays (rf) \u2014 otherwise they just buy the bond. Anything riskier must pay MORE.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "How much more? Investors hold many stocks, so the only risk they cannot diversify away is co-movement with the whole market. \u03b2 measures that: \u03b2 = 1 moves with the market, \u03b2 = 1.2 swings 20% harder. The market's own reward for risk is the equity risk premium, ERP = Rm \u2212 rf.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "So the demanded return builds itself:  Ke = rf + \u03b2 \u00d7 ERP = 4.53 + 1.20 \u00d7 4.50 = 9.93%.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\u2192 tab 3 \u00b7 Market & Cost of Capital",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

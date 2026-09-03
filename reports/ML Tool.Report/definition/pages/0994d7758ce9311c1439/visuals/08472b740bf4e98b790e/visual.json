@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "08472b740bf4e98b790e",
+  "position": {
+    "x": 165,
+    "y": 140,
+    "height": 90,
+    "width": 260,
+    "z": 3000,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_flags"
+                    }
+                  },
+                  "Property": "Red Flags"
+                }
+              },
+              "queryRef": "client_fs_flags.Red Flags",
+              "nativeQueryRef": "Red Flags"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

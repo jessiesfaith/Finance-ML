@@ -5,8 +5,8 @@
     "x": 165,
     "y": 70,
     "z": 2000,
-    "height": 40,
-    "width": 1550,
+    "height": 46,
+    "width": 1650,
     "tabOrder": 2000
   },
   "visual": {
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Symbols first, then the fixture's real numbers, then the tab where the calculation lives. Nothing on any page uses math that is not written out here.",
+                    "value": "Each block starts from a plain-language first principle, builds the formula out of it, then plugs in the fixture's real pipeline numbers. Nothing on any page uses math that is not derived here.",
                     "textStyle": {
                       "fontSize": "10pt"
                     }

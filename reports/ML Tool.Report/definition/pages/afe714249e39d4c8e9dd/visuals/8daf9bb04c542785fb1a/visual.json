@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "8daf9bb04c542785fb1a",
+  "position": {
+    "x": 1560,
+    "y": 1745,
+    "height": 75,
+    "width": 300,
+    "z": 1205000,
+    "tabOrder": 1205000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "Coverage Status"
+                }
+              },
+              "queryRef": "client_fs_statements.Coverage Status",
+              "nativeQueryRef": "Coverage Status"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

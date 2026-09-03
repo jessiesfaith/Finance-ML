@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "a0d1a8c47b20cf0b6888",
+  "position": {
+    "x": 165,
+    "y": 1410,
+    "z": 11000,
+    "height": 300,
+    "width": 800,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "9 \u00b7 NPV, IRR, Payback \u2014 from scratch",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "A project is a trade: money out now for flows later. Discount every flow to today (block 6) and net against the cost: NPV = \u2212investment + \u03a3 CF\u209c/(1+hurdle)\u1d57. Positive means the flows repay the money AND its required return, with value left over.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "IRR asks the reverse question: at what rate r would this project only just break even (NPV = 0)? Found numerically by bisection. Compare IRR to the hurdle: above = pays more than capital costs.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Payback = years until cumulative undiscounted flows cover the investment. It ignores the time value of money \u2014 which is exactly why it is only a tiebreaker, never the decision.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\u2192 tab 5 \u00b7 Options, tests columns",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

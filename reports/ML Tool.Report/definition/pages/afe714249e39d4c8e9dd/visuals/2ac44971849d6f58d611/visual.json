@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "2ac44971849d6f58d611",
+  "position": {
+    "x": 1560,
+    "y": 1515,
+    "height": 75,
+    "width": 300,
+    "z": 1203000,
+    "tabOrder": 1203000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "Cash Ratio Status"
+                }
+              },
+              "queryRef": "client_fs_statements.Cash Ratio Status",
+              "nativeQueryRef": "Cash Ratio Status"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

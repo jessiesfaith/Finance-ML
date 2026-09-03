@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "e40aafcea28d8d608cae",
+  "position": {
+    "x": 1015,
+    "y": 1410,
+    "z": 12000,
+    "height": 300,
+    "width": 800,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "10 \u00b7 ROIC & the Three Tests \u2014 from scratch",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "How hard does each invested dollar work? Build the capital base from what the operation actually uses: operating NWC (block 5) + net PP&E. ROIC = NOPAT \u00f7 invested capital = 186.45 \u00f7 791.5 = 23.6%.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "That return only matters against what the money costs: 23.6% vs WACC 9.11% \u2192 every dollar employed earns 14.5pts more than it costs \u2014 value creation.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The three tests, read together: NPV > 0 \u00b7 IRR > hurdle \u00b7 ROIC > WACC. Agreement = clean APPROVE/REJECT; disagreement = REVIEW, and the reason sentences on tab 5 say which test failed and why.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\u2192 tab 5 \u00b7 Options and tab 2 \u00b7 Current Position",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

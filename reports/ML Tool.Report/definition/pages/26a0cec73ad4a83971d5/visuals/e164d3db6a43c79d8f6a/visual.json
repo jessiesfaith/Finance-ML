@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "e164d3db6a43c79d8f6a",
+  "position": {
+    "x": 165,
+    "y": 1090,
+    "z": 9000,
+    "height": 300,
+    "width": 800,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "7 \u00b7 Terminal Value \u2014 from scratch",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "After year 5 the business keeps producing cash forever, growing at g. Discount that infinite stream one year at a time: TV = CF\u2086/(1+r) + CF\u2086(1+g)/(1+r)\u00b2 + CF\u2086(1+g)\u00b2/(1+r)\u00b3 + \u2026",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Each term is the previous one \u00d7 (1+g)/(1+r) \u2014 a geometric series with ratio < 1, so the infinite sum collapses to a finite number: TV = CF\u2086 \u00f7 (r \u2212 g) = CF\u2085 \u00d7 (1+g) \u00f7 (r \u2212 g).",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "= 235.1 \u00d7 1.025 \u00f7 (0.0911 \u2212 0.025) = 241.0 \u00f7 0.0661 = $3.645B as of year 5, then discounted 5 years home: 3,645 \u00f7 1.546 = $2.36B. g = 2.5% is a stated ASSUMPTION (must sit below long-run GDP growth).",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\u2192 tab 6 \u00b7 Valuation & Recommendation",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

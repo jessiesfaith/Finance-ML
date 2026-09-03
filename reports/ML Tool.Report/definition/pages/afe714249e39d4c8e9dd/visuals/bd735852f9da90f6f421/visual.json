@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "bd735852f9da90f6f421",
+  "position": {
+    "x": 1560,
+    "y": 1430,
+    "height": 75,
+    "width": 300,
+    "z": 1202000,
+    "tabOrder": 1202000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "Quick Ratio Status"
+                }
+              },
+              "queryRef": "client_fs_statements.Quick Ratio Status",
+              "nativeQueryRef": "Quick Ratio Status"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "cc30da7a582f7026e307",
+  "position": {
+    "x": 1560,
+    "y": 1890,
+    "height": 75,
+    "width": 300,
+    "z": 1207000,
+    "tabOrder": 1207000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "client_fs_statements"
+                    }
+                  },
+                  "Property": "Contribution Margin Read"
+                }
+              },
+              "queryRef": "client_fs_statements.Contribution Margin Read",
+              "nativeQueryRef": "Contribution Margin Read"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

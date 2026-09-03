@@ -7,3 +7,4 @@ numpy>=1.24        # fast numeric arrays; also generates the synthetic macro his
 scikit-learn>=1.3  # machine learning: LinearRegression trains the Treasury 10Y model
 joblib>=1.3        # saves/loads the trained ML model (models/treasury_10y_model.joblib)
 pytest>=8.0        # test runner: run `pytest` from the repo root to run tests/
+anthropic>=0.69    # chat assistant only (src/chat_assistant.py); needs ANTHROPIC_API_KEY - the pipeline itself never calls the API
