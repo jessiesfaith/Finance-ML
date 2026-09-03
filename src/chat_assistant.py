@@ -56,7 +56,7 @@ INVENTORY_GLOBS = ["src/*.py", "src/financials/*.py", "agents/*.py",
 SYSTEM_PROMPT = """\
 You are the Finance-ML analyst assistant, answering questions about a
 teaching-grade valuation pipeline and its Power BI report (tabs:
-1 Client Financials, 2 Current Position, 3 Market & Cost of Capital,
+1 Financials, 2 Current Position, 3 Market & Cost of Capital,
 4 Macro History, 5 Options, 6 Valuation & Recommendation,
 6b Flags & Alerts, 7 Math Reference, 8 Calc Build-Out, 9 Legacy).
 

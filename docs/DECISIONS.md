@@ -1031,3 +1031,11 @@ measure becomes 'Revenue Amount ($M)'. The tab-1 title still says
 "Client Financials" - that is the page's name, not a card header.
 Integrity tests (uniqueness, collisions, binding resolution) are the
 proof the rename left nothing dangling.
+
+### 94. "Client" comes off the page titles too
+Tab 1 is now "1 - Financials" (title: "Financials & Forecast - the
+Walk to DCF"); Current Position reads "Health & Capacity"; Options
+reads "What Could Be Done?". Cross-references follow: the Math
+Reference pointer, the flags feed's source_tab, and the chat
+assistant's tab list. Table names (client_fs_*) are file contracts,
+not headers - unchanged.

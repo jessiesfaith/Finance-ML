@@ -266,7 +266,7 @@ def build_flags(reports_dir: Path = REPORTS) -> pd.DataFrame:
         flag(color, "Controls",
              f"{r['review_id']} {r['item_type']} ({r['severity']})",
              r["explanation"], r["recommended_action"],
-             "1 · Client Financials", "client_fs_review.csv")
+             "1 · Financials", "client_fs_review.csv")
 
     out = pd.DataFrame(rows, columns=FLAG_COLUMNS)
     out = out.sort_values(
