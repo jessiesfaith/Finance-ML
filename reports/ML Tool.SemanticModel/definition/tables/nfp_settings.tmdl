@@ -1,0 +1,74 @@
+/// Curated NFP export: global inputs incl. the editable available capital and decision weights.
+table nfp_settings
+	lineageTag: aed962bf-3582-4a64-a957-f90174494419
+
+	column row_id
+		dataType: string
+		lineageTag: 586d0b23-65c8-4613-83ee-e6388b471598
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column setting_id
+		dataType: string
+		lineageTag: 3ed47dff-2da0-41df-9f94-2117e599e59a
+		summarizeBy: none
+		sourceColumn: setting_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: string
+		lineageTag: 2d27ed73-3866-42b3-a286-1e0c16d85a28
+		summarizeBy: none
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit
+		dataType: string
+		lineageTag: 625ff6d9-1197-4c74-a146-c126f91101d8
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: c1ddc2fe-daf0-4910-8957-f703deee8cef
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 31f9857a-c3b4-4f5d-a381-3e2c61f3394b
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_settings = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_settings.csv"),
+				    [Delimiter = ",", Columns = 6, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "setting_id", "value", "unit", "description", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"setting_id", type text},
+				    {"value", type text},
+				    {"unit", type text},
+				    {"description", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

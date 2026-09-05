@@ -1,0 +1,9 @@
+program_id,program_name,owner_role,mission_category,participants,capacity,earned_revenue,grants,restricted_contrib,unrestricted_contrib,sponsorship,largest_single_funder,personnel,direct_costs,allocated_overhead,capex,grant_renewal_pct,mission_score,risk_rating,value_class
+P1,Early Childhood Education,ECE Director,Education,120,140,900000,120000,60000,60000,0,120000,780000,250000,170000,30000,80,8,4,SYNTHETIC
+P2,Youth & Teen Programs,Youth Director,Youth,400,600,260000,200000,40000,60000,20000,200000,380000,160000,100000,10000,70,8,5,SYNTHETIC
+P3,Senior Services,Program Director,Seniors,250,300,200000,200000,0,50000,0,200000,300000,140000,60000,5000,70,9,6,SYNTHETIC
+P4,Fitness & Wellness,Facilities Director,Community Health,900,1100,1020000,0,0,10000,20000,60000,560000,290000,100000,40000,0,4,3,SYNTHETIC
+P5,Cultural Arts,Program Director,Culture,300,450,150000,80000,30000,40000,20000,80000,240000,120000,60000,5000,65,7,5,SYNTHETIC
+P6,Community Events,Development,Community,1500,2500,120000,0,20000,60000,90000,90000,200000,140000,40000,0,0,6,4,SYNTHETIC
+P7,Family Services,Program Director,Human Services,180,220,90000,260000,120000,40000,0,260000,380000,160000,70000,5000,65,9,7,SYNTHETIC
+P8,Adult Education,Program Director,Education,90,200,110000,40000,0,20000,0,40000,190000,80000,30000,0,60,4,4,SYNTHETIC

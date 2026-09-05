@@ -1,0 +1,7 @@
+row_id,driver,metric,base_value,downside_value,upside_value,swing,value_class,rank
+R001,Participants / earned revenue,Org funding gap ($),-90000.0,-375000.0,195000.0,570000.0,MODEL_OUTPUT,1
+R002,Operating costs,Org funding gap ($),-90000.0,-327000.0,28500.0,355500.0,MODEL_OUTPUT,2
+R003,Personnel costs,Org funding gap ($),-90000.0,-332400.0,900.0,333300.0,MODEL_OUTPUT,3
+R004,Donations & sponsorship,Org funding gap ($),-90000.0,-246000.0,66000.0,312000.0,MODEL_OUTPUT,4
+R005,Grants,Org funding gap ($),-90000.0,-270000.0,0.0,270000.0,MODEL_OUTPUT,5
+R006,Largest grant lost,Org funding gap ($),-90000.0,-350000.0,-90000.0,260000.0,MODEL_OUTPUT,6

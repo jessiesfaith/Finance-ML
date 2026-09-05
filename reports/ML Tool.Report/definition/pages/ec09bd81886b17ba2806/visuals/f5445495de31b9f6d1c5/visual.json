@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "f5445495de31b9f6d1c5",
+  "position": {
+    "x": 165,
+    "y": 70,
+    "height": 78,
+    "width": 2670,
+    "z": 2000,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "MISSION VALUE DECISION = FINANCIAL SUSTAINABILITY + MISSION IMPACT + LIQUIDITY + SCALABILITY \u2212 RISK \u2014 a management/board decision framework, NOT GAAP and NOT a CFA formula. The composite score never replaces the raw metrics: every alternative shows its cash flows, NPV, mission leverage, liquidity and risk side by side, and management can override the mechanical score with documented rationale.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The capital being allocated defaults to $250,000 and is globally editable in data/nfp/nfp_settings.csv (available_capital) \u2014 rerun python src/build_nfp.py and every number on tabs 9-12 recalculates.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

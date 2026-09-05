@@ -1,0 +1,14 @@
+item_id,section,item,amount,value_class,source,note
+CAM-1,CAMPAIGN,Campaign goal (Second Pool),7000000,PUBLIC_RESEARCH,Owner-provided build prompt 2026-09-05 citing FY2023 public reporting,HISTORICAL PUBLIC INFORMATION - CURRENT STATUS REQUIRES UPDATE
+CAM-2,CAMPAIGN,Donor-restricted campaign funds at 2023-06-30,2340000,PUBLIC_RESEARCH,Owner-provided build prompt 2026-09-05 citing FY2023 public reporting,HISTORICAL PUBLIC INFORMATION
+SRC-1,SOURCES,Campaign cash on hand (restricted),2340000,PUBLIC_RESEARCH,Historical seed above,RESTRICTED - NOT AVAILABLE FOR GENERAL OPERATIONS
+SRC-2,SOURCES,Pledges receivable (synthetic plan),1200000,SYNTHETIC,Demonstration plan,
+SRC-3,SOURCES,New gifts to raise (synthetic plan),2460000,SYNTHETIC,Demonstration plan,
+SRC-4,SOURCES,Grants (synthetic plan),500000,SYNTHETIC,Demonstration plan,
+SRC-5,SOURCES,LOC bridge draw (synthetic plan),500000,SYNTHETIC,Demonstration plan,Repaid from pledge collections
+USE-1,USES,Construction,5400000,SYNTHETIC,Demonstration plan,
+USE-2,USES,Equipment,400000,SYNTHETIC,Demonstration plan,
+USE-3,USES,Soft costs / professional fees,500000,SYNTHETIC,Demonstration plan,
+USE-4,USES,Campaign costs,250000,SYNTHETIC,Demonstration plan,
+USE-5,USES,Financing costs,100000,SYNTHETIC,Demonstration plan,
+USE-6,USES,Contingency,350000,SYNTHETIC,Demonstration plan,

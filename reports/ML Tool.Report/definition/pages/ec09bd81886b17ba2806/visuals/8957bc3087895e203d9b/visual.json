@@ -1,0 +1,192 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "8957bc3087895e203d9b",
+  "position": {
+    "x": 165,
+    "y": 600,
+    "height": 250,
+    "width": 2670,
+    "z": 8000,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "alternative"
+                }
+              },
+              "queryRef": "nfp_alternatives.alternative",
+              "nativeQueryRef": "alternative",
+              "displayName": "alternative",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "capital_required"
+                }
+              },
+              "queryRef": "nfp_alternatives.capital_required",
+              "nativeQueryRef": "capital_required",
+              "displayName": "capital $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "net_cash_y1"
+                }
+              },
+              "queryRef": "nfp_alternatives.net_cash_y1",
+              "nativeQueryRef": "net_cash_y1",
+              "displayName": "yr-1 cash"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "five_year_cash"
+                }
+              },
+              "queryRef": "nfp_alternatives.five_year_cash",
+              "nativeQueryRef": "five_year_cash",
+              "displayName": "5-yr cash"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "npv_at_board_rate"
+                }
+              },
+              "queryRef": "nfp_alternatives.npv_at_board_rate",
+              "nativeQueryRef": "npv_at_board_rate",
+              "displayName": "NPV @ board rate"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "participants_served"
+                }
+              },
+              "queryRef": "nfp_alternatives.participants_served",
+              "nativeQueryRef": "participants_served",
+              "displayName": "participants"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "mission_leverage_per_100k"
+                }
+              },
+              "queryRef": "nfp_alternatives.mission_leverage_per_100k",
+              "nativeQueryRef": "mission_leverage_per_100k",
+              "displayName": "mission / $100K"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "months_cash_after"
+                }
+              },
+              "queryRef": "nfp_alternatives.months_cash_after",
+              "nativeQueryRef": "months_cash_after",
+              "displayName": "months cash after"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "risk_rating_1to10"
+                }
+              },
+              "queryRef": "nfp_alternatives.risk_rating_1to10",
+              "nativeQueryRef": "risk_rating_1to10",
+              "displayName": "risk (1-10)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "note"
+                }
+              },
+              "queryRef": "nfp_alternatives.note",
+              "nativeQueryRef": "note",
+              "displayName": "reading"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_alternatives"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

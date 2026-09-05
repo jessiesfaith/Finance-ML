@@ -1,0 +1,128 @@
+/// Curated NFP export: diagnostic solution engine output (trigger -> action).
+table nfp_solutions
+	lineageTag: b01bf41b-059c-4a8d-b500-ad3a42dacc11
+
+	column row_id
+		dataType: string
+		lineageTag: 061a6495-3bcf-463f-b469-f7ada27b8655
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column subject_id
+		dataType: string
+		lineageTag: 49c03475-d0d2-41d6-83e3-bea401a4800c
+		summarizeBy: none
+		sourceColumn: subject_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column subject
+		dataType: string
+		lineageTag: db84de4b-8096-43b2-9e19-f52b2fa762bf
+		summarizeBy: none
+		sourceColumn: subject
+
+		annotation SummarizationSetBy = Automatic
+
+	column diagnosis
+		dataType: string
+		lineageTag: daf266e9-7e21-4231-ab2a-0ea72b5fbf2f
+		summarizeBy: none
+		sourceColumn: diagnosis
+
+		annotation SummarizationSetBy = Automatic
+
+	column suggestion
+		dataType: string
+		lineageTag: 15493ec2-569f-4784-a3df-bd2dc868decc
+		summarizeBy: none
+		sourceColumn: suggestion
+
+		annotation SummarizationSetBy = Automatic
+
+	column why
+		dataType: string
+		lineageTag: 2f4c870c-9869-4835-a386-9ebecdcbb674
+		summarizeBy: none
+		sourceColumn: why
+
+		annotation SummarizationSetBy = Automatic
+
+	column financial_effect
+		dataType: string
+		lineageTag: b6bda346-9128-44bf-ba9d-3d5b73eb9370
+		summarizeBy: none
+		sourceColumn: financial_effect
+
+		annotation SummarizationSetBy = Automatic
+
+	column mission_effect
+		dataType: string
+		lineageTag: 13d22926-bcb9-49c4-b1c8-a970d035f84e
+		summarizeBy: none
+		sourceColumn: mission_effect
+
+		annotation SummarizationSetBy = Automatic
+
+	column owner_role
+		dataType: string
+		lineageTag: 4ebe39d9-4fbf-46a8-bc2f-2af8b9c2f817
+		summarizeBy: none
+		sourceColumn: owner_role
+
+		annotation SummarizationSetBy = Automatic
+
+	column approval_required
+		dataType: string
+		lineageTag: eb845d72-b046-4e7e-9841-0d1d10da47c9
+		summarizeBy: none
+		sourceColumn: approval_required
+
+		annotation SummarizationSetBy = Automatic
+
+	column success_kpi
+		dataType: string
+		lineageTag: b1a84744-9508-486b-b567-5d83432c40a4
+		summarizeBy: none
+		sourceColumn: success_kpi
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 10fa0d4c-0173-4e40-936f-5fd8a708b72d
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_solutions = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_solutions.csv"),
+				    [Delimiter = ",", Columns = 12, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "subject_id", "subject", "diagnosis", "suggestion", "why", "financial_effect", "mission_effect", "owner_role", "approval_required", "success_kpi", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"subject_id", type text},
+				    {"subject", type text},
+				    {"diagnosis", type text},
+				    {"suggestion", type text},
+				    {"why", type text},
+				    {"financial_effect", type text},
+				    {"mission_effect", type text},
+				    {"owner_role", type text},
+				    {"approval_required", type text},
+				    {"success_kpi", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

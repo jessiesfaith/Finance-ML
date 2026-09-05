@@ -1,0 +1,132 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "3a13a4bf819fdedd32ef",
+  "position": {
+    "x": 165,
+    "y": 1175,
+    "height": 300,
+    "width": 2670,
+    "z": 11000,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_financing"
+                    }
+                  },
+                  "Property": "option"
+                }
+              },
+              "queryRef": "nfp_financing.option",
+              "nativeQueryRef": "option",
+              "displayName": "option",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_financing"
+                    }
+                  },
+                  "Property": "cost_estimate"
+                }
+              },
+              "queryRef": "nfp_financing.cost_estimate",
+              "nativeQueryRef": "cost_estimate",
+              "displayName": "cost $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_financing"
+                    }
+                  },
+                  "Property": "cost_basis"
+                }
+              },
+              "queryRef": "nfp_financing.cost_basis",
+              "nativeQueryRef": "cost_basis",
+              "displayName": "how the cost is built"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_financing"
+                    }
+                  },
+                  "Property": "months_cash_after"
+                }
+              },
+              "queryRef": "nfp_financing.months_cash_after",
+              "nativeQueryRef": "months_cash_after",
+              "displayName": "months cash after"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_financing"
+                    }
+                  },
+                  "Property": "liquidity_note"
+                }
+              },
+              "queryRef": "nfp_financing.liquidity_note",
+              "nativeQueryRef": "liquidity_note",
+              "displayName": "liquidity"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_financing"
+                    }
+                  },
+                  "Property": "risk_note"
+                }
+              },
+              "queryRef": "nfp_financing.risk_note",
+              "nativeQueryRef": "risk_note",
+              "displayName": "risk"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_financing"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

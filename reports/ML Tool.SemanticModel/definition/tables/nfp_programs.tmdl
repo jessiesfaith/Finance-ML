@@ -1,0 +1,344 @@
+/// Curated NFP export: program portfolio economics, classification and verdicts.
+table nfp_programs
+	lineageTag: 2fe9a95c-c459-4837-bb86-a5fa0e6d819f
+
+	column row_id
+		dataType: string
+		lineageTag: 0c6658c8-e7e1-4dff-9942-e2c3466ef342
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column program_id
+		dataType: string
+		lineageTag: 4d485dd7-3881-48ed-954d-bdac9727fcfd
+		summarizeBy: none
+		sourceColumn: program_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column program
+		dataType: string
+		lineageTag: 694f518d-8c6a-46ec-8f80-8dbf0e1eb8c6
+		summarizeBy: none
+		sourceColumn: program
+
+		annotation SummarizationSetBy = Automatic
+
+	column owner_role
+		dataType: string
+		lineageTag: 33b3ea54-dadc-4768-90c5-772968bd2deb
+		summarizeBy: none
+		sourceColumn: owner_role
+
+		annotation SummarizationSetBy = Automatic
+
+	column mission_category
+		dataType: string
+		lineageTag: 960667b9-7a4b-4c8e-94e7-90af6a5aab6d
+		summarizeBy: none
+		sourceColumn: mission_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column participants
+		dataType: double
+		lineageTag: 5539c12c-7d29-4de4-aa7b-acde9072ce0f
+		summarizeBy: none
+		sourceColumn: participants
+
+		annotation SummarizationSetBy = Automatic
+
+	column capacity
+		dataType: double
+		lineageTag: b83b4be1-924c-4507-865c-60d12ba0dae4
+		summarizeBy: none
+		sourceColumn: capacity
+
+		annotation SummarizationSetBy = Automatic
+
+	column utilization_pct
+		dataType: double
+		lineageTag: f8da3a29-1c32-48d2-9edd-1fb48cb571d3
+		summarizeBy: none
+		sourceColumn: utilization_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column earned_revenue
+		dataType: double
+		lineageTag: eddf9fdf-4c16-46d3-9e93-d60b940bbf85
+		summarizeBy: none
+		sourceColumn: earned_revenue
+
+		annotation SummarizationSetBy = Automatic
+
+	column grants
+		dataType: double
+		lineageTag: a6802f37-b53c-428a-8776-92511f59c5f5
+		summarizeBy: none
+		sourceColumn: grants
+
+		annotation SummarizationSetBy = Automatic
+
+	column restricted_contrib
+		dataType: double
+		lineageTag: 67c857cb-5d7e-4e0c-8601-95aa6bdd8ba9
+		summarizeBy: none
+		sourceColumn: restricted_contrib
+
+		annotation SummarizationSetBy = Automatic
+
+	column unrestricted_contrib
+		dataType: double
+		lineageTag: 341836fe-872b-4a39-94a1-aad982759321
+		summarizeBy: none
+		sourceColumn: unrestricted_contrib
+
+		annotation SummarizationSetBy = Automatic
+
+	column sponsorship
+		dataType: double
+		lineageTag: 5790b611-07a8-4319-95f7-3357f3943702
+		summarizeBy: none
+		sourceColumn: sponsorship
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_funding
+		dataType: double
+		lineageTag: 3e71a289-4730-4c07-8921-594bbedaf907
+		summarizeBy: none
+		sourceColumn: total_funding
+
+		annotation SummarizationSetBy = Automatic
+
+	column personnel
+		dataType: double
+		lineageTag: ca1097c7-cb3f-470b-abce-419251a8b844
+		summarizeBy: none
+		sourceColumn: personnel
+
+		annotation SummarizationSetBy = Automatic
+
+	column direct_costs
+		dataType: double
+		lineageTag: 2db3ecbe-a3af-4f78-b51c-b3d0e3d31d3a
+		summarizeBy: none
+		sourceColumn: direct_costs
+
+		annotation SummarizationSetBy = Automatic
+
+	column allocated_overhead
+		dataType: double
+		lineageTag: 5cd8b3dd-2b93-4d1e-9a8a-7fe7ba96ae4c
+		summarizeBy: none
+		sourceColumn: allocated_overhead
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_cost
+		dataType: double
+		lineageTag: cbb8c325-030a-4b30-959f-9085d6b51f98
+		summarizeBy: none
+		sourceColumn: total_cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column funding_gap
+		dataType: double
+		lineageTag: 142aa90b-ac80-473d-b34e-c8c2e77eb7dd
+		summarizeBy: none
+		sourceColumn: funding_gap
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_per_participant
+		dataType: double
+		lineageTag: c3a30cc4-b794-447d-8d3d-cb5c42288c1d
+		summarizeBy: none
+		sourceColumn: cost_per_participant
+
+		annotation SummarizationSetBy = Automatic
+
+	column funding_per_participant
+		dataType: double
+		lineageTag: b5ea6cb2-75f9-4901-a8b7-1cacfa09c5e5
+		summarizeBy: none
+		sourceColumn: funding_per_participant
+
+		annotation SummarizationSetBy = Automatic
+
+	column unrestricted_subsidy
+		dataType: double
+		lineageTag: 8727a028-192f-4235-901e-b8a4b63715df
+		summarizeBy: none
+		sourceColumn: unrestricted_subsidy
+
+		annotation SummarizationSetBy = Automatic
+
+	column subsidy_per_participant
+		dataType: double
+		lineageTag: 4c0da7f3-fbb7-475c-95d3-dea569933081
+		summarizeBy: none
+		sourceColumn: subsidy_per_participant
+
+		annotation SummarizationSetBy = Automatic
+
+	column self_sufficiency_pct
+		dataType: double
+		lineageTag: 8b85ca40-2000-4932-9025-caaada23dc14
+		summarizeBy: none
+		sourceColumn: self_sufficiency_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column grant_dependency_pct
+		dataType: double
+		lineageTag: 060382af-a42e-4ebe-ae70-069b1461a98e
+		summarizeBy: none
+		sourceColumn: grant_dependency_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column top_donor_dependency_pct
+		dataType: double
+		lineageTag: 46829232-c329-4f26-852d-3af00d2cf5d3
+		summarizeBy: none
+		sourceColumn: top_donor_dependency_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column restricted_funding_pct
+		dataType: double
+		lineageTag: dd898905-5ebe-4d77-80d7-6bc7fb330924
+		summarizeBy: none
+		sourceColumn: restricted_funding_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column grant_renewal_pct
+		dataType: double
+		lineageTag: 94284a8f-3418-4812-9155-2263a5190a6b
+		summarizeBy: none
+		sourceColumn: grant_renewal_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_funding
+		dataType: double
+		lineageTag: 8fa40746-4426-47c1-a188-f7da66ea694a
+		summarizeBy: none
+		sourceColumn: expected_funding
+
+		annotation SummarizationSetBy = Automatic
+
+	column probability_weighted_gap
+		dataType: double
+		lineageTag: 83e99c20-599d-4e49-ba96-cd8dbf50ebde
+		summarizeBy: none
+		sourceColumn: probability_weighted_gap
+
+		annotation SummarizationSetBy = Automatic
+
+	column mission_score
+		dataType: double
+		lineageTag: 9d66faf1-97a1-49f6-938a-4e092ac905f1
+		summarizeBy: none
+		sourceColumn: mission_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column risk_rating
+		dataType: double
+		lineageTag: 2ef55d36-23d7-4a30-9d3a-f0a3f9d35dc3
+		summarizeBy: none
+		sourceColumn: risk_rating
+
+		annotation SummarizationSetBy = Automatic
+
+	column classification
+		dataType: string
+		lineageTag: a95db7d6-f758-4407-9118-caaefa8efa35
+		summarizeBy: none
+		sourceColumn: classification
+
+		annotation SummarizationSetBy = Automatic
+
+	column risk_flag
+		dataType: string
+		lineageTag: 62613c00-1e5b-4714-94f1-4479c9ff6611
+		summarizeBy: none
+		sourceColumn: risk_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column verdict
+		dataType: string
+		lineageTag: 24c23fbf-1557-4099-a486-392303b3b6cc
+		summarizeBy: none
+		sourceColumn: verdict
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 9ee33e5c-d11f-46b7-a646-b416b2ed2d5e
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_programs = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_programs.csv"),
+				    [Delimiter = ",", Columns = 36, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "program_id", "program", "owner_role", "mission_category", "participants", "capacity", "utilization_pct", "earned_revenue", "grants", "restricted_contrib", "unrestricted_contrib", "sponsorship", "total_funding", "personnel", "direct_costs", "allocated_overhead", "total_cost", "funding_gap", "cost_per_participant", "funding_per_participant", "unrestricted_subsidy", "subsidy_per_participant", "self_sufficiency_pct", "grant_dependency_pct", "top_donor_dependency_pct", "restricted_funding_pct", "grant_renewal_pct", "expected_funding", "probability_weighted_gap", "mission_score", "risk_rating", "classification", "risk_flag", "verdict", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"program_id", type text},
+				    {"program", type text},
+				    {"owner_role", type text},
+				    {"mission_category", type text},
+				    {"participants", type number},
+				    {"capacity", type number},
+				    {"utilization_pct", type number},
+				    {"earned_revenue", type number},
+				    {"grants", type number},
+				    {"restricted_contrib", type number},
+				    {"unrestricted_contrib", type number},
+				    {"sponsorship", type number},
+				    {"total_funding", type number},
+				    {"personnel", type number},
+				    {"direct_costs", type number},
+				    {"allocated_overhead", type number},
+				    {"total_cost", type number},
+				    {"funding_gap", type number},
+				    {"cost_per_participant", type number},
+				    {"funding_per_participant", type number},
+				    {"unrestricted_subsidy", type number},
+				    {"subsidy_per_participant", type number},
+				    {"self_sufficiency_pct", type number},
+				    {"grant_dependency_pct", type number},
+				    {"top_donor_dependency_pct", type number},
+				    {"restricted_funding_pct", type number},
+				    {"grant_renewal_pct", type number},
+				    {"expected_funding", type number},
+				    {"probability_weighted_gap", type number},
+				    {"mission_score", type number},
+				    {"risk_rating", type number},
+				    {"classification", type text},
+				    {"risk_flag", type text},
+				    {"verdict", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

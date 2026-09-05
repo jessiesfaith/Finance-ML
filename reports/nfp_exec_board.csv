@@ -1,0 +1,59 @@
+row_id,section,item,value_text,status,note,value_class
+R001,POSITION,Months cash on hand,4.0 months vs 3.0 policy,GREEN,,MODEL_OUTPUT
+R002,POSITION,Base-case annual surplus/(gap),"$-90,000",RED,,MODEL_OUTPUT
+R003,POSITION,Programs at funding risk,Family Services,YELLOW,,MODEL_OUTPUT
+R004,POSITION,Programs to grow,Early Childhood Education,,,MODEL_OUTPUT
+R005,POSITION,Unrestricted funding need (prob-weighted gaps),"$869,000",YELLOW,,MODEL_OUTPUT
+R006,POSITION,Grants expiring next 12 months,"5 grants, $860,000 (at risk $263,000)",YELLOW,,MODEL_OUTPUT
+R007,POSITION,Grant opportunities in research,8 prospects - all RESEARCH REQUIRED before actionable,,,MODEL_OUTPUT
+R008,POSITION,Fundraising pipeline (probability-weighted),"$259,500",,,MODEL_OUTPUT
+R009,POSITION,Operating reserve,"$697,000 at 2023-06-30 - HISTORICAL, CURRENT BALANCE REQUIRES UPDATE",YELLOW,,MODEL_OUTPUT
+R010,POSITION,Capital campaign,Goal ~$7.0M; ~$2.34M restricted at 2023-06-30; ~$4.66M remaining at that date - HISTORICAL PUBLIC INFORMATION,YELLOW,,MODEL_OUTPUT
+R011,POSITION,Debt / LOC,Historical JCRIF loan repaid per public information; NO CURRENT LOC CONFIRMED FROM PUBLIC DATA,,,MODEL_OUTPUT
+R012,POSITION,Capital available to allocate,"$250,000",,,MODEL_OUTPUT
+R013,POSITION,Top risk 1,"Grant renewal failure (largest program grants) (inherent 12, residual 8)",YELLOW,,MODEL_OUTPUT
+R014,POSITION,Top risk 2,"Donor concentration (inherent 12, residual 8)",YELLOW,,MODEL_OUTPUT
+R015,POSITION,Top risk 3,"Construction cost overrun (campaign project) (inherent 12, residual 8)",YELLOW,,MODEL_OUTPUT
+R016,ACTIONS,Action 1 - Early Childhood Education,"Review staffing mix, capacity, vendor costs, shared services, facility use, program redesign",,"Cost per participant $10,000 vs portfolio median $1,800",MODEL_OUTPUT
+R017,ACTIONS,Action 2 - Early Childhood Education,"Seek restricted grant, endowment/designated support, sponsorship, cross-subsidy, shared staffing, campaign, strategic partnership",,"High mission (8/10) with funding gap $60,000",MODEL_OUTPUT
+R018,ACTIONS,Action 3 - Youth & Teen Programs,"Outreach, schedule changes, pricing review, consolidation, re-targeting",,Utilization 67% of capacity,MODEL_OUTPUT
+R019,ACTIONS,Action 4 - Youth & Teen Programs,"Seek restricted grant, endowment/designated support, sponsorship, cross-subsidy, shared staffing, campaign, strategic partnership",,"High mission (8/10) with funding gap $60,000",MODEL_OUTPUT
+R020,ACTIONS,Action 5 - Senior Services,"Diversify grants, pursue multi-year grants, grow earned revenue, sponsorship, unrestricted giving",,Grant dependency 44% (renewal 70%),MODEL_OUTPUT
+R021,ACTIONS,Decision requiring board approval,Capital allocation: Expand existing program (Early Childhood +40 seats) (score 57.6) and the campaign financing plan,,,MODEL_OUTPUT
+R022,QUESTIONS,1. How are our current programs performing?,"1 classified GROW, 1 FUNDING AT RISK, 3 in review; every program carries economics + verdict on tab 10",,,MODEL_OUTPUT
+R023,QUESTIONS,2. Where are our funding risks?,"$263,000 of grant funding at risk in 12 months; donor concentration on Family Services",,,MODEL_OUTPUT
+R024,QUESTIONS,3. Which grants / fundraising opportunities should we pursue?,"8 prospects seeded (Cal OES security, SVCF, Jewish LearningWorks, Koret, Jim Joseph, Federation, local government, corporate) - all flagged RESEARCH REQUIRED, none assumed",,,MODEL_OUTPUT
+R025,QUESTIONS,4. What happens if fundraising misses plan?,"ACT NOW: below months-cash policy - draw reserve, cut cost, or raise bridge funding",,,MODEL_OUTPUT
+R026,QUESTIONS,5. How much liquidity do we have?,4.0 months cash vs 3.0 policy; restricted campaign cash excluded,,,MODEL_OUTPUT
+R027,QUESTIONS,6. How much capital can we safely deploy?,"Deploying $250,000 leaves 3.4 months - above policy, so the full amount is deployable",,,MODEL_OUTPUT
+R028,QUESTIONS,7. Where should the next $250K go?,Expand existing program (Early Childhood +40 seats) - decision score 57.6/100 (RECOMMEND WITH CONDITIONS); raw metrics for all five uses are on tab 9,,,MODEL_OUTPUT
+R029,QUESTIONS,8. How should the capital project be financed?,Sources & uses balance at $7.0M with a $500K LOC bridge repaid from pledges; alternatives compared on tab 11,,,MODEL_OUTPUT
+R030,QUESTIONS,9. What are the top risks?,Grant renewal failure (largest program grants); Donor concentration; Construction cost overrun (campaign project),,,MODEL_OUTPUT
+R031,QUESTIONS,10. What should the CFO recommend to the CEO and Board?,Proceed with Expand existing program (Early Childhood +40 seats) subject to the conditions in the board practice section; solve the at-risk program funding models; run the Phase-2 grant research pass,,,MODEL_OUTPUT
+R032,CFO_SCRIPT,60-90 second presentation,"We evaluated five uses of the same $250,000: expanding an existing program, launching a new program, investing the funds, retaining liquidity, or applying the capital toward our capital project. I evaluated each across financial sustainability, mission impact, liquidity, scalability and risk, modeled five-year cash flows and NPV, and stress-tested the major assumptions. Based on current assumptions I recommend Expand existing program (Early Childhood +40 seats), primarily because of mission leverage 16 per $100K, NPV $-117,167 at the board rate, and liquidity stays at 3.4 months. The largest risk is grant renewal failure (largest program grants), addressed through risk reduction (diversify funders; multi-year grants; renewal calendar). I would approve subject to the staged conditions shown, and the assumption I will monitor most closely is grant renewal: below 60% renewal on the expiring grants, this decision returns to the Finance Committee.",,,MODEL_OUTPUT
+R033,DEBATE,MANAGEMENT THESIS,"Expand existing program (Early Childhood +40 seats) is the best use of the next $250,000",,,MODEL_OUTPUT
+R034,DEBATE,EVIDENCE,Score 57.6/100 on the weighted framework; raw metrics visible for all five alternatives,,,MODEL_OUTPUT
+R035,DEBATE,STRONGEST COUNTERARGUMENT,Retaining cash scores highest on liquidity and risk; deploying capital cannot be undone if a funding shock lands,,,MODEL_OUTPUT
+R036,DEBATE,REBUTTAL,"Even after deployment, months cash is 3.4 - above the 3.0 policy; the option retains emergency capacity",,,MODEL_OUTPUT
+R037,DEBATE,LARGEST UNRESOLVED RISK,Grant renewal failure (largest program grants),,,MODEL_OUTPUT
+R038,DEBATE,DECISION THRESHOLD,"Return to Board if months cash < policy, grant renewal < 60%, or program adoption < 70% of plan",,,MODEL_OUTPUT
+R039,BOARD_QA,Why is this the best use of our money?,See DEBATE + QUESTIONS rows - every answer traces to tabs 9-12 and the raw exports,,,MODEL_OUTPUT
+R040,BOARD_QA,What are we giving up?,See DEBATE + QUESTIONS rows - every answer traces to tabs 9-12 and the raw exports,,,MODEL_OUTPUT
+R041,BOARD_QA,What happens in the downside case?,See DEBATE + QUESTIONS rows - every answer traces to tabs 9-12 and the raw exports,,,MODEL_OUTPUT
+R042,BOARD_QA,Why borrow if we have investments?,See DEBATE + QUESTIONS rows - every answer traces to tabs 9-12 and the raw exports,,,MODEL_OUTPUT
+R043,BOARD_QA,What if the grant doesn't renew?,See DEBATE + QUESTIONS rows - every answer traces to tabs 9-12 and the raw exports,,,MODEL_OUTPUT
+R044,BOARD_QA,What happens after the initial investment is gone?,See DEBATE + QUESTIONS rows - every answer traces to tabs 9-12 and the raw exports,,,MODEL_OUTPUT
+R045,BOARD_QA,Can we pilot first?,See DEBATE + QUESTIONS rows - every answer traces to tabs 9-12 and the raw exports,,,MODEL_OUTPUT
+R046,BOARD_QA,What would cause you to stop?,See DEBATE + QUESTIONS rows - every answer traces to tabs 9-12 and the raw exports,,,MODEL_OUTPUT
+R047,BOARD_QA,Are restricted funds being used correctly?,See DEBATE + QUESTIONS rows - every answer traces to tabs 9-12 and the raw exports,,,MODEL_OUTPUT
+R048,BOARD_QA,At what threshold does this return to the Board?,See DEBATE + QUESTIONS rows - every answer traces to tabs 9-12 and the raw exports,,,MODEL_OUTPUT
+R049,CONTROLS,Decision weights total 100%,sum = 100.0,PASS,,MODEL_OUTPUT
+R050,CONTROLS,Campaign sources = uses,"sources 7,000,000 vs uses 7,000,000",PASS,,MODEL_OUTPUT
+R051,CONTROLS,Restricted campaign cash excluded from operating liquidity,months-cash uses unrestricted_liquid_cash only; restricted rows carry the NOT AVAILABLE label,PASS,,MODEL_OUTPUT
+R052,CONTROLS,Program totals reconcile to org totals,"programs+admin 5,400,000 vs org 5,400,000",PASS,,MODEL_OUTPUT
+R053,CONTROLS,Pledges reconcile (collected + outstanding = pledged),4 pledges,PASS,,MODEL_OUTPUT
+R054,CONTROLS,Project cash rolls (beginning + activity = ending),12 months,PASS,,MODEL_OUTPUT
+R055,CONTROLS,No negative project cash months,none,PASS,,MODEL_OUTPUT
+R056,CONTROLS,No RESEARCH-status funder carries a confirmed amount,8 prospect rows,PASS,,MODEL_OUTPUT
+R057,CONTROLS,No current debt presented from historical-only data,current LOC row states NO CURRENT LOC CONFIRMED FROM PUBLIC DATA,PASS,,MODEL_OUTPUT
+R058,CONTROLS,Division-by-zero guards active,per-participant and ratio calcs guard zero denominators,PASS,,MODEL_OUTPUT

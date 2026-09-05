@@ -1,0 +1,222 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "54a49c3b4395766059b1",
+  "position": {
+    "x": 165,
+    "y": 1035,
+    "height": 420,
+    "width": 2670,
+    "z": 8000,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_grants"
+                    }
+                  },
+                  "Property": "grant_name"
+                }
+              },
+              "queryRef": "nfp_grants.grant_name",
+              "nativeQueryRef": "grant_name",
+              "displayName": "grant",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_grants"
+                    }
+                  },
+                  "Property": "funder"
+                }
+              },
+              "queryRef": "nfp_grants.funder",
+              "nativeQueryRef": "funder",
+              "displayName": "funder"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_grants"
+                    }
+                  },
+                  "Property": "funder_type"
+                }
+              },
+              "queryRef": "nfp_grants.funder_type",
+              "nativeQueryRef": "funder_type",
+              "displayName": "type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_grants"
+                    }
+                  },
+                  "Property": "status"
+                }
+              },
+              "queryRef": "nfp_grants.status",
+              "nativeQueryRef": "status",
+              "displayName": "status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_grants"
+                    }
+                  },
+                  "Property": "amount_display"
+                }
+              },
+              "queryRef": "nfp_grants.amount_display",
+              "nativeQueryRef": "amount_display",
+              "displayName": "amount $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_grants"
+                    }
+                  },
+                  "Property": "renewal_probability_pct"
+                }
+              },
+              "queryRef": "nfp_grants.renewal_probability_pct",
+              "nativeQueryRef": "renewal_probability_pct",
+              "displayName": "renewal %"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_grants"
+                    }
+                  },
+                  "Property": "expected_value"
+                }
+              },
+              "queryRef": "nfp_grants.expected_value",
+              "nativeQueryRef": "expected_value",
+              "displayName": "expected value $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_grants"
+                    }
+                  },
+                  "Property": "end_date"
+                }
+              },
+              "queryRef": "nfp_grants.end_date",
+              "nativeQueryRef": "end_date",
+              "displayName": "ends"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_grants"
+                    }
+                  },
+                  "Property": "grant_fit"
+                }
+              },
+              "queryRef": "nfp_grants.grant_fit",
+              "nativeQueryRef": "grant_fit",
+              "displayName": "fit"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_grants"
+                    }
+                  },
+                  "Property": "source"
+                }
+              },
+              "queryRef": "nfp_grants.source",
+              "nativeQueryRef": "source",
+              "displayName": "source"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_grants"
+                    }
+                  },
+                  "Property": "confidence"
+                }
+              },
+              "queryRef": "nfp_grants.confidence",
+              "nativeQueryRef": "confidence",
+              "displayName": "confidence"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_grants"
+                    }
+                  },
+                  "Property": "note"
+                }
+              },
+              "queryRef": "nfp_grants.note",
+              "nativeQueryRef": "note",
+              "displayName": "note"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_grants"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

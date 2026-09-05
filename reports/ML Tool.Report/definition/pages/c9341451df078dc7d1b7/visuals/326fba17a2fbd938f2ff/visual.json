@@ -1,0 +1,147 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "326fba17a2fbd938f2ff",
+  "position": {
+    "x": 165,
+    "y": 590,
+    "height": 380,
+    "width": 2670,
+    "z": 6000,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_solutions"
+                    }
+                  },
+                  "Property": "subject"
+                }
+              },
+              "queryRef": "nfp_solutions.subject",
+              "nativeQueryRef": "subject",
+              "displayName": "program",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_solutions"
+                    }
+                  },
+                  "Property": "diagnosis"
+                }
+              },
+              "queryRef": "nfp_solutions.diagnosis",
+              "nativeQueryRef": "diagnosis",
+              "displayName": "diagnosis (the trigger)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_solutions"
+                    }
+                  },
+                  "Property": "suggestion"
+                }
+              },
+              "queryRef": "nfp_solutions.suggestion",
+              "nativeQueryRef": "suggestion",
+              "displayName": "suggested actions"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_solutions"
+                    }
+                  },
+                  "Property": "why"
+                }
+              },
+              "queryRef": "nfp_solutions.why",
+              "nativeQueryRef": "why",
+              "displayName": "why"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_solutions"
+                    }
+                  },
+                  "Property": "owner_role"
+                }
+              },
+              "queryRef": "nfp_solutions.owner_role",
+              "nativeQueryRef": "owner_role",
+              "displayName": "owner"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_solutions"
+                    }
+                  },
+                  "Property": "approval_required"
+                }
+              },
+              "queryRef": "nfp_solutions.approval_required",
+              "nativeQueryRef": "approval_required",
+              "displayName": "approval"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_solutions"
+                    }
+                  },
+                  "Property": "success_kpi"
+                }
+              },
+              "queryRef": "nfp_solutions.success_kpi",
+              "nativeQueryRef": "success_kpi",
+              "displayName": "success KPI"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_solutions"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

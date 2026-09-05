@@ -1,0 +1,177 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "f0d62b7fb25aa2fa7ae8",
+  "position": {
+    "x": 165,
+    "y": 1520,
+    "height": 400,
+    "width": 2670,
+    "z": 10000,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_funding_cliff"
+                    }
+                  },
+                  "Property": "grant"
+                }
+              },
+              "queryRef": "nfp_funding_cliff.grant",
+              "nativeQueryRef": "grant",
+              "displayName": "grant / scenario",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_funding_cliff"
+                    }
+                  },
+                  "Property": "funder"
+                }
+              },
+              "queryRef": "nfp_funding_cliff.funder",
+              "nativeQueryRef": "funder",
+              "displayName": "funder"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_funding_cliff"
+                    }
+                  },
+                  "Property": "window"
+                }
+              },
+              "queryRef": "nfp_funding_cliff.window",
+              "nativeQueryRef": "window",
+              "displayName": "window"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_funding_cliff"
+                    }
+                  },
+                  "Property": "end_date"
+                }
+              },
+              "queryRef": "nfp_funding_cliff.end_date",
+              "nativeQueryRef": "end_date",
+              "displayName": "ends"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_funding_cliff"
+                    }
+                  },
+                  "Property": "amount"
+                }
+              },
+              "queryRef": "nfp_funding_cliff.amount",
+              "nativeQueryRef": "amount",
+              "displayName": "amount $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_funding_cliff"
+                    }
+                  },
+                  "Property": "renewal_probability_pct"
+                }
+              },
+              "queryRef": "nfp_funding_cliff.renewal_probability_pct",
+              "nativeQueryRef": "renewal_probability_pct",
+              "displayName": "renewal %"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_funding_cliff"
+                    }
+                  },
+                  "Property": "expected_renewal"
+                }
+              },
+              "queryRef": "nfp_funding_cliff.expected_renewal",
+              "nativeQueryRef": "expected_renewal",
+              "displayName": "expected renewal $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_funding_cliff"
+                    }
+                  },
+                  "Property": "at_risk_funding"
+                }
+              },
+              "queryRef": "nfp_funding_cliff.at_risk_funding",
+              "nativeQueryRef": "at_risk_funding",
+              "displayName": "at risk $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_funding_cliff"
+                    }
+                  },
+                  "Property": "unrestricted_replacement_required"
+                }
+              },
+              "queryRef": "nfp_funding_cliff.unrestricted_replacement_required",
+              "nativeQueryRef": "unrestricted_replacement_required",
+              "displayName": "replacement needed $"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_funding_cliff"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

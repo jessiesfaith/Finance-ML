@@ -1,0 +1,177 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "3d905b55131a94daab1c",
+  "position": {
+    "x": 165,
+    "y": 2190,
+    "height": 240,
+    "width": 2670,
+    "z": 17000,
+    "tabOrder": 17000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_risks"
+                    }
+                  },
+                  "Property": "risk"
+                }
+              },
+              "queryRef": "nfp_risks.risk",
+              "nativeQueryRef": "risk",
+              "displayName": "risk",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_risks"
+                    }
+                  },
+                  "Property": "likelihood"
+                }
+              },
+              "queryRef": "nfp_risks.likelihood",
+              "nativeQueryRef": "likelihood",
+              "displayName": "L"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_risks"
+                    }
+                  },
+                  "Property": "impact"
+                }
+              },
+              "queryRef": "nfp_risks.impact",
+              "nativeQueryRef": "impact",
+              "displayName": "I"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_risks"
+                    }
+                  },
+                  "Property": "inherent_score"
+                }
+              },
+              "queryRef": "nfp_risks.inherent_score",
+              "nativeQueryRef": "inherent_score",
+              "displayName": "inherent"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_risks"
+                    }
+                  },
+                  "Property": "response"
+                }
+              },
+              "queryRef": "nfp_risks.response",
+              "nativeQueryRef": "response",
+              "displayName": "response"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_risks"
+                    }
+                  },
+                  "Property": "mitigation"
+                }
+              },
+              "queryRef": "nfp_risks.mitigation",
+              "nativeQueryRef": "mitigation",
+              "displayName": "mitigation"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_risks"
+                    }
+                  },
+                  "Property": "residual_score"
+                }
+              },
+              "queryRef": "nfp_risks.residual_score",
+              "nativeQueryRef": "residual_score",
+              "displayName": "residual"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_risks"
+                    }
+                  },
+                  "Property": "owner_role"
+                }
+              },
+              "queryRef": "nfp_risks.owner_role",
+              "nativeQueryRef": "owner_role",
+              "displayName": "owner"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_risks"
+                    }
+                  },
+                  "Property": "monitoring_metric"
+                }
+              },
+              "queryRef": "nfp_risks.monitoring_metric",
+              "nativeQueryRef": "monitoring_metric",
+              "displayName": "monitor"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_risks"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

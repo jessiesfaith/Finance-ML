@@ -1,0 +1,119 @@
+/// Curated NFP export: 12-month project cash roll (synthetic plan).
+table nfp_project_cash
+	lineageTag: 6bb1f3d7-65d8-40d3-adc7-cccf07d201a2
+
+	column row_id
+		dataType: string
+		lineageTag: 2f8a0e8e-48ec-422f-b3af-15efa06c9f57
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: double
+		lineageTag: bf4cbee2-6c6c-4e8c-b7ec-eaa1c8eef4ae
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column beginning_cash
+		dataType: double
+		lineageTag: 90b6514f-5e8c-43d0-91d3-0ae307ff9009
+		summarizeBy: none
+		sourceColumn: beginning_cash
+
+		annotation SummarizationSetBy = Automatic
+
+	column campaign_receipts
+		dataType: double
+		lineageTag: 389990f1-bc52-462d-8c9f-08fe5b67cdcb
+		summarizeBy: none
+		sourceColumn: campaign_receipts
+
+		annotation SummarizationSetBy = Automatic
+
+	column debt_draws
+		dataType: double
+		lineageTag: 759e0652-4ce6-4ebd-8822-787e76815dbb
+		summarizeBy: none
+		sourceColumn: debt_draws
+
+		annotation SummarizationSetBy = Automatic
+
+	column project_spending
+		dataType: double
+		lineageTag: 5a77b91e-4bd3-4026-9342-f650500b7325
+		summarizeBy: none
+		sourceColumn: project_spending
+
+		annotation SummarizationSetBy = Automatic
+
+	column financing_costs
+		dataType: double
+		lineageTag: 43cd99ae-3f12-4b88-baa5-db710d4cc972
+		summarizeBy: none
+		sourceColumn: financing_costs
+
+		annotation SummarizationSetBy = Automatic
+
+	column ending_cash
+		dataType: double
+		lineageTag: 16875bec-26f7-4e51-b42e-80ca3e599e5c
+		summarizeBy: none
+		sourceColumn: ending_cash
+
+		annotation SummarizationSetBy = Automatic
+
+	column loc_balance
+		dataType: double
+		lineageTag: fc542f4a-643f-4ced-a0dc-4776ec53b786
+		summarizeBy: none
+		sourceColumn: loc_balance
+
+		annotation SummarizationSetBy = Automatic
+
+	column warning
+		dataType: double
+		lineageTag: 5c16e996-c157-4b02-9065-26e533620f82
+		summarizeBy: none
+		sourceColumn: warning
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 16a972c2-7bb1-4250-948e-d74a2fa0ac4a
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_project_cash = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_project_cash.csv"),
+				    [Delimiter = ",", Columns = 11, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "month", "beginning_cash", "campaign_receipts", "debt_draws", "project_spending", "financing_costs", "ending_cash", "loc_balance", "warning", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"month", type number},
+				    {"beginning_cash", type number},
+				    {"campaign_receipts", type number},
+				    {"debt_draws", type number},
+				    {"project_spending", type number},
+				    {"financing_costs", type number},
+				    {"ending_cash", type number},
+				    {"loc_balance", type number},
+				    {"warning", type number},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

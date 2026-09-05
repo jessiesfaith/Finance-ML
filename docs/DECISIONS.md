@@ -1039,3 +1039,25 @@ reads "What Could Be Done?". Cross-references follow: the Math
 Reference pointer, the flags feed's source_tab, and the chat
 assistant's tab list. Table names (client_fs_*) are file contracts,
 not headers - unchanged.
+
+### 95. NFP CFO Decision Intelligence Module (tabs 9-12), Phase 1
+Built per the owner's master build prompt inside the existing
+architecture (plan: docs/NFP_MODULE_PLAN.md): data/nfp/ seed layer
+(org-agnostic; JSV as first research case), deterministic engine
+src/financials/nfp.py, 18 curated nfp_* exports, 18 TMDL tables, four
+tabs, 23 tests. Prompt worked examples pinned exactly: $200Kx70%=$140K
+-> $110K probability-weighted gap; $250Kx7%=$17.5K interest avoided;
+$1Mx7%x6/12=$35K LOC; $7.0M-$2.34M=$4.66M campaign remainder. The
+section-61 control battery (sources=uses, weights=100, restricted
+never unrestricted, reconciliations, rolls, honesty rules) computes
+PASS/FAIL and renders on tab 12. Honesty rules enforced by tests: no
+RESEARCH-status funder carries an amount, Chai House shows AMOUNT NOT
+PUBLICLY CONFIRMED, JCRIF loan stays HISTORICAL DEBT NOT CURRENT, and
+the LOC row says NO CURRENT LOC CONFIRMED - not "no LOC exists".
+Deterministic-first honored: zero ML; schemas carry the label
+vocabulary (ACTUAL/HISTORICAL/MANAGEMENT ASSUMPTION/MODEL ESTIMATE/
+PUBLIC_RESEARCH) for future models. Chat assistant now grounds on the
+nfp_* exports - a v0 of the owner's future "board asks a question"
+mode. Phase 2+: real grant-research pass with URLs, rolling cash
+forecast integration, interactive question mode, flags-engine NFP
+rules.

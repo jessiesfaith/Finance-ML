@@ -1,0 +1,6 @@
+row_id,option,cost_estimate,cost_basis,months_cash_after,liquidity_note,risk_note,value_class
+R001,LOC / BRIDGE,20000.0,"$500,000 x 7% x 6/12 = $17,500 interest + $2,500 commitment fee",4.0,Operating liquidity retained,Covenants; repayment depends on pledge collection,MODEL_OUTPUT
+R002,USE OPERATING RESERVES,0.0,No cash cost; liquidity cost below,2.89,Months cash falls to 2.89 - BELOW LIQUIDITY THRESHOLD,Emergency capacity reduced,MODEL_OUTPUT
+R003,SELL INVESTMENTS,27500.0,"Return foregone ~5.5%/yr on $500,000; future compounding lost; market timing",4.0,"Investment balance reduced, cash preserved",Realized gain/loss depends on market,MODEL_OUTPUT
+R004,DELAY PROJECT 6 MONTHS,190000.0,"Construction escalation $135,000 (remaining cost x construction inflation x 1/2 yr) + temporary costs $30,000 + lost program contribution $25,000",4.0,No cash deployed yet,Mission delay (shown separately); donor momentum risk,MODEL_OUTPUT
+R005,REDUCE PROJECT SCOPE,0.0,Lower project cost; mission capacity reduced,4.0,Least liquidity strain,Delivers less mission; may disappoint donors,MODEL_OUTPUT

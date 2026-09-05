@@ -1,0 +1,128 @@
+/// Curated NFP export: BASE/UPSIDE/DOWNSIDE/STRESS results per area.
+table nfp_scenarios
+	lineageTag: 6edaf4b0-3bab-4f79-bf1c-04fb006ffb5d
+
+	column row_id
+		dataType: string
+		lineageTag: 4b06b1a7-6ab4-439d-beab-2edd3cc9ad93
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column tab
+		dataType: string
+		lineageTag: 57b6ccfa-612e-458f-a803-5d432c0a5e77
+		summarizeBy: none
+		sourceColumn: tab
+
+		annotation SummarizationSetBy = Automatic
+
+	column scenario
+		dataType: string
+		lineageTag: 1805c599-0a35-40f1-85f8-d2d45275b8ca
+		summarizeBy: none
+		sourceColumn: scenario
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_funding
+		dataType: double
+		lineageTag: 854a3371-85de-4bfa-a626-991074c28806
+		summarizeBy: none
+		sourceColumn: total_funding
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_cost
+		dataType: double
+		lineageTag: f5e7f8f9-7744-49ab-88b4-2d0e498d355f
+		summarizeBy: none
+		sourceColumn: total_cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column funding_gap
+		dataType: double
+		lineageTag: 5ea85cae-f49b-4a8a-8b6d-f20f473668d6
+		summarizeBy: none
+		sourceColumn: funding_gap
+
+		annotation SummarizationSetBy = Automatic
+
+	column months_cash_end
+		dataType: double
+		lineageTag: f6f79c28-ce46-42fd-9303-0208050bfcb7
+		summarizeBy: none
+		sourceColumn: months_cash_end
+
+		annotation SummarizationSetBy = Automatic
+
+	column reserve_draw_needed
+		dataType: double
+		lineageTag: 27646f82-dbfd-4b85-a88f-3a0f0983ce98
+		summarizeBy: none
+		sourceColumn: reserve_draw_needed
+
+		annotation SummarizationSetBy = Automatic
+
+	column participants
+		dataType: double
+		lineageTag: b6b05e39-57af-46f5-95ab-8f3ed25e6940
+		summarizeBy: none
+		sourceColumn: participants
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_per_participant
+		dataType: double
+		lineageTag: 12097dba-acb7-47be-a2fe-ae0390da96c8
+		summarizeBy: none
+		sourceColumn: cost_per_participant
+
+		annotation SummarizationSetBy = Automatic
+
+	column recommendation
+		dataType: string
+		lineageTag: 50c03eff-b73c-45f4-a4ea-3a6e23d6ba4f
+		summarizeBy: none
+		sourceColumn: recommendation
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: dd067b30-05c3-4533-a02b-10f4d273d553
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_scenarios = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_scenarios.csv"),
+				    [Delimiter = ",", Columns = 12, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "tab", "scenario", "total_funding", "total_cost", "funding_gap", "months_cash_end", "reserve_draw_needed", "participants", "cost_per_participant", "recommendation", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"tab", type text},
+				    {"scenario", type text},
+				    {"total_funding", type number},
+				    {"total_cost", type number},
+				    {"funding_gap", type number},
+				    {"months_cash_end", type number},
+				    {"reserve_draw_needed", type number},
+				    {"participants", type number},
+				    {"cost_per_participant", type number},
+				    {"recommendation", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

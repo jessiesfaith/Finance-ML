@@ -1,0 +1,110 @@
+/// Curated NFP export: historical debt + reserve records with provenance.
+table nfp_debt_reserves
+	lineageTag: 8d855130-93ea-40e1-a50e-f0fab285df32
+
+	column row_id
+		dataType: string
+		lineageTag: bcdd33ee-7408-4713-9d76-b825a094258b
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column record_type
+		dataType: string
+		lineageTag: ce0ef27a-53ff-4959-942c-ad09f3e25a6c
+		summarizeBy: none
+		sourceColumn: record_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column item
+		dataType: string
+		lineageTag: 0da41299-8545-411d-9773-cda75e999523
+		summarizeBy: none
+		sourceColumn: item
+
+		annotation SummarizationSetBy = Automatic
+
+	column counterparty
+		dataType: string
+		lineageTag: d2ae2654-7739-453e-b71b-3ef5f7aac2ee
+		summarizeBy: none
+		sourceColumn: counterparty
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount
+		dataType: double
+		lineageTag: 1313ceff-8dcf-478b-a22a-d7b66fe06d2d
+		summarizeBy: none
+		sourceColumn: amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column as_of_date
+		dataType: string
+		lineageTag: 487e1449-588c-4d94-8ad0-8b736a73ae38
+		summarizeBy: none
+		sourceColumn: as_of_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: e220ba11-067c-49e3-998f-886dd3045bd4
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: a1f9134e-5f8a-4e2c-96c5-42e4d63f0807
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: 72f9adcc-0b22-4833-bcc1-d65a6ef0913f
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: 7d9d2287-a86f-4f13-9c30-b42f5e486ffc
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_debt_reserves = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_debt_reserves.csv"),
+				    [Delimiter = ",", Columns = 10, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "record_type", "item", "counterparty", "amount", "as_of_date", "status", "value_class", "source", "note"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"record_type", type text},
+				    {"item", type text},
+				    {"counterparty", type text},
+				    {"amount", type number},
+				    {"as_of_date", type text},
+				    {"status", type text},
+				    {"value_class", type text},
+				    {"source", type text},
+				    {"note", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

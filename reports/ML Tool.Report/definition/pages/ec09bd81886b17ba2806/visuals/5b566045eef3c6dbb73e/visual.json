@@ -1,0 +1,117 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "5b566045eef3c6dbb73e",
+  "position": {
+    "x": 165,
+    "y": 205,
+    "height": 330,
+    "width": 1290,
+    "z": 4000,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_settings"
+                    }
+                  },
+                  "Property": "setting_id"
+                }
+              },
+              "queryRef": "nfp_settings.setting_id",
+              "nativeQueryRef": "setting_id",
+              "displayName": "input",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_settings"
+                    }
+                  },
+                  "Property": "value"
+                }
+              },
+              "queryRef": "nfp_settings.value",
+              "nativeQueryRef": "value",
+              "displayName": "value"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_settings"
+                    }
+                  },
+                  "Property": "unit"
+                }
+              },
+              "queryRef": "nfp_settings.unit",
+              "nativeQueryRef": "unit",
+              "displayName": "unit"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_settings"
+                    }
+                  },
+                  "Property": "description"
+                }
+              },
+              "queryRef": "nfp_settings.description",
+              "nativeQueryRef": "description",
+              "displayName": "description"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_settings"
+                    }
+                  },
+                  "Property": "value_class"
+                }
+              },
+              "queryRef": "nfp_settings.value_class",
+              "nativeQueryRef": "value_class",
+              "displayName": "label"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_settings"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

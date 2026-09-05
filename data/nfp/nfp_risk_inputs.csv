@@ -1,0 +1,15 @@
+risk_id,risk,likelihood,impact,response,mitigation,inherent_note,residual_likelihood,owner_role,monitoring_metric
+RK-1,Grant renewal failure (largest program grants),3,4,RISK REDUCTION,Diversify funders; multi-year grants; renewal calendar,,2,CFO,Funding cliff report
+RK-2,Donor concentration,3,4,RISK REDUCTION,Broaden base; increase unrestricted giving,,2,Development Dir,Top-donor dependency %
+RK-3,Liquidity shortfall below policy,2,5,RISK RETENTION,Months-cash monitoring; reserve; LOC capacity research,,2,CFO,Months cash on hand
+RK-4,Program demand decline,2,3,RISK REDUCTION,Utilization tracking; outreach; pricing review,,2,Program Directors,Capacity utilization
+RK-5,Personnel cost inflation / key staff loss,3,3,RISK REDUCTION,Phased hiring; shared services,,2,CEO,Personnel % of cost
+RK-6,Construction cost overrun (campaign project),3,4,RISK REDUCTION,Contingency; fixed-price bids; phased scope,,2,CFO,Budget vs contract
+RK-7,Pledge collection failure,2,3,RISK REDUCTION,Signed pledge documentation; collection schedule,,2,Development Dir,Pledge collection %
+RK-8,Interest rate increase on bridge financing,2,2,RISK RETENTION,Limit LOC draw period; repay from pledges,,1,CFO,LOC balance x rate
+RK-9,Investment market drawdown,3,3,RISK RETENTION,Horizon matching; spending-rate policy,,2,Finance Committee,Portfolio vs policy
+RK-10,Restricted funds misapplication,1,5,RISK AVOIDANCE,Restricted-fund tracking control; release approvals,,1,CFO,Restricted roll-forward
+RK-11,Compliance / grant reporting failure,2,4,RISK REDUCTION,Reporting calendar; owner per grant,,1,CFO,Reports on time %
+RK-12,Security / facility incident,2,5,RISK TRANSFER,Insurance; security grants (Cal OES prospect); protocols,,2,COO,Incident log
+RK-13,Cyber incident,2,4,RISK TRANSFER,Cyber insurance; access controls,,2,COO,Control audits
+RK-14,Mission drift from revenue chasing,2,3,RISK REDUCTION,Mission score in every decision; board review,,1,CEO,Mission-weighted scoring

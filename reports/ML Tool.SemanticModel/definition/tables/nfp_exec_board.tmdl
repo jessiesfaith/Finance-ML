@@ -1,0 +1,83 @@
+/// Curated NFP export: executive decision page + CFO script + board debate + controls.
+table nfp_exec_board
+	lineageTag: 42df9e0c-018f-4f47-b3d6-4a0e0e621d6c
+
+	column row_id
+		dataType: string
+		lineageTag: 6d4cdd36-43ff-4a2c-8063-6eff270911fa
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column section
+		dataType: string
+		lineageTag: 88064bcb-39b0-480a-b98f-ade1422b2aca
+		summarizeBy: none
+		sourceColumn: section
+
+		annotation SummarizationSetBy = Automatic
+
+	column item
+		dataType: string
+		lineageTag: 249febd5-4f45-4d77-a1ad-e50a5b61d5dc
+		summarizeBy: none
+		sourceColumn: item
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_text
+		dataType: string
+		lineageTag: 33da801b-489b-4f68-8999-26a749816278
+		summarizeBy: none
+		sourceColumn: value_text
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 2df82c5f-7490-4b1b-b714-35ef7ac4fb7a
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: f9c524bc-1486-4964-8c39-92a647061cea
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: a9ac45a2-1ee0-44f8-bb51-1cbd05de2b71
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_exec_board = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_exec_board.csv"),
+				    [Delimiter = ",", Columns = 7, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "section", "item", "value_text", "status", "note", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"section", type text},
+				    {"item", type text},
+				    {"value_text", type text},
+				    {"status", type text},
+				    {"note", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

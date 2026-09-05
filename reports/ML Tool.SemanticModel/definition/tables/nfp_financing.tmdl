@@ -1,0 +1,92 @@
+/// Curated NFP export: financing alternatives comparison (LOC/reserves/investments/delay/scope).
+table nfp_financing
+	lineageTag: fc271a70-577f-4a9c-a9d3-216675894749
+
+	column row_id
+		dataType: string
+		lineageTag: d6711528-c455-41c1-9642-c69c78349edf
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column option
+		dataType: string
+		lineageTag: c52763f6-d98c-4a1b-9bdc-3c26e88c5155
+		summarizeBy: none
+		sourceColumn: option
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_estimate
+		dataType: double
+		lineageTag: 0966e46f-b325-4666-8694-beed3018fab5
+		summarizeBy: none
+		sourceColumn: cost_estimate
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_basis
+		dataType: string
+		lineageTag: d9a10b3c-e7ed-43c4-9385-3b59c04a4665
+		summarizeBy: none
+		sourceColumn: cost_basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column months_cash_after
+		dataType: double
+		lineageTag: 85cc44b5-3bdb-4c3a-b8d7-64e402f9426b
+		summarizeBy: none
+		sourceColumn: months_cash_after
+
+		annotation SummarizationSetBy = Automatic
+
+	column liquidity_note
+		dataType: string
+		lineageTag: 3fc4cbcb-0901-4e04-8bc6-6c54bc013b7c
+		summarizeBy: none
+		sourceColumn: liquidity_note
+
+		annotation SummarizationSetBy = Automatic
+
+	column risk_note
+		dataType: string
+		lineageTag: 094e4974-6acb-4cfd-80b3-2298ae22e552
+		summarizeBy: none
+		sourceColumn: risk_note
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: be5f0231-4590-4678-80d2-c4b635e7b281
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_financing = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_financing.csv"),
+				    [Delimiter = ",", Columns = 8, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "option", "cost_estimate", "cost_basis", "months_cash_after", "liquidity_note", "risk_note", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"option", type text},
+				    {"cost_estimate", type number},
+				    {"cost_basis", type text},
+				    {"months_cash_after", type number},
+				    {"liquidity_note", type text},
+				    {"risk_note", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

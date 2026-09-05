@@ -1,0 +1,192 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "9321e49e5672255138b4",
+  "position": {
+    "x": 165,
+    "y": 915,
+    "height": 250,
+    "width": 2670,
+    "z": 10000,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "alternative"
+                }
+              },
+              "queryRef": "nfp_alternatives.alternative",
+              "nativeQueryRef": "alternative",
+              "displayName": "alternative",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "score_financial"
+                }
+              },
+              "queryRef": "nfp_alternatives.score_financial",
+              "nativeQueryRef": "score_financial",
+              "displayName": "financial"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "score_mission"
+                }
+              },
+              "queryRef": "nfp_alternatives.score_mission",
+              "nativeQueryRef": "score_mission",
+              "displayName": "mission"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "score_liquidity"
+                }
+              },
+              "queryRef": "nfp_alternatives.score_liquidity",
+              "nativeQueryRef": "score_liquidity",
+              "displayName": "liquidity"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "score_risk"
+                }
+              },
+              "queryRef": "nfp_alternatives.score_risk",
+              "nativeQueryRef": "score_risk",
+              "displayName": "risk"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "score_scalability"
+                }
+              },
+              "queryRef": "nfp_alternatives.score_scalability",
+              "nativeQueryRef": "score_scalability",
+              "displayName": "scalability"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "score_strategic"
+                }
+              },
+              "queryRef": "nfp_alternatives.score_strategic",
+              "nativeQueryRef": "score_strategic",
+              "displayName": "strategic"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "decision_score"
+                }
+              },
+              "queryRef": "nfp_alternatives.decision_score",
+              "nativeQueryRef": "decision_score",
+              "displayName": "DECISION SCORE /100"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "recommendation"
+                }
+              },
+              "queryRef": "nfp_alternatives.recommendation",
+              "nativeQueryRef": "recommendation",
+              "displayName": "recommendation"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "management_override"
+                }
+              },
+              "queryRef": "nfp_alternatives.management_override",
+              "nativeQueryRef": "management_override",
+              "displayName": "mgmt override"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_alternatives"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

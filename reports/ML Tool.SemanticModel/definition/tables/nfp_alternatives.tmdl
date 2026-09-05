@@ -1,0 +1,299 @@
+/// Curated NFP export: the five uses of the same capital, metrics aligned + weighted score.
+table nfp_alternatives
+	lineageTag: 4da16c52-f5a7-4650-97f9-138f29fbbb4e
+
+	column row_id
+		dataType: string
+		lineageTag: dfc71f17-4d4a-4741-8f7e-6fd56e299bed
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column alternative_id
+		dataType: string
+		lineageTag: 6da14577-a010-422b-9b84-7f230ce902bc
+		summarizeBy: none
+		sourceColumn: alternative_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column alternative
+		dataType: string
+		lineageTag: dc465ada-4432-40e8-b5f9-4b1f83196946
+		summarizeBy: none
+		sourceColumn: alternative
+
+		annotation SummarizationSetBy = Automatic
+
+	column capital_required
+		dataType: double
+		lineageTag: 1af6e134-e9e0-4256-ab55-b99e3a4cb026
+		summarizeBy: none
+		sourceColumn: capital_required
+
+		annotation SummarizationSetBy = Automatic
+
+	column net_cash_y1
+		dataType: double
+		lineageTag: 5b3dec93-9607-48cf-a600-2b070bf2b60b
+		summarizeBy: none
+		sourceColumn: net_cash_y1
+
+		annotation SummarizationSetBy = Automatic
+
+	column net_cash_y2
+		dataType: double
+		lineageTag: 11ce6a8a-bd44-4d3a-9f9c-2997e9c5e609
+		summarizeBy: none
+		sourceColumn: net_cash_y2
+
+		annotation SummarizationSetBy = Automatic
+
+	column net_cash_y3
+		dataType: double
+		lineageTag: 47607df4-9689-46cc-bd17-c7c087034539
+		summarizeBy: none
+		sourceColumn: net_cash_y3
+
+		annotation SummarizationSetBy = Automatic
+
+	column net_cash_y4
+		dataType: double
+		lineageTag: 99ed8908-686b-4330-b585-da0bbe758a06
+		summarizeBy: none
+		sourceColumn: net_cash_y4
+
+		annotation SummarizationSetBy = Automatic
+
+	column net_cash_y5
+		dataType: double
+		lineageTag: caa4c1b2-2785-4788-98a8-12728fd8ba28
+		summarizeBy: none
+		sourceColumn: net_cash_y5
+
+		annotation SummarizationSetBy = Automatic
+
+	column five_year_cash
+		dataType: double
+		lineageTag: 0c2ad8ad-178f-47db-ac74-623529752cd8
+		summarizeBy: none
+		sourceColumn: five_year_cash
+
+		annotation SummarizationSetBy = Automatic
+
+	column npv_at_board_rate
+		dataType: double
+		lineageTag: 85683363-a41a-4d71-bc57-15c80cb9fffd
+		summarizeBy: none
+		sourceColumn: npv_at_board_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column participants_served
+		dataType: double
+		lineageTag: e9f2105a-c483-4c04-a729-8b83a5b1801e
+		summarizeBy: none
+		sourceColumn: participants_served
+
+		annotation SummarizationSetBy = Automatic
+
+	column capital_per_participant
+		dataType: double
+		lineageTag: 8db50d0f-30ca-46a4-a180-acee72f81fde
+		summarizeBy: none
+		sourceColumn: capital_per_participant
+
+		annotation SummarizationSetBy = Automatic
+
+	column mission_leverage_per_100k
+		dataType: double
+		lineageTag: 108632bf-ba91-4d90-8eb2-b4b7640bfc9d
+		summarizeBy: none
+		sourceColumn: mission_leverage_per_100k
+
+		annotation SummarizationSetBy = Automatic
+
+	column months_cash_after
+		dataType: double
+		lineageTag: 1b888c47-c483-4189-84ba-661fd043de65
+		summarizeBy: none
+		sourceColumn: months_cash_after
+
+		annotation SummarizationSetBy = Automatic
+
+	column risk_rating_1to10
+		dataType: double
+		lineageTag: a6e60bb3-6f68-41f0-8845-33cfcf2f9908
+		summarizeBy: none
+		sourceColumn: risk_rating_1to10
+
+		annotation SummarizationSetBy = Automatic
+
+	column scalability_1to10
+		dataType: double
+		lineageTag: c967c3e2-1539-4f28-9d9b-0e28bbeed017
+		summarizeBy: none
+		sourceColumn: scalability_1to10
+
+		annotation SummarizationSetBy = Automatic
+
+	column strategic_1to10
+		dataType: double
+		lineageTag: 5e3f492f-fb2c-4cdf-8f9f-ceed6ed301fa
+		summarizeBy: none
+		sourceColumn: strategic_1to10
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: 485c6ad3-e176-4403-a9c4-11e7c1a2c07b
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 4383cd8c-1406-4ac3-929b-17afbe9a38e9
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column score_financial
+		dataType: double
+		lineageTag: c6981c5b-2e0e-4425-81a4-73a85a867657
+		summarizeBy: none
+		sourceColumn: score_financial
+
+		annotation SummarizationSetBy = Automatic
+
+	column score_mission
+		dataType: double
+		lineageTag: 04bd1582-4e10-44c3-b88c-d8216515d566
+		summarizeBy: none
+		sourceColumn: score_mission
+
+		annotation SummarizationSetBy = Automatic
+
+	column score_liquidity
+		dataType: double
+		lineageTag: a56497d2-2b9b-41b6-9cee-1ba31d4ae20d
+		summarizeBy: none
+		sourceColumn: score_liquidity
+
+		annotation SummarizationSetBy = Automatic
+
+	column score_risk
+		dataType: double
+		lineageTag: df6e961d-dc11-420f-ba46-6a0cbc01c313
+		summarizeBy: none
+		sourceColumn: score_risk
+
+		annotation SummarizationSetBy = Automatic
+
+	column score_scalability
+		dataType: double
+		lineageTag: ddd43a29-a112-4590-86ea-f6f39b1e2223
+		summarizeBy: none
+		sourceColumn: score_scalability
+
+		annotation SummarizationSetBy = Automatic
+
+	column score_strategic
+		dataType: double
+		lineageTag: 672969b9-5a72-4390-829b-ab668fd2af0f
+		summarizeBy: none
+		sourceColumn: score_strategic
+
+		annotation SummarizationSetBy = Automatic
+
+	column decision_score
+		dataType: double
+		lineageTag: 54e772f0-6c5f-4886-afe6-e487ba97d664
+		summarizeBy: none
+		sourceColumn: decision_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column recommendation
+		dataType: string
+		lineageTag: 1a1800bb-416a-44b7-b2a3-6e692de98a9a
+		summarizeBy: none
+		sourceColumn: recommendation
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_recommended
+		dataType: double
+		lineageTag: cb9b6a61-a2c0-4db3-a521-2c8c1c4a2ebb
+		summarizeBy: none
+		sourceColumn: is_recommended
+
+		annotation SummarizationSetBy = Automatic
+
+	column management_override
+		dataType: double
+		lineageTag: 4a2d8e15-8267-4219-be66-bf910aaa8e96
+		summarizeBy: none
+		sourceColumn: management_override
+
+		annotation SummarizationSetBy = Automatic
+
+	column override_rationale
+		dataType: double
+		lineageTag: 133da80b-4e09-4aeb-bdbf-df01ec5202a3
+		summarizeBy: none
+		sourceColumn: override_rationale
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_alternatives = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_alternatives.csv"),
+				    [Delimiter = ",", Columns = 31, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "alternative_id", "alternative", "capital_required", "net_cash_y1", "net_cash_y2", "net_cash_y3", "net_cash_y4", "net_cash_y5", "five_year_cash", "npv_at_board_rate", "participants_served", "capital_per_participant", "mission_leverage_per_100k", "months_cash_after", "risk_rating_1to10", "scalability_1to10", "strategic_1to10", "note", "value_class", "score_financial", "score_mission", "score_liquidity", "score_risk", "score_scalability", "score_strategic", "decision_score", "recommendation", "is_recommended", "management_override", "override_rationale"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"alternative_id", type text},
+				    {"alternative", type text},
+				    {"capital_required", type number},
+				    {"net_cash_y1", type number},
+				    {"net_cash_y2", type number},
+				    {"net_cash_y3", type number},
+				    {"net_cash_y4", type number},
+				    {"net_cash_y5", type number},
+				    {"five_year_cash", type number},
+				    {"npv_at_board_rate", type number},
+				    {"participants_served", type number},
+				    {"capital_per_participant", type number},
+				    {"mission_leverage_per_100k", type number},
+				    {"months_cash_after", type number},
+				    {"risk_rating_1to10", type number},
+				    {"scalability_1to10", type number},
+				    {"strategic_1to10", type number},
+				    {"note", type text},
+				    {"value_class", type text},
+				    {"score_financial", type number},
+				    {"score_mission", type number},
+				    {"score_liquidity", type number},
+				    {"score_risk", type number},
+				    {"score_scalability", type number},
+				    {"score_strategic", type number},
+				    {"decision_score", type number},
+				    {"recommendation", type text},
+				    {"is_recommended", type number},
+				    {"management_override", type number},
+				    {"override_rationale", type number}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

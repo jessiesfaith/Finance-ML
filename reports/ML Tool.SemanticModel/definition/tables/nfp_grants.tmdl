@@ -1,0 +1,245 @@
+/// Curated NFP export: grant database - historical, current (synthetic) and RESEARCH prospects.
+table nfp_grants
+	lineageTag: 5386e153-1675-4793-be95-0f28143d504d
+
+	column row_id
+		dataType: string
+		lineageTag: dd9a8513-717b-4848-929f-4b52dafe63ca
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column grant_id
+		dataType: string
+		lineageTag: 0c1851cc-8f98-495b-bf03-f5e5440f01fd
+		summarizeBy: none
+		sourceColumn: grant_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column grant_name
+		dataType: string
+		lineageTag: 10dffab6-c614-4b8e-89e9-54220ca90e67
+		summarizeBy: none
+		sourceColumn: grant_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column funder
+		dataType: string
+		lineageTag: 420bc92e-9f8c-4005-b578-f2313859624a
+		summarizeBy: none
+		sourceColumn: funder
+
+		annotation SummarizationSetBy = Automatic
+
+	column funder_type
+		dataType: string
+		lineageTag: db24947c-4063-4e99-bedf-4e6a04b5d5c1
+		summarizeBy: none
+		sourceColumn: funder_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column program_id
+		dataType: string
+		lineageTag: 0fbbbd9b-047d-4376-a297-168f23d76eb6
+		summarizeBy: none
+		sourceColumn: program_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column mission_area
+		dataType: string
+		lineageTag: feee71bb-81dd-447d-9468-f6697a26c11e
+		summarizeBy: none
+		sourceColumn: mission_area
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: f7eea621-dba0-4cb9-b885-cfc9a25ae9fb
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column restricted
+		dataType: string
+		lineageTag: ca0247c7-f71a-4f68-83ea-7a955dd13563
+		summarizeBy: none
+		sourceColumn: restricted
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount
+		dataType: double
+		lineageTag: 7fb006dc-dc71-4b02-bbf0-84afc9d980a6
+		summarizeBy: none
+		sourceColumn: amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column renewal_probability_pct
+		dataType: double
+		lineageTag: a911207a-3595-4234-bab0-f57fe0faba0a
+		summarizeBy: none
+		sourceColumn: renewal_probability_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column probability_basis
+		dataType: string
+		lineageTag: eed22399-edaa-48ea-81fb-22a40e591ac2
+		summarizeBy: none
+		sourceColumn: probability_basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_date
+		dataType: string
+		lineageTag: 93acf7bb-6fca-4e47-ab24-1edaf09714fe
+		summarizeBy: none
+		sourceColumn: start_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column end_date
+		dataType: string
+		lineageTag: 23483bb6-5f9b-4acf-9859-1386985ed6e3
+		summarizeBy: none
+		sourceColumn: end_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column deadline
+		dataType: string
+		lineageTag: e4519e54-d905-4880-a697-c4dbde0ac869
+		summarizeBy: none
+		sourceColumn: deadline
+
+		annotation SummarizationSetBy = Automatic
+
+	column match_requirement
+		dataType: double
+		lineageTag: 1db1f9e0-e2c8-479b-ad30-f377479c5cbd
+		summarizeBy: none
+		sourceColumn: match_requirement
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: 5ba54bb3-a3a2-4d73-b9ea-077506ac5cb2
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column url
+		dataType: string
+		lineageTag: 61cba899-8c12-4974-a1d7-e77893d0aed4
+		summarizeBy: none
+		sourceColumn: url
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_verified
+		dataType: double
+		lineageTag: ad307fa9-546e-439a-a532-b31d13109d8b
+		summarizeBy: none
+		sourceColumn: date_verified
+
+		annotation SummarizationSetBy = Automatic
+
+	column confidence
+		dataType: string
+		lineageTag: 4b7ea093-6e53-4538-a5ad-ed751d015f00
+		summarizeBy: none
+		sourceColumn: confidence
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: e312aab3-8c8b-4cf3-af34-a0411cb0b2e6
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: c200e883-9307-491e-9b06-a8cdbb502083
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_value
+		dataType: double
+		lineageTag: 64f19e43-1a6a-4b2c-a399-815338410e50
+		summarizeBy: none
+		sourceColumn: expected_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount_display
+		dataType: string
+		lineageTag: d6789d00-85bd-4f02-82c7-41c217b671c5
+		summarizeBy: none
+		sourceColumn: amount_display
+
+		annotation SummarizationSetBy = Automatic
+
+	column grant_fit
+		dataType: string
+		lineageTag: 30109758-a6fc-4864-a2dd-9b4c5ab13ae0
+		summarizeBy: none
+		sourceColumn: grant_fit
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_grants = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_grants.csv"),
+				    [Delimiter = ",", Columns = 25, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "grant_id", "grant_name", "funder", "funder_type", "program_id", "mission_area", "status", "restricted", "amount", "renewal_probability_pct", "probability_basis", "start_date", "end_date", "deadline", "match_requirement", "source", "url", "date_verified", "confidence", "value_class", "note", "expected_value", "amount_display", "grant_fit"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"grant_id", type text},
+				    {"grant_name", type text},
+				    {"funder", type text},
+				    {"funder_type", type text},
+				    {"program_id", type text},
+				    {"mission_area", type text},
+				    {"status", type text},
+				    {"restricted", type text},
+				    {"amount", type number},
+				    {"renewal_probability_pct", type number},
+				    {"probability_basis", type text},
+				    {"start_date", type text},
+				    {"end_date", type text},
+				    {"deadline", type text},
+				    {"match_requirement", type number},
+				    {"source", type text},
+				    {"url", type text},
+				    {"date_verified", type number},
+				    {"confidence", type text},
+				    {"value_class", type text},
+				    {"note", type text},
+				    {"expected_value", type number},
+				    {"amount_display", type text},
+				    {"grant_fit", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

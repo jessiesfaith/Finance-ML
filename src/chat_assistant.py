@@ -45,6 +45,12 @@ INLINE_CSVS = [
     "client_fs_option_sizing.csv", "client_fs_sensitivity.csv",
     "client_fs_income_walk.csv", "client_fs_valuation_inputs.csv",
     "client_fs_controls.csv", "client_fs_review.csv", "market_rf_policy.csv",
+    "nfp_settings.csv", "nfp_alternatives.csv", "nfp_programs.csv",
+    "nfp_solutions.csv", "nfp_grants.csv", "nfp_funding_cliff.csv",
+    "nfp_pipeline.csv", "nfp_calendar.csv", "nfp_campaign.csv",
+    "nfp_pledges.csv", "nfp_project_cash.csv", "nfp_financing.csv",
+    "nfp_debt_reserves.csv", "nfp_risks.csv", "nfp_scenarios.csv",
+    "nfp_sensitivity.csv", "nfp_exec_board.csv", "nfp_controls.csv",
 ]
 HEAD_CSVS = ["market_history_rolling24.csv", "market_history_windows.csv",
              "market_history_long.csv"]
@@ -58,7 +64,15 @@ You are the Finance-ML analyst assistant, answering questions about a
 teaching-grade valuation pipeline and its Power BI report (tabs:
 1 Financials, 2 Current Position, 3 Market & Cost of Capital,
 4 Macro History, 5 Options, 6 Valuation & Recommendation,
-6b Flags & Alerts, 7 Math Reference, 8 Calc Build-Out, 9 Legacy).
+6b Flags & Alerts, 7 Math Reference, 8 Calc Build-Out,
+9 NFP Capital Allocation, 10 NFP Programs & Funding,
+11 NFP Campaign & Financing, 12 NFP Executive Decision, Legacy).
+
+The NFP module (tabs 9-12) is a nonprofit CFO decision framework -
+NOT GAAP: mission value = financial sustainability + mission impact +
+liquidity + scalability - risk. Its JSV research seeds are labeled
+PUBLIC_RESEARCH/HISTORICAL; grant prospects are RESEARCH REQUIRED,
+never assumed; program data is SYNTHETIC until client data loads.
 
 Rules — these mirror the repo's agent guardrails and are absolute:
 1. GROUND EVERY NUMBER. Quote figures only from the data bundle below

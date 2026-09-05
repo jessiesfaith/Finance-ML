@@ -1,0 +1,174 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "9939822edb2a0ee3fe9a",
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f0b140ab0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "nfp_scenarios"
+              }
+            },
+            "Property": "tab"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "t",
+              "Entity": "nfp_scenarios",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "t"
+                          }
+                        },
+                        "Property": "tab"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'CAMPAIGN'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "position": {
+    "x": 165,
+    "y": 1885,
+    "height": 240,
+    "width": 2670,
+    "z": 15000,
+    "tabOrder": 15000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_scenarios"
+                    }
+                  },
+                  "Property": "scenario"
+                }
+              },
+              "queryRef": "nfp_scenarios.scenario",
+              "nativeQueryRef": "scenario",
+              "displayName": "scenario",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_scenarios"
+                    }
+                  },
+                  "Property": "total_funding"
+                }
+              },
+              "queryRef": "nfp_scenarios.total_funding",
+              "nativeQueryRef": "total_funding",
+              "displayName": "new gifts $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_scenarios"
+                    }
+                  },
+                  "Property": "total_cost"
+                }
+              },
+              "queryRef": "nfp_scenarios.total_cost",
+              "nativeQueryRef": "total_cost",
+              "displayName": "construction $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_scenarios"
+                    }
+                  },
+                  "Property": "funding_gap"
+                }
+              },
+              "queryRef": "nfp_scenarios.funding_gap",
+              "nativeQueryRef": "funding_gap",
+              "displayName": "gap $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_scenarios"
+                    }
+                  },
+                  "Property": "recommendation"
+                }
+              },
+              "queryRef": "nfp_scenarios.recommendation",
+              "nativeQueryRef": "recommendation",
+              "displayName": "what to do"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_scenarios"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

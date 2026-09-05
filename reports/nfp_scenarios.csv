@@ -1,0 +1,9 @@
+row_id,tab,scenario,total_funding,total_cost,funding_gap,months_cash_end,reserve_draw_needed,participants,cost_per_participant,recommendation,value_class
+R001,ORG,BASE,5310000.0,5400000.0,-90000.0,3.8,0.0,3740,1444.0,ACT: close the gap via the solution engine,MODEL_OUTPUT
+R002,ORG,UPSIDE,5530500.0,5400000.0,130500.0,4.29,0.0,3740,1444.0,HOLD COURSE,MODEL_OUTPUT
+R003,ORG,DOWNSIDE,4845000.0,5879400.0,-1034400.0,1.7,584400.0,3366,1747.0,"ACT NOW: below months-cash policy - draw reserve, cut cost, or raise bridge funding",MODEL_OUTPUT
+R004,ORG,STRESS,4765000.0,6210000.0,-1445000.0,0.79,995000.0,2992,2076.0,"ACT NOW: below months-cash policy - draw reserve, cut cost, or raise bridge funding",MODEL_OUTPUT
+R005,FUNDRAISING,STRESS,4738000.0,5637000.0,-899000.0,2.0,449000.0,3740,1507.0,"ACT NOW: below months-cash policy - draw reserve, cut cost, or raise bridge funding",MODEL_OUTPUT
+R006,CAMPAIGN,BASE,2460000.0,5400000.0,0.0,,,,,HOLD COURSE,MODEL_OUTPUT
+R007,CAMPAIGN,DOWNSIDE,2091000.0,5940000.0,-909000.0,,,,,"Bridge via LOC/pledge acceleration or reduce scope (gap $909,000)",MODEL_OUTPUT
+R008,CAMPAIGN,STRESS,1722000.0,6480000.0,-1818000.0,,,,,"Bridge via LOC/pledge acceleration or reduce scope (gap $1,818,000)",MODEL_OUTPUT

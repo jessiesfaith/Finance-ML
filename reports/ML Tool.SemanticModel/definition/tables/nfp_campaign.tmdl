@@ -1,0 +1,92 @@
+/// Curated NFP export: capital campaign incl. sources & uses control.
+table nfp_campaign
+	lineageTag: 7d96d79c-4aa2-4d6c-acc3-fe88c8c3fb89
+
+	column row_id
+		dataType: string
+		lineageTag: 652385f1-19ee-4f5b-a145-c12efb3fe44e
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_id
+		dataType: string
+		lineageTag: ebc0022a-f2d5-4247-ae89-a8f629c97c22
+		summarizeBy: none
+		sourceColumn: item_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column section
+		dataType: string
+		lineageTag: ed19d176-6810-47fc-9783-3f2c02a6863d
+		summarizeBy: none
+		sourceColumn: section
+
+		annotation SummarizationSetBy = Automatic
+
+	column item
+		dataType: string
+		lineageTag: b44ac872-e803-4cec-8673-28455f8c4e85
+		summarizeBy: none
+		sourceColumn: item
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount
+		dataType: double
+		lineageTag: 1df96d9c-7d2f-4bc5-8174-ae832bf2a57a
+		summarizeBy: none
+		sourceColumn: amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: aa880c98-25dd-4e74-be41-649633f7b7ef
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: 31c4243b-a88b-48c3-b3b6-954d422f7578
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: a703fcea-a02a-4fe9-a934-4c569dc054dd
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_campaign = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_campaign.csv"),
+				    [Delimiter = ",", Columns = 8, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "item_id", "section", "item", "amount", "value_class", "source", "note"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"item_id", type text},
+				    {"section", type text},
+				    {"item", type text},
+				    {"amount", type number},
+				    {"value_class", type text},
+				    {"source", type text},
+				    {"note", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

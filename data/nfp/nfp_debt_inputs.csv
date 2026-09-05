@@ -1,0 +1,3 @@
+debt_id,instrument,lender,original_amount,balance,as_of_date,rate_pct,status,value_class,source,note
+D-HIST-1,COVID-era operating support loan,Jewish Community Response and Impact Fund,600000,200000,2023-06-30,0.0,HISTORICAL,PUBLIC_RESEARCH,Owner-provided build prompt 2026-09-05 citing FY2023 public reporting,"HISTORICAL DEBT - NOT CURRENT DEBT. Unsecured, interest-free, ~50K quarterly repayment from 2022; ~150K current + ~50K long-term at 2023-06-30; public information indicates since PAID IN FULL"
+D-CUR-1,Bank line of credit,,,,,,RESEARCH,PUBLIC_RESEARCH,Owner-provided build prompt 2026-09-05,NO CURRENT LOC CONFIRMED FROM PUBLIC DATA (not the same as no LOC exists) - RESEARCH REQUIRED

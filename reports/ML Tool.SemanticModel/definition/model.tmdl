@@ -9,7 +9,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["finance_scenario_report","client_fs_ufcf","client_fs_statements","client_fs_income_walk","client_fs_valuation_inputs","client_fs_controls","client_fs_review","market_rf_policy","market_history_rolling24","client_fs_projects","client_fs_sensitivity","market_history_windows","client_fs_option_sensitivity","client_fs_option_verdicts","market_history_long","client_fs_option_sizing","client_fs_flags"]
+annotation PBI_QueryOrder = ["finance_scenario_report","client_fs_ufcf","client_fs_statements","client_fs_income_walk","client_fs_valuation_inputs","client_fs_controls","client_fs_review","market_rf_policy","market_history_rolling24","client_fs_projects","client_fs_sensitivity","market_history_windows","client_fs_option_sensitivity","client_fs_option_verdicts","market_history_long","client_fs_option_sizing","client_fs_flags","nfp_settings","nfp_alternatives","nfp_programs","nfp_solutions","nfp_grants","nfp_funding_cliff","nfp_pipeline","nfp_calendar","nfp_campaign","nfp_pledges","nfp_project_cash","nfp_financing","nfp_debt_reserves","nfp_risks","nfp_scenarios","nfp_sensitivity","nfp_exec_board","nfp_controls"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
@@ -33,3 +33,22 @@ ref table client_fs_option_sizing
 ref cultureInfo en-US
 
 ref table client_fs_flags
+
+ref table nfp_settings
+ref table nfp_alternatives
+ref table nfp_programs
+ref table nfp_solutions
+ref table nfp_grants
+ref table nfp_funding_cliff
+ref table nfp_pipeline
+ref table nfp_calendar
+ref table nfp_campaign
+ref table nfp_pledges
+ref table nfp_project_cash
+ref table nfp_financing
+ref table nfp_debt_reserves
+ref table nfp_risks
+ref table nfp_scenarios
+ref table nfp_sensitivity
+ref table nfp_exec_board
+ref table nfp_controls

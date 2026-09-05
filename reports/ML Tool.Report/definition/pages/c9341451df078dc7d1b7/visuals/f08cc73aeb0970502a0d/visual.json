@@ -1,0 +1,267 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "f08cc73aeb0970502a0d",
+  "position": {
+    "x": 165,
+    "y": 185,
+    "height": 340,
+    "width": 2670,
+    "z": 4000,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_programs"
+                    }
+                  },
+                  "Property": "program"
+                }
+              },
+              "queryRef": "nfp_programs.program",
+              "nativeQueryRef": "program",
+              "displayName": "program",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_programs"
+                    }
+                  },
+                  "Property": "participants"
+                }
+              },
+              "queryRef": "nfp_programs.participants",
+              "nativeQueryRef": "participants",
+              "displayName": "served"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_programs"
+                    }
+                  },
+                  "Property": "utilization_pct"
+                }
+              },
+              "queryRef": "nfp_programs.utilization_pct",
+              "nativeQueryRef": "utilization_pct",
+              "displayName": "utilization %"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_programs"
+                    }
+                  },
+                  "Property": "total_funding"
+                }
+              },
+              "queryRef": "nfp_programs.total_funding",
+              "nativeQueryRef": "total_funding",
+              "displayName": "funding $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_programs"
+                    }
+                  },
+                  "Property": "total_cost"
+                }
+              },
+              "queryRef": "nfp_programs.total_cost",
+              "nativeQueryRef": "total_cost",
+              "displayName": "cost $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_programs"
+                    }
+                  },
+                  "Property": "funding_gap"
+                }
+              },
+              "queryRef": "nfp_programs.funding_gap",
+              "nativeQueryRef": "funding_gap",
+              "displayName": "gap $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_programs"
+                    }
+                  },
+                  "Property": "cost_per_participant"
+                }
+              },
+              "queryRef": "nfp_programs.cost_per_participant",
+              "nativeQueryRef": "cost_per_participant",
+              "displayName": "cost / participant"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_programs"
+                    }
+                  },
+                  "Property": "self_sufficiency_pct"
+                }
+              },
+              "queryRef": "nfp_programs.self_sufficiency_pct",
+              "nativeQueryRef": "self_sufficiency_pct",
+              "displayName": "self-suff %"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_programs"
+                    }
+                  },
+                  "Property": "unrestricted_subsidy"
+                }
+              },
+              "queryRef": "nfp_programs.unrestricted_subsidy",
+              "nativeQueryRef": "unrestricted_subsidy",
+              "displayName": "unrestr. subsidy $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_programs"
+                    }
+                  },
+                  "Property": "grant_dependency_pct"
+                }
+              },
+              "queryRef": "nfp_programs.grant_dependency_pct",
+              "nativeQueryRef": "grant_dependency_pct",
+              "displayName": "grant dep %"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_programs"
+                    }
+                  },
+                  "Property": "probability_weighted_gap"
+                }
+              },
+              "queryRef": "nfp_programs.probability_weighted_gap",
+              "nativeQueryRef": "probability_weighted_gap",
+              "displayName": "prob-wtd gap $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_programs"
+                    }
+                  },
+                  "Property": "mission_score"
+                }
+              },
+              "queryRef": "nfp_programs.mission_score",
+              "nativeQueryRef": "mission_score",
+              "displayName": "mission /10"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_programs"
+                    }
+                  },
+                  "Property": "classification"
+                }
+              },
+              "queryRef": "nfp_programs.classification",
+              "nativeQueryRef": "classification",
+              "displayName": "classification"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_programs"
+                    }
+                  },
+                  "Property": "risk_flag"
+                }
+              },
+              "queryRef": "nfp_programs.risk_flag",
+              "nativeQueryRef": "risk_flag",
+              "displayName": "flag"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_programs"
+                    }
+                  },
+                  "Property": "verdict"
+                }
+              },
+              "queryRef": "nfp_programs.verdict",
+              "nativeQueryRef": "verdict",
+              "displayName": "verdict"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_programs"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

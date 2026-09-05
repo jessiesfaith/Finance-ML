@@ -1,0 +1,9 @@
+row_id,item_id,channel,activity,fiscal_month,calendar_month,date,value_class,note
+R001,C-1,ANNUAL CAMPAIGN,FY2026 Annual Community Campaign kickoff,Q1,,,PUBLIC_RESEARCH,DATE TO BE CONFIRMED INTERNALLY
+R002,C-2,ANNUAL CAMPAIGN,Campaign ambassadors / report-in sessions,,,,PUBLIC_RESEARCH,DATE TO BE CONFIRMED INTERNALLY
+R003,C-3,EVENTS,Major fundraising event,,,,PUBLIC_RESEARCH,DATE TO BE CONFIRMED INTERNALLY
+R004,C-4,CAPITAL CAMPAIGN,Capital campaign activity,,,,PUBLIC_RESEARCH,DATE TO BE CONFIRMED INTERNALLY
+R005,C-5,LEGACY GIVING,Legacy giving activity,,,,PUBLIC_RESEARCH,DATE TO BE CONFIRMED INTERNALLY
+R006,C-6,ENDOWMENT,Endowment / donor-advised fund activity,,,,PUBLIC_RESEARCH,DATE TO BE CONFIRMED INTERNALLY
+R007,C-7,GRANTS,SYNTHETIC Funder C renewal application,,October,2026-10-15,SYNTHETIC,Demonstration deadline tied to G-SYN-3
+R008,C-8,SPECIAL,Special / emergency campaign capability,,,,PUBLIC_RESEARCH,As needed

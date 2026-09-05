@@ -1,0 +1,26 @@
+row_id,setting_id,value,unit,description,value_class
+R001,available_capital,250000,USD,Unrestricted capital being allocated (globally editable: 100K/250K/500K/1M...),ASSUMPTION
+R002,analysis_period_years,5,years,Analysis horizon,ASSUMPTION
+R003,board_discount_rate_pct,5.0,pct,Opportunity cost / board discount rate,ASSUMPTION
+R004,inflation_pct,3.0,pct,General inflation,ASSUMPTION
+R005,construction_inflation_pct,5.0,pct,Construction cost escalation,ASSUMPTION
+R006,expected_investment_return_pct,6.0,pct,Expected long-run portfolio return (gross),ASSUMPTION
+R007,investment_fees_pct,0.5,pct,Investment management fees,ASSUMPTION
+R008,spending_rate_pct,4.0,pct,Annual mission distribution rate on invested funds,ASSUMPTION
+R009,cash_yield_pct,3.0,pct,Yield on operating cash,ASSUMPTION
+R010,borrowing_rate_pct,7.0,pct,LOC / borrowing rate,ASSUMPTION
+R011,loc_commitment_fee_pct,0.25,pct,LOC commitment fee on limit,ASSUMPTION
+R012,months_cash_policy,3.0,months,Board minimum months of cash,ASSUMPTION
+R013,unrestricted_liquid_cash,1800000,USD,Unrestricted liquid cash today (SYNTHETIC until client data),SYNTHETIC
+R014,avg_monthly_operating_expense,450000,USD,Average monthly operating cash expense (SYNTHETIC),SYNTHETIC
+R015,org_annual_expense,5400000,USD,Organization total annual expense (SYNTHETIC; programs+admin),SYNTHETIC
+R016,admin_fundraising_expense,400000,USD,Admin + fundraising expense outside programs (SYNTHETIC),SYNTHETIC
+R017,risk_appetite,MODERATE,text,Board risk appetite (ERM),ASSUMPTION
+R018,analysis_date,2026-09-30,date,As-of date for cliff windows and forecasts,ASSUMPTION
+R019,weight_mission,30,pct,Decision weight: mission impact,ASSUMPTION
+R020,weight_financial,25,pct,Decision weight: financial sustainability,ASSUMPTION
+R021,weight_liquidity,15,pct,Decision weight: liquidity,ASSUMPTION
+R022,weight_risk,15,pct,Decision weight: risk (inverse),ASSUMPTION
+R023,weight_scalability,10,pct,Decision weight: scalability,ASSUMPTION
+R024,weight_strategic,5,pct,Decision weight: strategic alignment,ASSUMPTION
+R025,org_campaign_other_revenue,800000,USD,Annual campaign + other org-level unrestricted revenue not tied to programs (SYNTHETIC),SYNTHETIC

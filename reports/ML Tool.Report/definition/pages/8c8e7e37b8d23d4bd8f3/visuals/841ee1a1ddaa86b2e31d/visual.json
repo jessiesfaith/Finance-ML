@@ -1,0 +1,117 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "841ee1a1ddaa86b2e31d",
+  "position": {
+    "x": 165,
+    "y": 185,
+    "height": 480,
+    "width": 1600,
+    "z": 4000,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_campaign"
+                    }
+                  },
+                  "Property": "section"
+                }
+              },
+              "queryRef": "nfp_campaign.section",
+              "nativeQueryRef": "section",
+              "displayName": "section",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_campaign"
+                    }
+                  },
+                  "Property": "item"
+                }
+              },
+              "queryRef": "nfp_campaign.item",
+              "nativeQueryRef": "item",
+              "displayName": "item"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_campaign"
+                    }
+                  },
+                  "Property": "amount"
+                }
+              },
+              "queryRef": "nfp_campaign.amount",
+              "nativeQueryRef": "amount",
+              "displayName": "amount $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_campaign"
+                    }
+                  },
+                  "Property": "value_class"
+                }
+              },
+              "queryRef": "nfp_campaign.value_class",
+              "nativeQueryRef": "value_class",
+              "displayName": "label"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_campaign"
+                    }
+                  },
+                  "Property": "note"
+                }
+              },
+              "queryRef": "nfp_campaign.note",
+              "nativeQueryRef": "note",
+              "displayName": "note"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_campaign"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

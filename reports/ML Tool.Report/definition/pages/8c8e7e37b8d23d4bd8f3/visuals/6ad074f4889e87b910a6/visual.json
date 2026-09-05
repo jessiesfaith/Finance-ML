@@ -1,0 +1,177 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "6ad074f4889e87b910a6",
+  "position": {
+    "x": 165,
+    "y": 730,
+    "height": 380,
+    "width": 2670,
+    "z": 9000,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_project_cash"
+                    }
+                  },
+                  "Property": "month"
+                }
+              },
+              "queryRef": "nfp_project_cash.month",
+              "nativeQueryRef": "month",
+              "displayName": "month",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_project_cash"
+                    }
+                  },
+                  "Property": "beginning_cash"
+                }
+              },
+              "queryRef": "nfp_project_cash.beginning_cash",
+              "nativeQueryRef": "beginning_cash",
+              "displayName": "beginning $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_project_cash"
+                    }
+                  },
+                  "Property": "campaign_receipts"
+                }
+              },
+              "queryRef": "nfp_project_cash.campaign_receipts",
+              "nativeQueryRef": "campaign_receipts",
+              "displayName": "receipts $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_project_cash"
+                    }
+                  },
+                  "Property": "debt_draws"
+                }
+              },
+              "queryRef": "nfp_project_cash.debt_draws",
+              "nativeQueryRef": "debt_draws",
+              "displayName": "LOC draw $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_project_cash"
+                    }
+                  },
+                  "Property": "project_spending"
+                }
+              },
+              "queryRef": "nfp_project_cash.project_spending",
+              "nativeQueryRef": "project_spending",
+              "displayName": "spending $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_project_cash"
+                    }
+                  },
+                  "Property": "financing_costs"
+                }
+              },
+              "queryRef": "nfp_project_cash.financing_costs",
+              "nativeQueryRef": "financing_costs",
+              "displayName": "interest $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_project_cash"
+                    }
+                  },
+                  "Property": "ending_cash"
+                }
+              },
+              "queryRef": "nfp_project_cash.ending_cash",
+              "nativeQueryRef": "ending_cash",
+              "displayName": "ending $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_project_cash"
+                    }
+                  },
+                  "Property": "loc_balance"
+                }
+              },
+              "queryRef": "nfp_project_cash.loc_balance",
+              "nativeQueryRef": "loc_balance",
+              "displayName": "LOC balance $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_project_cash"
+                    }
+                  },
+                  "Property": "warning"
+                }
+              },
+              "queryRef": "nfp_project_cash.warning",
+              "nativeQueryRef": "warning",
+              "displayName": "warning"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_project_cash"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

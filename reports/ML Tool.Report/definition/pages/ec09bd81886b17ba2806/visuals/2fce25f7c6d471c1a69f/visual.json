@@ -1,0 +1,147 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "2fce25f7c6d471c1a69f",
+  "position": {
+    "x": 165,
+    "y": 1595,
+    "height": 280,
+    "width": 2670,
+    "z": 14000,
+    "tabOrder": 14000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_sensitivity"
+                    }
+                  },
+                  "Property": "rank"
+                }
+              },
+              "queryRef": "nfp_sensitivity.rank",
+              "nativeQueryRef": "rank",
+              "displayName": "rank",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_sensitivity"
+                    }
+                  },
+                  "Property": "driver"
+                }
+              },
+              "queryRef": "nfp_sensitivity.driver",
+              "nativeQueryRef": "driver",
+              "displayName": "driver"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_sensitivity"
+                    }
+                  },
+                  "Property": "metric"
+                }
+              },
+              "queryRef": "nfp_sensitivity.metric",
+              "nativeQueryRef": "metric",
+              "displayName": "metric"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_sensitivity"
+                    }
+                  },
+                  "Property": "base_value"
+                }
+              },
+              "queryRef": "nfp_sensitivity.base_value",
+              "nativeQueryRef": "base_value",
+              "displayName": "base"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_sensitivity"
+                    }
+                  },
+                  "Property": "downside_value"
+                }
+              },
+              "queryRef": "nfp_sensitivity.downside_value",
+              "nativeQueryRef": "downside_value",
+              "displayName": "downside"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_sensitivity"
+                    }
+                  },
+                  "Property": "upside_value"
+                }
+              },
+              "queryRef": "nfp_sensitivity.upside_value",
+              "nativeQueryRef": "upside_value",
+              "displayName": "upside"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_sensitivity"
+                    }
+                  },
+                  "Property": "swing"
+                }
+              },
+              "queryRef": "nfp_sensitivity.swing",
+              "nativeQueryRef": "swing",
+              "displayName": "swing $"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_sensitivity"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,164 @@
+/// Curated NFP export: development pipeline with probability-weighted values.
+table nfp_pipeline
+	lineageTag: ac8a6068-fcf5-4b1a-a20d-49ad57663be9
+
+	column row_id
+		dataType: string
+		lineageTag: 641d9446-1196-483b-b82a-9e7a1f876bb6
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column pipeline_id
+		dataType: string
+		lineageTag: ccb4a659-a759-44fd-a59b-3d8e0dd4b6ce
+		summarizeBy: none
+		sourceColumn: pipeline_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column donor_funder
+		dataType: string
+		lineageTag: ede88d5e-2b63-4696-99a8-86ca0cb2af6a
+		summarizeBy: none
+		sourceColumn: donor_funder
+
+		annotation SummarizationSetBy = Automatic
+
+	column stage
+		dataType: string
+		lineageTag: 0d9cfed4-c474-4994-bbac-a7ba7f89a9e3
+		summarizeBy: none
+		sourceColumn: stage
+
+		annotation SummarizationSetBy = Automatic
+
+	column potential_amount
+		dataType: double
+		lineageTag: f2df720a-fc64-469b-9b73-dced5c0ec107
+		summarizeBy: none
+		sourceColumn: potential_amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column probability_pct
+		dataType: double
+		lineageTag: e7a16b02-7981-48cf-86d3-17a2e5145159
+		summarizeBy: none
+		sourceColumn: probability_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column probability_basis
+		dataType: string
+		lineageTag: 570bf109-c6de-4eb5-930c-4f8a56a30c7d
+		summarizeBy: none
+		sourceColumn: probability_basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column ask_date
+		dataType: string
+		lineageTag: a037edd1-efbc-4a57-9c60-e11f086fc33a
+		summarizeBy: none
+		sourceColumn: ask_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_cash_date
+		dataType: string
+		lineageTag: 955a1ca1-6035-49ba-a079-af0d469bcca8
+		summarizeBy: none
+		sourceColumn: expected_cash_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column restricted
+		dataType: string
+		lineageTag: 3473e43a-15f9-409e-b962-f79b87fea74a
+		summarizeBy: none
+		sourceColumn: restricted
+
+		annotation SummarizationSetBy = Automatic
+
+	column program_id
+		dataType: string
+		lineageTag: d411975f-5f33-4e0c-a476-06dca1667786
+		summarizeBy: none
+		sourceColumn: program_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column owner_role
+		dataType: string
+		lineageTag: 4bc36983-dfb8-4c4d-adbf-fae9b9c19a95
+		summarizeBy: none
+		sourceColumn: owner_role
+
+		annotation SummarizationSetBy = Automatic
+
+	column next_action
+		dataType: string
+		lineageTag: 9c19a1fb-3c5c-408a-8c92-56a264f470c8
+		summarizeBy: none
+		sourceColumn: next_action
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: e7514e3e-1ee7-4012-973a-207a2292a95b
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_value
+		dataType: double
+		lineageTag: 150a5023-a46f-4995-8887-70396e7f4284
+		summarizeBy: none
+		sourceColumn: expected_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column cash_window
+		dataType: string
+		lineageTag: 699527cd-b49d-4ae2-ad9c-f197a7ecd524
+		summarizeBy: none
+		sourceColumn: cash_window
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_pipeline = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_pipeline.csv"),
+				    [Delimiter = ",", Columns = 16, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "pipeline_id", "donor_funder", "stage", "potential_amount", "probability_pct", "probability_basis", "ask_date", "expected_cash_date", "restricted", "program_id", "owner_role", "next_action", "value_class", "expected_value", "cash_window"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"pipeline_id", type text},
+				    {"donor_funder", type text},
+				    {"stage", type text},
+				    {"potential_amount", type number},
+				    {"probability_pct", type number},
+				    {"probability_basis", type text},
+				    {"ask_date", type text},
+				    {"expected_cash_date", type text},
+				    {"restricted", type text},
+				    {"program_id", type text},
+				    {"owner_role", type text},
+				    {"next_action", type text},
+				    {"value_class", type text},
+				    {"expected_value", type number},
+				    {"cash_window", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "6486221707ffd8b37583",
+  "position": {
+    "x": 165,
+    "y": 70,
+    "height": 56,
+    "width": 2670,
+    "z": 2000,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Anchor case: the Second Pool campaign \u2014 HISTORICAL PUBLIC INFORMATION (goal ~$7.0M; ~$2.34M donor-restricted at 2023-06-30; ~$4.66M remaining at that date). CURRENT STATUS REQUIRES UPDATE. The sources & uses plan is a SYNTHETIC demonstration that balances to the goal; restricted campaign cash is never treated as general liquidity.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,54 @@
+alternative_id,parameter,value
+ALT-1,name,Expand existing program (Early Childhood +40 seats)
+ALT-1,capex,130000
+ALT-1,working_capital,20000
+ALT-1,startup_other,100000
+ALT-1,incr_participants,40
+ALT-1,incr_earned_revenue,300000
+ALT-1,incr_grants,60000
+ALT-1,incr_restricted_contrib,20000
+ALT-1,incr_unrestricted_contrib,20000
+ALT-1,incr_personnel,250000
+ALT-1,incr_operating,60000
+ALT-1,incr_overhead,40000
+ALT-1,grant_renewal_pct,75
+ALT-1,donor_renewal_pct,85
+ALT-1,annual_growth_pct,3
+ALT-1,risk_rating,4
+ALT-1,scalability,6
+ALT-1,strategic,8
+ALT-1,mission_units,40
+ALT-2,name,Launch new program (teen wellness pilot)
+ALT-2,pilot_cost,90000
+ALT-2,startup_capital,250000
+ALT-2,incr_participants,60
+ALT-2,incr_earned_revenue,90000
+ALT-2,incr_grants,120000
+ALT-2,incr_restricted_contrib,30000
+ALT-2,incr_unrestricted_contrib,20000
+ALT-2,incr_personnel,180000
+ALT-2,incr_operating,50000
+ALT-2,incr_overhead,25000
+ALT-2,grant_renewal_pct,60
+ALT-2,donor_renewal_pct,75
+ALT-2,annual_growth_pct,10
+ALT-2,risk_rating,7
+ALT-2,scalability,8
+ALT-2,strategic,9
+ALT-2,mission_units,60
+ALT-3,name,Invest / reserve capital
+ALT-3,risk_rating,3
+ALT-3,scalability,4
+ALT-3,strategic,5
+ALT-3,mission_units,0
+ALT-4,name,Status quo / retain cash
+ALT-4,risk_rating,2
+ALT-4,scalability,2
+ALT-4,strategic,4
+ALT-4,mission_units,0
+ALT-5,name,Capital project / reduce financing need
+ALT-5,mission_benefit_note,Accelerates the capital project; community facility capacity
+ALT-5,risk_rating,5
+ALT-5,scalability,5
+ALT-5,strategic,7
+ALT-5,mission_units,15

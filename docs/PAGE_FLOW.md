@@ -179,3 +179,19 @@ passed). Feed = reports/client_fs_flags.csv, rebuilt by
 read; thresholds identical to tab 2's verdict cards and tab 5's three
 tests. **Ends by handing** the review list to the human — the engine
 never approves.
+
+---
+
+## TABS 9-12 — NFP CFO Decision Intelligence Module (added #95)
+
+**Question chain:** where should the next dollar go? (9) → how are the
+programs doing and what should management do? (10) → how should a big
+project be funded? (11) → what does the CFO tell the board? (12).
+Engine: `src/financials/nfp.py`; seeds: `data/nfp/*.csv`; rebuild:
+`python src/build_nfp.py`. Framework = management/board decision model
+(NOT GAAP): mission value = financial sustainability + mission impact
++ liquidity + scalability − risk, raw metrics always shown beside the
+composite. JSV is the first research case, never hard-coded: settings
+are org-agnostic, historical facts carry PUBLIC_RESEARCH labels, grant
+prospects are RESEARCH REQUIRED, program data is SYNTHETIC until
+client data loads.

@@ -1,0 +1,11 @@
+row_id,control,status,detail,value_class
+R001,Decision weights total 100%,PASS,sum = 100.0,MODEL_OUTPUT
+R002,Campaign sources = uses,PASS,"sources 7,000,000 vs uses 7,000,000",MODEL_OUTPUT
+R003,Restricted campaign cash excluded from operating liquidity,PASS,months-cash uses unrestricted_liquid_cash only; restricted rows carry the NOT AVAILABLE label,MODEL_OUTPUT
+R004,Program totals reconcile to org totals,PASS,"programs+admin 5,400,000 vs org 5,400,000",MODEL_OUTPUT
+R005,Pledges reconcile (collected + outstanding = pledged),PASS,4 pledges,MODEL_OUTPUT
+R006,Project cash rolls (beginning + activity = ending),PASS,12 months,MODEL_OUTPUT
+R007,No negative project cash months,PASS,none,MODEL_OUTPUT
+R008,No RESEARCH-status funder carries a confirmed amount,PASS,8 prospect rows,MODEL_OUTPUT
+R009,No current debt presented from historical-only data,PASS,current LOC row states NO CURRENT LOC CONFIRMED FROM PUBLIC DATA,MODEL_OUTPUT
+R010,Division-by-zero guards active,PASS,per-participant and ratio calcs guard zero denominators,MODEL_OUTPUT

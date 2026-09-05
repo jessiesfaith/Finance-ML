@@ -1,0 +1,26 @@
+setting_id,value,unit,description,value_class
+available_capital,250000,USD,Unrestricted capital being allocated (globally editable: 100K/250K/500K/1M...),ASSUMPTION
+analysis_period_years,5,years,Analysis horizon,ASSUMPTION
+board_discount_rate_pct,5.0,pct,Opportunity cost / board discount rate,ASSUMPTION
+inflation_pct,3.0,pct,General inflation,ASSUMPTION
+construction_inflation_pct,5.0,pct,Construction cost escalation,ASSUMPTION
+expected_investment_return_pct,6.0,pct,Expected long-run portfolio return (gross),ASSUMPTION
+investment_fees_pct,0.5,pct,Investment management fees,ASSUMPTION
+spending_rate_pct,4.0,pct,Annual mission distribution rate on invested funds,ASSUMPTION
+cash_yield_pct,3.0,pct,Yield on operating cash,ASSUMPTION
+borrowing_rate_pct,7.0,pct,LOC / borrowing rate,ASSUMPTION
+loc_commitment_fee_pct,0.25,pct,LOC commitment fee on limit,ASSUMPTION
+months_cash_policy,3.0,months,Board minimum months of cash,ASSUMPTION
+unrestricted_liquid_cash,1800000,USD,Unrestricted liquid cash today (SYNTHETIC until client data),SYNTHETIC
+avg_monthly_operating_expense,450000,USD,Average monthly operating cash expense (SYNTHETIC),SYNTHETIC
+org_annual_expense,5400000,USD,Organization total annual expense (SYNTHETIC; programs+admin),SYNTHETIC
+admin_fundraising_expense,400000,USD,Admin + fundraising expense outside programs (SYNTHETIC),SYNTHETIC
+risk_appetite,MODERATE,text,Board risk appetite (ERM),ASSUMPTION
+analysis_date,2026-09-30,date,As-of date for cliff windows and forecasts,ASSUMPTION
+weight_mission,30,pct,Decision weight: mission impact,ASSUMPTION
+weight_financial,25,pct,Decision weight: financial sustainability,ASSUMPTION
+weight_liquidity,15,pct,Decision weight: liquidity,ASSUMPTION
+weight_risk,15,pct,Decision weight: risk (inverse),ASSUMPTION
+weight_scalability,10,pct,Decision weight: scalability,ASSUMPTION
+weight_strategic,5,pct,Decision weight: strategic alignment,ASSUMPTION
+org_campaign_other_revenue,800000,USD,Annual campaign + other org-level unrestricted revenue not tied to programs (SYNTHETIC),SYNTHETIC

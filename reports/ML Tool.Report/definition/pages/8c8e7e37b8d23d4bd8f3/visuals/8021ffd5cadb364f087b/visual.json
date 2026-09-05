@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "8021ffd5cadb364f087b",
+  "position": {
+    "x": 1800,
+    "y": 495,
+    "height": 170,
+    "width": 1035,
+    "z": 7000,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Reading: $1.2M pledged, $400K collected (33%), $800K outstanding with $675K expected after collection probabilities. Expected pledge cash is what the LOC bridge repayment plan leans on \u2014 if collections slip, the financing table's delay row prices the alternative.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

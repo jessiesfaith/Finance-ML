@@ -1,0 +1,101 @@
+/// Curated NFP export: ranked driver sensitivity on the org funding gap.
+table nfp_sensitivity
+	lineageTag: 4d272168-5c3f-4af5-a348-97586b0cbd94
+
+	column row_id
+		dataType: string
+		lineageTag: 10e89874-7bb0-4084-88e9-ecf506641892
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column driver
+		dataType: string
+		lineageTag: 7c497c49-bb58-4017-ac5b-2f107c457266
+		summarizeBy: none
+		sourceColumn: driver
+
+		annotation SummarizationSetBy = Automatic
+
+	column metric
+		dataType: string
+		lineageTag: 577bedbf-f505-4afd-98cc-905b4449b1b0
+		summarizeBy: none
+		sourceColumn: metric
+
+		annotation SummarizationSetBy = Automatic
+
+	column base_value
+		dataType: double
+		lineageTag: 4a128140-408e-4bb2-ba16-6d47178b489a
+		summarizeBy: none
+		sourceColumn: base_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column downside_value
+		dataType: double
+		lineageTag: c3de1afb-a9a7-4838-9fbd-6b2d5f397f9e
+		summarizeBy: none
+		sourceColumn: downside_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column upside_value
+		dataType: double
+		lineageTag: 1946836a-ee31-48fc-b569-26da492fdf97
+		summarizeBy: none
+		sourceColumn: upside_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column swing
+		dataType: double
+		lineageTag: 9e4ba631-5b80-4754-a222-da9fa0045568
+		summarizeBy: none
+		sourceColumn: swing
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: f2534a7b-53c4-4e65-a2ce-355c0e2b81b0
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column rank
+		dataType: double
+		lineageTag: 4ecee740-401b-446b-bf96-021ea7fb6e3d
+		summarizeBy: none
+		sourceColumn: rank
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_sensitivity = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_sensitivity.csv"),
+				    [Delimiter = ",", Columns = 9, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "driver", "metric", "base_value", "downside_value", "upside_value", "swing", "value_class", "rank"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"driver", type text},
+				    {"metric", type text},
+				    {"base_value", type number},
+				    {"downside_value", type number},
+				    {"upside_value", type number},
+				    {"swing", type number},
+				    {"value_class", type text},
+				    {"rank", type number}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

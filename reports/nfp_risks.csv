@@ -1,0 +1,15 @@
+row_id,risk_id,risk,likelihood,impact,response,mitigation,inherent_note,residual_likelihood,owner_role,monitoring_metric,inherent_score,residual_score,value_class
+R001,RK-1,Grant renewal failure (largest program grants),3,4,RISK REDUCTION,Diversify funders; multi-year grants; renewal calendar,,2,CFO,Funding cliff report,12,8,ASSUMPTION
+R002,RK-2,Donor concentration,3,4,RISK REDUCTION,Broaden base; increase unrestricted giving,,2,Development Dir,Top-donor dependency %,12,8,ASSUMPTION
+R003,RK-6,Construction cost overrun (campaign project),3,4,RISK REDUCTION,Contingency; fixed-price bids; phased scope,,2,CFO,Budget vs contract,12,8,ASSUMPTION
+R004,RK-3,Liquidity shortfall below policy,2,5,RISK RETENTION,Months-cash monitoring; reserve; LOC capacity research,,2,CFO,Months cash on hand,10,10,ASSUMPTION
+R005,RK-12,Security / facility incident,2,5,RISK TRANSFER,Insurance; security grants (Cal OES prospect); protocols,,2,COO,Incident log,10,10,ASSUMPTION
+R006,RK-5,Personnel cost inflation / key staff loss,3,3,RISK REDUCTION,Phased hiring; shared services,,2,CEO,Personnel % of cost,9,6,ASSUMPTION
+R007,RK-9,Investment market drawdown,3,3,RISK RETENTION,Horizon matching; spending-rate policy,,2,Finance Committee,Portfolio vs policy,9,6,ASSUMPTION
+R008,RK-11,Compliance / grant reporting failure,2,4,RISK REDUCTION,Reporting calendar; owner per grant,,1,CFO,Reports on time %,8,4,ASSUMPTION
+R009,RK-13,Cyber incident,2,4,RISK TRANSFER,Cyber insurance; access controls,,2,COO,Control audits,8,8,ASSUMPTION
+R010,RK-4,Program demand decline,2,3,RISK REDUCTION,Utilization tracking; outreach; pricing review,,2,Program Directors,Capacity utilization,6,6,ASSUMPTION
+R011,RK-7,Pledge collection failure,2,3,RISK REDUCTION,Signed pledge documentation; collection schedule,,2,Development Dir,Pledge collection %,6,6,ASSUMPTION
+R012,RK-14,Mission drift from revenue chasing,2,3,RISK REDUCTION,Mission score in every decision; board review,,1,CEO,Mission-weighted scoring,6,3,ASSUMPTION
+R013,RK-10,Restricted funds misapplication,1,5,RISK AVOIDANCE,Restricted-fund tracking control; release approvals,,1,CFO,Restricted roll-forward,5,5,ASSUMPTION
+R014,RK-8,Interest rate increase on bridge financing,2,2,RISK RETENTION,Limit LOC draw period; repay from pledges,,1,CFO,LOC balance x rate,4,2,ASSUMPTION

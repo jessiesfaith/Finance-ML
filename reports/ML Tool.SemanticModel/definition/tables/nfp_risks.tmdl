@@ -1,0 +1,146 @@
+/// Curated NFP export: ERM risk register (likelihood x impact, response, residual).
+table nfp_risks
+	lineageTag: f24b757b-4f1b-4f19-b34d-b1223bb79916
+
+	column row_id
+		dataType: string
+		lineageTag: f347ed1c-a95f-464e-9c1e-175df18645ee
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column risk_id
+		dataType: string
+		lineageTag: 9e357017-2566-4971-80bf-26b3369eeafb
+		summarizeBy: none
+		sourceColumn: risk_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column risk
+		dataType: string
+		lineageTag: 0a239391-a50e-4400-b71d-37fcb99d68b3
+		summarizeBy: none
+		sourceColumn: risk
+
+		annotation SummarizationSetBy = Automatic
+
+	column likelihood
+		dataType: double
+		lineageTag: 1431a3a8-e9a7-4ac3-85ba-0f3a8e7d76c8
+		summarizeBy: none
+		sourceColumn: likelihood
+
+		annotation SummarizationSetBy = Automatic
+
+	column impact
+		dataType: double
+		lineageTag: 7b78bf9c-93b4-4a12-8522-7e12fdc7c76a
+		summarizeBy: none
+		sourceColumn: impact
+
+		annotation SummarizationSetBy = Automatic
+
+	column response
+		dataType: string
+		lineageTag: 3dfd4e7b-d618-4692-90c8-001196d5dc9b
+		summarizeBy: none
+		sourceColumn: response
+
+		annotation SummarizationSetBy = Automatic
+
+	column mitigation
+		dataType: string
+		lineageTag: 58172b0c-db3b-4eee-a12d-e0d76ad89c00
+		summarizeBy: none
+		sourceColumn: mitigation
+
+		annotation SummarizationSetBy = Automatic
+
+	column inherent_note
+		dataType: double
+		lineageTag: 56759829-6e5f-4a26-9c71-3a60f360779a
+		summarizeBy: none
+		sourceColumn: inherent_note
+
+		annotation SummarizationSetBy = Automatic
+
+	column residual_likelihood
+		dataType: double
+		lineageTag: 1242078f-3c85-4358-a616-a645bce35ac6
+		summarizeBy: none
+		sourceColumn: residual_likelihood
+
+		annotation SummarizationSetBy = Automatic
+
+	column owner_role
+		dataType: string
+		lineageTag: d824c5bd-32f1-4da4-be76-991a1e7a4f7d
+		summarizeBy: none
+		sourceColumn: owner_role
+
+		annotation SummarizationSetBy = Automatic
+
+	column monitoring_metric
+		dataType: string
+		lineageTag: 5292d6e1-5c02-4091-825c-fb9a3aa2fdec
+		summarizeBy: none
+		sourceColumn: monitoring_metric
+
+		annotation SummarizationSetBy = Automatic
+
+	column inherent_score
+		dataType: double
+		lineageTag: 20ac5e0c-8291-44fa-9c39-640255e0df87
+		summarizeBy: none
+		sourceColumn: inherent_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column residual_score
+		dataType: double
+		lineageTag: 323f6eed-062e-4d53-8eda-479b76b71569
+		summarizeBy: none
+		sourceColumn: residual_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 385098ee-8027-4906-9dc1-cd4ae57f6726
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_risks = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_risks.csv"),
+				    [Delimiter = ",", Columns = 14, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "risk_id", "risk", "likelihood", "impact", "response", "mitigation", "inherent_note", "residual_likelihood", "owner_role", "monitoring_metric", "inherent_score", "residual_score", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"risk_id", type text},
+				    {"risk", type text},
+				    {"likelihood", type number},
+				    {"impact", type number},
+				    {"response", type text},
+				    {"mitigation", type text},
+				    {"inherent_note", type number},
+				    {"residual_likelihood", type number},
+				    {"owner_role", type text},
+				    {"monitoring_metric", type text},
+				    {"inherent_score", type number},
+				    {"residual_score", type number},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

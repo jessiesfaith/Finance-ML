@@ -1,0 +1,155 @@
+/// Curated NFP export: pledge collection tracking and expected cash.
+table nfp_pledges
+	lineageTag: 959713ed-cb05-4a4d-b9ce-87c6d7710f9d
+
+	column row_id
+		dataType: string
+		lineageTag: f22002ac-38ef-4228-8778-5e6ba41aa26e
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column pledge_id
+		dataType: string
+		lineageTag: c69eb596-beb1-4be3-a23f-90893833d319
+		summarizeBy: none
+		sourceColumn: pledge_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column donor
+		dataType: string
+		lineageTag: a9c5409d-4184-458a-a0c3-d957e14cd03d
+		summarizeBy: none
+		sourceColumn: donor
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount
+		dataType: double
+		lineageTag: 690dcdf0-922c-41b4-bc15-503783dcbb57
+		summarizeBy: none
+		sourceColumn: amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column collected
+		dataType: double
+		lineageTag: 87d2b611-67ab-4dd2-8a62-5082ae45e05d
+		summarizeBy: none
+		sourceColumn: collected
+
+		annotation SummarizationSetBy = Automatic
+
+	column restriction
+		dataType: string
+		lineageTag: 8f1699c7-e668-44cd-aba3-fe816adfa29f
+		summarizeBy: none
+		sourceColumn: restriction
+
+		annotation SummarizationSetBy = Automatic
+
+	column signed
+		dataType: string
+		lineageTag: 0bdf45fa-577b-4898-8486-b25851c931c9
+		summarizeBy: none
+		sourceColumn: signed
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_date
+		dataType: string
+		lineageTag: 7bfdc9e5-b6e7-471c-ba46-f18094a1370f
+		summarizeBy: none
+		sourceColumn: expected_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column collection_probability_pct
+		dataType: double
+		lineageTag: 70d14e45-8fca-4795-8b3e-621522795807
+		summarizeBy: none
+		sourceColumn: collection_probability_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column days_past_due
+		dataType: double
+		lineageTag: f8bd483a-ce8c-4edd-9cd8-691bc6a7539c
+		summarizeBy: none
+		sourceColumn: days_past_due
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 269d04ee-df8b-4100-995a-1e1f398ab7a3
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column outstanding
+		dataType: double
+		lineageTag: c2aac599-acc8-4614-bcab-2f27bb4753d3
+		summarizeBy: none
+		sourceColumn: outstanding
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_pledge_cash
+		dataType: double
+		lineageTag: b8c87c77-5cef-446b-ad6f-7539ac353b0b
+		summarizeBy: none
+		sourceColumn: expected_pledge_cash
+
+		annotation SummarizationSetBy = Automatic
+
+	column collection_pct
+		dataType: double
+		lineageTag: b385f01c-4a66-4fcc-9bb9-b5d57d360ba1
+		summarizeBy: none
+		sourceColumn: collection_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column past_due_flag
+		dataType: string
+		lineageTag: 27907895-3f10-4071-8485-b9ae2833596e
+		summarizeBy: none
+		sourceColumn: past_due_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_pledges = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_pledges.csv"),
+				    [Delimiter = ",", Columns = 15, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "pledge_id", "donor", "amount", "collected", "restriction", "signed", "expected_date", "collection_probability_pct", "days_past_due", "value_class", "outstanding", "expected_pledge_cash", "collection_pct", "past_due_flag"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"pledge_id", type text},
+				    {"donor", type text},
+				    {"amount", type number},
+				    {"collected", type number},
+				    {"restriction", type text},
+				    {"signed", type text},
+				    {"expected_date", type text},
+				    {"collection_probability_pct", type number},
+				    {"days_past_due", type number},
+				    {"value_class", type text},
+				    {"outstanding", type number},
+				    {"expected_pledge_cash", type number},
+				    {"collection_pct", type number},
+				    {"past_due_flag", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

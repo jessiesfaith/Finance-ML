@@ -1,0 +1,137 @@
+/// Curated NFP export: expiring grants by window + renewal scenario strip.
+table nfp_funding_cliff
+	lineageTag: c7ba7eee-2715-42cb-bd02-616b50a63735
+
+	column row_id
+		dataType: string
+		lineageTag: 5a6f8fa6-992e-4ede-8f75-fe09a5736264
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column grant_id
+		dataType: string
+		lineageTag: 61109b11-24df-40de-b55e-6d9fc1b23f0a
+		summarizeBy: none
+		sourceColumn: grant_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column grant
+		dataType: string
+		lineageTag: f8c0d3b8-d16c-4c98-86c6-616c2d52c7b0
+		summarizeBy: none
+		sourceColumn: grant
+
+		annotation SummarizationSetBy = Automatic
+
+	column funder
+		dataType: string
+		lineageTag: 1029e95c-1e0d-498d-bd55-f80057d5ba9b
+		summarizeBy: none
+		sourceColumn: funder
+
+		annotation SummarizationSetBy = Automatic
+
+	column program_id
+		dataType: string
+		lineageTag: bf85afd8-e6c1-4e9f-bd75-2b105a8b1776
+		summarizeBy: none
+		sourceColumn: program_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column end_date
+		dataType: string
+		lineageTag: 9324f8dd-e021-4035-a0b2-25b3efb0c87f
+		summarizeBy: none
+		sourceColumn: end_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column window
+		dataType: string
+		lineageTag: 5d050872-429b-47a1-a0fc-5a488dc461e5
+		summarizeBy: none
+		sourceColumn: window
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount
+		dataType: double
+		lineageTag: d6f4a94b-408e-4c4b-81d9-566361f186fb
+		summarizeBy: none
+		sourceColumn: amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column renewal_probability_pct
+		dataType: double
+		lineageTag: db1fd1c2-0c4c-4d9f-840a-61498d868c7e
+		summarizeBy: none
+		sourceColumn: renewal_probability_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_renewal
+		dataType: double
+		lineageTag: e229de57-b25e-4eb2-a084-45bbf2867183
+		summarizeBy: none
+		sourceColumn: expected_renewal
+
+		annotation SummarizationSetBy = Automatic
+
+	column at_risk_funding
+		dataType: double
+		lineageTag: bff26b99-64f7-4af6-828a-103bc3ddc99d
+		summarizeBy: none
+		sourceColumn: at_risk_funding
+
+		annotation SummarizationSetBy = Automatic
+
+	column unrestricted_replacement_required
+		dataType: double
+		lineageTag: d1e6e7cc-97f8-4aec-baa0-6f0ab18508af
+		summarizeBy: none
+		sourceColumn: unrestricted_replacement_required
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 7b85b781-8d24-4064-94e5-965d3523aad1
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_funding_cliff = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_funding_cliff.csv"),
+				    [Delimiter = ",", Columns = 13, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "grant_id", "grant", "funder", "program_id", "end_date", "window", "amount", "renewal_probability_pct", "expected_renewal", "at_risk_funding", "unrestricted_replacement_required", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"grant_id", type text},
+				    {"grant", type text},
+				    {"funder", type text},
+				    {"program_id", type text},
+				    {"end_date", type text},
+				    {"window", type text},
+				    {"amount", type number},
+				    {"renewal_probability_pct", type number},
+				    {"expected_renewal", type number},
+				    {"at_risk_funding", type number},
+				    {"unrestricted_replacement_required", type number},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

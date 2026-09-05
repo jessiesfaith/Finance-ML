@@ -1,0 +1,101 @@
+/// Curated NFP export: fundraising calendar (dates to be confirmed internally).
+table nfp_calendar
+	lineageTag: 3f55eb26-3a1e-49ed-b95c-743f38379554
+
+	column row_id
+		dataType: string
+		lineageTag: 3e307d1d-fcab-4f46-8e04-f803fe5c1cca
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_id
+		dataType: string
+		lineageTag: c5e62375-37d8-4413-b4bd-c9a4cf33c637
+		summarizeBy: none
+		sourceColumn: item_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel
+		dataType: string
+		lineageTag: 337ff5f0-a6cb-47af-82bc-d6ccdcc843cf
+		summarizeBy: none
+		sourceColumn: channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column activity
+		dataType: string
+		lineageTag: a6df1d5a-76ee-45df-b7e4-42c14b943d03
+		summarizeBy: none
+		sourceColumn: activity
+
+		annotation SummarizationSetBy = Automatic
+
+	column fiscal_month
+		dataType: string
+		lineageTag: 76b9b4c4-f6e2-490d-a714-954de4d17d9e
+		summarizeBy: none
+		sourceColumn: fiscal_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column calendar_month
+		dataType: string
+		lineageTag: 2f1e9cb0-2f7b-4a59-a645-21c948fe001e
+		summarizeBy: none
+		sourceColumn: calendar_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: string
+		lineageTag: fb03dbe2-77e0-4864-a5b5-87c6e509d479
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: f3e17a76-49da-42a4-b1f5-e71672aa4828
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: 90427ad5-3425-41f6-9ec1-c85c095b8755
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_calendar = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_calendar.csv"),
+				    [Delimiter = ",", Columns = 9, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "item_id", "channel", "activity", "fiscal_month", "calendar_month", "date", "value_class", "note"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"item_id", type text},
+				    {"channel", type text},
+				    {"activity", type text},
+				    {"fiscal_month", type text},
+				    {"calendar_month", type text},
+				    {"date", type text},
+				    {"value_class", type text},
+				    {"note", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

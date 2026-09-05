@@ -1,0 +1,147 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "cab10e3da4a2417642b3",
+  "position": {
+    "x": 1800,
+    "y": 185,
+    "height": 300,
+    "width": 1035,
+    "z": 6000,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_pledges"
+                    }
+                  },
+                  "Property": "donor"
+                }
+              },
+              "queryRef": "nfp_pledges.donor",
+              "nativeQueryRef": "donor",
+              "displayName": "donor",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_pledges"
+                    }
+                  },
+                  "Property": "amount"
+                }
+              },
+              "queryRef": "nfp_pledges.amount",
+              "nativeQueryRef": "amount",
+              "displayName": "pledged $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_pledges"
+                    }
+                  },
+                  "Property": "collected"
+                }
+              },
+              "queryRef": "nfp_pledges.collected",
+              "nativeQueryRef": "collected",
+              "displayName": "collected $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_pledges"
+                    }
+                  },
+                  "Property": "outstanding"
+                }
+              },
+              "queryRef": "nfp_pledges.outstanding",
+              "nativeQueryRef": "outstanding",
+              "displayName": "outstanding $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_pledges"
+                    }
+                  },
+                  "Property": "collection_probability_pct"
+                }
+              },
+              "queryRef": "nfp_pledges.collection_probability_pct",
+              "nativeQueryRef": "collection_probability_pct",
+              "displayName": "prob %"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_pledges"
+                    }
+                  },
+                  "Property": "expected_pledge_cash"
+                }
+              },
+              "queryRef": "nfp_pledges.expected_pledge_cash",
+              "nativeQueryRef": "expected_pledge_cash",
+              "displayName": "expected $"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_pledges"
+                    }
+                  },
+                  "Property": "past_due_flag"
+                }
+              },
+              "queryRef": "nfp_pledges.past_due_flag",
+              "nativeQueryRef": "past_due_flag",
+              "displayName": "flag"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_pledges"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

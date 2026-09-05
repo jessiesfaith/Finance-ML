@@ -1,0 +1,65 @@
+/// Curated NFP export: section-61 control battery results.
+table nfp_controls
+	lineageTag: cf09d189-242f-40d9-9d75-6e50ebaf1779
+
+	column row_id
+		dataType: string
+		lineageTag: ac279a38-e393-41b8-b008-d3184c67450f
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column control
+		dataType: string
+		lineageTag: 4df7c52b-0643-4162-b1ad-b546d0b12068
+		summarizeBy: none
+		sourceColumn: control
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 414b3649-268c-4c07-a16b-e9cbe394cc33
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column detail
+		dataType: string
+		lineageTag: 679c3ace-38d5-4139-b797-90cc2889021e
+		summarizeBy: none
+		sourceColumn: detail
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 3b6a57ba-ea6b-44ea-ba56-c0839b195094
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_controls = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_controls.csv"),
+				    [Delimiter = ",", Columns = 5, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "control", "status", "detail", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"control", type text},
+				    {"status", type text},
+				    {"detail", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
