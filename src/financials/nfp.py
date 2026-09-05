@@ -1107,7 +1107,7 @@ def gap_history(s: dict, prog: pd.DataFrame) -> pd.DataFrame:
     end_cash = s["unrestricted_liquid_cash"]
     total = df["gap"].sum()
     df["cash_balance"] = (end_cash - total + df["cumulative_gap"]).round(0)
-    trailing = df["cost"].rolling(12, min_periods=3).mean()
+    trailing = df["cost"].rolling(12, min_periods=1).mean()
     df["months_cash"] = (df["cash_balance"] / trailing).round(2)
     df["policy_months"] = s["months_cash_policy"]
     df["breach_flag"] = df["months_cash"].map(
