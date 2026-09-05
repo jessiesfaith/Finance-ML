@@ -2,6 +2,15 @@
 table nfp_funding_cliff
 	lineageTag: c7ba7eee-2715-42cb-bd02-616b50a63735
 
+	measure 'Grant $ At Risk (12m)' =
+			
+			CALCULATE(SUM(nfp_funding_cliff[at_risk_funding]),
+			          nfp_funding_cliff[window]
+			              IN {"0-3 MONTHS", "3-6 MONTHS", "6-12 MONTHS"})
+		formatString: #,0
+		displayFolder: NFP Cards
+		lineageTag: 6c86e257-edb7-4eb1-9164-6b339d851336
+
 	column row_id
 		dataType: string
 		lineageTag: 5a6f8fa6-992e-4ede-8f75-fe09a5736264

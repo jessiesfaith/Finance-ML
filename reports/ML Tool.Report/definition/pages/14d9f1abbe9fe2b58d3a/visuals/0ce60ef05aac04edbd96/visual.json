@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "0ce60ef05aac04edbd96",
+  "position": {
+    "x": 165,
+    "y": 150,
+    "height": 90,
+    "width": 380,
+    "z": 501000,
+    "tabOrder": 501000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_survey_findings"
+                    }
+                  },
+                  "Property": "Study Findings"
+                }
+              },
+              "queryRef": "nfp_survey_findings.Study Findings",
+              "nativeQueryRef": "Study Findings"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

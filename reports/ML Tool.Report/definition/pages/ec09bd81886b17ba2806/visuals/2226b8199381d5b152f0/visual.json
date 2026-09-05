@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "2226b8199381d5b152f0",
+  "position": {
+    "x": 1065,
+    "y": 255,
+    "height": 340,
+    "width": 870,
+    "z": 507000,
+    "tabOrder": 507000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "alternative_id"
+                }
+              },
+              "queryRef": "nfp_alternatives.alternative_id",
+              "nativeQueryRef": "alternative_id",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_alternatives"
+                        }
+                      },
+                      "Property": "npv_at_board_rate"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_alternatives.npv_at_board_rate)",
+              "nativeQueryRef": "Sum of npv_at_board_rate",
+              "displayName": "NPV @ board rate $"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "d745da30a0d206a1b9fb",
+  "position": {
+    "x": 165,
+    "y": 155,
+    "height": 90,
+    "width": 500,
+    "z": 501000,
+    "tabOrder": 501000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alternatives"
+                    }
+                  },
+                  "Property": "Recommended Use of Capital"
+                }
+              },
+              "queryRef": "nfp_alternatives.Recommended Use of Capital",
+              "nativeQueryRef": "Recommended Use of Capital"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

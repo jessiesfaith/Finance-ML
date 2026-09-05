@@ -2,6 +2,29 @@
 table nfp_campaign
 	lineageTag: 7d96d79c-4aa2-4d6c-acc3-fe88c8c3fb89
 
+	measure 'Campaign Sources ($)' =
+			
+			CALCULATE(SUM(nfp_campaign[amount]),
+			          nfp_campaign[section] = "SOURCES")
+		formatString: #,0
+		displayFolder: NFP Cards
+		lineageTag: a45f919a-fa31-4251-b284-00c26921c76f
+
+	measure 'Campaign Uses ($)' =
+			
+			CALCULATE(SUM(nfp_campaign[amount]),
+			          nfp_campaign[section] = "USES")
+		formatString: #,0
+		displayFolder: NFP Cards
+		lineageTag: b22c7b6d-0afd-4477-b147-c38500e31ef0
+
+	measure 'Sources Minus Uses ($)' =
+			
+			[Campaign Sources ($)] - [Campaign Uses ($)]
+		formatString: #,0
+		displayFolder: NFP Cards
+		lineageTag: fa67250a-77de-43b7-8d5c-122281405137
+
 	column row_id
 		dataType: string
 		lineageTag: 652385f1-19ee-4f5b-a145-c12efb3fe44e

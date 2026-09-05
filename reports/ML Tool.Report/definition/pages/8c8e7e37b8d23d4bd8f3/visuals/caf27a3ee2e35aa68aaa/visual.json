@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "caf27a3ee2e35aa68aaa",
+  "position": {
+    "x": 605,
+    "y": 140,
+    "height": 90,
+    "width": 420,
+    "z": 502000,
+    "tabOrder": 502000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_campaign"
+                    }
+                  },
+                  "Property": "Campaign Uses ($)"
+                }
+              },
+              "queryRef": "nfp_campaign.Campaign Uses ($)",
+              "nativeQueryRef": "Campaign Uses ($)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

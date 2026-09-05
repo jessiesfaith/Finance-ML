@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "91289856c079a4161b22",
+  "position": {
+    "x": 1305,
+    "y": 130,
+    "height": 90,
+    "width": 360,
+    "z": 504000,
+    "tabOrder": 504000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_risks"
+                    }
+                  },
+                  "Property": "Risks Tracked"
+                }
+              },
+              "queryRef": "nfp_risks.Risks Tracked",
+              "nativeQueryRef": "Risks Tracked"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

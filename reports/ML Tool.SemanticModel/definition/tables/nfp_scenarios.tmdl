@@ -2,6 +2,28 @@
 table nfp_scenarios
 	lineageTag: 6edaf4b0-3bab-4f79-bf1c-04fb006ffb5d
 
+	measure 'Base Months Cash' =
+			
+			MAXX(
+			    FILTER(nfp_scenarios,
+			           nfp_scenarios[tab] = "ORG"
+			               && nfp_scenarios[scenario] = "BASE"),
+			    VALUE(nfp_scenarios[months_cash_end]))
+		formatString: 0.0
+		displayFolder: NFP Cards
+		lineageTag: 5bfe4eb6-a8e5-4892-bc87-fad9dffe02af
+
+	measure 'Stress Months Cash' =
+			
+			MAXX(
+			    FILTER(nfp_scenarios,
+			           nfp_scenarios[tab] = "ORG"
+			               && nfp_scenarios[scenario] = "STRESS"),
+			    VALUE(nfp_scenarios[months_cash_end]))
+		formatString: 0.0
+		displayFolder: NFP Cards
+		lineageTag: 773b99b2-a438-4955-a3c5-23ab29514233
+
 	column row_id
 		dataType: string
 		lineageTag: 4b06b1a7-6ab4-439d-beab-2edd3cc9ad93

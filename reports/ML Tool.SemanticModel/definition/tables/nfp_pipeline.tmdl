@@ -2,6 +2,13 @@
 table nfp_pipeline
 	lineageTag: ac8a6068-fcf5-4b1a-a20d-49ad57663be9
 
+	measure 'Pipeline Expected ($)' =
+			
+			SUM(nfp_pipeline[expected_value])
+		formatString: #,0
+		displayFolder: NFP Cards
+		lineageTag: de55399e-a044-42e3-9857-a0a9ec56b86a
+
 	column row_id
 		dataType: string
 		lineageTag: 641d9446-1196-483b-b82a-9e7a1f876bb6

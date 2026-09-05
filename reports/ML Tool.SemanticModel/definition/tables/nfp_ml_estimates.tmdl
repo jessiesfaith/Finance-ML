@@ -2,6 +2,13 @@
 table nfp_ml_estimates
 	lineageTag: cfab83d3-16fe-49d2-bb3b-183906b1e0c8
 
+	measure 'Model Estimates' =
+			
+			COUNTROWS(nfp_ml_estimates)
+		formatString: 0
+		displayFolder: NFP Cards
+		lineageTag: a0a2c578-7eef-42e7-818a-5ddb2b5ddf60
+
 	column row_id
 		dataType: string
 		lineageTag: 6eae0ca0-78b1-4e32-b271-3aaf77bffc52

@@ -1171,3 +1171,20 @@ framework already rates PILOT on tab 9 - the survey and the capital
 allocation now argue with each other on the record, which is the
 point of the module. Tests pin the quoted percentages, source URLs,
 and that alignments reference only real finding/program ids.
+
+### 101. Visual reading layer on every NFP tab (owner request)
+"I wanted to see charts, cards and trends" - the NFP tabs were
+briefing documents; they now carry the dashboard layer ON TOP of the
+tables (tables stay). 24 new measures (folder NFP Cards) power 29
+headline cards, and 13 charts follow the form-by-job rule: bars for
+comparisons (program gaps, self-sufficiency, financing costs, risk
+scores, sensitivity swing - the tornado the master prompt asked for,
+now a ranked bar), columns for the five-alternative scores and NPVs
+and ratios-by-source, lines for trends (portfolio participants and
+donations, SYNTHETIC history running into MODEL ESTIMATE forecast;
+project cash + LOC balance on one shared dollar axis - never dual
+axes). Tab 9 leads with the recommended-use card; tab 12's card strip
+is the exec summary at a glance (months cash base vs stress, controls
+passing, at-risk grants, pipeline). Pairwise overlap and page-bounds
+checks run clean; the number-typed-column guard covers the text-typed
+months_cash_end via VALUE() inside the scenario measures.

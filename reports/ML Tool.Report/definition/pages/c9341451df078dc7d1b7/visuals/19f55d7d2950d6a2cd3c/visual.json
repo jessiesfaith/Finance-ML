@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "19f55d7d2950d6a2cd3c",
+  "position": {
+    "x": 1445,
+    "y": 140,
+    "height": 90,
+    "width": 420,
+    "z": 504000,
+    "tabOrder": 504000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_funding_cliff"
+                    }
+                  },
+                  "Property": "Grant $ At Risk (12m)"
+                }
+              },
+              "queryRef": "nfp_funding_cliff.Grant $ At Risk (12m)",
+              "nativeQueryRef": "Grant $ At Risk (12m)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

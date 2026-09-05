@@ -2,6 +2,27 @@
 table nfp_alternatives
 	lineageTag: 4da16c52-f5a7-4650-97f9-138f29fbbb4e
 
+	measure 'Capital to Allocate ($)' =
+			
+			MAX(nfp_alternatives[capital_required])
+		formatString: #,0
+		displayFolder: NFP Cards
+		lineageTag: c2ed6a1c-1c0d-4c75-887f-f56795a6ff97
+
+	measure 'Best Decision Score' =
+			
+			MAX(nfp_alternatives[decision_score])
+		formatString: 0.0
+		displayFolder: NFP Cards
+		lineageTag: 6fa20457-da35-47c9-9db9-0094aac7e4e6
+
+	measure 'Recommended Use of Capital' =
+			
+			CALCULATE(MAX(nfp_alternatives[alternative]),
+			          nfp_alternatives[is_recommended] = 1)
+		displayFolder: NFP Cards
+		lineageTag: 3fb55bd6-b7af-4ce7-9723-ff68433a71c7
+
 	column row_id
 		dataType: string
 		lineageTag: dfc71f17-4d4a-4741-8f7e-6fd56e299bed

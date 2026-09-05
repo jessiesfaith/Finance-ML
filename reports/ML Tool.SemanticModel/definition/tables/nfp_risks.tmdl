@@ -2,6 +2,13 @@
 table nfp_risks
 	lineageTag: f24b757b-4f1b-4f19-b34d-b1223bb79916
 
+	measure 'Risks Tracked' =
+			
+			COUNTROWS(nfp_risks)
+		formatString: 0
+		displayFolder: NFP Cards
+		lineageTag: 8fb05c17-0086-48a7-b11f-b50e6ad1a6b7
+
 	column row_id
 		dataType: string
 		lineageTag: f347ed1c-a95f-464e-9c1e-175df18645ee

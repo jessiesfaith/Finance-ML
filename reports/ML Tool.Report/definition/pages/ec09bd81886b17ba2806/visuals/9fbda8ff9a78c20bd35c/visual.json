@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "9fbda8ff9a78c20bd35c",
+  "position": {
+    "x": 1885,
+    "y": 155,
+    "height": 90,
+    "width": 380,
+    "z": 505000,
+    "tabOrder": 505000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_scenarios"
+                    }
+                  },
+                  "Property": "Stress Months Cash"
+                }
+              },
+              "queryRef": "nfp_scenarios.Stress Months Cash",
+              "nativeQueryRef": "Stress Months Cash"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

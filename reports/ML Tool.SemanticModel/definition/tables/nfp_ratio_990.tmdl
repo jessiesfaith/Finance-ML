@@ -2,6 +2,22 @@
 table nfp_ratio_990
 	lineageTag: 6d39024c-252d-4de3-9d42-bce12837adb9
 
+	measure 'Ratios Mapped' =
+			
+			COUNTROWS(nfp_ratio_990)
+		formatString: 0
+		displayFolder: NFP Cards
+		lineageTag: 07e8d623-f66f-4938-aad2-3ed4a1aaf5b6
+
+	measure '990-Sourced Ratios' =
+			
+			CALCULATE(COUNTROWS(nfp_ratio_990),
+			          nfp_ratio_990[source_type]
+			              IN {"FORM 990", "990 SCHEDULE", "990 PARTIAL"})
+		formatString: 0
+		displayFolder: NFP Cards
+		lineageTag: 59a3a22a-bc98-4987-8bc2-4377cccc6ff0
+
 	column row_id
 		dataType: string
 		lineageTag: 8ff8e0bf-9bfe-49e4-ab45-f307824b67c8

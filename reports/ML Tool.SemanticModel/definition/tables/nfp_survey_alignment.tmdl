@@ -2,6 +2,14 @@
 table nfp_survey_alignment
 	lineageTag: 5ef7a316-6595-4160-b5d8-7191da72f9ac
 
+	measure 'High-Impact Initiatives' =
+			
+			CALCULATE(COUNTROWS(nfp_survey_alignment),
+			          nfp_survey_alignment[impact_potential] = "HIGH")
+		formatString: 0
+		displayFolder: NFP Cards
+		lineageTag: a60afc61-a2ea-431f-9fdd-8a09d4cbf320
+
 	column row_id
 		dataType: string
 		lineageTag: 39c1499a-8ade-4fc3-b52e-f761b9cbdbd4

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "bca3b3d1aa51860c8f16",
+  "position": {
+    "x": 1005,
+    "y": 150,
+    "height": 260,
+    "width": 1830,
+    "z": 503000,
+    "tabOrder": 503000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ratio_990"
+                    }
+                  },
+                  "Property": "source_type"
+                }
+              },
+              "queryRef": "nfp_ratio_990.source_type",
+              "nativeQueryRef": "source_type",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ratio_990"
+                    }
+                  },
+                  "Property": "Ratios Mapped"
+                }
+              },
+              "queryRef": "nfp_ratio_990.Ratios Mapped",
+              "nativeQueryRef": "Ratios Mapped",
+              "displayName": "ratios by source"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

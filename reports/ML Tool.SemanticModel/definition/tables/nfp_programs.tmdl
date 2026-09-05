@@ -2,6 +2,37 @@
 table nfp_programs
 	lineageTag: 2fe9a95c-c459-4837-bb86-a5fa0e6d819f
 
+	measure 'Participants Served' =
+			
+			SUM(nfp_programs[participants])
+		formatString: #,0
+		displayFolder: NFP Cards
+		lineageTag: a068c6b3-844f-4b55-9bdb-d500dc531672
+
+	measure 'Portfolio Funding ($)' =
+			
+			SUM(nfp_programs[total_funding])
+		formatString: #,0
+		displayFolder: NFP Cards
+		lineageTag: 7d255de4-f4ca-4657-9e6c-d8b2bda9652c
+
+	measure 'Portfolio Gap ($)' =
+			
+			SUM(nfp_programs[funding_gap])
+		formatString: #,0
+		displayFolder: NFP Cards
+		lineageTag: 883c8fe1-f7b3-4ccd-a467-96e7a376fd95
+
+	measure 'Prob-Weighted Need ($)' =
+			
+			SUMX(
+			    FILTER(nfp_programs,
+			           nfp_programs[probability_weighted_gap] > 0),
+			    nfp_programs[probability_weighted_gap])
+		formatString: #,0
+		displayFolder: NFP Cards
+		lineageTag: 24c099b3-3fbf-4bc4-b957-1b3cc0a5e846
+
 	column row_id
 		dataType: string
 		lineageTag: 0c6658c8-e7e1-4dff-9942-e2c3466ef342

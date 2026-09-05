@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "600821ef076ca05b0c4d",
+  "position": {
+    "x": 565,
+    "y": 140,
+    "height": 90,
+    "width": 420,
+    "z": 502000,
+    "tabOrder": 502000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_programs"
+                    }
+                  },
+                  "Property": "Portfolio Gap ($)"
+                }
+              },
+              "queryRef": "nfp_programs.Portfolio Gap ($)",
+              "nativeQueryRef": "Portfolio Gap ($)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

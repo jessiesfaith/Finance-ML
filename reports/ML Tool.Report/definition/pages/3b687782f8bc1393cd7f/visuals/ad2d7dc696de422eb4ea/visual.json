@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "ad2d7dc696de422eb4ea",
+  "position": {
+    "x": 165,
+    "y": 130,
+    "height": 90,
+    "width": 360,
+    "z": 501000,
+    "tabOrder": 501000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_scenarios"
+                    }
+                  },
+                  "Property": "Base Months Cash"
+                }
+              },
+              "queryRef": "nfp_scenarios.Base Months Cash",
+              "nativeQueryRef": "Base Months Cash"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

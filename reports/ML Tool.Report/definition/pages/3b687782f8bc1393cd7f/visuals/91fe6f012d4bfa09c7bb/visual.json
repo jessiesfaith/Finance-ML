@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "91fe6f012d4bfa09c7bb",
+  "position": {
+    "x": 925,
+    "y": 130,
+    "height": 90,
+    "width": 360,
+    "z": 503000,
+    "tabOrder": 503000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_controls"
+                    }
+                  },
+                  "Property": "Controls Passing"
+                }
+              },
+              "queryRef": "nfp_controls.Controls Passing",
+              "nativeQueryRef": "Controls Passing"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

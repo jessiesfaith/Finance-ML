@@ -1,0 +1,98 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "340156ff16b19edf797a",
+  "position": {
+    "x": 165,
+    "y": 240,
+    "height": 340,
+    "width": 1310,
+    "z": 506000,
+    "tabOrder": 506000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_project_cash"
+                    }
+                  },
+                  "Property": "month"
+                }
+              },
+              "queryRef": "nfp_project_cash.month",
+              "nativeQueryRef": "month",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_project_cash"
+                        }
+                      },
+                      "Property": "ending_cash"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_project_cash.ending_cash)",
+              "nativeQueryRef": "Sum of ending_cash",
+              "displayName": "ending project cash $"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_project_cash"
+                        }
+                      },
+                      "Property": "loc_balance"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_project_cash.loc_balance)",
+              "nativeQueryRef": "Sum of loc_balance",
+              "displayName": "LOC balance $"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

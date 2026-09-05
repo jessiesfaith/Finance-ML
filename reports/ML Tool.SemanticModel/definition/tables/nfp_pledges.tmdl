@@ -2,6 +2,20 @@
 table nfp_pledges
 	lineageTag: 959713ed-cb05-4a4d-b9ce-87c6d7710f9d
 
+	measure 'Pledges Outstanding ($)' =
+			
+			SUM(nfp_pledges[outstanding])
+		formatString: #,0
+		displayFolder: NFP Cards
+		lineageTag: a1b478ff-2190-4ab2-b033-7731cbb82548
+
+	measure 'Expected Pledge Cash ($)' =
+			
+			SUM(nfp_pledges[expected_pledge_cash])
+		formatString: #,0
+		displayFolder: NFP Cards
+		lineageTag: a79e1a13-e83e-494f-b6b5-69d2e9058ee9
+
 	column row_id
 		dataType: string
 		lineageTag: f22002ac-38ef-4228-8778-5e6ba41aa26e

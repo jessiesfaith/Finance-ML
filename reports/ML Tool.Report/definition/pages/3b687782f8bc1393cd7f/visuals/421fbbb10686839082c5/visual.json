@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "421fbbb10686839082c5",
+  "position": {
+    "x": 2085,
+    "y": 130,
+    "height": 90,
+    "width": 380,
+    "z": 506000,
+    "tabOrder": 506000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_programs"
+                    }
+                  },
+                  "Property": "Prob-Weighted Need ($)"
+                }
+              },
+              "queryRef": "nfp_programs.Prob-Weighted Need ($)",
+              "nativeQueryRef": "Prob-Weighted Need ($)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

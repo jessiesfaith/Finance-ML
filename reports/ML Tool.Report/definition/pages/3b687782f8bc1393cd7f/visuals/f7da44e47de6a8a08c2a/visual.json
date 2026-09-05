@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "f7da44e47de6a8a08c2a",
+  "position": {
+    "x": 165,
+    "y": 230,
+    "height": 340,
+    "width": 1310,
+    "z": 508000,
+    "tabOrder": 508000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_risks"
+                    }
+                  },
+                  "Property": "risk"
+                }
+              },
+              "queryRef": "nfp_risks.risk",
+              "nativeQueryRef": "risk",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_risks"
+                        }
+                      },
+                      "Property": "inherent_score"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_risks.inherent_score)",
+              "nativeQueryRef": "Sum of inherent_score",
+              "displayName": "inherent risk (L x I)"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

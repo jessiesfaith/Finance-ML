@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "bdeea871d57c59047ed1",
+  "position": {
+    "x": 1525,
+    "y": 240,
+    "height": 340,
+    "width": 1310,
+    "z": 507000,
+    "tabOrder": 507000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_financing"
+                    }
+                  },
+                  "Property": "option"
+                }
+              },
+              "queryRef": "nfp_financing.option",
+              "nativeQueryRef": "option",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_financing"
+                        }
+                      },
+                      "Property": "cost_estimate"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_financing.cost_estimate)",
+              "nativeQueryRef": "Sum of cost_estimate",
+              "displayName": "cost estimate $"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

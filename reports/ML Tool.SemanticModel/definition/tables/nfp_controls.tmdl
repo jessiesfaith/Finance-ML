@@ -2,6 +2,14 @@
 table nfp_controls
 	lineageTag: cf09d189-242f-40d9-9d75-6e50ebaf1779
 
+	measure 'Controls Passing' =
+			
+			CALCULATE(COUNTROWS(nfp_controls),
+			          nfp_controls[status] = "PASS")
+		formatString: 0
+		displayFolder: NFP Cards
+		lineageTag: 056688b5-e01d-49be-9f1c-36dd2f9796b5
+
 	column row_id
 		dataType: string
 		lineageTag: ac279a38-e393-41b8-b008-d3184c67450f

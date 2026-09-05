@@ -2,6 +2,13 @@
 table nfp_ml_anomalies
 	lineageTag: cdb1a8e6-01da-4da3-a226-1824f335edf2
 
+	measure 'Anomalies Flagged' =
+			
+			COUNTROWS(nfp_ml_anomalies)
+		formatString: 0
+		displayFolder: NFP Cards
+		lineageTag: 7810227a-45cb-4c6e-8aab-fedf14cc9f09
+
 	column row_id
 		dataType: string
 		lineageTag: 962eaeaf-48a4-4454-8029-ff1e92f00ce2

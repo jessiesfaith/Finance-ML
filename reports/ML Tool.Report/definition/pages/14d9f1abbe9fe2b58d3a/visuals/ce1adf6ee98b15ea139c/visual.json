@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "ce1adf6ee98b15ea139c",
+  "position": {
+    "x": 985,
+    "y": 150,
+    "height": 90,
+    "width": 380,
+    "z": 503000,
+    "tabOrder": 503000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_programs"
+                    }
+                  },
+                  "Property": "Participants Served"
+                }
+              },
+              "queryRef": "nfp_programs.Participants Served",
+              "nativeQueryRef": "Participants Served"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

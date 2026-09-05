@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "2d52cd2434395f942a3c",
+  "position": {
+    "x": 165,
+    "y": 168,
+    "height": 90,
+    "width": 380,
+    "z": 501000,
+    "tabOrder": 501000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ml_estimates"
+                    }
+                  },
+                  "Property": "Model Estimates"
+                }
+              },
+              "queryRef": "nfp_ml_estimates.Model Estimates",
+              "nativeQueryRef": "Model Estimates"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

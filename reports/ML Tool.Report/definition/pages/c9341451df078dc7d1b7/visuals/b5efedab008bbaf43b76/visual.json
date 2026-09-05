@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "b5efedab008bbaf43b76",
+  "position": {
+    "x": 1885,
+    "y": 140,
+    "height": 90,
+    "width": 420,
+    "z": 505000,
+    "tabOrder": 505000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_pipeline"
+                    }
+                  },
+                  "Property": "Pipeline Expected ($)"
+                }
+              },
+              "queryRef": "nfp_pipeline.Pipeline Expected ($)",
+              "nativeQueryRef": "Pipeline Expected ($)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "2fea64806a51d64215e3",
+  "position": {
+    "x": 565,
+    "y": 168,
+    "height": 90,
+    "width": 380,
+    "z": 502000,
+    "tabOrder": 502000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ml_anomalies"
+                    }
+                  },
+                  "Property": "Anomalies Flagged"
+                }
+              },
+              "queryRef": "nfp_ml_anomalies.Anomalies Flagged",
+              "nativeQueryRef": "Anomalies Flagged"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

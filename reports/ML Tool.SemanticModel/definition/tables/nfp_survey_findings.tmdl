@@ -2,6 +2,13 @@
 table nfp_survey_findings
 	lineageTag: 47b067bc-adc6-413c-a780-851a76b6abd2
 
+	measure 'Study Findings' =
+			
+			COUNTROWS(nfp_survey_findings)
+		formatString: 0
+		displayFolder: NFP Cards
+		lineageTag: aef192a5-6102-44d8-be23-60ac7dc0720d
+
 	column row_id
 		dataType: string
 		lineageTag: 3e36017b-c698-44be-ad2e-2ee48b27e229

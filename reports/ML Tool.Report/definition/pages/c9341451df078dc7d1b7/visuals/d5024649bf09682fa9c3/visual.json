@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "d5024649bf09682fa9c3",
+  "position": {
+    "x": 1965,
+    "y": 240,
+    "height": 340,
+    "width": 870,
+    "z": 508000,
+    "tabOrder": 508000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_programs"
+                    }
+                  },
+                  "Property": "program"
+                }
+              },
+              "queryRef": "nfp_programs.program",
+              "nativeQueryRef": "program",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_programs"
+                        }
+                      },
+                      "Property": "probability_weighted_gap"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_programs.probability_weighted_gap)",
+              "nativeQueryRef": "Sum of probability_weighted_gap",
+              "displayName": "prob-weighted gap $"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

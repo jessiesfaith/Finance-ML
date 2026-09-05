@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "90d028906a5e68ec42c3",
+  "position": {
+    "x": 565,
+    "y": 150,
+    "height": 90,
+    "width": 380,
+    "z": 502000,
+    "tabOrder": 502000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ratio_990"
+                    }
+                  },
+                  "Property": "990-Sourced Ratios"
+                }
+              },
+              "queryRef": "nfp_ratio_990.990-Sourced Ratios",
+              "nativeQueryRef": "990-Sourced Ratios"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
