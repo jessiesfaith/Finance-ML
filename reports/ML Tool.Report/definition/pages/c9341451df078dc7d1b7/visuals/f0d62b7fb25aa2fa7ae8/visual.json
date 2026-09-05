@@ -23,13 +23,28 @@
                       "Entity": "nfp_funding_cliff"
                     }
                   },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_funding_cliff.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_funding_cliff"
+                    }
+                  },
                   "Property": "grant"
                 }
               },
               "queryRef": "nfp_funding_cliff.grant",
               "nativeQueryRef": "grant",
-              "displayName": "grant / scenario",
-              "active": true
+              "displayName": "grant / scenario"
             },
             {
               "field": {

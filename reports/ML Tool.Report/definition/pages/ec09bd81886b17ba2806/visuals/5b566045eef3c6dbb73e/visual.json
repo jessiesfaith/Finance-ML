@@ -23,13 +23,28 @@
                       "Entity": "nfp_settings"
                     }
                   },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_settings.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_settings"
+                    }
+                  },
                   "Property": "setting_id"
                 }
               },
               "queryRef": "nfp_settings.setting_id",
               "nativeQueryRef": "setting_id",
-              "displayName": "input",
-              "active": true
+              "displayName": "input"
             },
             {
               "field": {

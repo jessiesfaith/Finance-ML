@@ -23,13 +23,28 @@
                       "Entity": "nfp_debt_reserves"
                     }
                   },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_debt_reserves.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_debt_reserves"
+                    }
+                  },
                   "Property": "record_type"
                 }
               },
               "queryRef": "nfp_debt_reserves.record_type",
               "nativeQueryRef": "record_type",
-              "displayName": "type",
-              "active": true
+              "displayName": "type"
             },
             {
               "field": {

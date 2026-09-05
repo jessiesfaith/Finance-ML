@@ -87,13 +87,28 @@
                       "Entity": "nfp_exec_board"
                     }
                   },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_exec_board.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_exec_board"
+                    }
+                  },
                   "Property": "section"
                 }
               },
               "queryRef": "nfp_exec_board.section",
               "nativeQueryRef": "section",
-              "displayName": "section",
-              "active": true
+              "displayName": "section"
             },
             {
               "field": {

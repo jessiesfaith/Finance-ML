@@ -23,13 +23,28 @@
                       "Entity": "nfp_programs"
                     }
                   },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_programs.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_programs"
+                    }
+                  },
                   "Property": "program"
                 }
               },
               "queryRef": "nfp_programs.program",
               "nativeQueryRef": "program",
-              "displayName": "program",
-              "active": true
+              "displayName": "program"
             },
             {
               "field": {

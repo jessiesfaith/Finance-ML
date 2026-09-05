@@ -23,13 +23,28 @@
                       "Entity": "nfp_financing"
                     }
                   },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_financing.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_financing"
+                    }
+                  },
                   "Property": "option"
                 }
               },
               "queryRef": "nfp_financing.option",
               "nativeQueryRef": "option",
-              "displayName": "option",
-              "active": true
+              "displayName": "option"
             },
             {
               "field": {

@@ -23,13 +23,28 @@
                       "Entity": "nfp_scenarios"
                     }
                   },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_scenarios.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_scenarios"
+                    }
+                  },
                   "Property": "tab"
                 }
               },
               "queryRef": "nfp_scenarios.tab",
               "nativeQueryRef": "tab",
-              "displayName": "area",
-              "active": true
+              "displayName": "area"
             },
             {
               "field": {

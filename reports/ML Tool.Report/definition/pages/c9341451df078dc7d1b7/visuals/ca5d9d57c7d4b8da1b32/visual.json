@@ -23,13 +23,28 @@
                       "Entity": "nfp_pipeline"
                     }
                   },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_pipeline.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_pipeline"
+                    }
+                  },
                   "Property": "donor_funder"
                 }
               },
               "queryRef": "nfp_pipeline.donor_funder",
               "nativeQueryRef": "donor_funder",
-              "displayName": "donor / funder",
-              "active": true
+              "displayName": "donor / funder"
             },
             {
               "field": {

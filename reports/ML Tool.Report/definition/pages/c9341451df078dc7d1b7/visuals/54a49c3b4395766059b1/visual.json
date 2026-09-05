@@ -23,13 +23,28 @@
                       "Entity": "nfp_grants"
                     }
                   },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_grants.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_grants"
+                    }
+                  },
                   "Property": "grant_name"
                 }
               },
               "queryRef": "nfp_grants.grant_name",
               "nativeQueryRef": "grant_name",
-              "displayName": "grant",
-              "active": true
+              "displayName": "grant"
             },
             {
               "field": {

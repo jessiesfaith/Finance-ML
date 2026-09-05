@@ -80,13 +80,28 @@
                       "Entity": "nfp_scenarios"
                     }
                   },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_scenarios.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_scenarios"
+                    }
+                  },
                   "Property": "scenario"
                 }
               },
               "queryRef": "nfp_scenarios.scenario",
               "nativeQueryRef": "scenario",
-              "displayName": "scenario",
-              "active": true
+              "displayName": "scenario"
             },
             {
               "field": {
