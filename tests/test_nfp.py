@@ -302,6 +302,21 @@ def assert_export_values_match(df, path):
     pd.testing.assert_frame_equal(committed, roundtrip, check_dtype=False)
 
 
+def test_public_financials_register(frames):
+    """Every public-financials row is PUBLIC_RESEARCH with a working-
+    format URL and confidence; the similarly named Jewish Family
+    Services org is present only as an explicit do-not-conflate row."""
+    pf = frames["nfp_public_financials"]
+    assert (pf["value_class"] == "PUBLIC_RESEARCH").all()
+    assert (pf["url"].str.startswith("http")).all()
+    assert (pf["confidence"].isin(["LOW", "MEDIUM"])).all()
+    jsv = pf[pf["organization"] == "Jewish Silicon Valley"]
+    assert (jsv["ein"].astype(str) == "94-2222989").all()
+    other = pf[pf["ein"].astype(str) == "94-2536452"]
+    assert len(other) == 1
+    assert "DIFFERENT ORGANIZATION" in other.iloc[0]["note"]
+
+
 def test_committed_exports_match_fresh_build(frames):
     for name, df in frames.items():
         assert_export_values_match(df, REPORTS / f"{name}.csv")

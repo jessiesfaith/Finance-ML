@@ -60,6 +60,7 @@ CSV_FOR_TABLE = {
     "nfp_ml_series": "nfp_ml_series",
     "nfp_ml_estimates": "nfp_ml_estimates",
     "nfp_ml_anomalies": "nfp_ml_anomalies",
+    "nfp_public_financials": "nfp_public_financials",
     "client_fs_option_sizing": "client_fs_option_sizing",
 }
 

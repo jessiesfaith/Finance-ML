@@ -1,0 +1,129 @@
+/// Curated NFP export: register of JSV public financial documents
+/// (990s, profiles) with URL, verification date and confidence.
+table nfp_public_financials
+	lineageTag: 72984912-265c-4747-9a32-2aaa24b37fb1
+
+	column row_id
+		dataType: string
+		lineageTag: 84febba8-8468-43b0-a451-155b7f5f84a9
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column doc_id
+		dataType: string
+		lineageTag: c2e487f8-840a-458b-855e-c543a12246d8
+		summarizeBy: none
+		sourceColumn: doc_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column document
+		dataType: string
+		lineageTag: eeb8181c-b3e9-4cb2-a6a5-b9cc2599daf0
+		summarizeBy: none
+		sourceColumn: document
+
+		annotation SummarizationSetBy = Automatic
+
+	column organization
+		dataType: string
+		lineageTag: 76b255e0-981f-4cda-8bee-173708f8f47c
+		summarizeBy: none
+		sourceColumn: organization
+
+		annotation SummarizationSetBy = Automatic
+
+	column ein
+		dataType: string
+		lineageTag: 19109814-9863-4575-a49a-2fd2e57ccd03
+		summarizeBy: none
+		sourceColumn: ein
+
+		annotation SummarizationSetBy = Automatic
+
+	column as_of_date
+		dataType: string
+		lineageTag: ad0d45da-e477-449f-8b96-605640d5543a
+		summarizeBy: none
+		sourceColumn: as_of_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column url
+		dataType: string
+		lineageTag: 93c3cd23-5361-49b3-bcb0-9008349a0bc3
+		summarizeBy: none
+		sourceColumn: url
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: cbd407f5-df4c-4057-9665-a0a4d0c14f54
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_verified
+		dataType: string
+		lineageTag: 22b936a1-3c8f-46e5-a4d0-84a767afa1f9
+		summarizeBy: none
+		sourceColumn: date_verified
+
+		annotation SummarizationSetBy = Automatic
+
+	column confidence
+		dataType: string
+		lineageTag: 257bad31-76ea-409e-b765-9818e5c68d5b
+		summarizeBy: none
+		sourceColumn: confidence
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 847a7e0a-a2f9-4c3e-b624-58516542cf2d
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: bc3462e9-8e3a-4e62-817e-dc5a381085b9
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_public_financials = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_public_financials.csv"),
+				    [Delimiter = ",", Columns = 12, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "doc_id", "document", "organization", "ein", "as_of_date", "url", "source", "date_verified", "confidence", "value_class", "note"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"doc_id", type text},
+				    {"document", type text},
+				    {"organization", type text},
+				    {"ein", type text},
+				    {"as_of_date", type text},
+				    {"url", type text},
+				    {"source", type text},
+				    {"date_verified", type text},
+				    {"confidence", type text},
+				    {"value_class", type text},
+				    {"note", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

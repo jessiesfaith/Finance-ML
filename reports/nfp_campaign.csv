@@ -1,6 +1,6 @@
 row_id,item_id,section,item,amount,value_class,source,note
-R001,CAM-1,CAMPAIGN,Campaign goal (Second Pool),7000000.0,PUBLIC_RESEARCH,Owner-provided build prompt 2026-09-05 citing FY2023 public reporting,HISTORICAL PUBLIC INFORMATION - CURRENT STATUS REQUIRES UPDATE
-R002,CAM-2,CAMPAIGN,Donor-restricted campaign funds at 2023-06-30,2340000.0,PUBLIC_RESEARCH,Owner-provided build prompt 2026-09-05 citing FY2023 public reporting,HISTORICAL PUBLIC INFORMATION
+R001,CAM-1,CAMPAIGN,Campaign goal (Second Pool),7000000.0,PUBLIC_RESEARCH,Owner-provided build prompt 2026-09-05 citing FY2023 public reporting; public cross-check: 990s at projects.propublica.org/nonprofits/organizations/942222989,HISTORICAL PUBLIC INFORMATION - CURRENT STATUS REQUIRES UPDATE
+R002,CAM-2,CAMPAIGN,Donor-restricted campaign funds at 2023-06-30,2340000.0,PUBLIC_RESEARCH,Owner-provided build prompt 2026-09-05 citing FY2023 public reporting; public cross-check: 990s at projects.propublica.org/nonprofits/organizations/942222989,HISTORICAL PUBLIC INFORMATION
 R003,SRC-1,SOURCES,Campaign cash on hand (restricted),2340000.0,PUBLIC_RESEARCH,Historical seed above,RESTRICTED - NOT AVAILABLE FOR GENERAL OPERATIONS
 R004,SRC-2,SOURCES,Pledges receivable (synthetic plan),1200000.0,SYNTHETIC,Demonstration plan,
 R005,SRC-3,SOURCES,New gifts to raise (synthetic plan),2460000.0,SYNTHETIC,Demonstration plan,

@@ -634,6 +634,12 @@ def financing(settings: dict | None = None) -> pd.DataFrame:
     return df
 
 
+def public_financials() -> pd.DataFrame:
+    """Register of JSV's public financial documents (all PUBLIC_RESEARCH;
+    every row carries URL + verification date + confidence)."""
+    return pd.read_csv(NFP_DIR / "nfp_public_financial_inputs.csv").fillna("")
+
+
 def debt_and_reserves() -> pd.DataFrame:
     debt = pd.read_csv(NFP_DIR / "nfp_debt_inputs.csv").fillna("")
     res = pd.read_csv(NFP_DIR / "nfp_reserve_inputs.csv").fillna("")
@@ -1066,6 +1072,7 @@ def build_all() -> dict[str, pd.DataFrame]:
         "nfp_risks": risk_df, "nfp_scenarios": scen,
         "nfp_sensitivity": sens, "nfp_exec_board": execb,
         "nfp_controls": ctrl,
+        "nfp_public_financials": public_financials(),
     }
     # stable sort key: report tables sort by row_id to preserve the
     # decision-flow order of each export

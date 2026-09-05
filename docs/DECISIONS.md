@@ -1115,3 +1115,20 @@ study; the study line-item amount remains NOT PUBLICLY CONFIRMED
 recorded separately, labeled as such). Rule held and now tested with
 provenance checks: no prospect carries a confirmed dollar amount -
 cycles and windows were researched, dollars were not invented.
+
+### 98. Public financials register with links (owner request)
+New nfp_public_financials export + section at the foot of tab 11:
+JSV's real public financial documents, each row PUBLIC_RESEARCH with
+URL, verification date and confidence. EIN 94-2222989 confirmed via
+three independent aggregators; ProPublica's 990 index is the primary
+public source; FY2023 990 summary (revenue $10.17M / expenses $11.27M /
+net assets $17.10M per aggregator) coheres with the module's
+owner-provided FY2023 seeds - recorded as a cross-check, not a
+replacement. Honesty notes shipped in the data: audited statements
+were NOT located publicly (request internally); figures are aggregator
+summaries to be confirmed against the filings; and the similarly named
+Jewish Family Services of Silicon Valley (EIN 94-2536452) is included
+only as an explicit do-not-conflate row, enforced by test. Historical
+debt/reserve/campaign seeds now cite the 990 index as their public
+cross-check. Clickable quick links live in a textbox under the
+register (tables cannot carry hyperlinks).

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "f0499db41fe54753c9b9",
+  "position": {
+    "x": 165,
+    "y": 2450,
+    "height": 40,
+    "width": 1600,
+    "z": 901000,
+    "tabOrder": 901000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Public financials \u2014 the source documents behind every HISTORICAL number",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "9e045a7f9c00a14ca03b",
+  "position": {
+    "x": 165,
+    "y": 2855,
+    "height": 150,
+    "width": 2670,
+    "z": 903000,
+    "tabOrder": 903000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Quick links (click to open):",
+                    "textStyle": {
+                      "fontSize": "11pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "JSV Form 990 filings (ProPublica, EIN 94-2222989) - the primary public source",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    },
+                    "url": "https://projects.propublica.org/nonprofits/organizations/942222989"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "GuideStar / Candid profile",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    },
+                    "url": "https://www.guidestar.org/profile/94-2222989"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Charity Navigator rating",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    },
+                    "url": "https://www.charitynavigator.org/ein/942222989"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Audited financial statements were NOT located in public search - request internally. Figures shown are aggregator summaries of IRS filings; confirm against the filing itself.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
