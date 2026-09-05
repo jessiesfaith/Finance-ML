@@ -224,7 +224,9 @@ def alternatives(settings: dict | None = None) -> pd.DataFrame:
 
     df["recommendation"] = df["decision_score"].apply(band)
     best = df.loc[df["decision_score"].idxmax()]
-    df["is_recommended"] = df["alternative_id"] == best["alternative_id"]
+    # 1/0 (not True/False) so the CSV parses under the model's numeric type
+    df["is_recommended"] = (df["alternative_id"]
+                            == best["alternative_id"]).astype(int)
     df["management_override"] = ""   # management may override with rationale
     df["override_rationale"] = ""
     return df
@@ -234,9 +236,11 @@ def alternatives(settings: dict | None = None) -> pd.DataFrame:
 # TAB 2 — program portfolio
 # ----------------------------------------------------------------------
 
-def programs(settings: dict | None = None) -> pd.DataFrame:
+def programs(settings: dict | None = None,
+             inputs: pd.DataFrame | None = None) -> pd.DataFrame:
     s = settings or load_settings()
-    df = pd.read_csv(NFP_DIR / "nfp_program_inputs.csv")
+    df = (inputs if inputs is not None
+          else pd.read_csv(NFP_DIR / "nfp_program_inputs.csv"))
     out = []
     for _, p in df.iterrows():
         funding = (p["earned_revenue"] + p["grants"]
@@ -832,8 +836,28 @@ def controls_report(s, prog, camp, plg, proj, alts, grants_df) -> pd.DataFrame:
           f"{len(research)} prospect rows")
     check("No current debt presented from historical-only data", True,
           "current LOC row states NO CURRENT LOC CONFIRMED FROM PUBLIC DATA")
-    check("Division-by-zero guards active", True,
-          "per-participant and ratio calcs guard zero denominators")
+    # exercise the guards for real: an all-zero program row must come
+    # back as zeros, never raise (the first real client dataset with an
+    # empty program is exactly where this bites)
+    probe = pd.DataFrame([{
+        "program_id": "PROBE", "program_name": "Zero-denominator probe",
+        "owner_role": "", "mission_category": "", "participants": 0,
+        "capacity": 0, "earned_revenue": 0, "grants": 0,
+        "restricted_contrib": 0, "unrestricted_contrib": 0,
+        "sponsorship": 0, "largest_single_funder": 0, "personnel": 0,
+        "direct_costs": 0, "allocated_overhead": 0, "capex": 0,
+        "grant_renewal_pct": 0, "mission_score": 5, "risk_rating": 3,
+        "value_class": "SYNTHETIC"}])
+    try:
+        zp = programs(s, inputs=probe).iloc[0]
+        guards_ok = (zp["utilization_pct"] == 0
+                     and zp["self_sufficiency_pct"] == 0
+                     and zp["cost_per_participant"] == 0
+                     and zp["grant_dependency_pct"] == 0)
+    except Exception:
+        guards_ok = False
+    check("Division-by-zero guards active", guards_ok,
+          "zero-row probe ran through programs() and returned zeros")
     return pd.DataFrame(checks)
 
 
@@ -852,7 +876,7 @@ def exec_board(s, prog, alts, cliff, pipe, camp, fin, risk_df, scen,
     grow = prog[prog["classification"] == "GROW"]
     cliff12 = cliff[cliff["window"].isin(["0-3 MONTHS", "3-6 MONTHS",
                                           "6-12 MONTHS"])]
-    best = alts[alts["is_recommended"]].iloc[0]
+    best = alts[alts["is_recommended"] == 1].iloc[0]
     need = prog.loc[prog["probability_weighted_gap"] > 0,
                     "probability_weighted_gap"].sum()
 

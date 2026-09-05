@@ -54,6 +54,7 @@ def test_prompt_section22_probability_weighted_gap(s):
 def test_prompt_section10_interest_avoided(s):
     alt5 = alternatives(s).set_index("alternative_id").loc["ALT-5"]
     assert alt5["net_cash_y1"] == 17500           # 250,000 x 7%
+    assert alt5["is_recommended"] in (0, 1)       # numeric, not True/False
     assert "17,500" in alt5["note"]
 
 
@@ -88,20 +89,53 @@ def test_status_quo_months_cash(s):
 
 # ---------------- decision framework ----------------
 
-def test_weights_must_total_100(monkeypatch, s):
-    bad = dict(s)
-    bad["weight_mission"] = 40                    # now 110 total
+def test_weights_must_total_100(monkeypatch, tmp_path):
+    """The REAL guard in load_settings must fire on a bad settings file
+    (the audit caught an earlier version of this test re-implementing
+    the check inside pytest.raises instead of exercising it)."""
+    import shutil
+
     import financials.nfp as nfp
-    monkeypatch.setattr(nfp, "load_settings", lambda: bad)
+    bad_dir = tmp_path / "nfp"
+    shutil.copytree(nfp.NFP_DIR, bad_dir)
+    f = bad_dir / "nfp_settings.csv"
+    text = f.read_text(encoding="utf-8")
+    assert "weight_mission,30," in text
+    f.write_text(text.replace("weight_mission,30,", "weight_mission,40,"),
+                 encoding="utf-8")
+    monkeypatch.setattr(nfp, "NFP_DIR", bad_dir)
     with pytest.raises(ValueError, match="100"):
-        # alternatives() consumes settings; call the validator directly
-        weights = [bad[k] for k in ("weight_mission", "weight_financial",
-                                    "weight_liquidity", "weight_risk",
-                                    "weight_scalability",
-                                    "weight_strategic")]
-        if abs(sum(weights) - 100.0) > 1e-9:
-            raise ValueError(f"Decision weights must total 100, "
-                             f"got {sum(weights)}")
+        nfp.load_settings()
+
+
+def test_npv_function_pinned(s):
+    """Audit finding: npv() was unpinned - an off-by-one discounting bug
+    passed the whole suite. Pin it at both ends."""
+    from financials.nfp import npv
+    assert npv(7.0, [-100.0, 107.0]) == pytest.approx(0.0)
+    alt5 = alternatives(s).set_index("alternative_id").loc["ALT-5"]
+    assert alt5["npv_at_board_rate"] == pytest.approx(
+        npv(5.0, [-250000.0] + [17500.0] * 5), abs=1.0)
+
+
+def test_zero_denominator_guards(s):
+    """Audit finding: the guards were dead code under fixture data and
+    the matching control was hardcoded PASS. Feed a real zero row."""
+    probe = pd.DataFrame([{
+        "program_id": "PX", "program_name": "Empty program",
+        "owner_role": "", "mission_category": "", "participants": 0,
+        "capacity": 0, "earned_revenue": 0, "grants": 0,
+        "restricted_contrib": 0, "unrestricted_contrib": 0,
+        "sponsorship": 0, "largest_single_funder": 0, "personnel": 0,
+        "direct_costs": 0, "allocated_overhead": 0, "capex": 0,
+        "grant_renewal_pct": 0, "mission_score": 5, "risk_rating": 3,
+        "value_class": "SYNTHETIC"}])
+    row = programs(s, inputs=probe).iloc[0]
+    for col in ["utilization_pct", "self_sufficiency_pct",
+                "cost_per_participant", "funding_per_participant",
+                "subsidy_per_participant", "grant_dependency_pct",
+                "top_donor_dependency_pct", "restricted_funding_pct"]:
+        assert row[col] == 0, col
 
 
 def test_exactly_one_recommended_alternative(frames):
@@ -250,9 +284,17 @@ def test_exec_board_answers_the_ten_questions(frames):
     assert (execb["section"] == "CONTROLS").sum() == 10
 
 
+def assert_export_values_match(df, path):
+    """Value-level committed-export check (audit finding: the earlier
+    shape-only comparison let any same-shape formula regression through).
+    Round-trip the fresh frame through CSV so blank-vs-NaN and dtype
+    differences compare like-for-like."""
+    import io
+    roundtrip = pd.read_csv(io.StringIO(df.to_csv(index=False)))
+    committed = pd.read_csv(path)
+    pd.testing.assert_frame_equal(committed, roundtrip, check_dtype=False)
+
+
 def test_committed_exports_match_fresh_build(frames):
     for name, df in frames.items():
-        committed = pd.read_csv(REPORTS / f"{name}.csv")
-        fresh = pd.read_csv(REPORTS / f"{name}.csv").head(0)  # header check
-        assert list(committed.columns) == list(df.columns), name
-        assert len(committed) == len(df), name
+        assert_export_values_match(df, REPORTS / f"{name}.csv")

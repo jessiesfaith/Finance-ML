@@ -1,0 +1,5 @@
+year,prior_year_donors,renewing_donors,retention_rate,value_class,source_reference
+2022,1450,1092,0.7531,SYNTHETIC,financials/nfp_ml.py seed 777
+2023,1498,1118,0.7463,SYNTHETIC,financials/nfp_ml.py seed 777
+2024,1469,1047,0.7127,SYNTHETIC,financials/nfp_ml.py seed 777
+2025,1449,1026,0.7081,SYNTHETIC,financials/nfp_ml.py seed 777

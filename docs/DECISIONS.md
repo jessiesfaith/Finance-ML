@@ -1061,3 +1061,33 @@ nfp_* exports - a v0 of the owner's future "board asks a question"
 mode. Phase 2+: real grant-research pass with URLs, rolling cash
 forecast integration, interactive question mode, flags-engine NFP
 rules.
+
+### 96. ML layer (the eleven approved models) + adversarial audit
+Owner approved every section-55 model; built as src/financials/nfp_ml.py
++ build_nfp_ml.py: seeded SYNTHETIC monthly training history (seed 777,
+regenerable byte-identically like the market data), eleven small
+explainable models (trend+seasonality regressions, logistic renewal/
+collection models, residual-regime scenario probabilities, z-score
+anomaly detection), three nfp_ml_* exports, tab "13 - NFP Model
+Estimates" with the separation banner and history-vs-estimate charts.
+Discipline held: every row MODEL ESTIMATE, shown BESIDE its management
+ASSUMPTION, and a value-level test proves the deterministic exports are
+untouched by the ML build. The anomaly model finds exactly the seeded
+2025-03 special-campaign spike (z=5.8) and does NOT flag December's
+learned seasonality; the retention model surfaces the seeded cohort
+drift.
+A 27-agent adversarial audit (6 dimensions, every finding refuted-or-
+confirmed by 3 skeptics with mutation testing) confirmed 7 defects, all
+fixed before push: (HIGH) is_recommended emitted True/False under a
+numeric model type - refresh would have failed - now 1/0; (HIGH) the
+weight-sum test re-implemented the guard instead of calling it - now
+exercises load_settings on a doctored file; (HIGH) committed-export
+tests compared shape only - now value-level round-trips for all 21
+exports, both suites; (MED) npv() unpinned - now pinned at zero-NPV and
+against ALT-5; (MED) zero-denominator guards were dead code and the
+control hardcoded PASS - programs() now takes an inputs frame, the
+control runs a zero-row probe for real, and a test feeds an empty
+program; (MED) models 3/10 feature wiring untested - direction
+assertions + pinned estimates added; (LOW) nfp_ml_series lacked the
+value_class taxonomy column - added. Formula, binding/layout, and
+ML-separation dimensions came back clean. Suite: 283 tests.

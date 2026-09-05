@@ -1,0 +1,92 @@
+/// Curated NFP ML export: ML layer - history vs 12-month MODEL ESTIMATE per series (seed-777 SYNTHETIC training data).
+table nfp_ml_series
+	lineageTag: f6adf0ca-d0d4-4433-9429-ddecd000559c
+
+	column row_id
+		dataType: string
+		lineageTag: e4b1f70e-a3ad-4c02-bd15-bff9b34506c2
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column series_id
+		dataType: string
+		lineageTag: 8fca8727-b7ce-4f14-b82c-c02638571075
+		summarizeBy: none
+		sourceColumn: series_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column series
+		dataType: string
+		lineageTag: 254d3d51-2bcf-4fc7-9d61-b2fcc28e22f1
+		summarizeBy: none
+		sourceColumn: series
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: string
+		lineageTag: bdbc967d-b3a2-421f-b396-8ffdfe504f85
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column history_value
+		dataType: double
+		lineageTag: 34e71bee-cb28-443a-863a-d09c0edb46fb
+		summarizeBy: none
+		sourceColumn: history_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column estimate_value
+		dataType: double
+		lineageTag: ee5190a7-071c-4c1b-8bea-d2804f9e6f2e
+		summarizeBy: none
+		sourceColumn: estimate_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column kind
+		dataType: string
+		lineageTag: 9cf114ac-2a87-4743-a479-02da5e89e26b
+		summarizeBy: none
+		sourceColumn: kind
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 7d905a8d-6423-4fa8-814d-82f72d2d1f91
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_ml_series = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_ml_series.csv"),
+				    [Delimiter = ",", Columns = 8, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "series_id", "series", "month", "history_value", "estimate_value", "kind", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"series_id", type text},
+				    {"series", type text},
+				    {"month", type text},
+				    {"history_value", type number},
+				    {"estimate_value", type number},
+				    {"kind", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

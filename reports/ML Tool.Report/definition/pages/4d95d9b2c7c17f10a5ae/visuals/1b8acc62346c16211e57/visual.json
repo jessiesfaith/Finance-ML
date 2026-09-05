@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "1b8acc62346c16211e57",
+  "position": {
+    "x": 165,
+    "y": 1670,
+    "height": 100,
+    "width": 2670,
+    "z": 13000,
+    "tabOrder": 13000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Rebuild: python src/build_nfp_ml.py (add --regen-history to reproduce the seed-777 training data byte-identically). The deterministic module never reads these tables; the chat assistant does, and labels them MODEL ESTIMATE when it answers.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

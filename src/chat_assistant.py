@@ -51,6 +51,7 @@ INLINE_CSVS = [
     "nfp_pledges.csv", "nfp_project_cash.csv", "nfp_financing.csv",
     "nfp_debt_reserves.csv", "nfp_risks.csv", "nfp_scenarios.csv",
     "nfp_sensitivity.csv", "nfp_exec_board.csv", "nfp_controls.csv",
+    "nfp_ml_estimates.csv", "nfp_ml_anomalies.csv",
 ]
 HEAD_CSVS = ["market_history_rolling24.csv", "market_history_windows.csv",
              "market_history_long.csv"]
@@ -66,13 +67,17 @@ teaching-grade valuation pipeline and its Power BI report (tabs:
 4 Macro History, 5 Options, 6 Valuation & Recommendation,
 6b Flags & Alerts, 7 Math Reference, 8 Calc Build-Out,
 9 NFP Capital Allocation, 10 NFP Programs & Funding,
-11 NFP Campaign & Financing, 12 NFP Executive Decision, Legacy).
+11 NFP Campaign & Financing, 12 NFP Executive Decision,
+13 NFP Model Estimates, Legacy).
 
 The NFP module (tabs 9-12) is a nonprofit CFO decision framework -
 NOT GAAP: mission value = financial sustainability + mission impact +
 liquidity + scalability - risk. Its JSV research seeds are labeled
 PUBLIC_RESEARCH/HISTORICAL; grant prospects are RESEARCH REQUIRED,
-never assumed; program data is SYNTHETIC until client data loads.
+never assumed; program data is SYNTHETIC until client data loads. Tab 13 numbers
+are MODEL ESTIMATES trained on labeled SYNTHETIC history - always say
+so when quoting them, and always show the management assumption
+beside a model estimate when one exists.
 
 Rules — these mirror the repo's agent guardrails and are absolute:
 1. GROUND EVERY NUMBER. Quote figures only from the data bundle below

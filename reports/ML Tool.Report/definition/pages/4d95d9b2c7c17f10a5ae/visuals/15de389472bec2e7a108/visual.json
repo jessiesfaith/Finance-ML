@@ -1,0 +1,147 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "15de389472bec2e7a108",
+  "position": {
+    "x": 165,
+    "y": 585,
+    "height": 780,
+    "width": 2670,
+    "z": 10000,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ml_estimates"
+                    }
+                  },
+                  "Property": "model"
+                }
+              },
+              "queryRef": "nfp_ml_estimates.model",
+              "nativeQueryRef": "model",
+              "displayName": "model",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ml_estimates"
+                    }
+                  },
+                  "Property": "target"
+                }
+              },
+              "queryRef": "nfp_ml_estimates.target",
+              "nativeQueryRef": "target",
+              "displayName": "target"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ml_estimates"
+                    }
+                  },
+                  "Property": "estimate"
+                }
+              },
+              "queryRef": "nfp_ml_estimates.estimate",
+              "nativeQueryRef": "estimate",
+              "displayName": "MODEL ESTIMATE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ml_estimates"
+                    }
+                  },
+                  "Property": "unit"
+                }
+              },
+              "queryRef": "nfp_ml_estimates.unit",
+              "nativeQueryRef": "unit",
+              "displayName": "unit"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ml_estimates"
+                    }
+                  },
+                  "Property": "management_comparison"
+                }
+              },
+              "queryRef": "nfp_ml_estimates.management_comparison",
+              "nativeQueryRef": "management_comparison",
+              "displayName": "management figure (kept separate)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ml_estimates"
+                    }
+                  },
+                  "Property": "basis"
+                }
+              },
+              "queryRef": "nfp_ml_estimates.basis",
+              "nativeQueryRef": "basis",
+              "displayName": "how it was computed"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ml_estimates"
+                    }
+                  },
+                  "Property": "caveat"
+                }
+              },
+              "queryRef": "nfp_ml_estimates.caveat",
+              "nativeQueryRef": "caveat",
+              "displayName": "caveat"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_ml_estimates"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

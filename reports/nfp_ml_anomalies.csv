@@ -1,0 +1,2 @@
+row_id,series,month,value,z_score,note,value_class
+R001,Org unrestricted donations,2025-03,219503.0,5.8,One-off spike vs trend+seasonality - matches the seeded special campaign,MODEL ESTIMATE

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "65e7dde605eee72dba93",
+  "position": {
+    "x": 165,
+    "y": 70,
+    "height": 88,
+    "width": 2670,
+    "z": 2000,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "EVERY number on this tab is a MODEL ESTIMATE \u2014 never an actual, never a management assumption, and never an input to the deterministic tabs 9-12 (a test proves those exports are byte-identical with or without this layer).",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The eleven owner-approved models are trained on a labeled SYNTHETIC monthly history (seed 777, data/nfp/nfp_history*.csv) \u2014 the same placeholder discipline as the market data. At client cutover the identical code retrains on real history; only the data changes. Where a management assumption exists, the model estimate is shown BESIDE it so the two can be debated, not confused.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

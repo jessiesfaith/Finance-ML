@@ -1,0 +1,83 @@
+/// Curated NFP ML export: ML layer - anomaly detection (z-score of deseasonalized residuals).
+table nfp_ml_anomalies
+	lineageTag: cdb1a8e6-01da-4da3-a226-1824f335edf2
+
+	column row_id
+		dataType: string
+		lineageTag: 962eaeaf-48a4-4454-8029-ff1e92f00ce2
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column series
+		dataType: string
+		lineageTag: 0c2313fc-36ec-4234-992d-616c32600180
+		summarizeBy: none
+		sourceColumn: series
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: string
+		lineageTag: 9c6c4d0b-aa24-4583-bafb-ede97587e4f3
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		lineageTag: ab9b13f7-0db0-4392-b7b1-85944584a885
+		summarizeBy: none
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+	column z_score
+		dataType: double
+		lineageTag: 842c2334-00ac-46f3-aa04-920ed3892a5f
+		summarizeBy: none
+		sourceColumn: z_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: fd27ad62-3b8c-4fa2-a1cd-63947aafbe8b
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 1bea74ee-c127-4459-a09f-b969da4f1ade
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_ml_anomalies = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_ml_anomalies.csv"),
+				    [Delimiter = ",", Columns = 7, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "series", "month", "value", "z_score", "note", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"series", type text},
+				    {"month", type text},
+				    {"value", type number},
+				    {"z_score", type number},
+				    {"note", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

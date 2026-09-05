@@ -1,0 +1,110 @@
+/// Curated NFP ML export: ML layer - the eleven approved models' estimates, each beside its management assumption.
+table nfp_ml_estimates
+	lineageTag: cfab83d3-16fe-49d2-bb3b-183906b1e0c8
+
+	column row_id
+		dataType: string
+		lineageTag: 6eae0ca0-78b1-4e32-b271-3aaf77bffc52
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column estimate_id
+		dataType: string
+		lineageTag: fe9a9a63-a894-4faa-bda6-77cb70acbaad
+		summarizeBy: none
+		sourceColumn: estimate_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column model
+		dataType: string
+		lineageTag: d18ee891-a8dd-4b2e-a0e6-7d892a1e7fd2
+		summarizeBy: none
+		sourceColumn: model
+
+		annotation SummarizationSetBy = Automatic
+
+	column target
+		dataType: string
+		lineageTag: 19dd6b46-3dc5-4b66-8bd8-6552e68a755d
+		summarizeBy: none
+		sourceColumn: target
+
+		annotation SummarizationSetBy = Automatic
+
+	column estimate
+		dataType: string
+		lineageTag: 6b7a9c61-5019-4a34-98e7-4021e9f032ef
+		summarizeBy: none
+		sourceColumn: estimate
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit
+		dataType: string
+		lineageTag: b91dbd33-a0ed-496c-9075-8021125b1d70
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column management_comparison
+		dataType: string
+		lineageTag: 40ccc4af-3ad1-4900-85f5-5e8ba26d9083
+		summarizeBy: none
+		sourceColumn: management_comparison
+
+		annotation SummarizationSetBy = Automatic
+
+	column basis
+		dataType: string
+		lineageTag: 02208704-1539-4906-9163-fe8cdb915616
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column caveat
+		dataType: string
+		lineageTag: 8695cd7a-4b18-454f-af00-cbeae87cfb00
+		summarizeBy: none
+		sourceColumn: caveat
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 7ca0584a-e8aa-4dcc-b322-9279dfb26ed5
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_ml_estimates = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_ml_estimates.csv"),
+				    [Delimiter = ",", Columns = 10, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "estimate_id", "model", "target", "estimate", "unit", "management_comparison", "basis", "caveat", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"estimate_id", type text},
+				    {"model", type text},
+				    {"target", type text},
+				    {"estimate", type text},
+				    {"unit", type text},
+				    {"management_comparison", type text},
+				    {"basis", type text},
+				    {"caveat", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

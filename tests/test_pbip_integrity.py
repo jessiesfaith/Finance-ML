@@ -57,6 +57,9 @@ CSV_FOR_TABLE = {
     "nfp_sensitivity": "nfp_sensitivity",
     "nfp_exec_board": "nfp_exec_board",
     "nfp_controls": "nfp_controls",
+    "nfp_ml_series": "nfp_ml_series",
+    "nfp_ml_estimates": "nfp_ml_estimates",
+    "nfp_ml_anomalies": "nfp_ml_anomalies",
     "client_fs_option_sizing": "client_fs_option_sizing",
 }
 

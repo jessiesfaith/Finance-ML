@@ -56,4 +56,4 @@ R054,CONTROLS,Project cash rolls (beginning + activity = ending),12 months,PASS,
 R055,CONTROLS,No negative project cash months,none,PASS,,MODEL_OUTPUT
 R056,CONTROLS,No RESEARCH-status funder carries a confirmed amount,8 prospect rows,PASS,,MODEL_OUTPUT
 R057,CONTROLS,No current debt presented from historical-only data,current LOC row states NO CURRENT LOC CONFIRMED FROM PUBLIC DATA,PASS,,MODEL_OUTPUT
-R058,CONTROLS,Division-by-zero guards active,per-participant and ratio calcs guard zero denominators,PASS,,MODEL_OUTPUT
+R058,CONTROLS,Division-by-zero guards active,zero-row probe ran through programs() and returned zeros,PASS,,MODEL_OUTPUT
