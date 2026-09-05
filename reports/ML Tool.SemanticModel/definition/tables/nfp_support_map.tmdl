@@ -1,0 +1,110 @@
+/// Curated NFP export: which funds support which expense, per program.
+table nfp_support_map
+	lineageTag: d1d2e4cc-4c9f-4836-840e-713992ce9fd4
+
+	column row_id
+		dataType: string
+		lineageTag: 9b62a0ed-20fc-477e-b12d-86afd8faa4be
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column program
+		dataType: string
+		lineageTag: 90836354-fab8-4e82-84e4-10ed1ec627a8
+		summarizeBy: none
+		sourceColumn: program
+
+		annotation SummarizationSetBy = Automatic
+
+	column expense_total
+		dataType: double
+		lineageTag: 1eabc51b-a415-4f82-af1b-0a15dab5412d
+		summarizeBy: none
+		sourceColumn: expense_total
+
+		annotation SummarizationSetBy = Automatic
+
+	column funded_by_earned
+		dataType: double
+		lineageTag: 8ca0658e-80af-47e4-b626-6b08166f2168
+		summarizeBy: none
+		sourceColumn: funded_by_earned
+
+		annotation SummarizationSetBy = Automatic
+
+	column funded_by_grants
+		dataType: double
+		lineageTag: 17370bee-5756-491d-b69d-8c8ed977d9d5
+		summarizeBy: none
+		sourceColumn: funded_by_grants
+
+		annotation SummarizationSetBy = Automatic
+
+	column funded_by_restricted_gifts
+		dataType: double
+		lineageTag: aa37598c-18a1-4c9b-8379-30d77e8d34b6
+		summarizeBy: none
+		sourceColumn: funded_by_restricted_gifts
+
+		annotation SummarizationSetBy = Automatic
+
+	column funded_by_sponsorship
+		dataType: double
+		lineageTag: 977c0d38-348c-437a-8c0e-a5fb6c0f2ea3
+		summarizeBy: none
+		sourceColumn: funded_by_sponsorship
+
+		annotation SummarizationSetBy = Automatic
+
+	column funded_by_unrestricted
+		dataType: double
+		lineageTag: 90a3ebdb-398c-40a4-a973-d0c86a1482ce
+		summarizeBy: none
+		sourceColumn: funded_by_unrestricted
+
+		annotation SummarizationSetBy = Automatic
+
+	column reading
+		dataType: string
+		lineageTag: 5ff644cb-a2d4-4c9e-97f7-e4cf4d72f1f8
+		summarizeBy: none
+		sourceColumn: reading
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: b6dc3068-7fb4-4ebd-902c-525be3cbdd1a
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_support_map = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_support_map.csv"),
+				    [Delimiter = ",", Columns = 10, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "program", "expense_total", "funded_by_earned", "funded_by_grants", "funded_by_restricted_gifts", "funded_by_sponsorship", "funded_by_unrestricted", "reading", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"program", type text},
+				    {"expense_total", type number},
+				    {"funded_by_earned", type number},
+				    {"funded_by_grants", type number},
+				    {"funded_by_restricted_gifts", type number},
+				    {"funded_by_sponsorship", type number},
+				    {"funded_by_unrestricted", type number},
+				    {"reading", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

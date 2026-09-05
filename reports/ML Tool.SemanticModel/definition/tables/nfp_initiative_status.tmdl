@@ -1,0 +1,126 @@
+/// Curated NFP export: initiative tracker - status, proposed amount and period (NOT publicly confirmed as started).
+table nfp_initiative_status
+	lineageTag: a884647e-da92-4d8d-8600-e264b7ec2751
+
+	measure 'Initiatives Proposed ($)' =
+			
+			SUM(nfp_initiative_status[proposed_amount])
+		formatString: #,0
+		displayFolder: NFP Cards
+		lineageTag: 8602a0a9-653c-48d1-8bf7-912d34ab8f2f
+
+	column row_id
+		dataType: string
+		lineageTag: 9f4b2365-1b17-496e-851c-e665aa5dfdf6
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column initiative_id
+		dataType: string
+		lineageTag: 39808504-5c2a-430f-bec5-05e508e94a3b
+		summarizeBy: none
+		sourceColumn: initiative_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column initiative
+		dataType: string
+		lineageTag: b2539073-d030-4230-804a-ed36be89353d
+		summarizeBy: none
+		sourceColumn: initiative
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 597be4c4-2ebc-4e47-9fe5-85ab023a332a
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column proposed_amount
+		dataType: double
+		lineageTag: 7efa1edf-8ab2-4520-97be-b3432b222f78
+		summarizeBy: none
+		sourceColumn: proposed_amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column period_start
+		dataType: string
+		lineageTag: 0c6db964-a8a2-4b79-b1da-e9367a7d7fa4
+		summarizeBy: none
+		sourceColumn: period_start
+
+		annotation SummarizationSetBy = Automatic
+
+	column period_end
+		dataType: string
+		lineageTag: 3afc2a58-6edd-4fe4-ad33-775269f87633
+		summarizeBy: none
+		sourceColumn: period_end
+
+		annotation SummarizationSetBy = Automatic
+
+	column entry_action
+		dataType: string
+		lineageTag: 2ad558da-e3ee-4596-865f-031ba457aa39
+		summarizeBy: none
+		sourceColumn: entry_action
+
+		annotation SummarizationSetBy = Automatic
+
+	column funding_route
+		dataType: string
+		lineageTag: 77765e81-0f32-4913-9392-ee0004850bea
+		summarizeBy: none
+		sourceColumn: funding_route
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 3f22cdd1-13d4-4c8b-907d-2a42d504a5a3
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: 6cdbac8e-191b-4808-bdc2-d66d42d37c16
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_initiative_status = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_initiative_status.csv"),
+				    [Delimiter = ",", Columns = 11, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "initiative_id", "initiative", "status", "proposed_amount", "period_start", "period_end", "entry_action", "funding_route", "value_class", "note"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"initiative_id", type text},
+				    {"initiative", type text},
+				    {"status", type text},
+				    {"proposed_amount", type number},
+				    {"period_start", type text},
+				    {"period_end", type text},
+				    {"entry_action", type text},
+				    {"funding_route", type text},
+				    {"value_class", type text},
+				    {"note", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

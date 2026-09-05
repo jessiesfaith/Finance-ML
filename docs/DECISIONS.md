@@ -1188,3 +1188,31 @@ is the exec summary at a glance (months cash base vs stress, controls
 passing, at-risk grants, pipeline). Pairwise overlap and page-bounds
 checks run clean; the number-typed-column guard covers the text-typed
 months_cash_end via VALUE() inside the scenario measures.
+
+### 102. Time dimension everywhere + tab 16 (Investments & Rentals)
+Owner's page-by-page depth pass. New exports and visuals: (15) an
+initiative tracker - public sources do NOT confirm any were started,
+so all four ride as NOT STARTED - PROPOSED with placeholder amounts
+and periods, charted; (14) nfp_ratio_values (14 live ratio values
+with basis) + monthly ratio trends where history supports them;
+(13) category column on the ML series -> estimates-over-time by
+category (program costs chart added); (12) liquidity over time -
+months-cash vs the 3.0 policy with the seeded winter-2022/23 breach
+episode flagged (4 months), min/breach cards; (11) pledge injections
+dated, expected-collection schedule + cumulative + annualized run
+rate ($540K/yr while collecting - explicitly NOT recurring), and a
+funding-mix classing RECURRING vs ONE-TIME vs LONG-TERM FORECAST;
+(10) the gap over time - monthly funding vs cost vs the cash balance
+absorbing it, plus a per-program support map (parts sum to expense
+by construction) answering which funds support which spend; (9) the
+five alternatives' cumulative positions years 0-5, with ALT-3 shown
+as NET POSITION incl. recoverable portfolio value (bare cash would
+fake a loss). New tab 16 - NFP Investments & Rentals for the owner's
+mandate: investable pools (reserve HISTORICAL, cash-above-floor
+SYNTHETIC), five rental income streams with utilization headroom,
+and four PROPOSED scenarios for the segment (policy portfolio,
+endowment build, facility monetization, energy retrofit) - every row
+PROPOSAL/ASSUMPTION; decisions stay with the board. Engine fixes en
+route: gap history calibrated to the seeded net-cash series with
+admin included (the first cut produced a negative early balance);
+11 new tables, 8 new measures, 34 new visuals; overlap check clean.

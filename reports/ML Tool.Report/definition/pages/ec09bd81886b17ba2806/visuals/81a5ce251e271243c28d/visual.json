@@ -1,0 +1,158 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "81a5ce251e271243c28d",
+  "position": {
+    "x": 165,
+    "y": 2975,
+    "height": 340,
+    "width": 2670,
+    "z": 702000,
+    "tabOrder": 702000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_alt_timeline"
+                    }
+                  },
+                  "Property": "year"
+                }
+              },
+              "queryRef": "nfp_alt_timeline.year",
+              "nativeQueryRef": "year",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_alt_timeline"
+                        }
+                      },
+                      "Property": "expand_program"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_alt_timeline.expand_program)",
+              "nativeQueryRef": "Sum of expand_program",
+              "displayName": "expand program"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_alt_timeline"
+                        }
+                      },
+                      "Property": "launch_program"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_alt_timeline.launch_program)",
+              "nativeQueryRef": "Sum of launch_program",
+              "displayName": "launch program"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_alt_timeline"
+                        }
+                      },
+                      "Property": "invest_capital"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_alt_timeline.invest_capital)",
+              "nativeQueryRef": "Sum of invest_capital",
+              "displayName": "invest (net position)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_alt_timeline"
+                        }
+                      },
+                      "Property": "retain_cash"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_alt_timeline.retain_cash)",
+              "nativeQueryRef": "Sum of retain_cash",
+              "displayName": "retain cash"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_alt_timeline"
+                        }
+                      },
+                      "Property": "capital_project"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_alt_timeline.capital_project)",
+              "nativeQueryRef": "Sum of capital_project",
+              "displayName": "capital project"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

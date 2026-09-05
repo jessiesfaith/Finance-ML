@@ -1,0 +1,118 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "ea5669a5a91b74961ace",
+  "position": {
+    "x": 1525,
+    "y": 3625,
+    "height": 320,
+    "width": 1310,
+    "z": 705000,
+    "tabOrder": 705000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_support_map"
+                    }
+                  },
+                  "Property": "program"
+                }
+              },
+              "queryRef": "nfp_support_map.program",
+              "nativeQueryRef": "program",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_support_map"
+                        }
+                      },
+                      "Property": "funded_by_earned"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_support_map.funded_by_earned)",
+              "nativeQueryRef": "Sum of funded_by_earned",
+              "displayName": "earned"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_support_map"
+                        }
+                      },
+                      "Property": "funded_by_grants"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_support_map.funded_by_grants)",
+              "nativeQueryRef": "Sum of funded_by_grants",
+              "displayName": "grants"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_support_map"
+                        }
+                      },
+                      "Property": "funded_by_unrestricted"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_support_map.funded_by_unrestricted)",
+              "nativeQueryRef": "Sum of funded_by_unrestricted",
+              "displayName": "unrestricted support"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

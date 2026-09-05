@@ -1,0 +1,131 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "26fe7e038d80b17784c7",
+  "position": {
+    "x": 165,
+    "y": 2795,
+    "height": 380,
+    "width": 2670,
+    "z": 702000,
+    "tabOrder": 702000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ratio_values"
+                    }
+                  },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_ratio_values.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ratio_values"
+                    }
+                  },
+                  "Property": "ratio"
+                }
+              },
+              "queryRef": "nfp_ratio_values.ratio",
+              "nativeQueryRef": "ratio",
+              "displayName": "ratio"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ratio_values"
+                    }
+                  },
+                  "Property": "area"
+                }
+              },
+              "queryRef": "nfp_ratio_values.area",
+              "nativeQueryRef": "area",
+              "displayName": "area"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ratio_values"
+                    }
+                  },
+                  "Property": "value"
+                }
+              },
+              "queryRef": "nfp_ratio_values.value",
+              "nativeQueryRef": "value",
+              "displayName": "current value"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ratio_values"
+                    }
+                  },
+                  "Property": "basis"
+                }
+              },
+              "queryRef": "nfp_ratio_values.basis",
+              "nativeQueryRef": "basis",
+              "displayName": "computed as"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ratio_values"
+                    }
+                  },
+                  "Property": "note"
+                }
+              },
+              "queryRef": "nfp_ratio_values.note",
+              "nativeQueryRef": "note",
+              "displayName": "note"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_ratio_values"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

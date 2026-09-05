@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "d63aa56d82cf9f52b487",
+  "position": {
+    "x": 165,
+    "y": 2820,
+    "height": 40,
+    "width": 1880,
+    "z": 701000,
+    "tabOrder": 701000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Liquidity OVER TIME \u2014 months cash vs the 3.0 policy; breaches flagged when they occurred (SYNTHETIC history)",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

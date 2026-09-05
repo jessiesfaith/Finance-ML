@@ -1,0 +1,9 @@
+row_id,source,recurrence_class,amount,basis,value_class
+R001,Earned program revenue,RECURRING,2850000.0,Fees/tuition - repeats yearly,MODEL_OUTPUT
+R002,Annual campaign & org contributions,RECURRING,800000.0,Annual giving; donor retention drives it (tab 13 model 9),MODEL_OUTPUT
+R003,Program contributions (restricted + unrestricted),RECURRING,610000.0,Annual gifts at donor-renewal rates,MODEL_OUTPUT
+R004,Sponsorships,RECURRING,150000.0,"Event/program sponsors, renewed yearly",MODEL_OUTPUT
+R005,Grants (probability-weighted renewals),RECURRING,597000.0,"Live grants x renewal probability (funding cliff, tab 10)",MODEL_OUTPUT
+R006,Pledge collections (campaign),ONE-TIME,675000.0,Capital-campaign pledges - collected once,MODEL_OUTPUT
+R007,Development pipeline (probability-weighted),ONE-TIME,259500.0,Asks in flight - not recurring until renewed,MODEL_OUTPUT
+R008,Campaign gifts still to raise,LONG-TERM FORECAST,2460000.0,Second Pool plan (tab 11) - multi-year raise,MODEL_OUTPUT

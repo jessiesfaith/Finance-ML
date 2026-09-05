@@ -1,10 +1,10 @@
-/// Curated NFP ML export: ML layer - history vs 12-month MODEL ESTIMATE per series (seed-777 SYNTHETIC training data).
+/// Curated NFP ML export: ML layer - history vs 12-month MODEL ESTIMATE per series, with category (seed-777 SYNTHETIC).
 table nfp_ml_series
-	lineageTag: f6adf0ca-d0d4-4433-9429-ddecd000559c
+	lineageTag: a6001ebd-8c68-4853-a692-591e9440894e
 
 	column row_id
 		dataType: string
-		lineageTag: e4b1f70e-a3ad-4c02-bd15-bff9b34506c2
+		lineageTag: 04015a9e-68ef-4608-a9dd-f6f3f23b33a3
 		summarizeBy: none
 		sourceColumn: row_id
 
@@ -12,7 +12,7 @@ table nfp_ml_series
 
 	column series_id
 		dataType: string
-		lineageTag: 8fca8727-b7ce-4f14-b82c-c02638571075
+		lineageTag: 75045cfd-c43b-433e-b1a9-42d3d337aeca
 		summarizeBy: none
 		sourceColumn: series_id
 
@@ -20,15 +20,23 @@ table nfp_ml_series
 
 	column series
 		dataType: string
-		lineageTag: 254d3d51-2bcf-4fc7-9d61-b2fcc28e22f1
+		lineageTag: 7668c712-d398-4783-93ca-c7fb6578c58d
 		summarizeBy: none
 		sourceColumn: series
 
 		annotation SummarizationSetBy = Automatic
 
+	column category
+		dataType: string
+		lineageTag: d78a8af7-adc7-4769-a2fc-dd2bd88176fa
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
 	column month
 		dataType: string
-		lineageTag: bdbc967d-b3a2-421f-b396-8ffdfe504f85
+		lineageTag: 72e7f7ca-2907-40af-a094-114920f5d29c
 		summarizeBy: none
 		sourceColumn: month
 
@@ -36,7 +44,7 @@ table nfp_ml_series
 
 	column history_value
 		dataType: double
-		lineageTag: 34e71bee-cb28-443a-863a-d09c0edb46fb
+		lineageTag: d0b2bf52-42f2-4465-8ff0-334a0f60ac27
 		summarizeBy: none
 		sourceColumn: history_value
 
@@ -44,7 +52,7 @@ table nfp_ml_series
 
 	column estimate_value
 		dataType: double
-		lineageTag: ee5190a7-071c-4c1b-8bea-d2804f9e6f2e
+		lineageTag: 9f93c7cc-0bab-495d-842c-ea1fcf9ea4d5
 		summarizeBy: none
 		sourceColumn: estimate_value
 
@@ -52,7 +60,7 @@ table nfp_ml_series
 
 	column kind
 		dataType: string
-		lineageTag: 9cf114ac-2a87-4743-a479-02da5e89e26b
+		lineageTag: b5d14be0-ea17-4015-993d-3f4bd985ed3c
 		summarizeBy: none
 		sourceColumn: kind
 
@@ -60,7 +68,7 @@ table nfp_ml_series
 
 	column value_class
 		dataType: string
-		lineageTag: 7d905a8d-6423-4fa8-814d-82f72d2d1f91
+		lineageTag: 753545b4-5249-485a-a251-20daf1d8a0ba
 		summarizeBy: none
 		sourceColumn: value_class
 
@@ -72,14 +80,15 @@ table nfp_ml_series
 				let
 				  Source = Csv.Document(
 				    File.Contents("C:\dev\Finance-ML\reports\nfp_ml_series.csv"),
-				    [Delimiter = ",", Columns = 8, QuoteStyle = QuoteStyle.Csv]
+				    [Delimiter = ",", Columns = 9, QuoteStyle = QuoteStyle.Csv]
 				),
 				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "series_id", "series", "month", "history_value", "estimate_value", "kind", "value_class"}),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "series_id", "series", "category", "month", "history_value", "estimate_value", "kind", "value_class"}),
 				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
 				    {"row_id", type text},
 				    {"series_id", type text},
 				    {"series", type text},
+				    {"category", type text},
 				    {"month", type text},
 				    {"history_value", type number},
 				    {"estimate_value", type number},

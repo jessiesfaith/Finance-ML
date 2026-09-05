@@ -1,0 +1,15 @@
+row_id,ratio,area,value,basis,value_class,note
+R001,Program expense ratio %,Existing programs,92.59,program cost / total org expense,MODEL_OUTPUT,Computed from SYNTHETIC module data until client data loads
+R002,Cost per participant $,Existing programs,1336.9,portfolio cost / participants,MODEL_OUTPUT,Computed from SYNTHETIC module data until client data loads
+R003,Revenue per participant $,Existing programs,1205.88,portfolio funding / participants,MODEL_OUTPUT,Computed from SYNTHETIC module data until client data loads
+R004,Portfolio self-sufficiency %,Existing programs,65.22,earned revenue / direct program cost,MODEL_OUTPUT,Computed from SYNTHETIC module data until client data loads
+R005,Capacity utilization %,Existing programs,67.88,participants / capacity,MODEL_OUTPUT,Computed from SYNTHETIC module data until client data loads
+R006,Subsidy per participant $,Existing programs,221.93,unrestricted subsidy / participants,MODEL_OUTPUT,Computed from SYNTHETIC module data until client data loads
+R007,Grant dependency %,Grants,16.95,grants / total funding,MODEL_OUTPUT,Computed from SYNTHETIC module data until client data loads
+R008,Restricted funding %,Restricted gifts,22.03,restricted funding / total funding,MODEL_OUTPUT,Computed from SYNTHETIC module data until client data loads
+R009,Months cash on hand,Cash/liquidity,4.0,unrestricted cash / monthly expense,MODEL_OUTPUT,Computed from SYNTHETIC module data until client data loads
+R010,Operating reserve ratio %,Cash/liquidity,12.91,HISTORICAL reserve / annual expense,MODEL_OUTPUT,Computed from SYNTHETIC module data until client data loads
+R011,Compensation share of cost %,Staffing,56.11,program personnel / total expense,MODEL_OUTPUT,Computed from SYNTHETIC module data until client data loads
+R012,Operating margin %,Budget,-1.69,(funding - expense) / funding,MODEL_OUTPUT,Computed from SYNTHETIC module data until client data loads
+R013,Donation coverage of cost %,Annual campaign,14.81,campaign revenue / total expense,MODEL_OUTPUT,Computed from SYNTHETIC module data until client data loads
+R014,Pledge collection %,Major gifts,33.33,collected / pledged (campaign),MODEL_OUTPUT,Computed from SYNTHETIC module data until client data loads

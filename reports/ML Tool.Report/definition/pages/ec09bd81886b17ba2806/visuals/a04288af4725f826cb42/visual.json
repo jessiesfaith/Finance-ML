@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "a04288af4725f826cb42",
+  "position": {
+    "x": 165,
+    "y": 2930,
+    "height": 40,
+    "width": 1900,
+    "z": 701000,
+    "tabOrder": 701000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "The five alternatives OVER TIME \u2014 cumulative position, years 0-5 (invest shown as net position incl. recoverable portfolio value)",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

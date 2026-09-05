@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "2d6d97f076f675ebf415",
+  "position": {
+    "x": 605,
+    "y": 150,
+    "height": 90,
+    "width": 420,
+    "z": 4000,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_rentals"
+                    }
+                  },
+                  "Property": "Rental Income ($/yr)"
+                }
+              },
+              "queryRef": "nfp_rentals.Rental Income ($/yr)",
+              "nativeQueryRef": "Rental Income ($/yr)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,83 @@
+/// Curated NFP export: every ratio the module computes today, with basis.
+table nfp_ratio_values
+	lineageTag: 47be9c2b-5535-44aa-8464-5b56742b1c48
+
+	column row_id
+		dataType: string
+		lineageTag: d823bbd6-98a6-48cc-9421-28e14669d046
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ratio
+		dataType: string
+		lineageTag: b5067110-b4f4-4bca-8a81-f214b9f43da5
+		summarizeBy: none
+		sourceColumn: ratio
+
+		annotation SummarizationSetBy = Automatic
+
+	column area
+		dataType: string
+		lineageTag: 9805b165-7714-4f56-b05d-a4affe8030a4
+		summarizeBy: none
+		sourceColumn: area
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		lineageTag: 18872321-0e58-4645-b578-bdf49393188b
+		summarizeBy: none
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+	column basis
+		dataType: string
+		lineageTag: e8dbf3fa-2151-435b-b2ce-825798b71cb3
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 27713b7e-b360-434c-b4fb-9351e1727671
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: 907dbfc3-bcf3-4808-886f-928ab40431e0
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_ratio_values = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_ratio_values.csv"),
+				    [Delimiter = ",", Columns = 7, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "ratio", "area", "value", "basis", "value_class", "note"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"ratio", type text},
+				    {"area", type text},
+				    {"value", type number},
+				    {"basis", type text},
+				    {"value_class", type text},
+				    {"note", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

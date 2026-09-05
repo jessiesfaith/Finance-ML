@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "27d00447a28dd6b04516",
+  "position": {
+    "x": 2435,
+    "y": 3530,
+    "height": 90,
+    "width": 400,
+    "z": 702000,
+    "tabOrder": 702000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_pledge_schedule"
+                    }
+                  },
+                  "Property": "Pledge Run Rate ($/yr)"
+                }
+              },
+              "queryRef": "nfp_pledge_schedule.Pledge Run Rate ($/yr)",
+              "nativeQueryRef": "Pledge Run Rate ($/yr)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

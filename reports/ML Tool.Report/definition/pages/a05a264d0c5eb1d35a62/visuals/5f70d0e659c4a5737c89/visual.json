@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "5f70d0e659c4a5737c89",
+  "position": {
+    "x": 165,
+    "y": 70,
+    "height": 66,
+    "width": 2670,
+    "z": 2000,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Investable pools, rental/real-asset income, and PROPOSED future investment scenarios for this segment (community-center organization: facility-rich, program-driven, reserve-backed). Every scenario is a PROPOSAL at stated ASSUMPTION returns - decisions belong to the Finance Committee and Board; this page arms the recommendation.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Rental figures are SYNTHETIC until the owner's data loads; the reserve pool is HISTORICAL public information requiring update.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

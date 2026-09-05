@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "b85aa6be86650f4dd1c6",
+  "position": {
+    "x": 2085,
+    "y": 2820,
+    "height": 90,
+    "width": 360,
+    "z": 702000,
+    "tabOrder": 702000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_gap_history"
+                    }
+                  },
+                  "Property": "Min Months Cash (48m)"
+                }
+              },
+              "queryRef": "nfp_gap_history.Min Months Cash (48m)",
+              "nativeQueryRef": "Min Months Cash (48m)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -368,6 +368,66 @@ def test_survey_findings_and_alignment(frames):
     assert (a["value_class"] == "MANAGEMENT ASSUMPTION").all()
 
 
+def test_time_dimension_layers(frames, s):
+    """The over-time exports reconcile and tell honest stories."""
+    g = frames["nfp_gap_history"]
+    assert len(g) == 48
+    # each column rounds independently, so allow 1-dollar slack
+    assert ((g["funding"] - g["cost"] - g["gap"]).abs() <= 1.5).all()
+    assert g["cash_balance"].iloc[-1] == s["unrestricted_liquid_cash"]
+    # the seeded winter 2022-23 liquidity episode is visible
+    breaches = g[g["breach_flag"] == "BREACH"]
+    assert len(breaches) >= 1
+    assert (g["months_cash"] > 0).all()
+
+    sm = frames["nfp_support_map"]
+    parts = (sm["funded_by_earned"] + sm["funded_by_grants"]
+             + sm["funded_by_restricted_gifts"]
+             + sm["funded_by_sponsorship"] + sm["funded_by_unrestricted"])
+    assert (parts == sm["expense_total"]).all()
+
+    tl = frames["nfp_alt_timeline"].set_index("year")
+    alts = frames["nfp_alternatives"].set_index("alternative_id")
+    assert tl.loc[5, "expand_program"] == pytest.approx(
+        -alts.loc["ALT-1", "capital_required"]
+        + alts.loc["ALT-1", "five_year_cash"], abs=2)
+    # invest shows net position - strictly rising, never a fake loss
+    assert (tl["invest_capital"].diff().dropna() > 0).all()
+    assert tl.loc[0, "invest_capital"] == 0
+
+    ps = frames["nfp_pledge_schedule"]
+    assert ps["expected_collections"].sum() == pytest.approx(
+        frames["nfp_pledges"]["expected_pledge_cash"].sum())
+
+    mix = frames["nfp_funding_mix"]
+    assert set(mix["recurrence_class"]) == {"RECURRING", "ONE-TIME",
+                                            "LONG-TERM FORECAST"}
+    rec = mix[mix["recurrence_class"] == "RECURRING"]["amount"].sum()
+    assert rec > 4_000_000                     # earned + campaign + more
+
+    rv = frames["nfp_ratio_values"]
+    months = rv[rv["ratio"] == "Months cash on hand"].iloc[0]
+    assert float(months["value"]) == pytest.approx(4.0, abs=0.01)
+
+
+def test_investments_and_rentals(frames):
+    """Tab-16 data: every scenario is a labeled PROPOSAL; rentals and
+    pools carry provenance labels."""
+    sc = frames["nfp_invest_scenarios"]
+    assert (sc["status"] == "PROPOSAL").all()
+    assert (sc["value_class"] == "ASSUMPTION").all()
+    assert len(sc) == 4
+    r = frames["nfp_rentals"]
+    assert (r["value_class"] == "SYNTHETIC").all()
+    assert r["annual_income"].sum() == 550000
+    pools = frames["nfp_investment_pools"]
+    assert set(pools["value_class"]) <= {"PUBLIC_RESEARCH", "SYNTHETIC",
+                                         "ASSUMPTION"}
+    st = frames["nfp_initiative_status"]
+    assert (st["status"] == "NOT STARTED - PROPOSED").all()
+    assert (st["note"].str.contains("NOT confirm")).all()
+
+
 def test_committed_exports_match_fresh_build(frames):
     for name, df in frames.items():
         assert_export_values_match(df, REPORTS / f"{name}.csv")

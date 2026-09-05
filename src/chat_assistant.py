@@ -54,7 +54,11 @@ INLINE_CSVS = [
     "nfp_ml_estimates.csv", "nfp_ml_anomalies.csv",
     "nfp_public_financials.csv", "nfp_role_matrix.csv",
     "nfp_ratio_990.csv", "nfp_survey_findings.csv",
-    "nfp_survey_alignment.csv",
+    "nfp_survey_alignment.csv", "nfp_initiative_status.csv",
+    "nfp_gap_history.csv", "nfp_support_map.csv", "nfp_alt_timeline.csv",
+    "nfp_pledge_schedule.csv", "nfp_funding_mix.csv",
+    "nfp_ratio_values.csv", "nfp_ratio_history.csv", "nfp_rentals.csv",
+    "nfp_investment_pools.csv", "nfp_invest_scenarios.csv",
 ]
 HEAD_CSVS = ["market_history_rolling24.csv", "market_history_windows.csv",
              "market_history_long.csv"]

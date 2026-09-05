@@ -240,14 +240,17 @@ def build_ml() -> dict[str, pd.DataFrame]:
     def emit_series(series_id, label):
         s = h[h["series_id"] == series_id].reset_index(drop=True)
         fitted, forecast, slope = _trend_forecast(s)
+        category = series_id.split(":")[0]
         for m, v in zip(s["month"], s["value"]):
             series_out.append({"series_id": series_id, "series": label,
+                               "category": category,
                                "month": m, "history_value": v,
                                "estimate_value": "",
                                "kind": "HISTORY (SYNTHETIC)",
                                "value_class": "SYNTHETIC"})
         for m, v in zip(_future_months(), forecast):
             series_out.append({"series_id": series_id, "series": label,
+                               "category": category,
                                "month": m, "history_value": "",
                                "estimate_value": round(float(v), 2),
                                "kind": ESTIMATE,
@@ -420,9 +423,10 @@ def build_ml() -> dict[str, pd.DataFrame]:
                  "risks keep management scores")
 
     series_df = pd.DataFrame(series_out,
-                             columns=["series_id", "series", "month",
-                                      "history_value", "estimate_value",
-                                      "kind", "value_class"])
+                             columns=["series_id", "series", "category",
+                                      "month", "history_value",
+                                      "estimate_value", "kind",
+                                      "value_class"])
     est_df = pd.DataFrame(estimates)
     est_df.insert(0, "estimate_id",
                   [f"ML-{i:03d}" for i in range(1, len(est_df) + 1)])

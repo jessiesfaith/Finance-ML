@@ -1,0 +1,90 @@
+/// Curated NFP export: rental/real-asset income streams (SYNTHETIC until owner data).
+table nfp_rentals
+	lineageTag: 8b29ca05-8f89-4037-824e-dcd27cbd3139
+
+	measure 'Rental Income ($/yr)' =
+			
+			SUM(nfp_rentals[annual_income])
+		formatString: #,0
+		displayFolder: NFP Cards
+		lineageTag: ea59bce1-0d54-42ca-a96c-ef15575015c7
+
+	column row_id
+		dataType: string
+		lineageTag: c936c357-8ab6-4e5b-a5f0-c18311ffa8e2
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column asset_id
+		dataType: string
+		lineageTag: 9dfd36fc-629b-4f56-bd5a-5c6dab252061
+		summarizeBy: none
+		sourceColumn: asset_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column asset
+		dataType: string
+		lineageTag: bb74f6a2-796f-40bd-bb84-022fc4055738
+		summarizeBy: none
+		sourceColumn: asset
+
+		annotation SummarizationSetBy = Automatic
+
+	column annual_income
+		dataType: double
+		lineageTag: 3e5d5c3a-381a-4c8c-a206-bf4dd7e60c76
+		summarizeBy: none
+		sourceColumn: annual_income
+
+		annotation SummarizationSetBy = Automatic
+
+	column utilization_pct
+		dataType: double
+		lineageTag: fe048e43-3676-4086-88b4-c423e1a11e13
+		summarizeBy: none
+		sourceColumn: utilization_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 1b5630d4-dfff-41fc-bf62-9fade46af033
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 7544b2a5-1685-4492-858c-acd19e24d10f
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_rentals = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_rentals.csv"),
+				    [Delimiter = ",", Columns = 7, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "asset_id", "asset", "annual_income", "utilization_pct", "description", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"asset_id", type text},
+				    {"asset", type text},
+				    {"annual_income", type number},
+				    {"utilization_pct", type number},
+				    {"description", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

@@ -1078,6 +1078,302 @@ def exec_board(s, prog, alts, cliff, pipe, camp, fin, risk_df, scen,
 
 
 # ----------------------------------------------------------------------
+# time dimension (owner request: see it over time)
+# ----------------------------------------------------------------------
+
+def gap_history(s: dict, prog: pd.DataFrame) -> pd.DataFrame:
+    """Monthly funding vs cost vs the cash balance supporting the gap.
+    SYNTHETIC illustration: program funding spread evenly, campaign
+    revenue following the donation seasonality, calibrated so the
+    latest-12-month totals reconcile to the deterministic org totals
+    and the balance ends at today's unrestricted cash."""
+    h = pd.read_csv(NFP_DIR / "nfp_history.csv")
+    prog_cost = (h[h["series_id"].str.startswith("cost:")]
+                 .groupby("month")["value"].sum().sort_index())
+    net = (h[h["series_id"] == "net_cash:ORG"]
+           .set_index("month")["value"].sort_index())
+    admin_monthly = s["admin_fundraising_expense"] / 12.0
+    rows = []
+    for m in prog_cost.index:
+        cost_total = prog_cost[m] + admin_monthly
+        gap = net[m]                    # the seeded funding-minus-cost
+        rows.append({"month": m,
+                     "funding": round(cost_total + gap, 0),
+                     "cost": round(cost_total, 0),
+                     "gap": round(gap, 0)})
+    df = pd.DataFrame(rows)
+    df["cumulative_gap"] = df["gap"].cumsum().round(0)
+    # cash balance: ends at today's unrestricted cash, driven by the gap
+    end_cash = s["unrestricted_liquid_cash"]
+    total = df["gap"].sum()
+    df["cash_balance"] = (end_cash - total + df["cumulative_gap"]).round(0)
+    trailing = df["cost"].rolling(12, min_periods=3).mean()
+    df["months_cash"] = (df["cash_balance"] / trailing).round(2)
+    df["policy_months"] = s["months_cash_policy"]
+    df["breach_flag"] = df["months_cash"].map(
+        lambda v: "BREACH" if v < s["months_cash_policy"] else "")
+    df["value_class"] = "SYNTHETIC"
+    return df
+
+
+def support_map(prog: pd.DataFrame) -> pd.DataFrame:
+    """Which funds support which expense, per program - earned, grants,
+    restricted gifts and sponsorship first, unrestricted money last.
+    Parts sum to the expense exactly by construction."""
+    rows = []
+    for _, p in prog.iterrows():
+        dedicated = (p["earned_revenue"] + p["grants"]
+                     + p["restricted_contrib"] + p["sponsorship"])
+        unrestricted = p["total_cost"] - dedicated
+        rows.append({
+            "program": p["program"], "expense_total": p["total_cost"],
+            "funded_by_earned": p["earned_revenue"],
+            "funded_by_grants": p["grants"],
+            "funded_by_restricted_gifts": p["restricted_contrib"],
+            "funded_by_sponsorship": p["sponsorship"],
+            "funded_by_unrestricted": round(unrestricted, 0),
+            "reading": ("generates unrestricted surplus"
+                        if unrestricted < 0 else
+                        "leans on unrestricted funds"),
+            "value_class": "SYNTHETIC"})
+    return pd.DataFrame(rows)
+
+
+def alt_timeline(s: dict) -> pd.DataFrame:
+    """Cumulative net cash of the five alternatives, year 0-5 - the
+    over-time view of the capital allocation choice."""
+    alts = alternatives(s).set_index("alternative_id")
+    cols = {"ALT-1": "expand_program", "ALT-2": "launch_program",
+            "ALT-3": "invest_capital", "ALT-4": "retain_cash",
+            "ALT-5": "capital_project"}
+    net = (s["expected_investment_return_pct"]
+           - s["investment_fees_pct"]) / 100.0
+    capital = s["available_capital"]
+    rows = []
+    cum = {}
+    for a in cols:
+        cum[a] = 0.0 if a == "ALT-4" else -capital
+    for y in range(0, 6):
+        if y > 0:
+            for a in cols:
+                cum[a] += alts.loc[a, f"net_cash_y{y}"]
+        vals = {cols[a]: round(cum[a], 0) for a in cols}
+        # ALT-3's capital stays recoverable: show NET POSITION (cash
+        # flows + portfolio value), not bare cash - bare cash would
+        # falsely read as a loss
+        vals["invest_capital"] = round(cum["ALT-3"]
+                                       + capital * (1 + net) ** y, 0)
+        rows.append({"year": y, **vals, "value_class": "MODEL_OUTPUT"})
+    return pd.DataFrame(rows)
+
+
+def pledge_schedule() -> pd.DataFrame:
+    """Expected pledge collections by month (lump at expected date,
+    discounted by collection probability) + the annualized run rate."""
+    plg = pledges()
+    months = [f"{2026 + (9 + i) // 12}-{(9 + i) % 12 + 1:02d}"
+              for i in range(16)]                 # 2026-10 .. 2028-01
+    expected = {m: 0.0 for m in months}
+    for _, r in plg.iterrows():
+        m = str(r["expected_date"])[:7]
+        if m in expected:
+            expected[m] += float(r["expected_pledge_cash"])
+    df = pd.DataFrame({"month": months,
+                       "expected_collections":
+                       [round(expected[m], 0) for m in months]})
+    df["cumulative_expected"] = df["expected_collections"].cumsum().round(0)
+    active = max(1, int((df["expected_collections"] > 0).sum()))
+    span = months.index(max(m for m in months if expected[m] > 0)) + 1         if any(v > 0 for v in expected.values()) else 1
+    run_rate = df["expected_collections"].sum() / span * 12.0
+    df["run_rate_annualized"] = round(run_rate, 0)
+    df["value_class"] = "SYNTHETIC"
+    return df
+
+
+def funding_mix(s: dict, prog: pd.DataFrame,
+                grants_df: pd.DataFrame) -> pd.DataFrame:
+    """Which funding is RECURRING vs ONE-TIME vs a LONG-TERM forecast -
+    the recurrence classification the owner asked to see."""
+    live = grants_df[grants_df["status"].isin(["CURRENT", "RENEWAL"])
+                     & grants_df["amount"].notna()]
+    grant_expected = (live["amount"]
+                      * live["renewal_probability_pct"] / 100.0).sum()
+    pipe = pipeline(s)
+    rows = [
+     ("Earned program revenue", "RECURRING",
+      prog["earned_revenue"].sum(), "Fees/tuition - repeats yearly"),
+     ("Annual campaign & org contributions", "RECURRING",
+      s["org_campaign_other_revenue"],
+      "Annual giving; donor retention drives it (tab 13 model 9)"),
+     ("Program contributions (restricted + unrestricted)", "RECURRING",
+      prog["restricted_contrib"].sum()
+      + prog["unrestricted_contrib"].sum(),
+      "Annual gifts at donor-renewal rates"),
+     ("Sponsorships", "RECURRING", prog["sponsorship"].sum(),
+      "Event/program sponsors, renewed yearly"),
+     ("Grants (probability-weighted renewals)", "RECURRING",
+      round(grant_expected, 0),
+      "Live grants x renewal probability (funding cliff, tab 10)"),
+     ("Pledge collections (campaign)", "ONE-TIME",
+      pledges()["expected_pledge_cash"].sum(),
+      "Capital-campaign pledges - collected once"),
+     ("Development pipeline (probability-weighted)", "ONE-TIME",
+      pipe["expected_value"].sum(),
+      "Asks in flight - not recurring until renewed"),
+     ("Campaign gifts still to raise", "LONG-TERM FORECAST",
+      2460000, "Second Pool plan (tab 11) - multi-year raise"),
+    ]
+    df = pd.DataFrame(rows, columns=["source", "recurrence_class",
+                                     "amount", "basis"])
+    df["value_class"] = "MODEL_OUTPUT"
+    return df
+
+
+def ratio_values(s: dict, prog: pd.DataFrame) -> pd.DataFrame:
+    """Every ratio the module can compute TODAY, with its basis - the
+    live companion to the tab-14 calc cards."""
+    direct = prog["personnel"].sum() + prog["direct_costs"].sum()
+    funding = prog["total_funding"].sum() + s["org_campaign_other_revenue"]
+    cost_total = prog["total_cost"].sum() + s["admin_fundraising_expense"]
+    rows = [
+     ("Program expense ratio %", "Existing programs",
+      100 * prog["total_cost"].sum() / cost_total,
+      "program cost / total org expense"),
+     ("Cost per participant $", "Existing programs",
+      prog["total_cost"].sum() / prog["participants"].sum(),
+      "portfolio cost / participants"),
+     ("Revenue per participant $", "Existing programs",
+      prog["total_funding"].sum() / prog["participants"].sum(),
+      "portfolio funding / participants"),
+     ("Portfolio self-sufficiency %", "Existing programs",
+      100 * prog["earned_revenue"].sum() / direct,
+      "earned revenue / direct program cost"),
+     ("Capacity utilization %", "Existing programs",
+      100 * prog["participants"].sum() / prog["capacity"].sum(),
+      "participants / capacity"),
+     ("Subsidy per participant $", "Existing programs",
+      prog["unrestricted_subsidy"].sum() / prog["participants"].sum(),
+      "unrestricted subsidy / participants"),
+     ("Grant dependency %", "Grants",
+      100 * prog["grants"].sum() / funding,
+      "grants / total funding"),
+     ("Restricted funding %", "Restricted gifts",
+      100 * (prog["grants"].sum() + prog["restricted_contrib"].sum())
+      / funding, "restricted funding / total funding"),
+     ("Months cash on hand", "Cash/liquidity",
+      s["unrestricted_liquid_cash"] / s["avg_monthly_operating_expense"],
+      "unrestricted cash / monthly expense"),
+     ("Operating reserve ratio %", "Cash/liquidity",
+      100 * 697000 / s["org_annual_expense"],
+      "HISTORICAL reserve / annual expense"),
+     ("Compensation share of cost %", "Staffing",
+      100 * prog["personnel"].sum() / cost_total,
+      "program personnel / total expense"),
+     ("Operating margin %", "Budget",
+      100 * (funding - cost_total) / funding,
+      "(funding - expense) / funding"),
+     ("Donation coverage of cost %", "Annual campaign",
+      100 * s["org_campaign_other_revenue"] / cost_total,
+      "campaign revenue / total expense"),
+     ("Pledge collection %", "Major gifts",
+      100 * pledges()["collected"].sum() / pledges()["amount"].sum(),
+      "collected / pledged (campaign)"),
+    ]
+    df = pd.DataFrame(rows, columns=["ratio", "area", "value", "basis"])
+    df["value"] = df["value"].round(2)
+    df["value_class"] = "MODEL_OUTPUT"
+    df["note"] = "Computed from SYNTHETIC module data until client data loads"
+    return df
+
+
+def ratio_history(s: dict) -> pd.DataFrame:
+    """Monthly ratio series where the history supports them."""
+    h = pd.read_csv(NFP_DIR / "nfp_history.csv")
+    cost = (h[h["series_id"].str.startswith("cost:")]
+            .groupby("month")["value"].sum().sort_index())
+    parts = (h[h["series_id"].str.startswith("participants:")]
+             .groupby("month")["value"].sum().sort_index())
+    don = (h[h["series_id"] == "donations:ORG"]
+           .set_index("month")["value"].sort_index())
+    scale = (s["org_campaign_other_revenue"]
+             / don.loc[cost.index[-12:]].sum())
+    rows = []
+    for m in cost.index:
+        rows.append({"month": m, "ratio_id": "cost_per_participant",
+                     "ratio": "Cost per participant $ (monthly)",
+                     "value": round(cost[m] / parts[m], 2)})
+        rows.append({"month": m, "ratio_id": "donation_coverage_pct",
+                     "ratio": "Donation coverage of monthly cost %",
+                     "value": round(100 * don[m] * scale / cost[m], 2)})
+    df = pd.DataFrame(rows)
+    df["value_class"] = "SYNTHETIC"
+    return df
+
+
+# ----------------------------------------------------------------------
+# TAB 16 - investments & rentals (the owner's mandate)
+# ----------------------------------------------------------------------
+
+def rentals() -> pd.DataFrame:
+    return pd.read_csv(NFP_DIR / "nfp_rental_inputs.csv")
+
+
+def investment_pools() -> pd.DataFrame:
+    return pd.read_csv(NFP_DIR / "nfp_investment_pool_inputs.csv")
+
+
+def invest_scenarios(s: dict) -> pd.DataFrame:
+    """PROPOSED future investment scenarios for a community-center
+    organization's investment segment. Every row is a PROPOSAL at
+    stated ASSUMPTION returns - decisions belong to the board."""
+    net = (s["expected_investment_return_pct"]
+           - s["investment_fees_pct"]) / 100.0
+    rows = []
+
+    def scen(name, capital, annual, fv5, liquidity, risk, mission):
+        rows.append({"scenario": name, "capital_required": capital,
+                     "expected_annual_income": annual,
+                     "five_year_value": round(fv5, 0),
+                     "liquidity": liquidity, "risk_note": risk,
+                     "mission_note": mission, "status": "PROPOSAL",
+                     "value_class": "ASSUMPTION"})
+
+    pool = 1150000.0        # reserve slice + above-floor cash (seeds)
+    scen("S1 Policy portfolio on reserves (60/40 + ladder)",
+         pool, round(pool * net, 0), pool * (1 + net) ** 5,
+         "Quarterly liquidity; ladder covers 12 months",
+         f"Market risk at ASSUMPTION net return {net:.1%}; drawdown "
+         "tolerance set by board policy",
+         "Investment income funds mission without donor asks")
+    contrib = 100000.0
+    fv = 250000 * (1 + net) ** 5 + sum(
+        contrib * (1 + net) ** k for k in range(5))
+    scen("S2 Endowment build ($250K seed + $100K/yr)",
+         250000, round((250000 + 2 * contrib) * net, 0), fv,
+         "Illiquid by design (endowment policy)",
+         "Same market risk; spending-rate discipline required",
+         "Permanent mission funding; 4% spending rate = growing "
+         "annual distribution")
+    scen("S3 Facility monetization (+15pts rental utilization)",
+         150000, 120000, -150000 + 5 * 120000,
+         "Capex sunk; income recurring",
+         "Execution risk: booking ops, wear, community-use tension",
+         "Uses existing assets; watch mission-use vs rental balance")
+    scen("S4 Energy retrofit (LED/HVAC/solar-ready)",
+         200000, 45000, -200000 + 5 * 45000,
+         "Capex sunk; savings recurring",
+         "Payback ~4.4 years at ASSUMPTION savings; utility-rate "
+         "sensitivity",
+         "Cost avoidance = unrestricted mission money; grant angle: "
+         "energy-efficiency programs (tab 10 prospects)")
+    return pd.DataFrame(rows)
+
+
+def initiative_status() -> pd.DataFrame:
+    return pd.read_csv(NFP_DIR / "nfp_initiative_status_inputs.csv")
+
+
+# ----------------------------------------------------------------------
 # build everything
 # ----------------------------------------------------------------------
 
@@ -1117,6 +1413,17 @@ def build_all() -> dict[str, pd.DataFrame]:
         "nfp_ratio_990": ratio_990(),
         "nfp_survey_findings": survey_findings(),
         "nfp_survey_alignment": survey_alignment(prog),
+        "nfp_initiative_status": initiative_status(),
+        "nfp_gap_history": gap_history(s, prog),
+        "nfp_support_map": support_map(prog),
+        "nfp_alt_timeline": alt_timeline(s),
+        "nfp_pledge_schedule": pledge_schedule(),
+        "nfp_funding_mix": funding_mix(s, prog, g),
+        "nfp_ratio_values": ratio_values(s, prog),
+        "nfp_ratio_history": ratio_history(s),
+        "nfp_rentals": rentals(),
+        "nfp_investment_pools": investment_pools(),
+        "nfp_invest_scenarios": invest_scenarios(s),
     }
     # stable sort key: report tables sort by row_id to preserve the
     # decision-flow order of each export

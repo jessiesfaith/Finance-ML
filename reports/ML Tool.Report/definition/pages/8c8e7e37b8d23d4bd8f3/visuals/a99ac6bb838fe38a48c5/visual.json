@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "a99ac6bb838fe38a48c5",
+  "position": {
+    "x": 165,
+    "y": 4420,
+    "height": 80,
+    "width": 2670,
+    "z": 709000,
+    "tabOrder": 709000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Pledge injection dates are in the pledge table above (injected column). Run-rate potential = the collection pace annualized while pledges are flowing - it is NOT recurring revenue; the mix table below is what recurs.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

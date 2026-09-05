@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "41434d96c31b71fa20fe",
+  "position": {
+    "x": 165,
+    "y": 150,
+    "height": 90,
+    "width": 420,
+    "z": 3000,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_investment_pools"
+                    }
+                  },
+                  "Property": "Investable Capital ($)"
+                }
+              },
+              "queryRef": "nfp_investment_pools.Investable Capital ($)",
+              "nativeQueryRef": "Investable Capital ($)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "a90e36065e1b1fecfb4d",
+  "position": {
+    "x": 165,
+    "y": 2750,
+    "height": 40,
+    "width": 2200,
+    "z": 701000,
+    "tabOrder": 701000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Every ratio the module computes TODAY \u2014 live values (SYNTHETIC data), and trends where the monthly history supports them",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

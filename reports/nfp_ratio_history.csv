@@ -1,0 +1,97 @@
+row_id,month,ratio_id,ratio,value,value_class
+R001,2022-10,cost_per_participant,Cost per participant $ (monthly),125.25,SYNTHETIC
+R002,2022-10,donation_coverage_pct,Donation coverage of monthly cost %,14.68,SYNTHETIC
+R003,2022-11,cost_per_participant,Cost per participant $ (monthly),120.84,SYNTHETIC
+R004,2022-11,donation_coverage_pct,Donation coverage of monthly cost %,15.27,SYNTHETIC
+R005,2022-12,cost_per_participant,Cost per participant $ (monthly),124.35,SYNTHETIC
+R006,2022-12,donation_coverage_pct,Donation coverage of monthly cost %,34.03,SYNTHETIC
+R007,2023-01,cost_per_participant,Cost per participant $ (monthly),109.9,SYNTHETIC
+R008,2023-01,donation_coverage_pct,Donation coverage of monthly cost %,15.0,SYNTHETIC
+R009,2023-02,cost_per_participant,Cost per participant $ (monthly),120.08,SYNTHETIC
+R010,2023-02,donation_coverage_pct,Donation coverage of monthly cost %,16.08,SYNTHETIC
+R011,2023-03,cost_per_participant,Cost per participant $ (monthly),119.17,SYNTHETIC
+R012,2023-03,donation_coverage_pct,Donation coverage of monthly cost %,14.2,SYNTHETIC
+R013,2023-04,cost_per_participant,Cost per participant $ (monthly),121.42,SYNTHETIC
+R014,2023-04,donation_coverage_pct,Donation coverage of monthly cost %,14.55,SYNTHETIC
+R015,2023-05,cost_per_participant,Cost per participant $ (monthly),120.77,SYNTHETIC
+R016,2023-05,donation_coverage_pct,Donation coverage of monthly cost %,14.07,SYNTHETIC
+R017,2023-06,cost_per_participant,Cost per participant $ (monthly),121.32,SYNTHETIC
+R018,2023-06,donation_coverage_pct,Donation coverage of monthly cost %,15.62,SYNTHETIC
+R019,2023-07,cost_per_participant,Cost per participant $ (monthly),123.6,SYNTHETIC
+R020,2023-07,donation_coverage_pct,Donation coverage of monthly cost %,13.95,SYNTHETIC
+R021,2023-08,cost_per_participant,Cost per participant $ (monthly),122.34,SYNTHETIC
+R022,2023-08,donation_coverage_pct,Donation coverage of monthly cost %,15.1,SYNTHETIC
+R023,2023-09,cost_per_participant,Cost per participant $ (monthly),113.21,SYNTHETIC
+R024,2023-09,donation_coverage_pct,Donation coverage of monthly cost %,14.94,SYNTHETIC
+R025,2023-10,cost_per_participant,Cost per participant $ (monthly),118.97,SYNTHETIC
+R026,2023-10,donation_coverage_pct,Donation coverage of monthly cost %,14.96,SYNTHETIC
+R027,2023-11,cost_per_participant,Cost per participant $ (monthly),116.06,SYNTHETIC
+R028,2023-11,donation_coverage_pct,Donation coverage of monthly cost %,13.63,SYNTHETIC
+R029,2023-12,cost_per_participant,Cost per participant $ (monthly),119.46,SYNTHETIC
+R030,2023-12,donation_coverage_pct,Donation coverage of monthly cost %,31.09,SYNTHETIC
+R031,2024-01,cost_per_participant,Cost per participant $ (monthly),113.34,SYNTHETIC
+R032,2024-01,donation_coverage_pct,Donation coverage of monthly cost %,14.7,SYNTHETIC
+R033,2024-02,cost_per_participant,Cost per participant $ (monthly),119.56,SYNTHETIC
+R034,2024-02,donation_coverage_pct,Donation coverage of monthly cost %,15.65,SYNTHETIC
+R035,2024-03,cost_per_participant,Cost per participant $ (monthly),117.82,SYNTHETIC
+R036,2024-03,donation_coverage_pct,Donation coverage of monthly cost %,15.12,SYNTHETIC
+R037,2024-04,cost_per_participant,Cost per participant $ (monthly),116.95,SYNTHETIC
+R038,2024-04,donation_coverage_pct,Donation coverage of monthly cost %,13.71,SYNTHETIC
+R039,2024-05,cost_per_participant,Cost per participant $ (monthly),117.57,SYNTHETIC
+R040,2024-05,donation_coverage_pct,Donation coverage of monthly cost %,13.22,SYNTHETIC
+R041,2024-06,cost_per_participant,Cost per participant $ (monthly),114.79,SYNTHETIC
+R042,2024-06,donation_coverage_pct,Donation coverage of monthly cost %,15.37,SYNTHETIC
+R043,2024-07,cost_per_participant,Cost per participant $ (monthly),117.72,SYNTHETIC
+R044,2024-07,donation_coverage_pct,Donation coverage of monthly cost %,14.24,SYNTHETIC
+R045,2024-08,cost_per_participant,Cost per participant $ (monthly),113.92,SYNTHETIC
+R046,2024-08,donation_coverage_pct,Donation coverage of monthly cost %,14.47,SYNTHETIC
+R047,2024-09,cost_per_participant,Cost per participant $ (monthly),111.14,SYNTHETIC
+R048,2024-09,donation_coverage_pct,Donation coverage of monthly cost %,14.95,SYNTHETIC
+R049,2024-10,cost_per_participant,Cost per participant $ (monthly),116.2,SYNTHETIC
+R050,2024-10,donation_coverage_pct,Donation coverage of monthly cost %,13.62,SYNTHETIC
+R051,2024-11,cost_per_participant,Cost per participant $ (monthly),120.06,SYNTHETIC
+R052,2024-11,donation_coverage_pct,Donation coverage of monthly cost %,14.04,SYNTHETIC
+R053,2024-12,cost_per_participant,Cost per participant $ (monthly),116.36,SYNTHETIC
+R054,2024-12,donation_coverage_pct,Donation coverage of monthly cost %,31.14,SYNTHETIC
+R055,2025-01,cost_per_participant,Cost per participant $ (monthly),105.79,SYNTHETIC
+R056,2025-01,donation_coverage_pct,Donation coverage of monthly cost %,14.73,SYNTHETIC
+R057,2025-02,cost_per_participant,Cost per participant $ (monthly),115.07,SYNTHETIC
+R058,2025-02,donation_coverage_pct,Donation coverage of monthly cost %,14.21,SYNTHETIC
+R059,2025-03,cost_per_participant,Cost per participant $ (monthly),114.78,SYNTHETIC
+R060,2025-03,donation_coverage_pct,Donation coverage of monthly cost %,35.73,SYNTHETIC
+R061,2025-04,cost_per_participant,Cost per participant $ (monthly),116.2,SYNTHETIC
+R062,2025-04,donation_coverage_pct,Donation coverage of monthly cost %,13.58,SYNTHETIC
+R063,2025-05,cost_per_participant,Cost per participant $ (monthly),115.76,SYNTHETIC
+R064,2025-05,donation_coverage_pct,Donation coverage of monthly cost %,14.03,SYNTHETIC
+R065,2025-06,cost_per_participant,Cost per participant $ (monthly),115.76,SYNTHETIC
+R066,2025-06,donation_coverage_pct,Donation coverage of monthly cost %,13.67,SYNTHETIC
+R067,2025-07,cost_per_participant,Cost per participant $ (monthly),117.76,SYNTHETIC
+R068,2025-07,donation_coverage_pct,Donation coverage of monthly cost %,13.55,SYNTHETIC
+R069,2025-08,cost_per_participant,Cost per participant $ (monthly),112.87,SYNTHETIC
+R070,2025-08,donation_coverage_pct,Donation coverage of monthly cost %,14.59,SYNTHETIC
+R071,2025-09,cost_per_participant,Cost per participant $ (monthly),108.06,SYNTHETIC
+R072,2025-09,donation_coverage_pct,Donation coverage of monthly cost %,13.66,SYNTHETIC
+R073,2025-10,cost_per_participant,Cost per participant $ (monthly),114.79,SYNTHETIC
+R074,2025-10,donation_coverage_pct,Donation coverage of monthly cost %,16.63,SYNTHETIC
+R075,2025-11,cost_per_participant,Cost per participant $ (monthly),113.2,SYNTHETIC
+R076,2025-11,donation_coverage_pct,Donation coverage of monthly cost %,14.77,SYNTHETIC
+R077,2025-12,cost_per_participant,Cost per participant $ (monthly),108.95,SYNTHETIC
+R078,2025-12,donation_coverage_pct,Donation coverage of monthly cost %,31.63,SYNTHETIC
+R079,2026-01,cost_per_participant,Cost per participant $ (monthly),105.65,SYNTHETIC
+R080,2026-01,donation_coverage_pct,Donation coverage of monthly cost %,14.47,SYNTHETIC
+R081,2026-02,cost_per_participant,Cost per participant $ (monthly),113.15,SYNTHETIC
+R082,2026-02,donation_coverage_pct,Donation coverage of monthly cost %,15.19,SYNTHETIC
+R083,2026-03,cost_per_participant,Cost per participant $ (monthly),112.47,SYNTHETIC
+R084,2026-03,donation_coverage_pct,Donation coverage of monthly cost %,14.5,SYNTHETIC
+R085,2026-04,cost_per_participant,Cost per participant $ (monthly),111.31,SYNTHETIC
+R086,2026-04,donation_coverage_pct,Donation coverage of monthly cost %,16.21,SYNTHETIC
+R087,2026-05,cost_per_participant,Cost per participant $ (monthly),110.87,SYNTHETIC
+R088,2026-05,donation_coverage_pct,Donation coverage of monthly cost %,13.73,SYNTHETIC
+R089,2026-06,cost_per_participant,Cost per participant $ (monthly),112.14,SYNTHETIC
+R090,2026-06,donation_coverage_pct,Donation coverage of monthly cost %,14.39,SYNTHETIC
+R091,2026-07,cost_per_participant,Cost per participant $ (monthly),108.81,SYNTHETIC
+R092,2026-07,donation_coverage_pct,Donation coverage of monthly cost %,14.49,SYNTHETIC
+R093,2026-08,cost_per_participant,Cost per participant $ (monthly),113.02,SYNTHETIC
+R094,2026-08,donation_coverage_pct,Donation coverage of monthly cost %,13.92,SYNTHETIC
+R095,2026-09,cost_per_participant,Cost per participant $ (monthly),105.03,SYNTHETIC
+R096,2026-09,donation_coverage_pct,Donation coverage of monthly cost %,14.96,SYNTHETIC

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "36cec4208c7987762a9c",
+  "position": {
+    "x": 165,
+    "y": 3640,
+    "height": 320,
+    "width": 1310,
+    "z": 703000,
+    "tabOrder": 703000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_pledge_schedule"
+                    }
+                  },
+                  "Property": "month"
+                }
+              },
+              "queryRef": "nfp_pledge_schedule.month",
+              "nativeQueryRef": "month",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_pledge_schedule"
+                        }
+                      },
+                      "Property": "expected_collections"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_pledge_schedule.expected_collections)",
+              "nativeQueryRef": "Sum of expected_collections",
+              "displayName": "expected collections $"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

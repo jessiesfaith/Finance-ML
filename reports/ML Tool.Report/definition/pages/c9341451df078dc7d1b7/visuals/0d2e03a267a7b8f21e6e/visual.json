@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "0d2e03a267a7b8f21e6e",
+  "position": {
+    "x": 165,
+    "y": 4285,
+    "height": 80,
+    "width": 2670,
+    "z": 707000,
+    "tabOrder": 707000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Reading: a negative month means that month's spend leaned on the cash balance (right chart shows the balance absorbing it). The support map shows WHERE the funds come from per program - unrestricted money is the scarce resource the gap consumes.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

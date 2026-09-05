@@ -1,0 +1,98 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "add44eff925a249adaf5",
+  "position": {
+    "x": 165,
+    "y": 2930,
+    "height": 320,
+    "width": 1780,
+    "z": 704000,
+    "tabOrder": 704000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_gap_history"
+                    }
+                  },
+                  "Property": "month"
+                }
+              },
+              "queryRef": "nfp_gap_history.month",
+              "nativeQueryRef": "month",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_gap_history"
+                        }
+                      },
+                      "Property": "months_cash"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_gap_history.months_cash)",
+              "nativeQueryRef": "Sum of months_cash",
+              "displayName": "months cash on hand"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_gap_history"
+                        }
+                      },
+                      "Property": "policy_months"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_gap_history.policy_months)",
+              "nativeQueryRef": "Sum of policy_months",
+              "displayName": "board policy (3.0)"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -65,6 +65,17 @@ CSV_FOR_TABLE = {
     "nfp_ratio_990": "nfp_ratio_990",
     "nfp_survey_findings": "nfp_survey_findings",
     "nfp_survey_alignment": "nfp_survey_alignment",
+    "nfp_initiative_status": "nfp_initiative_status",
+    "nfp_gap_history": "nfp_gap_history",
+    "nfp_support_map": "nfp_support_map",
+    "nfp_alt_timeline": "nfp_alt_timeline",
+    "nfp_pledge_schedule": "nfp_pledge_schedule",
+    "nfp_funding_mix": "nfp_funding_mix",
+    "nfp_ratio_values": "nfp_ratio_values",
+    "nfp_ratio_history": "nfp_ratio_history",
+    "nfp_rentals": "nfp_rentals",
+    "nfp_investment_pools": "nfp_investment_pools",
+    "nfp_invest_scenarios": "nfp_invest_scenarios",
     "client_fs_option_sizing": "client_fs_option_sizing",
 }
 

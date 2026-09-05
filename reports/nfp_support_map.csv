@@ -1,0 +1,9 @@
+row_id,program,expense_total,funded_by_earned,funded_by_grants,funded_by_restricted_gifts,funded_by_sponsorship,funded_by_unrestricted,reading,value_class
+R001,Early Childhood Education,1200000,900000,120000,60000,0,120000,leans on unrestricted funds,SYNTHETIC
+R002,Youth & Teen Programs,640000,260000,200000,40000,20000,120000,leans on unrestricted funds,SYNTHETIC
+R003,Senior Services,500000,200000,200000,0,0,100000,leans on unrestricted funds,SYNTHETIC
+R004,Fitness & Wellness,950000,1020000,0,0,20000,-90000,generates unrestricted surplus,SYNTHETIC
+R005,Cultural Arts,420000,150000,80000,30000,20000,140000,leans on unrestricted funds,SYNTHETIC
+R006,Community Events,380000,120000,0,20000,90000,150000,leans on unrestricted funds,SYNTHETIC
+R007,Family Services,610000,90000,260000,120000,0,140000,leans on unrestricted funds,SYNTHETIC
+R008,Adult Education,300000,110000,40000,0,0,150000,leans on unrestricted funds,SYNTHETIC

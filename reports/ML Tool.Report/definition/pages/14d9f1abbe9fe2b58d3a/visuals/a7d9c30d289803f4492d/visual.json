@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "a7d9c30d289803f4492d",
+  "position": {
+    "x": 1525,
+    "y": 2660,
+    "height": 300,
+    "width": 1310,
+    "z": 704000,
+    "tabOrder": 704000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_initiative_status"
+                    }
+                  },
+                  "Property": "initiative"
+                }
+              },
+              "queryRef": "nfp_initiative_status.initiative",
+              "nativeQueryRef": "initiative",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_initiative_status"
+                        }
+                      },
+                      "Property": "proposed_amount"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_initiative_status.proposed_amount)",
+              "nativeQueryRef": "Sum of proposed_amount",
+              "displayName": "proposed amount $"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

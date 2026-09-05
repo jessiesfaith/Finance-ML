@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "221c281736f3c871a2e1",
+  "position": {
+    "x": 165,
+    "y": 2980,
+    "height": 180,
+    "width": 2670,
+    "z": 705000,
+    "tabOrder": 705000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "The honest answer",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Public sources do NOT confirm whether JSV has started any of these initiatives - so all four are tracked as NOT STARTED - PROPOSED, with placeholder amounts and periods (MANAGEMENT ASSUMPTION) for management to replace. When real status arrives, update data/nfp/nfp_initiative_status_inputs.csv and rerun the builder: the chart, card and table recalculate.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

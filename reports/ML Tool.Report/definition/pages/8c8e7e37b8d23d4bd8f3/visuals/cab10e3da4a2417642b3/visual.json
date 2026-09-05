@@ -53,6 +53,21 @@
                       "Entity": "nfp_pledges"
                     }
                   },
+                  "Property": "pledge_date"
+                }
+              },
+              "queryRef": "nfp_pledges.pledge_date",
+              "nativeQueryRef": "pledge_date",
+              "displayName": "injected"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_pledges"
+                    }
+                  },
                   "Property": "amount"
                 }
               },

@@ -1,0 +1,74 @@
+/// Curated NFP export: monthly ratio series where history supports them (SYNTHETIC).
+table nfp_ratio_history
+	lineageTag: d8f09e1d-aa43-4d45-9e48-b082bbd160a8
+
+	column row_id
+		dataType: string
+		lineageTag: 8e0258c0-de52-47b5-9f41-b574c658a311
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: string
+		lineageTag: 6d481bae-71d1-4a2e-902e-f645e65d8765
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column ratio_id
+		dataType: string
+		lineageTag: 83fe0ce0-b549-4d55-9599-caf34286ffd8
+		summarizeBy: none
+		sourceColumn: ratio_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ratio
+		dataType: string
+		lineageTag: 8208834a-aa88-4722-a6d9-d46ac513de70
+		summarizeBy: none
+		sourceColumn: ratio
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		lineageTag: 2003906d-15ea-45c6-80a7-c3744e53b27a
+		summarizeBy: none
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 21b53647-f355-428b-9248-ee1bc4268bcf
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_ratio_history = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_ratio_history.csv"),
+				    [Delimiter = ",", Columns = 6, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "month", "ratio_id", "ratio", "value", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"month", type text},
+				    {"ratio_id", type text},
+				    {"ratio", type text},
+				    {"value", type number},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

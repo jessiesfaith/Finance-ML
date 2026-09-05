@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "2ba6f63dcd7c57c157f8",
+  "position": {
+    "x": 165,
+    "y": 1325,
+    "height": 120,
+    "width": 2670,
+    "z": 12000,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "How to use: the rental chart shows where facility income concentrates and the utilization column shows headroom (S3 monetization prices +15pts of it). S1/S2 are financial-market scenarios at the settings' net return; S4 is cost avoidance with a grant angle. Compare 5-year values AGAINST liquidity and mission columns - never on value alone (the tab-9 framework applies here too).",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

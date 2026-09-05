@@ -1,0 +1,6 @@
+row_id,asset_id,asset,annual_income,utilization_pct,description,value_class
+R001,R-1,Social hall & event spaces,220000,55,"Weddings, b'nai mitzvah, community events",SYNTHETIC
+R002,R-2,Aquatics (pool lanes / swim clubs),140000,70,Lane rentals to swim clubs and lessons providers,SYNTHETIC
+R003,R-3,Classrooms & meeting rooms,90000,45,"After-hours classes, tutoring, community groups",SYNTHETIC
+R004,R-4,Gymnasium court time,75000,60,League and club court rentals,SYNTHETIC
+R005,R-5,Parking / lot events,25000,30,Occasional lot rentals and event parking,SYNTHETIC

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "f2e18298872d7ff8c187",
+  "position": {
+    "x": 2435,
+    "y": 3990,
+    "height": 90,
+    "width": 400,
+    "z": 706000,
+    "tabOrder": 706000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_funding_mix"
+                    }
+                  },
+                  "Property": "Recurring Funding ($/yr)"
+                }
+              },
+              "queryRef": "nfp_funding_mix.Recurring Funding ($/yr)",
+              "nativeQueryRef": "Recurring Funding ($/yr)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

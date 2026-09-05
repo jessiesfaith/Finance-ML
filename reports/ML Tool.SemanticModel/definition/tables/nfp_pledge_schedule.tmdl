@@ -1,0 +1,81 @@
+/// Curated NFP export: expected pledge collections by month + annualized run rate.
+table nfp_pledge_schedule
+	lineageTag: bedef2f0-76fa-4756-acba-e2b848e2161f
+
+	measure 'Pledge Run Rate ($/yr)' =
+			
+			MAX(nfp_pledge_schedule[run_rate_annualized])
+		formatString: #,0
+		displayFolder: NFP Cards
+		lineageTag: edff87c7-75f8-44e3-8c89-eee6565f9159
+
+	column row_id
+		dataType: string
+		lineageTag: 9a708377-7c68-447c-a31e-4e2fa8ca16a7
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: string
+		lineageTag: 64ffa297-fca8-454f-848a-c98b7ddf009f
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_collections
+		dataType: double
+		lineageTag: 7daa08f5-3d46-4ea7-afa6-2d93fca7ebd2
+		summarizeBy: none
+		sourceColumn: expected_collections
+
+		annotation SummarizationSetBy = Automatic
+
+	column cumulative_expected
+		dataType: double
+		lineageTag: 885f667f-d0fd-4261-8cf1-be25bb71dac4
+		summarizeBy: none
+		sourceColumn: cumulative_expected
+
+		annotation SummarizationSetBy = Automatic
+
+	column run_rate_annualized
+		dataType: double
+		lineageTag: 23d2008e-8045-4700-a68e-3fce6a8be1bb
+		summarizeBy: none
+		sourceColumn: run_rate_annualized
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: ab36af07-f091-4692-862f-a5540bc3c00f
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_pledge_schedule = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_pledge_schedule.csv"),
+				    [Delimiter = ",", Columns = 6, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "month", "expected_collections", "cumulative_expected", "run_rate_annualized", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"month", type text},
+				    {"expected_collections", type number},
+				    {"cumulative_expected", type number},
+				    {"run_rate_annualized", type number},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

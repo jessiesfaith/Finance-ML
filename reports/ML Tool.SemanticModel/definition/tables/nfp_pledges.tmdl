@@ -136,13 +136,21 @@ table nfp_pledges
 
 		annotation SummarizationSetBy = Automatic
 
+	column pledge_date
+		dataType: string
+		lineageTag: c3271001-a5d1-4cfd-87eb-41015638790b
+		summarizeBy: none
+		sourceColumn: pledge_date
+
+		annotation SummarizationSetBy = Automatic
+
 	partition nfp_pledges = m
 		mode: import
 		source =
 				let
 				  Source = Csv.Document(
 				    File.Contents("C:\dev\Finance-ML\reports\nfp_pledges.csv"),
-				    [Delimiter = ",", Columns = 15, QuoteStyle = QuoteStyle.Csv]
+				    [Delimiter = ",", Columns = 16, QuoteStyle = QuoteStyle.Csv]
 				),
 				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
 				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "pledge_id", "donor", "amount", "collected", "restriction", "signed", "expected_date", "collection_probability_pct", "days_past_due", "value_class", "outstanding", "expected_pledge_cash", "collection_pct", "past_due_flag"}),
@@ -158,6 +166,7 @@ table nfp_pledges
 				    {"collection_probability_pct", type number},
 				    {"days_past_due", type number},
 				    {"value_class", type text},
+				    {"pledge_date", type text},
 				    {"outstanding", type number},
 				    {"expected_pledge_cash", type number},
 				    {"collection_pct", type number},

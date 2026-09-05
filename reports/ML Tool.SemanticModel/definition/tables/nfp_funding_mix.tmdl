@@ -1,0 +1,82 @@
+/// Curated NFP export: funding sources classed RECURRING / ONE-TIME / LONG-TERM FORECAST.
+table nfp_funding_mix
+	lineageTag: 4cd8cccf-8915-4390-9c91-62678d6e306d
+
+	measure 'Recurring Funding ($/yr)' =
+			
+			CALCULATE(SUM(nfp_funding_mix[amount]),
+			          nfp_funding_mix[recurrence_class] = "RECURRING")
+		formatString: #,0
+		displayFolder: NFP Cards
+		lineageTag: f97cbe42-9203-4ff8-874d-ed7c8f3d6463
+
+	column row_id
+		dataType: string
+		lineageTag: 50f0f985-d2d1-422b-b25a-06d2a04487fc
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: 91d2c9a5-1c93-461e-b5e7-2431c83e81a3
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column recurrence_class
+		dataType: string
+		lineageTag: 9a63a102-3479-4225-8337-fc3a45b87522
+		summarizeBy: none
+		sourceColumn: recurrence_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount
+		dataType: double
+		lineageTag: 986b9ba0-9227-475c-942c-0f7e8a1c2f67
+		summarizeBy: none
+		sourceColumn: amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column basis
+		dataType: string
+		lineageTag: d9ffa8f5-d255-42e2-822b-366f0cc1d561
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: e0349b77-d18c-4b6f-9513-481592efad42
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_funding_mix = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_funding_mix.csv"),
+				    [Delimiter = ",", Columns = 6, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "source", "recurrence_class", "amount", "basis", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"source", type text},
+				    {"recurrence_class", type text},
+				    {"amount", type number},
+				    {"basis", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

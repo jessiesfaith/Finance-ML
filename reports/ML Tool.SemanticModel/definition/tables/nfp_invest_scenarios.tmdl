@@ -1,0 +1,110 @@
+/// Curated NFP export: PROPOSED investment scenarios for the segment - board decides.
+table nfp_invest_scenarios
+	lineageTag: 25256dd3-b896-4755-a180-1b6940013070
+
+	column row_id
+		dataType: string
+		lineageTag: 709707c0-de15-4e45-a380-fe397a3f0c1e
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column scenario
+		dataType: string
+		lineageTag: 2439ca8a-b246-4393-a92c-d4a14f934416
+		summarizeBy: none
+		sourceColumn: scenario
+
+		annotation SummarizationSetBy = Automatic
+
+	column capital_required
+		dataType: double
+		lineageTag: 6bf9ceb4-3055-440b-aa7b-4a085ddfb7c7
+		summarizeBy: none
+		sourceColumn: capital_required
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_annual_income
+		dataType: double
+		lineageTag: eff295eb-28fc-4104-be06-f40b4edb3459
+		summarizeBy: none
+		sourceColumn: expected_annual_income
+
+		annotation SummarizationSetBy = Automatic
+
+	column five_year_value
+		dataType: double
+		lineageTag: 045f4207-6e8a-4dfc-b0da-5bf4134c3b8d
+		summarizeBy: none
+		sourceColumn: five_year_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column liquidity
+		dataType: string
+		lineageTag: 77090efa-8d2f-4ac9-882f-73040fe76072
+		summarizeBy: none
+		sourceColumn: liquidity
+
+		annotation SummarizationSetBy = Automatic
+
+	column risk_note
+		dataType: string
+		lineageTag: f71c8e9f-3d95-49f7-a212-8a6c951cfd26
+		summarizeBy: none
+		sourceColumn: risk_note
+
+		annotation SummarizationSetBy = Automatic
+
+	column mission_note
+		dataType: string
+		lineageTag: f1777373-8d4e-4736-9d45-439223c0e54f
+		summarizeBy: none
+		sourceColumn: mission_note
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 76d67d98-8d2d-4592-956f-85eacedf571e
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 5ab55c26-7da2-4e70-be52-7fbdb08eca70
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_invest_scenarios = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_invest_scenarios.csv"),
+				    [Delimiter = ",", Columns = 10, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "scenario", "capital_required", "expected_annual_income", "five_year_value", "liquidity", "risk_note", "mission_note", "status", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"scenario", type text},
+				    {"capital_required", type number},
+				    {"expected_annual_income", type number},
+				    {"five_year_value", type number},
+				    {"liquidity", type text},
+				    {"risk_note", type text},
+				    {"mission_note", type text},
+				    {"status", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

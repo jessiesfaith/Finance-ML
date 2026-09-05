@@ -1,0 +1,4 @@
+row_id,pool_id,pool,amount,note,value_class
+R001,POOL-1,Operating reserve (investable slice),700000,HISTORICAL ~$697K board-designated reserve (2023-06-30) - CURRENT BALANCE REQUIRES UPDATE,PUBLIC_RESEARCH
+R002,POOL-2,Unrestricted liquid cash above policy floor,450000,Cash above the 3.0-months policy floor (1.8M - 1.35M) - SYNTHETIC module figures,SYNTHETIC
+R003,POOL-3,Endowment seed (proposed),250000,The tab-9 ALT-3 invest alternative if selected,ASSUMPTION

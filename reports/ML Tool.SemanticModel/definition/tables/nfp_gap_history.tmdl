@@ -1,0 +1,134 @@
+/// Curated NFP export: monthly funding vs cost vs supporting cash balance, months-cash and policy breaches (SYNTHETIC).
+table nfp_gap_history
+	lineageTag: bba65e14-52d2-41e8-9dd7-401bcabcb2a8
+
+	measure 'Min Months Cash (48m)' =
+			
+			MIN(nfp_gap_history[months_cash])
+		formatString: 0.0
+		displayFolder: NFP Cards
+		lineageTag: f72cdb22-ed35-4cbc-a1ab-4567b3a473b7
+
+	measure 'Liquidity Breaches (48m)' =
+			
+			CALCULATE(COUNTROWS(nfp_gap_history),
+			          nfp_gap_history[breach_flag] = "BREACH")
+		formatString: 0
+		displayFolder: NFP Cards
+		lineageTag: 30206014-5067-4e17-a70c-3b7c13138100
+
+	column row_id
+		dataType: string
+		lineageTag: 3a18ffeb-ea11-4bf9-b4e6-94aaee1e7a94
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: string
+		lineageTag: b21ada75-dd2f-45e5-8b26-9d03b7e11826
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column funding
+		dataType: double
+		lineageTag: 546885a2-c1be-4d05-a77c-46082d750fdb
+		summarizeBy: none
+		sourceColumn: funding
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost
+		dataType: double
+		lineageTag: 40a0cc49-7a7e-4cea-8691-90fd5f85ae7b
+		summarizeBy: none
+		sourceColumn: cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column gap
+		dataType: double
+		lineageTag: 84857840-4596-4b55-bfe3-6cc738fad229
+		summarizeBy: none
+		sourceColumn: gap
+
+		annotation SummarizationSetBy = Automatic
+
+	column cumulative_gap
+		dataType: double
+		lineageTag: d66fd29c-9d40-4e56-9dc3-58f02ad47ac5
+		summarizeBy: none
+		sourceColumn: cumulative_gap
+
+		annotation SummarizationSetBy = Automatic
+
+	column cash_balance
+		dataType: double
+		lineageTag: 204985a8-47ff-4643-abab-0fb836398ca9
+		summarizeBy: none
+		sourceColumn: cash_balance
+
+		annotation SummarizationSetBy = Automatic
+
+	column months_cash
+		dataType: double
+		lineageTag: e7fbe10a-8158-40e1-924e-9ef5c9c050d9
+		summarizeBy: none
+		sourceColumn: months_cash
+
+		annotation SummarizationSetBy = Automatic
+
+	column policy_months
+		dataType: double
+		lineageTag: 3dc2bf70-da3c-4c48-abce-783e91952441
+		summarizeBy: none
+		sourceColumn: policy_months
+
+		annotation SummarizationSetBy = Automatic
+
+	column breach_flag
+		dataType: string
+		lineageTag: 21b50896-dbcd-4b0f-9a11-33c888c1e8d9
+		summarizeBy: none
+		sourceColumn: breach_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 84b143f0-1a38-4daa-a745-f8cafa914f0d
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_gap_history = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_gap_history.csv"),
+				    [Delimiter = ",", Columns = 11, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "month", "funding", "cost", "gap", "cumulative_gap", "cash_balance", "months_cash", "policy_months", "breach_flag", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"month", type text},
+				    {"funding", type number},
+				    {"cost", type number},
+				    {"gap", type number},
+				    {"cumulative_gap", type number},
+				    {"cash_balance", type number},
+				    {"months_cash", type number},
+				    {"policy_months", type number},
+				    {"breach_flag", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

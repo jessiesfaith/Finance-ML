@@ -1,0 +1,81 @@
+/// Curated NFP export: investable capital pools with provenance.
+table nfp_investment_pools
+	lineageTag: 4009c578-46cb-4c6a-bd09-18329b3fe8d8
+
+	measure 'Investable Capital ($)' =
+			
+			SUM(nfp_investment_pools[amount])
+		formatString: #,0
+		displayFolder: NFP Cards
+		lineageTag: 77aecc52-040f-46d8-bd20-5ad10377ac6f
+
+	column row_id
+		dataType: string
+		lineageTag: 96d09cf8-d2cb-4d66-b659-a4df6ed59f96
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column pool_id
+		dataType: string
+		lineageTag: 336c4b55-4601-4091-9706-9fdb50453df5
+		summarizeBy: none
+		sourceColumn: pool_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column pool
+		dataType: string
+		lineageTag: 8e37057d-751e-4072-92eb-a24bf8fbc23f
+		summarizeBy: none
+		sourceColumn: pool
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount
+		dataType: double
+		lineageTag: 47f9a04b-8d12-4549-8754-248e6fa11adf
+		summarizeBy: none
+		sourceColumn: amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: 843b440f-fc75-45db-8e8f-88156f67c0b6
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: f06a6179-7530-487a-8c32-7b73f39f9a10
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_investment_pools = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_investment_pools.csv"),
+				    [Delimiter = ",", Columns = 6, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "pool_id", "pool", "amount", "note", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"pool_id", type text},
+				    {"pool", type text},
+				    {"amount", type number},
+				    {"note", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "47c7a1a6fe97f970b433",
+  "position": {
+    "x": 2465,
+    "y": 2820,
+    "height": 90,
+    "width": 370,
+    "z": 703000,
+    "tabOrder": 703000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_gap_history"
+                    }
+                  },
+                  "Property": "Liquidity Breaches (48m)"
+                }
+              },
+              "queryRef": "nfp_gap_history.Liquidity Breaches (48m)",
+              "nativeQueryRef": "Liquidity Breaches (48m)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
