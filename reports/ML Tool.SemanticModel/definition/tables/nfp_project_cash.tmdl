@@ -75,7 +75,7 @@ table nfp_project_cash
 		annotation SummarizationSetBy = Automatic
 
 	column warning
-		dataType: double
+		dataType: string
 		lineageTag: 5c16e996-c157-4b02-9065-26e533620f82
 		summarizeBy: none
 		sourceColumn: warning
@@ -110,7 +110,7 @@ table nfp_project_cash
 				    {"financing_costs", type number},
 				    {"ending_cash", type number},
 				    {"loc_balance", type number},
-				    {"warning", type number},
+				    {"warning", type text},
 				    {"value_class", type text}
 				  })
 				in

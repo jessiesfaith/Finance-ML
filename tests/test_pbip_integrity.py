@@ -127,3 +127,39 @@ def test_every_visual_parses_resolves_and_is_unique():
             pool = measures if kind == "m" else columns
             assert prop in pool, f"{f}: unresolved binding {prop}"
     assert len(names) == len(set(names)), "duplicate visual names"
+
+
+def test_number_typed_partition_columns_parse_as_numbers():
+    """Every column an M partition types as number (or Int64) must hold
+    only parseable numerics in its CSV - non-blank text in a
+    number-typed column fails the whole table's refresh in Desktop.
+    (Bit us twice: is_recommended True/False, then date_verified dates
+    landing in a column typed while it was still all-blank.)"""
+    import re
+
+    import pandas as pd
+
+    for table, csv_name in CSV_FOR_TABLE.items():
+        tmdl = (SM / "tables" / f"{table}.tmdl")
+        if not tmdl.exists():
+            continue
+        text = tmdl.read_text(encoding="utf-8")
+        cols = re.findall(r'\{"([^"]+)", (?:type number|Int64\.Type)\}',
+                          text)
+        if not cols:
+            continue
+        df = pd.read_csv(Path("reports") / f"{csv_name}.csv", dtype=str)
+        for col in cols:
+            assert col in df.columns, f"{table}.{col} missing from CSV"
+            bad = [v for v in df[col].dropna() if v != ""
+                   and not _parses_as_float(v)]
+            assert not bad, (f"{table}.{col} is number-typed but holds "
+                             f"non-numeric values, e.g. {bad[:3]}")
+
+
+def _parses_as_float(value):
+    try:
+        float(value)
+        return True
+    except ValueError:
+        return False

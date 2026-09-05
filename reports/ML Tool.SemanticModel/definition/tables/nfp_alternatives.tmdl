@@ -235,7 +235,7 @@ table nfp_alternatives
 		annotation SummarizationSetBy = Automatic
 
 	column management_override
-		dataType: double
+		dataType: string
 		lineageTag: 4a2d8e15-8267-4219-be66-bf910aaa8e96
 		summarizeBy: none
 		sourceColumn: management_override
@@ -243,7 +243,7 @@ table nfp_alternatives
 		annotation SummarizationSetBy = Automatic
 
 	column override_rationale
-		dataType: double
+		dataType: string
 		lineageTag: 133da80b-4e09-4aeb-bdbf-df01ec5202a3
 		summarizeBy: none
 		sourceColumn: override_rationale
@@ -290,8 +290,8 @@ table nfp_alternatives
 				    {"decision_score", type number},
 				    {"recommendation", type text},
 				    {"is_recommended", type number},
-				    {"management_override", type number},
-				    {"override_rationale", type number}
+				    {"management_override", type text},
+				    {"override_rationale", type text}
 				  })
 				in
 				    #"Changed Type"

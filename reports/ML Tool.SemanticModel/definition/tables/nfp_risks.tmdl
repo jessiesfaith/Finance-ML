@@ -59,7 +59,7 @@ table nfp_risks
 		annotation SummarizationSetBy = Automatic
 
 	column inherent_note
-		dataType: double
+		dataType: string
 		lineageTag: 56759829-6e5f-4a26-9c71-3a60f360779a
 		summarizeBy: none
 		sourceColumn: inherent_note
@@ -132,7 +132,7 @@ table nfp_risks
 				    {"impact", type number},
 				    {"response", type text},
 				    {"mitigation", type text},
-				    {"inherent_note", type number},
+				    {"inherent_note", type text},
 				    {"residual_likelihood", type number},
 				    {"owner_role", type text},
 				    {"monitoring_metric", type text},

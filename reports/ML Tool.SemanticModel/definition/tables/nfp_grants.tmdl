@@ -123,7 +123,7 @@ table nfp_grants
 		annotation SummarizationSetBy = Automatic
 
 	column match_requirement
-		dataType: double
+		dataType: string
 		lineageTag: 1db1f9e0-e2c8-479b-ad30-f377479c5cbd
 		summarizeBy: none
 		sourceColumn: match_requirement
@@ -147,7 +147,7 @@ table nfp_grants
 		annotation SummarizationSetBy = Automatic
 
 	column date_verified
-		dataType: double
+		dataType: string
 		lineageTag: ad307fa9-546e-439a-a532-b31d13109d8b
 		summarizeBy: none
 		sourceColumn: date_verified
@@ -228,10 +228,10 @@ table nfp_grants
 				    {"start_date", type text},
 				    {"end_date", type text},
 				    {"deadline", type text},
-				    {"match_requirement", type number},
+				    {"match_requirement", type text},
 				    {"source", type text},
 				    {"url", type text},
-				    {"date_verified", type number},
+				    {"date_verified", type text},
 				    {"confidence", type text},
 				    {"value_class", type text},
 				    {"note", type text},
