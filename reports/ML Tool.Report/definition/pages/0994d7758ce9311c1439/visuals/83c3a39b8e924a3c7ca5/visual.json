@@ -85,8 +85,7 @@
               },
               "queryRef": "client_fs_flags.flag_id",
               "nativeQueryRef": "flag_id",
-              "displayName": "flag",
-              "active": true
+              "displayName": "flag"
             },
             {
               "field": {

@@ -28,8 +28,7 @@
               },
               "queryRef": "nfp_solutions.row_id",
               "nativeQueryRef": "row_id",
-              "displayName": "#",
-              "active": true
+              "displayName": "#"
             },
             {
               "field": {

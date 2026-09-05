@@ -85,8 +85,7 @@
               },
               "queryRef": "nfp_exec_board.row_id",
               "nativeQueryRef": "row_id",
-              "displayName": "#",
-              "active": true
+              "displayName": "#"
             },
             {
               "field": {

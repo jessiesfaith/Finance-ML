@@ -28,8 +28,7 @@
               },
               "queryRef": "nfp_financing.row_id",
               "nativeQueryRef": "row_id",
-              "displayName": "#",
-              "active": true
+              "displayName": "#"
             },
             {
               "field": {

@@ -28,8 +28,7 @@
               },
               "queryRef": "nfp_ml_estimates.row_id",
               "nativeQueryRef": "row_id",
-              "displayName": "#",
-              "active": true
+              "displayName": "#"
             },
             {
               "field": {

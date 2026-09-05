@@ -28,8 +28,7 @@
               },
               "queryRef": "nfp_debt_reserves.row_id",
               "nativeQueryRef": "row_id",
-              "displayName": "#",
-              "active": true
+              "displayName": "#"
             },
             {
               "field": {

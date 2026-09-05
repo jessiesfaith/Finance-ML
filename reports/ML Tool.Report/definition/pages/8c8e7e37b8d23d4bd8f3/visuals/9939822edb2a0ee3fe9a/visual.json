@@ -85,8 +85,7 @@
               },
               "queryRef": "nfp_scenarios.row_id",
               "nativeQueryRef": "row_id",
-              "displayName": "#",
-              "active": true
+              "displayName": "#"
             },
             {
               "field": {
