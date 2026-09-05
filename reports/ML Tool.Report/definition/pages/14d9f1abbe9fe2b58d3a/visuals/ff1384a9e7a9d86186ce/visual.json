@@ -1,0 +1,79 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "ff1384a9e7a9d86186ce",
+  "position": {
+    "x": 1800,
+    "y": 1515,
+    "height": 300,
+    "width": 1035,
+    "z": 7000,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Sources (click to open)",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Study page (Jewish Silicon Valley)",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    },
+                    "url": "https://www.jvalley.org/the-2024-santa-clara-county-jewish-community-study/"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Full final report (PDF)",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    },
+                    "url": "https://www.jvalley.org/wp-content/uploads/2024/05/Community-Study-Final-Report.pdf"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "J. weekly coverage of the findings (2024-08-14)",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    },
+                    "url": "https://jweekly.com/2024/08/14/study-of-jewish-community-in-silicon-valley-details-barriers-to-participation/"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Chai House funding provenance: tab 10 grants table; JSV 990s: tab 11 links.",
+                    "textStyle": {
+                      "fontSize": "8pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

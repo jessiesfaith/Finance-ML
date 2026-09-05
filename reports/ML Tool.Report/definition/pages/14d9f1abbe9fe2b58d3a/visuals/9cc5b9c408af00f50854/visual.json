@@ -1,0 +1,66 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "9cc5b9c408af00f50854",
+  "position": {
+    "x": 165,
+    "y": 1515,
+    "height": 300,
+    "width": 1600,
+    "z": 6000,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "The CFO read",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The single loudest number: 40% of respondents report mental-health needs and only 5% turn to the Jewish community - the teen wellness pilot on tab 9 (currently rated PILOT by the capital framework) is the direct response, and this finding is its mission case.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The top two participation barriers - lack of time and lack of interest in existing programs - are a program-DESIGN indictment, not a demand problem: the redesign lever costs little and touches everything.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "57% of hardship-affected respondents said financial aid would unlock participation - a quantified conversion rate for a scholarship fund.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

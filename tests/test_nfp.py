@@ -343,6 +343,31 @@ def test_ratio_playbook(frames):
         assert area in dict_areas, area
 
 
+def test_survey_findings_and_alignment(frames):
+    """Findings are PUBLIC_RESEARCH with URLs; the quantified findings
+    are quoted intact; alignments reference only real programs and
+    real finding ids, with live stats enriched in."""
+    f = frames["nfp_survey_findings"]
+    assert (f["value_class"] == "PUBLIC_RESEARCH").all()
+    assert (f["url"].str.startswith("http")).all()
+    mental = f[f["finding_id"] == "F6"].iloc[0]["finding"]
+    assert "40%" in mental and "5%" in mental
+    aid = f[f["finding_id"] == "F5"].iloc[0]["finding"]
+    assert "57%" in aid
+    assert "RESEARCH REQUIRED" in f[f["finding_id"] == "F10"].iloc[0][
+        "finding"]
+
+    a = frames["nfp_survey_alignment"]
+    finding_ids = set(f["finding_id"])
+    prog_ids = set(frames["nfp_programs"]["program_id"])
+    for _, r in a.iterrows():
+        assert set(str(r["based_on_findings"]).split(";")) <= finding_ids
+        assert set(str(r["program_ids"]).split(";")) <= prog_ids
+        assert "util" in r["aligned_programs"]     # live stats enriched
+    assert set(a["impact_potential"]) <= {"HIGH", "MEDIUM-HIGH", "MEDIUM"}
+    assert (a["value_class"] == "MANAGEMENT ASSUMPTION").all()
+
+
 def test_committed_exports_match_fresh_build(frames):
     for name, df in frames.items():
         assert_export_values_match(df, REPORTS / f"{name}.csv")

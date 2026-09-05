@@ -1,0 +1,128 @@
+/// Curated NFP export: study initiatives mapped to programs/events/funding with impact potential and live capacity stats.
+table nfp_survey_alignment
+	lineageTag: 5ef7a316-6595-4160-b5d8-7191da72f9ac
+
+	column row_id
+		dataType: string
+		lineageTag: 39c1499a-8ade-4fc3-b52e-f761b9cbdbd4
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column initiative_id
+		dataType: string
+		lineageTag: 1e0c18bf-ce17-49fb-8006-5b92599de27d
+		summarizeBy: none
+		sourceColumn: initiative_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column initiative
+		dataType: string
+		lineageTag: 51af2df9-046a-4c46-9719-9b2049951508
+		summarizeBy: none
+		sourceColumn: initiative
+
+		annotation SummarizationSetBy = Automatic
+
+	column based_on_findings
+		dataType: string
+		lineageTag: 655b66a9-0c66-44e8-8707-cadca1dbe372
+		summarizeBy: none
+		sourceColumn: based_on_findings
+
+		annotation SummarizationSetBy = Automatic
+
+	column program_ids
+		dataType: string
+		lineageTag: 343f6b62-6676-4f9c-8997-02e5b67d529d
+		summarizeBy: none
+		sourceColumn: program_ids
+
+		annotation SummarizationSetBy = Automatic
+
+	column aligned_events_actions
+		dataType: string
+		lineageTag: eb6cd2bd-2a4c-4824-acff-17584a74e125
+		summarizeBy: none
+		sourceColumn: aligned_events_actions
+
+		annotation SummarizationSetBy = Automatic
+
+	column funding_tie
+		dataType: string
+		lineageTag: efab69a0-58a8-45a5-9689-b0bed113f73a
+		summarizeBy: none
+		sourceColumn: funding_tie
+
+		annotation SummarizationSetBy = Automatic
+
+	column portfolio_gap
+		dataType: string
+		lineageTag: a06fc44f-f7bf-46d4-8bdf-82de41ce60a0
+		summarizeBy: none
+		sourceColumn: portfolio_gap
+
+		annotation SummarizationSetBy = Automatic
+
+	column impact_potential
+		dataType: string
+		lineageTag: 01a27b8f-f1f2-4d13-99de-b0790f6aac5c
+		summarizeBy: none
+		sourceColumn: impact_potential
+
+		annotation SummarizationSetBy = Automatic
+
+	column impact_rationale
+		dataType: string
+		lineageTag: 50c77878-3c66-4b4e-8958-df72ea40ac28
+		summarizeBy: none
+		sourceColumn: impact_rationale
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: dbb39d81-6b8b-4d97-942e-1de87e20eb35
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column aligned_programs
+		dataType: string
+		lineageTag: 6b6e6102-c8a4-4d24-a272-3d3c5360bbdb
+		summarizeBy: none
+		sourceColumn: aligned_programs
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_survey_alignment = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_survey_alignment.csv"),
+				    [Delimiter = ",", Columns = 12, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "initiative_id", "initiative", "based_on_findings", "program_ids", "aligned_events_actions", "funding_tie", "portfolio_gap", "impact_potential", "impact_rationale", "value_class", "aligned_programs"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"initiative_id", type text},
+				    {"initiative", type text},
+				    {"based_on_findings", type text},
+				    {"program_ids", type text},
+				    {"aligned_events_actions", type text},
+				    {"funding_tie", type text},
+				    {"portfolio_gap", type text},
+				    {"impact_potential", type text},
+				    {"impact_rationale", type text},
+				    {"value_class", type text},
+				    {"aligned_programs", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

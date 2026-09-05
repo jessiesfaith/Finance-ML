@@ -1,0 +1,101 @@
+/// Curated NFP export: verified findings from the 2024 Santa Clara County Jewish Community Study with source URLs.
+table nfp_survey_findings
+	lineageTag: 47b067bc-adc6-413c-a780-851a76b6abd2
+
+	column row_id
+		dataType: string
+		lineageTag: 3e36017b-c698-44be-ad2e-2ee48b27e229
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column finding_id
+		dataType: string
+		lineageTag: 6c8be8d5-35de-43f6-bdb4-6246056a7530
+		summarizeBy: none
+		sourceColumn: finding_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column initiative
+		dataType: string
+		lineageTag: b0d8a220-dc74-4114-aff2-b9e593cea977
+		summarizeBy: none
+		sourceColumn: initiative
+
+		annotation SummarizationSetBy = Automatic
+
+	column finding
+		dataType: string
+		lineageTag: 4fbb0d9d-ac7e-4836-93eb-6cfc26c57ede
+		summarizeBy: none
+		sourceColumn: finding
+
+		annotation SummarizationSetBy = Automatic
+
+	column url
+		dataType: string
+		lineageTag: 9fcd76f4-376d-4657-b783-2c9098109c90
+		summarizeBy: none
+		sourceColumn: url
+
+		annotation SummarizationSetBy = Automatic
+
+	column confidence
+		dataType: string
+		lineageTag: 9d7f70b8-ef38-43e7-8bb8-a564ad36d91a
+		summarizeBy: none
+		sourceColumn: confidence
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: 64c3259a-14b6-418f-ac60-eaadd10a5d8c
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_verified
+		dataType: string
+		lineageTag: dbcde14e-1bb8-4aed-880a-d191e6b70f75
+		summarizeBy: none
+		sourceColumn: date_verified
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: b5d5b37c-1e4c-41d6-b4f8-446174e14632
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_survey_findings = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_survey_findings.csv"),
+				    [Delimiter = ",", Columns = 9, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "finding_id", "initiative", "finding", "url", "confidence", "source", "date_verified", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"finding_id", type text},
+				    {"initiative", type text},
+				    {"finding", type text},
+				    {"url", type text},
+				    {"confidence", type text},
+				    {"source", type text},
+				    {"date_verified", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

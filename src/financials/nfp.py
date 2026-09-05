@@ -652,6 +652,34 @@ def ratio_990() -> pd.DataFrame:
     return pd.read_csv(NFP_DIR / "nfp_ratio_990_inputs.csv").fillna("")
 
 
+def survey_findings() -> pd.DataFrame:
+    """Verified findings from the 2024 Santa Clara County Jewish
+    Community Study (PUBLIC_RESEARCH, each with source URL)."""
+    return pd.read_csv(NFP_DIR / "nfp_survey_finding_inputs.csv").fillna("")
+
+
+def survey_alignment(prog: pd.DataFrame) -> pd.DataFrame:
+    """Map study initiatives to the module's programs, enriched with
+    each program's LIVE stats so impact potential reads against real
+    capacity headroom (program stats are SYNTHETIC until client data)."""
+    a = pd.read_csv(NFP_DIR / "nfp_survey_alignment_inputs.csv").fillna("")
+    stats = prog.set_index("program_id")
+
+    def enrich(ids):
+        parts = []
+        for pid in str(ids).split(";"):
+            if pid in stats.index:
+                r = stats.loc[pid]
+                headroom = int(r["capacity"] - r["participants"])
+                parts.append(f"{r['program']} (util "
+                             f"{r['utilization_pct']:.0f}%, headroom "
+                             f"{headroom}, {r['classification']})")
+        return " · ".join(parts)
+
+    a["aligned_programs"] = a["program_ids"].map(enrich)
+    return a
+
+
 def debt_and_reserves() -> pd.DataFrame:
     debt = pd.read_csv(NFP_DIR / "nfp_debt_inputs.csv").fillna("")
     res = pd.read_csv(NFP_DIR / "nfp_reserve_inputs.csv").fillna("")
@@ -1087,6 +1115,8 @@ def build_all() -> dict[str, pd.DataFrame]:
         "nfp_public_financials": public_financials(),
         "nfp_role_matrix": role_matrix(),
         "nfp_ratio_990": ratio_990(),
+        "nfp_survey_findings": survey_findings(),
+        "nfp_survey_alignment": survey_alignment(prog),
     }
     # stable sort key: report tables sort by row_id to preserve the
     # decision-flow order of each export

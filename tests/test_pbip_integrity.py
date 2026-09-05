@@ -63,6 +63,8 @@ CSV_FOR_TABLE = {
     "nfp_public_financials": "nfp_public_financials",
     "nfp_role_matrix": "nfp_role_matrix",
     "nfp_ratio_990": "nfp_ratio_990",
+    "nfp_survey_findings": "nfp_survey_findings",
+    "nfp_survey_alignment": "nfp_survey_alignment",
     "client_fs_option_sizing": "client_fs_option_sizing",
 }
 

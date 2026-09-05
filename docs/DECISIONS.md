@@ -1149,3 +1149,25 @@ synthetic figures where live, and labeled ILLUSTRATIONs elsewhere.
 Footer teaches reading a 990 in four stops (Parts I/VIII/IX/X +
 schedules) and points at the tab-11 filing links. Line references
 carry a verify-against-the-filed-return caveat.
+
+### 100. Tab 15 - NFP Community Study: verified findings -> aligned programs
+The 2024 Santa Clara County Jewish Community Study (Chai House-funded,
+JSV-commissioned) becomes the module's statement of community need.
+nfp_survey_findings: 10 rows verified against published coverage (the
+JSV study page and J. weekly's 2024-08-14 report), every row
+PUBLIC_RESEARCH with URL/confidence, quantified findings quoted intact
+(40% mental-health need vs 5% served; 57% financial-aid conversion;
+top-2 barriers = time + program relevance; inclusion barriers; 65+
+engagement; the full-report PDF flagged READ BEFORE BOARD USE).
+nfp_survey_alignment: 7 initiatives, each tied to its finding ids and
+enriched at build time with the aligned programs' LIVE stats
+(utilization, capacity headroom, classification), the events/actions
+that address it, the funding prospects that fit (Jim Joseph for youth
+mental health, County CBO for human services, SVCF with its budget-cap
+caveat), the portfolio gap, and impact potential (MANAGEMENT
+ASSUMPTION). The loudest alignment: the study's 40%/5% mental-health
+gap is the mission case for the teen wellness pilot the capital
+framework already rates PILOT on tab 9 - the survey and the capital
+allocation now argue with each other on the record, which is the
+point of the module. Tests pin the quoted percentages, source URLs,
+and that alignments reference only real finding/program ids.

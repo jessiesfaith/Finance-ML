@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "4c156cfee4902fda4072",
+  "position": {
+    "x": 165,
+    "y": 70,
+    "height": 66,
+    "width": 2670,
+    "z": 2000,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "The 2024 Santa Clara County Jewish Community Study (funded by Chai House, commissioned by JSV) is the community's own statement of need. Top table: findings verified against published coverage - every row carries its source URL. Bottom table: each initiative mapped to the module's programs (with LIVE utilization and capacity headroom), the events/actions that would address it, the funding prospects that fit, and the mission-impact potential.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Impact-potential ratings are MANAGEMENT ASSUMPTION until real program data loads; program stats are SYNTHETIC demonstration figures. Findings are quoted from coverage - read the full report before board use.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "bb862f57703ba1a23577",
+  "position": {
+    "x": 165,
+    "y": 775,
+    "height": 720,
+    "width": 2670,
+    "z": 5000,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_survey_alignment"
+                    }
+                  },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_survey_alignment.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_survey_alignment"
+                    }
+                  },
+                  "Property": "initiative"
+                }
+              },
+              "queryRef": "nfp_survey_alignment.initiative",
+              "nativeQueryRef": "initiative",
+              "displayName": "initiative"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_survey_alignment"
+                    }
+                  },
+                  "Property": "based_on_findings"
+                }
+              },
+              "queryRef": "nfp_survey_alignment.based_on_findings",
+              "nativeQueryRef": "based_on_findings",
+              "displayName": "study basis"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_survey_alignment"
+                    }
+                  },
+                  "Property": "aligned_programs"
+                }
+              },
+              "queryRef": "nfp_survey_alignment.aligned_programs",
+              "nativeQueryRef": "aligned_programs",
+              "displayName": "aligned programs (live stats)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_survey_alignment"
+                    }
+                  },
+                  "Property": "aligned_events_actions"
+                }
+              },
+              "queryRef": "nfp_survey_alignment.aligned_events_actions",
+              "nativeQueryRef": "aligned_events_actions",
+              "displayName": "events / actions"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_survey_alignment"
+                    }
+                  },
+                  "Property": "funding_tie"
+                }
+              },
+              "queryRef": "nfp_survey_alignment.funding_tie",
+              "nativeQueryRef": "funding_tie",
+              "displayName": "funding fit"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_survey_alignment"
+                    }
+                  },
+                  "Property": "portfolio_gap"
+                }
+              },
+              "queryRef": "nfp_survey_alignment.portfolio_gap",
+              "nativeQueryRef": "portfolio_gap",
+              "displayName": "gap / opportunity"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_survey_alignment"
+                    }
+                  },
+                  "Property": "impact_potential"
+                }
+              },
+              "queryRef": "nfp_survey_alignment.impact_potential",
+              "nativeQueryRef": "impact_potential",
+              "displayName": "impact potential"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_survey_alignment"
+                    }
+                  },
+                  "Property": "impact_rationale"
+                }
+              },
+              "queryRef": "nfp_survey_alignment.impact_rationale",
+              "nativeQueryRef": "impact_rationale",
+              "displayName": "why"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_survey_alignment"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
