@@ -1,0 +1,161 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "51b7497a8a001d91db4e",
+  "position": {
+    "x": 165,
+    "y": 835,
+    "height": 1330,
+    "width": 2670,
+    "z": 5000,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ratio_990"
+                    }
+                  },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_ratio_990.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ratio_990"
+                    }
+                  },
+                  "Property": "area"
+                }
+              },
+              "queryRef": "nfp_ratio_990.area",
+              "nativeQueryRef": "area",
+              "displayName": "area"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ratio_990"
+                    }
+                  },
+                  "Property": "ratio"
+                }
+              },
+              "queryRef": "nfp_ratio_990.ratio",
+              "nativeQueryRef": "ratio",
+              "displayName": "ratio"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ratio_990"
+                    }
+                  },
+                  "Property": "formula"
+                }
+              },
+              "queryRef": "nfp_ratio_990.formula",
+              "nativeQueryRef": "formula",
+              "displayName": "formula"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ratio_990"
+                    }
+                  },
+                  "Property": "source_type"
+                }
+              },
+              "queryRef": "nfp_ratio_990.source_type",
+              "nativeQueryRef": "source_type",
+              "displayName": "source"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ratio_990"
+                    }
+                  },
+                  "Property": "form_990_ref"
+                }
+              },
+              "queryRef": "nfp_ratio_990.form_990_ref",
+              "nativeQueryRef": "form_990_ref",
+              "displayName": "Form 990 part / line"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ratio_990"
+                    }
+                  },
+                  "Property": "worked_example"
+                }
+              },
+              "queryRef": "nfp_ratio_990.worked_example",
+              "nativeQueryRef": "worked_example",
+              "displayName": "worked example"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_ratio_990"
+                    }
+                  },
+                  "Property": "how_to_use"
+                }
+              },
+              "queryRef": "nfp_ratio_990.how_to_use",
+              "nativeQueryRef": "how_to_use",
+              "displayName": "how to read it"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_ratio_990"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -640,6 +640,18 @@ def public_financials() -> pd.DataFrame:
     return pd.read_csv(NFP_DIR / "nfp_public_financial_inputs.csv").fillna("")
 
 
+def role_matrix() -> pd.DataFrame:
+    """Owner-provided leadership responsibility matrix (CEO/CCO, COO,
+    CFO, and the ratios the CFO brings to each area)."""
+    return pd.read_csv(NFP_DIR / "nfp_role_matrix_inputs.csv").fillna("")
+
+
+def ratio_990() -> pd.DataFrame:
+    """Ratio calc dictionary mapped to the current-revision IRS Form
+    990 part/line structure, with worked examples and reads."""
+    return pd.read_csv(NFP_DIR / "nfp_ratio_990_inputs.csv").fillna("")
+
+
 def debt_and_reserves() -> pd.DataFrame:
     debt = pd.read_csv(NFP_DIR / "nfp_debt_inputs.csv").fillna("")
     res = pd.read_csv(NFP_DIR / "nfp_reserve_inputs.csv").fillna("")
@@ -1073,6 +1085,8 @@ def build_all() -> dict[str, pd.DataFrame]:
         "nfp_sensitivity": sens, "nfp_exec_board": execb,
         "nfp_controls": ctrl,
         "nfp_public_financials": public_financials(),
+        "nfp_role_matrix": role_matrix(),
+        "nfp_ratio_990": ratio_990(),
     }
     # stable sort key: report tables sort by row_id to preserve the
     # decision-flow order of each export

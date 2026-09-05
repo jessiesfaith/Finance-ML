@@ -317,6 +317,32 @@ def test_public_financials_register(frames):
     assert "DIFFERENT ORGANIZATION" in other.iloc[0]["note"]
 
 
+def test_ratio_playbook(frames):
+    """18 matrix areas verbatim; every ratio row carries a source type,
+    and 990-sourced rows carry a part/line reference."""
+    matrix = frames["nfp_role_matrix"]
+    assert len(matrix) == 18
+    assert matrix["area"].iloc[0] == "Annual campaign"
+    assert matrix["area"].iloc[-1] == "Board decisions"
+    dict_ = frames["nfp_ratio_990"]
+    allowed = {"FORM 990", "990 SCHEDULE", "990 PARTIAL",
+               "INTERNAL DATA", "MODULE"}
+    assert set(dict_["source_type"]) <= allowed
+    form_rows = dict_[dict_["source_type"].isin(
+        ["FORM 990", "990 SCHEDULE", "990 PARTIAL"])]
+    assert (form_rows["form_990_ref"].str.len() > 3).all()
+    assert (dict_["worked_example"].str.len() > 10).all()
+    assert (dict_["how_to_use"].str.len() > 10).all()
+    # every matrix area appears in the dictionary
+    dict_areas = set(dict_["area"])
+    for area in ["Annual campaign", "Grants", "Major gifts",
+                 "Restricted gifts", "Capital campaign", "Endowment",
+                 "Existing programs", "New programs", "Membership",
+                 "Facilities", "Staffing", "Technology",
+                 "Cash/liquidity", "Budget", "Risk", "Board decisions"]:
+        assert area in dict_areas, area
+
+
 def test_committed_exports_match_fresh_build(frames):
     for name, df in frames.items():
         assert_export_values_match(df, REPORTS / f"{name}.csv")

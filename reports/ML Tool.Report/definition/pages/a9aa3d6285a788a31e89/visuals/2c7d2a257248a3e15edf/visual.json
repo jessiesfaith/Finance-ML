@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "2c7d2a257248a3e15edf",
+  "position": {
+    "x": 165,
+    "y": 70,
+    "height": 66,
+    "width": 2670,
+    "z": 2000,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Top table: the leadership responsibility matrix (owner-provided framework) - the CEO/CCO set strategy, the COO runs operations, the CFO brings the economics. Bottom table: every ratio from the matrix as a calc card - the formula, WHERE IT COMES FROM on the current-revision IRS Form 990 (part/line), a worked example, and how to read it.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Source types: FORM 990 = straight off the core form via the tab-11 links \u00b7 990 SCHEDULE / 990 PARTIAL = schedule data or form gives only part \u00b7 INTERNAL DATA = not on any 990, needs management accounts \u00b7 MODULE = already computed live on tabs 9-13. Verify line references against the filed return - form revisions move lines occasionally.",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

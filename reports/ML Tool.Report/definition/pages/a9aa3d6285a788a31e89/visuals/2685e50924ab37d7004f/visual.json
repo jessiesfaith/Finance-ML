@@ -1,0 +1,131 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "2685e50924ab37d7004f",
+  "position": {
+    "x": 165,
+    "y": 150,
+    "height": 620,
+    "width": 2670,
+    "z": 3000,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_role_matrix"
+                    }
+                  },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_role_matrix.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_role_matrix"
+                    }
+                  },
+                  "Property": "area"
+                }
+              },
+              "queryRef": "nfp_role_matrix.area",
+              "nativeQueryRef": "area",
+              "displayName": "area"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_role_matrix"
+                    }
+                  },
+                  "Property": "ceo_cco"
+                }
+              },
+              "queryRef": "nfp_role_matrix.ceo_cco",
+              "nativeQueryRef": "ceo_cco",
+              "displayName": "CEO / CCO \u2014 strategy & philanthropy"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_role_matrix"
+                    }
+                  },
+                  "Property": "coo"
+                }
+              },
+              "queryRef": "nfp_role_matrix.coo",
+              "nativeQueryRef": "coo",
+              "displayName": "COO \u2014 operations"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_role_matrix"
+                    }
+                  },
+                  "Property": "cfo"
+                }
+              },
+              "queryRef": "nfp_role_matrix.cfo",
+              "nativeQueryRef": "cfo",
+              "displayName": "CFO \u2014 the finance seat"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_role_matrix"
+                    }
+                  },
+                  "Property": "ratios"
+                }
+              },
+              "queryRef": "nfp_role_matrix.ratios",
+              "nativeQueryRef": "ratios",
+              "displayName": "ratios the CFO brings"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_role_matrix"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

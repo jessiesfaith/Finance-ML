@@ -1,0 +1,83 @@
+/// Curated NFP export: leadership responsibility matrix - CEO/CCO vs COO vs CFO per area, with the ratios the CFO brings.
+table nfp_role_matrix
+	lineageTag: e8fb7652-6e1f-4906-bf4e-fb001b05ebf0
+
+	column row_id
+		dataType: string
+		lineageTag: 9b761e56-f9b1-4fb7-90a2-73b3ed973dee
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column area
+		dataType: string
+		lineageTag: 26b571fc-4ac8-44eb-907a-b1a8f6ae015c
+		summarizeBy: none
+		sourceColumn: area
+
+		annotation SummarizationSetBy = Automatic
+
+	column ceo_cco
+		dataType: string
+		lineageTag: 45c5f525-9d43-4143-92b2-d48d340c3be7
+		summarizeBy: none
+		sourceColumn: ceo_cco
+
+		annotation SummarizationSetBy = Automatic
+
+	column coo
+		dataType: string
+		lineageTag: 864a6008-f25f-4f1a-aca4-510126c621cb
+		summarizeBy: none
+		sourceColumn: coo
+
+		annotation SummarizationSetBy = Automatic
+
+	column cfo
+		dataType: string
+		lineageTag: 9c6137c6-7534-4254-91c1-9a9c0d279765
+		summarizeBy: none
+		sourceColumn: cfo
+
+		annotation SummarizationSetBy = Automatic
+
+	column ratios
+		dataType: string
+		lineageTag: c1e423da-ae4b-410d-a3fa-19ecbe8a314d
+		summarizeBy: none
+		sourceColumn: ratios
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: d5dde28f-d765-41d3-b14c-54974c3ec3c0
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_role_matrix = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_role_matrix.csv"),
+				    [Delimiter = ",", Columns = 7, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "area", "ceo_cco", "coo", "cfo", "ratios", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"area", type text},
+				    {"ceo_cco", type text},
+				    {"coo", type text},
+				    {"cfo", type text},
+				    {"ratios", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

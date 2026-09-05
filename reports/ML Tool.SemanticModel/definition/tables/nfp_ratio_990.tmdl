@@ -1,0 +1,101 @@
+/// Curated NFP export: ratio calc dictionary mapped to IRS Form 990 part/line structure with worked examples.
+table nfp_ratio_990
+	lineageTag: 6d39024c-252d-4de3-9d42-bce12837adb9
+
+	column row_id
+		dataType: string
+		lineageTag: 8ff8e0bf-9bfe-49e4-ab45-f307824b67c8
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column area
+		dataType: string
+		lineageTag: a356f3c2-a8bd-428d-b89d-484c800690b8
+		summarizeBy: none
+		sourceColumn: area
+
+		annotation SummarizationSetBy = Automatic
+
+	column ratio
+		dataType: string
+		lineageTag: b2f5f457-de39-43b6-b828-abe4292afb03
+		summarizeBy: none
+		sourceColumn: ratio
+
+		annotation SummarizationSetBy = Automatic
+
+	column formula
+		dataType: string
+		lineageTag: d2435b67-1c80-480d-a9ce-f42755e7b9b3
+		summarizeBy: none
+		sourceColumn: formula
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_type
+		dataType: string
+		lineageTag: 49f159a2-a13c-4115-bedc-255e6aac92b3
+		summarizeBy: none
+		sourceColumn: source_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column form_990_ref
+		dataType: string
+		lineageTag: 5a39c2ec-af1b-4821-9ea2-5dcf5d6d51e7
+		summarizeBy: none
+		sourceColumn: form_990_ref
+
+		annotation SummarizationSetBy = Automatic
+
+	column worked_example
+		dataType: string
+		lineageTag: 301d91f5-5e4b-4528-80dc-fe64a06f67be
+		summarizeBy: none
+		sourceColumn: worked_example
+
+		annotation SummarizationSetBy = Automatic
+
+	column how_to_use
+		dataType: string
+		lineageTag: 0cc5912b-c9ad-42d1-a51d-2caefcbdf73f
+		summarizeBy: none
+		sourceColumn: how_to_use
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 2ba41290-57ae-4f45-9b33-b688c6de7dc2
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_ratio_990 = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_ratio_990.csv"),
+				    [Delimiter = ",", Columns = 9, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "area", "ratio", "formula", "source_type", "form_990_ref", "worked_example", "how_to_use", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"area", type text},
+				    {"ratio", type text},
+				    {"formula", type text},
+				    {"source_type", type text},
+				    {"form_990_ref", type text},
+				    {"worked_example", type text},
+				    {"how_to_use", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

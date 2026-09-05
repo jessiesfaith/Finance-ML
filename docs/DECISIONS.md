@@ -1132,3 +1132,20 @@ only as an explicit do-not-conflate row, enforced by test. Historical
 debt/reserve/campaign seeds now cite the 990 index as their public
 cross-check. Clickable quick links live in a textbox under the
 register (tables cannot carry hyperlinks).
+
+### 99. Tab 14 - NFP Ratio Playbook (owner's leadership matrix + 990 calc cards)
+The owner's 18-area leadership responsibility matrix (CEO/CCO vs COO
+vs CFO, with the ratios the CFO brings to each area) ships verbatim as
+nfp_role_matrix. Below it, nfp_ratio_990 turns every ratio into a calc
+card: formula, WHERE IT COMES FROM on the current-revision IRS Form
+990 (part/line, e.g. Fundraising Efficiency = Part IX line 25 col D /
+Part VIII line 1h), a worked example, and the read. Source honesty is
+the design: each ratio is classed FORM 990 / 990 SCHEDULE / 990
+PARTIAL / INTERNAL DATA (not on any 990 - budget variance, churn,
+insurance) / MODULE (already live on tabs 9-13, cross-referenced).
+Worked examples use JSV public FY2023/FY2024 aggregates where
+derivable (operating margin -10.8%, revenue growth ~+24%), module
+synthetic figures where live, and labeled ILLUSTRATIONs elsewhere.
+Footer teaches reading a 990 in four stops (Parts I/VIII/IX/X +
+schedules) and points at the tab-11 filing links. Line references
+carry a verify-against-the-filed-return caveat.

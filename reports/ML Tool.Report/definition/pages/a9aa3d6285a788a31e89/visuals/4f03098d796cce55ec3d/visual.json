@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "4f03098d796cce55ec3d",
+  "position": {
+    "x": 165,
+    "y": 2185,
+    "height": 120,
+    "width": 2670,
+    "z": 6000,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Reading a 990 in four stops: Part I = the summary page (revenue, expenses, net assets) \u00b7 Part VIII = revenue detail (line 1h total contributions, line 2 program service revenue) \u00b7 Part IX = functional expenses (columns: A total, B program, C management, D fundraising - line 25 totals) \u00b7 Part X = balance sheet (lines 27/28 = net assets without/with donor restrictions). Schedules: B donors (not public), D endowment & DAFs, I grants made. JSV's filings: tab 11 links (ProPublica, EIN 94-2222989).",
+                    "textStyle": {
+                      "fontSize": "9pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
