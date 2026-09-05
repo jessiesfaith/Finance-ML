@@ -6,6 +6,6 @@ R004,Program totals reconcile to org totals,PASS,"programs+admin 5,400,000 vs or
 R005,Pledges reconcile (collected + outstanding = pledged),PASS,4 pledges,MODEL_OUTPUT
 R006,Project cash rolls (beginning + activity = ending),PASS,12 months,MODEL_OUTPUT
 R007,No negative project cash months,PASS,none,MODEL_OUTPUT
-R008,No RESEARCH-status funder carries a confirmed amount,PASS,8 prospect rows,MODEL_OUTPUT
+R008,No RESEARCH-status funder carries a confirmed amount,PASS,6 prospect rows,MODEL_OUTPUT
 R009,No current debt presented from historical-only data,PASS,current LOC row states NO CURRENT LOC CONFIRMED FROM PUBLIC DATA,MODEL_OUTPUT
 R010,Division-by-zero guards active,PASS,zero-row probe ran through programs() and returned zeros,MODEL_OUTPUT

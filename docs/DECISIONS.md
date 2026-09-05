@@ -1091,3 +1091,27 @@ program; (MED) models 3/10 feature wiring untested - direction
 assertions + pinned estimates added; (LOW) nfp_ml_series lacked the
 value_class taxonomy column - added. Formula, binding/layout, and
 ML-separation dimensions came back clean. Suite: 276 tests.
+
+### 97. Phase-2 grant research pass (web-verified, honestly bounded)
+The eight prospects moved from bare RESEARCH stubs to researched rows
+with primary URLs, date_verified 2026-09-05 and confidence labels.
+Verified via web search from the build environment; direct fetches of
+the primary sites were egress-blocked, so every row carries a
+click-through-to-confirm caveat and confidence stays MEDIUM (LOW for
+the new lead). Key findings: Cal OES CSNSGP 2025-26 closed ($76M,
+historical awards $250K-$500K), next RFP anticipated Fall 2026 ->
+UPCOMING; SVCF Community Action Grants now once-yearly (Mar window,
+$5K-$50K) with a <=$3M-budget eligibility risk flagged; Jewish
+LearningWorks capacity grants (up to $8K, 2026-27 year, review began
+Aug 2026) -> the act-first item; Koret and Jim Joseph are
+relationship/invitation only - no application calendar; Federation
+announced $13M for 2026-27 to core partners; local government leads
+(County $10M CBO program, San Jose department RFPs Nov-May). New
+prospect G-PROS-9: a May 2026 J. weekly report of Silicon Valley
+Jewish security grants - administrator/amounts unconfirmed. Chai House
+upgraded: JSV's own study page confirms it fully funded the 2024
+study; the study line-item amount remains NOT PUBLICLY CONFIRMED
+(Chai House org-wide 2024 grantmaking ~$941K per a 990 aggregator is
+recorded separately, labeled as such). Rule held and now tested with
+provenance checks: no prospect carries a confirmed dollar amount -
+cycles and windows were researched, dollars were not invented.

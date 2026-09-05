@@ -407,7 +407,8 @@ def grants(settings: dict | None = None) -> pd.DataFrame:
     # grant fit score (§20) only where management inputs exist; RESEARCH
     # rows show RESEARCH REQUIRED, never a made-up score.
     df["grant_fit"] = df.apply(
-        lambda r: "RESEARCH REQUIRED" if r["status"] == "RESEARCH"
+        lambda r: "RESEARCH REQUIRED"
+        if r["status"] in ("RESEARCH", "UPCOMING") and pd.isna(r["amount"])
         else ("HISTORICAL" if r["status"] == "CURRENT"
               and pd.isna(r["amount"]) else "SCOREABLE"), axis=1)
     return df
@@ -862,7 +863,7 @@ def controls_report(s, prog, camp, plg, proj, alts, grants_df) -> pd.DataFrame:
 
 
 def exec_board(s, prog, alts, cliff, pipe, camp, fin, risk_df, scen,
-               sols, ctrl) -> pd.DataFrame:
+               sols, ctrl, grants_all) -> pd.DataFrame:
     rows = []
 
     def add(section, item, value_text, status="", note=""):
@@ -896,8 +897,13 @@ def exec_board(s, prog, alts, cliff, pipe, camp, fin, risk_df, scen,
         f"{len(cliff12)} grants, ${cliff12['amount'].sum():,.0f} "
         f"(at risk ${cliff12['at_risk_funding'].sum():,.0f})",
         "YELLOW" if len(cliff12) else "GREEN")
+    prospects = grants_all[grants_all["status"].isin(["RESEARCH",
+                                                      "UPCOMING"])]
+    n_upcoming = int((prospects["status"] == "UPCOMING").sum())
     add("POSITION", "Grant opportunities in research",
-        "8 prospects - all RESEARCH REQUIRED before actionable")
+        f"{len(prospects)} prospects tracked ({n_upcoming} with verified "
+        "cycles/windows); no amount is presented as confirmed until an "
+        "actual RFP or award exists")
     add("POSITION", "Fundraising pipeline (probability-weighted)",
         f"${pipe['expected_value'].sum():,.0f}")
     add("POSITION", "Operating reserve",
@@ -933,9 +939,13 @@ def exec_board(s, prog, alts, cliff, pipe, camp, fin, risk_df, scen,
          "risk in 12 months; donor concentration on "
          f"{at_risk['program'].str.cat(sep=', ') or 'no program'}"),
         ("3. Which grants / fundraising opportunities should we pursue?",
-         "8 prospects seeded (Cal OES security, SVCF, Jewish "
-         "LearningWorks, Koret, Jim Joseph, Federation, local government, "
-         "corporate) - all flagged RESEARCH REQUIRED, none assumed"),
+         f"{len(prospects)} prospects tracked (Cal OES security, SVCF, "
+         "Jewish LearningWorks, Koret, Jim Joseph, Federation, local "
+         "government, corporate, local security program); nearest "
+         "verified windows: Jewish LearningWorks capacity grants "
+         "(2026-27 year, review began Aug 2026) and the Cal OES CSNSGP "
+         "RFP anticipated Fall 2026 - amounts stay unconfirmed until "
+         "award"),
         ("4. What happens if fundraising misses plan?",
          scen[(scen['tab'] == 'FUNDRAISING')].iloc[0]["recommendation"]),
         ("5. How much liquidity do we have?",
@@ -1044,7 +1054,7 @@ def build_all() -> dict[str, pd.DataFrame]:
     alts = alternatives(s)
     ctrl = controls_report(s, prog, camp, plg, proj, alts, g)
     execb = exec_board(s, prog, alts, cliff, pipe, camp, fin, risk_df,
-                       scen, sols, ctrl)
+                       scen, sols, ctrl, g)
     frames = {
         "nfp_settings": settings_df, "nfp_alternatives": alts,
         "nfp_programs": prog, "nfp_solutions": sols,

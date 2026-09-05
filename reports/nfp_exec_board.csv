@@ -5,7 +5,7 @@ R003,POSITION,Programs at funding risk,Family Services,YELLOW,,MODEL_OUTPUT
 R004,POSITION,Programs to grow,Early Childhood Education,,,MODEL_OUTPUT
 R005,POSITION,Unrestricted funding need (prob-weighted gaps),"$869,000",YELLOW,,MODEL_OUTPUT
 R006,POSITION,Grants expiring next 12 months,"5 grants, $860,000 (at risk $263,000)",YELLOW,,MODEL_OUTPUT
-R007,POSITION,Grant opportunities in research,8 prospects - all RESEARCH REQUIRED before actionable,,,MODEL_OUTPUT
+R007,POSITION,Grant opportunities in research,9 prospects tracked (3 with verified cycles/windows); no amount is presented as confirmed until an actual RFP or award exists,,,MODEL_OUTPUT
 R008,POSITION,Fundraising pipeline (probability-weighted),"$259,500",,,MODEL_OUTPUT
 R009,POSITION,Operating reserve,"$697,000 at 2023-06-30 - HISTORICAL, CURRENT BALANCE REQUIRES UPDATE",YELLOW,,MODEL_OUTPUT
 R010,POSITION,Capital campaign,Goal ~$7.0M; ~$2.34M restricted at 2023-06-30; ~$4.66M remaining at that date - HISTORICAL PUBLIC INFORMATION,YELLOW,,MODEL_OUTPUT
@@ -22,7 +22,7 @@ R020,ACTIONS,Action 5 - Senior Services,"Diversify grants, pursue multi-year gra
 R021,ACTIONS,Decision requiring board approval,Capital allocation: Expand existing program (Early Childhood +40 seats) (score 57.6) and the campaign financing plan,,,MODEL_OUTPUT
 R022,QUESTIONS,1. How are our current programs performing?,"1 classified GROW, 1 FUNDING AT RISK, 3 in review; every program carries economics + verdict on tab 10",,,MODEL_OUTPUT
 R023,QUESTIONS,2. Where are our funding risks?,"$263,000 of grant funding at risk in 12 months; donor concentration on Family Services",,,MODEL_OUTPUT
-R024,QUESTIONS,3. Which grants / fundraising opportunities should we pursue?,"8 prospects seeded (Cal OES security, SVCF, Jewish LearningWorks, Koret, Jim Joseph, Federation, local government, corporate) - all flagged RESEARCH REQUIRED, none assumed",,,MODEL_OUTPUT
+R024,QUESTIONS,3. Which grants / fundraising opportunities should we pursue?,"9 prospects tracked (Cal OES security, SVCF, Jewish LearningWorks, Koret, Jim Joseph, Federation, local government, corporate, local security program); nearest verified windows: Jewish LearningWorks capacity grants (2026-27 year, review began Aug 2026) and the Cal OES CSNSGP RFP anticipated Fall 2026 - amounts stay unconfirmed until award",,,MODEL_OUTPUT
 R025,QUESTIONS,4. What happens if fundraising misses plan?,"ACT NOW: below months-cash policy - draw reserve, cut cost, or raise bridge funding",,,MODEL_OUTPUT
 R026,QUESTIONS,5. How much liquidity do we have?,4.0 months cash vs 3.0 policy; restricted campaign cash excluded,,,MODEL_OUTPUT
 R027,QUESTIONS,6. How much capital can we safely deploy?,"Deploying $250,000 leaves 3.4 months - above policy, so the full amount is deployable",,,MODEL_OUTPUT
@@ -54,6 +54,6 @@ R052,CONTROLS,Program totals reconcile to org totals,"programs+admin 5,400,000 v
 R053,CONTROLS,Pledges reconcile (collected + outstanding = pledged),4 pledges,PASS,,MODEL_OUTPUT
 R054,CONTROLS,Project cash rolls (beginning + activity = ending),12 months,PASS,,MODEL_OUTPUT
 R055,CONTROLS,No negative project cash months,none,PASS,,MODEL_OUTPUT
-R056,CONTROLS,No RESEARCH-status funder carries a confirmed amount,8 prospect rows,PASS,,MODEL_OUTPUT
+R056,CONTROLS,No RESEARCH-status funder carries a confirmed amount,6 prospect rows,PASS,,MODEL_OUTPUT
 R057,CONTROLS,No current debt presented from historical-only data,current LOC row states NO CURRENT LOC CONFIRMED FROM PUBLIC DATA,PASS,,MODEL_OUTPUT
 R058,CONTROLS,Division-by-zero guards active,zero-row probe ran through programs() and returned zeros,PASS,,MODEL_OUTPUT

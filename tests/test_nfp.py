@@ -185,11 +185,18 @@ def test_solutions_are_diagnostic_not_generic(frames):
 # ---------------- grants honesty ----------------
 
 def test_research_prospects_never_carry_amounts(frames):
+    """Prospects (RESEARCH or UPCOMING) never carry a confirmed amount -
+    the Phase-2 research pass added cycles/windows/URLs, not dollars."""
     g = frames["nfp_grants"]
-    research = g[g["status"] == "RESEARCH"]
-    assert len(research) == 8
-    assert (research["amount_display"] == "RESEARCH REQUIRED").all()
-    assert (research["grant_fit"] == "RESEARCH REQUIRED").all()
+    prospects = g[g["status"].isin(["RESEARCH", "UPCOMING"])]
+    assert len(prospects) == 9
+    assert (prospects["status"] == "UPCOMING").sum() == 3
+    assert (prospects["amount_display"] == "RESEARCH REQUIRED").all()
+    assert (prospects["grant_fit"] == "RESEARCH REQUIRED").all()
+    # every researched prospect carries provenance for the click-through
+    researched = prospects[prospects["date_verified"] != ""]
+    assert (researched["url"].str.startswith("http")).all()
+    assert (researched["confidence"].isin(["LOW", "MEDIUM"])).all()
 
 
 def test_chai_house_amount_not_invented(frames):
