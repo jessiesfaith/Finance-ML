@@ -153,7 +153,7 @@ table nfp_pledges
 				    [Delimiter = ",", Columns = 16, QuoteStyle = QuoteStyle.Csv]
 				),
 				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "pledge_id", "donor", "amount", "collected", "restriction", "signed", "expected_date", "collection_probability_pct", "days_past_due", "value_class", "outstanding", "expected_pledge_cash", "collection_pct", "past_due_flag"}),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "pledge_id", "donor", "amount", "collected", "restriction", "signed", "expected_date", "collection_probability_pct", "days_past_due", "value_class", "outstanding", "expected_pledge_cash", "collection_pct", "past_due_flag", "pledge_date"}),
 				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
 				    {"row_id", type text},
 				    {"pledge_id", type text},

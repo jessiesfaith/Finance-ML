@@ -179,3 +179,53 @@ def _parses_as_float(value):
         return True
     except ValueError:
         return False
+
+
+def test_partition_select_columns_cover_csv_and_types():
+    """Partition coherence, added after a refresh in owner QA failed:
+    a patch put pledge_date into TransformColumnTypes but an un-asserted
+    string replace missed SelectColumns, so Power Query dropped the
+    column and then errored typing it - blocking every query in the
+    refresh batch. The invariants that actually break a refresh:
+      - every SelectColumns name must be a real CSV header
+      - every TransformColumnTypes name must survive SelectColumns
+      - every model column's sourceColumn must survive SelectColumns
+      - Csv.Document's Columns= must equal the CSV's header count
+    (SelectColumns MAY be a proper subset of the CSV - dropping extra
+    columns is legal and client_fs_ufcf does it on purpose.)"""
+    import re
+
+    import pandas as pd
+
+    for table, csv_name in CSV_FOR_TABLE.items():
+        tmdl = SM / "tables" / f"{table}.tmdl"
+        if not tmdl.exists():
+            continue
+        text = tmdl.read_text(encoding="utf-8")
+        headers = list(pd.read_csv(Path("reports") / f"{csv_name}.csv",
+                                   nrows=0).columns)
+        sel = re.search(r'Table\.SelectColumns\([^,]+,\s*\{([^}]*)\}',
+                        text)
+        if not sel:
+            continue
+        selected = set(re.findall(r'"([^"]+)"', sel.group(1)))
+        ghosts = selected - set(headers)
+        assert not ghosts, (
+            f"{table}: SelectColumns names not in {csv_name}.csv "
+            f"headers: {sorted(ghosts)}")
+        typed = set(re.findall(
+            r'\{"([^"]+)",\s*(?:type\s+\w+|Int64\.Type)\}', text))
+        dropped = typed - selected
+        assert not dropped, (
+            f"{table}: TransformColumnTypes references columns that "
+            f"SelectColumns drops: {sorted(dropped)}")
+        bound = set(re.findall(r'sourceColumn:\s*(\S+)', text))
+        unbound = {c.strip('"') for c in bound} - selected
+        assert not unbound, (
+            f"{table}: model columns bound to sourceColumns that "
+            f"SelectColumns drops: {sorted(unbound)}")
+        width = re.search(r"Columns\s*=\s*(\d+)", text)
+        if width:
+            assert int(width.group(1)) == len(headers), (
+                f"{table}: Csv.Document Columns={width.group(1)} but "
+                f"{csv_name}.csv has {len(headers)} headers")
