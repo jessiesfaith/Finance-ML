@@ -1390,3 +1390,14 @@ bottom: statements -> CFO panel -> full review -> YoY with the math ->
 KPI register -> rules & guardrails -> usage guidance. Tab 18's page
 removed from the report (19 pages now); all exports stay - they feed
 tab 17.
+
+### 112. Red-negatives conditional formatting BROKE tab 17 - removed
+2026-09-06. The owner's screenshot showed "Error fetching data for
+this visual" on every tab-17 table: Desktop's query engine rejected
+the hand-authored conditional fontColor expressions from #110 (the
+one mechanism flagged as untried). All 31 affected visuals cleaned;
+negatives now render accounting-style in parentheses via the model
+formatString #,0.##;(#,0.##) on every NFP numeric column - format
+strings cannot fail a query. PBIR rule learned the hard way (add to
+the tableEx rules): never hand-author conditional-formatting
+expression trees; use format strings or let Desktop generate them.
