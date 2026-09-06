@@ -21,7 +21,7 @@
                   {
                     "value": "Read directly from the five owner-provided Form 990 filings; every subtotal is the filing's own number and the statement identities are enforced by test. 'Other assets' is the one derived line. Benchmarks carry their class: INTERNAL POLICY vs sourced SECTOR/BBB standards.",
                     "textStyle": {
-                      "fontSize": "10pt"
+                      "fontSize": "12pt"
                     }
                   }
                 ]

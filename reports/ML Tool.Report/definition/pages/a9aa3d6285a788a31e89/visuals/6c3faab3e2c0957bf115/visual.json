@@ -21,7 +21,7 @@
                   {
                     "value": "Flat second line on each chart = the policy target or sector benchmark (target_class column says which: INTERNAL POLICY is a MANAGEMENT ASSUMPTION; BBB benchmarks are PUBLIC_RESEARCH, sourced at give.org). Verdicts: program ratio MEETS the BBB 65% standard every filed year; months of cash MISSES the 3.0-month policy in FY2025. Months of cash counts Part X cash + savings only. The illustrative playbook above stays SYNTHETIC/ASSUMPTION until client data.",
                     "textStyle": {
-                      "fontSize": "10pt"
+                      "fontSize": "12pt"
                     }
                   }
                 ]

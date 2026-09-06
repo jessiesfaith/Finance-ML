@@ -21,7 +21,7 @@
                   {
                     "value": "Global inputs & decision weights (weights must total 100 \u2014 enforced)",
                     "textStyle": {
-                      "fontSize": "13pt"
+                      "fontSize": "15pt"
                     }
                   }
                 ]
