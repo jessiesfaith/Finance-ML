@@ -12,7 +12,7 @@ table nfp_alt_timeline
 
 	column year
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: a5c88594-5ad6-4ec5-9d3a-d4112e63a8e7
 		summarizeBy: none
 		sourceColumn: year
@@ -21,7 +21,7 @@ table nfp_alt_timeline
 
 	column expand_program
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 240d6c03-6146-48b8-ac07-b999ef3303b3
 		summarizeBy: none
 		sourceColumn: expand_program
@@ -30,7 +30,7 @@ table nfp_alt_timeline
 
 	column launch_program
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 11666cc6-d203-4d95-9c78-9e6655926406
 		summarizeBy: none
 		sourceColumn: launch_program
@@ -39,7 +39,7 @@ table nfp_alt_timeline
 
 	column invest_capital
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 8c9a65a5-f785-4b22-a094-c5ea368ff368
 		summarizeBy: none
 		sourceColumn: invest_capital
@@ -48,7 +48,7 @@ table nfp_alt_timeline
 
 	column retain_cash
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: b5fd6e6a-2d6e-4d16-8294-a13c1a5f5382
 		summarizeBy: none
 		sourceColumn: retain_cash
@@ -57,7 +57,7 @@ table nfp_alt_timeline
 
 	column capital_project
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: fdd22d75-20f6-4559-9448-99c7022416ea
 		summarizeBy: none
 		sourceColumn: capital_project

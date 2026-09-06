@@ -43,7 +43,7 @@ table nfp_initiative_status
 
 	column proposed_amount
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 7efa1edf-8ab2-4520-97be-b3432b222f78
 		summarizeBy: none
 		sourceColumn: proposed_amount

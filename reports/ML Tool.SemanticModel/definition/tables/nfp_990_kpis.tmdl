@@ -44,7 +44,7 @@ table nfp_990_kpis
 
 	column fy2025_value
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: b55a256f-b697-4151-badc-cde9e9ce0a0b
 		summarizeBy: none
 		sourceColumn: fy2025_value
@@ -101,7 +101,7 @@ table nfp_990_kpis
 
 	column target_value
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: dd411017-b095-4eaa-8b97-64446872367d
 		summarizeBy: none
 		sourceColumn: target_value
@@ -110,7 +110,7 @@ table nfp_990_kpis
 
 	column variance_to_target
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 9d23d1df-41a3-4c35-ad87-fc184bc315ee
 		summarizeBy: none
 		sourceColumn: variance_to_target
@@ -119,7 +119,7 @@ table nfp_990_kpis
 
 	column fy2024_value
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 83c45d8a-2930-46d8-8e32-e0c8a1a46f4e
 		summarizeBy: none
 		sourceColumn: fy2024_value
@@ -128,7 +128,7 @@ table nfp_990_kpis
 
 	column yoy_variance
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: b0d9b6c6-7a9e-41a5-ac41-faaa8e2b9391
 		summarizeBy: none
 		sourceColumn: yoy_variance

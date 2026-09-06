@@ -44,7 +44,7 @@ table nfp_ml_series
 
 	column history_value
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: d0b2bf52-42f2-4465-8ff0-334a0f60ac27
 		summarizeBy: none
 		sourceColumn: history_value
@@ -53,7 +53,7 @@ table nfp_ml_series
 
 	column estimate_value
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 9f93c7cc-0bab-495d-842c-ea1fcf9ea4d5
 		summarizeBy: none
 		sourceColumn: estimate_value

@@ -28,7 +28,7 @@ table nfp_cfo_review
 
 	column fy2025_value
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: c8c9a5f0-1d5c-4f34-98ee-0393387f873a
 		summarizeBy: none
 		sourceColumn: fy2025_value
@@ -77,7 +77,7 @@ table nfp_cfo_review
 
 	column fy2021
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: cc9f52e7-02c4-4e89-8734-aed638fdef9d
 		summarizeBy: none
 		sourceColumn: fy2021
@@ -86,7 +86,7 @@ table nfp_cfo_review
 
 	column fy2022
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 8e54a915-9b07-4728-9b3f-42046b431a2a
 		summarizeBy: none
 		sourceColumn: fy2022
@@ -95,7 +95,7 @@ table nfp_cfo_review
 
 	column fy2023
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: b77fbb62-f840-47ff-970d-eead2bf00e50
 		summarizeBy: none
 		sourceColumn: fy2023
@@ -104,7 +104,7 @@ table nfp_cfo_review
 
 	column fy2024
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 09e9d46b-5d02-496c-b4fb-c660bc1b8f98
 		summarizeBy: none
 		sourceColumn: fy2024
@@ -113,7 +113,7 @@ table nfp_cfo_review
 
 	column fy2025
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 98e724b4-d2cd-4caf-b14d-9769847ae33c
 		summarizeBy: none
 		sourceColumn: fy2025
@@ -122,7 +122,7 @@ table nfp_cfo_review
 
 	column target_value
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: a3567252-b037-4476-93ea-e599b630f515
 		summarizeBy: none
 		sourceColumn: target_value
@@ -131,7 +131,7 @@ table nfp_cfo_review
 
 	column variance_to_target
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: ca0213f0-23ef-4a51-9f37-ae28fc2542b3
 		summarizeBy: none
 		sourceColumn: variance_to_target
@@ -140,7 +140,7 @@ table nfp_cfo_review
 
 	column yoy_variance
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 86a07c66-3fc4-457d-b6dc-90cb029e92d5
 		summarizeBy: none
 		sourceColumn: yoy_variance

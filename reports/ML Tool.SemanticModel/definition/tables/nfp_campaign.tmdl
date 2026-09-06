@@ -59,7 +59,7 @@ table nfp_campaign
 
 	column amount
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 1df96d9c-7d2f-4bc5-8174-ae832bf2a57a
 		summarizeBy: none
 		sourceColumn: amount

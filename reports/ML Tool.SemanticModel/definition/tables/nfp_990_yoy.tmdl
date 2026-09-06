@@ -36,7 +36,7 @@ table nfp_990_yoy
 
 	column fy2024
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 77728a4b-7b32-4284-ab79-df5123adbe04
 		summarizeBy: none
 		sourceColumn: fy2024
@@ -45,7 +45,7 @@ table nfp_990_yoy
 
 	column fy2025
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 281cfbb1-7061-40f0-be23-35c546d80c41
 		summarizeBy: none
 		sourceColumn: fy2025
@@ -54,7 +54,7 @@ table nfp_990_yoy
 
 	column variance
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 779de91c-e69a-4514-8da9-bc7c5971c9a6
 		summarizeBy: none
 		sourceColumn: variance
@@ -63,7 +63,7 @@ table nfp_990_yoy
 
 	column variance_pct
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: b65bc491-a487-4a8b-a7e8-71184976b53d
 		summarizeBy: none
 		sourceColumn: variance_pct

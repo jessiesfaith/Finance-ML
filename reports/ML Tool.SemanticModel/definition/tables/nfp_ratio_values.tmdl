@@ -28,7 +28,7 @@ table nfp_ratio_values
 
 	column value
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 18872321-0e58-4645-b578-bdf49393188b
 		summarizeBy: none
 		sourceColumn: value

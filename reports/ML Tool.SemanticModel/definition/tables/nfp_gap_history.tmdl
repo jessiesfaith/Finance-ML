@@ -35,7 +35,7 @@ table nfp_gap_history
 
 	column funding
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 546885a2-c1be-4d05-a77c-46082d750fdb
 		summarizeBy: none
 		sourceColumn: funding
@@ -44,7 +44,7 @@ table nfp_gap_history
 
 	column cost
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 40a0cc49-7a7e-4cea-8691-90fd5f85ae7b
 		summarizeBy: none
 		sourceColumn: cost
@@ -53,7 +53,7 @@ table nfp_gap_history
 
 	column gap
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 84857840-4596-4b55-bfe3-6cc738fad229
 		summarizeBy: none
 		sourceColumn: gap
@@ -62,7 +62,7 @@ table nfp_gap_history
 
 	column cumulative_gap
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: d66fd29c-9d40-4e56-9dc3-58f02ad47ac5
 		summarizeBy: none
 		sourceColumn: cumulative_gap
@@ -71,7 +71,7 @@ table nfp_gap_history
 
 	column cash_balance
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 204985a8-47ff-4643-abab-0fb836398ca9
 		summarizeBy: none
 		sourceColumn: cash_balance
@@ -80,7 +80,7 @@ table nfp_gap_history
 
 	column months_cash
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: e7fbe10a-8158-40e1-924e-9ef5c9c050d9
 		summarizeBy: none
 		sourceColumn: months_cash
@@ -89,7 +89,7 @@ table nfp_gap_history
 
 	column policy_months
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 3dc2bf70-da3c-4c48-abce-783e91952441
 		summarizeBy: none
 		sourceColumn: policy_months

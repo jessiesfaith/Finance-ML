@@ -28,7 +28,7 @@ table nfp_sensitivity
 
 	column base_value
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 4a128140-408e-4bb2-ba16-6d47178b489a
 		summarizeBy: none
 		sourceColumn: base_value
@@ -37,7 +37,7 @@ table nfp_sensitivity
 
 	column downside_value
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: c3de1afb-a9a7-4838-9fbd-6b2d5f397f9e
 		summarizeBy: none
 		sourceColumn: downside_value
@@ -46,7 +46,7 @@ table nfp_sensitivity
 
 	column upside_value
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 1946836a-ee31-48fc-b569-26da492fdf97
 		summarizeBy: none
 		sourceColumn: upside_value
@@ -55,7 +55,7 @@ table nfp_sensitivity
 
 	column swing
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 9e4ba631-5b80-4754-a222-da9fa0045568
 		summarizeBy: none
 		sourceColumn: swing
@@ -72,7 +72,7 @@ table nfp_sensitivity
 
 	column rank
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 4ecee740-401b-446b-bf96-021ea7fb6e3d
 		summarizeBy: none
 		sourceColumn: rank

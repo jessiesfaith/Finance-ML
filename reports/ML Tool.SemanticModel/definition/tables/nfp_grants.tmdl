@@ -76,7 +76,7 @@ table nfp_grants
 
 	column amount
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 7fb006dc-dc71-4b02-bbf0-84afc9d980a6
 		summarizeBy: none
 		sourceColumn: amount
@@ -85,7 +85,7 @@ table nfp_grants
 
 	column renewal_probability_pct
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: a911207a-3595-4234-bab0-f57fe0faba0a
 		summarizeBy: none
 		sourceColumn: renewal_probability_pct
@@ -182,7 +182,7 @@ table nfp_grants
 
 	column expected_value
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 64f19e43-1a6a-4b2c-a399-815338410e50
 		summarizeBy: none
 		sourceColumn: expected_value

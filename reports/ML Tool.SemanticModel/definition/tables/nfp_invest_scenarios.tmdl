@@ -20,7 +20,7 @@ table nfp_invest_scenarios
 
 	column capital_required
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 6bf9ceb4-3055-440b-aa7b-4a085ddfb7c7
 		summarizeBy: none
 		sourceColumn: capital_required
@@ -29,7 +29,7 @@ table nfp_invest_scenarios
 
 	column expected_annual_income
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: eff295eb-28fc-4104-be06-f40b4edb3459
 		summarizeBy: none
 		sourceColumn: expected_annual_income
@@ -38,7 +38,7 @@ table nfp_invest_scenarios
 
 	column five_year_value
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 045f4207-6e8a-4dfc-b0da-5bf4134c3b8d
 		summarizeBy: none
 		sourceColumn: five_year_value

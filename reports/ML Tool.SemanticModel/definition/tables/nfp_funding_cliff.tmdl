@@ -69,7 +69,7 @@ table nfp_funding_cliff
 
 	column amount
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: d6f4a94b-408e-4c4b-81d9-566361f186fb
 		summarizeBy: none
 		sourceColumn: amount
@@ -78,7 +78,7 @@ table nfp_funding_cliff
 
 	column renewal_probability_pct
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: db1fd1c2-0c4c-4d9f-840a-61498d868c7e
 		summarizeBy: none
 		sourceColumn: renewal_probability_pct
@@ -87,7 +87,7 @@ table nfp_funding_cliff
 
 	column expected_renewal
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: e229de57-b25e-4eb2-a084-45bbf2867183
 		summarizeBy: none
 		sourceColumn: expected_renewal
@@ -96,7 +96,7 @@ table nfp_funding_cliff
 
 	column at_risk_funding
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: bff26b99-64f7-4af6-828a-103bc3ddc99d
 		summarizeBy: none
 		sourceColumn: at_risk_funding
@@ -105,7 +105,7 @@ table nfp_funding_cliff
 
 	column unrestricted_replacement_required
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: d1e6e7cc-97f8-4aec-baa0-6f0ab18508af
 		summarizeBy: none
 		sourceColumn: unrestricted_replacement_required

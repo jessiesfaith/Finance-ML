@@ -35,7 +35,7 @@ table nfp_investment_pools
 
 	column amount
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 47f9a04b-8d12-4549-8754-248e6fa11adf
 		summarizeBy: none
 		sourceColumn: amount

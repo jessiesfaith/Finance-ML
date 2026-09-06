@@ -36,7 +36,7 @@ table nfp_ratio_history
 
 	column value
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 2003906d-15ea-45c6-80a7-c3744e53b27a
 		summarizeBy: none
 		sourceColumn: value

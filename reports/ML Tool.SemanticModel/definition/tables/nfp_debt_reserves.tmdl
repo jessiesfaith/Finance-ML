@@ -36,7 +36,7 @@ table nfp_debt_reserves
 
 	column amount
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 1313ceff-8dcf-478b-a22a-d7b66fe06d2d
 		summarizeBy: none
 		sourceColumn: amount

@@ -93,7 +93,7 @@ table nfp_990_actuals
 
 	column amount
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 6c4f602a-b330-4b4a-a99a-acf154d6e69b
 		summarizeBy: none
 		sourceColumn: amount

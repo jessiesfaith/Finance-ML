@@ -50,7 +50,7 @@ table nfp_scenarios
 
 	column total_funding
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 854a3371-85de-4bfa-a626-991074c28806
 		summarizeBy: none
 		sourceColumn: total_funding
@@ -59,7 +59,7 @@ table nfp_scenarios
 
 	column total_cost
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: f5e7f8f9-7744-49ab-88b4-2d0e498d355f
 		summarizeBy: none
 		sourceColumn: total_cost
@@ -68,7 +68,7 @@ table nfp_scenarios
 
 	column funding_gap
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 5ea85cae-f49b-4a8a-8b6d-f20f473668d6
 		summarizeBy: none
 		sourceColumn: funding_gap
@@ -77,7 +77,7 @@ table nfp_scenarios
 
 	column months_cash_end
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: f6f79c28-ce46-42fd-9303-0208050bfcb7
 		summarizeBy: none
 		sourceColumn: months_cash_end
@@ -86,7 +86,7 @@ table nfp_scenarios
 
 	column reserve_draw_needed
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 27646f82-dbfd-4b85-a88f-3a0f0983ce98
 		summarizeBy: none
 		sourceColumn: reserve_draw_needed
@@ -95,7 +95,7 @@ table nfp_scenarios
 
 	column participants
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: b6b05e39-57af-46f5-95ab-8f3ed25e6940
 		summarizeBy: none
 		sourceColumn: participants
@@ -104,7 +104,7 @@ table nfp_scenarios
 
 	column cost_per_participant
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 12097dba-acb7-47be-a2fe-ae0390da96c8
 		summarizeBy: none
 		sourceColumn: cost_per_participant

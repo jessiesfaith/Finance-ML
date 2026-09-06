@@ -43,7 +43,7 @@ table nfp_pipeline
 
 	column potential_amount
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: f2df720a-fc64-469b-9b73-dced5c0ec107
 		summarizeBy: none
 		sourceColumn: potential_amount
@@ -52,7 +52,7 @@ table nfp_pipeline
 
 	column probability_pct
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: e7a16b02-7981-48cf-86d3-17a2e5145159
 		summarizeBy: none
 		sourceColumn: probability_pct
@@ -125,7 +125,7 @@ table nfp_pipeline
 
 	column expected_value
 		dataType: double
-		formatString: #,0.##
+		formatString: #,0.##;(#,0.##)
 		lineageTag: 150a5023-a46f-4995-8887-70396e7f4284
 		summarizeBy: none
 		sourceColumn: expected_value
