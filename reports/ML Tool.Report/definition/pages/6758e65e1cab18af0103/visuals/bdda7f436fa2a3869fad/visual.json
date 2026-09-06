@@ -1,0 +1,161 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "bdda7f436fa2a3869fad",
+  "position": {
+    "x": 165,
+    "y": 270,
+    "height": 1080,
+    "width": 2670,
+    "z": 107000,
+    "tabOrder": 107000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_kpis"
+                    }
+                  },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_990_kpis.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_kpis"
+                    }
+                  },
+                  "Property": "kpi"
+                }
+              },
+              "queryRef": "nfp_990_kpis.kpi",
+              "nativeQueryRef": "kpi",
+              "displayName": "KPI"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_kpis"
+                    }
+                  },
+                  "Property": "fy2025_value"
+                }
+              },
+              "queryRef": "nfp_990_kpis.fy2025_value",
+              "nativeQueryRef": "fy2025_value",
+              "displayName": "FY25 value"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_kpis"
+                    }
+                  },
+                  "Property": "unit"
+                }
+              },
+              "queryRef": "nfp_990_kpis.unit",
+              "nativeQueryRef": "unit",
+              "displayName": "unit"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_kpis"
+                    }
+                  },
+                  "Property": "benchmark_or_policy"
+                }
+              },
+              "queryRef": "nfp_990_kpis.benchmark_or_policy",
+              "nativeQueryRef": "benchmark_or_policy",
+              "displayName": "benchmark / board policy"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_kpis"
+                    }
+                  },
+                  "Property": "vs_target"
+                }
+              },
+              "queryRef": "nfp_990_kpis.vs_target",
+              "nativeQueryRef": "vs_target",
+              "displayName": "vs target"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_kpis"
+                    }
+                  },
+                  "Property": "trend_fy2021_fy2025"
+                }
+              },
+              "queryRef": "nfp_990_kpis.trend_fy2021_fy2025",
+              "nativeQueryRef": "trend_fy2021_fy2025",
+              "displayName": "FY21 > FY25"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_kpis"
+                    }
+                  },
+                  "Property": "description"
+                }
+              },
+              "queryRef": "nfp_990_kpis.description",
+              "nativeQueryRef": "description",
+              "displayName": "what it means here"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_990_kpis"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

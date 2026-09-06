@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "fdb17dac8de8f9e49fd6",
+  "position": {
+    "x": 165,
+    "y": 870,
+    "height": 40,
+    "width": 1700,
+    "z": 104000,
+    "tabOrder": 104000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "STATEMENT OF FINANCIAL POSITION (balance sheet)",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

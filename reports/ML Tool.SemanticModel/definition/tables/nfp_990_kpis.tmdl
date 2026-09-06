@@ -1,0 +1,128 @@
+/// KPI register: description, 990 formula, latest value, benchmark or board policy, verdict, 5-year path.
+table nfp_990_kpis
+	lineageTag: 5adaf3cd-a2a6-4647-87ca-eb8a1cc24129
+
+	column row_id
+		dataType: string
+		lineageTag: 0af40eb2-ba0b-4a75-bac4-e24679ad8870
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column kpi_id
+		dataType: string
+		lineageTag: 3516970e-4376-4264-992b-b96b00e93644
+		summarizeBy: none
+		sourceColumn: kpi_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column kpi
+		dataType: string
+		lineageTag: 11c5e563-0206-488e-833b-2a40962117f4
+		summarizeBy: none
+		sourceColumn: kpi
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 454b1887-a861-4eeb-832a-0c540012f3ee
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column formula_990
+		dataType: string
+		lineageTag: d16442a0-681d-4ad5-a807-179387d56dab
+		summarizeBy: none
+		sourceColumn: formula_990
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy2025_value
+		dataType: double
+		lineageTag: 78687187-1962-4db3-bfb1-df3a5af02c79
+		summarizeBy: none
+		sourceColumn: fy2025_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit
+		dataType: string
+		lineageTag: 924d89fe-41e0-4237-8d0b-e664df9036ce
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column benchmark_or_policy
+		dataType: string
+		lineageTag: 6dd6f246-b51b-49d7-b44e-8a093d38885c
+		summarizeBy: none
+		sourceColumn: benchmark_or_policy
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_class
+		dataType: string
+		lineageTag: e33ff24d-acd1-49ca-9d8a-5f1cc4cf6ce2
+		summarizeBy: none
+		sourceColumn: target_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column vs_target
+		dataType: string
+		lineageTag: e31ab130-0d25-4cb7-a2f5-d31addd991a7
+		summarizeBy: none
+		sourceColumn: vs_target
+
+		annotation SummarizationSetBy = Automatic
+
+	column trend_fy2021_fy2025
+		dataType: string
+		lineageTag: 11e391f5-09e5-4621-9a23-5eed44368064
+		summarizeBy: none
+		sourceColumn: trend_fy2021_fy2025
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: fec21716-8f70-4ed8-b2eb-e36af8cec821
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_990_kpis = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_990_kpis.csv"),
+				    [Delimiter = ",", Columns = 12, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "kpi_id", "kpi", "description", "formula_990", "fy2025_value", "unit", "benchmark_or_policy", "target_class", "vs_target", "trend_fy2021_fy2025", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"kpi_id", type text},
+				    {"kpi", type text},
+				    {"description", type text},
+				    {"formula_990", type text},
+				    {"fy2025_value", type number},
+				    {"unit", type text},
+				    {"benchmark_or_policy", type text},
+				    {"target_class", type text},
+				    {"vs_target", type text},
+				    {"trend_fy2021_fy2025", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

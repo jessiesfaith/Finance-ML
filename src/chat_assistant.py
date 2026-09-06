@@ -60,6 +60,7 @@ INLINE_CSVS = [
     "nfp_ratio_values.csv", "nfp_ratio_history.csv", "nfp_rentals.csv",
     "nfp_investment_pools.csv", "nfp_invest_scenarios.csv",
     "nfp_990_actuals.csv", "nfp_990_ratio_actuals.csv",
+    "nfp_fin_statements.csv", "nfp_cfo_review.csv", "nfp_990_kpis.csv",
 ]
 HEAD_CSVS = ["market_history_rolling24.csv", "market_history_windows.csv",
              "market_history_long.csv"]
@@ -76,7 +77,10 @@ teaching-grade valuation pipeline and its Power BI report (tabs:
 6b Flags & Alerts, 7 Math Reference, 8 Calc Build-Out,
 9 NFP Capital Allocation, 10 NFP Programs & Funding,
 11 NFP Campaign & Financing, 12 NFP Executive Decision,
-13 NFP Model Estimates, Legacy).
+13 NFP Model Estimates, 14 NFP Ratio Playbook,
+15 NFP Community Study, 16 NFP Investments & Rentals,
+17 NFP Financial Statements (filed 990s + CFO review),
+18 NFP KPIs (benchmarks & policy targets), Legacy).
 
 The NFP module (tabs 9-12) is a nonprofit CFO decision framework -
 NOT GAAP: mission value = financial sustainability + mission impact +

@@ -1304,3 +1304,30 @@ if there are dates put that as the x axis." All nine horizontal bar
 charts flipped to vertical columns; every time series already charts
 month/fiscal_year on x. Future charts: never clusteredBarChart for
 dollar values; dated data always takes the x-axis.
+
+### 108. Tabs 17-18: statements-first CFO view + KPI register (owner request)
+2026-09-06. "make new tabs with one as actual financial statements and
+then on the right of them add ratios to review as a CFO and then
+another tab for KPIs with a description and industry benchmark or Board
+policy target set per their financials." Extracted Part X lines 27/28
+(net assets without/with donor restrictions) from all five filings -
+27+28 cross-foots to line 22 every year; only $5.8M of the $17.7M
+FY2025 net assets is unrestricted, and unrestricted FELL $1.3M in
+FY2025. Two new ratio kinds: operating_reserve_months (line 27 vs a
+month of spending: 6.6/7.4/7.0/6.8/5.1 - MEETS the 3-6 sector band,
+flagged as overstating spendable reserves since line 27 includes fixed
+assets) and revenue_concentration_pct (largest stream/revenue:
+55-66% - MISSES the 30-40% guidance every year, with the honest
+softening that the top stream is earned fees from many payers).
+Targets seed grew to 9 (3 new sector benchmarks from owner-provided
+research citing whipplewood/benchlytics/eisneramper/ktllp/gma-cpa/
+convergentnonprofit/fireflygiving - MEDIUM, click-through; BBB label
+enriched with the ~74.2% community-center median and >90% caution).
+Three new exports: nfp_fin_statements (Statement of Activities +
+Statement of Financial Position, filed lines as rows x FY2021-FY2025
+columns, identities test-enforced; one derived line: Other assets),
+nfp_cfo_review (10 ratios: latest, 5-yr path, benchmark, verdict, one-
+line CFO reading), nfp_990_kpis (8 KPIs with community-center
+descriptions from the owner's research). New pages: 17 - NFP Financial
+Statements (statements left, CFO cards + review panel right, full
+review table below), 18 - NFP KPIs (5 cards + the register). Suite 288.

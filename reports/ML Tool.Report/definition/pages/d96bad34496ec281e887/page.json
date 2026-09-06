@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.3.0/schema.json",
+  "name": "d96bad34496ec281e887",
+  "displayName": "17 \u00b7 NFP Financial Statements",
+  "displayOption": "FitToPage",
+  "height": 2250,
+  "width": 3000
+}

@@ -37,6 +37,20 @@ table nfp_990_ratio_actuals
 		displayFolder: NFP Cards
 		lineageTag: b5a2a64e-bd4c-48fd-84b4-a58830c30203
 
+	measure 'Reserve Months FY25' =
+			
+			CALCULATE(SUM(nfp_990_ratio_actuals[value]), nfp_990_ratio_actuals[ratio_id] = "R990-operating_reserve_months-FY2025")
+		formatString: 0.00
+		displayFolder: NFP Cards
+		lineageTag: b97e9b1a-6023-477e-b866-c59941f92e86
+
+	measure 'Revenue Concentration FY25 %' =
+			
+			CALCULATE(SUM(nfp_990_ratio_actuals[value]), nfp_990_ratio_actuals[ratio_id] = "R990-revenue_concentration_pct-FY2025")
+		formatString: 0.00
+		displayFolder: NFP Cards
+		lineageTag: 23e1496c-a53e-4ca2-99e1-f8871f5e0a78
+
 	column row_id
 		dataType: string
 		lineageTag: 804cccf5-4880-40db-8a0b-6068beed50f1

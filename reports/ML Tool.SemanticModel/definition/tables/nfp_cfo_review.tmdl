@@ -1,0 +1,110 @@
+/// CFO review panel: latest value, 5-year path, benchmark/policy, verdict and reading per key ratio.
+table nfp_cfo_review
+	lineageTag: aa6f89b2-795c-4081-8441-24496e216829
+
+	column row_id
+		dataType: string
+		lineageTag: 1894cb0e-76ea-4189-a934-75f125a93dcc
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ratio_kind
+		dataType: string
+		lineageTag: 8ac8cdea-3ac2-4a1f-99ac-6ffc965035e6
+		summarizeBy: none
+		sourceColumn: ratio_kind
+
+		annotation SummarizationSetBy = Automatic
+
+	column ratio
+		dataType: string
+		lineageTag: de3fabb4-9a6c-412b-a349-5def1d9bbe59
+		summarizeBy: none
+		sourceColumn: ratio
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy2025_value
+		dataType: double
+		lineageTag: dad87d0e-e98f-4466-b1ff-b8f071a2f607
+		summarizeBy: none
+		sourceColumn: fy2025_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit
+		dataType: string
+		lineageTag: d68895b5-c3f3-4342-8217-eeccac1c229c
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column trend_fy2021_fy2025
+		dataType: string
+		lineageTag: a57832be-d7e1-4a20-8366-e8f7ecf6c8f3
+		summarizeBy: none
+		sourceColumn: trend_fy2021_fy2025
+
+		annotation SummarizationSetBy = Automatic
+
+	column benchmark_or_policy
+		dataType: string
+		lineageTag: 77c05368-761a-4baf-a4f1-090aa8c10185
+		summarizeBy: none
+		sourceColumn: benchmark_or_policy
+
+		annotation SummarizationSetBy = Automatic
+
+	column vs_target
+		dataType: string
+		lineageTag: 2396ca87-456c-4c88-a82d-948a88e9df19
+		summarizeBy: none
+		sourceColumn: vs_target
+
+		annotation SummarizationSetBy = Automatic
+
+	column cfo_reading
+		dataType: string
+		lineageTag: df916224-cd32-4a94-9c10-80601a5af54a
+		summarizeBy: none
+		sourceColumn: cfo_reading
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 9b78e06d-1369-42e4-97c9-c22a0a629f80
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_cfo_review = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_cfo_review.csv"),
+				    [Delimiter = ",", Columns = 10, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "ratio_kind", "ratio", "fy2025_value", "unit", "trend_fy2021_fy2025", "benchmark_or_policy", "vs_target", "cfo_reading", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"ratio_kind", type text},
+				    {"ratio", type text},
+				    {"fy2025_value", type number},
+				    {"unit", type text},
+				    {"trend_fy2021_fy2025", type text},
+				    {"benchmark_or_policy", type text},
+				    {"vs_target", type text},
+				    {"cfo_reading", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

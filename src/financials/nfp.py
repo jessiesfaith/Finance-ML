@@ -1505,6 +1505,23 @@ def ratio_actuals_990(act: pd.DataFrame) -> pd.DataFrame:
             (mgmt + fund) / exp * 100, "%",
             "Part IX line 25 (col C + col D) / col A",
             "Management + fundraising share of spending")
+        una = g(fy, "unrestricted_net_assets_end")
+        add("operating_reserve_months",
+            f"Operating reserve months ({fy})", fy, una / (exp / 12),
+            "months", "Part X line 27 / (Part I line 18 / 12)",
+            "Unrestricted net assets vs a month of spending - line 27 "
+            "includes board-designated funds and net fixed assets, so "
+            "this OVERSTATES spendable reserves")
+        streams = {"contributions": con,
+                   "program service revenue": prg,
+                   "investment income": inv, "other revenue": oth}
+        top = max(streams, key=streams.get)
+        add("revenue_concentration_pct",
+            f"Revenue concentration % ({fy})", fy,
+            streams[top] / rev * 100, "%",
+            "largest single revenue stream / Part I line 12",
+            f"Largest stream: {top} - earned fees from many payers "
+            "carry different risk than one grantor or major donor")
     for prev, fy in zip(years, years[1:]):
         add("revenue_growth_pct",
             f"Revenue growth % ({prev} to {fy})", fy,
@@ -1539,6 +1556,199 @@ def ratio_actuals_990(act: pd.DataFrame) -> pd.DataFrame:
 
     df["vs_target"] = df.apply(verdict, axis=1)
     return df
+
+
+def fin_statements_990(act: pd.DataFrame) -> pd.DataFrame:
+    """Classic statement presentation of the FILED figures - one row
+    per statement line, one column per filed year, exactly as a CFO
+    reads them. Every subtotal is the filing's own number and the
+    identities (sections sum to totals) are enforced by test."""
+    years = ["FY2021", "FY2022", "FY2023", "FY2024", "FY2025"]
+    lk = {(r["fiscal_year"], r["line_item"]): int(r["amount"])
+          for _, r in act.iterrows()
+          if r["amount"] != "" and r["fiscal_year"] in years}
+    rows = []
+
+    def row(statement, section, label, item=None, values=None, note=""):
+        vals = values if values is not None else [lk[(fy, item)]
+                                                  for fy in years]
+        rows.append({"statement": statement, "section": section,
+                     "line_label": label,
+                     **{fy.lower(): v for fy, v in zip(years, vals)},
+                     "note": note, "value_class": "PUBLIC_RESEARCH"})
+
+    A = "STATEMENT OF ACTIVITIES"
+    row(A, "REVENUE", "Contributions & grants",
+        "contributions_and_grants", note="Part I line 8")
+    row(A, "REVENUE", "Program service revenue",
+        "program_service_revenue", note="Part I line 9")
+    row(A, "REVENUE", "Investment income", "investment_income",
+        note="Part I line 10")
+    row(A, "REVENUE", "Other revenue", "other_revenue",
+        note="Part I line 11")
+    row(A, "REVENUE", "TOTAL REVENUE", "total_revenue",
+        note="Part I line 12")
+    row(A, "EXPENSES", "Program services", "program_expenses",
+        note="Part IX line 25 col B")
+    row(A, "EXPENSES", "Management & general", "mgmt_general_expenses",
+        note="Part IX line 25 col C")
+    row(A, "EXPENSES", "Fundraising", "fundraising_expenses",
+        note="Part IX line 25 col D")
+    row(A, "EXPENSES", "TOTAL EXPENSES", "total_expenses",
+        note="Part I line 18")
+    row(A, "RESULT", "CHANGE IN NET ASSETS (surplus/deficit)",
+        "surplus_deficit", note="Part I line 19")
+    P = "STATEMENT OF FINANCIAL POSITION"
+    row(P, "ASSETS", "Cash (non-interest-bearing)", "cash_end",
+        note="Part X line 1")
+    row(P, "ASSETS", "Savings & temporary investments", "savings_end",
+        note="Part X line 2")
+    row(P, "ASSETS", "Pledges & grants receivable",
+        "pledges_receivable_end", note="Part X line 3")
+    row(P, "ASSETS", "Investments (publicly traded)",
+        "investments_securities_end", note="Part X line 11")
+    other = [lk[(fy, "total_assets_end")] - lk[(fy, "cash_end")]
+             - lk[(fy, "savings_end")]
+             - lk[(fy, "pledges_receivable_end")]
+             - lk[(fy, "investments_securities_end")] for fy in years]
+    row(P, "ASSETS", "Other assets (land, buildings, receivables - "
+        "derived)", values=other,
+        note="DERIVED: line 16 minus the lines above")
+    row(P, "ASSETS", "TOTAL ASSETS", "total_assets_end",
+        note="Part X line 16")
+    row(P, "LIABILITIES", "TOTAL LIABILITIES", "total_liabilities_end",
+        note="Part X line 26")
+    row(P, "NET ASSETS", "Without donor restrictions",
+        "unrestricted_net_assets_end", note="Part X line 27")
+    row(P, "NET ASSETS", "With donor restrictions",
+        "restricted_net_assets_end", note="Part X line 28")
+    row(P, "NET ASSETS", "TOTAL NET ASSETS", "net_assets_end",
+        note="Part X line 32 / Part I line 22")
+    return pd.DataFrame(rows)
+
+
+_CFO_READINGS = {
+    "op_margin_pct": "Deficit-to-surplus swing managed; hold >= 0",
+    "expense_coverage": "Above 1.0x both of the last two years",
+    "months_cash_on_hand": "THE red flag: cash fell through the "
+        "3-month floor in FY2025 as liquidity moved to the portfolio",
+    "operating_reserve_months": "Healthy on paper - but line 27 "
+        "includes fixed assets; get the audit's spendable split",
+    "program_expense_ratio_pct": "Beats the BBB floor and the ~74% "
+        "sector median every year - a board-ready strength",
+    "overhead_ratio_pct": "Well under the 35% ceiling",
+    "fundraise_cents_per_dollar": "Cheap fundraising by sector "
+        "standards",
+    "salaries_pct_exp": "In the 45-60% band since FY2022 (staffed "
+        "service model)",
+    "revenue_concentration_pct": "Above the 30-40% guidance - but the "
+        "top stream is earned fees from many payers, not one funder",
+    "net_asset_ratio_pct": "No published standard; strong equity, "
+        "mostly donor-restricted"}
+
+
+def cfo_review_990(ratios: pd.DataFrame) -> pd.DataFrame:
+    """The right-hand review panel for the statements tab: latest value,
+    five-year path, the benchmark/policy, verdict, and a one-line CFO
+    reading per ratio."""
+    years = ["FY2021", "FY2022", "FY2023", "FY2024", "FY2025"]
+    out = []
+    for kind, reading in _CFO_READINGS.items():
+        rk = ratios[ratios["ratio_kind"] == kind]
+        latest = rk[rk["fiscal_year"] == "FY2025"].iloc[0]
+        trend = " > ".join(
+            f"{float(rk[rk['fiscal_year'] == fy].iloc[0]['value']):,.2f}"
+            for fy in years if (rk["fiscal_year"] == fy).any())
+        out.append({
+            "ratio_kind": kind,
+            "ratio": latest["ratio"].split(" (")[0],
+            "fy2025_value": float(latest["value"]),
+            "unit": latest["unit"], "trend_fy2021_fy2025": trend,
+            "benchmark_or_policy": latest["target_label"]
+                or "No published standard",
+            "vs_target": latest["vs_target"] or "-",
+            "cfo_reading": reading,
+            "value_class": "PUBLIC_RESEARCH"})
+    return pd.DataFrame(out)
+
+
+_KPI_DESCRIPTIONS = {
+    "program_expense_ratio_pct": (
+        "Program Expense Ratio",
+        "Share of total spending that goes directly into community "
+        "programming versus admin and fundraising. Watchdogs (BBB) set "
+        "a 65% floor; the community-center median is ~74.2%. Centers "
+        "carry higher facility costs, and above ~90% can signal "
+        "underinvestment in infrastructure or safety."),
+    "operating_reserve_months": (
+        "Operating Reserve (months)",
+        "How long the organization could sustain itself on "
+        "unrestricted net assets if revenue stopped. Sector goal is "
+        "3-6 months; target 6+ when slow-paying reimbursement grants "
+        "dominate. JSV's line 27 includes fixed assets, so the "
+        "spendable figure is lower than shown."),
+    "months_cash_on_hand": (
+        "Months of Cash on Hand",
+        "Pure cash liquidity: Part X cash + savings against a month "
+        "of spending, excluding the investment portfolio. Internal "
+        "policy floor is 3.0 months. FY2025 sits far below it because "
+        "liquidity moved into investments - the board conversation is "
+        "how fast portfolio assets can become cash."),
+    "revenue_concentration_pct": (
+        "Revenue Concentration",
+        "Largest single revenue stream as a share of total revenue - "
+        "funding-diversity risk. Sector guidance keeps any stream "
+        "under 30-40%. JSV runs above that, but the top stream is "
+        "earned program fees from many families, a very different "
+        "risk than dependence on one grant or donor."),
+    "salaries_pct_exp": (
+        "Personnel Expense Ratio",
+        "Salaries, wages and benefits as a share of total expenses. "
+        "Staff-delivered centers (front desk, instructors, camps) "
+        "typically run 45-60%; below 45% can mean understaffing, "
+        "above 60% squeezes program delivery."),
+    "fundraise_cents_per_dollar": (
+        "Fundraising Efficiency",
+        "Cents spent on fundraising per contribution dollar raised. "
+        "BBB ceiling is 35 cents; a typical healthy range is 15-20. "
+        "JSV raises money cheaply - single digits most years."),
+    "op_margin_pct": (
+        "Operating Margin",
+        "What is left of revenue after the year's expenses. No "
+        "published sector standard; the internal policy floor is "
+        "breakeven. The FY2023 deficit year and the FY2025 recovery "
+        "are both visible here."),
+    "expense_coverage": (
+        "Expense Coverage",
+        "Revenue divided by expenses - the simplest solvency read. "
+        "1.0x means the year paid for itself; below 1.0x the year drew "
+        "down reserves to operate.")}
+
+
+def kpis_990(ratios: pd.DataFrame) -> pd.DataFrame:
+    """Tab-18 KPI register: each KPI with a plain-English description,
+    its 990 formula, the latest filed value, the benchmark or board
+    policy, the verdict, and the five-year path."""
+    years = ["FY2021", "FY2022", "FY2023", "FY2024", "FY2025"]
+    out = []
+    for kind, (kpi, desc) in _KPI_DESCRIPTIONS.items():
+        rk = ratios[ratios["ratio_kind"] == kind]
+        latest = rk[rk["fiscal_year"] == "FY2025"].iloc[0]
+        trend = " > ".join(
+            f"{float(rk[rk['fiscal_year'] == fy].iloc[0]['value']):,.2f}"
+            for fy in years)
+        out.append({
+            "kpi_id": f"KPI-{len(out) + 1}", "kpi": kpi,
+            "description": desc,
+            "formula_990": latest["formula_990"],
+            "fy2025_value": float(latest["value"]),
+            "unit": latest["unit"],
+            "benchmark_or_policy": latest["target_label"],
+            "target_class": latest["target_class"],
+            "vs_target": latest["vs_target"],
+            "trend_fy2021_fy2025": trend,
+            "value_class": "PUBLIC_RESEARCH"})
+    return pd.DataFrame(out)
 
 
 def build_all() -> dict[str, pd.DataFrame]:
@@ -1590,8 +1800,12 @@ def build_all() -> dict[str, pd.DataFrame]:
         "nfp_invest_scenarios": invest_scenarios(s),
     }
     act = actuals_990()
+    ratios = ratio_actuals_990(act)
     frames["nfp_990_actuals"] = act
-    frames["nfp_990_ratio_actuals"] = ratio_actuals_990(act)
+    frames["nfp_990_ratio_actuals"] = ratios
+    frames["nfp_fin_statements"] = fin_statements_990(act)
+    frames["nfp_cfo_review"] = cfo_review_990(ratios)
+    frames["nfp_990_kpis"] = kpis_990(ratios)
     # stable sort key: report tables sort by row_id to preserve the
     # decision-flow order of each export
     for df in frames.values():

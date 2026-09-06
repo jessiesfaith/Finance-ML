@@ -1,0 +1,146 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "fe0f37785a1370b4db12",
+  "position": {
+    "x": 165,
+    "y": 1640,
+    "height": 480,
+    "width": 2670,
+    "z": 113000,
+    "tabOrder": 113000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cfo_review"
+                    }
+                  },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_cfo_review.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cfo_review"
+                    }
+                  },
+                  "Property": "ratio"
+                }
+              },
+              "queryRef": "nfp_cfo_review.ratio",
+              "nativeQueryRef": "ratio",
+              "displayName": "ratio"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cfo_review"
+                    }
+                  },
+                  "Property": "fy2025_value"
+                }
+              },
+              "queryRef": "nfp_cfo_review.fy2025_value",
+              "nativeQueryRef": "fy2025_value",
+              "displayName": "FY25"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cfo_review"
+                    }
+                  },
+                  "Property": "trend_fy2021_fy2025"
+                }
+              },
+              "queryRef": "nfp_cfo_review.trend_fy2021_fy2025",
+              "nativeQueryRef": "trend_fy2021_fy2025",
+              "displayName": "FY21 > FY25"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cfo_review"
+                    }
+                  },
+                  "Property": "benchmark_or_policy"
+                }
+              },
+              "queryRef": "nfp_cfo_review.benchmark_or_policy",
+              "nativeQueryRef": "benchmark_or_policy",
+              "displayName": "benchmark / policy"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cfo_review"
+                    }
+                  },
+                  "Property": "vs_target"
+                }
+              },
+              "queryRef": "nfp_cfo_review.vs_target",
+              "nativeQueryRef": "vs_target",
+              "displayName": "vs target"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cfo_review"
+                    }
+                  },
+                  "Property": "cfo_reading"
+                }
+              },
+              "queryRef": "nfp_cfo_review.cfo_reading",
+              "nativeQueryRef": "cfo_reading",
+              "displayName": "CFO reading"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_cfo_review"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

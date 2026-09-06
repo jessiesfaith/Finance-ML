@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "eacae7ff62870f2992ba",
+  "position": {
+    "x": 2395,
+    "y": 200,
+    "height": 90,
+    "width": 440,
+    "z": 108000,
+    "tabOrder": 108000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_ratio_actuals"
+                    }
+                  },
+                  "Property": "Reserve Months FY25"
+                }
+              },
+              "queryRef": "nfp_990_ratio_actuals.Reserve Months FY25",
+              "nativeQueryRef": "Reserve Months FY25"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

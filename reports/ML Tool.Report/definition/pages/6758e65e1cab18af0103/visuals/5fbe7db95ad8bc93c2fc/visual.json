@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "5fbe7db95ad8bc93c2fc",
+  "position": {
+    "x": 1925,
+    "y": 150,
+    "height": 90,
+    "width": 420,
+    "z": 106000,
+    "tabOrder": 106000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_ratio_actuals"
+                    }
+                  },
+                  "Property": "990 Op Margin FY25 %"
+                }
+              },
+              "queryRef": "nfp_990_ratio_actuals.990 Op Margin FY25 %",
+              "nativeQueryRef": "990 Op Margin FY25 %"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

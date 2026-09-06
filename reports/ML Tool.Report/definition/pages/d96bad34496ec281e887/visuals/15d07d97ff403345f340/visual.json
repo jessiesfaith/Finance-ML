@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "15d07d97ff403345f340",
+  "position": {
+    "x": 165,
+    "y": 2130,
+    "height": 60,
+    "width": 2670,
+    "z": 114000,
+    "tabOrder": 114000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Read directly from the five owner-provided Form 990 filings; every subtotal is the filing's own number and the statement identities are enforced by test. 'Other assets' is the one derived line. Benchmarks carry their class: INTERNAL POLICY vs sourced SECTOR/BBB standards.",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

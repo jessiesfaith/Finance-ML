@@ -498,7 +498,7 @@ def test_990_actuals_real_figures_and_honesty():
 def test_990_ratio_actuals_computed_from_filed_only():
     from financials.nfp import actuals_990, ratio_actuals_990
     r = ratio_actuals_990(actuals_990())
-    assert len(r) == 72
+    assert len(r) == 82
     assert (r["value_class"] == "PUBLIC_RESEARCH").all()
     assert (r["confidence"] == "HIGH").all()
     assert (r["value"] != "").all()          # nothing unresearched left
@@ -546,12 +546,12 @@ def test_990_targets_and_benchmarks():
     from financials.nfp import actuals_990, ratio_actuals_990
     r = ratio_actuals_990(actuals_990())
     with_t = r[r["target_value"] != ""]
-    assert len(with_t) == 30                    # 6 targeted kinds x 5 yrs
+    assert len(with_t) == 45                    # 9 targeted kinds x 5 yrs
     assert set(with_t["target_class"]) == {"MANAGEMENT ASSUMPTION",
                                            "PUBLIC_RESEARCH"}
     bbb = with_t[with_t["target_class"] == "PUBLIC_RESEARCH"]
-    assert bbb["target_label"].str.contains("BBB|benchmark|BENCHMARK",
-                                            regex=True).all()
+    assert bbb["target_label"].str.contains(
+        "BBB|BENCHMARK|SECTOR", regex=True).all()
     assert (r[r["target_value"] == ""]["vs_target"] == "").all()
 
     def verdict(kind, fy):
@@ -567,3 +567,48 @@ def test_990_targets_and_benchmarks():
     assert verdict("months_cash_on_hand", "FY2025") == "MISSES"
     assert verdict("op_margin_pct", "FY2023") == "MISSES"
     assert verdict("op_margin_pct", "FY2025") == "MEETS"
+
+
+def test_fin_statements_are_the_filings_own_numbers(frames):
+    """Tab 17: every subtotal must be the filing's own figure and the
+    statement identities must hold in every year."""
+    fs = frames["nfp_fin_statements"].set_index("line_label")
+    years = [f"fy{y}" for y in range(2021, 2026)]
+    for y in years:
+        rev = [fs.loc[l, y] for l in ("Contributions & grants",
+               "Program service revenue", "Investment income",
+               "Other revenue")]
+        assert sum(rev) == fs.loc["TOTAL REVENUE", y]
+        exp = [fs.loc[l, y] for l in ("Program services",
+               "Management & general", "Fundraising")]
+        assert sum(exp) == fs.loc["TOTAL EXPENSES", y]
+        assert (fs.loc["TOTAL REVENUE", y] - fs.loc["TOTAL EXPENSES", y]
+                == fs.loc["CHANGE IN NET ASSETS (surplus/deficit)", y])
+        na = (fs.loc["Without donor restrictions", y]
+              + fs.loc["With donor restrictions", y])
+        assert na == fs.loc["TOTAL NET ASSETS", y]
+        assets = fs[fs["section"] == "ASSETS"]
+        listed = assets[~assets.index.str.startswith("TOTAL")][y].sum()
+        assert listed == fs.loc["TOTAL ASSETS", y]
+    # FY2025 pins incl. the new filed lines 27/28
+    assert fs.loc["Without donor restrictions", "fy2025"] == 5761112
+    assert fs.loc["With donor restrictions", "fy2025"] == 11954939
+
+
+def test_cfo_review_and_kpis(frames):
+    cr = frames["nfp_cfo_review"]
+    assert len(cr) == 10
+    assert (cr["cfo_reading"].str.len() > 20).all()
+    assert (cr["trend_fy2021_fy2025"].str.count(">") == 4).all()
+    k = frames["nfp_990_kpis"].set_index("kpi")
+    assert len(k) == 8
+    assert (k["description"].str.len() > 100).all()
+    assert (k["benchmark_or_policy"].str.len() > 10).all()
+    assert k.loc["Months of Cash on Hand", "vs_target"] == "MISSES"
+    assert k.loc["Program Expense Ratio", "vs_target"] == "MEETS"
+    assert float(k.loc["Operating Reserve (months)",
+                       "fy2025_value"]) == pytest.approx(5.1061,
+                                                         abs=0.001)
+    conc = k.loc["Revenue Concentration"]
+    assert conc["vs_target"] == "MISSES"
+    assert "many" in k.loc["Revenue Concentration", "description"]

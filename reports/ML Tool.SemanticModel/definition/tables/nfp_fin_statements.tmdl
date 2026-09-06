@@ -1,0 +1,119 @@
+/// FILED 990 figures in classic statement presentation - one row per line, one column per year (FY2021-FY2025).
+table nfp_fin_statements
+	lineageTag: 11a9f617-ee6e-4525-940b-68ab9ba09518
+
+	column row_id
+		dataType: string
+		lineageTag: e27c0a0d-fefe-4dbd-9989-66e3a8f44f50
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column statement
+		dataType: string
+		lineageTag: b410330e-1069-4279-b7da-cd632dcba30c
+		summarizeBy: none
+		sourceColumn: statement
+
+		annotation SummarizationSetBy = Automatic
+
+	column section
+		dataType: string
+		lineageTag: 34aa272c-5e9d-42f0-aca6-e2f83abaaed2
+		summarizeBy: none
+		sourceColumn: section
+
+		annotation SummarizationSetBy = Automatic
+
+	column line_label
+		dataType: string
+		lineageTag: 8f3f3bbe-42c4-49bd-a0c9-a8fc372cd82c
+		summarizeBy: none
+		sourceColumn: line_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy2021
+		dataType: double
+		lineageTag: ac749c1a-602e-4f66-a9ec-e4d74de660bc
+		summarizeBy: none
+		sourceColumn: fy2021
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy2022
+		dataType: double
+		lineageTag: 0e9bbaf1-8ee0-44ae-abd9-742e1c71c72d
+		summarizeBy: none
+		sourceColumn: fy2022
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy2023
+		dataType: double
+		lineageTag: 36351686-45e7-42e3-b114-e04e26770bac
+		summarizeBy: none
+		sourceColumn: fy2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy2024
+		dataType: double
+		lineageTag: db7f8912-f493-4f76-bfc8-100c8a33ebd5
+		summarizeBy: none
+		sourceColumn: fy2024
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy2025
+		dataType: double
+		lineageTag: 99364eac-30e5-4f00-82b8-451e3032297c
+		summarizeBy: none
+		sourceColumn: fy2025
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: 353ca1be-8cf1-4a63-9679-a700db0c905f
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 4388f2ce-3f72-494a-bed8-a75483c54f21
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_fin_statements = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_fin_statements.csv"),
+				    [Delimiter = ",", Columns = 11, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "statement", "section", "line_label", "fy2021", "fy2022", "fy2023", "fy2024", "fy2025", "note", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"statement", type text},
+				    {"section", type text},
+				    {"line_label", type text},
+				    {"fy2021", type number},
+				    {"fy2022", type number},
+				    {"fy2023", type number},
+				    {"fy2024", type number},
+				    {"fy2025", type number},
+				    {"note", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "f44ec633f491f07b326e",
+  "position": {
+    "x": 165,
+    "y": 150,
+    "height": 40,
+    "width": 1700,
+    "z": 102000,
+    "tabOrder": 102000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "STATEMENT OF ACTIVITIES (income statement)",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

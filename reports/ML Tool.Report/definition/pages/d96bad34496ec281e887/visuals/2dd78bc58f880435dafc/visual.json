@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "2dd78bc58f880435dafc",
+  "position": {
+    "x": 2395,
+    "y": 300,
+    "height": 90,
+    "width": 440,
+    "z": 110000,
+    "tabOrder": 110000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_ratio_actuals"
+                    }
+                  },
+                  "Property": "990 Program Ratio FY25 %"
+                }
+              },
+              "queryRef": "nfp_990_ratio_actuals.990 Program Ratio FY25 %",
+              "nativeQueryRef": "990 Program Ratio FY25 %"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

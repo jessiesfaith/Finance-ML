@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "5cdd5eed1e09dd2a0fca",
+  "position": {
+    "x": 165,
+    "y": 1590,
+    "height": 40,
+    "width": 2670,
+    "z": 112000,
+    "tabOrder": 112000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "FULL CFO REVIEW - value, 5-year path, benchmark/policy, verdict, reading",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
