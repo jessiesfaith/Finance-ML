@@ -271,16 +271,24 @@ table nfp_alternatives
 
 		annotation SummarizationSetBy = Automatic
 
+	column short_label
+		dataType: string
+		lineageTag: ae938f0d-47ef-411c-9e8b-cabbf45fb732
+		summarizeBy: none
+		sourceColumn: short_label
+
+		annotation SummarizationSetBy = Automatic
+
 	partition nfp_alternatives = m
 		mode: import
 		source =
 				let
 				  Source = Csv.Document(
 				    File.Contents("C:\dev\Finance-ML\reports\nfp_alternatives.csv"),
-				    [Delimiter = ",", Columns = 31, QuoteStyle = QuoteStyle.Csv]
+				    [Delimiter = ",", Columns = 32, QuoteStyle = QuoteStyle.Csv]
 				),
 				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "alternative_id", "alternative", "capital_required", "net_cash_y1", "net_cash_y2", "net_cash_y3", "net_cash_y4", "net_cash_y5", "five_year_cash", "npv_at_board_rate", "participants_served", "capital_per_participant", "mission_leverage_per_100k", "months_cash_after", "risk_rating_1to10", "scalability_1to10", "strategic_1to10", "note", "value_class", "score_financial", "score_mission", "score_liquidity", "score_risk", "score_scalability", "score_strategic", "decision_score", "recommendation", "is_recommended", "management_override", "override_rationale"}),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "alternative_id", "alternative", "capital_required", "net_cash_y1", "net_cash_y2", "net_cash_y3", "net_cash_y4", "net_cash_y5", "five_year_cash", "npv_at_board_rate", "participants_served", "capital_per_participant", "mission_leverage_per_100k", "months_cash_after", "risk_rating_1to10", "scalability_1to10", "strategic_1to10", "note", "value_class", "score_financial", "score_mission", "score_liquidity", "score_risk", "score_scalability", "score_strategic", "decision_score", "recommendation", "is_recommended", "management_override", "override_rationale", "short_label"}),
 				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
 				    {"row_id", type text},
 				    {"alternative_id", type text},
@@ -312,7 +320,8 @@ table nfp_alternatives
 				    {"recommendation", type text},
 				    {"is_recommended", type number},
 				    {"management_override", type text},
-				    {"override_rationale", type text}
+				    {"override_rationale", type text},
+				    {"short_label", type text}
 				  })
 				in
 				    #"Changed Type"

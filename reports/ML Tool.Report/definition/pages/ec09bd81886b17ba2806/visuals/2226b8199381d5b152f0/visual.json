@@ -23,11 +23,11 @@
                       "Entity": "nfp_alternatives"
                     }
                   },
-                  "Property": "alternative_id"
+                  "Property": "short_label"
                 }
               },
-              "queryRef": "nfp_alternatives.alternative_id",
-              "nativeQueryRef": "alternative_id",
+              "queryRef": "nfp_alternatives.short_label",
+              "nativeQueryRef": "short_label",
               "active": true
             }
           ]

@@ -229,6 +229,13 @@ def alternatives(settings: dict | None = None) -> pd.DataFrame:
                             == best["alternative_id"]).astype(int)
     df["management_override"] = ""   # management may override with rationale
     df["override_rationale"] = ""
+    # readable axis label - owner QA: "what is alt" (ALT-x ids mean
+    # nothing on a chart axis; add-only column, ids stay for joins)
+    short = {"ALT-1": "1 Expand program", "ALT-2": "2 New pilot",
+             "ALT-3": "3 Invest capital", "ALT-4": "4 Status quo",
+             "ALT-5": "5 Capital project"}
+    df["short_label"] = df["alternative_id"].map(short).fillna(
+        df["alternative_id"])
     return df
 
 
