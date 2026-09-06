@@ -1636,33 +1636,29 @@ def _ratio_math_fy2025(act: pd.DataFrame) -> dict:
         "grants_payable_end"]
     dr = lk["deferred_revenue_end"]
     return {
-        "op_margin_pct": f"({f(rev)} - {f(exp)}) / {f(rev)}",
-        "expense_coverage": f"{f(rev)} / {f(exp)}",
-        "program_reliance_pct": f"{f(prg)} / {f(rev)}",
-        "contrib_reliance_pct": f"{f(con)} / {f(rev)}",
-        "invest_other_pct": f"({f(inv)} + {f(oth)}) / {f(rev)}",
-        "salaries_pct_exp": f"{f(sal)} / {f(exp)}",
-        "grants_pct_exp": f"{f(gr)} / {f(exp)}",
-        "fundraise_cents_per_dollar": f"{f(fund)} / {f(con)} x 100",
-        "fundraise_dollars_per_dollar": f"{f(con)} / {f(fund)}",
-        "net_asset_ratio_pct": f"{f(na)} / {f(ta)}",
-        "months_cash_on_hand": f"({f(cash)} + {f(sav)}) / "
-                               f"({f(exp)} / 12)",
-        "days_cash_on_hand": f"({f(cash)} + {f(sav)}) / "
-                             f"({f(exp)} / 365)",
-        "operating_reserve_months": f"{f(una)} / ({f(exp)} / 12)",
-        "program_expense_ratio_pct": f"{f(progb)} / {f(exp)}",
-        "overhead_ratio_pct": f"({f(mgmt)} + {f(fund)}) / {f(exp)}",
-        "mgmt_general_pct_exp": f"{f(mgmt)} / {f(exp)}",
-        "revenue_concentration_pct": f"{f(prg)} / {f(rev)} "
-                                     "(largest stream: program fees)",
-        "current_ratio": f"({f(cash)} + {f(sav)} + {f(plg)} + {f(ar)} "
-                         f"+ {f(ppd)}) / ({f(ap)} + {f(gp)} + {f(dr)})",
+        "op_margin_pct": f"(total revenue {f(rev)} - total expenses {f(exp)}) / total revenue {f(rev)}",
+        "expense_coverage": f"total revenue {f(rev)} / total expenses {f(exp)}",
+        "program_reliance_pct": f"program service revenue {f(prg)} / total revenue {f(rev)}",
+        "contrib_reliance_pct": f"contributions {f(con)} / total revenue {f(rev)}",
+        "invest_other_pct": f"(investment income {f(inv)} + other revenue {f(oth)}) / total revenue {f(rev)}",
+        "salaries_pct_exp": f"salaries & benefits {f(sal)} / total expenses {f(exp)}",
+        "grants_pct_exp": f"grants paid {f(gr)} / total expenses {f(exp)}",
+        "fundraise_cents_per_dollar": f"fundraising expenses {f(fund)} / contributions {f(con)} x 100",
+        "fundraise_dollars_per_dollar": f"contributions {f(con)} / fundraising expenses {f(fund)}",
+        "net_asset_ratio_pct": f"net assets {f(na)} / total assets {f(ta)}",
+        "months_cash_on_hand": f"(cash {f(cash)} + savings {f(sav)}) / (total expenses {f(exp)} / 12)",
+        "days_cash_on_hand": f"(cash {f(cash)} + savings {f(sav)}) / (total expenses {f(exp)} / 365)",
+        "operating_reserve_months": f"unrestricted net assets {f(una)} / (total expenses {f(exp)} / 12)",
+        "program_expense_ratio_pct": f"program expenses {f(progb)} / total expenses {f(exp)}",
+        "overhead_ratio_pct": f"(management & general {f(mgmt)} + fundraising {f(fund)}) / total expenses {f(exp)}",
+        "mgmt_general_pct_exp": f"management & general {f(mgmt)} / total expenses {f(exp)}",
+        "revenue_concentration_pct": f"program service revenue (largest stream) {f(prg)} / total revenue {f(rev)}",
+        "current_ratio": f"(cash {f(cash)} + savings {f(sav)} + pledges receivable {f(plg)} + accounts receivable {f(ar)} + prepaid {f(ppd)}) / (accounts payable {f(ap)} + grants payable {f(gp)} + deferred revenue {f(dr)})",
         "public_support_pct": "as filed, Schedule A Part II line 14 - "
                               "IRS 5-year computation, not recomputed",
-        "leverage_ratio": f"{f(liab)} / {f(na)}",
-        "savings_indicator_pct": f"({f(rev)} - {f(exp)}) / {f(exp)}",
-        "roa_pct": f"({f(rev)} - {f(exp)}) / {f(ta)}",
+        "leverage_ratio": f"total liabilities {f(liab)} / net assets {f(na)}",
+        "savings_indicator_pct": f"(total revenue {f(rev)} - total expenses {f(exp)}) / total expenses {f(exp)}",
+        "roa_pct": f"(total revenue {f(rev)} - total expenses {f(exp)}) / total assets {f(ta)}",
     }
 
 
@@ -1702,7 +1698,9 @@ def yoy_990(act: pd.DataFrame, fs: pd.DataFrame,
             "line_label": y25.iloc[0]["ratio"].split(" (")[0],
             "unit": y25.iloc[0]["unit"],
             "fy2024": round(v24, 2), "fy2025": round(v25, 2),
-            "variance": round(v25 - v24, 2), "variance_pct": "",
+            "variance": round(v25 - v24, 2),
+            "variance_pct": (round((v25 - v24) / abs(v24) * 100, 1)
+                             if v24 else ""),
             "math_fy2025": math.get(k, ""),
             "note": "variance shown in the ratio's own units",
             "value_class": "PUBLIC_RESEARCH"})
@@ -1802,10 +1800,14 @@ def fin_statements_990(act: pd.DataFrame) -> pd.DataFrame:
     def row(statement, section, label, item=None, values=None, note=""):
         vals = values if values is not None else [lk[(fy, item)]
                                                   for fy in years]
+        v24, v25 = vals[3], vals[4]
         rows.append({"statement": statement, "section": section,
                      "line_label": label,
                      **{fy.lower(): v for fy, v in zip(years, vals)},
-                     "note": note, "value_class": "PUBLIC_RESEARCH"})
+                     "note": note, "value_class": "PUBLIC_RESEARCH",
+                     "var_25v24": v25 - v24,
+                     "var_25v24_pct": (round((v25 - v24) / abs(v24)
+                                             * 100, 1) if v24 else "")})
 
     A = "STATEMENT OF ACTIVITIES"
     row(A, "REVENUE", "Contributions & grants",

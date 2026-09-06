@@ -134,6 +134,36 @@
               "queryRef": "nfp_fin_statements.fy2025",
               "nativeQueryRef": "fy2025",
               "displayName": "FY2025"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_fin_statements"
+                    }
+                  },
+                  "Property": "var_25v24"
+                }
+              },
+              "queryRef": "nfp_fin_statements.var_25v24",
+              "nativeQueryRef": "var_25v24",
+              "displayName": "var $ 25v24"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_fin_statements"
+                    }
+                  },
+                  "Property": "var_25v24_pct"
+                }
+              },
+              "queryRef": "nfp_fin_statements.var_25v24_pct",
+              "nativeQueryRef": "var_25v24_pct",
+              "displayName": "var %"
             }
           ]
         }

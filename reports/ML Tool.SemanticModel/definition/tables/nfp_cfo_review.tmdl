@@ -122,7 +122,7 @@ table nfp_cfo_review
 
 	column target_value
 		dataType: double
-		formatString: #,0.##;(#,0.##)
+		formatString: #,0.00;(#,0.00)
 		lineageTag: a3567252-b037-4476-93ea-e599b630f515
 		summarizeBy: none
 		sourceColumn: target_value

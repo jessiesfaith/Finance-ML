@@ -1,10 +1,10 @@
-/// FILED 990 figures in classic statement presentation - one row per line, one column per year (FY2021-FY2025).
+/// FILED 990 figures in classic statement presentation with FY2025-vs-FY2024 variance in $ and %.
 table nfp_fin_statements
-	lineageTag: 11a9f617-ee6e-4525-940b-68ab9ba09518
+	lineageTag: c2377970-5b77-4de8-b289-655ece84bc57
 
 	column row_id
 		dataType: string
-		lineageTag: e27c0a0d-fefe-4dbd-9989-66e3a8f44f50
+		lineageTag: 419ae675-8a88-4eaf-b2db-99380695034f
 		summarizeBy: none
 		sourceColumn: row_id
 
@@ -12,7 +12,7 @@ table nfp_fin_statements
 
 	column statement
 		dataType: string
-		lineageTag: b410330e-1069-4279-b7da-cd632dcba30c
+		lineageTag: 2c8bf8f8-a7b9-41c6-98f4-e06ec9dd78e8
 		summarizeBy: none
 		sourceColumn: statement
 
@@ -20,7 +20,7 @@ table nfp_fin_statements
 
 	column section
 		dataType: string
-		lineageTag: 34aa272c-5e9d-42f0-aca6-e2f83abaaed2
+		lineageTag: 603f62bf-c430-4d04-9057-60c3dabc9708
 		summarizeBy: none
 		sourceColumn: section
 
@@ -28,7 +28,7 @@ table nfp_fin_statements
 
 	column line_label
 		dataType: string
-		lineageTag: 8f3f3bbe-42c4-49bd-a0c9-a8fc372cd82c
+		lineageTag: 0deb5e7a-4c35-48c2-8ca7-199acfaeb0bb
 		summarizeBy: none
 		sourceColumn: line_label
 
@@ -37,7 +37,7 @@ table nfp_fin_statements
 	column fy2021
 		dataType: double
 		formatString: #,0.##;(#,0.##)
-		lineageTag: ac749c1a-602e-4f66-a9ec-e4d74de660bc
+		lineageTag: 5d8a0c08-5159-4030-8236-4cd3796220b6
 		summarizeBy: none
 		sourceColumn: fy2021
 
@@ -46,7 +46,7 @@ table nfp_fin_statements
 	column fy2022
 		dataType: double
 		formatString: #,0.##;(#,0.##)
-		lineageTag: 0e9bbaf1-8ee0-44ae-abd9-742e1c71c72d
+		lineageTag: 7f44be75-5dfa-4c6d-9695-e09eb9ae87f5
 		summarizeBy: none
 		sourceColumn: fy2022
 
@@ -55,7 +55,7 @@ table nfp_fin_statements
 	column fy2023
 		dataType: double
 		formatString: #,0.##;(#,0.##)
-		lineageTag: 36351686-45e7-42e3-b114-e04e26770bac
+		lineageTag: 8d152b8d-a56b-4d41-a8c9-e9ea6789e6b5
 		summarizeBy: none
 		sourceColumn: fy2023
 
@@ -64,7 +64,7 @@ table nfp_fin_statements
 	column fy2024
 		dataType: double
 		formatString: #,0.##;(#,0.##)
-		lineageTag: db7f8912-f493-4f76-bfc8-100c8a33ebd5
+		lineageTag: 771405c7-7f5f-4565-bfb6-8b09c48c3d6b
 		summarizeBy: none
 		sourceColumn: fy2024
 
@@ -73,7 +73,7 @@ table nfp_fin_statements
 	column fy2025
 		dataType: double
 		formatString: #,0.##;(#,0.##)
-		lineageTag: 99364eac-30e5-4f00-82b8-451e3032297c
+		lineageTag: 71b032a0-ba54-4de7-bf48-60772f07106a
 		summarizeBy: none
 		sourceColumn: fy2025
 
@@ -81,7 +81,7 @@ table nfp_fin_statements
 
 	column note
 		dataType: string
-		lineageTag: 353ca1be-8cf1-4a63-9679-a700db0c905f
+		lineageTag: e8d4c2cc-984d-413c-9601-b6dfa99d08c1
 		summarizeBy: none
 		sourceColumn: note
 
@@ -89,9 +89,27 @@ table nfp_fin_statements
 
 	column value_class
 		dataType: string
-		lineageTag: 4388f2ce-3f72-494a-bed8-a75483c54f21
+		lineageTag: 6a09dee7-caf6-4aa3-88e5-ed31503b413c
 		summarizeBy: none
 		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column var_25v24
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 515cd36e-297b-4c06-83a6-dee2084693a4
+		summarizeBy: none
+		sourceColumn: var_25v24
+
+		annotation SummarizationSetBy = Automatic
+
+	column var_25v24_pct
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 308b4a92-5cf0-4cf8-a7a6-c1eba59131b9
+		summarizeBy: none
+		sourceColumn: var_25v24_pct
 
 		annotation SummarizationSetBy = Automatic
 
@@ -101,10 +119,10 @@ table nfp_fin_statements
 				let
 				  Source = Csv.Document(
 				    File.Contents("C:\dev\Finance-ML\reports\nfp_fin_statements.csv"),
-				    [Delimiter = ",", Columns = 11, QuoteStyle = QuoteStyle.Csv]
+				    [Delimiter = ",", Columns = 13, QuoteStyle = QuoteStyle.Csv]
 				),
 				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "statement", "section", "line_label", "fy2021", "fy2022", "fy2023", "fy2024", "fy2025", "note", "value_class"}),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "statement", "section", "line_label", "fy2021", "fy2022", "fy2023", "fy2024", "fy2025", "note", "value_class", "var_25v24", "var_25v24_pct"}),
 				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
 				    {"row_id", type text},
 				    {"statement", type text},
@@ -116,7 +134,9 @@ table nfp_fin_statements
 				    {"fy2024", type number},
 				    {"fy2025", type number},
 				    {"note", type text},
-				    {"value_class", type text}
+				    {"value_class", type text},
+				    {"var_25v24", type number},
+				    {"var_25v24_pct", type number}
 				  })
 				in
 				    #"Changed Type"

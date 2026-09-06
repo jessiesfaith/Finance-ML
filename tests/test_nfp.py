@@ -593,6 +593,11 @@ def test_fin_statements_are_the_filings_own_numbers(frames):
     # FY2025 pins incl. the new filed lines 27/28
     assert fs.loc["Without donor restrictions", "fy2025"] == 5761112
     assert fs.loc["With donor restrictions", "fy2025"] == 11954939
+    # statement YoY variance columns
+    assert fs.loc["TOTAL REVENUE", "var_25v24"] == 1603396
+    assert float(fs.loc["TOTAL REVENUE", "var_25v24_pct"]) == \
+        pytest.approx(12.7, abs=0.1)
+    assert fs.loc["Cash (non-interest-bearing)", "var_25v24"] == -2595276
 
 
 def test_cfo_review_and_kpis(frames):
@@ -637,7 +642,8 @@ def test_990_yoy_and_rules(frames):
     ratios = y[y["section"] == "RATIOS"]
     assert (ratios["math_fy2025"].str.len() > 10).all()
     om = ratios[ratios["line_label"] == "Operating margin %"].iloc[0]
-    assert "14,208,155" in om["math_fy2025"]
+    assert "total revenue 14,208,155" in om["math_fy2025"]
+    assert (ratios["variance_pct"] != "").all()
     assert (y[y["section"] != "RATIOS"]["math_fy2025"] == "").all()
     # CFO review carries years-as-columns, target and variances
     cr2 = frames["nfp_cfo_review"].set_index("ratio_kind")

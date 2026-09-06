@@ -128,12 +128,12 @@
                       "Entity": "nfp_cfo_review"
                     }
                   },
-                  "Property": "target_value"
+                  "Property": "yoy_variance"
                 }
               },
-              "queryRef": "nfp_cfo_review.target_value",
-              "nativeQueryRef": "target_value",
-              "displayName": "target"
+              "queryRef": "nfp_cfo_review.yoy_variance",
+              "nativeQueryRef": "yoy_variance",
+              "displayName": "YoY var"
             },
             {
               "field": {
@@ -143,12 +143,12 @@
                       "Entity": "nfp_cfo_review"
                     }
                   },
-                  "Property": "yoy_variance"
+                  "Property": "target_value"
                 }
               },
-              "queryRef": "nfp_cfo_review.yoy_variance",
-              "nativeQueryRef": "yoy_variance",
-              "displayName": "YoY var"
+              "queryRef": "nfp_cfo_review.target_value",
+              "nativeQueryRef": "target_value",
+              "displayName": "target"
             },
             {
               "field": {

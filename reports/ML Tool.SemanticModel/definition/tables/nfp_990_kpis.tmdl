@@ -101,7 +101,7 @@ table nfp_990_kpis
 
 	column target_value
 		dataType: double
-		formatString: #,0.##;(#,0.##)
+		formatString: #,0.00;(#,0.00)
 		lineageTag: dd411017-b095-4eaa-8b97-64446872367d
 		summarizeBy: none
 		sourceColumn: target_value
