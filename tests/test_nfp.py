@@ -498,7 +498,7 @@ def test_990_actuals_real_figures_and_honesty():
 def test_990_ratio_actuals_computed_from_filed_only():
     from financials.nfp import actuals_990, ratio_actuals_990
     r = ratio_actuals_990(actuals_990())
-    assert len(r) == 82
+    assert len(r) == 122
     assert (r["value_class"] == "PUBLIC_RESEARCH").all()
     assert (r["confidence"] == "HIGH").all()
     assert (r["value"] != "").all()          # nothing unresearched left
@@ -546,12 +546,12 @@ def test_990_targets_and_benchmarks():
     from financials.nfp import actuals_990, ratio_actuals_990
     r = ratio_actuals_990(actuals_990())
     with_t = r[r["target_value"] != ""]
-    assert len(with_t) == 45                    # 9 targeted kinds x 5 yrs
+    assert len(with_t) == 70                    # 14 targeted kinds x 5 yrs
     assert set(with_t["target_class"]) == {"MANAGEMENT ASSUMPTION",
                                            "PUBLIC_RESEARCH"}
     bbb = with_t[with_t["target_class"] == "PUBLIC_RESEARCH"]
     assert bbb["target_label"].str.contains(
-        "BBB|BENCHMARK|SECTOR", regex=True).all()
+        "BBB|BENCHMARK|SECTOR|RULE", regex=True).all()
     assert (r[r["target_value"] == ""]["vs_target"] == "").all()
 
     def verdict(kind, fy):
@@ -601,7 +601,7 @@ def test_cfo_review_and_kpis(frames):
     assert (cr["cfo_reading"].str.len() > 20).all()
     assert (cr["trend_fy2021_fy2025"].str.count(">") == 4).all()
     k = frames["nfp_990_kpis"].set_index("kpi")
-    assert len(k) == 8
+    assert len(k) == 12
     assert (k["description"].str.len() > 100).all()
     assert (k["benchmark_or_policy"].str.len() > 10).all()
     assert k.loc["Months of Cash on Hand", "vs_target"] == "MISSES"
@@ -612,3 +612,57 @@ def test_cfo_review_and_kpis(frames):
     conc = k.loc["Revenue Concentration"]
     assert conc["vs_target"] == "MISSES"
     assert "many" in k.loc["Revenue Concentration", "description"]
+
+
+def test_990_yoy_and_rules(frames):
+    """Tab-17 YoY and the tab-18 rules register - filed inputs only,
+    honest verdicts."""
+    y = frames["nfp_990_yoy"]
+    assert len(y) == 42                     # 20 statement lines + 22 ratios
+    rev = y[y["line_label"] == "TOTAL REVENUE"].iloc[0]
+    assert rev["fy2024"] == 12604759 and rev["fy2025"] == 14208155
+    assert rev["variance"] == 1603396
+    assert float(rev["variance_pct"]) == pytest.approx(12.7, abs=0.1)
+    ru = frames["nfp_990_rules"].set_index("rule")
+    assert len(ru) == 8
+    assert (ru["description"].str.len() > 80).all()
+    assert ru.loc["IRS 33 1/3% public support test", "vs_rule"] == "MEETS"
+    assert "74.89" in ru.loc["IRS 33 1/3% public support test",
+                             "actual_fy2025"]
+    assert ru.loc["IRS 5% payout rule", "vs_rule"] == "N/A"
+    assert ru.loc["Current ratio >= 1.0", "vs_rule"] == "MISSES"
+    assert (ru.loc["Donor concentration Pareto (80/20)", "vs_rule"]
+            == "RESEARCH REQUIRED")
+
+
+def test_new_ratio_kinds_pinned():
+    from financials.nfp import actuals_990, ratio_actuals_990
+    r = ratio_actuals_990(actuals_990())
+
+    def val(kind, fy):
+        return float(r[(r["ratio_kind"] == kind)
+                       & (r["fiscal_year"] == fy)].iloc[0]["value"])
+
+    assert val("public_support_pct", "FY2025") == pytest.approx(74.89)
+    assert val("public_support_pct", "FY2021") == pytest.approx(74.16)
+    assert val("current_ratio", "FY2025") == pytest.approx(0.7109,
+                                                           abs=0.001)
+    assert val("current_ratio", "FY2024") == pytest.approx(1.882,
+                                                           abs=0.001)
+    assert val("days_cash_on_hand", "FY2025") == pytest.approx(
+        13.886, abs=0.01)
+    assert val("mgmt_general_pct_exp", "FY2025") == pytest.approx(
+        13.26, abs=0.01)
+    assert val("fundraise_dollars_per_dollar", "FY2025") == \
+        pytest.approx(7.88, abs=0.01)
+    assert val("leverage_ratio", "FY2025") == pytest.approx(0.2711,
+                                                            abs=0.001)
+    assert val("savings_indicator_pct", "FY2025") == pytest.approx(
+        4.94, abs=0.01)
+    assert val("roa_pct", "FY2025") == pytest.approx(2.97, abs=0.01)
+    # audience column present on every KPI
+    from financials.nfp import kpis_990
+    k = kpis_990(r)
+    assert (k["typical_audience"].str.len() > 3).all()
+    assert k[k["kpi"] == "IRS Public Support %"].iloc[0][
+        "typical_audience"].startswith("BOARD")

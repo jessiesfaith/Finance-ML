@@ -1,0 +1,114 @@
+/// YoY FY2024 vs FY2025 from the filed 990s: every statement line (variance $ and %) and every level ratio.
+table nfp_990_yoy
+	lineageTag: 33c92538-f08d-4b1d-bbc1-247c809fc92e
+
+	column row_id
+		dataType: string
+		lineageTag: 7f20d154-b55a-40dd-b434-11612b929f15
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column section
+		dataType: string
+		lineageTag: 3b0e9e43-227c-42cd-a5fd-ef8de714368b
+		summarizeBy: none
+		sourceColumn: section
+
+		annotation SummarizationSetBy = Automatic
+
+	column line_label
+		dataType: string
+		lineageTag: 5fb827eb-6f47-440e-9fd5-8a921c6c4111
+		summarizeBy: none
+		sourceColumn: line_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit
+		dataType: string
+		lineageTag: 976811d2-8fa2-4867-90a4-254b9460a5e9
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy2024
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 2a30c4d1-6fc2-497e-b12c-98a365af33c2
+		summarizeBy: none
+		sourceColumn: fy2024
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy2025
+		dataType: double
+		formatString: #,0.##
+		lineageTag: b70c71f3-07af-4828-8c27-3da3ee01e67a
+		summarizeBy: none
+		sourceColumn: fy2025
+
+		annotation SummarizationSetBy = Automatic
+
+	column variance
+		dataType: double
+		formatString: #,0.##
+		lineageTag: da49d271-2ffa-446c-be79-4799c251dd90
+		summarizeBy: none
+		sourceColumn: variance
+
+		annotation SummarizationSetBy = Automatic
+
+	column variance_pct
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 9c78dca8-9f04-4813-b15a-ecd884fffdb5
+		summarizeBy: none
+		sourceColumn: variance_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: 9c90d275-fa59-4de9-a841-f6b5e5eb6b73
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 4006cff8-5c8f-42cc-b743-d443f407e838
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_990_yoy = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_990_yoy.csv"),
+				    [Delimiter = ",", Columns = 10, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "section", "line_label", "unit", "fy2024", "fy2025", "variance", "variance_pct", "note", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"section", type text},
+				    {"line_label", type text},
+				    {"unit", type text},
+				    {"fy2024", type number},
+				    {"fy2025", type number},
+				    {"variance", type number},
+				    {"variance_pct", type number},
+				    {"note", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

@@ -1,10 +1,10 @@
-/// KPI register: description, 990 formula, latest value, benchmark or board policy, verdict, 5-year path.
+/// KPI register: description, 990 formula, latest value, benchmark or board policy, verdict, 5-year path, and the audience that typically reviews it (board vs CEO).
 table nfp_990_kpis
-	lineageTag: 5adaf3cd-a2a6-4647-87ca-eb8a1cc24129
+	lineageTag: f4f082b2-baa1-4119-a70f-fe6e4597fa1b
 
 	column row_id
 		dataType: string
-		lineageTag: 0af40eb2-ba0b-4a75-bac4-e24679ad8870
+		lineageTag: 260f07a6-0cd4-439e-8677-fe539d702db2
 		summarizeBy: none
 		sourceColumn: row_id
 
@@ -12,7 +12,7 @@ table nfp_990_kpis
 
 	column kpi_id
 		dataType: string
-		lineageTag: 3516970e-4376-4264-992b-b96b00e93644
+		lineageTag: f0aeb3b5-2840-4904-a2e0-a37141085377
 		summarizeBy: none
 		sourceColumn: kpi_id
 
@@ -20,7 +20,7 @@ table nfp_990_kpis
 
 	column kpi
 		dataType: string
-		lineageTag: 11c5e563-0206-488e-833b-2a40962117f4
+		lineageTag: d4cdc4e9-e293-424d-80b1-62e3ececb252
 		summarizeBy: none
 		sourceColumn: kpi
 
@@ -28,7 +28,7 @@ table nfp_990_kpis
 
 	column description
 		dataType: string
-		lineageTag: 454b1887-a861-4eeb-832a-0c540012f3ee
+		lineageTag: 8bab5d5a-35de-4650-940b-f1510d3bcb98
 		summarizeBy: none
 		sourceColumn: description
 
@@ -36,7 +36,7 @@ table nfp_990_kpis
 
 	column formula_990
 		dataType: string
-		lineageTag: d16442a0-681d-4ad5-a807-179387d56dab
+		lineageTag: 2e037be0-e717-45ab-99b5-f99d5c4dc429
 		summarizeBy: none
 		sourceColumn: formula_990
 
@@ -45,7 +45,7 @@ table nfp_990_kpis
 	column fy2025_value
 		dataType: double
 		formatString: #,0.##
-		lineageTag: 78687187-1962-4db3-bfb1-df3a5af02c79
+		lineageTag: 4974a16d-c9e7-4da1-a5dd-487d4a65159d
 		summarizeBy: none
 		sourceColumn: fy2025_value
 
@@ -53,7 +53,7 @@ table nfp_990_kpis
 
 	column unit
 		dataType: string
-		lineageTag: 924d89fe-41e0-4237-8d0b-e664df9036ce
+		lineageTag: a9910c24-990a-4a85-bd5a-9503ff3eb0c3
 		summarizeBy: none
 		sourceColumn: unit
 
@@ -61,7 +61,7 @@ table nfp_990_kpis
 
 	column benchmark_or_policy
 		dataType: string
-		lineageTag: 6dd6f246-b51b-49d7-b44e-8a093d38885c
+		lineageTag: 61098c9d-cdb4-4e47-aab4-6af506a9f604
 		summarizeBy: none
 		sourceColumn: benchmark_or_policy
 
@@ -69,7 +69,7 @@ table nfp_990_kpis
 
 	column target_class
 		dataType: string
-		lineageTag: e33ff24d-acd1-49ca-9d8a-5f1cc4cf6ce2
+		lineageTag: 6227e0cb-f702-4ef6-939b-75fac9672651
 		summarizeBy: none
 		sourceColumn: target_class
 
@@ -77,7 +77,7 @@ table nfp_990_kpis
 
 	column vs_target
 		dataType: string
-		lineageTag: e31ab130-0d25-4cb7-a2f5-d31addd991a7
+		lineageTag: 72256122-fbed-489c-afbf-923b4b3ff3fc
 		summarizeBy: none
 		sourceColumn: vs_target
 
@@ -85,15 +85,23 @@ table nfp_990_kpis
 
 	column trend_fy2021_fy2025
 		dataType: string
-		lineageTag: 11e391f5-09e5-4621-9a23-5eed44368064
+		lineageTag: 67583dff-1f23-4b85-8cfa-2edc29d5b4ac
 		summarizeBy: none
 		sourceColumn: trend_fy2021_fy2025
 
 		annotation SummarizationSetBy = Automatic
 
+	column typical_audience
+		dataType: string
+		lineageTag: f62015ef-cc7a-4dc8-a444-391698f665b8
+		summarizeBy: none
+		sourceColumn: typical_audience
+
+		annotation SummarizationSetBy = Automatic
+
 	column value_class
 		dataType: string
-		lineageTag: fec21716-8f70-4ed8-b2eb-e36af8cec821
+		lineageTag: bb0e9733-6da8-4f5a-ba75-969ddbf591b4
 		summarizeBy: none
 		sourceColumn: value_class
 
@@ -105,10 +113,10 @@ table nfp_990_kpis
 				let
 				  Source = Csv.Document(
 				    File.Contents("C:\dev\Finance-ML\reports\nfp_990_kpis.csv"),
-				    [Delimiter = ",", Columns = 12, QuoteStyle = QuoteStyle.Csv]
+				    [Delimiter = ",", Columns = 13, QuoteStyle = QuoteStyle.Csv]
 				),
 				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "kpi_id", "kpi", "description", "formula_990", "fy2025_value", "unit", "benchmark_or_policy", "target_class", "vs_target", "trend_fy2021_fy2025", "value_class"}),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "kpi_id", "kpi", "description", "formula_990", "fy2025_value", "unit", "benchmark_or_policy", "target_class", "vs_target", "trend_fy2021_fy2025", "typical_audience", "value_class"}),
 				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
 				    {"row_id", type text},
 				    {"kpi_id", type text},
@@ -121,6 +129,7 @@ table nfp_990_kpis
 				    {"target_class", type text},
 				    {"vs_target", type text},
 				    {"trend_fy2021_fy2025", type text},
+				    {"typical_audience", type text},
 				    {"value_class", type text}
 				  })
 				in

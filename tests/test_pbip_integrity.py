@@ -81,6 +81,8 @@ CSV_FOR_TABLE = {
     "nfp_fin_statements": "nfp_fin_statements",
     "nfp_cfo_review": "nfp_cfo_review",
     "nfp_990_kpis": "nfp_990_kpis",
+    "nfp_990_yoy": "nfp_990_yoy",
+    "nfp_990_rules": "nfp_990_rules",
     "client_fs_option_sizing": "client_fs_option_sizing",
 }
 

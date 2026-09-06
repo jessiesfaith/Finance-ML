@@ -1,0 +1,174 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "0677fffbc60fe72bcf90",
+  "position": {
+    "x": 165,
+    "y": 1754,
+    "height": 900,
+    "width": 2670,
+    "z": 201000,
+    "tabOrder": 201000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_rules"
+                    }
+                  },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_990_rules.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_rules"
+                    }
+                  },
+                  "Property": "rule"
+                }
+              },
+              "queryRef": "nfp_990_rules.rule",
+              "nativeQueryRef": "rule",
+              "displayName": "rule"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_rules"
+                    }
+                  },
+                  "Property": "actual_fy2025"
+                }
+              },
+              "queryRef": "nfp_990_rules.actual_fy2025",
+              "nativeQueryRef": "actual_fy2025",
+              "displayName": "actual FY25"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_rules"
+                    }
+                  },
+                  "Property": "rule_value"
+                }
+              },
+              "queryRef": "nfp_990_rules.rule_value",
+              "nativeQueryRef": "rule_value",
+              "displayName": "rule"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_rules"
+                    }
+                  },
+                  "Property": "vs_rule"
+                }
+              },
+              "queryRef": "nfp_990_rules.vs_rule",
+              "nativeQueryRef": "vs_rule",
+              "displayName": "vs rule"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_rules"
+                    }
+                  },
+                  "Property": "description"
+                }
+              },
+              "queryRef": "nfp_990_rules.description",
+              "nativeQueryRef": "description",
+              "displayName": "description"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_rules"
+                    }
+                  },
+                  "Property": "source"
+                }
+              },
+              "queryRef": "nfp_990_rules.source",
+              "nativeQueryRef": "source",
+              "displayName": "source"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_990_rules"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

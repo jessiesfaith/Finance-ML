@@ -4,7 +4,7 @@
   "position": {
     "x": 165,
     "y": 270,
-    "height": 1080,
+    "height": 1400,
     "width": 2670,
     "z": 107000,
     "tabOrder": 107000
@@ -128,6 +128,21 @@
                       "Entity": "nfp_990_kpis"
                     }
                   },
+                  "Property": "typical_audience"
+                }
+              },
+              "queryRef": "nfp_990_kpis.typical_audience",
+              "nativeQueryRef": "typical_audience",
+              "displayName": "typically reviewed by"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_kpis"
+                    }
+                  },
                   "Property": "description"
                 }
               },
@@ -164,7 +179,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "18D"
                 }
               }
             }
@@ -177,7 +192,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "18D"
                 }
               }
             }

@@ -1,0 +1,43 @@
+row_id,section,line_label,unit,fy2024,fy2025,variance,variance_pct,note,value_class
+R001,STATEMENT OF ACTIVITIES - REVENUE,Contributions & grants,USD,4232181.0,5067036.0,834855.0,19.7,Part I line 8,PUBLIC_RESEARCH
+R002,STATEMENT OF ACTIVITIES - REVENUE,Program service revenue,USD,7750916.0,8506012.0,755096.0,9.7,Part I line 9,PUBLIC_RESEARCH
+R003,STATEMENT OF ACTIVITIES - REVENUE,Investment income,USD,510482.0,535465.0,24983.0,4.9,Part I line 10,PUBLIC_RESEARCH
+R004,STATEMENT OF ACTIVITIES - REVENUE,Other revenue,USD,111180.0,99642.0,-11538.0,-10.4,Part I line 11,PUBLIC_RESEARCH
+R005,STATEMENT OF ACTIVITIES - REVENUE,TOTAL REVENUE,USD,12604759.0,14208155.0,1603396.0,12.7,Part I line 12,PUBLIC_RESEARCH
+R006,STATEMENT OF ACTIVITIES - EXPENSES,Program services,USD,10527119.0,11100788.0,573669.0,5.4,Part IX line 25 col B,PUBLIC_RESEARCH
+R007,STATEMENT OF ACTIVITIES - EXPENSES,Management & general,USD,1604877.0,1795483.0,190606.0,11.9,Part IX line 25 col C,PUBLIC_RESEARCH
+R008,STATEMENT OF ACTIVITIES - EXPENSES,Fundraising,USD,403094.0,643032.0,239938.0,59.5,Part IX line 25 col D,PUBLIC_RESEARCH
+R009,STATEMENT OF ACTIVITIES - EXPENSES,TOTAL EXPENSES,USD,12535090.0,13539303.0,1004213.0,8.0,Part I line 18,PUBLIC_RESEARCH
+R010,STATEMENT OF ACTIVITIES - RESULT,CHANGE IN NET ASSETS (surplus/deficit),USD,69669.0,668852.0,599183.0,860.0,Part I line 19,PUBLIC_RESEARCH
+R011,STATEMENT OF FINANCIAL POSITION - ASSETS,Cash (non-interest-bearing),USD,3110368.0,515092.0,-2595276.0,-83.4,Part X line 1,PUBLIC_RESEARCH
+R012,STATEMENT OF FINANCIAL POSITION - ASSETS,Savings & temporary investments,USD,112445.0,0.0,-112445.0,-100.0,Part X line 2,PUBLIC_RESEARCH
+R013,STATEMENT OF FINANCIAL POSITION - ASSETS,Pledges & grants receivable,USD,587384.0,542806.0,-44578.0,-7.6,Part X line 3,PUBLIC_RESEARCH
+R014,STATEMENT OF FINANCIAL POSITION - ASSETS,Investments (publicly traded),USD,14532110.0,18951917.0,4419807.0,30.4,Part X line 11,PUBLIC_RESEARCH
+R015,STATEMENT OF FINANCIAL POSITION - ASSETS,"Other assets (land, buildings, receivables - derived)",USD,2536969.0,2509373.0,-27596.0,-1.1,DERIVED: line 16 minus the lines above,PUBLIC_RESEARCH
+R016,STATEMENT OF FINANCIAL POSITION - ASSETS,TOTAL ASSETS,USD,20879276.0,22519188.0,1639912.0,7.9,Part X line 16,PUBLIC_RESEARCH
+R017,STATEMENT OF FINANCIAL POSITION - LIABILITIES,TOTAL LIABILITIES,USD,4023584.0,4803137.0,779553.0,19.4,Part X line 26,PUBLIC_RESEARCH
+R018,STATEMENT OF FINANCIAL POSITION - NET ASSETS,Without donor restrictions,USD,7077549.0,5761112.0,-1316437.0,-18.6,Part X line 27,PUBLIC_RESEARCH
+R019,STATEMENT OF FINANCIAL POSITION - NET ASSETS,With donor restrictions,USD,9778143.0,11954939.0,2176796.0,22.3,Part X line 28,PUBLIC_RESEARCH
+R020,STATEMENT OF FINANCIAL POSITION - NET ASSETS,TOTAL NET ASSETS,USD,16855692.0,17716051.0,860359.0,5.1,Part X line 32 / Part I line 22,PUBLIC_RESEARCH
+R021,RATIOS,Operating margin %,%,0.55,4.71,4.15,,variance shown in the ratio's own units,PUBLIC_RESEARCH
+R022,RATIOS,Expense coverage,x,1.01,1.05,0.04,,variance shown in the ratio's own units,PUBLIC_RESEARCH
+R023,RATIOS,Program revenue reliance %,%,61.49,59.87,-1.62,,variance shown in the ratio's own units,PUBLIC_RESEARCH
+R024,RATIOS,Contributions reliance %,%,33.58,35.66,2.09,,variance shown in the ratio's own units,PUBLIC_RESEARCH
+R025,RATIOS,Investment + other revenue %,%,4.93,4.47,-0.46,,variance shown in the ratio's own units,PUBLIC_RESEARCH
+R026,RATIOS,Salaries % of expenses,%,55.74,58.08,2.34,,variance shown in the ratio's own units,PUBLIC_RESEARCH
+R027,RATIOS,Grants paid % of expenses,%,12.5,10.64,-1.87,,variance shown in the ratio's own units,PUBLIC_RESEARCH
+R028,RATIOS,Fundraising cost per $ raised,cents,9.52,12.69,3.17,,variance shown in the ratio's own units,PUBLIC_RESEARCH
+R029,RATIOS,Net asset ratio %,%,80.73,78.67,-2.06,,variance shown in the ratio's own units,PUBLIC_RESEARCH
+R030,RATIOS,Months of cash on hand,months,3.09,0.46,-2.63,,variance shown in the ratio's own units,PUBLIC_RESEARCH
+R031,RATIOS,Program expense ratio %,%,83.98,81.99,-1.99,,variance shown in the ratio's own units,PUBLIC_RESEARCH
+R032,RATIOS,Overhead ratio %,%,16.02,18.01,1.99,,variance shown in the ratio's own units,PUBLIC_RESEARCH
+R033,RATIOS,Operating reserve months,months,6.78,5.11,-1.67,,variance shown in the ratio's own units,PUBLIC_RESEARCH
+R034,RATIOS,Revenue concentration %,%,61.49,59.87,-1.62,,variance shown in the ratio's own units,PUBLIC_RESEARCH
+R035,RATIOS,Current ratio,x,1.88,0.71,-1.17,,variance shown in the ratio's own units,PUBLIC_RESEARCH
+R036,RATIOS,Days cash on hand,days,93.84,13.89,-79.96,,variance shown in the ratio's own units,PUBLIC_RESEARCH
+R037,RATIOS,Admin,%,12.8,13.26,0.46,,variance shown in the ratio's own units,PUBLIC_RESEARCH
+R038,RATIOS,Dollars raised per $1 of fundraising,$ per $,10.5,7.88,-2.62,,variance shown in the ratio's own units,PUBLIC_RESEARCH
+R039,RATIOS,IRS public support %,%,73.57,74.89,1.32,,variance shown in the ratio's own units,PUBLIC_RESEARCH
+R040,RATIOS,Leverage ratio,x,0.24,0.27,0.03,,variance shown in the ratio's own units,PUBLIC_RESEARCH
+R041,RATIOS,Savings indicator %,%,0.56,4.94,4.38,,variance shown in the ratio's own units,PUBLIC_RESEARCH
+R042,RATIOS,Return on assets %,%,0.33,2.97,2.64,,variance shown in the ratio's own units,PUBLIC_RESEARCH

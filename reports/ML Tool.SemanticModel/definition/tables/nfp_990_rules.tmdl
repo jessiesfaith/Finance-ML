@@ -1,0 +1,92 @@
+/// Actual-vs-rule register: nonprofit rules with description inline, FY2025 actuals where computable, honest verdicts.
+table nfp_990_rules
+	lineageTag: c3d00595-eee2-4b32-8770-db9670465891
+
+	column row_id
+		dataType: string
+		lineageTag: 60f2e519-06f8-4e30-8e0d-47d26b12ae8f
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column rule
+		dataType: string
+		lineageTag: a1846929-4f2e-4a80-8867-6de8498d93d8
+		summarizeBy: none
+		sourceColumn: rule
+
+		annotation SummarizationSetBy = Automatic
+
+	column actual_fy2025
+		dataType: string
+		lineageTag: 247e9762-90d1-4bd0-ae3b-f0d80e014bbd
+		summarizeBy: none
+		sourceColumn: actual_fy2025
+
+		annotation SummarizationSetBy = Automatic
+
+	column rule_value
+		dataType: string
+		lineageTag: 0628fef1-7734-4993-ba86-a3aa257da070
+		summarizeBy: none
+		sourceColumn: rule_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column vs_rule
+		dataType: string
+		lineageTag: 6f9c4da1-8208-4b8a-8db6-814a9c2785f7
+		summarizeBy: none
+		sourceColumn: vs_rule
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 8c6e3e06-c119-4613-9bcd-7262dd707c4d
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: 727e09a4-c93a-4b48-9152-859618889ab0
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 0ae8e7e7-cb85-4475-9d16-5d75392d54da
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_990_rules = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_990_rules.csv"),
+				    [Delimiter = ",", Columns = 8, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "rule", "actual_fy2025", "rule_value", "vs_rule", "description", "source", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"rule", type text},
+				    {"actual_fy2025", type text},
+				    {"rule_value", type text},
+				    {"vs_rule", type text},
+				    {"description", type text},
+				    {"source", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

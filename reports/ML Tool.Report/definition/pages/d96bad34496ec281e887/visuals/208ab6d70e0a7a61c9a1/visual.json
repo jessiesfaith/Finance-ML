@@ -1,0 +1,189 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "208ab6d70e0a7a61c9a1",
+  "position": {
+    "x": 165,
+    "y": 2194,
+    "height": 1060,
+    "width": 2670,
+    "z": 201000,
+    "tabOrder": 201000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_yoy"
+                    }
+                  },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_990_yoy.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_yoy"
+                    }
+                  },
+                  "Property": "section"
+                }
+              },
+              "queryRef": "nfp_990_yoy.section",
+              "nativeQueryRef": "section",
+              "displayName": "section"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_yoy"
+                    }
+                  },
+                  "Property": "line_label"
+                }
+              },
+              "queryRef": "nfp_990_yoy.line_label",
+              "nativeQueryRef": "line_label",
+              "displayName": "line / ratio"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_yoy"
+                    }
+                  },
+                  "Property": "unit"
+                }
+              },
+              "queryRef": "nfp_990_yoy.unit",
+              "nativeQueryRef": "unit",
+              "displayName": "unit"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_yoy"
+                    }
+                  },
+                  "Property": "fy2024"
+                }
+              },
+              "queryRef": "nfp_990_yoy.fy2024",
+              "nativeQueryRef": "fy2024",
+              "displayName": "FY2024"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_yoy"
+                    }
+                  },
+                  "Property": "fy2025"
+                }
+              },
+              "queryRef": "nfp_990_yoy.fy2025",
+              "nativeQueryRef": "fy2025",
+              "displayName": "FY2025"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_yoy"
+                    }
+                  },
+                  "Property": "variance"
+                }
+              },
+              "queryRef": "nfp_990_yoy.variance",
+              "nativeQueryRef": "variance",
+              "displayName": "variance"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_yoy"
+                    }
+                  },
+                  "Property": "variance_pct"
+                }
+              },
+              "queryRef": "nfp_990_yoy.variance_pct",
+              "nativeQueryRef": "variance_pct",
+              "displayName": "var %"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_990_yoy"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

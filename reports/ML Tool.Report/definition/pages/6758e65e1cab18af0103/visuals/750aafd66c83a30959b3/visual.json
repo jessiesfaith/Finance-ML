@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "750aafd66c83a30959b3",
+  "position": {
+    "x": 165,
+    "y": 2674,
+    "height": 120,
+    "width": 2670,
+    "z": 202000,
+    "tabOrder": 202000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "HOW THESE GET USED - BOARD packs carry the policy ratios (program %, reserves, concentration, public support) as 3-year trends against board-set targets, with variances explained, never bare numbers. The CEO watches the operating set weekly/monthly (cash days, current ratio, personnel %). FUNDERS read program %, reserves, revenue diversification and your latest audit - be ready with three years of 990s and context for any ratio outside its band.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

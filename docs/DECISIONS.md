@@ -1331,3 +1331,32 @@ line CFO reading), nfp_990_kpis (8 KPIs with community-center
 descriptions from the owner's research). New pages: 17 - NFP Financial
 Statements (statements left, CFO cards + review panel right, full
 review table below), 18 - NFP KPIs (5 cards + the register). Suite 288.
+
+### 109. YoY + rules register + full ratio set + 18pt (owner batch)
+2026-09-06. Owner batch: fonts to 18; a YoY 2024/2025 variance section
+under the tab-17 statements incl. every ratio; the earlier ratio list
+completed (current ratio was missing); an actuals-vs-rule register with
+the rule described on the same line (33 1/3% public support test, 5%
+payout rule, 80/20 rules, M&G < 20%); board-vs-CEO audience per KPI;
+plus the Sage reference ratios. Extracted from the filings: Part X
+lines 4/9/17/18/19 (current-asset/liability proxies) and Schedule A
+Part II line 14 - the FILED public support percentage: 74.16 / 74.24 /
+76.50 / 73.57 / 74.89 - triple the 33 1/3% IRS floor every year (the
+FY2024 filing restates FY2023's prior-year as 72.99; noted). Eight new
+ratio kinds (current_ratio 990-proxy, days_cash_on_hand,
+mgmt_general_pct_exp, fundraise_dollars_per_dollar, public_support_pct
+FILED, leverage_ratio, savings_indicator_pct, roa_pct) -> 122 ratio
+rows, 14 targeted kinds (70 target rows). New findings the filings
+support: FY2025 current ratio 0.71 MISSES the 1.0 floor and days cash
+13.9 MISSES ~90 - the balance-sheet echo of the cash story; leverage
+stays low (0.27x). Sage ratios needing data the 990 lacks (DSCR, burn
+rate, AR turnover, government reliance) are excluded, not faked. New
+exports nfp_990_yoy (42 rows; statement variances $ and % + every
+level ratio in its own units) and nfp_990_rules (8 rules with honest
+verdicts: MEETS/MISSES/N-A/RESEARCH REQUIRED - the 5% payout rule is
+N/A for a public charity and says so). KPI register now 12 with
+typical_audience (BOARD vs CEO vs funders); tab 18 gains the rules
+section and a how-boards/CEOs/funders-use-these textbox; tab 17 gains
+the YoY table. Amount loader fixed to preserve filed decimals
+(74.89 was rounding to 74). Fonts: 47 tables -> 18pt, 49 charts ->
+14pt axes/labels. Suite 290.

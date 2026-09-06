@@ -1419,8 +1419,14 @@ def actuals_990() -> pd.DataFrame:
                 "confidence": "HIGH", "value_class": "PUBLIC_RESEARCH",
                 "note": f"net_assets_end {fy} - net_assets_end {prev}"})
     out = pd.concat([a, pd.DataFrame(derived)], ignore_index=True)
-    out["amount"] = out["amount"].map(
-        lambda v: "" if v == "" else int(round(float(v))))
+    def _amt(v):
+        if v == "":
+            return ""
+        f = float(v)
+        # dollars stay whole; filed percentages keep their decimals
+        return int(f) if f.is_integer() else round(f, 3)
+
+    out["amount"] = out["amount"].map(_amt)
     return out
 
 
@@ -1522,6 +1528,50 @@ def ratio_actuals_990(act: pd.DataFrame) -> pd.DataFrame:
             "largest single revenue stream / Part I line 12",
             f"Largest stream: {top} - earned fees from many payers "
             "carry different risk than one grantor or major donor")
+        ar = g(fy, "accounts_receivable_end") or 0
+        ppd = g(fy, "prepaid_expenses_end") or 0
+        plg = g(fy, "pledges_receivable_end") or 0
+        ap = g(fy, "accounts_payable_accrued_end") or 0
+        gp = g(fy, "grants_payable_end") or 0
+        dr = g(fy, "deferred_revenue_end") or 0
+        add("current_ratio", f"Current ratio ({fy})", fy,
+            (cash + sav + plg + ar + ppd) / (ap + gp + dr), "x",
+            "Part X (lines 1+2+3+4+9) / (lines 17+18+19)",
+            "990 PROXY - the form does not classify current vs "
+            "long-term; numerator and denominator are the plainly "
+            "short-term lines", basis="DERIVED (990 PROXY)")
+        add("days_cash_on_hand", f"Days cash on hand ({fy})", fy,
+            (cash + sav) / (exp / 365), "days",
+            "(Part X line 1 + line 2) / (Part I line 18 / 365)",
+            "Day-count view of the months-of-cash ratio")
+        add("mgmt_general_pct_exp",
+            f"Admin (M&G) % of expenses ({fy})", fy,
+            mgmt / exp * 100, "%", "Part IX line 25 col C / col A",
+            "Management & general only - excludes fundraising")
+        add("fundraise_dollars_per_dollar",
+            f"Dollars raised per $1 of fundraising ({fy})", fy,
+            con / fund, "$ per $", "Part I line 8 / line 16b",
+            "Inverse of the cents-per-dollar view")
+        add("public_support_pct", f"IRS public support % ({fy})", fy,
+            g(fy, "public_support_pct"), "%",
+            "Schedule A Part II line 14 (as filed)",
+            "5-year cumulative IRS test, filed by the preparer - not "
+            "recomputed here", basis="FILED (SCHEDULE A)")
+        liab = g(fy, "total_liabilities_end")
+        add("leverage_ratio", f"Leverage ratio ({fy})", fy, liab / na,
+            "x", "Part X line 26 / Part I line 22",
+            "Total liabilities vs net assets - lower means less "
+            "reliance on debt; no published sector standard")
+        add("savings_indicator_pct",
+            f"Savings indicator % ({fy})", fy,
+            (rev - exp) / exp * 100, "%",
+            "(line 12 - line 18) / line 18",
+            "Share of spending the year added to (or drew from) net "
+            "assets")
+        add("roa_pct", f"Return on assets % ({fy})", fy,
+            (rev - exp) / ta * 100, "%",
+            "(line 12 - line 18) / Part X line 16",
+            "Surplus generated per dollar of balance sheet")
     for prev, fy in zip(years, years[1:]):
         add("revenue_growth_pct",
             f"Revenue growth % ({prev} to {fy})", fy,
@@ -1556,6 +1606,125 @@ def ratio_actuals_990(act: pd.DataFrame) -> pd.DataFrame:
 
     df["vs_target"] = df.apply(verdict, axis=1)
     return df
+
+
+def yoy_990(fs: pd.DataFrame,
+            ratios: pd.DataFrame) -> pd.DataFrame:
+    """Tab-17 YoY section: FY2024 vs FY2025 for every statement line
+    (variance $ and %) and every level ratio (variance in its own
+    units) - all from the filed figures."""
+    rows = []
+    for _, r in fs.iterrows():
+        v24, v25 = float(r["fy2024"]), float(r["fy2025"])
+        rows.append({
+            "section": f'{r["statement"]} - {r["section"]}',
+            "line_label": r["line_label"], "unit": "USD",
+            "fy2024": round(v24), "fy2025": round(v25),
+            "variance": round(v25 - v24),
+            "variance_pct": (round((v25 - v24) / abs(v24) * 100, 1)
+                             if v24 else ""),
+            "note": r["note"], "value_class": "PUBLIC_RESEARCH"})
+    seen = []
+    for _, r in ratios.iterrows():
+        k = r["ratio_kind"]
+        if k in seen or "growth" in k:
+            continue
+        seen.append(k)
+        rk = ratios[ratios["ratio_kind"] == k]
+        y24 = rk[rk["fiscal_year"] == "FY2024"]
+        y25 = rk[rk["fiscal_year"] == "FY2025"]
+        if not len(y24) or not len(y25):
+            continue
+        v24 = float(y24.iloc[0]["value"])
+        v25 = float(y25.iloc[0]["value"])
+        rows.append({
+            "section": "RATIOS",
+            "line_label": y25.iloc[0]["ratio"].split(" (")[0],
+            "unit": y25.iloc[0]["unit"],
+            "fy2024": round(v24, 2), "fy2025": round(v25, 2),
+            "variance": round(v25 - v24, 2), "variance_pct": "",
+            "note": "variance shown in the ratio's own units",
+            "value_class": "PUBLIC_RESEARCH"})
+    return pd.DataFrame(rows)
+
+
+def rules_990(ratios: pd.DataFrame) -> pd.DataFrame:
+    """Actual-vs-rule register (owner request): each nonprofit rule
+    with its description on the same line, the FY2025 actual where the
+    filings can compute one, and an honest verdict - N/A and RESEARCH
+    REQUIRED are answers, never guesses."""
+    def v(kind):
+        rk = ratios[(ratios["ratio_kind"] == kind)
+                    & (ratios["fiscal_year"] == "FY2025")]
+        return float(rk.iloc[0]["value"])
+
+    rows = [
+        ("IRS 33 1/3% public support test", f"{v('public_support_pct')}%",
+         ">= 33.33%", "MEETS",
+         "A 501(c)(3) must draw at least one-third of support from the "
+         "general public/government (5-year cumulative, single donors "
+         "capped at 2% of support; filed on Schedule A). Between 10% "
+         "and 33 1/3% the 10% facts-and-circumstances test can "
+         "preserve status; sustained below 10% risks reclassification "
+         "as a private foundation.",
+         "As filed, Schedule A Part II line 14; rule context: owner "
+         "research (Foundation Group, IRS)"),
+        ("IRS 5% payout rule", "N/A", "5% of assets/yr", "N/A",
+         "PRIVATE FOUNDATIONS must distribute ~5% of non-charitable "
+         "assets annually (IRC 4942; 30% excise tax on shortfalls, up "
+         "to 100% uncorrected; excess carries forward 5 years). JSV is "
+         "a PUBLIC CHARITY - the rule does not apply; kept here for "
+         "reference.", "Owner research (IRS, NCFP)"),
+        ("80/20 program-vs-overhead rule",
+         f"{v('program_expense_ratio_pct'):.1f}%", ">= 80% programs",
+         "MEETS",
+         "Traditional benchmark: ~80% of spending on mission programs, "
+         "<= 20% overhead. Modern practice cautions the ratio is not "
+         "an outcome measure - pair it with SROI, mission-alignment "
+         "scorecards and outcome reporting, and use Form 990 Part III "
+         "narratives to tell the impact story.",
+         "Owner research (Clark Nuber; 'retire the 80/20 myth' note)"),
+        ("Donor concentration Pareto (80/20)", "RESEARCH REQUIRED",
+         "top 20% ~ 80% of gifts", "RESEARCH REQUIRED",
+         "Roughly 80% of gifts typically come from the top 20% of "
+         "donors - focus major-donor cultivation there. Needs "
+         "donor-level giving data, which the 990 does not carry.",
+         "Owner research (BlueTree Marketing)"),
+        ("Donor communication split (80/20)", "PRACTICE", "80% impact "
+         "/ 20% asks", "N/A - DATA",
+         "80% of donor communication should be impact, storytelling "
+         "and gratitude; only 20% direct asks. A practice standard, "
+         "not measurable from financial statements.",
+         "Owner research (The Nonprofit Show)"),
+        ("Owner rule: M&G < 20% of expenses",
+         f"{v('mgmt_general_pct_exp'):.1f}%", "< 20%", "MEETS",
+         "Management & general expenses (Part IX col C) kept under "
+         "20% of total spending - stricter than the 35% overhead "
+         "ceiling. Small/startup organizations legitimately run "
+         "higher (30-35%) while building infrastructure.",
+         "Owner rule + owner research (National Council of "
+         "Nonprofits)"),
+        ("Current ratio >= 1.0", f"{v('current_ratio'):.2f}x",
+         ">= 1.0x", "MISSES",
+         "Short-term assets should cover short-term liabilities "
+         "(healthy band 1.0-2.0). FY2025 falls below 1.0 on the 990 "
+         "proxy - the same liquidity story as the cash ratios: "
+         "read alongside the $19M investment portfolio, which sits "
+         "outside the short-term lines.",
+         "Owner research (whipplewood, Sage)"),
+        ("Fundraising <= 35% of contributions",
+         f"{v('fundraise_cents_per_dollar'):.1f} cents/$", "<= 35",
+         "MEETS",
+         "BBB standard: fundraising expense no more than 35% of "
+         "related contributions; sector-typical is 15-20 cents, and "
+         "raising $5+ per $1 spent is the inverse benchmark "
+         f"(JSV: ${v('fundraise_dollars_per_dollar'):.2f} raised per "
+         "$1).", "BBB (give.org) + owner research"),
+    ]
+    return pd.DataFrame([{
+        "rule": r[0], "actual_fy2025": r[1], "rule_value": r[2],
+        "vs_rule": r[3], "description": r[4], "source": r[5],
+        "value_class": "PUBLIC_RESEARCH"} for r in rows])
 
 
 def fin_statements_990(act: pd.DataFrame) -> pd.DataFrame:
@@ -1718,11 +1887,56 @@ _KPI_DESCRIPTIONS = {
         "published sector standard; the internal policy floor is "
         "breakeven. The FY2023 deficit year and the FY2025 recovery "
         "are both visible here."),
+    "current_ratio": (
+        "Current Ratio",
+        "Short-term assets against short-term bills (990 proxy: cash, "
+        "savings, receivables and prepaid vs payables, grants payable "
+        "and deferred revenue). Healthy band is 1.0-2.0. FY2025 dips "
+        "below 1.0 - the balance-sheet echo of the cash story, "
+        "softened by the investment portfolio sitting outside the "
+        "short-term lines."),
+    "days_cash_on_hand": (
+        "Days Cash on Hand",
+        "How many days of spending the unrestricted cash could cover "
+        "if revenue stopped - the day-count twin of months of cash. "
+        "Sector guidance is ~90 days (3 months). FY2025 is a fraction "
+        "of that, so the working question is how quickly portfolio "
+        "assets can convert to cash."),
+    "mgmt_general_pct_exp": (
+        "Administrative Expense Ratio",
+        "Management & general costs as a share of total expenses - "
+        "overhead excluding fundraising. The board rule here is under "
+        "20%; small or growing organizations legitimately run higher "
+        "while building infrastructure, so read the trend, not one "
+        "year."),
+    "public_support_pct": (
+        "IRS Public Support %",
+        "The Schedule A public support test as filed: at least one "
+        "third of support must come from the general public and "
+        "government over a rolling five years, with any single donor "
+        "capped at 2% of the base. Falling under 33 1/3% triggers the "
+        "10% facts-and-circumstances fallback; sustained failure "
+        "risks private-foundation reclassification."),
     "expense_coverage": (
         "Expense Coverage",
         "Revenue divided by expenses - the simplest solvency read. "
         "1.0x means the year paid for itself; below 1.0x the year drew "
         "down reserves to operate.")}
+
+
+_KPI_AUDIENCE = {
+    "program_expense_ratio_pct": "BOARD (policy + funders)",
+    "operating_reserve_months": "BOARD (policy)",
+    "months_cash_on_hand": "CEO weekly + BOARD (policy)",
+    "revenue_concentration_pct": "BOARD (risk)",
+    "salaries_pct_exp": "CEO (operations)",
+    "fundraise_cents_per_dollar": "BOARD (fundraising committee)",
+    "op_margin_pct": "BOARD + CEO",
+    "expense_coverage": "CEO (monthly close)",
+    "current_ratio": "CEO (monthly close)",
+    "days_cash_on_hand": "CEO (weekly cash review)",
+    "mgmt_general_pct_exp": "BOARD (policy + funders)",
+    "public_support_pct": "BOARD (compliance, annual)"}
 
 
 def kpis_990(ratios: pd.DataFrame) -> pd.DataFrame:
@@ -1747,6 +1961,7 @@ def kpis_990(ratios: pd.DataFrame) -> pd.DataFrame:
             "target_class": latest["target_class"],
             "vs_target": latest["vs_target"],
             "trend_fy2021_fy2025": trend,
+            "typical_audience": _KPI_AUDIENCE[kind],
             "value_class": "PUBLIC_RESEARCH"})
     return pd.DataFrame(out)
 
@@ -1803,9 +2018,12 @@ def build_all() -> dict[str, pd.DataFrame]:
     ratios = ratio_actuals_990(act)
     frames["nfp_990_actuals"] = act
     frames["nfp_990_ratio_actuals"] = ratios
-    frames["nfp_fin_statements"] = fin_statements_990(act)
+    fs = fin_statements_990(act)
+    frames["nfp_fin_statements"] = fs
     frames["nfp_cfo_review"] = cfo_review_990(ratios)
     frames["nfp_990_kpis"] = kpis_990(ratios)
+    frames["nfp_990_yoy"] = yoy_990(fs, ratios)
+    frames["nfp_990_rules"] = rules_990(ratios)
     # stable sort key: report tables sort by row_id to preserve the
     # decision-flow order of each export
     for df in frames.values():
