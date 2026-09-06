@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "a65b4b08d6867fa9c745",
+  "name": "84e5ae1b2a31ded7dc03",
   "position": {
     "x": 1525,
-    "y": 3730,
+    "y": 4070,
     "height": 320,
     "width": 1310,
-    "z": 905500,
-    "tabOrder": 905500
+    "z": 906500,
+    "tabOrder": 906500
   },
   "visual": {
     "visualType": "lineChart",
@@ -52,7 +52,7 @@
               },
               "queryRef": "Sum(nfp_990_ratio_actuals.value)",
               "nativeQueryRef": "Sum of value",
-              "displayName": "expense coverage vs 1.0x policy"
+              "displayName": "program expense ratio % vs BBB 65% benchmark"
             },
             {
               "field": {
@@ -98,7 +98,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "a4ed63a7b",
+        "name": "ce5d9fc4c",
         "field": {
           "Column": {
             "Expression": {
@@ -139,7 +139,7 @@
                     [
                       {
                         "Literal": {
-                          "Value": "'expense_coverage'"
+                          "Value": "'program_expense_ratio_pct'"
                         }
                       }
                     ]

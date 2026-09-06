@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "dc9fce9a60a5ecd0bf61",
   "position": {
-    "x": 1525,
-    "y": 4410,
+    "x": 165,
+    "y": 5090,
     "height": 320,
     "width": 1310,
-    "z": 907500,
-    "tabOrder": 907500
+    "z": 909000,
+    "tabOrder": 909000
   },
   "visual": {
     "visualType": "lineChart",
@@ -53,6 +53,26 @@
               "queryRef": "Sum(nfp_990_ratio_actuals.value)",
               "nativeQueryRef": "Sum of value",
               "displayName": "investment + other revenue %"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_990_ratio_actuals"
+                        }
+                      },
+                      "Property": "target_value"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_990_ratio_actuals.target_value)",
+              "nativeQueryRef": "Sum of target_value",
+              "displayName": "policy / benchmark"
             }
           ]
         }

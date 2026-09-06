@@ -1487,6 +1487,17 @@ def ratio_actuals_990(act: pd.DataFrame) -> pd.DataFrame:
             "(Part X line 1 + line 2) / (Part I line 18 / 12)",
             "Pure cash liquidity vs the internal 3.0-month policy; "
             "excludes the investment portfolio")
+        prog_e = g(fy, "program_expenses")
+        mgmt = g(fy, "mgmt_general_expenses")
+        add("program_expense_ratio_pct",
+            f"Program expense ratio % ({fy})", fy, prog_e / exp * 100,
+            "%", "Part IX line 25 col B / col A",
+            "Share of spending on programs - the sector's headline "
+            "accountability ratio")
+        add("overhead_ratio_pct", f"Overhead ratio % ({fy})", fy,
+            (mgmt + fund) / exp * 100, "%",
+            "Part IX line 25 (col C + col D) / col A",
+            "Management + fundraising share of spending")
     for prev, fy in zip(years, years[1:]):
         add("revenue_growth_pct",
             f"Revenue growth % ({prev} to {fy})", fy,
@@ -1503,7 +1514,24 @@ def ratio_actuals_990(act: pd.DataFrame) -> pd.DataFrame:
             (g(fy, "net_assets_end") / g(prev, "net_assets_end") - 1)
             * 100, "%", "line 22 year-over-year",
             "Balance-sheet direction")
-    return pd.DataFrame(rows)
+    df = pd.DataFrame(rows)
+    # attach the policy target / sector benchmark per ratio_kind so
+    # every chart can draw the reference line beside the filed value
+    tg = pd.read_csv(NFP_DIR / "nfp_990_target_inputs.csv").fillna("")
+    df = df.merge(
+        tg[["ratio_kind", "target_value", "target_direction",
+            "target_label", "target_class"]],
+        on="ratio_kind", how="left").fillna("")
+
+    def verdict(r):
+        if r["target_value"] == "":
+            return ""
+        v, tv = float(r["value"]), float(r["target_value"])
+        ok = v >= tv if r["target_direction"] == ">=" else v <= tv
+        return "MEETS" if ok else "MISSES"
+
+    df["vs_target"] = df.apply(verdict, axis=1)
+    return df
 
 
 def build_all() -> dict[str, pd.DataFrame]:

@@ -52,7 +52,27 @@
               },
               "queryRef": "Sum(nfp_990_ratio_actuals.value)",
               "nativeQueryRef": "Sum of value",
-              "displayName": "months of cash on hand (policy: 3.0)"
+              "displayName": "months of cash vs 3.0-month policy"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_990_ratio_actuals"
+                        }
+                      },
+                      "Property": "target_value"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_990_ratio_actuals.target_value)",
+              "nativeQueryRef": "Sum of target_value",
+              "displayName": "policy / benchmark"
             }
           ]
         }

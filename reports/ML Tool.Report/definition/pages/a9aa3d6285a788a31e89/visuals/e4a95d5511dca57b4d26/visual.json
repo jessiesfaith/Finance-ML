@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "a65b4b08d6867fa9c745",
+  "name": "e4a95d5511dca57b4d26",
   "position": {
-    "x": 1525,
-    "y": 3730,
+    "x": 165,
+    "y": 4410,
     "height": 320,
     "width": 1310,
-    "z": 905500,
-    "tabOrder": 905500
+    "z": 907000,
+    "tabOrder": 907000
   },
   "visual": {
     "visualType": "lineChart",
@@ -52,7 +52,7 @@
               },
               "queryRef": "Sum(nfp_990_ratio_actuals.value)",
               "nativeQueryRef": "Sum of value",
-              "displayName": "expense coverage vs 1.0x policy"
+              "displayName": "overhead ratio % vs 35% benchmark"
             },
             {
               "field": {
@@ -98,7 +98,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "a4ed63a7b",
+        "name": "a55e1cc4a",
         "field": {
           "Column": {
             "Expression": {
@@ -139,7 +139,7 @@
                     [
                       {
                         "Literal": {
-                          "Value": "'expense_coverage'"
+                          "Value": "'overhead_ratio_pct'"
                         }
                       }
                     ]

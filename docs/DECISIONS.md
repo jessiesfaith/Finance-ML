@@ -1274,3 +1274,26 @@ years". Replaced it (and the two standalone trend lines) with a grid of
 13 charts - one per ratio_kind, Category = fiscal_year, all five filed
 years plotted: 10 level ratios as line charts, the 3 year-over-year
 growth ratios as column charts. Page height 6580.
+
+### 106. Policy targets and sector benchmarks on the real-ratio charts
+2026-09-06. Owner: "add the policy targets or nfp benchmarks with the
+graphs so i review JSV performance to the policy and or the benchmarks."
+Extracted Part IX line 25 (functional expense columns B/C/D) from all
+five filings - they cross-foot to total expenses every year - enabling
+the sector's headline ratios: program expense ratio (76.9 / 76.3 /
+83.3 / 84.0 / 82.0%) and overhead ratio. New seed
+nfp_990_target_inputs.csv holds 6 reference values, each classed
+honestly: INTERNAL POLICY = MANAGEMENT ASSUMPTION (months cash >= 3.0,
+op margin >= 0, expense coverage >= 1.0x); BENCHMARK = PUBLIC_RESEARCH
+sourced to the BBB Wise Giving Alliance Standards for Charity
+Accountability at give.org (program >= 65% of total expenses,
+fundraising <= 35% of contributions - noting BBB measures vs RELATED
+contributions and the module proxies with total line 8). No invented
+"industry norms": ratios without a real standard get no line. Engine
+merges targets into nfp_990_ratio_actuals (target_value/direction/
+label/class + computed vs_target MEETS/MISSES; 72 rows, 30 targeted).
+Verdicts the filings support: program ratio MEETS the 65% standard all
+five years; months of cash MISSES the 3.0-month policy in FY2025 only.
+Tab 14 grid rebuilt to 15 charts, each drawing the flat policy/
+benchmark line beside the filed values; table gains policy/benchmark +
+vs-target columns; fifth card 990 Program Ratio FY25 % (81.99).

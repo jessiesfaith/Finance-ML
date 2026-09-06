@@ -3,11 +3,11 @@
   "name": "9d87d93c1ffcb0d9a6ed",
   "position": {
     "x": 165,
-    "y": 5770,
+    "y": 6110,
     "height": 320,
     "width": 1310,
-    "z": 911000,
-    "tabOrder": 911000
+    "z": 912000,
+    "tabOrder": 912000
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -53,6 +53,26 @@
               "queryRef": "Sum(nfp_990_ratio_actuals.value)",
               "nativeQueryRef": "Sum of value",
               "displayName": "net assets change % year-over-year"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_990_ratio_actuals"
+                        }
+                      },
+                      "Property": "target_value"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_990_ratio_actuals.target_value)",
+              "nativeQueryRef": "Sum of target_value",
+              "displayName": "policy / benchmark"
             }
           ]
         }

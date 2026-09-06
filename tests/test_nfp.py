@@ -477,6 +477,11 @@ def test_990_actuals_real_figures_and_honesty():
         assert (amt(fy, "total_assets_end")
                 - amt(fy, "total_liabilities_end")
                 == amt(fy, "net_assets_end"))
+        # Part IX functional expense columns cross-foot to the total
+        assert (amt(fy, "program_expenses")
+                + amt(fy, "mgmt_general_expenses")
+                + amt(fy, "fundraising_expenses")
+                == amt(fy, "total_expenses"))
     # nothing blank, nothing estimated
     assert (a["amount"] != "").all()
     # pre-merger context is present but loudly flagged
@@ -493,7 +498,7 @@ def test_990_actuals_real_figures_and_honesty():
 def test_990_ratio_actuals_computed_from_filed_only():
     from financials.nfp import actuals_990, ratio_actuals_990
     r = ratio_actuals_990(actuals_990())
-    assert len(r) == 62
+    assert len(r) == 72
     assert (r["value_class"] == "PUBLIC_RESEARCH").all()
     assert (r["confidence"] == "HIGH").all()
     assert (r["value"] != "").all()          # nothing unresearched left
@@ -526,3 +531,39 @@ def test_990_ratio_actuals_computed_from_filed_only():
     assert val("months_cash_on_hand", "FY2025") == pytest.approx(
         0.4565, abs=0.001)
     assert val("months_cash_on_hand", "FY2025") < 3.0
+    # Part IX ratios vs the sector benchmark
+    assert val("program_expense_ratio_pct", "FY2025") == pytest.approx(
+        81.9894, abs=0.001)
+    assert val("overhead_ratio_pct", "FY2025") == pytest.approx(
+        18.0106, abs=0.001)
+
+
+def test_990_targets_and_benchmarks():
+    """Every reference line is either an internal policy (MANAGEMENT
+    ASSUMPTION) or a sourced sector benchmark (PUBLIC_RESEARCH) - never
+    an invented 'industry norm' - and the MEETS/MISSES verdict is
+    computed, not asserted by hand."""
+    from financials.nfp import actuals_990, ratio_actuals_990
+    r = ratio_actuals_990(actuals_990())
+    with_t = r[r["target_value"] != ""]
+    assert len(with_t) == 30                    # 6 targeted kinds x 5 yrs
+    assert set(with_t["target_class"]) == {"MANAGEMENT ASSUMPTION",
+                                           "PUBLIC_RESEARCH"}
+    bbb = with_t[with_t["target_class"] == "PUBLIC_RESEARCH"]
+    assert bbb["target_label"].str.contains("BBB|benchmark|BENCHMARK",
+                                            regex=True).all()
+    assert (r[r["target_value"] == ""]["vs_target"] == "").all()
+
+    def verdict(kind, fy):
+        return r[(r["ratio_kind"] == kind)
+                 & (r["fiscal_year"] == fy)].iloc[0]["vs_target"]
+
+    # program ratio beats the BBB 65% standard in every filed year
+    for fy in ("FY2021", "FY2022", "FY2023", "FY2024", "FY2025"):
+        assert verdict("program_expense_ratio_pct", fy) == "MEETS"
+        assert verdict("overhead_ratio_pct", fy) == "MEETS"
+    # months of cash: fine until the FY2025 collapse
+    assert verdict("months_cash_on_hand", "FY2024") == "MEETS"
+    assert verdict("months_cash_on_hand", "FY2025") == "MISSES"
+    assert verdict("op_margin_pct", "FY2023") == "MISSES"
+    assert verdict("op_margin_pct", "FY2025") == "MEETS"

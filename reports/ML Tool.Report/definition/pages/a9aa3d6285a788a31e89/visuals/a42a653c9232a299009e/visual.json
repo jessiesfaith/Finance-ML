@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "a42a653c9232a299009e",
   "position": {
-    "x": 165,
-    "y": 4750,
+    "x": 1525,
+    "y": 5090,
     "height": 320,
     "width": 1310,
-    "z": 908000,
-    "tabOrder": 908000
+    "z": 909500,
+    "tabOrder": 909500
   },
   "visual": {
     "visualType": "lineChart",
@@ -53,6 +53,26 @@
               "queryRef": "Sum(nfp_990_ratio_actuals.value)",
               "nativeQueryRef": "Sum of value",
               "displayName": "salaries % of expenses"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_990_ratio_actuals"
+                        }
+                      },
+                      "Property": "target_value"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_990_ratio_actuals.target_value)",
+              "nativeQueryRef": "Sum of target_value",
+              "displayName": "policy / benchmark"
             }
           ]
         }

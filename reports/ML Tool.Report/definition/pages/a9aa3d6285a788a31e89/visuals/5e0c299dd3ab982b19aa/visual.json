@@ -3,11 +3,11 @@
   "name": "5e0c299dd3ab982b19aa",
   "position": {
     "x": 165,
-    "y": 5430,
+    "y": 5770,
     "height": 320,
     "width": 1310,
-    "z": 910000,
-    "tabOrder": 910000
+    "z": 911000,
+    "tabOrder": 911000
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -53,6 +53,26 @@
               "queryRef": "Sum(nfp_990_ratio_actuals.value)",
               "nativeQueryRef": "Sum of value",
               "displayName": "revenue growth % year-over-year"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_990_ratio_actuals"
+                        }
+                      },
+                      "Property": "target_value"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_990_ratio_actuals.target_value)",
+              "nativeQueryRef": "Sum of target_value",
+              "displayName": "policy / benchmark"
             }
           ]
         }

@@ -3,7 +3,7 @@
   "name": "22d4abec8e364b2acd3f",
   "position": {
     "x": 165,
-    "y": 6110,
+    "y": 6450,
     "height": 340,
     "width": 2670,
     "z": 907000,
@@ -59,6 +59,36 @@
               "queryRef": "nfp_990_ratio_actuals.value",
               "nativeQueryRef": "value",
               "displayName": "value"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_ratio_actuals"
+                    }
+                  },
+                  "Property": "target_label"
+                }
+              },
+              "queryRef": "nfp_990_ratio_actuals.target_label",
+              "nativeQueryRef": "target_label",
+              "displayName": "policy / benchmark"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_ratio_actuals"
+                    }
+                  },
+                  "Property": "vs_target"
+                }
+              },
+              "queryRef": "nfp_990_ratio_actuals.vs_target",
+              "nativeQueryRef": "vs_target",
+              "displayName": "vs target"
             },
             {
               "field": {

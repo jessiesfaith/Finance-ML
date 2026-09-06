@@ -3,11 +3,11 @@
   "name": "638b00b9be8b74b8082e",
   "position": {
     "x": 1525,
-    "y": 5090,
+    "y": 5430,
     "height": 320,
     "width": 1310,
-    "z": 909500,
-    "tabOrder": 909500
+    "z": 910500,
+    "tabOrder": 910500
   },
   "visual": {
     "visualType": "lineChart",
@@ -53,6 +53,26 @@
               "queryRef": "Sum(nfp_990_ratio_actuals.value)",
               "nativeQueryRef": "Sum of value",
               "displayName": "net asset ratio %"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_990_ratio_actuals"
+                        }
+                      },
+                      "Property": "target_value"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_990_ratio_actuals.target_value)",
+              "nativeQueryRef": "Sum of target_value",
+              "displayName": "policy / benchmark"
             }
           ]
         }
