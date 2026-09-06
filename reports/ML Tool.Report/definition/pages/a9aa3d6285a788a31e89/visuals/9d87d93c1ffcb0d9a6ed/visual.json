@@ -1,0 +1,135 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "9d87d93c1ffcb0d9a6ed",
+  "position": {
+    "x": 165,
+    "y": 5770,
+    "height": 320,
+    "width": 1310,
+    "z": 911000,
+    "tabOrder": 911000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_ratio_actuals"
+                    }
+                  },
+                  "Property": "fiscal_year"
+                }
+              },
+              "queryRef": "nfp_990_ratio_actuals.fiscal_year",
+              "nativeQueryRef": "fiscal_year",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_990_ratio_actuals"
+                        }
+                      },
+                      "Property": "value"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_990_ratio_actuals.value)",
+              "nativeQueryRef": "Sum of value",
+              "displayName": "net assets change % year-over-year"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ab4ab4b81",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "nfp_990_ratio_actuals"
+              }
+            },
+            "Property": "ratio_kind"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "t",
+              "Entity": "nfp_990_ratio_actuals",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "t"
+                          }
+                        },
+                        "Property": "ratio_kind"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'net_assets_growth_pct'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

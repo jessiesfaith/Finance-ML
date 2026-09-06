@@ -1266,3 +1266,11 @@ portfolio. Tabs 11/14 repointed to FY2025 cards and filed-year charts
 (FY2020 excluded from charts), tab 14 gains op-margin and months-cash
 trend lines, tab 16 gains the real portfolio-vs-cash trend section for
 the owner's new investments mandate.
+
+### 105. Owner QA on tab 14: years on the x-axis, all years, every ratio
+2026-09-06. The FY2025 bar chart put ratio NAMES on the axis; the owner
+circled it: "make the years as the x axis for graphs... add all the
+years". Replaced it (and the two standalone trend lines) with a grid of
+13 charts - one per ratio_kind, Category = fiscal_year, all five filed
+years plotted: 10 level ratios as line charts, the 3 year-over-year
+growth ratios as column charts. Page height 6580.

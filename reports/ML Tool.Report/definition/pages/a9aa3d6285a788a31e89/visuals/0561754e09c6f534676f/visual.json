@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "830292e838d0c562869b",
+  "name": "0561754e09c6f534676f",
   "position": {
     "x": 1525,
-    "y": 4270,
+    "y": 5430,
     "height": 320,
     "width": 1310,
-    "z": 906700,
-    "tabOrder": 906700
+    "z": 910500,
+    "tabOrder": 910500
   },
   "visual": {
-    "visualType": "lineChart",
+    "visualType": "clusteredColumnChart",
     "query": {
       "queryState": {
         "Category": {
@@ -52,7 +52,7 @@
               },
               "queryRef": "Sum(nfp_990_ratio_actuals.value)",
               "nativeQueryRef": "Sum of value",
-              "displayName": "months of cash on hand"
+              "displayName": "expense growth % year-over-year"
             }
           ]
         }
@@ -78,7 +78,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "da1723411",
+        "name": "17d4412e0",
         "field": {
           "Column": {
             "Expression": {
@@ -119,7 +119,7 @@
                     [
                       {
                         "Literal": {
-                          "Value": "'months_cash_on_hand'"
+                          "Value": "'expense_growth_pct'"
                         }
                       }
                     ]
