@@ -9,6 +9,20 @@ table nfp_pledge_schedule
 		displayFolder: NFP Cards
 		lineageTag: edff87c7-75f8-44e3-8c89-eee6565f9159
 
+	measure 'Pledge Monthly Collections $' =
+			
+			IF(SUM(nfp_pledge_schedule[expected_collections]) = 0, BLANK(), SUM(nfp_pledge_schedule[expected_collections]))
+		formatString: $#,0
+		displayFolder: NFP Cards
+		lineageTag: c38d09ce-ec82-42ae-817b-430a251331d4
+
+	measure 'Pledge Cumulative Expected $' =
+			
+			IF(SUM(nfp_pledge_schedule[cumulative_expected]) = 0, BLANK(), SUM(nfp_pledge_schedule[cumulative_expected]))
+		formatString: $#,0
+		displayFolder: NFP Cards
+		lineageTag: 353de0fd-8ae0-482e-8a28-f2ffa557ab28
+
 	column row_id
 		dataType: string
 		lineageTag: 9a708377-7c68-447c-a31e-4e2fa8ca16a7

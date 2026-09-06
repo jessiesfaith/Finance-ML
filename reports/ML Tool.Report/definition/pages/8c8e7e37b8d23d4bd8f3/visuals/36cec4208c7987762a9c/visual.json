@@ -36,22 +36,17 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "nfp_pledge_schedule"
-                        }
-                      },
-                      "Property": "expected_collections"
+                    "SourceRef": {
+                      "Entity": "nfp_pledge_schedule"
                     }
                   },
-                  "Function": 0
+                  "Property": "Pledge Monthly Collections $"
                 }
               },
-              "queryRef": "Sum(nfp_pledge_schedule.expected_collections)",
-              "nativeQueryRef": "Sum of expected_collections",
+              "queryRef": "nfp_pledge_schedule.Pledge Monthly Collections $",
+              "nativeQueryRef": "Pledge Monthly Collections $",
               "displayName": "expected collections $ (bars)"
             }
           ]
@@ -60,22 +55,17 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "nfp_pledge_schedule"
-                        }
-                      },
-                      "Property": "cumulative_expected"
+                    "SourceRef": {
+                      "Entity": "nfp_pledge_schedule"
                     }
                   },
-                  "Function": 0
+                  "Property": "Pledge Cumulative Expected $"
                 }
               },
-              "queryRef": "Sum(nfp_pledge_schedule.cumulative_expected)",
-              "nativeQueryRef": "Sum of cumulative_expected",
+              "queryRef": "nfp_pledge_schedule.Pledge Cumulative Expected $",
+              "nativeQueryRef": "Pledge Cumulative Expected $",
               "displayName": "cumulative expected $ (line)"
             }
           ]
@@ -89,7 +79,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             }
