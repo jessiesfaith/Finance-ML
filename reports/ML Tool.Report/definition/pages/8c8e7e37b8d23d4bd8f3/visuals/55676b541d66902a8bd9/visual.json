@@ -23,11 +23,11 @@
                       "Entity": "nfp_990_actuals"
                     }
                   },
-                  "Property": "990 FY24 Expenses"
+                  "Property": "990 FY25 Expenses"
                 }
               },
-              "queryRef": "nfp_990_actuals.990 FY24 Expenses",
-              "nativeQueryRef": "990 FY24 Expenses"
+              "queryRef": "nfp_990_actuals.990 FY25 Expenses",
+              "nativeQueryRef": "990 FY25 Expenses"
             }
           ]
         }

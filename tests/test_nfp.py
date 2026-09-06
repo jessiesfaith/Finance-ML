@@ -309,7 +309,11 @@ def test_public_financials_register(frames):
     pf = frames["nfp_public_financials"]
     assert (pf["value_class"] == "PUBLIC_RESEARCH").all()
     assert (pf["url"].str.startswith("http")).all()
-    assert (pf["confidence"].isin(["LOW", "MEDIUM"])).all()
+    # web-searched rows keep the MEDIUM ceiling; HIGH is earned only by
+    # rows sourced from documents the owner provided (the filed 990s)
+    high = pf[pf["confidence"] == "HIGH"]
+    assert high["source"].str.contains("Owner-provided").all()
+    assert (pf["confidence"].isin(["LOW", "MEDIUM", "HIGH"])).all()
     jsv = pf[pf["organization"] == "Jewish Silicon Valley"]
     assert (jsv["ein"].astype(str) == "94-2222989").all()
     other = pf[pf["ein"].astype(str) == "94-2536452"]
@@ -434,63 +438,91 @@ def test_committed_exports_match_fresh_build(frames):
 
 
 def test_990_actuals_real_figures_and_honesty():
-    """The only export whose dollars describe the real organization.
-    Pins the researched figures (a silent change to a 'real' number
-    must fail loudly) and enforces the honesty rules: every amount has
-    a source URL, unconfirmed years stay blank RESEARCH REQUIRED, and
-    derived rows are pure arithmetic on reported ones."""
+    """The only export whose dollars describe the real organization -
+    now read directly from the five filed 990s the owner provided.
+    Pins the filed figures (a silent change to a real number must fail
+    loudly) and enforces the honesty rules."""
     from financials.nfp import actuals_990
     a = actuals_990()
     assert (a["value_class"] == "PUBLIC_RESEARCH").all()
+    assert (a["confidence"] == "HIGH").all()
     assert a["url"].str.startswith("https://").all()
+    assert set(a["basis"]) == {"FILED", "REPORTED (PRE-MERGER APJCC)",
+                               "DERIVED"}
 
     def amt(fy, item):
         row = a[(a["fiscal_year"] == fy) & (a["line_item"] == item)]
-        return row.iloc[0]["amount"]
+        return int(row.iloc[0]["amount"])
 
-    # REPORTED pins (aggregator summaries of the filed 990s)
-    assert amt("FY2024", "total_revenue") == 12604759
-    assert amt("FY2024", "total_expenses") == 12535090
-    assert amt("FY2024", "net_assets_end") == 16855692
-    assert amt("FY2024", "contributions_and_grants") == 4232181
-    assert amt("FY2024", "program_service_revenue") == 7750916
+    # FILED pins across the five years
+    assert amt("FY2021", "total_revenue") == 7792094
+    assert amt("FY2022", "total_revenue") == 15100113
     assert amt("FY2023", "total_revenue") == 10172090
-    assert amt("FY2023", "total_expenses") == 11269511
-    # DERIVED = arithmetic, shown as such
-    assert amt("FY2024", "surplus_deficit") == 69669
-    assert amt("FY2023", "surplus_deficit") == -1097421
-    assert amt("FY2024", "other_revenue") == 621662
-    derived = a[a["basis"] == "DERIVED"]
-    assert len(derived) == 5
-    assert derived["note"].str.len().gt(10).all()
-    # honesty: unconfirmed stays blank, never estimated
-    rr = a[a["basis"] == "RESEARCH REQUIRED"]
-    assert len(rr) == 4 and (rr["amount"] == "").all()
-    assert set(rr["fiscal_year"]) == {"FY2021", "FY2022", "FY2023"}
-    unresearched = a[a["fiscal_year"].isin(["FY2021", "FY2022"])]
-    assert (unresearched["amount"] == "").all()
+    assert amt("FY2024", "total_revenue") == 12604759
+    assert amt("FY2025", "total_revenue") == 14208155
+    assert amt("FY2025", "total_expenses") == 13539303
+    assert amt("FY2025", "surplus_deficit") == 668852
+    assert amt("FY2025", "net_assets_end") == 17716051
+    assert amt("FY2024", "total_assets_end") == 20879276  # exact now
+    assert amt("FY2025", "investments_securities_end") == 18951917
+    assert amt("FY2025", "cash_end") == 515092
+    # the filings' own arithmetic must hold in our copy, every year
+    for fy in ("FY2021", "FY2022", "FY2023", "FY2024", "FY2025"):
+        assert (amt(fy, "contributions_and_grants")
+                + amt(fy, "program_service_revenue")
+                + amt(fy, "investment_income")
+                + amt(fy, "other_revenue")) == amt(fy, "total_revenue")
+        assert (amt(fy, "total_revenue") - amt(fy, "total_expenses")
+                == amt(fy, "surplus_deficit"))
+        assert (amt(fy, "total_assets_end")
+                - amt(fy, "total_liabilities_end")
+                == amt(fy, "net_assets_end"))
+    # nothing blank, nothing estimated
+    assert (a["amount"] != "").all()
+    # pre-merger context is present but loudly flagged
+    pre = a[a["fiscal_year"] == "FY2020"]
+    assert len(pre) == 4
+    assert pre["basis"].eq("REPORTED (PRE-MERGER APJCC)").all()
+    assert pre["note"].str.contains("NOT comparable").all()
+    # derived rows are net-assets deltas only, formula shown
+    d = a[a["basis"] == "DERIVED"]
+    assert len(d) == 4
+    assert (d["line_item"] == "net_assets_change").all()
 
 
-def test_990_ratio_actuals_computed_from_reported_only():
+def test_990_ratio_actuals_computed_from_filed_only():
     from financials.nfp import actuals_990, ratio_actuals_990
     r = ratio_actuals_990(actuals_990())
+    assert len(r) == 62
     assert (r["value_class"] == "PUBLIC_RESEARCH").all()
+    assert (r["confidence"] == "HIGH").all()
+    assert (r["value"] != "").all()          # nothing unresearched left
     assert r["formula_990"].str.len().gt(5).all()
+    # pre-merger year gets no ratios; growth starts FY2022
+    assert not r["fiscal_year"].str.contains("2020").any()
+    assert len(r[r["ratio_kind"] == "revenue_growth_pct"]) == 4
 
-    def val(rid):
-        return float(r[r["ratio_id"] == rid].iloc[0]["value"])
+    def val(kind, fy):
+        return float(r[(r["ratio_kind"] == kind)
+                       & (r["fiscal_year"] == fy)].iloc[0]["value"])
 
-    assert val("R990-OM-FY2024") == pytest.approx(0.5527, abs=0.001)
-    assert val("R990-OM-FY2023") == pytest.approx(-10.7885, abs=0.001)
-    assert val("R990-EC-FY2024") == pytest.approx(1.0056, abs=0.001)
-    assert val("R990-EC-FY2023") == pytest.approx(0.9026, abs=0.001)
-    assert val("R990-PR-FY2024") == pytest.approx(61.49, abs=0.01)
-    assert val("R990-RG-FY2024") == pytest.approx(23.92, abs=0.01)
-    # liquidity needs Part X detail nobody published - blank, flagged
-    ms = r[r["ratio_id"] == "R990-MS"].iloc[0]
-    assert ms["basis"] == "RESEARCH REQUIRED" and ms["value"] == ""
-    # nothing computed from the unresearched years
-    assert not r["fiscal_year"].str.contains("2021|2022").any()
-    # the rounded-input ratio is flagged, not passed off as exact
-    na = r[r["ratio_id"] == "R990-NA-FY2024"].iloc[0]
-    assert "ROUNDED" in na["basis"] and na["confidence"] == "LOW"
+    assert val("op_margin_pct", "FY2023") == pytest.approx(-10.7885,
+                                                           abs=0.001)
+    assert val("op_margin_pct", "FY2025") == pytest.approx(4.7075,
+                                                           abs=0.001)
+    assert val("expense_coverage", "FY2024") == pytest.approx(1.0056,
+                                                              abs=0.001)
+    assert val("program_reliance_pct", "FY2025") == pytest.approx(
+        59.87, abs=0.01)
+    assert val("revenue_growth_pct", "FY2025") == pytest.approx(
+        12.72, abs=0.01)
+    # the real liquidity finding: cash fell through the 3.0-month
+    # policy floor and collapsed in FY2025 as money moved to the
+    # portfolio - the module must show it, not smooth it
+    assert val("months_cash_on_hand", "FY2021") == pytest.approx(
+        5.5692, abs=0.001)
+    assert val("months_cash_on_hand", "FY2024") == pytest.approx(
+        3.0852, abs=0.001)
+    assert val("months_cash_on_hand", "FY2025") == pytest.approx(
+        0.4565, abs=0.001)
+    assert val("months_cash_on_hand", "FY2025") < 3.0

@@ -3,7 +3,7 @@
   "name": "6c3faab3e2c0957bf115",
   "position": {
     "x": 165,
-    "y": 4620,
+    "y": 4960,
     "height": 60,
     "width": 2670,
     "z": 908000,
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Computed ONLY from figures the 990 research confirmed - a blank value means RESEARCH REQUIRED, never estimated. The illustrative playbook above stays SYNTHETIC/ASSUMPTION until client data replaces it.",
+                    "value": "Computed only from the filed figures (five owner-provided 990 PDFs). Months of cash counts Part X cash + savings only - the investment portfolio is excluded on purpose; FY2025 cash sits far below the internal 3.0-month policy because liquidity moved into investments. The illustrative playbook above stays SYNTHETIC/ASSUMPTION until client data.",
                     "textStyle": {
                       "fontSize": "10pt"
                     }

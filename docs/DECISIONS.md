@@ -1240,3 +1240,29 @@ those rows stay blank RESEARCH REQUIRED - charts show the missing years
 as gaps rather than inventing them. The synthetic operating model is
 untouched and never fed by these rows; the rest of the module stays
 SYNTHETIC/ASSUMPTION until client data.
+
+### 104. The owner provided the actual filings - 990 layer upgraded to FILED
+2026-09-06. The owner uploaded five ProPublica full-filing PDFs
+(FY2021-FY2025, EIN 94-2222989), unblocking every RESEARCH REQUIRED row
+from #103 and adding a year newer than any public aggregator (FY2025:
+revenue $14,208,155 / expenses $13,539,303 / surplus $668,852 / net
+assets $17,716,051). The seed now carries 94 FILED rows across 18 line
+items x 5 years (Part I + Part X cash/savings/pledges-receivable/
+investments), plus the pre-merger FY2020 APJCC context flagged NOT
+comparable. Verification: every filing's prior-year column cross-checks
+the preceding filing exactly, and the seed generator asserts the 990's
+own arithmetic (revenue components sum to line 12, line 19 = 12 - 18,
+line 22 = 20 - 26) for all five years; tests pin the filed figures and
+a mutation check confirms a one-dollar corruption fails the suite.
+Confidence HIGH (a new tier above the web-search MEDIUM ceiling, earned
+only by owner-provided documents - register test encodes the rule; PF-9
+records the provenance). ratio_actuals_990 now computes 62 ratios (13
+kinds x filed years, ratio_kind column for trend filtering; growth
+starts FY2022 to avoid crossing the merger). THE finding the real data
+surfaced: months of cash on hand ran 5.57 -> 6.10 -> 3.59 -> 3.09 ->
+0.46 - FY2025 cash sits at ~$0.5M, far below the internal 3.0-month
+policy, because liquidity moved into the now-$19.0M investment
+portfolio. Tabs 11/14 repointed to FY2025 cards and filed-year charts
+(FY2020 excluded from charts), tab 14 gains op-margin and months-cash
+trend lines, tab 16 gains the real portfolio-vs-cash trend section for
+the owner's new investments mandate.

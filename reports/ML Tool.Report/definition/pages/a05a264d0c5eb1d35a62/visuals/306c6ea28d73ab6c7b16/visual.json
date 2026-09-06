@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "d3ebf0a82a9c9ddb168f",
+  "name": "306c6ea28d73ab6c7b16",
   "position": {
-    "x": 1525,
-    "y": 4700,
+    "x": 165,
+    "y": 1500,
     "height": 40,
-    "width": 1310,
-    "z": 907000,
-    "tabOrder": 907000
+    "width": 2670,
+    "z": 901000,
+    "tabOrder": 901000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Filed total expenses by year (merged org)",
+                    "value": "REAL 990 CONTEXT FOR THIS MANDATE - filed investment portfolio and cash, FY2021-FY2025",
                     "textStyle": {
                       "fontSize": "13pt"
                     }

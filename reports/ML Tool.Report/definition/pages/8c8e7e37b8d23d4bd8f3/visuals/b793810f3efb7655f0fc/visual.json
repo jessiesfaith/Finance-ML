@@ -23,11 +23,11 @@
                       "Entity": "nfp_990_actuals"
                     }
                   },
-                  "Property": "990 FY24 Revenue"
+                  "Property": "990 FY25 Revenue"
                 }
               },
-              "queryRef": "nfp_990_actuals.990 FY24 Revenue",
-              "nativeQueryRef": "990 FY24 Revenue"
+              "queryRef": "nfp_990_actuals.990 FY25 Revenue",
+              "nativeQueryRef": "990 FY25 Revenue"
             }
           ]
         }

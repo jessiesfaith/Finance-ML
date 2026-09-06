@@ -23,11 +23,11 @@
                       "Entity": "nfp_990_actuals"
                     }
                   },
-                  "Property": "990 FY23 Deficit"
+                  "Property": "990 FY25 Surplus"
                 }
               },
-              "queryRef": "nfp_990_actuals.990 FY23 Deficit",
-              "nativeQueryRef": "990 FY23 Deficit"
+              "queryRef": "nfp_990_actuals.990 FY25 Surplus",
+              "nativeQueryRef": "990 FY25 Surplus"
             }
           ]
         }

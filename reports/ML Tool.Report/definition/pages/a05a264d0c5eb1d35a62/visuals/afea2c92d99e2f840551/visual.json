@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "c3dd3684fdc682270197",
+  "name": "afea2c92d99e2f840551",
   "position": {
     "x": 165,
-    "y": 4750,
+    "y": 1560,
     "height": 320,
     "width": 1310,
-    "z": 908000,
-    "tabOrder": 908000
+    "z": 902000,
+    "tabOrder": 902000
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "lineChart",
     "query": {
       "queryState": {
         "Category": {
@@ -52,7 +52,7 @@
               },
               "queryRef": "Sum(nfp_990_actuals.amount)",
               "nativeQueryRef": "Sum of amount",
-              "displayName": "filed revenue $"
+              "displayName": "investments - publicly traded $ (Part X line 11)"
             }
           ]
         }
@@ -78,7 +78,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "cf3155c17",
+        "name": "43b4eaee9",
         "field": {
           "Column": {
             "Expression": {
@@ -119,7 +119,7 @@
                     [
                       {
                         "Literal": {
-                          "Value": "'total_revenue'"
+                          "Value": "'investments_securities_end'"
                         }
                       }
                     ]
@@ -131,7 +131,7 @@
         }
       },
       {
-        "name": "b85a0b624",
+        "name": "d3a356ceb",
         "field": {
           "Column": {
             "Expression": {

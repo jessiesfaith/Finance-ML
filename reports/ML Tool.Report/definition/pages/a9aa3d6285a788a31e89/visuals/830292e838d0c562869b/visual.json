@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "b762955f3d306d3b210f",
+  "name": "830292e838d0c562869b",
   "position": {
-    "x": 165,
-    "y": 3730,
-    "height": 520,
-    "width": 2670,
-    "z": 906000,
-    "tabOrder": 906000
+    "x": 1525,
+    "y": 4270,
+    "height": 320,
+    "width": 1310,
+    "z": 906700,
+    "tabOrder": 906700
   },
   "visual": {
-    "visualType": "clusteredBarChart",
+    "visualType": "lineChart",
     "query": {
       "queryState": {
         "Category": {
@@ -23,11 +23,11 @@
                       "Entity": "nfp_990_ratio_actuals"
                     }
                   },
-                  "Property": "ratio"
+                  "Property": "fiscal_year"
                 }
               },
-              "queryRef": "nfp_990_ratio_actuals.ratio",
-              "nativeQueryRef": "ratio",
+              "queryRef": "nfp_990_ratio_actuals.fiscal_year",
+              "nativeQueryRef": "fiscal_year",
               "active": true
             }
           ]
@@ -52,7 +52,7 @@
               },
               "queryRef": "Sum(nfp_990_ratio_actuals.value)",
               "nativeQueryRef": "Sum of value",
-              "displayName": "FY2025 ratio value"
+              "displayName": "months of cash on hand"
             }
           ]
         }
@@ -78,7 +78,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "168e587c8",
+        "name": "da1723411",
         "field": {
           "Column": {
             "Expression": {
@@ -86,7 +86,7 @@
                 "Entity": "nfp_990_ratio_actuals"
               }
             },
-            "Property": "unit"
+            "Property": "ratio_kind"
           }
         },
         "type": "Categorical",
@@ -111,7 +111,7 @@
                             "Source": "t"
                           }
                         },
-                        "Property": "unit"
+                        "Property": "ratio_kind"
                       }
                     }
                   ],
@@ -119,60 +119,7 @@
                     [
                       {
                         "Literal": {
-                          "Value": "'%'"
-                        }
-                      }
-                    ]
-                  ]
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "name": "0fb9fb78e",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "nfp_990_ratio_actuals"
-              }
-            },
-            "Property": "fiscal_year"
-          }
-        },
-        "type": "Categorical",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "t",
-              "Entity": "nfp_990_ratio_actuals",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "In": {
-                  "Expressions": [
-                    {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Source": "t"
-                          }
-                        },
-                        "Property": "fiscal_year"
-                      }
-                    }
-                  ],
-                  "Values": [
-                    [
-                      {
-                        "Literal": {
-                          "Value": "'FY2025'"
+                          "Value": "'months_cash_on_hand'"
                         }
                       }
                     ]

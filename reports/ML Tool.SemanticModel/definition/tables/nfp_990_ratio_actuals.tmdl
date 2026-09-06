@@ -1,38 +1,38 @@
-/// Playbook ratios computed from the REAL filed 990 figures - each row shows its 990 formula and basis.
+/// Playbook ratios computed from the FILED 990 figures for every filed year - ratio_kind filters one ratio across years for trend charts.
 table nfp_990_ratio_actuals
-	lineageTag: 881dacd0-db29-4b94-85a0-b119ff948d90
+	lineageTag: c8fd50ab-af84-4aa9-80a0-46487c0eec90
 
-	measure '990 Op Margin FY24 %' =
+	measure '990 Op Margin FY25 %' =
 			
-			CALCULATE(SUM(nfp_990_ratio_actuals[value]), nfp_990_ratio_actuals[ratio_id] = "R990-OM-FY2024")
+			CALCULATE(SUM(nfp_990_ratio_actuals[value]), nfp_990_ratio_actuals[ratio_id] = "R990-op_margin_pct-FY2025")
 		formatString: 0.00
 		displayFolder: NFP Cards
-		lineageTag: cef67a75-72ac-4a6a-8387-f6a84c4aba38
+		lineageTag: f0d8da79-462d-47cf-8526-41b2171500c2
 
-	measure '990 Revenue Growth %' =
+	measure '990 Months Cash FY25' =
 			
-			CALCULATE(SUM(nfp_990_ratio_actuals[value]), nfp_990_ratio_actuals[ratio_id] = "R990-RG-FY2024")
+			CALCULATE(SUM(nfp_990_ratio_actuals[value]), nfp_990_ratio_actuals[ratio_id] = "R990-months_cash_on_hand-FY2025")
 		formatString: 0.00
 		displayFolder: NFP Cards
-		lineageTag: bff9007f-b22c-4d3e-afc0-51d8f37877be
+		lineageTag: 87281821-01a7-4531-8bdc-c3a68398836d
 
-	measure '990 Expense Coverage FY24' =
+	measure '990 Revenue Growth FY25 %' =
 			
-			CALCULATE(SUM(nfp_990_ratio_actuals[value]), nfp_990_ratio_actuals[ratio_id] = "R990-EC-FY2024")
-		formatString: 0.000
+			CALCULATE(SUM(nfp_990_ratio_actuals[value]), nfp_990_ratio_actuals[ratio_id] = "R990-revenue_growth_pct-FY2025")
+		formatString: 0.00
 		displayFolder: NFP Cards
-		lineageTag: aa3adc37-60dd-4ef1-a475-1f038d9a2c47
+		lineageTag: 39a256e0-b0f8-4e1f-88ae-ee3a791c6e31
 
 	measure '990 Real Ratios' =
 			
 			COUNTROWS(FILTER(nfp_990_ratio_actuals, NOT ISBLANK(nfp_990_ratio_actuals[value])))
 		formatString: 0
 		displayFolder: NFP Cards
-		lineageTag: af0d4c96-ba36-4b59-9ae2-1657804554c7
+		lineageTag: 113e8c96-6745-45f0-900f-9cf68a0737df
 
 	column row_id
 		dataType: string
-		lineageTag: f1851a8a-a3fa-4d96-884f-294c0ab348a6
+		lineageTag: 2533d53d-3fe6-4e99-a8a3-1682c436a515
 		summarizeBy: none
 		sourceColumn: row_id
 
@@ -40,15 +40,23 @@ table nfp_990_ratio_actuals
 
 	column ratio_id
 		dataType: string
-		lineageTag: d5a6b126-d978-42ea-a9b8-1f6859c96535
+		lineageTag: 44e48d7a-05de-4c99-a1d2-cc67131acf47
 		summarizeBy: none
 		sourceColumn: ratio_id
 
 		annotation SummarizationSetBy = Automatic
 
+	column ratio_kind
+		dataType: string
+		lineageTag: 340f0a0d-4575-490b-bc17-dd6c1d6bcd1a
+		summarizeBy: none
+		sourceColumn: ratio_kind
+
+		annotation SummarizationSetBy = Automatic
+
 	column ratio
 		dataType: string
-		lineageTag: 4bc1ea18-bf6f-40a9-8184-1a55f42cfc08
+		lineageTag: c01f12df-fea5-49fb-b696-fdec53196ca5
 		summarizeBy: none
 		sourceColumn: ratio
 
@@ -56,7 +64,7 @@ table nfp_990_ratio_actuals
 
 	column fiscal_year
 		dataType: string
-		lineageTag: 00289782-5ba4-406b-ae79-51a15bcd7e12
+		lineageTag: 5f66932e-132c-4e3c-84b4-d6b12d51a575
 		summarizeBy: none
 		sourceColumn: fiscal_year
 
@@ -64,7 +72,7 @@ table nfp_990_ratio_actuals
 
 	column value
 		dataType: double
-		lineageTag: a6702185-c450-4860-900a-f8a437f02b5f
+		lineageTag: ce7a7254-3ede-421b-85fb-88413137b149
 		summarizeBy: none
 		sourceColumn: value
 
@@ -72,7 +80,7 @@ table nfp_990_ratio_actuals
 
 	column unit
 		dataType: string
-		lineageTag: 529fdc08-2ecc-4345-93dc-81379f9aba7e
+		lineageTag: 2db67ac0-5be0-4d36-9809-1c263fa51112
 		summarizeBy: none
 		sourceColumn: unit
 
@@ -80,7 +88,7 @@ table nfp_990_ratio_actuals
 
 	column formula_990
 		dataType: string
-		lineageTag: 1eed500c-0366-4e14-9caf-613ebd8866c9
+		lineageTag: 10d4fa79-1542-4daf-bacc-7fc8bf6d0496
 		summarizeBy: none
 		sourceColumn: formula_990
 
@@ -88,7 +96,7 @@ table nfp_990_ratio_actuals
 
 	column basis
 		dataType: string
-		lineageTag: cb87dd73-9495-45b0-9a32-ef4e59a08c01
+		lineageTag: ca271fda-cc88-4593-90a0-3e4b229eacbf
 		summarizeBy: none
 		sourceColumn: basis
 
@@ -96,7 +104,7 @@ table nfp_990_ratio_actuals
 
 	column confidence
 		dataType: string
-		lineageTag: fc469245-d211-4833-8b52-c81a356e1fe9
+		lineageTag: ea88fe58-8870-438d-869c-3defeb5c474b
 		summarizeBy: none
 		sourceColumn: confidence
 
@@ -104,7 +112,7 @@ table nfp_990_ratio_actuals
 
 	column value_class
 		dataType: string
-		lineageTag: 2e94460b-021c-4fb4-b595-708ffd746539
+		lineageTag: 40140391-0e95-47d5-a8b4-a8e3f156857e
 		summarizeBy: none
 		sourceColumn: value_class
 
@@ -112,7 +120,7 @@ table nfp_990_ratio_actuals
 
 	column note
 		dataType: string
-		lineageTag: c03a960c-91c6-4a8a-9d72-3f5e2df48335
+		lineageTag: 4f24767b-55f2-46c4-8b2f-9b890b68e1fe
 		summarizeBy: none
 		sourceColumn: note
 
@@ -124,13 +132,14 @@ table nfp_990_ratio_actuals
 				let
 				  Source = Csv.Document(
 				    File.Contents("C:\dev\Finance-ML\reports\nfp_990_ratio_actuals.csv"),
-				    [Delimiter = ",", Columns = 11, QuoteStyle = QuoteStyle.Csv]
+				    [Delimiter = ",", Columns = 12, QuoteStyle = QuoteStyle.Csv]
 				),
 				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "ratio_id", "ratio", "fiscal_year", "value", "unit", "formula_990", "basis", "confidence", "value_class", "note"}),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "ratio_id", "ratio_kind", "ratio", "fiscal_year", "value", "unit", "formula_990", "basis", "confidence", "value_class", "note"}),
 				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
 				    {"row_id", type text},
 				    {"ratio_id", type text},
+				    {"ratio_kind", type text},
 				    {"ratio", type text},
 				    {"fiscal_year", type text},
 				    {"value", type number},

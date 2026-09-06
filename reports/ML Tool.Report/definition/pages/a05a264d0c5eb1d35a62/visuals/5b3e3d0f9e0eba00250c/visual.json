@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "d3ebf0a82a9c9ddb168f",
+  "name": "5b3e3d0f9e0eba00250c",
   "position": {
-    "x": 1525,
-    "y": 4700,
-    "height": 40,
-    "width": 1310,
-    "z": 907000,
-    "tabOrder": 907000
+    "x": 165,
+    "y": 1900,
+    "height": 60,
+    "width": 2670,
+    "z": 904000,
+    "tabOrder": 904000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,9 +19,9 @@
               {
                 "textRuns": [
                   {
-                    "value": "Filed total expenses by year (merged org)",
+                    "value": "FILED figures (owner-provided 990 PDFs, PUBLIC_RESEARCH). The real story of this area: the portfolio grew $13.0M to $19.0M while cash fell to $0.5M in FY2025 - investment policy and liquidity policy are now the same conversation. Scenarios above remain PROPOSAL/ASSUMPTION.",
                     "textStyle": {
-                      "fontSize": "13pt"
+                      "fontSize": "10pt"
                     }
                   }
                 ]

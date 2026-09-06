@@ -23,11 +23,11 @@
                       "Entity": "nfp_990_ratio_actuals"
                     }
                   },
-                  "Property": "990 Revenue Growth %"
+                  "Property": "990 Revenue Growth FY25 %"
                 }
               },
-              "queryRef": "nfp_990_ratio_actuals.990 Revenue Growth %",
-              "nativeQueryRef": "990 Revenue Growth %"
+              "queryRef": "nfp_990_ratio_actuals.990 Revenue Growth FY25 %",
+              "nativeQueryRef": "990 Revenue Growth FY25 %"
             }
           ]
         }

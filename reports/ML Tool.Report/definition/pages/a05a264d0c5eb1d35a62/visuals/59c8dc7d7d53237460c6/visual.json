@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "c3dd3684fdc682270197",
+  "name": "59c8dc7d7d53237460c6",
   "position": {
-    "x": 165,
-    "y": 4750,
+    "x": 1525,
+    "y": 1560,
     "height": 320,
     "width": 1310,
-    "z": 908000,
-    "tabOrder": 908000
+    "z": 903000,
+    "tabOrder": 903000
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "lineChart",
     "query": {
       "queryState": {
         "Category": {
@@ -52,7 +52,7 @@
               },
               "queryRef": "Sum(nfp_990_actuals.amount)",
               "nativeQueryRef": "Sum of amount",
-              "displayName": "filed revenue $"
+              "displayName": "cash + savings $ (Part X lines 1-2)"
             }
           ]
         }
@@ -78,7 +78,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "cf3155c17",
+        "name": "2c67317fd",
         "field": {
           "Column": {
             "Expression": {
@@ -119,7 +119,14 @@
                     [
                       {
                         "Literal": {
-                          "Value": "'total_revenue'"
+                          "Value": "'cash_end'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'savings_end'"
                         }
                       }
                     ]
@@ -131,7 +138,7 @@
         }
       },
       {
-        "name": "b85a0b624",
+        "name": "5499b6a36",
         "field": {
           "Column": {
             "Expression": {

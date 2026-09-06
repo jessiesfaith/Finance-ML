@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Aggregator summaries of the IRS Form 990, verified by web search (direct fetch egress-blocked) - MEDIUM confidence ceiling; click the URLs in nfp_990_actuals.csv to verify. These rows never feed the synthetic operating model above.",
+                    "value": "Read directly from the five Form 990 filings the owner provided (ProPublica full-filing PDFs) - HIGH confidence; each year's prior-year column cross-checks the year before exactly. FY2020 rows in the table are the PRE-MERGER APJCC and are excluded from the charts. These rows never feed the synthetic operating model above.",
                     "textStyle": {
                       "fontSize": "10pt"
                     }

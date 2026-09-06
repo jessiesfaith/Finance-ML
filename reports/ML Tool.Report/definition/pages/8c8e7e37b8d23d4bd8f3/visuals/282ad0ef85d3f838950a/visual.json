@@ -23,11 +23,11 @@
                       "Entity": "nfp_990_actuals"
                     }
                   },
-                  "Property": "990 FY24 Net Assets"
+                  "Property": "990 FY25 Net Assets"
                 }
               },
-              "queryRef": "nfp_990_actuals.990 FY24 Net Assets",
-              "nativeQueryRef": "990 FY24 Net Assets"
+              "queryRef": "nfp_990_actuals.990 FY25 Net Assets",
+              "nativeQueryRef": "990 FY25 Net Assets"
             }
           ]
         }

@@ -23,11 +23,11 @@
                       "Entity": "nfp_990_ratio_actuals"
                     }
                   },
-                  "Property": "990 Op Margin FY24 %"
+                  "Property": "990 Op Margin FY25 %"
                 }
               },
-              "queryRef": "nfp_990_ratio_actuals.990 Op Margin FY24 %",
-              "nativeQueryRef": "990 Op Margin FY24 %"
+              "queryRef": "nfp_990_ratio_actuals.990 Op Margin FY25 %",
+              "nativeQueryRef": "990 Op Margin FY25 %"
             }
           ]
         }

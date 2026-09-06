@@ -23,11 +23,11 @@
                       "Entity": "nfp_990_ratio_actuals"
                     }
                   },
-                  "Property": "990 Expense Coverage FY24"
+                  "Property": "990 Months Cash FY25"
                 }
               },
-              "queryRef": "nfp_990_ratio_actuals.990 Expense Coverage FY24",
-              "nativeQueryRef": "990 Expense Coverage FY24"
+              "queryRef": "nfp_990_ratio_actuals.990 Months Cash FY25",
+              "nativeQueryRef": "990 Months Cash FY25"
             }
           ]
         }
