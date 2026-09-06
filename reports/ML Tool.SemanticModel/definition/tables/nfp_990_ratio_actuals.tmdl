@@ -93,6 +93,7 @@ table nfp_990_ratio_actuals
 
 	column value
 		dataType: double
+		formatString: #,0.##
 		lineageTag: e907a178-8b75-4171-b429-e100470ed5dd
 		summarizeBy: none
 		sourceColumn: value
@@ -149,6 +150,7 @@ table nfp_990_ratio_actuals
 
 	column target_value
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 0bd44a23-805d-4c82-b3b3-dd7b779fa682
 		summarizeBy: none
 		sourceColumn: target_value

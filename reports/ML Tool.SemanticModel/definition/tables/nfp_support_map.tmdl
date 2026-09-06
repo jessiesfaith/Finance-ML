@@ -20,6 +20,7 @@ table nfp_support_map
 
 	column expense_total
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 1eabc51b-a415-4f82-af1b-0a15dab5412d
 		summarizeBy: none
 		sourceColumn: expense_total
@@ -28,6 +29,7 @@ table nfp_support_map
 
 	column funded_by_earned
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 8ca0658e-80af-47e4-b626-6b08166f2168
 		summarizeBy: none
 		sourceColumn: funded_by_earned
@@ -36,6 +38,7 @@ table nfp_support_map
 
 	column funded_by_grants
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 17370bee-5756-491d-b69d-8c8ed977d9d5
 		summarizeBy: none
 		sourceColumn: funded_by_grants
@@ -44,6 +47,7 @@ table nfp_support_map
 
 	column funded_by_restricted_gifts
 		dataType: double
+		formatString: #,0.##
 		lineageTag: aa37598c-18a1-4c9b-8379-30d77e8d34b6
 		summarizeBy: none
 		sourceColumn: funded_by_restricted_gifts
@@ -52,6 +56,7 @@ table nfp_support_map
 
 	column funded_by_sponsorship
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 977c0d38-348c-437a-8c0e-a5fb6c0f2ea3
 		summarizeBy: none
 		sourceColumn: funded_by_sponsorship
@@ -60,6 +65,7 @@ table nfp_support_map
 
 	column funded_by_unrestricted
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 90a3ebdb-398c-40a4-a973-d0c86a1482ce
 		summarizeBy: none
 		sourceColumn: funded_by_unrestricted

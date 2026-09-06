@@ -36,6 +36,7 @@ table nfp_funding_mix
 
 	column amount
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 986b9ba0-9227-475c-942c-0f7e8a1c2f67
 		summarizeBy: none
 		sourceColumn: amount

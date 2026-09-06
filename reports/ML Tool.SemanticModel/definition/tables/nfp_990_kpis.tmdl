@@ -44,6 +44,7 @@ table nfp_990_kpis
 
 	column fy2025_value
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 78687187-1962-4db3-bfb1-df3a5af02c79
 		summarizeBy: none
 		sourceColumn: fy2025_value

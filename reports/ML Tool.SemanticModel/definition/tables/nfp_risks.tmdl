@@ -35,6 +35,7 @@ table nfp_risks
 
 	column likelihood
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 1431a3a8-e9a7-4ac3-85ba-0f3a8e7d76c8
 		summarizeBy: none
 		sourceColumn: likelihood
@@ -43,6 +44,7 @@ table nfp_risks
 
 	column impact
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 7b78bf9c-93b4-4a12-8522-7e12fdc7c76a
 		summarizeBy: none
 		sourceColumn: impact
@@ -75,6 +77,7 @@ table nfp_risks
 
 	column residual_likelihood
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 1242078f-3c85-4358-a616-a645bce35ac6
 		summarizeBy: none
 		sourceColumn: residual_likelihood
@@ -99,6 +102,7 @@ table nfp_risks
 
 	column inherent_score
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 20ac5e0c-8291-44fa-9c39-640255e0df87
 		summarizeBy: none
 		sourceColumn: inherent_score
@@ -107,6 +111,7 @@ table nfp_risks
 
 	column residual_score
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 323f6eed-062e-4d53-8eda-479b76b71569
 		summarizeBy: none
 		sourceColumn: residual_score

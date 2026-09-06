@@ -20,6 +20,7 @@ table nfp_financing
 
 	column cost_estimate
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 0966e46f-b325-4666-8694-beed3018fab5
 		summarizeBy: none
 		sourceColumn: cost_estimate
@@ -36,6 +37,7 @@ table nfp_financing
 
 	column months_cash_after
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 85cc44b5-3bdb-4c3a-b8d7-64e402f9426b
 		summarizeBy: none
 		sourceColumn: months_cash_after

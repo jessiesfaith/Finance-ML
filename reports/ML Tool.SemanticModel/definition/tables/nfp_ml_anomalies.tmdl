@@ -35,6 +35,7 @@ table nfp_ml_anomalies
 
 	column value
 		dataType: double
+		formatString: #,0.##
 		lineageTag: ab9b13f7-0db0-4392-b7b1-85944584a885
 		summarizeBy: none
 		sourceColumn: value
@@ -43,6 +44,7 @@ table nfp_ml_anomalies
 
 	column z_score
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 842c2334-00ac-46f3-aa04-920ed3892a5f
 		summarizeBy: none
 		sourceColumn: z_score

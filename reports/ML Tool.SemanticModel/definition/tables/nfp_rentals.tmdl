@@ -35,6 +35,7 @@ table nfp_rentals
 
 	column annual_income
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 3e5d5c3a-381a-4c8c-a206-bf4dd7e60c76
 		summarizeBy: none
 		sourceColumn: annual_income
@@ -43,6 +44,7 @@ table nfp_rentals
 
 	column utilization_pct
 		dataType: double
+		formatString: #,0.##
 		lineageTag: fe048e43-3676-4086-88b4-c423e1a11e13
 		summarizeBy: none
 		sourceColumn: utilization_pct

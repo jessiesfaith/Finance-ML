@@ -36,6 +36,7 @@ table nfp_fin_statements
 
 	column fy2021
 		dataType: double
+		formatString: #,0.##
 		lineageTag: ac749c1a-602e-4f66-a9ec-e4d74de660bc
 		summarizeBy: none
 		sourceColumn: fy2021
@@ -44,6 +45,7 @@ table nfp_fin_statements
 
 	column fy2022
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 0e9bbaf1-8ee0-44ae-abd9-742e1c71c72d
 		summarizeBy: none
 		sourceColumn: fy2022
@@ -52,6 +54,7 @@ table nfp_fin_statements
 
 	column fy2023
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 36351686-45e7-42e3-b114-e04e26770bac
 		summarizeBy: none
 		sourceColumn: fy2023
@@ -60,6 +63,7 @@ table nfp_fin_statements
 
 	column fy2024
 		dataType: double
+		formatString: #,0.##
 		lineageTag: db7f8912-f493-4f76-bfc8-100c8a33ebd5
 		summarizeBy: none
 		sourceColumn: fy2024
@@ -68,6 +72,7 @@ table nfp_fin_statements
 
 	column fy2025
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 99364eac-30e5-4f00-82b8-451e3032297c
 		summarizeBy: none
 		sourceColumn: fy2025

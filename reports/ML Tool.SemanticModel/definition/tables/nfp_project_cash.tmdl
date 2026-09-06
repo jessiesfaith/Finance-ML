@@ -12,6 +12,7 @@ table nfp_project_cash
 
 	column month
 		dataType: double
+		formatString: #,0.##
 		lineageTag: bf4cbee2-6c6c-4e8c-b7ec-eaa1c8eef4ae
 		summarizeBy: none
 		sourceColumn: month
@@ -20,6 +21,7 @@ table nfp_project_cash
 
 	column beginning_cash
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 90b6514f-5e8c-43d0-91d3-0ae307ff9009
 		summarizeBy: none
 		sourceColumn: beginning_cash
@@ -28,6 +30,7 @@ table nfp_project_cash
 
 	column campaign_receipts
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 389990f1-bc52-462d-8c9f-08fe5b67cdcb
 		summarizeBy: none
 		sourceColumn: campaign_receipts
@@ -36,6 +39,7 @@ table nfp_project_cash
 
 	column debt_draws
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 759e0652-4ce6-4ebd-8822-787e76815dbb
 		summarizeBy: none
 		sourceColumn: debt_draws
@@ -44,6 +48,7 @@ table nfp_project_cash
 
 	column project_spending
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 5a77b91e-4bd3-4026-9342-f650500b7325
 		summarizeBy: none
 		sourceColumn: project_spending
@@ -52,6 +57,7 @@ table nfp_project_cash
 
 	column financing_costs
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 43cd99ae-3f12-4b88-baa5-db710d4cc972
 		summarizeBy: none
 		sourceColumn: financing_costs
@@ -60,6 +66,7 @@ table nfp_project_cash
 
 	column ending_cash
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 16875bec-26f7-4e51-b42e-80ca3e599e5c
 		summarizeBy: none
 		sourceColumn: ending_cash
@@ -68,6 +75,7 @@ table nfp_project_cash
 
 	column loc_balance
 		dataType: double
+		formatString: #,0.##
 		lineageTag: fc542f4a-643f-4ced-a0dc-4776ec53b786
 		summarizeBy: none
 		sourceColumn: loc_balance

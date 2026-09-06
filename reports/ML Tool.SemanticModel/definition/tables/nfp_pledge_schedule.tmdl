@@ -41,6 +41,7 @@ table nfp_pledge_schedule
 
 	column expected_collections
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 7daa08f5-3d46-4ea7-afa6-2d93fca7ebd2
 		summarizeBy: none
 		sourceColumn: expected_collections
@@ -49,6 +50,7 @@ table nfp_pledge_schedule
 
 	column cumulative_expected
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 885f667f-d0fd-4261-8cf1-be25bb71dac4
 		summarizeBy: none
 		sourceColumn: cumulative_expected
@@ -57,6 +59,7 @@ table nfp_pledge_schedule
 
 	column run_rate_annualized
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 23d2008e-8045-4700-a68e-3fce6a8be1bb
 		summarizeBy: none
 		sourceColumn: run_rate_annualized

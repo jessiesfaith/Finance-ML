@@ -75,6 +75,7 @@ table nfp_programs
 
 	column participants
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 5539c12c-7d29-4de4-aa7b-acde9072ce0f
 		summarizeBy: none
 		sourceColumn: participants
@@ -83,6 +84,7 @@ table nfp_programs
 
 	column capacity
 		dataType: double
+		formatString: #,0.##
 		lineageTag: b83b4be1-924c-4507-865c-60d12ba0dae4
 		summarizeBy: none
 		sourceColumn: capacity
@@ -91,6 +93,7 @@ table nfp_programs
 
 	column utilization_pct
 		dataType: double
+		formatString: #,0.##
 		lineageTag: f8da3a29-1c32-48d2-9edd-1fb48cb571d3
 		summarizeBy: none
 		sourceColumn: utilization_pct
@@ -99,6 +102,7 @@ table nfp_programs
 
 	column earned_revenue
 		dataType: double
+		formatString: #,0.##
 		lineageTag: eddf9fdf-4c16-46d3-9e93-d60b940bbf85
 		summarizeBy: none
 		sourceColumn: earned_revenue
@@ -107,6 +111,7 @@ table nfp_programs
 
 	column grants
 		dataType: double
+		formatString: #,0.##
 		lineageTag: a6802f37-b53c-428a-8776-92511f59c5f5
 		summarizeBy: none
 		sourceColumn: grants
@@ -115,6 +120,7 @@ table nfp_programs
 
 	column restricted_contrib
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 67c857cb-5d7e-4e0c-8601-95aa6bdd8ba9
 		summarizeBy: none
 		sourceColumn: restricted_contrib
@@ -123,6 +129,7 @@ table nfp_programs
 
 	column unrestricted_contrib
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 341836fe-872b-4a39-94a1-aad982759321
 		summarizeBy: none
 		sourceColumn: unrestricted_contrib
@@ -131,6 +138,7 @@ table nfp_programs
 
 	column sponsorship
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 5790b611-07a8-4319-95f7-3357f3943702
 		summarizeBy: none
 		sourceColumn: sponsorship
@@ -139,6 +147,7 @@ table nfp_programs
 
 	column total_funding
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 3e71a289-4730-4c07-8921-594bbedaf907
 		summarizeBy: none
 		sourceColumn: total_funding
@@ -147,6 +156,7 @@ table nfp_programs
 
 	column personnel
 		dataType: double
+		formatString: #,0.##
 		lineageTag: ca1097c7-cb3f-470b-abce-419251a8b844
 		summarizeBy: none
 		sourceColumn: personnel
@@ -155,6 +165,7 @@ table nfp_programs
 
 	column direct_costs
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 2db3ecbe-a3af-4f78-b51c-b3d0e3d31d3a
 		summarizeBy: none
 		sourceColumn: direct_costs
@@ -163,6 +174,7 @@ table nfp_programs
 
 	column allocated_overhead
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 5cd8b3dd-2b93-4d1e-9a8a-7fe7ba96ae4c
 		summarizeBy: none
 		sourceColumn: allocated_overhead
@@ -171,6 +183,7 @@ table nfp_programs
 
 	column total_cost
 		dataType: double
+		formatString: #,0.##
 		lineageTag: cbb8c325-030a-4b30-959f-9085d6b51f98
 		summarizeBy: none
 		sourceColumn: total_cost
@@ -179,6 +192,7 @@ table nfp_programs
 
 	column funding_gap
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 142aa90b-ac80-473d-b34e-c8c2e77eb7dd
 		summarizeBy: none
 		sourceColumn: funding_gap
@@ -187,6 +201,7 @@ table nfp_programs
 
 	column cost_per_participant
 		dataType: double
+		formatString: #,0.##
 		lineageTag: c3a30cc4-b794-447d-8d3d-cb5c42288c1d
 		summarizeBy: none
 		sourceColumn: cost_per_participant
@@ -195,6 +210,7 @@ table nfp_programs
 
 	column funding_per_participant
 		dataType: double
+		formatString: #,0.##
 		lineageTag: b5ea6cb2-75f9-4901-a8b7-1cacfa09c5e5
 		summarizeBy: none
 		sourceColumn: funding_per_participant
@@ -203,6 +219,7 @@ table nfp_programs
 
 	column unrestricted_subsidy
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 8727a028-192f-4235-901e-b8a4b63715df
 		summarizeBy: none
 		sourceColumn: unrestricted_subsidy
@@ -211,6 +228,7 @@ table nfp_programs
 
 	column subsidy_per_participant
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 4c0da7f3-fbb7-475c-95d3-dea569933081
 		summarizeBy: none
 		sourceColumn: subsidy_per_participant
@@ -219,6 +237,7 @@ table nfp_programs
 
 	column self_sufficiency_pct
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 8b85ca40-2000-4932-9025-caaada23dc14
 		summarizeBy: none
 		sourceColumn: self_sufficiency_pct
@@ -227,6 +246,7 @@ table nfp_programs
 
 	column grant_dependency_pct
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 060382af-a42e-4ebe-ae70-069b1461a98e
 		summarizeBy: none
 		sourceColumn: grant_dependency_pct
@@ -235,6 +255,7 @@ table nfp_programs
 
 	column top_donor_dependency_pct
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 46829232-c329-4f26-852d-3af00d2cf5d3
 		summarizeBy: none
 		sourceColumn: top_donor_dependency_pct
@@ -243,6 +264,7 @@ table nfp_programs
 
 	column restricted_funding_pct
 		dataType: double
+		formatString: #,0.##
 		lineageTag: dd898905-5ebe-4d77-80d7-6bc7fb330924
 		summarizeBy: none
 		sourceColumn: restricted_funding_pct
@@ -251,6 +273,7 @@ table nfp_programs
 
 	column grant_renewal_pct
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 94284a8f-3418-4812-9155-2263a5190a6b
 		summarizeBy: none
 		sourceColumn: grant_renewal_pct
@@ -259,6 +282,7 @@ table nfp_programs
 
 	column expected_funding
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 8fa40746-4426-47c1-a188-f7da66ea694a
 		summarizeBy: none
 		sourceColumn: expected_funding
@@ -267,6 +291,7 @@ table nfp_programs
 
 	column probability_weighted_gap
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 83e99c20-599d-4e49-ba96-cd8dbf50ebde
 		summarizeBy: none
 		sourceColumn: probability_weighted_gap
@@ -275,6 +300,7 @@ table nfp_programs
 
 	column mission_score
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 9d66faf1-97a1-49f6-938a-4e092ac905f1
 		summarizeBy: none
 		sourceColumn: mission_score
@@ -283,6 +309,7 @@ table nfp_programs
 
 	column risk_rating
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 2ef55d36-23d7-4a30-9d3a-f0a3f9d35dc3
 		summarizeBy: none
 		sourceColumn: risk_rating

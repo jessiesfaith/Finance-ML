@@ -42,6 +42,7 @@ table nfp_pledges
 
 	column amount
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 690dcdf0-922c-41b4-bc15-503783dcbb57
 		summarizeBy: none
 		sourceColumn: amount
@@ -50,6 +51,7 @@ table nfp_pledges
 
 	column collected
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 87d2b611-67ab-4dd2-8a62-5082ae45e05d
 		summarizeBy: none
 		sourceColumn: collected
@@ -82,6 +84,7 @@ table nfp_pledges
 
 	column collection_probability_pct
 		dataType: double
+		formatString: #,0.##
 		lineageTag: 70d14e45-8fca-4795-8b3e-621522795807
 		summarizeBy: none
 		sourceColumn: collection_probability_pct
@@ -90,6 +93,7 @@ table nfp_pledges
 
 	column days_past_due
 		dataType: double
+		formatString: #,0.##
 		lineageTag: f8bd483a-ce8c-4edd-9cd8-691bc6a7539c
 		summarizeBy: none
 		sourceColumn: days_past_due
@@ -106,6 +110,7 @@ table nfp_pledges
 
 	column outstanding
 		dataType: double
+		formatString: #,0.##
 		lineageTag: c2aac599-acc8-4614-bcab-2f27bb4753d3
 		summarizeBy: none
 		sourceColumn: outstanding
@@ -114,6 +119,7 @@ table nfp_pledges
 
 	column expected_pledge_cash
 		dataType: double
+		formatString: #,0.##
 		lineageTag: b8c87c77-5cef-446b-ad6f-7539ac353b0b
 		summarizeBy: none
 		sourceColumn: expected_pledge_cash
@@ -122,6 +128,7 @@ table nfp_pledges
 
 	column collection_pct
 		dataType: double
+		formatString: #,0.##
 		lineageTag: b385f01c-4a66-4fcc-9bb9-b5d57d360ba1
 		summarizeBy: none
 		sourceColumn: collection_pct

@@ -28,6 +28,7 @@ table nfp_cfo_review
 
 	column fy2025_value
 		dataType: double
+		formatString: #,0.##
 		lineageTag: dad87d0e-e98f-4466-b1ff-b8f071a2f607
 		summarizeBy: none
 		sourceColumn: fy2025_value
