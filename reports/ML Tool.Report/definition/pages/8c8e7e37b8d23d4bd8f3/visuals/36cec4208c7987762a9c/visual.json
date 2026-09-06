@@ -5,12 +5,12 @@
     "x": 165,
     "y": 3640,
     "height": 320,
-    "width": 1310,
+    "width": 2670,
     "z": 703000,
     "tabOrder": 703000
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "lineClusteredColumnComboChart",
     "query": {
       "queryState": {
         "Category": {
@@ -52,7 +52,31 @@
               },
               "queryRef": "Sum(nfp_pledge_schedule.expected_collections)",
               "nativeQueryRef": "Sum of expected_collections",
-              "displayName": "expected collections $"
+              "displayName": "expected collections $ (bars)"
+            }
+          ]
+        },
+        "Y2": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_pledge_schedule"
+                        }
+                      },
+                      "Property": "cumulative_expected"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_pledge_schedule.cumulative_expected)",
+              "nativeQueryRef": "Sum of cumulative_expected",
+              "displayName": "cumulative expected $ (line)"
             }
           ]
         }
@@ -65,7 +89,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             }
