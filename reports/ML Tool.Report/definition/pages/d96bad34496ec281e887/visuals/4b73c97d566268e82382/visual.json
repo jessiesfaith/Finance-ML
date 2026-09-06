@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "2fce25f7c6d471c1a69f",
+  "name": "4b73c97d566268e82382",
   "position": {
     "x": 165,
-    "y": 2065,
-    "height": 280,
+    "y": 3334,
+    "height": 1400,
     "width": 2670,
-    "z": 14000,
-    "tabOrder": 14000
+    "z": 211000,
+    "tabOrder": 211000
   },
   "visual": {
     "visualType": "tableEx",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_sensitivity"
+                      "Entity": "nfp_990_kpis"
                     }
                   },
                   "Property": "row_id"
                 }
               },
-              "queryRef": "nfp_sensitivity.row_id",
+              "queryRef": "nfp_990_kpis.row_id",
               "nativeQueryRef": "row_id",
               "displayName": "#"
             },
@@ -35,105 +35,150 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_sensitivity"
+                      "Entity": "nfp_990_kpis"
                     }
                   },
-                  "Property": "rank"
+                  "Property": "kpi"
                 }
               },
-              "queryRef": "nfp_sensitivity.rank",
-              "nativeQueryRef": "rank",
-              "displayName": "rank"
+              "queryRef": "nfp_990_kpis.kpi",
+              "nativeQueryRef": "kpi",
+              "displayName": "KPI"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_sensitivity"
+                      "Entity": "nfp_990_kpis"
                     }
                   },
-                  "Property": "driver"
+                  "Property": "fy2025_value"
                 }
               },
-              "queryRef": "nfp_sensitivity.driver",
-              "nativeQueryRef": "driver",
-              "displayName": "driver"
+              "queryRef": "nfp_990_kpis.fy2025_value",
+              "nativeQueryRef": "fy2025_value",
+              "displayName": "FY25 value"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_sensitivity"
+                      "Entity": "nfp_990_kpis"
                     }
                   },
-                  "Property": "metric"
+                  "Property": "target_value"
                 }
               },
-              "queryRef": "nfp_sensitivity.metric",
-              "nativeQueryRef": "metric",
-              "displayName": "metric"
+              "queryRef": "nfp_990_kpis.target_value",
+              "nativeQueryRef": "target_value",
+              "displayName": "target"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_sensitivity"
+                      "Entity": "nfp_990_kpis"
                     }
                   },
-                  "Property": "base_value"
+                  "Property": "variance_to_target"
                 }
               },
-              "queryRef": "nfp_sensitivity.base_value",
-              "nativeQueryRef": "base_value",
-              "displayName": "base"
+              "queryRef": "nfp_990_kpis.variance_to_target",
+              "nativeQueryRef": "variance_to_target",
+              "displayName": "variance"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_sensitivity"
+                      "Entity": "nfp_990_kpis"
                     }
                   },
-                  "Property": "downside_value"
+                  "Property": "vs_target"
                 }
               },
-              "queryRef": "nfp_sensitivity.downside_value",
-              "nativeQueryRef": "downside_value",
-              "displayName": "downside"
+              "queryRef": "nfp_990_kpis.vs_target",
+              "nativeQueryRef": "vs_target",
+              "displayName": "vs target"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_sensitivity"
+                      "Entity": "nfp_990_kpis"
                     }
                   },
-                  "Property": "upside_value"
+                  "Property": "fy2024_value"
                 }
               },
-              "queryRef": "nfp_sensitivity.upside_value",
-              "nativeQueryRef": "upside_value",
-              "displayName": "upside"
+              "queryRef": "nfp_990_kpis.fy2024_value",
+              "nativeQueryRef": "fy2024_value",
+              "displayName": "FY24"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_sensitivity"
+                      "Entity": "nfp_990_kpis"
                     }
                   },
-                  "Property": "swing"
+                  "Property": "yoy_variance"
                 }
               },
-              "queryRef": "nfp_sensitivity.swing",
-              "nativeQueryRef": "swing",
-              "displayName": "swing $"
+              "queryRef": "nfp_990_kpis.yoy_variance",
+              "nativeQueryRef": "yoy_variance",
+              "displayName": "YoY var"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_kpis"
+                    }
+                  },
+                  "Property": "unit"
+                }
+              },
+              "queryRef": "nfp_990_kpis.unit",
+              "nativeQueryRef": "unit",
+              "displayName": "unit"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_kpis"
+                    }
+                  },
+                  "Property": "typical_audience"
+                }
+              },
+              "queryRef": "nfp_990_kpis.typical_audience",
+              "nativeQueryRef": "typical_audience",
+              "displayName": "typically reviewed by"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_kpis"
+                    }
+                  },
+                  "Property": "description"
+                }
+              },
+              "queryRef": "nfp_990_kpis.description",
+              "nativeQueryRef": "description",
+              "displayName": "what it means here"
             }
           ]
         }
@@ -145,7 +190,7 @@
               "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "nfp_sensitivity"
+                    "Entity": "nfp_990_kpis"
                   }
                 },
                 "Property": "row_id"
@@ -156,7 +201,6 @@
         ]
       }
     },
-    "drillFilterOtherVisuals": true,
     "objects": {
       "values": [
         {
@@ -172,7 +216,7 @@
         },
         {
           "selector": {
-            "metadata": "nfp_sensitivity.rank"
+            "metadata": "nfp_990_kpis.fy2025_value"
           },
           "properties": {
             "fontColor": {
@@ -189,10 +233,10 @@
                                 "Column": {
                                   "Expression": {
                                     "SourceRef": {
-                                      "Entity": "nfp_sensitivity"
+                                      "Entity": "nfp_990_kpis"
                                     }
                                   },
-                                  "Property": "rank"
+                                  "Property": "fy2025_value"
                                 }
                               },
                               "Right": {
@@ -218,7 +262,7 @@
         },
         {
           "selector": {
-            "metadata": "nfp_sensitivity.base_value"
+            "metadata": "nfp_990_kpis.target_value"
           },
           "properties": {
             "fontColor": {
@@ -235,10 +279,10 @@
                                 "Column": {
                                   "Expression": {
                                     "SourceRef": {
-                                      "Entity": "nfp_sensitivity"
+                                      "Entity": "nfp_990_kpis"
                                     }
                                   },
-                                  "Property": "base_value"
+                                  "Property": "target_value"
                                 }
                               },
                               "Right": {
@@ -264,7 +308,7 @@
         },
         {
           "selector": {
-            "metadata": "nfp_sensitivity.downside_value"
+            "metadata": "nfp_990_kpis.variance_to_target"
           },
           "properties": {
             "fontColor": {
@@ -281,10 +325,10 @@
                                 "Column": {
                                   "Expression": {
                                     "SourceRef": {
-                                      "Entity": "nfp_sensitivity"
+                                      "Entity": "nfp_990_kpis"
                                     }
                                   },
-                                  "Property": "downside_value"
+                                  "Property": "variance_to_target"
                                 }
                               },
                               "Right": {
@@ -310,7 +354,7 @@
         },
         {
           "selector": {
-            "metadata": "nfp_sensitivity.upside_value"
+            "metadata": "nfp_990_kpis.fy2024_value"
           },
           "properties": {
             "fontColor": {
@@ -327,10 +371,10 @@
                                 "Column": {
                                   "Expression": {
                                     "SourceRef": {
-                                      "Entity": "nfp_sensitivity"
+                                      "Entity": "nfp_990_kpis"
                                     }
                                   },
-                                  "Property": "upside_value"
+                                  "Property": "fy2024_value"
                                 }
                               },
                               "Right": {
@@ -356,7 +400,7 @@
         },
         {
           "selector": {
-            "metadata": "nfp_sensitivity.swing"
+            "metadata": "nfp_990_kpis.yoy_variance"
           },
           "properties": {
             "fontColor": {
@@ -373,10 +417,10 @@
                                 "Column": {
                                   "Expression": {
                                     "SourceRef": {
-                                      "Entity": "nfp_sensitivity"
+                                      "Entity": "nfp_990_kpis"
                                     }
                                   },
-                                  "Property": "swing"
+                                  "Property": "yoy_variance"
                                 }
                               },
                               "Right": {
@@ -414,6 +458,7 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

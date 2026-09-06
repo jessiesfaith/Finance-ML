@@ -1,10 +1,10 @@
-/// CFO review panel: latest value, 5-year path, benchmark/policy, verdict and reading per key ratio.
+/// CFO review: every filed year in its own column, target, variance to target, YoY variance, verdict and reading.
 table nfp_cfo_review
-	lineageTag: aa6f89b2-795c-4081-8441-24496e216829
+	lineageTag: 23c281d6-17f2-49e8-826a-484b83c81287
 
 	column row_id
 		dataType: string
-		lineageTag: 1894cb0e-76ea-4189-a934-75f125a93dcc
+		lineageTag: a00e0eb5-2379-4f1f-91f5-d22170489cf4
 		summarizeBy: none
 		sourceColumn: row_id
 
@@ -12,7 +12,7 @@ table nfp_cfo_review
 
 	column ratio_kind
 		dataType: string
-		lineageTag: 8ac8cdea-3ac2-4a1f-99ac-6ffc965035e6
+		lineageTag: 4088afed-b859-4af6-a87d-6a736b633c57
 		summarizeBy: none
 		sourceColumn: ratio_kind
 
@@ -20,7 +20,7 @@ table nfp_cfo_review
 
 	column ratio
 		dataType: string
-		lineageTag: de3fabb4-9a6c-412b-a349-5def1d9bbe59
+		lineageTag: 86c25184-cf1c-428d-9999-54de8680145f
 		summarizeBy: none
 		sourceColumn: ratio
 
@@ -29,7 +29,7 @@ table nfp_cfo_review
 	column fy2025_value
 		dataType: double
 		formatString: #,0.##
-		lineageTag: dad87d0e-e98f-4466-b1ff-b8f071a2f607
+		lineageTag: c8c9a5f0-1d5c-4f34-98ee-0393387f873a
 		summarizeBy: none
 		sourceColumn: fy2025_value
 
@@ -37,7 +37,7 @@ table nfp_cfo_review
 
 	column unit
 		dataType: string
-		lineageTag: d68895b5-c3f3-4342-8217-eeccac1c229c
+		lineageTag: b526e0a6-334f-4781-930a-473331611a8b
 		summarizeBy: none
 		sourceColumn: unit
 
@@ -45,7 +45,7 @@ table nfp_cfo_review
 
 	column trend_fy2021_fy2025
 		dataType: string
-		lineageTag: a57832be-d7e1-4a20-8366-e8f7ecf6c8f3
+		lineageTag: 44b87946-5d15-4d09-be3c-77214c5abc37
 		summarizeBy: none
 		sourceColumn: trend_fy2021_fy2025
 
@@ -53,7 +53,7 @@ table nfp_cfo_review
 
 	column benchmark_or_policy
 		dataType: string
-		lineageTag: 77c05368-761a-4baf-a4f1-090aa8c10185
+		lineageTag: 36a3f7b7-008a-45a1-a271-d48c51d0c54a
 		summarizeBy: none
 		sourceColumn: benchmark_or_policy
 
@@ -61,7 +61,7 @@ table nfp_cfo_review
 
 	column vs_target
 		dataType: string
-		lineageTag: 2396ca87-456c-4c88-a82d-948a88e9df19
+		lineageTag: 80d25768-a511-4eec-a113-a334823be2a9
 		summarizeBy: none
 		sourceColumn: vs_target
 
@@ -69,15 +69,87 @@ table nfp_cfo_review
 
 	column cfo_reading
 		dataType: string
-		lineageTag: df916224-cd32-4a94-9c10-80601a5af54a
+		lineageTag: e22bad89-4bfa-4787-89e1-9aac283ce4d3
 		summarizeBy: none
 		sourceColumn: cfo_reading
 
 		annotation SummarizationSetBy = Automatic
 
+	column fy2021
+		dataType: double
+		formatString: #,0.##
+		lineageTag: cc9f52e7-02c4-4e89-8734-aed638fdef9d
+		summarizeBy: none
+		sourceColumn: fy2021
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy2022
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 8e54a915-9b07-4728-9b3f-42046b431a2a
+		summarizeBy: none
+		sourceColumn: fy2022
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy2023
+		dataType: double
+		formatString: #,0.##
+		lineageTag: b77fbb62-f840-47ff-970d-eead2bf00e50
+		summarizeBy: none
+		sourceColumn: fy2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy2024
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 09e9d46b-5d02-496c-b4fb-c660bc1b8f98
+		summarizeBy: none
+		sourceColumn: fy2024
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy2025
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 98e724b4-d2cd-4caf-b14d-9769847ae33c
+		summarizeBy: none
+		sourceColumn: fy2025
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_value
+		dataType: double
+		formatString: #,0.##
+		lineageTag: a3567252-b037-4476-93ea-e599b630f515
+		summarizeBy: none
+		sourceColumn: target_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column variance_to_target
+		dataType: double
+		formatString: #,0.##
+		lineageTag: ca0213f0-23ef-4a51-9f37-ae28fc2542b3
+		summarizeBy: none
+		sourceColumn: variance_to_target
+
+		annotation SummarizationSetBy = Automatic
+
+	column yoy_variance
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 86a07c66-3fc4-457d-b6dc-90cb029e92d5
+		summarizeBy: none
+		sourceColumn: yoy_variance
+
+		annotation SummarizationSetBy = Automatic
+
 	column value_class
 		dataType: string
-		lineageTag: 9b78e06d-1369-42e4-97c9-c22a0a629f80
+		lineageTag: 55b6ccda-5b55-42be-9e45-52be94b9280f
 		summarizeBy: none
 		sourceColumn: value_class
 
@@ -89,10 +161,10 @@ table nfp_cfo_review
 				let
 				  Source = Csv.Document(
 				    File.Contents("C:\dev\Finance-ML\reports\nfp_cfo_review.csv"),
-				    [Delimiter = ",", Columns = 10, QuoteStyle = QuoteStyle.Csv]
+				    [Delimiter = ",", Columns = 18, QuoteStyle = QuoteStyle.Csv]
 				),
 				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "ratio_kind", "ratio", "fy2025_value", "unit", "trend_fy2021_fy2025", "benchmark_or_policy", "vs_target", "cfo_reading", "value_class"}),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "ratio_kind", "ratio", "fy2025_value", "unit", "trend_fy2021_fy2025", "benchmark_or_policy", "vs_target", "cfo_reading", "fy2021", "fy2022", "fy2023", "fy2024", "fy2025", "target_value", "variance_to_target", "yoy_variance", "value_class"}),
 				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
 				    {"row_id", type text},
 				    {"ratio_kind", type text},
@@ -103,6 +175,14 @@ table nfp_cfo_review
 				    {"benchmark_or_policy", type text},
 				    {"vs_target", type text},
 				    {"cfo_reading", type text},
+				    {"fy2021", type number},
+				    {"fy2022", type number},
+				    {"fy2023", type number},
+				    {"fy2024", type number},
+				    {"fy2025", type number},
+				    {"target_value", type number},
+				    {"variance_to_target", type number},
+				    {"yoy_variance", type number},
 				    {"value_class", type text}
 				  })
 				in

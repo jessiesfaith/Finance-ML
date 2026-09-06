@@ -53,12 +53,12 @@
                       "Entity": "nfp_cfo_review"
                     }
                   },
-                  "Property": "fy2025_value"
+                  "Property": "fy2021"
                 }
               },
-              "queryRef": "nfp_cfo_review.fy2025_value",
-              "nativeQueryRef": "fy2025_value",
-              "displayName": "FY25"
+              "queryRef": "nfp_cfo_review.fy2021",
+              "nativeQueryRef": "fy2021",
+              "displayName": "FY2021"
             },
             {
               "field": {
@@ -68,12 +68,12 @@
                       "Entity": "nfp_cfo_review"
                     }
                   },
-                  "Property": "trend_fy2021_fy2025"
+                  "Property": "fy2022"
                 }
               },
-              "queryRef": "nfp_cfo_review.trend_fy2021_fy2025",
-              "nativeQueryRef": "trend_fy2021_fy2025",
-              "displayName": "FY21 > FY25"
+              "queryRef": "nfp_cfo_review.fy2022",
+              "nativeQueryRef": "fy2022",
+              "displayName": "FY2022"
             },
             {
               "field": {
@@ -83,12 +83,87 @@
                       "Entity": "nfp_cfo_review"
                     }
                   },
-                  "Property": "benchmark_or_policy"
+                  "Property": "fy2023"
                 }
               },
-              "queryRef": "nfp_cfo_review.benchmark_or_policy",
-              "nativeQueryRef": "benchmark_or_policy",
-              "displayName": "benchmark / policy"
+              "queryRef": "nfp_cfo_review.fy2023",
+              "nativeQueryRef": "fy2023",
+              "displayName": "FY2023"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cfo_review"
+                    }
+                  },
+                  "Property": "fy2024"
+                }
+              },
+              "queryRef": "nfp_cfo_review.fy2024",
+              "nativeQueryRef": "fy2024",
+              "displayName": "FY2024"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cfo_review"
+                    }
+                  },
+                  "Property": "fy2025"
+                }
+              },
+              "queryRef": "nfp_cfo_review.fy2025",
+              "nativeQueryRef": "fy2025",
+              "displayName": "FY2025"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cfo_review"
+                    }
+                  },
+                  "Property": "target_value"
+                }
+              },
+              "queryRef": "nfp_cfo_review.target_value",
+              "nativeQueryRef": "target_value",
+              "displayName": "target"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cfo_review"
+                    }
+                  },
+                  "Property": "yoy_variance"
+                }
+              },
+              "queryRef": "nfp_cfo_review.yoy_variance",
+              "nativeQueryRef": "yoy_variance",
+              "displayName": "YoY var"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cfo_review"
+                    }
+                  },
+                  "Property": "variance_to_target"
+                }
+              },
+              "queryRef": "nfp_cfo_review.variance_to_target",
+              "nativeQueryRef": "variance_to_target",
+              "displayName": "var vs target"
             },
             {
               "field": {
@@ -141,7 +216,6 @@
         ]
       }
     },
-    "drillFilterOtherVisuals": true,
     "objects": {
       "values": [
         {
@@ -150,6 +224,374 @@
               "expr": {
                 "Literal": {
                   "Value": "18D"
+                }
+              }
+            }
+          }
+        },
+        {
+          "selector": {
+            "metadata": "nfp_cfo_review.fy2021"
+          },
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 3,
+                              "Left": {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "nfp_cfo_review"
+                                    }
+                                  },
+                                  "Property": "fy2021"
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "0D"
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#D13438'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "selector": {
+            "metadata": "nfp_cfo_review.fy2022"
+          },
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 3,
+                              "Left": {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "nfp_cfo_review"
+                                    }
+                                  },
+                                  "Property": "fy2022"
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "0D"
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#D13438'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "selector": {
+            "metadata": "nfp_cfo_review.fy2023"
+          },
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 3,
+                              "Left": {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "nfp_cfo_review"
+                                    }
+                                  },
+                                  "Property": "fy2023"
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "0D"
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#D13438'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "selector": {
+            "metadata": "nfp_cfo_review.fy2024"
+          },
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 3,
+                              "Left": {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "nfp_cfo_review"
+                                    }
+                                  },
+                                  "Property": "fy2024"
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "0D"
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#D13438'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "selector": {
+            "metadata": "nfp_cfo_review.fy2025"
+          },
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 3,
+                              "Left": {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "nfp_cfo_review"
+                                    }
+                                  },
+                                  "Property": "fy2025"
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "0D"
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#D13438'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "selector": {
+            "metadata": "nfp_cfo_review.target_value"
+          },
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 3,
+                              "Left": {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "nfp_cfo_review"
+                                    }
+                                  },
+                                  "Property": "target_value"
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "0D"
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#D13438'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "selector": {
+            "metadata": "nfp_cfo_review.yoy_variance"
+          },
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 3,
+                              "Left": {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "nfp_cfo_review"
+                                    }
+                                  },
+                                  "Property": "yoy_variance"
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "0D"
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#D13438'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "selector": {
+            "metadata": "nfp_cfo_review.variance_to_target"
+          },
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 3,
+                              "Left": {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "nfp_cfo_review"
+                                    }
+                                  },
+                                  "Property": "variance_to_target"
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "0D"
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#D13438'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -169,6 +611,7 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

@@ -1360,3 +1360,21 @@ section and a how-boards/CEOs/funders-use-these textbox; tab 17 gains
 the YoY table. Amount loader fixed to preserve filed decimals
 (74.89 was rounding to 74). Fonts: 47 tables -> 18pt, 49 charts ->
 14pt axes/labels. Suite 290.
+
+### 110. Targets/variances everywhere, ratio math shown, red negatives
+2026-09-06. Owner batch on tabs 17/18: (1) CFO review rebuilt with each
+filed year in its OWN column (the "FY21 > FY25" arrow strings confused
+the owner - replaced in the visuals, column kept in the CSV per
+add-only), plus target, variance-to-target, prior year and YoY variance
+columns - same columns added to the KPI register; (2) the YoY section
+gains "the math (FY2025 amounts)" - every ratio row shows its
+arithmetic with the filed dollars inline (e.g. months of cash =
+(515,092 + 0) / (13,539,303 / 12)); public support says "as filed, not
+recomputed"; (3) negatives render in red via conditional font color on
+every numeric column of every NFP table (statement deficits, YoY
+variances, misses); (4) the tab-17 statement tables rebuilt fresh after
+the owner saw the balance sheet render blank - repo data and filters
+verified correct, so the blank was local Desktop state; a clean pull
+replaces it; (5) the full KPI register now ALSO lives on tab 17
+(deliberately redundant - the owner wants the tab self-contained);
+(6) NFP chart labels and axes to 18pt. Suite 290.

@@ -1608,7 +1608,65 @@ def ratio_actuals_990(act: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def yoy_990(fs: pd.DataFrame,
+def _ratio_math_fy2025(act: pd.DataFrame) -> dict:
+    """FY2025 arithmetic per ratio with the filed amounts inline, so
+    the owner can see which numbers feed each ratio."""
+    lk = {r["line_item"]: float(r["amount"])
+          for _, r in act.iterrows()
+          if r["fiscal_year"] == "FY2025" and r["amount"] != ""}
+
+    def f(x):
+        return f"{x:,.0f}"
+
+    rev, exp = lk["total_revenue"], lk["total_expenses"]
+    con, prg = lk["contributions_and_grants"], lk[
+        "program_service_revenue"]
+    inv, oth = lk["investment_income"], lk["other_revenue"]
+    sal, gr = lk["salaries_and_benefits"], lk["grants_paid"]
+    fund, progb = lk["fundraising_expenses"], lk["program_expenses"]
+    mgmt = lk["mgmt_general_expenses"]
+    na, ta = lk["net_assets_end"], lk["total_assets_end"]
+    liab = lk["total_liabilities_end"]
+    cash, sav = lk["cash_end"], lk["savings_end"]
+    una = lk["unrestricted_net_assets_end"]
+    plg, ar = lk["pledges_receivable_end"], lk[
+        "accounts_receivable_end"]
+    ppd = lk["prepaid_expenses_end"]
+    ap, gp = lk["accounts_payable_accrued_end"], lk[
+        "grants_payable_end"]
+    dr = lk["deferred_revenue_end"]
+    return {
+        "op_margin_pct": f"({f(rev)} - {f(exp)}) / {f(rev)}",
+        "expense_coverage": f"{f(rev)} / {f(exp)}",
+        "program_reliance_pct": f"{f(prg)} / {f(rev)}",
+        "contrib_reliance_pct": f"{f(con)} / {f(rev)}",
+        "invest_other_pct": f"({f(inv)} + {f(oth)}) / {f(rev)}",
+        "salaries_pct_exp": f"{f(sal)} / {f(exp)}",
+        "grants_pct_exp": f"{f(gr)} / {f(exp)}",
+        "fundraise_cents_per_dollar": f"{f(fund)} / {f(con)} x 100",
+        "fundraise_dollars_per_dollar": f"{f(con)} / {f(fund)}",
+        "net_asset_ratio_pct": f"{f(na)} / {f(ta)}",
+        "months_cash_on_hand": f"({f(cash)} + {f(sav)}) / "
+                               f"({f(exp)} / 12)",
+        "days_cash_on_hand": f"({f(cash)} + {f(sav)}) / "
+                             f"({f(exp)} / 365)",
+        "operating_reserve_months": f"{f(una)} / ({f(exp)} / 12)",
+        "program_expense_ratio_pct": f"{f(progb)} / {f(exp)}",
+        "overhead_ratio_pct": f"({f(mgmt)} + {f(fund)}) / {f(exp)}",
+        "mgmt_general_pct_exp": f"{f(mgmt)} / {f(exp)}",
+        "revenue_concentration_pct": f"{f(prg)} / {f(rev)} "
+                                     "(largest stream: program fees)",
+        "current_ratio": f"({f(cash)} + {f(sav)} + {f(plg)} + {f(ar)} "
+                         f"+ {f(ppd)}) / ({f(ap)} + {f(gp)} + {f(dr)})",
+        "public_support_pct": "as filed, Schedule A Part II line 14 - "
+                              "IRS 5-year computation, not recomputed",
+        "leverage_ratio": f"{f(liab)} / {f(na)}",
+        "savings_indicator_pct": f"({f(rev)} - {f(exp)}) / {f(exp)}",
+        "roa_pct": f"({f(rev)} - {f(exp)}) / {f(ta)}",
+    }
+
+
+def yoy_990(act: pd.DataFrame, fs: pd.DataFrame,
             ratios: pd.DataFrame) -> pd.DataFrame:
     """Tab-17 YoY section: FY2024 vs FY2025 for every statement line
     (variance $ and %) and every level ratio (variance in its own
@@ -1623,7 +1681,9 @@ def yoy_990(fs: pd.DataFrame,
             "variance": round(v25 - v24),
             "variance_pct": (round((v25 - v24) / abs(v24) * 100, 1)
                              if v24 else ""),
-            "note": r["note"], "value_class": "PUBLIC_RESEARCH"})
+            "math_fy2025": "", "note": r["note"],
+            "value_class": "PUBLIC_RESEARCH"})
+    math = _ratio_math_fy2025(act)
     seen = []
     for _, r in ratios.iterrows():
         k = r["ratio_kind"]
@@ -1643,6 +1703,7 @@ def yoy_990(fs: pd.DataFrame,
             "unit": y25.iloc[0]["unit"],
             "fy2024": round(v24, 2), "fy2025": round(v25, 2),
             "variance": round(v25 - v24, 2), "variance_pct": "",
+            "math_fy2025": math.get(k, ""),
             "note": "variance shown in the ratio's own units",
             "value_class": "PUBLIC_RESEARCH"})
     return pd.DataFrame(rows)
@@ -1828,6 +1889,12 @@ def cfo_review_990(ratios: pd.DataFrame) -> pd.DataFrame:
         trend = " > ".join(
             f"{float(rk[rk['fiscal_year'] == fy].iloc[0]['value']):,.2f}"
             for fy in years if (rk["fiscal_year"] == fy).any())
+        yearvals = {}
+        for fy in years:
+            row = rk[rk["fiscal_year"] == fy]
+            yearvals[fy.lower()] = (float(row.iloc[0]["value"])
+                                    if len(row) else "")
+        tv = latest["target_value"]
         out.append({
             "ratio_kind": kind,
             "ratio": latest["ratio"].split(" (")[0],
@@ -1837,6 +1904,13 @@ def cfo_review_990(ratios: pd.DataFrame) -> pd.DataFrame:
                 or "No published standard",
             "vs_target": latest["vs_target"] or "-",
             "cfo_reading": reading,
+            **yearvals,
+            "target_value": float(tv) if tv != "" else "",
+            "variance_to_target": (round(float(latest["value"])
+                                         - float(tv), 2)
+                                   if tv != "" else ""),
+            "yoy_variance": round(float(latest["value"])
+                                  - yearvals["fy2024"], 2),
             "value_class": "PUBLIC_RESEARCH"})
     return pd.DataFrame(out)
 
@@ -1962,6 +2036,17 @@ def kpis_990(ratios: pd.DataFrame) -> pd.DataFrame:
             "vs_target": latest["vs_target"],
             "trend_fy2021_fy2025": trend,
             "typical_audience": _KPI_AUDIENCE[kind],
+            "target_value": (float(latest["target_value"])
+                             if latest["target_value"] != "" else ""),
+            "variance_to_target": (round(
+                float(latest["value"]) - float(latest["target_value"]),
+                2) if latest["target_value"] != "" else ""),
+            "fy2024_value": float(rk[rk["fiscal_year"] == "FY2024"]
+                                  .iloc[0]["value"]),
+            "yoy_variance": round(
+                float(latest["value"])
+                - float(rk[rk["fiscal_year"] == "FY2024"]
+                        .iloc[0]["value"]), 2),
             "value_class": "PUBLIC_RESEARCH"})
     return pd.DataFrame(out)
 
@@ -2022,7 +2107,7 @@ def build_all() -> dict[str, pd.DataFrame]:
     frames["nfp_fin_statements"] = fs
     frames["nfp_cfo_review"] = cfo_review_990(ratios)
     frames["nfp_990_kpis"] = kpis_990(ratios)
-    frames["nfp_990_yoy"] = yoy_990(fs, ratios)
+    frames["nfp_990_yoy"] = yoy_990(act, fs, ratios)
     frames["nfp_990_rules"] = rules_990(ratios)
     # stable sort key: report tables sort by row_id to preserve the
     # decision-flow order of each export

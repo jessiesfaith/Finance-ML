@@ -68,12 +68,12 @@
                       "Entity": "nfp_990_kpis"
                     }
                   },
-                  "Property": "unit"
+                  "Property": "target_value"
                 }
               },
-              "queryRef": "nfp_990_kpis.unit",
-              "nativeQueryRef": "unit",
-              "displayName": "unit"
+              "queryRef": "nfp_990_kpis.target_value",
+              "nativeQueryRef": "target_value",
+              "displayName": "target"
             },
             {
               "field": {
@@ -83,12 +83,12 @@
                       "Entity": "nfp_990_kpis"
                     }
                   },
-                  "Property": "benchmark_or_policy"
+                  "Property": "variance_to_target"
                 }
               },
-              "queryRef": "nfp_990_kpis.benchmark_or_policy",
-              "nativeQueryRef": "benchmark_or_policy",
-              "displayName": "benchmark / board policy"
+              "queryRef": "nfp_990_kpis.variance_to_target",
+              "nativeQueryRef": "variance_to_target",
+              "displayName": "variance"
             },
             {
               "field": {
@@ -113,12 +113,42 @@
                       "Entity": "nfp_990_kpis"
                     }
                   },
-                  "Property": "trend_fy2021_fy2025"
+                  "Property": "fy2024_value"
                 }
               },
-              "queryRef": "nfp_990_kpis.trend_fy2021_fy2025",
-              "nativeQueryRef": "trend_fy2021_fy2025",
-              "displayName": "FY21 > FY25"
+              "queryRef": "nfp_990_kpis.fy2024_value",
+              "nativeQueryRef": "fy2024_value",
+              "displayName": "FY24"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_kpis"
+                    }
+                  },
+                  "Property": "yoy_variance"
+                }
+              },
+              "queryRef": "nfp_990_kpis.yoy_variance",
+              "nativeQueryRef": "yoy_variance",
+              "displayName": "YoY var"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_kpis"
+                    }
+                  },
+                  "Property": "unit"
+                }
+              },
+              "queryRef": "nfp_990_kpis.unit",
+              "nativeQueryRef": "unit",
+              "displayName": "unit"
             },
             {
               "field": {
@@ -171,7 +201,6 @@
         ]
       }
     },
-    "drillFilterOtherVisuals": true,
     "objects": {
       "values": [
         {
@@ -180,6 +209,236 @@
               "expr": {
                 "Literal": {
                   "Value": "18D"
+                }
+              }
+            }
+          }
+        },
+        {
+          "selector": {
+            "metadata": "nfp_990_kpis.fy2025_value"
+          },
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 3,
+                              "Left": {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "nfp_990_kpis"
+                                    }
+                                  },
+                                  "Property": "fy2025_value"
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "0D"
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#D13438'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "selector": {
+            "metadata": "nfp_990_kpis.target_value"
+          },
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 3,
+                              "Left": {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "nfp_990_kpis"
+                                    }
+                                  },
+                                  "Property": "target_value"
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "0D"
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#D13438'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "selector": {
+            "metadata": "nfp_990_kpis.variance_to_target"
+          },
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 3,
+                              "Left": {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "nfp_990_kpis"
+                                    }
+                                  },
+                                  "Property": "variance_to_target"
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "0D"
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#D13438'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "selector": {
+            "metadata": "nfp_990_kpis.fy2024_value"
+          },
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 3,
+                              "Left": {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "nfp_990_kpis"
+                                    }
+                                  },
+                                  "Property": "fy2024_value"
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "0D"
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#D13438'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "selector": {
+            "metadata": "nfp_990_kpis.yoy_variance"
+          },
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 3,
+                              "Left": {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "nfp_990_kpis"
+                                    }
+                                  },
+                                  "Property": "yoy_variance"
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "0D"
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#D13438'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -199,6 +458,7 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

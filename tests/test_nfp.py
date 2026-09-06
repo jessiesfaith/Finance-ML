@@ -633,6 +633,26 @@ def test_990_yoy_and_rules(frames):
     assert ru.loc["Current ratio >= 1.0", "vs_rule"] == "MISSES"
     assert (ru.loc["Donor concentration Pareto (80/20)", "vs_rule"]
             == "RESEARCH REQUIRED")
+    # the YoY ratio rows show their arithmetic with filed amounts
+    ratios = y[y["section"] == "RATIOS"]
+    assert (ratios["math_fy2025"].str.len() > 10).all()
+    om = ratios[ratios["line_label"] == "Operating margin %"].iloc[0]
+    assert "14,208,155" in om["math_fy2025"]
+    assert (y[y["section"] != "RATIOS"]["math_fy2025"] == "").all()
+    # CFO review carries years-as-columns, target and variances
+    cr2 = frames["nfp_cfo_review"].set_index("ratio_kind")
+    mc = cr2.loc["months_cash_on_hand"]
+    assert float(mc["fy2021"]) == pytest.approx(5.5692, abs=0.001)
+    assert float(mc["target_value"]) == 3.0
+    assert float(mc["variance_to_target"]) == pytest.approx(-2.54,
+                                                            abs=0.01)
+    assert float(mc["yoy_variance"]) == pytest.approx(-2.63, abs=0.01)
+    k2 = frames["nfp_990_kpis"].set_index("kpi")
+    row = k2.loc["Months of Cash on Hand"]
+    assert float(row["variance_to_target"]) == pytest.approx(-2.54,
+                                                             abs=0.01)
+    assert float(row["fy2024_value"]) == pytest.approx(3.0852,
+                                                       abs=0.001)
 
 
 def test_new_ratio_kinds_pinned():

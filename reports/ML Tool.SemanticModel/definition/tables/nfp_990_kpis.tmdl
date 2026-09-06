@@ -1,10 +1,10 @@
-/// KPI register: description, 990 formula, latest value, benchmark or board policy, verdict, 5-year path, and the audience that typically reviews it (board vs CEO).
+/// KPI register with target, variance to target, prior year and YoY variance, plus audience (board vs CEO).
 table nfp_990_kpis
-	lineageTag: f4f082b2-baa1-4119-a70f-fe6e4597fa1b
+	lineageTag: f37561e0-7fb4-4416-aae3-f056ece02438
 
 	column row_id
 		dataType: string
-		lineageTag: 260f07a6-0cd4-439e-8677-fe539d702db2
+		lineageTag: 71629a99-7889-488b-bcf6-3d4061bfa3d4
 		summarizeBy: none
 		sourceColumn: row_id
 
@@ -12,7 +12,7 @@ table nfp_990_kpis
 
 	column kpi_id
 		dataType: string
-		lineageTag: f0aeb3b5-2840-4904-a2e0-a37141085377
+		lineageTag: b3cc1021-5c3b-4a71-8b4f-def1252714ab
 		summarizeBy: none
 		sourceColumn: kpi_id
 
@@ -20,7 +20,7 @@ table nfp_990_kpis
 
 	column kpi
 		dataType: string
-		lineageTag: d4cdc4e9-e293-424d-80b1-62e3ececb252
+		lineageTag: bd168801-60f5-4ebf-ab6d-48785b7a497a
 		summarizeBy: none
 		sourceColumn: kpi
 
@@ -28,7 +28,7 @@ table nfp_990_kpis
 
 	column description
 		dataType: string
-		lineageTag: 8bab5d5a-35de-4650-940b-f1510d3bcb98
+		lineageTag: 65121f22-1768-4d28-92d9-af694c3fb7d1
 		summarizeBy: none
 		sourceColumn: description
 
@@ -36,7 +36,7 @@ table nfp_990_kpis
 
 	column formula_990
 		dataType: string
-		lineageTag: 2e037be0-e717-45ab-99b5-f99d5c4dc429
+		lineageTag: 0a69402a-fa1c-4d3a-b16a-cb96dae07994
 		summarizeBy: none
 		sourceColumn: formula_990
 
@@ -45,7 +45,7 @@ table nfp_990_kpis
 	column fy2025_value
 		dataType: double
 		formatString: #,0.##
-		lineageTag: 4974a16d-c9e7-4da1-a5dd-487d4a65159d
+		lineageTag: b55a256f-b697-4151-badc-cde9e9ce0a0b
 		summarizeBy: none
 		sourceColumn: fy2025_value
 
@@ -53,7 +53,7 @@ table nfp_990_kpis
 
 	column unit
 		dataType: string
-		lineageTag: a9910c24-990a-4a85-bd5a-9503ff3eb0c3
+		lineageTag: de11c6e4-fe5e-43df-8ce3-da7ccbaeb62a
 		summarizeBy: none
 		sourceColumn: unit
 
@@ -61,7 +61,7 @@ table nfp_990_kpis
 
 	column benchmark_or_policy
 		dataType: string
-		lineageTag: 61098c9d-cdb4-4e47-aab4-6af506a9f604
+		lineageTag: a4289acc-288f-42e1-bc90-bda3b5ac31f9
 		summarizeBy: none
 		sourceColumn: benchmark_or_policy
 
@@ -69,7 +69,7 @@ table nfp_990_kpis
 
 	column target_class
 		dataType: string
-		lineageTag: 6227e0cb-f702-4ef6-939b-75fac9672651
+		lineageTag: 3e316b9e-25fc-4f37-8327-b8b2e4fa7365
 		summarizeBy: none
 		sourceColumn: target_class
 
@@ -77,7 +77,7 @@ table nfp_990_kpis
 
 	column vs_target
 		dataType: string
-		lineageTag: 72256122-fbed-489c-afbf-923b4b3ff3fc
+		lineageTag: 927a6163-7cf1-482a-ad7f-798acadaf979
 		summarizeBy: none
 		sourceColumn: vs_target
 
@@ -85,7 +85,7 @@ table nfp_990_kpis
 
 	column trend_fy2021_fy2025
 		dataType: string
-		lineageTag: 67583dff-1f23-4b85-8cfa-2edc29d5b4ac
+		lineageTag: 84826d66-5365-4765-83ef-e43183a0ab88
 		summarizeBy: none
 		sourceColumn: trend_fy2021_fy2025
 
@@ -93,15 +93,51 @@ table nfp_990_kpis
 
 	column typical_audience
 		dataType: string
-		lineageTag: f62015ef-cc7a-4dc8-a444-391698f665b8
+		lineageTag: b4b97db8-f9ec-41f2-a830-b18291257133
 		summarizeBy: none
 		sourceColumn: typical_audience
 
 		annotation SummarizationSetBy = Automatic
 
+	column target_value
+		dataType: double
+		formatString: #,0.##
+		lineageTag: dd411017-b095-4eaa-8b97-64446872367d
+		summarizeBy: none
+		sourceColumn: target_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column variance_to_target
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 9d23d1df-41a3-4c35-ad87-fc184bc315ee
+		summarizeBy: none
+		sourceColumn: variance_to_target
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy2024_value
+		dataType: double
+		formatString: #,0.##
+		lineageTag: 83c45d8a-2930-46d8-8e32-e0c8a1a46f4e
+		summarizeBy: none
+		sourceColumn: fy2024_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column yoy_variance
+		dataType: double
+		formatString: #,0.##
+		lineageTag: b0d9b6c6-7a9e-41a5-ac41-faaa8e2b9391
+		summarizeBy: none
+		sourceColumn: yoy_variance
+
+		annotation SummarizationSetBy = Automatic
+
 	column value_class
 		dataType: string
-		lineageTag: bb0e9733-6da8-4f5a-ba75-969ddbf591b4
+		lineageTag: 9dd7d1b8-45ef-4e5b-b7a7-8fad46634ea6
 		summarizeBy: none
 		sourceColumn: value_class
 
@@ -113,10 +149,10 @@ table nfp_990_kpis
 				let
 				  Source = Csv.Document(
 				    File.Contents("C:\dev\Finance-ML\reports\nfp_990_kpis.csv"),
-				    [Delimiter = ",", Columns = 13, QuoteStyle = QuoteStyle.Csv]
+				    [Delimiter = ",", Columns = 17, QuoteStyle = QuoteStyle.Csv]
 				),
 				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "kpi_id", "kpi", "description", "formula_990", "fy2025_value", "unit", "benchmark_or_policy", "target_class", "vs_target", "trend_fy2021_fy2025", "typical_audience", "value_class"}),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "kpi_id", "kpi", "description", "formula_990", "fy2025_value", "unit", "benchmark_or_policy", "target_class", "vs_target", "trend_fy2021_fy2025", "typical_audience", "target_value", "variance_to_target", "fy2024_value", "yoy_variance", "value_class"}),
 				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
 				    {"row_id", type text},
 				    {"kpi_id", type text},
@@ -130,6 +166,10 @@ table nfp_990_kpis
 				    {"vs_target", type text},
 				    {"trend_fy2021_fy2025", type text},
 				    {"typical_audience", type text},
+				    {"target_value", type number},
+				    {"variance_to_target", type number},
+				    {"fy2024_value", type number},
+				    {"yoy_variance", type number},
 				    {"value_class", type text}
 				  })
 				in
