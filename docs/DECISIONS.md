@@ -1297,3 +1297,10 @@ five years; months of cash MISSES the 3.0-month policy in FY2025 only.
 Tab 14 grid rebuilt to 15 charts, each drawing the flat policy/
 benchmark line beside the filed values; table gains policy/benchmark +
 vs-target columns; fifth card 990 Program Ratio FY25 % (81.99).
+
+### 107. STANDING AXIS RULE (owner): amounts on y, dates on x
+2026-09-06. "when there are graphs put the amount on the y axis...
+if there are dates put that as the x axis." All nine horizontal bar
+charts flipped to vertical columns; every time series already charts
+month/fiscal_year on x. Future charts: never clusteredBarChart for
+dollar values; dated data always takes the x-axis.
