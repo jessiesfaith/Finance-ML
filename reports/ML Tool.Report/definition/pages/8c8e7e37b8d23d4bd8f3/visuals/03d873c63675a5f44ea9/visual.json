@@ -5,7 +5,7 @@
     "x": 165,
     "y": 4700,
     "height": 40,
-    "width": 1310,
+    "width": 2670,
     "z": 906000,
     "tabOrder": 906000
   },
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Filed total revenue by year (merged org)",
+                    "value": "Filed revenue (blue) vs filed expenses (red) by year - merged org, FY2020 pre-merger excluded",
                     "textStyle": {
                       "fontSize": "13pt"
                     }

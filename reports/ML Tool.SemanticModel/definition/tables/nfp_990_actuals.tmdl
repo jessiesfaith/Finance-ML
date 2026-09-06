@@ -1,45 +1,59 @@
 /// REAL filed Form 990 figures for JSV (EIN 94-2222989) read directly from the FY2021-FY2025 filings the owner provided - PUBLIC_RESEARCH, HIGH confidence, never estimated.
 table nfp_990_actuals
-	lineageTag: 17c453f2-8f0e-473f-9c06-c479ea739d18
+	lineageTag: b99a6d21-dde8-48f3-b379-ee8992df7695
 
 	measure '990 FY25 Revenue' =
 			
 			CALCULATE(SUM(nfp_990_actuals[amount]), nfp_990_actuals[fiscal_year] = "FY2025", nfp_990_actuals[line_item] = "total_revenue")
 		formatString: $#,0
 		displayFolder: NFP Cards
-		lineageTag: 710e9fa8-4f3a-4dbd-a8a8-c9eab93e25a2
+		lineageTag: 24b73d6b-4b06-42b8-b35a-91cfc519bbc1
 
 	measure '990 FY25 Expenses' =
 			
 			CALCULATE(SUM(nfp_990_actuals[amount]), nfp_990_actuals[fiscal_year] = "FY2025", nfp_990_actuals[line_item] = "total_expenses")
 		formatString: $#,0
 		displayFolder: NFP Cards
-		lineageTag: 864133cb-2309-41c6-888e-cad29a054dcc
+		lineageTag: 721abf56-affe-4f52-9798-2bd732aad274
 
 	measure '990 FY25 Net Assets' =
 			
 			CALCULATE(SUM(nfp_990_actuals[amount]), nfp_990_actuals[fiscal_year] = "FY2025", nfp_990_actuals[line_item] = "net_assets_end")
 		formatString: $#,0
 		displayFolder: NFP Cards
-		lineageTag: 1a24b466-35a5-4c6a-bb67-c3e476b92916
+		lineageTag: ce7cc6c4-8797-411d-bc45-e163d3474bef
 
 	measure '990 FY25 Surplus' =
 			
 			CALCULATE(SUM(nfp_990_actuals[amount]), nfp_990_actuals[fiscal_year] = "FY2025", nfp_990_actuals[line_item] = "surplus_deficit")
 		formatString: $#,0
 		displayFolder: NFP Cards
-		lineageTag: fcc73736-7717-435c-bf4e-45d2028d9454
+		lineageTag: 62d2497c-b2d5-499b-8c66-3bf4c46552d1
 
 	measure '990 FY25 Investments' =
 			
 			CALCULATE(SUM(nfp_990_actuals[amount]), nfp_990_actuals[fiscal_year] = "FY2025", nfp_990_actuals[line_item] = "investments_securities_end")
 		formatString: $#,0
 		displayFolder: NFP Cards
-		lineageTag: 010a7cc4-f1c7-4f84-8dee-e7d91e186649
+		lineageTag: 341460b7-34c6-4ba5-afe2-ee4c4592d7fe
+
+	measure '990 Filed Revenue $' =
+			
+			CALCULATE(SUM(nfp_990_actuals[amount]), nfp_990_actuals[line_item] = "total_revenue")
+		formatString: $#,0
+		displayFolder: NFP Cards
+		lineageTag: a384e163-ab72-4f00-9c4b-99667c4a2223
+
+	measure '990 Filed Expenses $' =
+			
+			CALCULATE(SUM(nfp_990_actuals[amount]), nfp_990_actuals[line_item] = "total_expenses")
+		formatString: $#,0
+		displayFolder: NFP Cards
+		lineageTag: 9a985e25-2319-4872-b879-97c537cf051c
 
 	column row_id
 		dataType: string
-		lineageTag: 30329039-b7fd-46a2-9dcd-710441513a60
+		lineageTag: 49ec237c-40cf-4e4e-8565-7fa7e1786b03
 		summarizeBy: none
 		sourceColumn: row_id
 
@@ -47,7 +61,7 @@ table nfp_990_actuals
 
 	column item_id
 		dataType: string
-		lineageTag: 851c6264-e1b6-408a-9afa-93ee69bc4536
+		lineageTag: 3e557667-ab53-45fa-ab91-88c20f91bf7f
 		summarizeBy: none
 		sourceColumn: item_id
 
@@ -55,7 +69,7 @@ table nfp_990_actuals
 
 	column fiscal_year
 		dataType: string
-		lineageTag: e0bc0afe-30db-4248-bf31-aa63dee310b2
+		lineageTag: 9f7f1d3b-574d-4423-a0d9-b5503ac09ee0
 		summarizeBy: none
 		sourceColumn: fiscal_year
 
@@ -63,7 +77,7 @@ table nfp_990_actuals
 
 	column fiscal_year_end
 		dataType: string
-		lineageTag: eb8a0f97-9afa-484c-b510-5e158c591853
+		lineageTag: bbc0a387-096f-4474-8df2-1e56f5e3a6d8
 		summarizeBy: none
 		sourceColumn: fiscal_year_end
 
@@ -71,7 +85,7 @@ table nfp_990_actuals
 
 	column line_item
 		dataType: string
-		lineageTag: 2ad16931-5ae2-44b3-bad6-1ed413bbb663
+		lineageTag: c30242ec-daf4-4fe5-892a-c87272395b49
 		summarizeBy: none
 		sourceColumn: line_item
 
@@ -79,7 +93,7 @@ table nfp_990_actuals
 
 	column amount
 		dataType: double
-		lineageTag: adb81b3a-2c67-4b21-b05e-c0c261d32b81
+		lineageTag: 6c4f602a-b330-4b4a-a99a-acf154d6e69b
 		summarizeBy: none
 		sourceColumn: amount
 
@@ -87,7 +101,7 @@ table nfp_990_actuals
 
 	column unit
 		dataType: string
-		lineageTag: bd345e43-9311-404c-9726-017879649337
+		lineageTag: 580c250b-0c33-4411-8b75-7c139acd9239
 		summarizeBy: none
 		sourceColumn: unit
 
@@ -95,7 +109,7 @@ table nfp_990_actuals
 
 	column basis
 		dataType: string
-		lineageTag: 679dd4ac-e03e-46c4-9964-8b1e290cf8d9
+		lineageTag: 7ea7d461-a4ef-425a-b6d2-7ec464e1dfe2
 		summarizeBy: none
 		sourceColumn: basis
 
@@ -103,7 +117,7 @@ table nfp_990_actuals
 
 	column source
 		dataType: string
-		lineageTag: 1eec0ce0-6946-41d7-81b9-615467321793
+		lineageTag: be48f406-7159-4c6d-b0ba-2b1c03aa2fd1
 		summarizeBy: none
 		sourceColumn: source
 
@@ -111,7 +125,7 @@ table nfp_990_actuals
 
 	column url
 		dataType: string
-		lineageTag: 763a37b7-468f-4f72-b778-3598dd98f8c1
+		lineageTag: 20e72d4d-cdaa-493f-8726-309390b6400b
 		summarizeBy: none
 		sourceColumn: url
 
@@ -119,7 +133,7 @@ table nfp_990_actuals
 
 	column date_verified
 		dataType: string
-		lineageTag: 8be60ab9-3a61-44a5-a7ee-f89b436bd779
+		lineageTag: de76f0d9-4b28-4b72-aa6e-9ba4db3c205b
 		summarizeBy: none
 		sourceColumn: date_verified
 
@@ -127,7 +141,7 @@ table nfp_990_actuals
 
 	column confidence
 		dataType: string
-		lineageTag: 56935812-6a6b-4499-bc4e-618e40671c04
+		lineageTag: 6c42f73e-33eb-4108-a4dd-ae6f034c3a64
 		summarizeBy: none
 		sourceColumn: confidence
 
@@ -135,7 +149,7 @@ table nfp_990_actuals
 
 	column value_class
 		dataType: string
-		lineageTag: e46df730-23c7-49ce-866d-4761e4357d3a
+		lineageTag: 012af116-9480-424b-b836-cb9df697eae9
 		summarizeBy: none
 		sourceColumn: value_class
 
@@ -143,7 +157,7 @@ table nfp_990_actuals
 
 	column note
 		dataType: string
-		lineageTag: cfd61c9e-b659-475f-b0d3-77c46664ebbc
+		lineageTag: e05fd831-7ae4-4c96-81f1-8e2f867fb758
 		summarizeBy: none
 		sourceColumn: note
 
