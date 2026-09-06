@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "c3dd3684fdc682270197",
+  "name": "3464d1389447c426266c",
   "position": {
-    "x": 165,
+    "x": 1525,
     "y": 4750,
     "height": 320,
     "width": 1310,
-    "z": 908000,
-    "tabOrder": 908000
+    "z": 906500,
+    "tabOrder": 906500
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -36,33 +36,23 @@
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "nfp_990_actuals"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_990_actuals"
+                        }
+                      },
+                      "Property": "amount"
                     }
                   },
-                  "Property": "990 Filed Revenue $"
+                  "Function": 0
                 }
               },
-              "queryRef": "nfp_990_actuals.990 Filed Revenue $",
-              "nativeQueryRef": "990 Filed Revenue $",
-              "displayName": "filed revenue $"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "nfp_990_actuals"
-                    }
-                  },
-                  "Property": "990 Filed Expenses $"
-                }
-              },
-              "queryRef": "nfp_990_actuals.990 Filed Expenses $",
-              "nativeQueryRef": "990 Filed Expenses $",
-              "displayName": "filed expenses $"
+              "queryRef": "Sum(nfp_990_actuals.amount)",
+              "nativeQueryRef": "Sum of amount",
+              "displayName": "filed net assets $"
             }
           ]
         }
@@ -81,44 +71,6 @@
             }
           }
         }
-      ],
-      "dataPoint": [
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#118DFF'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "nfp_990_actuals.990 Filed Revenue $"
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#D64550'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "nfp_990_actuals.990 Filed Expenses $"
-          }
-        }
       ]
     },
     "drillFilterOtherVisuals": true
@@ -126,7 +78,60 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "b85a0b624",
+        "name": "1277ef9a6",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "nfp_990_actuals"
+              }
+            },
+            "Property": "line_item"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "t",
+              "Entity": "nfp_990_actuals",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "t"
+                          }
+                        },
+                        "Property": "line_item"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'net_assets_end'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "0d6211037",
         "field": {
           "Column": {
             "Expression": {
