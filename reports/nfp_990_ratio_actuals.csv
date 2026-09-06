@@ -1,0 +1,14 @@
+row_id,ratio_id,ratio,fiscal_year,value,unit,formula_990,basis,confidence,value_class,note
+R001,R990-OM-FY2023,Operating margin % (FY2023),FY2023,-10.7885,%,(Part I line 12 - line 18) / line 12,COMPUTED FROM REPORTED,MEDIUM,PUBLIC_RESEARCH,Negative = the year spent more than it raised; JSV swung deficit-to-breakeven
+R002,R990-EC-FY2023,Expense coverage (FY2023),FY2023,0.9026,x,Part I line 12 / line 18,COMPUTED FROM REPORTED,MEDIUM,PUBLIC_RESEARCH,>= 1.0 means revenue covered the year's expenses
+R003,R990-OM-FY2024,Operating margin % (FY2024),FY2024,0.5527,%,(Part I line 12 - line 18) / line 12,COMPUTED FROM REPORTED,MEDIUM,PUBLIC_RESEARCH,Negative = the year spent more than it raised; JSV swung deficit-to-breakeven
+R004,R990-EC-FY2024,Expense coverage (FY2024),FY2024,1.0056,x,Part I line 12 / line 18,COMPUTED FROM REPORTED,MEDIUM,PUBLIC_RESEARCH,>= 1.0 means revenue covered the year's expenses
+R005,R990-PR-FY2024,Program revenue reliance % (FY2024),FY2024,61.492,%,Part I line 9 / line 12,COMPUTED FROM REPORTED,MEDIUM,PUBLIC_RESEARCH,Earned-revenue share - the JCC operating model
+R006,R990-CR-FY2024,Contributions reliance % (FY2024),FY2024,33.5761,%,Part I line 8 / line 12,COMPUTED FROM REPORTED,MEDIUM,PUBLIC_RESEARCH,Donated share of revenue
+R007,R990-OR-FY2024,Other revenue share % (FY2024),FY2024,4.932,%,(line 12 - line 8 - line 9) / line 12,DERIVED,MEDIUM,PUBLIC_RESEARCH,Investment and other income share
+R008,R990-RG-FY2024,Revenue growth % (FY2023 to FY2024),FY2023-FY2024,23.9151,%,(line 12 FY2024 - line 12 FY2023) / line 12 FY2023,COMPUTED FROM REPORTED,MEDIUM,PUBLIC_RESEARCH,Year-over-year filed revenue
+R009,R990-EG-FY2024,Expense growth % (FY2023 to FY2024),FY2023-FY2024,11.2301,%,(line 18 FY2024 - line 18 FY2023) / line 18 FY2023,COMPUTED FROM REPORTED,MEDIUM,PUBLIC_RESEARCH,Year-over-year filed expenses
+R010,R990-NG-FY2024,Net assets change % (FY2023 to FY2024),FY2023-FY2024,-1.4002,%,(line 22 FY2024 - line 22 FY2023) / line 22 FY2023,COMPUTED FROM REPORTED,MEDIUM,PUBLIC_RESEARCH,Balance-sheet direction
+R011,R990-NA-FY2024,Net asset ratio % (FY2024),FY2024,80.6492,%,Part I line 22 / line 20,DERIVED (ROUNDED INPUT),LOW,PUBLIC_RESEARCH,Total assets input is rounded ~$20.9M - approximate until the filing is read
+R012,R990-GP-FY2023,Grants paid % of expenses (FY2023),FY2023,12.2611,%,Part I line 13 / line 18,COMPUTED FROM REPORTED,MEDIUM,PUBLIC_RESEARCH,Confirm the grants figure's fiscal-year basis in the filing
+R013,R990-MS,Months of spending (liquidity),FY2024,,months,(cash + savings) / (line 18 / 12),RESEARCH REQUIRED,LOW,PUBLIC_RESEARCH,Needs the Part X cash and savings lines - not surfaced publicly; read the filing

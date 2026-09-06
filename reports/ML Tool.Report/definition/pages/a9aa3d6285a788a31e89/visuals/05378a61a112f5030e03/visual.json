@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "05378a61a112f5030e03",
+  "position": {
+    "x": 605,
+    "y": 3620,
+    "height": 90,
+    "width": 420,
+    "z": 903000,
+    "tabOrder": 903000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_ratio_actuals"
+                    }
+                  },
+                  "Property": "990 Revenue Growth %"
+                }
+              },
+              "queryRef": "nfp_990_ratio_actuals.990 Revenue Growth %",
+              "nativeQueryRef": "990 Revenue Growth %"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

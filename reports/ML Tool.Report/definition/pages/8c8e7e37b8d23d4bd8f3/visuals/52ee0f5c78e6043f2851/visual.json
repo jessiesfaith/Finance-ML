@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "52ee0f5c78e6043f2851",
+  "position": {
+    "x": 1485,
+    "y": 4590,
+    "height": 90,
+    "width": 420,
+    "z": 905000,
+    "tabOrder": 905000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_actuals"
+                    }
+                  },
+                  "Property": "990 FY23 Deficit"
+                }
+              },
+              "queryRef": "nfp_990_actuals.990 FY23 Deficit",
+              "nativeQueryRef": "990 FY23 Deficit"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

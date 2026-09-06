@@ -1,0 +1,174 @@
+/// REAL filed Form 990 figures for JSV (EIN 94-2222989) - PUBLIC_RESEARCH with source URLs; blanks are RESEARCH REQUIRED, never estimated.
+table nfp_990_actuals
+	lineageTag: 5308f16c-a58c-4230-a02f-702cf205c316
+
+	measure '990 FY24 Revenue' =
+			
+			CALCULATE(SUM(nfp_990_actuals[amount]), nfp_990_actuals[fiscal_year] = "FY2024", nfp_990_actuals[line_item] = "total_revenue")
+		formatString: $#,0
+		displayFolder: NFP Cards
+		lineageTag: 78adef79-72c1-4970-a831-742a389b414b
+
+	measure '990 FY24 Expenses' =
+			
+			CALCULATE(SUM(nfp_990_actuals[amount]), nfp_990_actuals[fiscal_year] = "FY2024", nfp_990_actuals[line_item] = "total_expenses")
+		formatString: $#,0
+		displayFolder: NFP Cards
+		lineageTag: 52333f9c-3c3c-4c26-9f19-131c318a785a
+
+	measure '990 FY24 Net Assets' =
+			
+			CALCULATE(SUM(nfp_990_actuals[amount]), nfp_990_actuals[fiscal_year] = "FY2024", nfp_990_actuals[line_item] = "net_assets_end")
+		formatString: $#,0
+		displayFolder: NFP Cards
+		lineageTag: 057467ac-bfc8-400e-ad98-2b3f1ea6df1f
+
+	measure '990 FY23 Deficit' =
+			
+			CALCULATE(SUM(nfp_990_actuals[amount]), nfp_990_actuals[fiscal_year] = "FY2023", nfp_990_actuals[line_item] = "surplus_deficit")
+		formatString: $#,0
+		displayFolder: NFP Cards
+		lineageTag: d8ec6856-b580-4f01-b55f-80b868645ad6
+
+	column row_id
+		dataType: string
+		lineageTag: 6a84a2ce-e534-46e8-adbc-34b2a33ff47d
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_id
+		dataType: string
+		lineageTag: 9937127a-06b5-4717-8893-2c78116a1db9
+		summarizeBy: none
+		sourceColumn: item_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column fiscal_year
+		dataType: string
+		lineageTag: a76fbf86-95db-4986-9004-30e999c458a3
+		summarizeBy: none
+		sourceColumn: fiscal_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column fiscal_year_end
+		dataType: string
+		lineageTag: ddbec740-f186-49c8-9fdd-0bf45e1acb19
+		summarizeBy: none
+		sourceColumn: fiscal_year_end
+
+		annotation SummarizationSetBy = Automatic
+
+	column line_item
+		dataType: string
+		lineageTag: a50063cd-f751-4a3c-8189-bb2f59d17423
+		summarizeBy: none
+		sourceColumn: line_item
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount
+		dataType: double
+		lineageTag: 54c7eb5c-9b08-4836-b60c-c5699401aa7d
+		summarizeBy: none
+		sourceColumn: amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit
+		dataType: string
+		lineageTag: 6c2bb9aa-aeb9-4e16-830a-a0c4331f2389
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column basis
+		dataType: string
+		lineageTag: 177c5192-fd17-4eed-afe4-5a65d3202f83
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: 1b6350f1-30d2-4d1f-81d5-e1a97cc084a9
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column url
+		dataType: string
+		lineageTag: 0db16d18-0a41-486d-be51-9a01dc19bab2
+		summarizeBy: none
+		sourceColumn: url
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_verified
+		dataType: string
+		lineageTag: 923b3ec5-4257-4d9e-b772-1524ac846d9a
+		summarizeBy: none
+		sourceColumn: date_verified
+
+		annotation SummarizationSetBy = Automatic
+
+	column confidence
+		dataType: string
+		lineageTag: 74a21461-bfb6-4e9a-9231-bcf58be1eb3a
+		summarizeBy: none
+		sourceColumn: confidence
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 3b38d123-c7e3-4837-a13f-4b9c3cbcbb5e
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: 96636528-b096-4b84-8c74-eb4490dceca9
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_990_actuals = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_990_actuals.csv"),
+				    [Delimiter = ",", Columns = 14, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "item_id", "fiscal_year", "fiscal_year_end", "line_item", "amount", "unit", "basis", "source", "url", "date_verified", "confidence", "value_class", "note"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"item_id", type text},
+				    {"fiscal_year", type text},
+				    {"fiscal_year_end", type text},
+				    {"line_item", type text},
+				    {"amount", type number},
+				    {"unit", type text},
+				    {"basis", type text},
+				    {"source", type text},
+				    {"url", type text},
+				    {"date_verified", type text},
+				    {"confidence", type text},
+				    {"value_class", type text},
+				    {"note", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

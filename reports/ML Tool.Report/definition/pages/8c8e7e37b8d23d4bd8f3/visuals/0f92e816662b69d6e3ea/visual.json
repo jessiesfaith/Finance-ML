@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "0f92e816662b69d6e3ea",
+  "position": {
+    "x": 165,
+    "y": 4530,
+    "height": 40,
+    "width": 2670,
+    "z": 901000,
+    "tabOrder": 901000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "REAL FILED FINANCIALS - IRS FORM 990, EIN 94-2222989 (PUBLIC_RESEARCH - the only real dollars in this module)",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

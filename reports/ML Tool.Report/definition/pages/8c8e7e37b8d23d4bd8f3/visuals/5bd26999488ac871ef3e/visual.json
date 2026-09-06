@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "5bd26999488ac871ef3e",
+  "position": {
+    "x": 165,
+    "y": 5380,
+    "height": 60,
+    "width": 2670,
+    "z": 911000,
+    "tabOrder": 911000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Aggregator summaries of the IRS Form 990, verified by web search (direct fetch egress-blocked) - MEDIUM confidence ceiling; click the URLs in nfp_990_actuals.csv to verify. These rows never feed the synthetic operating model above.",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -76,6 +76,8 @@ CSV_FOR_TABLE = {
     "nfp_rentals": "nfp_rentals",
     "nfp_investment_pools": "nfp_investment_pools",
     "nfp_invest_scenarios": "nfp_invest_scenarios",
+    "nfp_990_actuals": "nfp_990_actuals",
+    "nfp_990_ratio_actuals": "nfp_990_ratio_actuals",
     "client_fs_option_sizing": "client_fs_option_sizing",
 }
 

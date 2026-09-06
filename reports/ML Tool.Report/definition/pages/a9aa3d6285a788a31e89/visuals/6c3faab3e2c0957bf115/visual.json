@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "6c3faab3e2c0957bf115",
+  "position": {
+    "x": 165,
+    "y": 4620,
+    "height": 60,
+    "width": 2670,
+    "z": 908000,
+    "tabOrder": 908000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Computed ONLY from figures the 990 research confirmed - a blank value means RESEARCH REQUIRED, never estimated. The illustrative playbook above stays SYNTHETIC/ASSUMPTION until client data replaces it.",
+                    "textStyle": {
+                      "fontSize": "10pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

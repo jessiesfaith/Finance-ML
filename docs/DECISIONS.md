@@ -1216,3 +1216,27 @@ PROPOSAL/ASSUMPTION; decisions stay with the board. Engine fixes en
 route: gap history calibrated to the seeded net-cash series with
 admin included (the first cut produced a negative early balance);
 11 new tables, 8 new measures, 34 new visuals; overlap check clean.
+
+### 103. Real-data cutover, scoped by the owner: "only the 990s and the survey"
+2026-09-06. Asked whether the NFP tabs held real numbers, the owner chose
+a cutover limited to the two public sources. The survey layer (tab 15)
+was already real - 10 PUBLIC_RESEARCH findings with URLs - so this added
+the 990 side: `nfp_990_actual_inputs.csv` seeds the REAL filed figures
+for JSV (EIN 94-2222989) from ProPublica/Charity Navigator aggregation
+(FY2024 revenue $12,604,759 / expenses $12,535,090 / net assets
+$16,855,692 / contributions $4,232,181 / program revenue $7,750,916;
+FY2023 revenue $10,172,090 / expenses $11,269,511 / net assets
+$17,095,059; grants ~$1,381,767). Engine adds `actuals_990()` (DERIVED
+arithmetic rows - surplus/deficit, other revenue, liabilities from the
+rounded assets figure - each showing its formula) and
+`ratio_actuals_990()` (13 playbook ratios computed from the filed
+figures, labels carrying the fiscal year). New exports
+nfp_990_actuals + nfp_990_ratio_actuals feed a REAL-990 section on
+tab 11 (4 cards, revenue/expense charts by year, register table) and a
+REAL-RATIOS section on tab 14 (4 cards, %-ratio bar chart, table).
+Honesty holds by test: FY2021/FY2022 and the FY2023 revenue split were
+not publicly surfaced (direct fetch egress-blocked, MEDIUM ceiling), so
+those rows stay blank RESEARCH REQUIRED - charts show the missing years
+as gaps rather than inventing them. The synthetic operating model is
+untouched and never fed by these rows; the rest of the module stays
+SYNTHETIC/ASSUMPTION until client data.

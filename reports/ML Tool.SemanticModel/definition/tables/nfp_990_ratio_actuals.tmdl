@@ -1,0 +1,147 @@
+/// Playbook ratios computed from the REAL filed 990 figures - each row shows its 990 formula and basis.
+table nfp_990_ratio_actuals
+	lineageTag: 881dacd0-db29-4b94-85a0-b119ff948d90
+
+	measure '990 Op Margin FY24 %' =
+			
+			CALCULATE(SUM(nfp_990_ratio_actuals[value]), nfp_990_ratio_actuals[ratio_id] = "R990-OM-FY2024")
+		formatString: 0.00
+		displayFolder: NFP Cards
+		lineageTag: cef67a75-72ac-4a6a-8387-f6a84c4aba38
+
+	measure '990 Revenue Growth %' =
+			
+			CALCULATE(SUM(nfp_990_ratio_actuals[value]), nfp_990_ratio_actuals[ratio_id] = "R990-RG-FY2024")
+		formatString: 0.00
+		displayFolder: NFP Cards
+		lineageTag: bff9007f-b22c-4d3e-afc0-51d8f37877be
+
+	measure '990 Expense Coverage FY24' =
+			
+			CALCULATE(SUM(nfp_990_ratio_actuals[value]), nfp_990_ratio_actuals[ratio_id] = "R990-EC-FY2024")
+		formatString: 0.000
+		displayFolder: NFP Cards
+		lineageTag: aa3adc37-60dd-4ef1-a475-1f038d9a2c47
+
+	measure '990 Real Ratios' =
+			
+			COUNTROWS(FILTER(nfp_990_ratio_actuals, NOT ISBLANK(nfp_990_ratio_actuals[value])))
+		formatString: 0
+		displayFolder: NFP Cards
+		lineageTag: af0d4c96-ba36-4b59-9ae2-1657804554c7
+
+	column row_id
+		dataType: string
+		lineageTag: f1851a8a-a3fa-4d96-884f-294c0ab348a6
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ratio_id
+		dataType: string
+		lineageTag: d5a6b126-d978-42ea-a9b8-1f6859c96535
+		summarizeBy: none
+		sourceColumn: ratio_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ratio
+		dataType: string
+		lineageTag: 4bc1ea18-bf6f-40a9-8184-1a55f42cfc08
+		summarizeBy: none
+		sourceColumn: ratio
+
+		annotation SummarizationSetBy = Automatic
+
+	column fiscal_year
+		dataType: string
+		lineageTag: 00289782-5ba4-406b-ae79-51a15bcd7e12
+		summarizeBy: none
+		sourceColumn: fiscal_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		lineageTag: a6702185-c450-4860-900a-f8a437f02b5f
+		summarizeBy: none
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit
+		dataType: string
+		lineageTag: 529fdc08-2ecc-4345-93dc-81379f9aba7e
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column formula_990
+		dataType: string
+		lineageTag: 1eed500c-0366-4e14-9caf-613ebd8866c9
+		summarizeBy: none
+		sourceColumn: formula_990
+
+		annotation SummarizationSetBy = Automatic
+
+	column basis
+		dataType: string
+		lineageTag: cb87dd73-9495-45b0-9a32-ef4e59a08c01
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column confidence
+		dataType: string
+		lineageTag: fc469245-d211-4833-8b52-c81a356e1fe9
+		summarizeBy: none
+		sourceColumn: confidence
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 2e94460b-021c-4fb4-b595-708ffd746539
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: c03a960c-91c6-4a8a-9d72-3f5e2df48335
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_990_ratio_actuals = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_990_ratio_actuals.csv"),
+				    [Delimiter = ",", Columns = 11, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "ratio_id", "ratio", "fiscal_year", "value", "unit", "formula_990", "basis", "confidence", "value_class", "note"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"ratio_id", type text},
+				    {"ratio", type text},
+				    {"fiscal_year", type text},
+				    {"value", type number},
+				    {"unit", type text},
+				    {"formula_990", type text},
+				    {"basis", type text},
+				    {"confidence", type text},
+				    {"value_class", type text},
+				    {"note", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

@@ -9,7 +9,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["finance_scenario_report","client_fs_ufcf","client_fs_statements","client_fs_income_walk","client_fs_valuation_inputs","client_fs_controls","client_fs_review","market_rf_policy","market_history_rolling24","client_fs_projects","client_fs_sensitivity","market_history_windows","client_fs_option_sensitivity","client_fs_option_verdicts","market_history_long","client_fs_option_sizing","client_fs_flags","nfp_settings","nfp_alternatives","nfp_programs","nfp_solutions","nfp_grants","nfp_funding_cliff","nfp_pipeline","nfp_calendar","nfp_campaign","nfp_pledges","nfp_project_cash","nfp_financing","nfp_debt_reserves","nfp_risks","nfp_scenarios","nfp_sensitivity","nfp_exec_board","nfp_controls","nfp_ml_series","nfp_ml_estimates","nfp_ml_anomalies","nfp_public_financials","nfp_role_matrix","nfp_ratio_990","nfp_survey_findings","nfp_survey_alignment","nfp_initiative_status","nfp_gap_history","nfp_support_map","nfp_alt_timeline","nfp_pledge_schedule","nfp_funding_mix","nfp_ratio_values","nfp_ratio_history","nfp_rentals","nfp_investment_pools","nfp_invest_scenarios"]
+annotation PBI_QueryOrder = ["finance_scenario_report","client_fs_ufcf","client_fs_statements","client_fs_income_walk","client_fs_valuation_inputs","client_fs_controls","client_fs_review","market_rf_policy","market_history_rolling24","client_fs_projects","client_fs_sensitivity","market_history_windows","client_fs_option_sensitivity","client_fs_option_verdicts","market_history_long","client_fs_option_sizing","client_fs_flags","nfp_settings","nfp_alternatives","nfp_programs","nfp_solutions","nfp_grants","nfp_funding_cliff","nfp_pipeline","nfp_calendar","nfp_campaign","nfp_pledges","nfp_project_cash","nfp_financing","nfp_debt_reserves","nfp_risks","nfp_scenarios","nfp_sensitivity","nfp_exec_board","nfp_controls","nfp_ml_series","nfp_ml_estimates","nfp_ml_anomalies","nfp_public_financials","nfp_role_matrix","nfp_ratio_990","nfp_survey_findings","nfp_survey_alignment","nfp_initiative_status","nfp_gap_history","nfp_support_map","nfp_alt_timeline","nfp_pledge_schedule","nfp_funding_mix","nfp_ratio_values","nfp_ratio_history","nfp_rentals","nfp_investment_pools","nfp_invest_scenarios","nfp_990_actuals","nfp_990_ratio_actuals"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
@@ -76,3 +76,5 @@ ref table nfp_ratio_history
 ref table nfp_rentals
 ref table nfp_investment_pools
 ref table nfp_invest_scenarios
+ref table nfp_990_actuals
+ref table nfp_990_ratio_actuals

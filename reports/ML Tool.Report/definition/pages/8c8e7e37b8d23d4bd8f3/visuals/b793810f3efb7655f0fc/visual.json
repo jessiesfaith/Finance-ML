@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "b793810f3efb7655f0fc",
+  "position": {
+    "x": 165,
+    "y": 4590,
+    "height": 90,
+    "width": 420,
+    "z": 902000,
+    "tabOrder": 902000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_actuals"
+                    }
+                  },
+                  "Property": "990 FY24 Revenue"
+                }
+              },
+              "queryRef": "nfp_990_actuals.990 FY24 Revenue",
+              "nativeQueryRef": "990 FY24 Revenue"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

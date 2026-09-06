@@ -1377,6 +1377,157 @@ def initiative_status() -> pd.DataFrame:
 # build everything
 # ----------------------------------------------------------------------
 
+def actuals_990() -> pd.DataFrame:
+    """REAL filed figures for JSV (EIN 94-2222989) from public Form 990
+    aggregators - the only export whose dollar amounts describe the real
+    organization. Amounts appear ONLY where the research pass confirmed
+    them; unconfirmed years stay RESEARCH REQUIRED with a blank amount,
+    never an estimate. DERIVED rows are pure arithmetic on the reported
+    figures, each showing its formula."""
+    a = pd.read_csv(NFP_DIR / "nfp_990_actual_inputs.csv").fillna("")
+
+    def val(fy, item):
+        m = a[(a["fiscal_year"] == fy) & (a["line_item"] == item)]
+        if len(m) and m.iloc[0]["amount"] != "":
+            return float(m.iloc[0]["amount"])
+        return None
+
+    src = a.iloc[0]
+    derived = []
+
+    def add(fy, item, amount, formula, confidence="MEDIUM"):
+        derived.append({
+            "item_id": f"D-{len(derived) + 1}", "fiscal_year": fy,
+            "fiscal_year_end": a[a["fiscal_year"] == fy].iloc[0][
+                "fiscal_year_end"],
+            "line_item": item, "amount": amount, "unit": "USD",
+            "basis": "DERIVED", "source":
+                "Arithmetic on the REPORTED rows above - no new data",
+            "url": src["url"], "date_verified": src["date_verified"],
+            "confidence": confidence, "value_class": "PUBLIC_RESEARCH",
+            "note": formula})
+
+    for fy in ("FY2024", "FY2023"):
+        rev, exp = val(fy, "total_revenue"), val(fy, "total_expenses")
+        if rev is not None and exp is not None:
+            add(fy, "surplus_deficit", rev - exp,
+                "total_revenue - total_expenses")
+    rev24 = val("FY2024", "total_revenue")
+    con24 = val("FY2024", "contributions_and_grants")
+    prg24 = val("FY2024", "program_service_revenue")
+    if None not in (rev24, con24, prg24):
+        add("FY2024", "other_revenue", rev24 - con24 - prg24,
+            "total_revenue - contributions - program service revenue "
+            "(investment and other income)")
+    ta24, na24 = val("FY2024", "total_assets_end"), val("FY2024",
+                                                        "net_assets_end")
+    if None not in (ta24, na24):
+        add("FY2024", "total_liabilities_end", ta24 - na24,
+            "total_assets_end - net_assets_end (total assets input is "
+            "ROUNDED - treat as approximate)", confidence="LOW")
+    na23 = val("FY2023", "net_assets_end")
+    if None not in (na24, na23):
+        add("FY2024", "net_assets_change", na24 - na23,
+            "net_assets_end FY2024 - net_assets_end FY2023")
+    out = pd.concat([a, pd.DataFrame(derived)], ignore_index=True)
+    out["amount"] = out["amount"].map(
+        lambda v: "" if v == "" else int(round(float(v))))
+    return out
+
+
+def ratio_actuals_990(act: pd.DataFrame) -> pd.DataFrame:
+    """The tab-14 playbook ratios that CAN be computed from the filed
+    990 figures, computed from them - real inputs, shown formula, and a
+    RESEARCH REQUIRED row wherever the public data stops short. Ratio
+    labels carry the fiscal year so chart categories never mix years."""
+    lookup = {(r["fiscal_year"], r["line_item"]): float(r["amount"])
+              for _, r in act.iterrows() if r["amount"] != ""}
+
+    def g(fy, item):
+        return lookup.get((fy, item))
+
+    rows = []
+
+    def add(rid, label, fy, value, unit, formula, basis, note,
+            confidence="MEDIUM"):
+        rows.append({
+            "ratio_id": rid, "ratio": label, "fiscal_year": fy,
+            "value": "" if value is None else round(value, 4),
+            "unit": unit, "formula_990": formula, "basis": basis,
+            "confidence": confidence, "value_class": "PUBLIC_RESEARCH",
+            "note": note})
+
+    for fy in ("FY2023", "FY2024"):
+        rev, exp = g(fy, "total_revenue"), g(fy, "total_expenses")
+        if rev and exp:
+            add(f"R990-OM-{fy}", f"Operating margin % ({fy})", fy,
+                (rev - exp) / rev * 100, "%",
+                "(Part I line 12 - line 18) / line 12",
+                "COMPUTED FROM REPORTED", "Negative = the year spent "
+                "more than it raised; JSV swung deficit-to-breakeven")
+            add(f"R990-EC-{fy}", f"Expense coverage ({fy})", fy,
+                rev / exp, "x", "Part I line 12 / line 18",
+                "COMPUTED FROM REPORTED", ">= 1.0 means revenue covered "
+                "the year's expenses")
+    rev24, con24 = g("FY2024", "total_revenue"), g(
+        "FY2024", "contributions_and_grants")
+    prg24 = g("FY2024", "program_service_revenue")
+    if rev24 and prg24:
+        add("R990-PR-FY2024", "Program revenue reliance % (FY2024)",
+            "FY2024", prg24 / rev24 * 100, "%",
+            "Part I line 9 / line 12", "COMPUTED FROM REPORTED",
+            "Earned-revenue share - the JCC operating model")
+    if rev24 and con24:
+        add("R990-CR-FY2024", "Contributions reliance % (FY2024)",
+            "FY2024", con24 / rev24 * 100, "%",
+            "Part I line 8 / line 12", "COMPUTED FROM REPORTED",
+            "Donated share of revenue")
+        if prg24:
+            add("R990-OR-FY2024", "Other revenue share % (FY2024)",
+                "FY2024", (rev24 - con24 - prg24) / rev24 * 100, "%",
+                "(line 12 - line 8 - line 9) / line 12", "DERIVED",
+                "Investment and other income share")
+    rev23, exp23 = g("FY2023", "total_revenue"), g("FY2023",
+                                                   "total_expenses")
+    exp24 = g("FY2024", "total_expenses")
+    if rev24 and rev23:
+        add("R990-RG-FY2024", "Revenue growth % (FY2023 to FY2024)",
+            "FY2023-FY2024", (rev24 - rev23) / rev23 * 100, "%",
+            "(line 12 FY2024 - line 12 FY2023) / line 12 FY2023",
+            "COMPUTED FROM REPORTED", "Year-over-year filed revenue")
+    if exp24 and exp23:
+        add("R990-EG-FY2024", "Expense growth % (FY2023 to FY2024)",
+            "FY2023-FY2024", (exp24 - exp23) / exp23 * 100, "%",
+            "(line 18 FY2024 - line 18 FY2023) / line 18 FY2023",
+            "COMPUTED FROM REPORTED", "Year-over-year filed expenses")
+    na24, na23 = g("FY2024", "net_assets_end"), g("FY2023",
+                                                  "net_assets_end")
+    if na24 and na23:
+        add("R990-NG-FY2024", "Net assets change % (FY2023 to FY2024)",
+            "FY2023-FY2024", (na24 - na23) / na23 * 100, "%",
+            "(line 22 FY2024 - line 22 FY2023) / line 22 FY2023",
+            "COMPUTED FROM REPORTED", "Balance-sheet direction")
+    ta24 = g("FY2024", "total_assets_end")
+    if na24 and ta24:
+        add("R990-NA-FY2024", "Net asset ratio % (FY2024)", "FY2024",
+            na24 / ta24 * 100, "%", "Part I line 22 / line 20",
+            "DERIVED (ROUNDED INPUT)", "Total assets input is rounded "
+            "~$20.9M - approximate until the filing is read",
+            confidence="LOW")
+    grants23 = g("FY2023", "grants_paid")
+    if grants23 and exp23:
+        add("R990-GP-FY2023", "Grants paid % of expenses (FY2023)",
+            "FY2023", grants23 / exp23 * 100, "%",
+            "Part I line 13 / line 18", "COMPUTED FROM REPORTED",
+            "Confirm the grants figure's fiscal-year basis in the "
+            "filing")
+    add("R990-MS", "Months of spending (liquidity)", "FY2024", None,
+        "months", "(cash + savings) / (line 18 / 12)",
+        "RESEARCH REQUIRED", "Needs the Part X cash and savings lines - "
+        "not surfaced publicly; read the filing", confidence="LOW")
+    return pd.DataFrame(rows)
+
+
 def build_all() -> dict[str, pd.DataFrame]:
     s = load_settings()
     settings_df = pd.read_csv(NFP_DIR / "nfp_settings.csv")
@@ -1425,6 +1576,9 @@ def build_all() -> dict[str, pd.DataFrame]:
         "nfp_investment_pools": investment_pools(),
         "nfp_invest_scenarios": invest_scenarios(s),
     }
+    act = actuals_990()
+    frames["nfp_990_actuals"] = act
+    frames["nfp_990_ratio_actuals"] = ratio_actuals_990(act)
     # stable sort key: report tables sort by row_id to preserve the
     # decision-flow order of each export
     for df in frames.values():

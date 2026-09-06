@@ -431,3 +431,66 @@ def test_investments_and_rentals(frames):
 def test_committed_exports_match_fresh_build(frames):
     for name, df in frames.items():
         assert_export_values_match(df, REPORTS / f"{name}.csv")
+
+
+def test_990_actuals_real_figures_and_honesty():
+    """The only export whose dollars describe the real organization.
+    Pins the researched figures (a silent change to a 'real' number
+    must fail loudly) and enforces the honesty rules: every amount has
+    a source URL, unconfirmed years stay blank RESEARCH REQUIRED, and
+    derived rows are pure arithmetic on reported ones."""
+    from financials.nfp import actuals_990
+    a = actuals_990()
+    assert (a["value_class"] == "PUBLIC_RESEARCH").all()
+    assert a["url"].str.startswith("https://").all()
+
+    def amt(fy, item):
+        row = a[(a["fiscal_year"] == fy) & (a["line_item"] == item)]
+        return row.iloc[0]["amount"]
+
+    # REPORTED pins (aggregator summaries of the filed 990s)
+    assert amt("FY2024", "total_revenue") == 12604759
+    assert amt("FY2024", "total_expenses") == 12535090
+    assert amt("FY2024", "net_assets_end") == 16855692
+    assert amt("FY2024", "contributions_and_grants") == 4232181
+    assert amt("FY2024", "program_service_revenue") == 7750916
+    assert amt("FY2023", "total_revenue") == 10172090
+    assert amt("FY2023", "total_expenses") == 11269511
+    # DERIVED = arithmetic, shown as such
+    assert amt("FY2024", "surplus_deficit") == 69669
+    assert amt("FY2023", "surplus_deficit") == -1097421
+    assert amt("FY2024", "other_revenue") == 621662
+    derived = a[a["basis"] == "DERIVED"]
+    assert len(derived) == 5
+    assert derived["note"].str.len().gt(10).all()
+    # honesty: unconfirmed stays blank, never estimated
+    rr = a[a["basis"] == "RESEARCH REQUIRED"]
+    assert len(rr) == 4 and (rr["amount"] == "").all()
+    assert set(rr["fiscal_year"]) == {"FY2021", "FY2022", "FY2023"}
+    unresearched = a[a["fiscal_year"].isin(["FY2021", "FY2022"])]
+    assert (unresearched["amount"] == "").all()
+
+
+def test_990_ratio_actuals_computed_from_reported_only():
+    from financials.nfp import actuals_990, ratio_actuals_990
+    r = ratio_actuals_990(actuals_990())
+    assert (r["value_class"] == "PUBLIC_RESEARCH").all()
+    assert r["formula_990"].str.len().gt(5).all()
+
+    def val(rid):
+        return float(r[r["ratio_id"] == rid].iloc[0]["value"])
+
+    assert val("R990-OM-FY2024") == pytest.approx(0.5527, abs=0.001)
+    assert val("R990-OM-FY2023") == pytest.approx(-10.7885, abs=0.001)
+    assert val("R990-EC-FY2024") == pytest.approx(1.0056, abs=0.001)
+    assert val("R990-EC-FY2023") == pytest.approx(0.9026, abs=0.001)
+    assert val("R990-PR-FY2024") == pytest.approx(61.49, abs=0.01)
+    assert val("R990-RG-FY2024") == pytest.approx(23.92, abs=0.01)
+    # liquidity needs Part X detail nobody published - blank, flagged
+    ms = r[r["ratio_id"] == "R990-MS"].iloc[0]
+    assert ms["basis"] == "RESEARCH REQUIRED" and ms["value"] == ""
+    # nothing computed from the unresearched years
+    assert not r["fiscal_year"].str.contains("2021|2022").any()
+    # the rounded-input ratio is flagged, not passed off as exact
+    na = r[r["ratio_id"] == "R990-NA-FY2024"].iloc[0]
+    assert "ROUNDED" in na["basis"] and na["confidence"] == "LOW"

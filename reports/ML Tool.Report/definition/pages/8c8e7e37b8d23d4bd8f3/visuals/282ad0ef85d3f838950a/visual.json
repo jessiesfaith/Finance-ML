@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "282ad0ef85d3f838950a",
+  "position": {
+    "x": 1045,
+    "y": 4590,
+    "height": 90,
+    "width": 420,
+    "z": 904000,
+    "tabOrder": 904000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_actuals"
+                    }
+                  },
+                  "Property": "990 FY24 Net Assets"
+                }
+              },
+              "queryRef": "nfp_990_actuals.990 FY24 Net Assets",
+              "nativeQueryRef": "990 FY24 Net Assets"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

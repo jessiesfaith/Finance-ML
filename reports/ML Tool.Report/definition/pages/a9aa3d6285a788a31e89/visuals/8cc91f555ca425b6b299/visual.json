@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "8cc91f555ca425b6b299",
+  "position": {
+    "x": 1045,
+    "y": 3620,
+    "height": 90,
+    "width": 420,
+    "z": 904000,
+    "tabOrder": 904000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_ratio_actuals"
+                    }
+                  },
+                  "Property": "990 Expense Coverage FY24"
+                }
+              },
+              "queryRef": "nfp_990_ratio_actuals.990 Expense Coverage FY24",
+              "nativeQueryRef": "990 Expense Coverage FY24"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

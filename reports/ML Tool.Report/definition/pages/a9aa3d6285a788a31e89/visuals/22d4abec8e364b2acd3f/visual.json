@@ -1,0 +1,131 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "22d4abec8e364b2acd3f",
+  "position": {
+    "x": 165,
+    "y": 4270,
+    "height": 340,
+    "width": 2670,
+    "z": 907000,
+    "tabOrder": 907000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_ratio_actuals"
+                    }
+                  },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_990_ratio_actuals.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_ratio_actuals"
+                    }
+                  },
+                  "Property": "ratio"
+                }
+              },
+              "queryRef": "nfp_990_ratio_actuals.ratio",
+              "nativeQueryRef": "ratio",
+              "displayName": "ratio"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_ratio_actuals"
+                    }
+                  },
+                  "Property": "value"
+                }
+              },
+              "queryRef": "nfp_990_ratio_actuals.value",
+              "nativeQueryRef": "value",
+              "displayName": "value"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_ratio_actuals"
+                    }
+                  },
+                  "Property": "formula_990"
+                }
+              },
+              "queryRef": "nfp_990_ratio_actuals.formula_990",
+              "nativeQueryRef": "formula_990",
+              "displayName": "990 formula"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_ratio_actuals"
+                    }
+                  },
+                  "Property": "basis"
+                }
+              },
+              "queryRef": "nfp_990_ratio_actuals.basis",
+              "nativeQueryRef": "basis",
+              "displayName": "basis"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_ratio_actuals"
+                    }
+                  },
+                  "Property": "note"
+                }
+              },
+              "queryRef": "nfp_990_ratio_actuals.note",
+              "nativeQueryRef": "note",
+              "displayName": "note"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_990_ratio_actuals"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

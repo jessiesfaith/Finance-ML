@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "f408240498ba5d96e711",
+  "position": {
+    "x": 165,
+    "y": 3560,
+    "height": 40,
+    "width": 2670,
+    "z": 901000,
+    "tabOrder": 901000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "REAL RATIOS - COMPUTED FROM FILED 990 FIGURES (FY2023-FY2024, PUBLIC_RESEARCH)",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
