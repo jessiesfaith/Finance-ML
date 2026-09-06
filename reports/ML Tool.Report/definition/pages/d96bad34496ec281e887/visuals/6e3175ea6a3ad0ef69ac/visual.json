@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "c21ffd72f271e2024bef",
+  "name": "6e3175ea6a3ad0ef69ac",
   "position": {
-    "x": 165,
-    "y": 150,
+    "x": 1925,
+    "y": 400,
     "height": 90,
     "width": 420,
-    "z": 102000,
-    "tabOrder": 102000
+    "z": 110500,
+    "tabOrder": 110500
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,11 @@
                       "Entity": "nfp_990_ratio_actuals"
                     }
                   },
-                  "Property": "990 Program Ratio FY25 %"
+                  "Property": "Revenue Concentration FY25 %"
                 }
               },
-              "queryRef": "nfp_990_ratio_actuals.990 Program Ratio FY25 %",
-              "nativeQueryRef": "990 Program Ratio FY25 %"
+              "queryRef": "nfp_990_ratio_actuals.Revenue Concentration FY25 %",
+              "nativeQueryRef": "Revenue Concentration FY25 %"
             }
           ]
         }

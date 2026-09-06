@@ -1378,3 +1378,15 @@ verified correct, so the blank was local Desktop state; a clean pull
 replaces it; (5) the full KPI register now ALSO lives on tab 17
 (deliberately redundant - the owner wants the tab self-contained);
 (6) NFP chart labels and axes to 18pt. Suite 290.
+
+### 111. Tab 18 folded into tab 17, then deleted (owner request)
+2026-09-06. "if you moved all items under 18 to 17 then delete 18."
+Everything 17 lacked moved over first: the rules & guardrails register,
+the how-boards/CEOs/funders-use-these guidance, the revenue-
+concentration card (the other cards already existed on 17's CFO
+panel), and 18's benchmark-sourcing caveat folded into 17's. Tab 17
+retitled "17 · NFP Financial Statements & KPIs" and now reads top to
+bottom: statements -> CFO panel -> full review -> YoY with the math ->
+KPI register -> rules & guardrails -> usage guidance. Tab 18's page
+removed from the report (19 pages now); all exports stay - they feed
+tab 17.

@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "5e068c4f741e91189970",
+  "name": "c4e7799ada4e5fc062df",
   "position": {
     "x": 165,
-    "y": 70,
-    "height": 56,
+    "y": 4754,
+    "height": 44,
     "width": 2670,
-    "z": 101000,
-    "tabOrder": 101000
+    "z": 220000,
+    "tabOrder": 220000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,9 +19,9 @@
               {
                 "textRuns": [
                   {
-                    "value": "Each KPI: what it means for a community center, its 990 formula, the FY2025 filed value, the industry benchmark or internal policy target, and the five-year path.",
+                    "value": "RULES & GUARDRAILS - actual vs rule, description on the line",
                     "textStyle": {
-                      "fontSize": "12pt"
+                      "fontSize": "15pt"
                     }
                   }
                 ]

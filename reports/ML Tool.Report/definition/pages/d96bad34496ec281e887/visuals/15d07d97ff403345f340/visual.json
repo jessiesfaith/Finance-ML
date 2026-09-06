@@ -3,8 +3,8 @@
   "name": "15d07d97ff403345f340",
   "position": {
     "x": 165,
-    "y": 4754,
-    "height": 60,
+    "y": 5868,
+    "height": 100,
     "width": 2670,
     "z": 114000,
     "tabOrder": 114000
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Read directly from the five owner-provided Form 990 filings; every subtotal is the filing's own number and the statement identities are enforced by test. 'Other assets' is the one derived line. Benchmarks carry their class: INTERNAL POLICY vs sourced SECTOR/BBB standards.",
+                    "value": "Read directly from the five owner-provided Form 990 filings; every subtotal is the filing's own number and the statement identities are enforced by test ('Other assets' is the one derived line; the current ratio is a 990 proxy). Benchmarks carry their class - INTERNAL POLICY vs sourced SECTOR/BBB/IRS standards (BBB verified at give.org; community-center norms from owner-provided research - click through before board use). MEETS/MISSES is computed, never asserted.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }

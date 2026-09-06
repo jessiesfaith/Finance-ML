@@ -80,8 +80,8 @@ teaching-grade valuation pipeline and its Power BI report (tabs:
 11 NFP Campaign & Financing, 12 NFP Executive Decision,
 13 NFP Model Estimates, 14 NFP Ratio Playbook,
 15 NFP Community Study, 16 NFP Investments & Rentals,
-17 NFP Financial Statements (filed 990s + CFO review),
-18 NFP KPIs (benchmarks & policy targets), Legacy).
+17 NFP Financial Statements & KPIs (filed 990s, CFO review,
+YoY, KPI register, benchmarks & rules - all on one tab), Legacy).
 
 The NFP module (tabs 9-12) is a nonprofit CFO decision framework -
 NOT GAAP: mission value = financial sustainability + mission impact +
