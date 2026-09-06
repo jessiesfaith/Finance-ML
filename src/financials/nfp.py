@@ -1635,7 +1635,7 @@ def _ratio_math_fy2025(act: pd.DataFrame) -> dict:
     ap, gp = lk["accounts_payable_accrued_end"], lk[
         "grants_payable_end"]
     dr = lk["deferred_revenue_end"]
-    return {
+    raw = {
         "op_margin_pct": f"(total revenue {f(rev)} - total expenses {f(exp)}) / total revenue {f(rev)}",
         "expense_coverage": f"total revenue {f(rev)} / total expenses {f(exp)}",
         "program_reliance_pct": f"program service revenue {f(prg)} / total revenue {f(rev)}",
@@ -1660,6 +1660,17 @@ def _ratio_math_fy2025(act: pd.DataFrame) -> dict:
         "savings_indicator_pct": f"(total revenue {f(rev)} - total expenses {f(exp)}) / total expenses {f(exp)}",
         "roa_pct": f"(total revenue {f(rev)} - total expenses {f(exp)}) / total assets {f(ta)}",
     }
+
+    def _short(s):
+        # owner shorthand: rev / exp / AR / AP / lia
+        for long, short in (("accounts receivable", "AR"),
+                            ("accounts payable", "AP"),
+                            ("revenue", "rev"), ("expenses", "exp"),
+                            ("liabilities", "lia")):
+            s = s.replace(long, short)
+        return s
+
+    return {k: _short(v) for k, v in raw.items()}
 
 
 def yoy_990(act: pd.DataFrame, fs: pd.DataFrame,

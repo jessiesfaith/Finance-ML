@@ -642,7 +642,7 @@ def test_990_yoy_and_rules(frames):
     ratios = y[y["section"] == "RATIOS"]
     assert (ratios["math_fy2025"].str.len() > 10).all()
     om = ratios[ratios["line_label"] == "Operating margin %"].iloc[0]
-    assert "total revenue 14,208,155" in om["math_fy2025"]
+    assert "total rev 14,208,155" in om["math_fy2025"]
     assert (ratios["variance_pct"] != "").all()
     assert (y[y["section"] != "RATIOS"]["math_fy2025"] == "").all()
     # CFO review carries years-as-columns, target and variances
