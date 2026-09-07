@@ -1605,6 +1605,15 @@ def ratio_actuals_990(act: pd.DataFrame) -> pd.DataFrame:
         return "MEETS" if ok else "MISSES"
 
     df["vs_target"] = df.apply(verdict, axis=1)
+
+    def detail(r):
+        if r["target_value"] == "":
+            return ""
+        v, tv = float(r["value"]), float(r["target_value"])
+        return (f"{r['vs_target']} by {abs(v - tv):,.2f} "
+                f"({v:,.2f} vs {tv:,.2f})")
+
+    df["verdict_detail"] = df.apply(detail, axis=1)
     return df
 
 
@@ -1946,6 +1955,7 @@ def cfo_review_990(ratios: pd.DataFrame) -> pd.DataFrame:
             "benchmark_or_policy": latest["target_label"]
                 or "No published standard",
             "vs_target": latest["vs_target"] or "-",
+            "verdict_detail": latest["verdict_detail"] or "-",
             "cfo_reading": reading,
             **yearvals,
             "target_value": float(tv) if tv != "" else "",
@@ -2077,6 +2087,7 @@ def kpis_990(ratios: pd.DataFrame) -> pd.DataFrame:
             "benchmark_or_policy": latest["target_label"],
             "target_class": latest["target_class"],
             "vs_target": latest["vs_target"],
+            "verdict_detail": latest["verdict_detail"],
             "trend_fy2021_fy2025": trend,
             "typical_audience": _KPI_AUDIENCE[kind],
             "target_value": (float(latest["target_value"])

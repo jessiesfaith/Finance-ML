@@ -606,6 +606,9 @@ def test_cfo_review_and_kpis(frames):
     ps = cr[cr["ratio_kind"] == "public_support_pct"].iloc[0]
     assert float(ps["target_value"]) == 33.33
     assert ps["vs_target"] == "MEETS"
+    assert ps["verdict_detail"] == "MEETS by 41.56 (74.89 vs 33.33)"
+    mc3 = cr[cr["ratio_kind"] == "months_cash_on_hand"].iloc[0]
+    assert mc3["verdict_detail"] == "MISSES by 2.54 (0.46 vs 3.00)"
     assert (cr["cfo_reading"].str.len() > 20).all()
     assert (cr["trend_fy2021_fy2025"].str.count(">") == 4).all()
     k = frames["nfp_990_kpis"].set_index("kpi")

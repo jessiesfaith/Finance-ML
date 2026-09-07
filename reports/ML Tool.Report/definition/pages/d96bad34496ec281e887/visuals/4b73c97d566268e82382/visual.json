@@ -98,11 +98,11 @@
                       "Entity": "nfp_990_kpis"
                     }
                   },
-                  "Property": "vs_target"
+                  "Property": "verdict_detail"
                 }
               },
-              "queryRef": "nfp_990_kpis.vs_target",
-              "nativeQueryRef": "vs_target",
+              "queryRef": "nfp_990_kpis.verdict_detail",
+              "nativeQueryRef": "verdict_detail",
               "displayName": "vs target"
             },
             {

@@ -1,10 +1,10 @@
-/// KPI register with target, variance to target, prior year and YoY variance, plus audience (board vs CEO).
+/// KPI register with target, variances, verdict with amounts, audience and description.
 table nfp_990_kpis
-	lineageTag: f37561e0-7fb4-4416-aae3-f056ece02438
+	lineageTag: 13d70371-544c-4299-9f0f-aaa28e24c9b0
 
 	column row_id
 		dataType: string
-		lineageTag: 71629a99-7889-488b-bcf6-3d4061bfa3d4
+		lineageTag: f49b6d7b-9690-4cb4-8fbc-53a808378957
 		summarizeBy: none
 		sourceColumn: row_id
 
@@ -12,7 +12,7 @@ table nfp_990_kpis
 
 	column kpi_id
 		dataType: string
-		lineageTag: b3cc1021-5c3b-4a71-8b4f-def1252714ab
+		lineageTag: 60921f3e-40fb-4e6c-96bb-52dfa1ef5cc8
 		summarizeBy: none
 		sourceColumn: kpi_id
 
@@ -20,7 +20,7 @@ table nfp_990_kpis
 
 	column kpi
 		dataType: string
-		lineageTag: bd168801-60f5-4ebf-ab6d-48785b7a497a
+		lineageTag: 7067f63c-4108-47f5-853d-35703d45ac3e
 		summarizeBy: none
 		sourceColumn: kpi
 
@@ -28,7 +28,7 @@ table nfp_990_kpis
 
 	column description
 		dataType: string
-		lineageTag: 65121f22-1768-4d28-92d9-af694c3fb7d1
+		lineageTag: 17bc5ec3-fd1f-49a8-b5f8-83e638ca43e9
 		summarizeBy: none
 		sourceColumn: description
 
@@ -36,7 +36,7 @@ table nfp_990_kpis
 
 	column formula_990
 		dataType: string
-		lineageTag: 0a69402a-fa1c-4d3a-b16a-cb96dae07994
+		lineageTag: 5aea3a52-3703-4fa7-a3d4-d56caa44f32d
 		summarizeBy: none
 		sourceColumn: formula_990
 
@@ -45,7 +45,7 @@ table nfp_990_kpis
 	column fy2025_value
 		dataType: double
 		formatString: #,0.##;(#,0.##)
-		lineageTag: b55a256f-b697-4151-badc-cde9e9ce0a0b
+		lineageTag: e5d120be-2ac8-4808-a228-a5800202ca69
 		summarizeBy: none
 		sourceColumn: fy2025_value
 
@@ -53,7 +53,7 @@ table nfp_990_kpis
 
 	column unit
 		dataType: string
-		lineageTag: de11c6e4-fe5e-43df-8ce3-da7ccbaeb62a
+		lineageTag: e8cb672d-0d92-402b-b2c8-f07ba0065669
 		summarizeBy: none
 		sourceColumn: unit
 
@@ -61,7 +61,7 @@ table nfp_990_kpis
 
 	column benchmark_or_policy
 		dataType: string
-		lineageTag: a4289acc-288f-42e1-bc90-bda3b5ac31f9
+		lineageTag: 6eb1787b-6d67-43ed-b3d7-0362851e512c
 		summarizeBy: none
 		sourceColumn: benchmark_or_policy
 
@@ -69,7 +69,7 @@ table nfp_990_kpis
 
 	column target_class
 		dataType: string
-		lineageTag: 3e316b9e-25fc-4f37-8327-b8b2e4fa7365
+		lineageTag: a661ffd2-1c0a-4357-a458-78f1466198bb
 		summarizeBy: none
 		sourceColumn: target_class
 
@@ -77,15 +77,23 @@ table nfp_990_kpis
 
 	column vs_target
 		dataType: string
-		lineageTag: 927a6163-7cf1-482a-ad7f-798acadaf979
+		lineageTag: 13ff8008-7fc3-4f4d-a20f-9ba90495457e
 		summarizeBy: none
 		sourceColumn: vs_target
 
 		annotation SummarizationSetBy = Automatic
 
+	column verdict_detail
+		dataType: string
+		lineageTag: 2980c179-a2b8-4d49-bc61-f166679a1f8b
+		summarizeBy: none
+		sourceColumn: verdict_detail
+
+		annotation SummarizationSetBy = Automatic
+
 	column trend_fy2021_fy2025
 		dataType: string
-		lineageTag: 84826d66-5365-4765-83ef-e43183a0ab88
+		lineageTag: 4dbf8db5-a3b7-48c1-ba31-7df543aad4ed
 		summarizeBy: none
 		sourceColumn: trend_fy2021_fy2025
 
@@ -93,7 +101,7 @@ table nfp_990_kpis
 
 	column typical_audience
 		dataType: string
-		lineageTag: b4b97db8-f9ec-41f2-a830-b18291257133
+		lineageTag: 30a4596e-1fa6-439a-950d-61af8dc4866d
 		summarizeBy: none
 		sourceColumn: typical_audience
 
@@ -102,7 +110,7 @@ table nfp_990_kpis
 	column target_value
 		dataType: double
 		formatString: #,0.00;(#,0.00)
-		lineageTag: dd411017-b095-4eaa-8b97-64446872367d
+		lineageTag: 1893a2dd-49ff-4faa-9166-c2b50504fc3d
 		summarizeBy: none
 		sourceColumn: target_value
 
@@ -111,7 +119,7 @@ table nfp_990_kpis
 	column variance_to_target
 		dataType: double
 		formatString: #,0.##;(#,0.##)
-		lineageTag: 9d23d1df-41a3-4c35-ad87-fc184bc315ee
+		lineageTag: 541c329c-fdaa-4bb2-818e-f04ff3bcea26
 		summarizeBy: none
 		sourceColumn: variance_to_target
 
@@ -120,7 +128,7 @@ table nfp_990_kpis
 	column fy2024_value
 		dataType: double
 		formatString: #,0.##;(#,0.##)
-		lineageTag: 83c45d8a-2930-46d8-8e32-e0c8a1a46f4e
+		lineageTag: 139d5920-dac7-4642-a32e-6b5e280c3a54
 		summarizeBy: none
 		sourceColumn: fy2024_value
 
@@ -129,7 +137,7 @@ table nfp_990_kpis
 	column yoy_variance
 		dataType: double
 		formatString: #,0.##;(#,0.##)
-		lineageTag: b0d9b6c6-7a9e-41a5-ac41-faaa8e2b9391
+		lineageTag: 36d93746-74be-4237-97af-0e9255993a86
 		summarizeBy: none
 		sourceColumn: yoy_variance
 
@@ -137,7 +145,7 @@ table nfp_990_kpis
 
 	column value_class
 		dataType: string
-		lineageTag: 9dd7d1b8-45ef-4e5b-b7a7-8fad46634ea6
+		lineageTag: e2cacdcd-c844-4599-a85f-a9c2edebf3c1
 		summarizeBy: none
 		sourceColumn: value_class
 
@@ -149,10 +157,10 @@ table nfp_990_kpis
 				let
 				  Source = Csv.Document(
 				    File.Contents("C:\dev\Finance-ML\reports\nfp_990_kpis.csv"),
-				    [Delimiter = ",", Columns = 17, QuoteStyle = QuoteStyle.Csv]
+				    [Delimiter = ",", Columns = 18, QuoteStyle = QuoteStyle.Csv]
 				),
 				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "kpi_id", "kpi", "description", "formula_990", "fy2025_value", "unit", "benchmark_or_policy", "target_class", "vs_target", "trend_fy2021_fy2025", "typical_audience", "target_value", "variance_to_target", "fy2024_value", "yoy_variance", "value_class"}),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "kpi_id", "kpi", "description", "formula_990", "fy2025_value", "unit", "benchmark_or_policy", "target_class", "vs_target", "verdict_detail", "trend_fy2021_fy2025", "typical_audience", "target_value", "variance_to_target", "fy2024_value", "yoy_variance", "value_class"}),
 				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
 				    {"row_id", type text},
 				    {"kpi_id", type text},
@@ -164,6 +172,7 @@ table nfp_990_kpis
 				    {"benchmark_or_policy", type text},
 				    {"target_class", type text},
 				    {"vs_target", type text},
+				    {"verdict_detail", type text},
 				    {"trend_fy2021_fy2025", type text},
 				    {"typical_audience", type text},
 				    {"target_value", type number},
