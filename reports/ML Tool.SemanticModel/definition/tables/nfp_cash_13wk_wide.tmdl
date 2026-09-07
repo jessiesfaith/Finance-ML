@@ -20,7 +20,7 @@ table nfp_cash_13wk_wide
 
 	column wk01
 		dataType: double
-		formatString: #,0.##;(#,0.##)
+		formatString: #,0;(#,0)
 		lineageTag: 4790faf7-4558-4179-bdff-894b35adcbcb
 		summarizeBy: none
 		sourceColumn: wk01
@@ -29,7 +29,7 @@ table nfp_cash_13wk_wide
 
 	column wk02
 		dataType: double
-		formatString: #,0.##;(#,0.##)
+		formatString: #,0;(#,0)
 		lineageTag: 09da43a8-37a7-4abe-b5ca-dad2aeb509e9
 		summarizeBy: none
 		sourceColumn: wk02
@@ -38,7 +38,7 @@ table nfp_cash_13wk_wide
 
 	column wk03
 		dataType: double
-		formatString: #,0.##;(#,0.##)
+		formatString: #,0;(#,0)
 		lineageTag: 49cb7de2-531d-4ecd-bdec-9c241a9ea92b
 		summarizeBy: none
 		sourceColumn: wk03
@@ -47,7 +47,7 @@ table nfp_cash_13wk_wide
 
 	column wk04
 		dataType: double
-		formatString: #,0.##;(#,0.##)
+		formatString: #,0;(#,0)
 		lineageTag: b60a31dd-b80a-4668-998a-1c39ee6e7fcf
 		summarizeBy: none
 		sourceColumn: wk04
@@ -56,7 +56,7 @@ table nfp_cash_13wk_wide
 
 	column wk05
 		dataType: double
-		formatString: #,0.##;(#,0.##)
+		formatString: #,0;(#,0)
 		lineageTag: 10eb0454-6cce-4f44-a474-8cc60a6dcef8
 		summarizeBy: none
 		sourceColumn: wk05
@@ -65,7 +65,7 @@ table nfp_cash_13wk_wide
 
 	column wk06
 		dataType: double
-		formatString: #,0.##;(#,0.##)
+		formatString: #,0;(#,0)
 		lineageTag: 0b84c676-436b-43dd-bdd4-cebe56c8c8b1
 		summarizeBy: none
 		sourceColumn: wk06
@@ -74,7 +74,7 @@ table nfp_cash_13wk_wide
 
 	column wk07
 		dataType: double
-		formatString: #,0.##;(#,0.##)
+		formatString: #,0;(#,0)
 		lineageTag: 2fd878f4-bc88-4641-a14e-62cfd53cb801
 		summarizeBy: none
 		sourceColumn: wk07
@@ -83,7 +83,7 @@ table nfp_cash_13wk_wide
 
 	column wk08
 		dataType: double
-		formatString: #,0.##;(#,0.##)
+		formatString: #,0;(#,0)
 		lineageTag: a9e68bdb-66da-4209-adb6-3261e83f7f4f
 		summarizeBy: none
 		sourceColumn: wk08
@@ -92,7 +92,7 @@ table nfp_cash_13wk_wide
 
 	column wk09
 		dataType: double
-		formatString: #,0.##;(#,0.##)
+		formatString: #,0;(#,0)
 		lineageTag: 1936b4e9-5a7c-4a48-8435-ad9b60757fc3
 		summarizeBy: none
 		sourceColumn: wk09
@@ -101,7 +101,7 @@ table nfp_cash_13wk_wide
 
 	column wk10
 		dataType: double
-		formatString: #,0.##;(#,0.##)
+		formatString: #,0;(#,0)
 		lineageTag: 13cff38e-1282-464d-9a96-5159623045b2
 		summarizeBy: none
 		sourceColumn: wk10
@@ -110,7 +110,7 @@ table nfp_cash_13wk_wide
 
 	column wk11
 		dataType: double
-		formatString: #,0.##;(#,0.##)
+		formatString: #,0;(#,0)
 		lineageTag: 5cd902ac-422d-4cd5-afb2-006c20fb2a1f
 		summarizeBy: none
 		sourceColumn: wk11
@@ -119,7 +119,7 @@ table nfp_cash_13wk_wide
 
 	column wk12
 		dataType: double
-		formatString: #,0.##;(#,0.##)
+		formatString: #,0;(#,0)
 		lineageTag: 1eab46d9-8af9-4769-b0c0-9af7f71d0d8f
 		summarizeBy: none
 		sourceColumn: wk12
@@ -128,7 +128,7 @@ table nfp_cash_13wk_wide
 
 	column wk13
 		dataType: double
-		formatString: #,0.##;(#,0.##)
+		formatString: #,0;(#,0)
 		lineageTag: 62a78614-7919-4c61-93d7-204b610de707
 		summarizeBy: none
 		sourceColumn: wk13

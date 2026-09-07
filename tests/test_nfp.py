@@ -887,11 +887,13 @@ def test_tab17_wrapped_columns_have_pinned_widths():
         raise AssertionError(f"no width for {queryref}")
 
     review = json.load(open(f"{page}/fe0f37785a1370b4db12/visual.json"))
-    assert width_of(review, "nfp_cfo_review.math_fy2025") == "800D"
+    assert width_of(review, "nfp_cfo_review.math_fy2025") == "400D"
+    assert width_of(review, "nfp_cfo_review.cfo_reading") == "1000D"
     register = json.load(open(f"{page}/4b73c97d566268e82382/visual.json"))
     assert width_of(register, "nfp_990_kpis.description") == "800D"
     rules = json.load(open(f"{page}/9650c922f0d027732dfd/visual.json"))
     assert width_of(rules, "nfp_990_rules.description") == "800D"
+    assert width_of(rules, "nfp_990_rules.source") == "550D"
     props = rules["visual"]["objects"]["values"][0]["properties"]
     assert props["wordWrap"]["expr"]["Literal"]["Value"] == "true"
     rprojs = [p["nativeQueryRef"] for p in register["visual"]["query"]

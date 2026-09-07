@@ -3,7 +3,7 @@
   "name": "9650c922f0d027732dfd",
   "position": {
     "x": 165,
-    "y": 5498,
+    "y": 5898,
     "height": 1150,
     "width": 2670,
     "z": 221000,
@@ -192,6 +192,20 @@
               "expr": {
                 "Literal": {
                   "Value": "800D"
+                }
+              }
+            }
+          }
+        },
+        {
+          "selector": {
+            "metadata": "nfp_990_rules.source"
+          },
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "550D"
                 }
               }
             }

@@ -4,7 +4,7 @@
   "position": {
     "x": 165,
     "y": 1750,
-    "height": 1700,
+    "height": 2100,
     "width": 2670,
     "z": 113000,
     "tabOrder": 113000
@@ -281,7 +281,21 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "800D"
+                  "Value": "400D"
+                }
+              }
+            }
+          }
+        },
+        {
+          "selector": {
+            "metadata": "nfp_cfo_review.cfo_reading"
+          },
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000D"
                 }
               }
             }

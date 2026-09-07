@@ -1473,3 +1473,16 @@ export nfp_cash_13wk_wide (wk01..wk13 stable column names; a pinned
 test compares the visual's date headers to the long table, so moving
 MARKET_AS_OF breaks the build until the visual is regenerated). The
 long table stays for the line chart and the chat assistant.
+
+### 116. Width tuning round: math 50%, no truncation, whole dollars
+2026-09-07 late screenshots. Full review: math_fy2025 400D (owner:
+"50% of what it is now") and cfo_reading pinned 1000D so the reading
+never truncates at the table edge; height 1700 -> 2100 for the
+taller wrapped rows (the earlier blank strip is what the wrap now
+consumes). Rules & guardrails: source pinned 550D so it wraps
+instead of truncating. Both 13-week forecast tables display WHOLE
+DOLLARS (formatString #,0;(#,0)) - the underlying data keeps exact
+cents, so cross-footing stays exact and a displayed row can be off
+by $1 from the displayed parts only through honest rounding.
+weeks_covered and the yield/ratio columns keep their decimals.
+Page 11500 -> 11880.

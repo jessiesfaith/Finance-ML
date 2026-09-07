@@ -29,7 +29,7 @@ table nfp_cash_13wk
 
 	column inflow
 		dataType: double
-		formatString: #,0.##;(#,0.##)
+		formatString: #,0;(#,0)
 		lineageTag: 16aa6f5d-d046-4f80-a3da-08862120b1bb
 		summarizeBy: none
 		sourceColumn: inflow
@@ -38,7 +38,7 @@ table nfp_cash_13wk
 
 	column expenses
 		dataType: double
-		formatString: #,0.##;(#,0.##)
+		formatString: #,0;(#,0)
 		lineageTag: 1ebff37c-e95f-4762-8208-e76790223281
 		summarizeBy: none
 		sourceColumn: expenses
@@ -47,7 +47,7 @@ table nfp_cash_13wk
 
 	column net_change
 		dataType: double
-		formatString: #,0.##;(#,0.##)
+		formatString: #,0;(#,0)
 		lineageTag: a3d49be6-4230-47d0-badf-6f1602bf867d
 		summarizeBy: none
 		sourceColumn: net_change
@@ -56,7 +56,7 @@ table nfp_cash_13wk
 
 	column ending_cash
 		dataType: double
-		formatString: #,0.##;(#,0.##)
+		formatString: #,0;(#,0)
 		lineageTag: cccfcdd3-6539-40e8-ae21-e6d63c69afa0
 		summarizeBy: none
 		sourceColumn: ending_cash
@@ -65,7 +65,7 @@ table nfp_cash_13wk
 
 	column cum_expenses
 		dataType: double
-		formatString: #,0.##;(#,0.##)
+		formatString: #,0;(#,0)
 		lineageTag: 4009962e-2741-4588-99dc-1c285b14da4b
 		summarizeBy: none
 		sourceColumn: cum_expenses
