@@ -3,8 +3,8 @@
   "name": "4b73c97d566268e82382",
   "position": {
     "x": 165,
-    "y": 3924,
-    "height": 1400,
+    "y": 3524,
+    "height": 1900,
     "width": 2670,
     "z": 211000,
     "tabOrder": 211000
@@ -44,6 +44,21 @@
               "queryRef": "nfp_990_kpis.kpi",
               "nativeQueryRef": "kpi",
               "displayName": "KPI"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_kpis"
+                    }
+                  },
+                  "Property": "fy2024_value"
+                }
+              },
+              "queryRef": "nfp_990_kpis.fy2024_value",
+              "nativeQueryRef": "fy2024_value",
+              "displayName": "FY24"
             },
             {
               "field": {
@@ -104,21 +119,6 @@
               "queryRef": "nfp_990_kpis.vs_target",
               "nativeQueryRef": "vs_target",
               "displayName": "vs target"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "nfp_990_kpis"
-                    }
-                  },
-                  "Property": "fy2024_value"
-                }
-              },
-              "queryRef": "nfp_990_kpis.fy2024_value",
-              "nativeQueryRef": "fy2024_value",
-              "displayName": "FY24"
             },
             {
               "field": {
@@ -236,6 +236,22 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "selector": {
+            "metadata": "nfp_990_kpis.description"
+          },
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "800D"
                 }
               }
             }

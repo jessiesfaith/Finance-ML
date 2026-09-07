@@ -1,0 +1,177 @@
+/// 13-week forecast in classic CFO layout: weeks as columns, line items down (same straight-line numbers as nfp_cash_13wk).
+table nfp_cash_13wk_wide
+	lineageTag: f9109501-02d7-4e45-8ac1-ae9a88cb4b00
+
+	column row_id
+		dataType: string
+		lineageTag: d1f9cd31-7332-41c3-b6b6-a3c28b2a8e82
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column line_item
+		dataType: string
+		lineageTag: 57a158c4-4759-4f31-a421-4c377a4efcbb
+		summarizeBy: none
+		sourceColumn: line_item
+
+		annotation SummarizationSetBy = Automatic
+
+	column wk01
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 4790faf7-4558-4179-bdff-894b35adcbcb
+		summarizeBy: none
+		sourceColumn: wk01
+
+		annotation SummarizationSetBy = Automatic
+
+	column wk02
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 09da43a8-37a7-4abe-b5ca-dad2aeb509e9
+		summarizeBy: none
+		sourceColumn: wk02
+
+		annotation SummarizationSetBy = Automatic
+
+	column wk03
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 49cb7de2-531d-4ecd-bdec-9c241a9ea92b
+		summarizeBy: none
+		sourceColumn: wk03
+
+		annotation SummarizationSetBy = Automatic
+
+	column wk04
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: b60a31dd-b80a-4668-998a-1c39ee6e7fcf
+		summarizeBy: none
+		sourceColumn: wk04
+
+		annotation SummarizationSetBy = Automatic
+
+	column wk05
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 10eb0454-6cce-4f44-a474-8cc60a6dcef8
+		summarizeBy: none
+		sourceColumn: wk05
+
+		annotation SummarizationSetBy = Automatic
+
+	column wk06
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 0b84c676-436b-43dd-bdd4-cebe56c8c8b1
+		summarizeBy: none
+		sourceColumn: wk06
+
+		annotation SummarizationSetBy = Automatic
+
+	column wk07
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 2fd878f4-bc88-4641-a14e-62cfd53cb801
+		summarizeBy: none
+		sourceColumn: wk07
+
+		annotation SummarizationSetBy = Automatic
+
+	column wk08
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: a9e68bdb-66da-4209-adb6-3261e83f7f4f
+		summarizeBy: none
+		sourceColumn: wk08
+
+		annotation SummarizationSetBy = Automatic
+
+	column wk09
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 1936b4e9-5a7c-4a48-8435-ad9b60757fc3
+		summarizeBy: none
+		sourceColumn: wk09
+
+		annotation SummarizationSetBy = Automatic
+
+	column wk10
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 13cff38e-1282-464d-9a96-5159623045b2
+		summarizeBy: none
+		sourceColumn: wk10
+
+		annotation SummarizationSetBy = Automatic
+
+	column wk11
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 5cd902ac-422d-4cd5-afb2-006c20fb2a1f
+		summarizeBy: none
+		sourceColumn: wk11
+
+		annotation SummarizationSetBy = Automatic
+
+	column wk12
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 1eab46d9-8af9-4769-b0c0-9af7f71d0d8f
+		summarizeBy: none
+		sourceColumn: wk12
+
+		annotation SummarizationSetBy = Automatic
+
+	column wk13
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 62a78614-7919-4c61-93d7-204b610de707
+		summarizeBy: none
+		sourceColumn: wk13
+
+		annotation SummarizationSetBy = Automatic
+
+	column basis
+		dataType: string
+		lineageTag: e0b5fa69-1582-4397-9fb7-0c0b7abf5a85
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_cash_13wk_wide = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_cash_13wk_wide.csv"),
+				    [Delimiter = ",", Columns = 16, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "line_item", "wk01", "wk02", "wk03", "wk04", "wk05", "wk06", "wk07", "wk08", "wk09", "wk10", "wk11", "wk12", "wk13", "basis"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"line_item", type text},
+				    {"wk01", type number},
+				    {"wk02", type number},
+				    {"wk03", type number},
+				    {"wk04", type number},
+				    {"wk05", type number},
+				    {"wk06", type number},
+				    {"wk07", type number},
+				    {"wk08", type number},
+				    {"wk09", type number},
+				    {"wk10", type number},
+				    {"wk11", type number},
+				    {"wk12", type number},
+				    {"wk13", type number},
+				    {"basis", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

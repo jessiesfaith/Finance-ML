@@ -823,7 +823,7 @@ def test_tab17_review_and_register_show_plain_verdicts():
     assert "verdict_detail" not in projs and "vs_target" in projs
     assert "reviewed_by" not in projs
     assert "what_it_means" not in projs
-    assert review["position"]["height"] >= 2000
+    assert review["position"]["height"] >= 1600  # 22 rows, no scroll
     register = json.load(open(f"{page}/4b73c97d566268e82382/visual.json"))
     rprojs = [p["nativeQueryRef"] for p in register["visual"]["query"]
               ["queryState"]["Values"]["projections"]]
@@ -833,3 +833,67 @@ def test_tab17_review_and_register_show_plain_verdicts():
         for section in ("values", "columnHeaders"):
             props = vis["visual"]["objects"][section][0]["properties"]
             assert props["wordWrap"]["expr"]["Literal"]["Value"] == "true"
+
+
+def test_cash_forecast_wide_matches_long():
+    """The transposed 13-week table (owner request: dates horizontal,
+    beginning balance / inflow / expenses / ending balance / net) must
+    carry exactly the long table's numbers, and the visual's column
+    headers must show the long table's week-ending dates - if
+    MARKET_AS_OF ever moves, this fails until the visual is
+    regenerated."""
+    import json
+    from financials.nfp import (actuals_990, cash_forecast_13wk,
+                                cash_forecast_13wk_wide)
+    cf = cash_forecast_13wk(actuals_990())
+    w = cash_forecast_13wk_wide(cf).set_index("line_item")
+    assert list(w.index) == ["Beginning cash balance",
+                             "Forecast inflow", "Forecast expenses",
+                             "Ending cash balance", "Net change"]
+    assert w.loc["Beginning cash balance", "wk01"] == 515092.0
+    assert w.loc["Ending cash balance", "wk13"] == 682305.0
+    assert (w.loc["Beginning cash balance", "wk13"]
+            == w.loc["Ending cash balance", "wk12"])
+    assert w.loc["Ending cash balance", "wk05"] == pytest.approx(
+        float(cf[cf["week_no"] == 5].iloc[0]["ending_cash"]))
+    assert w.loc["Beginning cash balance", "basis"].startswith("FILED")
+    import hashlib
+    name = hashlib.md5(b"finance-ml-990:t17:cf13").hexdigest()[:20]
+    v = json.load(open("reports/ML Tool.Report/definition/pages/"
+                       f"d96bad34496ec281e887/visuals/{name}/visual.json"))
+    projs = v["visual"]["query"]["queryState"]["Values"]["projections"]
+    assert projs[0]["field"]["Column"]["Expression"]["SourceRef"][
+        "Entity"] == "nfp_cash_13wk_wide"
+    shown = [p["displayName"] for p in projs
+             if p["nativeQueryRef"].startswith("wk")]
+    assert shown == list(cf[cf["week_no"] > 0]["week_ending"])
+
+
+def test_tab17_wrapped_columns_have_pinned_widths():
+    """Wrap only engages when a column has an explicit width -
+    auto-sized columns just grow (owner QA 2026-09-07). The three long
+    text columns are pinned to ~30% of the table, via plain Literal
+    columnWidth entries (never a conditional-formatting tree,
+    DECISIONS #112). The register also leads with FY24 right after
+    the KPI name."""
+    import json
+    page = ("reports/ML Tool.Report/definition/pages/"
+            "d96bad34496ec281e887/visuals")
+
+    def width_of(visual, queryref):
+        for e in visual["visual"]["objects"]["columnWidth"]:
+            if e["selector"]["metadata"] == queryref:
+                return e["properties"]["value"]["expr"]["Literal"]["Value"]
+        raise AssertionError(f"no width for {queryref}")
+
+    review = json.load(open(f"{page}/fe0f37785a1370b4db12/visual.json"))
+    assert width_of(review, "nfp_cfo_review.math_fy2025") == "800D"
+    register = json.load(open(f"{page}/4b73c97d566268e82382/visual.json"))
+    assert width_of(register, "nfp_990_kpis.description") == "800D"
+    rules = json.load(open(f"{page}/9650c922f0d027732dfd/visual.json"))
+    assert width_of(rules, "nfp_990_rules.description") == "800D"
+    props = rules["visual"]["objects"]["values"][0]["properties"]
+    assert props["wordWrap"]["expr"]["Literal"]["Value"] == "true"
+    rprojs = [p["nativeQueryRef"] for p in register["visual"]["query"]
+              ["queryState"]["Values"]["projections"]]
+    assert rprojs.index("fy2024_value") == rprojs.index("kpi") + 1

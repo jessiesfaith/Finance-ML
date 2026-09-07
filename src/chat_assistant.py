@@ -64,7 +64,7 @@ INLINE_CSVS = [
     "nfp_990_yoy.csv", "nfp_990_rules.csv", "nfp_cash_13wk.csv",
     "nfp_treasury_yields.csv", "nfp_bond_trends.csv",
     "nfp_bond_forecast.csv", "nfp_invest_menu.csv",
-    "nfp_invest_buckets.csv",
+    "nfp_invest_buckets.csv", "nfp_cash_13wk_wide.csv",
 ]
 HEAD_CSVS = ["market_history_rolling24.csv", "market_history_windows.csv",
              "market_history_long.csv"]

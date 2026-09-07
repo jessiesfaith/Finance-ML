@@ -3,8 +3,8 @@
   "name": "9650c922f0d027732dfd",
   "position": {
     "x": 165,
-    "y": 5398,
-    "height": 900,
+    "y": 5498,
+    "height": 1150,
     "width": 2670,
     "z": 221000,
     "tabOrder": 221000
@@ -151,6 +151,13 @@
                   "Value": "18D"
                 }
               }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
             }
           }
         }
@@ -162,6 +169,29 @@
               "expr": {
                 "Literal": {
                   "Value": "18D"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "selector": {
+            "metadata": "nfp_990_rules.description"
+          },
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "800D"
                 }
               }
             }

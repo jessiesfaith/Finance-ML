@@ -2227,6 +2227,35 @@ def cash_forecast_13wk(act: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def cash_forecast_13wk_wide(cf: pd.DataFrame) -> pd.DataFrame:
+    """The 13-week forecast in classic CFO layout (owner request
+    2026-09-07): dates run HORIZONTALLY as columns, line items run
+    down - beginning balance, inflow, expenses, ending balance, net.
+    Same straight-line numbers as the long table (which the chart
+    keeps using); wk01..wk13 are stable column names and the visual
+    shows each week's date as the header."""
+    body = cf[cf["week_no"] > 0]
+    ending = [float(v) for v in body["ending_cash"]]
+    net = [float(v) for v in body["net_change"]]
+    opening = float(cf.iloc[0]["ending_cash"])
+    beginning = [opening] + ending[:-1]
+    wk = [f"wk{k:02d}" for k in range(1, 14)]
+    derived = "DERIVED (STRAIGHT-LINE 990 PROXY)"
+    lines = [
+        ("Beginning cash balance", beginning,
+         "FILED opening (FY2025 Part X), then DERIVED"),
+        ("Forecast inflow", [float(v) for v in body["inflow"]],
+         derived),
+        ("Forecast expenses", [float(v) for v in body["expenses"]],
+         derived),
+        ("Ending cash balance", ending, derived),
+        ("Net change", net, derived),
+    ]
+    return pd.DataFrame([
+        {"line_item": name, **dict(zip(wk, vals)), "basis": basis}
+        for name, vals, basis in lines])
+
+
 def treasury_yields() -> pd.DataFrame:
     """Current treasury yield curve, from owner-verified market quotes
     in data/nfp/nfp_treasury_inputs.csv (PUBLIC_RESEARCH, MEDIUM -
@@ -2376,7 +2405,9 @@ def build_all() -> dict[str, pd.DataFrame]:
     frames["nfp_990_kpis"] = kpis_990(ratios)
     frames["nfp_990_yoy"] = yoy_990(act, fs, ratios)
     frames["nfp_990_rules"] = rules_990(ratios)
-    frames["nfp_cash_13wk"] = cash_forecast_13wk(act)
+    cf13 = cash_forecast_13wk(act)
+    frames["nfp_cash_13wk"] = cf13
+    frames["nfp_cash_13wk_wide"] = cash_forecast_13wk_wide(cf13)
     ty = treasury_yields()
     frames["nfp_treasury_yields"] = ty
     frames["nfp_bond_trends"] = bond_trends()

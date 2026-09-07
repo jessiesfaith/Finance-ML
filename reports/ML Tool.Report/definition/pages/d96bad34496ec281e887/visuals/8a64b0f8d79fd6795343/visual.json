@@ -3,8 +3,8 @@
   "name": "8a64b0f8d79fd6795343",
   "position": {
     "x": 165,
-    "y": 6372,
-    "height": 660,
+    "y": 6722,
+    "height": 320,
     "width": 2670,
     "z": 320000,
     "tabOrder": 320000
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_cash_13wk"
+                      "Entity": "nfp_cash_13wk_wide"
                     }
                   },
                   "Property": "row_id"
                 }
               },
-              "queryRef": "nfp_cash_13wk.row_id",
+              "queryRef": "nfp_cash_13wk_wide.row_id",
               "nativeQueryRef": "row_id",
               "displayName": "#"
             },
@@ -35,148 +35,223 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_cash_13wk"
+                      "Entity": "nfp_cash_13wk_wide"
                     }
                   },
-                  "Property": "week_no"
+                  "Property": "line_item"
                 }
               },
-              "queryRef": "nfp_cash_13wk.week_no",
-              "nativeQueryRef": "week_no",
-              "displayName": "wk"
+              "queryRef": "nfp_cash_13wk_wide.line_item",
+              "nativeQueryRef": "line_item",
+              "displayName": "line item"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_cash_13wk"
+                      "Entity": "nfp_cash_13wk_wide"
                     }
                   },
-                  "Property": "week_ending"
+                  "Property": "wk01"
                 }
               },
-              "queryRef": "nfp_cash_13wk.week_ending",
-              "nativeQueryRef": "week_ending",
-              "displayName": "week ending"
+              "queryRef": "nfp_cash_13wk_wide.wk01",
+              "nativeQueryRef": "wk01",
+              "displayName": "2026-09-11"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_cash_13wk"
+                      "Entity": "nfp_cash_13wk_wide"
                     }
                   },
-                  "Property": "inflow"
+                  "Property": "wk02"
                 }
               },
-              "queryRef": "nfp_cash_13wk.inflow",
-              "nativeQueryRef": "inflow",
-              "displayName": "forecast inflow"
+              "queryRef": "nfp_cash_13wk_wide.wk02",
+              "nativeQueryRef": "wk02",
+              "displayName": "2026-09-18"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_cash_13wk"
+                      "Entity": "nfp_cash_13wk_wide"
                     }
                   },
-                  "Property": "expenses"
+                  "Property": "wk03"
                 }
               },
-              "queryRef": "nfp_cash_13wk.expenses",
-              "nativeQueryRef": "expenses",
-              "displayName": "forecast expenses"
+              "queryRef": "nfp_cash_13wk_wide.wk03",
+              "nativeQueryRef": "wk03",
+              "displayName": "2026-09-25"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_cash_13wk"
+                      "Entity": "nfp_cash_13wk_wide"
                     }
                   },
-                  "Property": "net_change"
+                  "Property": "wk04"
                 }
               },
-              "queryRef": "nfp_cash_13wk.net_change",
-              "nativeQueryRef": "net_change",
-              "displayName": "net"
+              "queryRef": "nfp_cash_13wk_wide.wk04",
+              "nativeQueryRef": "wk04",
+              "displayName": "2026-10-02"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_cash_13wk"
+                      "Entity": "nfp_cash_13wk_wide"
                     }
                   },
-                  "Property": "ending_cash"
+                  "Property": "wk05"
                 }
               },
-              "queryRef": "nfp_cash_13wk.ending_cash",
-              "nativeQueryRef": "ending_cash",
-              "displayName": "ending cash"
+              "queryRef": "nfp_cash_13wk_wide.wk05",
+              "nativeQueryRef": "wk05",
+              "displayName": "2026-10-09"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_cash_13wk"
+                      "Entity": "nfp_cash_13wk_wide"
                     }
                   },
-                  "Property": "cum_expenses"
+                  "Property": "wk06"
                 }
               },
-              "queryRef": "nfp_cash_13wk.cum_expenses",
-              "nativeQueryRef": "cum_expenses",
-              "displayName": "cumulative expenses"
+              "queryRef": "nfp_cash_13wk_wide.wk06",
+              "nativeQueryRef": "wk06",
+              "displayName": "2026-10-16"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_cash_13wk"
+                      "Entity": "nfp_cash_13wk_wide"
                     }
                   },
-                  "Property": "weeks_covered"
+                  "Property": "wk07"
                 }
               },
-              "queryRef": "nfp_cash_13wk.weeks_covered",
-              "nativeQueryRef": "weeks_covered",
-              "displayName": "weeks of spending covered"
+              "queryRef": "nfp_cash_13wk_wide.wk07",
+              "nativeQueryRef": "wk07",
+              "displayName": "2026-10-23"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_cash_13wk"
+                      "Entity": "nfp_cash_13wk_wide"
                     }
                   },
-                  "Property": "vs_3mo_floor"
+                  "Property": "wk08"
                 }
               },
-              "queryRef": "nfp_cash_13wk.vs_3mo_floor",
-              "nativeQueryRef": "vs_3mo_floor",
-              "displayName": "vs 3-month floor"
+              "queryRef": "nfp_cash_13wk_wide.wk08",
+              "nativeQueryRef": "wk08",
+              "displayName": "2026-10-30"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_cash_13wk"
+                      "Entity": "nfp_cash_13wk_wide"
+                    }
+                  },
+                  "Property": "wk09"
+                }
+              },
+              "queryRef": "nfp_cash_13wk_wide.wk09",
+              "nativeQueryRef": "wk09",
+              "displayName": "2026-11-06"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cash_13wk_wide"
+                    }
+                  },
+                  "Property": "wk10"
+                }
+              },
+              "queryRef": "nfp_cash_13wk_wide.wk10",
+              "nativeQueryRef": "wk10",
+              "displayName": "2026-11-13"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cash_13wk_wide"
+                    }
+                  },
+                  "Property": "wk11"
+                }
+              },
+              "queryRef": "nfp_cash_13wk_wide.wk11",
+              "nativeQueryRef": "wk11",
+              "displayName": "2026-11-20"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cash_13wk_wide"
+                    }
+                  },
+                  "Property": "wk12"
+                }
+              },
+              "queryRef": "nfp_cash_13wk_wide.wk12",
+              "nativeQueryRef": "wk12",
+              "displayName": "2026-11-27"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cash_13wk_wide"
+                    }
+                  },
+                  "Property": "wk13"
+                }
+              },
+              "queryRef": "nfp_cash_13wk_wide.wk13",
+              "nativeQueryRef": "wk13",
+              "displayName": "2026-12-04"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cash_13wk_wide"
                     }
                   },
                   "Property": "basis"
                 }
               },
-              "queryRef": "nfp_cash_13wk.basis",
+              "queryRef": "nfp_cash_13wk_wide.basis",
               "nativeQueryRef": "basis",
               "displayName": "basis"
             }
@@ -190,7 +265,7 @@
               "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "nfp_cash_13wk"
+                    "Entity": "nfp_cash_13wk_wide"
                   }
                 },
                 "Property": "row_id"

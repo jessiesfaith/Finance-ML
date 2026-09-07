@@ -1452,3 +1452,24 @@ because owner-provided. Bucket 3's 60/35/5 is pinned to carry
 "ILLUSTRATION ONLY - not a recommendation"; the framing textbox
 keeps her CFO-role chain and the restricted-funds distinction. New
 tables nfp_invest_menu + nfp_invest_buckets; page 8620 -> 11500.
+
+### 115. Wrap needs pinned widths; forecast goes classic (owner QA)
+2026-09-07 evening screenshots. Lesson: wordWrap alone does nothing -
+tableEx auto-sizes columns to content, so wrap never engages until
+the column has an explicit width. The three long text columns
+(review math_fy2025, register description, rules description) got
+columnWidth 800D (~30% of the 2670 table) via plain Literal +
+metadata-selector entries - the same safe mechanism as the chart
+dataPoint colors, NOT a conditional-formatting tree (#112 stands).
+Blank space under lists trimmed: review 2100 -> 1700, rules 900 ->
+1150 (wrapped rows are taller), register 1400 -> 1900 (description
+wraps to ~4 lines), 13-week table 660 -> 320. Register now leads
+with FY24 right after the KPI name (owner: prior year first, then
+FY25 vs target). The 13-week forecast table was TRANSPOSED into the
+classic CFO layout the owner asked for - dates run horizontally as
+column headers, rows are Beginning cash balance / Forecast inflow /
+Forecast expenses / Ending cash balance / Net change - backed by new
+export nfp_cash_13wk_wide (wk01..wk13 stable column names; a pinned
+test compares the visual's date headers to the long table, so moving
+MARKET_AS_OF breaks the build until the visual is regenerated). The
+long table stays for the line chart and the chat assistant.
