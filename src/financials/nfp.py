@@ -1871,23 +1871,53 @@ def fin_statements_990(act: pd.DataFrame) -> pd.DataFrame:
 
 
 _CFO_READINGS = {
+    # profitability
     "op_margin_pct": "Deficit-to-surplus swing managed; hold >= 0",
     "expense_coverage": "Above 1.0x both of the last two years",
+    "savings_indicator_pct": "Share of spending added to net assets - "
+        "positive again since FY2024",
+    "roa_pct": "Surplus per dollar of balance sheet - no sector "
+        "standard",
+    # liquidity
     "months_cash_on_hand": "THE red flag: cash fell through the "
         "3-month floor in FY2025 as liquidity moved to the portfolio",
+    "days_cash_on_hand": "Day-count twin of months of cash - 13.9 "
+        "days vs the ~90-day norm",
     "operating_reserve_months": "Healthy on paper - but line 27 "
         "includes fixed assets; get the audit's spendable split",
+    "current_ratio": "Below 1.0 in FY2025 on the 990 proxy - the "
+        "balance-sheet echo of the cash story",
+    # revenue mix
+    "program_reliance_pct": "Earned fees are the engine (~60% of "
+        "revenue) - the JCC operating model",
+    "contrib_reliance_pct": "Donated share of revenue - swings hard "
+        "with campaigns",
+    "invest_other_pct": "Portfolio and misc income share - small but "
+        "growing role",
+    "revenue_concentration_pct": "Above the 30-40% guidance - but the "
+        "top stream is earned fees from many payers, not one funder",
+    # spending discipline
     "program_expense_ratio_pct": "Beats the BBB floor and the ~74% "
         "sector median every year - a board-ready strength",
     "overhead_ratio_pct": "Well under the 35% ceiling",
-    "fundraise_cents_per_dollar": "Cheap fundraising by sector "
-        "standards",
+    "mgmt_general_pct_exp": "Admin (M&G) alone stays under the "
+        "owner's 20% rule",
     "salaries_pct_exp": "In the 45-60% band since FY2022 (staffed "
         "service model)",
-    "revenue_concentration_pct": "Above the 30-40% guidance - but the "
-        "top stream is earned fees from many payers, not one funder",
+    "grants_pct_exp": "Regranting share of spending - the Federation "
+        "legacy role",
+    # fundraising
+    "fundraise_cents_per_dollar": "Cheap fundraising by sector "
+        "standards",
+    "fundraise_dollars_per_dollar": "Raises ~$8 per $1 spent vs the "
+        "$5 sector bar",
+    # balance sheet & compliance
     "net_asset_ratio_pct": "No published standard; strong equity, "
-        "mostly donor-restricted"}
+        "mostly donor-restricted",
+    "leverage_ratio": "Low reliance on debt (0.27x liabilities to net "
+        "assets)",
+    "public_support_pct": "IRS 33 1/3% public support test, as filed "
+        "on Schedule A - passed with 2x headroom every year"}
 
 
 def cfo_review_990(ratios: pd.DataFrame) -> pd.DataFrame:

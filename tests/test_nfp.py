@@ -602,7 +602,10 @@ def test_fin_statements_are_the_filings_own_numbers(frames):
 
 def test_cfo_review_and_kpis(frames):
     cr = frames["nfp_cfo_review"]
-    assert len(cr) == 10
+    assert len(cr) == 22            # every ratio kind, targets included
+    ps = cr[cr["ratio_kind"] == "public_support_pct"].iloc[0]
+    assert float(ps["target_value"]) == 33.33
+    assert ps["vs_target"] == "MEETS"
     assert (cr["cfo_reading"].str.len() > 20).all()
     assert (cr["trend_fy2021_fy2025"].str.count(">") == 4).all()
     k = frames["nfp_990_kpis"].set_index("kpi")
