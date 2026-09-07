@@ -1427,3 +1427,28 @@ data/nfp/nfp_treasury_inputs.csv + nfp_bond_trend_inputs.csv;
 MARKET_AS_OF constant moves with the quotes. Charts follow rule #107
 (dates/tenors x, amounts y; tenor_label carries a leading digit so
 the curve sorts short-to-long). Page grows 5520 -> 8620.
+
+### 114. Plain verdicts, wrapped columns, no-scroll review, 3 buckets
+2026-09-07 (owner QA + pasted framework). (a) On tab 17 the "vs
+target" column of the full CFO review AND the KPI register now binds
+the plain vs_target MEETS/MISSES column - verdict_detail's amounts
+duplicated the target/variance columns beside it (verdict_detail
+stays in the exports and on tab 14's playbook). (b) wordWrap turned
+on (values + columnHeaders, plain Literal property - NOT a
+conditional-formatting tree, so safe per #112) on the review,
+register, and the five wide text tables, so long text wraps instead
+of widening. (c) Full review grew 1000 -> 2100 tall: all 22 rows
+visible without scrolling. (d) The review's reviewed_by /
+what_it_means projections were REMOVED same-day they were added -
+owner points out the register directly below already shows them;
+the engine columns stay (add-only rule; register + chat still use
+the text). (e) Her pasted CFO-interview framework became the tab's
+closing section: the 15-instrument investment menu and the 3-bucket
+framework (operating liquidity sized by the 13-week forecast /
+board-designated reserve ladder priced by the treasury quotes /
+long-term capital posing the $18.95M portfolio question), in her own
+words, basis OWNER FRAMEWORK + MANAGEMENT ASSUMPTION, HIGH allowed
+because owner-provided. Bucket 3's 60/35/5 is pinned to carry
+"ILLUSTRATION ONLY - not a recommendation"; the framing textbox
+keeps her CFO-role chain and the restricted-funds distinction. New
+tables nfp_invest_menu + nfp_invest_buckets; page 8620 -> 11500.

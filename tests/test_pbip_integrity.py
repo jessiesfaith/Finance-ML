@@ -87,6 +87,8 @@ CSV_FOR_TABLE = {
     "nfp_treasury_yields": "nfp_treasury_yields",
     "nfp_bond_trends": "nfp_bond_trends",
     "nfp_bond_forecast": "nfp_bond_forecast",
+    "nfp_invest_menu": "nfp_invest_menu",
+    "nfp_invest_buckets": "nfp_invest_buckets",
     "client_fs_option_sizing": "client_fs_option_sizing",
 }
 

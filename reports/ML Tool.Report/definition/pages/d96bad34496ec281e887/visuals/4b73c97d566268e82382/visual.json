@@ -3,7 +3,7 @@
   "name": "4b73c97d566268e82382",
   "position": {
     "x": 165,
-    "y": 2824,
+    "y": 3924,
     "height": 1400,
     "width": 2670,
     "z": 211000,
@@ -98,11 +98,11 @@
                       "Entity": "nfp_990_kpis"
                     }
                   },
-                  "Property": "verdict_detail"
+                  "Property": "vs_target"
                 }
               },
-              "queryRef": "nfp_990_kpis.verdict_detail",
-              "nativeQueryRef": "verdict_detail",
+              "queryRef": "nfp_990_kpis.vs_target",
+              "nativeQueryRef": "vs_target",
               "displayName": "vs target"
             },
             {
@@ -211,6 +211,13 @@
                   "Value": "18D"
                 }
               }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
             }
           }
         }
@@ -222,6 +229,13 @@
               "expr": {
                 "Literal": {
                   "Value": "18D"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

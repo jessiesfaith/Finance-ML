@@ -3,7 +3,7 @@
   "name": "f4ce49fa837a1751d567",
   "position": {
     "x": 165,
-    "y": 7334,
+    "y": 8434,
     "height": 480,
     "width": 2670,
     "z": 380000,
@@ -151,6 +151,13 @@
                   "Value": "18D"
                 }
               }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
             }
           }
         }
@@ -162,6 +169,13 @@
               "expr": {
                 "Literal": {
                   "Value": "18D"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

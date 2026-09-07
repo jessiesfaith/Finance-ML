@@ -1,0 +1,137 @@
+/// Owner's investment-instrument menu: purpose, risk, liquidity, CFO rationale (framework, not a recommendation).
+table nfp_invest_menu
+	lineageTag: d5eb1a49-ff74-489e-8f63-0efe620e08ac
+
+	column row_id
+		dataType: string
+		lineageTag: d43c93b3-107d-4c6e-b86e-5894b0fa25c6
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_id
+		dataType: string
+		lineageTag: 06bd8611-18fb-4a6b-81f2-c8a1e6e1f0ba
+		summarizeBy: none
+		sourceColumn: item_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column instrument
+		dataType: string
+		lineageTag: 054997c0-c965-439a-a56b-652b1933df3c
+		summarizeBy: none
+		sourceColumn: instrument
+
+		annotation SummarizationSetBy = Automatic
+
+	column typical_purpose
+		dataType: string
+		lineageTag: dc0b869f-ab8a-47d2-a903-6dce23700961
+		summarizeBy: none
+		sourceColumn: typical_purpose
+
+		annotation SummarizationSetBy = Automatic
+
+	column risk
+		dataType: string
+		lineageTag: 9048793e-afdb-4044-bf08-22f0d267b1b2
+		summarizeBy: none
+		sourceColumn: risk
+
+		annotation SummarizationSetBy = Automatic
+
+	column liquidity
+		dataType: string
+		lineageTag: 7a0ac503-8c2a-4149-abd8-b566a1cb91c4
+		summarizeBy: none
+		sourceColumn: liquidity
+
+		annotation SummarizationSetBy = Automatic
+
+	column cfo_rationale
+		dataType: string
+		lineageTag: a3c99fff-f52f-40c6-b2cf-39dff48cf1ed
+		summarizeBy: none
+		sourceColumn: cfo_rationale
+
+		annotation SummarizationSetBy = Automatic
+
+	column basis
+		dataType: string
+		lineageTag: a8957348-4493-4f56-8fb5-ef5ffd3b8e82
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: e907ec5b-0814-44e2-80d7-dea5675765b3
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_verified
+		dataType: string
+		lineageTag: 279c0e4d-38aa-4a49-ae7c-a143c77b5e6b
+		summarizeBy: none
+		sourceColumn: date_verified
+
+		annotation SummarizationSetBy = Automatic
+
+	column confidence
+		dataType: string
+		lineageTag: f0c58dfe-0989-4166-849f-699457597a27
+		summarizeBy: none
+		sourceColumn: confidence
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: 67831329-3474-47b6-9e6d-62b1609db870
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: d42a4c46-aba0-453b-bd38-1f1a72991cfb
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_invest_menu = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_invest_menu.csv"),
+				    [Delimiter = ",", Columns = 13, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "item_id", "instrument", "typical_purpose", "risk", "liquidity", "cfo_rationale", "basis", "source", "date_verified", "confidence", "note", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"item_id", type text},
+				    {"instrument", type text},
+				    {"typical_purpose", type text},
+				    {"risk", type text},
+				    {"liquidity", type text},
+				    {"cfo_rationale", type text},
+				    {"basis", type text},
+				    {"source", type text},
+				    {"date_verified", type text},
+				    {"confidence", type text},
+				    {"note", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

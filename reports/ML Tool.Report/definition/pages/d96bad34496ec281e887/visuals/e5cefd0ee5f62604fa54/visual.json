@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "d4beda611c0d28aa0067",
+  "name": "e5cefd0ee5f62604fa54",
   "position": {
     "x": 165,
-    "y": 6318,
+    "y": 9414,
     "height": 44,
     "width": 2670,
-    "z": 310000,
-    "tabOrder": 310000
+    "z": 410000,
+    "tabOrder": 410000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "13-WEEK CASH & EXPENSE FORECAST - straight line from the FY2025 filing (DERIVED, not a cash budget)",
+                    "value": "INVESTMENT MENU & THE 3-BUCKET FRAMEWORK - owner's CFO interview prep (framework, not a recommendation)",
                     "textStyle": {
                       "fontSize": "15pt"
                     }

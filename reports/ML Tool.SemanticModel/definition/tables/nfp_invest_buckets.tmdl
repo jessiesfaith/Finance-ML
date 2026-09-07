@@ -1,0 +1,137 @@
+/// Owner's 3-bucket framework: operating liquidity, board-designated reserves ladder, long-term/endowment capital.
+table nfp_invest_buckets
+	lineageTag: 70aa7bb0-730e-4fc3-8b55-6101858ef10b
+
+	column row_id
+		dataType: string
+		lineageTag: 8d470cb1-30d8-4db4-a72b-eff6f17f9caf
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column bucket_id
+		dataType: string
+		lineageTag: 4a2d8fdd-396f-4e94-9f7d-452d6682ccb2
+		summarizeBy: none
+		sourceColumn: bucket_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column bucket
+		dataType: string
+		lineageTag: 58f95017-df9f-49cf-b70e-d8fede633abc
+		summarizeBy: none
+		sourceColumn: bucket
+
+		annotation SummarizationSetBy = Automatic
+
+	column what_it_holds
+		dataType: string
+		lineageTag: df4a0b6b-5181-4aff-9ca3-2e05d5430f46
+		summarizeBy: none
+		sourceColumn: what_it_holds
+
+		annotation SummarizationSetBy = Automatic
+
+	column instruments
+		dataType: string
+		lineageTag: ea3ce41a-4a96-4761-8d6e-808c753827cc
+		summarizeBy: none
+		sourceColumn: instruments
+
+		annotation SummarizationSetBy = Automatic
+
+	column structure
+		dataType: string
+		lineageTag: e256af3d-bf4a-4f7d-a854-484fd8c94bb8
+		summarizeBy: none
+		sourceColumn: structure
+
+		annotation SummarizationSetBy = Automatic
+
+	column jsv_tie_in
+		dataType: string
+		lineageTag: b5cbf088-415b-4dca-9d41-47c0063f6ec5
+		summarizeBy: none
+		sourceColumn: jsv_tie_in
+
+		annotation SummarizationSetBy = Automatic
+
+	column basis
+		dataType: string
+		lineageTag: 5173bcf6-21c6-47d6-9c4a-7a16f6fba9b6
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: b1885b91-ced1-44e2-9b20-0e353fcdd74f
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_verified
+		dataType: string
+		lineageTag: 3fdaba7c-7511-4bd7-b7c6-6a54ec3f818c
+		summarizeBy: none
+		sourceColumn: date_verified
+
+		annotation SummarizationSetBy = Automatic
+
+	column confidence
+		dataType: string
+		lineageTag: 723193aa-39ce-48c0-9612-60f5b5a5205a
+		summarizeBy: none
+		sourceColumn: confidence
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: 0e358e13-2fc9-4e2d-8fba-423d32333b9f
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 7dc0df35-aefb-4d9d-962b-6088e0103ec7
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_invest_buckets = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_invest_buckets.csv"),
+				    [Delimiter = ",", Columns = 13, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "bucket_id", "bucket", "what_it_holds", "instruments", "structure", "jsv_tie_in", "basis", "source", "date_verified", "confidence", "note", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"bucket_id", type text},
+				    {"bucket", type text},
+				    {"what_it_holds", type text},
+				    {"instruments", type text},
+				    {"structure", type text},
+				    {"jsv_tie_in", type text},
+				    {"basis", type text},
+				    {"source", type text},
+				    {"date_verified", type text},
+				    {"confidence", type text},
+				    {"note", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

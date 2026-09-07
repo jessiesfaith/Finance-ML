@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "9650c922f0d027732dfd",
+  "name": "5bbe7c701703060a74e5",
   "position": {
     "x": 165,
-    "y": 5398,
-    "height": 900,
+    "y": 10388,
+    "height": 500,
     "width": 2670,
-    "z": 221000,
-    "tabOrder": 221000
+    "z": 430000,
+    "tabOrder": 430000
   },
   "visual": {
     "visualType": "tableEx",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_990_rules"
+                      "Entity": "nfp_invest_buckets"
                     }
                   },
                   "Property": "row_id"
                 }
               },
-              "queryRef": "nfp_990_rules.row_id",
+              "queryRef": "nfp_invest_buckets.row_id",
               "nativeQueryRef": "row_id",
               "displayName": "#"
             },
@@ -35,90 +35,75 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_990_rules"
+                      "Entity": "nfp_invest_buckets"
                     }
                   },
-                  "Property": "rule"
+                  "Property": "bucket"
                 }
               },
-              "queryRef": "nfp_990_rules.rule",
-              "nativeQueryRef": "rule",
-              "displayName": "rule"
+              "queryRef": "nfp_invest_buckets.bucket",
+              "nativeQueryRef": "bucket",
+              "displayName": "bucket"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_990_rules"
+                      "Entity": "nfp_invest_buckets"
                     }
                   },
-                  "Property": "actual_fy2025"
+                  "Property": "what_it_holds"
                 }
               },
-              "queryRef": "nfp_990_rules.actual_fy2025",
-              "nativeQueryRef": "actual_fy2025",
-              "displayName": "actual FY25"
+              "queryRef": "nfp_invest_buckets.what_it_holds",
+              "nativeQueryRef": "what_it_holds",
+              "displayName": "what it holds"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_990_rules"
+                      "Entity": "nfp_invest_buckets"
                     }
                   },
-                  "Property": "rule_value"
+                  "Property": "instruments"
                 }
               },
-              "queryRef": "nfp_990_rules.rule_value",
-              "nativeQueryRef": "rule_value",
-              "displayName": "rule"
+              "queryRef": "nfp_invest_buckets.instruments",
+              "nativeQueryRef": "instruments",
+              "displayName": "instruments"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_990_rules"
+                      "Entity": "nfp_invest_buckets"
                     }
                   },
-                  "Property": "vs_rule"
+                  "Property": "structure"
                 }
               },
-              "queryRef": "nfp_990_rules.vs_rule",
-              "nativeQueryRef": "vs_rule",
-              "displayName": "vs rule"
+              "queryRef": "nfp_invest_buckets.structure",
+              "nativeQueryRef": "structure",
+              "displayName": "how to structure it"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_990_rules"
+                      "Entity": "nfp_invest_buckets"
                     }
                   },
-                  "Property": "description"
+                  "Property": "jsv_tie_in"
                 }
               },
-              "queryRef": "nfp_990_rules.description",
-              "nativeQueryRef": "description",
-              "displayName": "description"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "nfp_990_rules"
-                    }
-                  },
-                  "Property": "source"
-                }
-              },
-              "queryRef": "nfp_990_rules.source",
-              "nativeQueryRef": "source",
-              "displayName": "source"
+              "queryRef": "nfp_invest_buckets.jsv_tie_in",
+              "nativeQueryRef": "jsv_tie_in",
+              "displayName": "JSV tie-in (filed figures)"
             }
           ]
         }
@@ -130,7 +115,7 @@
               "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "nfp_990_rules"
+                    "Entity": "nfp_invest_buckets"
                   }
                 },
                 "Property": "row_id"
@@ -151,6 +136,13 @@
                   "Value": "18D"
                 }
               }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
             }
           }
         }
@@ -162,6 +154,13 @@
               "expr": {
                 "Literal": {
                   "Value": "18D"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

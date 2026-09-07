@@ -779,3 +779,57 @@ def test_treasury_and_bond_layer_pinned():
     assert len(bt) == 5
     assert (bt["confidence"] == "MEDIUM").all()
     assert not bt["meaning_for_jsv"].str.contains("recommend").any()
+
+
+def test_invest_menu_and_buckets_are_owner_framework():
+    """Owner request 2026-09-07: her investment-instrument menu and
+    3-bucket framework live on tab 17 in her own words - HIGH is
+    allowed only because the source is owner-provided, and bucket 3's
+    60/35/5 split must always carry the not-a-recommendation label."""
+    from financials.nfp import invest_buckets, invest_menu
+    m = invest_menu()
+    assert len(m) == 15
+    assert (m["confidence"] == "HIGH").all()
+    assert m["source"].str.contains("Owner-provided").all()
+    assert (m["value_class"] == "MANAGEMENT ASSUMPTION").all()
+    pe = m[m["instrument"] == "Private equity / VC"].iloc[0]
+    assert pe["risk"] == "High" and pe["liquidity"] == "Very low"
+    muni = m[m["instrument"] == "Municipal bonds"].iloc[0]
+    assert "tax-exempt NFP" in muni["cfo_rationale"]
+    b = invest_buckets()
+    assert len(b) == 3
+    assert b["source"].str.contains("Owner-provided").all()
+    b3 = b[b["bucket_id"] == "B-3"].iloc[0]
+    assert "ILLUSTRATION ONLY - not a recommendation" in b3["structure"]
+    b1 = b[b["bucket_id"] == "B-1"].iloc[0]
+    assert "515,092" in b1["jsv_tie_in"]  # filed FY2025 cash only
+    b2 = b[b["bucket_id"] == "B-2"].iloc[0]
+    assert "3.79 / 3.98 / 4.13 / 4.37" in b2["jsv_tie_in"]
+
+
+def test_tab17_review_and_register_show_plain_verdicts():
+    """Owner request 2026-09-07: on tab 17 the 'vs target' column of
+    the full CFO review and the KPI register binds the plain
+    MEETS/MISSES column, never verdict_detail (the amounts already
+    sit in the target/variance columns beside it); the review also
+    dropped reviewed_by/what_it_means (register keeps them) and is
+    tall enough to show all 22 rows without scrolling."""
+    import json
+    page = ("reports/ML Tool.Report/definition/pages/"
+            "d96bad34496ec281e887/visuals")
+    review = json.load(open(f"{page}/fe0f37785a1370b4db12/visual.json"))
+    projs = [p["nativeQueryRef"] for p in review["visual"]["query"]
+             ["queryState"]["Values"]["projections"]]
+    assert "verdict_detail" not in projs and "vs_target" in projs
+    assert "reviewed_by" not in projs
+    assert "what_it_means" not in projs
+    assert review["position"]["height"] >= 2000
+    register = json.load(open(f"{page}/4b73c97d566268e82382/visual.json"))
+    rprojs = [p["nativeQueryRef"] for p in register["visual"]["query"]
+              ["queryState"]["Values"]["projections"]]
+    assert "verdict_detail" not in rprojs and "vs_target" in rprojs
+    assert "typical_audience" in rprojs  # register keeps the audience
+    for vis in (review, register):
+        for section in ("values", "columnHeaders"):
+            props = vis["visual"]["objects"][section][0]["properties"]
+            assert props["wordWrap"]["expr"]["Literal"]["Value"] == "true"

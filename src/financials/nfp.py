@@ -2294,6 +2294,30 @@ def bond_forecast_990(ty: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(out)
 
 
+def invest_menu() -> pd.DataFrame:
+    """The owner's investment-instrument menu (CFO interview prep,
+    pasted 2026-09-07): what each instrument is typically for, its
+    risk and liquidity, and the CFO rationale - kept in her own
+    words. A framework, never a recommendation; the only JSV-specific
+    facts referenced are filed 990 figures."""
+    m = pd.read_csv(NFP_DIR / "nfp_invest_menu_inputs.csv").fillna("")
+    m["value_class"] = "MANAGEMENT ASSUMPTION"
+    return m
+
+
+def invest_buckets() -> pd.DataFrame:
+    """The owner's 3-bucket framework: operating liquidity,
+    board-designated reserves (the maturity ladder), and long-term /
+    endowment capital - each tied to the sections above it (13-week
+    forecast sizes bucket 1, the treasury quotes price the bucket-2
+    ladder, the filed portfolio poses the bucket-3 question). Bucket
+    3's 60/35/5 split is her ILLUSTRATION, explicitly not a
+    recommendation."""
+    b = pd.read_csv(NFP_DIR / "nfp_invest_bucket_inputs.csv").fillna("")
+    b["value_class"] = "MANAGEMENT ASSUMPTION"
+    return b
+
+
 def build_all() -> dict[str, pd.DataFrame]:
     s = load_settings()
     settings_df = pd.read_csv(NFP_DIR / "nfp_settings.csv")
@@ -2357,6 +2381,8 @@ def build_all() -> dict[str, pd.DataFrame]:
     frames["nfp_treasury_yields"] = ty
     frames["nfp_bond_trends"] = bond_trends()
     frames["nfp_bond_forecast"] = bond_forecast_990(ty)
+    frames["nfp_invest_menu"] = invest_menu()
+    frames["nfp_invest_buckets"] = invest_buckets()
     # stable sort key: report tables sort by row_id to preserve the
     # decision-flow order of each export
     for df in frames.values():

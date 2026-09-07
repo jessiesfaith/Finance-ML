@@ -4,7 +4,7 @@
   "position": {
     "x": 165,
     "y": 1750,
-    "height": 1000,
+    "height": 2100,
     "width": 2670,
     "z": 113000,
     "tabOrder": 113000
@@ -173,11 +173,11 @@
                       "Entity": "nfp_cfo_review"
                     }
                   },
-                  "Property": "verdict_detail"
+                  "Property": "vs_target"
                 }
               },
-              "queryRef": "nfp_cfo_review.verdict_detail",
-              "nativeQueryRef": "verdict_detail",
+              "queryRef": "nfp_cfo_review.vs_target",
+              "nativeQueryRef": "vs_target",
               "displayName": "vs target"
             },
             {
@@ -209,36 +209,6 @@
               "queryRef": "nfp_cfo_review.cfo_reading",
               "nativeQueryRef": "cfo_reading",
               "displayName": "CFO reading"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "nfp_cfo_review"
-                    }
-                  },
-                  "Property": "reviewed_by"
-                }
-              },
-              "queryRef": "nfp_cfo_review.reviewed_by",
-              "nativeQueryRef": "reviewed_by",
-              "displayName": "typically reviewed by"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "nfp_cfo_review"
-                    }
-                  },
-                  "Property": "what_it_means"
-                }
-              },
-              "queryRef": "nfp_cfo_review.what_it_means",
-              "nativeQueryRef": "what_it_means",
-              "displayName": "what it means here"
             }
           ]
         }
@@ -271,6 +241,13 @@
                   "Value": "18D"
                 }
               }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
             }
           }
         }
@@ -282,6 +259,13 @@
               "expr": {
                 "Literal": {
                   "Value": "18D"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

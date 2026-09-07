@@ -1,0 +1,66 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "57034b348b81e2613a6c",
+  "position": {
+    "x": 165,
+    "y": 10908,
+    "height": 260,
+    "width": 2670,
+    "z": 440000,
+    "tabOrder": 440000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "THE CFO ROLE (owner's framing): not \"I pick stocks\" - determine how much liquidity the organization needs, identify what capital can actually be invested, model the risk/return and cash-flow implications, ensure donor restrictions and investment policy are followed, and bring recommendations to the Investment Committee and Board.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The chain: cash forecast > liquidity requirement > reserves > donor restrictions > investment horizon > risk > return > recommendation > Board decision.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Worked example (hypothetical $5.0M, owner's illustration): $1.5M stays in money-market / Treasury instruments per the 13-week + annual forecasts; $1.5M laddered across short-duration Treasuries and investment-grade fixed income; $2.0M has a long enough horizon for a diversified long-term portfolio.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Restricted funds are NOT automatically barred from investment - what matters is what the donor restriction permits, when the money must be used, applicable law and policy, and horizon-appropriate risk: a $1M gift for construction in six months is treated very differently from a $1M true endowment.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
