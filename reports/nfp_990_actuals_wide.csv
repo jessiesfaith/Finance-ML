@@ -1,0 +1,30 @@
+row_id,line_item,fy2020,fy2021,fy2022,fy2023,fy2024,fy2025,basis,note
+R001,contributions_and_grants,,2913151.0,8368507.0,3098394.0,4232181.0,5067036.0,FILED,Part I line 8
+R002,program_service_revenue,,4495449.0,6180906.0,6713838.0,7750916.0,8506012.0,FILED,Part I line 9
+R003,investment_income,,332772.0,479564.0,274836.0,510482.0,535465.0,FILED,Part I line 10
+R004,other_revenue,,50722.0,71136.0,85022.0,111180.0,99642.0,FILED,Part I line 11
+R005,total_revenue,8219966.0,7792094.0,15100113.0,10172090.0,12604759.0,14208155.0,FILED,Part I line 12
+R006,grants_paid,,559493.0,1470285.0,1381767.0,1567343.0,1440288.0,FILED,Part I line 13
+R007,salaries_and_benefits,,5117428.0,6152074.0,6202857.0,6987181.0,7863680.0,FILED,Part I line 15
+R008,fundraising_expenses,,333191.0,378826.0,482378.0,403094.0,643032.0,FILED,Part I line 16b
+R009,other_expenses,,2362960.0,3230234.0,3684887.0,3980566.0,4235335.0,FILED,Part I line 17
+R010,program_expenses,,6181405.0,8275292.0,9391605.0,10527119.0,11100788.0,FILED,Part IX line 25 col B; cols B+C+D cross-foot to col A (total expenses) in every year
+R011,mgmt_general_expenses,,1525285.0,2198475.0,1395528.0,1604877.0,1795483.0,FILED,Part IX line 25 col C; cols B+C+D cross-foot to col A (total expenses) in every year
+R012,total_expenses,9168123.0,8039881.0,10852593.0,11269511.0,12535090.0,13539303.0,FILED,Part I line 18
+R013,surplus_deficit,-948157.0,-247787.0,4247520.0,-1097421.0,69669.0,668852.0,FILED,Part I line 19
+R014,net_assets_change,,,2224387.0,-382756.0,-239367.0,860359.0,DERIVED,net_assets_end FY2025 - net_assets_end FY2024
+R015,total_assets_end,,19304776.0,19990622.0,19722568.0,20879276.0,22519188.0,FILED,Part I line 20 / Part X line 16
+R016,cash_end,,3569809.0,3534430.0,3248998.0,3110368.0,515092.0,FILED,Part X line 1; cash fell from $3.1M while publicly traded investments rose to $19.0M - liquidity moved into the portfolio
+R017,savings_end,,161469.0,1981083.0,126733.0,112445.0,0.0,FILED,"Part X line 2 - line blank in the filing, recorded as 0"
+R018,pledges_receivable_end,,350571.0,452465.0,795668.0,587384.0,542806.0,FILED,Part X line 3
+R019,accounts_receivable_end,,9683.0,408.0,2592.0,9655.0,5513.0,FILED,Part X line 4
+R020,prepaid_expenses_end,,222403.0,464006.0,220726.0,263747.0,289681.0,FILED,Part X line 9
+R021,investments_securities_end,,13044644.0,11541041.0,13044016.0,14532110.0,18951917.0,FILED,Part X line 11
+R022,total_liabilities_end,,4051348.0,2512807.0,2627509.0,4023584.0,4803137.0,FILED,Part I line 21 / Part X line 26
+R023,accounts_payable_accrued_end,,798661.0,579672.0,874055.0,1115166.0,1182810.0,FILED,Part X line 17
+R024,grants_payable_end,,32748.0,3454.0,3454.0,3454.0,0.0,FILED,"Part X line 18 - line blank in the filing, recorded as 0"
+R025,deferred_revenue_end,,942301.0,940854.0,1016949.0,1051218.0,720632.0,FILED,Part X line 19
+R026,net_assets_end,3071367.0,15253428.0,17477815.0,17095059.0,16855692.0,17716051.0,FILED,Part I line 22
+R027,unrestricted_net_assets_end,,4454045.0,6737094.0,6549995.0,7077549.0,5761112.0,FILED,Part X line 27 - net assets WITHOUT donor restrictions; lines 27+28 cross-foot to line 22 every year
+R028,restricted_net_assets_end,,10799383.0,10740721.0,10545064.0,9778143.0,11954939.0,FILED,Part X line 28 - net assets WITH donor restrictions
+R029,public_support_pct,,74.16,74.24,76.5,73.57,74.89,FILED,"Schedule A Part II line 14 - the IRS public support test percentage, 5-year cumulative, as filed"

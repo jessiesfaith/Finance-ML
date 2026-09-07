@@ -1,0 +1,116 @@
+/// Filed 990 actuals with years as columns: line items in statement order, one row per item (view of nfp_990_actuals).
+table nfp_990_actuals_wide
+	lineageTag: 3741777d-ed36-4939-ae41-571c3200628c
+
+	column row_id
+		dataType: string
+		lineageTag: 025c9f3e-c544-45fa-b752-d15b340546de
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column line_item
+		dataType: string
+		lineageTag: eeb70878-9f87-4598-b687-d156502f1e5e
+		summarizeBy: none
+		sourceColumn: line_item
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy2020
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 51bcec11-5e20-4c8c-9d13-4441e695b1c8
+		summarizeBy: none
+		sourceColumn: fy2020
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy2021
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: d368c832-7867-4cec-8f60-92d1c0a39ea3
+		summarizeBy: none
+		sourceColumn: fy2021
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy2022
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: fc83505e-b79b-43ef-aebe-a3617601f264
+		summarizeBy: none
+		sourceColumn: fy2022
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy2023
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: a1d60ead-a0b1-46fa-ba43-85f34fd60fc6
+		summarizeBy: none
+		sourceColumn: fy2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy2024
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: c8604d92-8ba8-4434-892a-50f1d9cc6238
+		summarizeBy: none
+		sourceColumn: fy2024
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy2025
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 5b731757-dfa6-4a30-840b-44eba66a7062
+		summarizeBy: none
+		sourceColumn: fy2025
+
+		annotation SummarizationSetBy = Automatic
+
+	column basis
+		dataType: string
+		lineageTag: 4dbdc950-9ca4-4d9b-9595-2e5fb716ae17
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: 45193693-9bb1-4fb6-9d27-28ea82211848
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_990_actuals_wide = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_990_actuals_wide.csv"),
+				    [Delimiter = ",", Columns = 10, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "line_item", "fy2020", "fy2021", "fy2022", "fy2023", "fy2024", "fy2025", "basis", "note"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"line_item", type text},
+				    {"fy2020", type number},
+				    {"fy2021", type number},
+				    {"fy2022", type number},
+				    {"fy2023", type number},
+				    {"fy2024", type number},
+				    {"fy2025", type number},
+				    {"basis", type text},
+				    {"note", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

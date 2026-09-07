@@ -4,7 +4,7 @@
   "position": {
     "x": 165,
     "y": 5090,
-    "height": 280,
+    "height": 1620,
     "width": 2670,
     "z": 910000,
     "tabOrder": 910000
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_990_actuals"
+                      "Entity": "nfp_990_actuals_wide"
                     }
                   },
                   "Property": "row_id"
                 }
               },
-              "queryRef": "nfp_990_actuals.row_id",
+              "queryRef": "nfp_990_actuals_wide.row_id",
               "nativeQueryRef": "row_id",
               "displayName": "#"
             },
@@ -35,28 +35,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_990_actuals"
-                    }
-                  },
-                  "Property": "fiscal_year"
-                }
-              },
-              "queryRef": "nfp_990_actuals.fiscal_year",
-              "nativeQueryRef": "fiscal_year",
-              "displayName": "year"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "nfp_990_actuals"
+                      "Entity": "nfp_990_actuals_wide"
                     }
                   },
                   "Property": "line_item"
                 }
               },
-              "queryRef": "nfp_990_actuals.line_item",
+              "queryRef": "nfp_990_actuals_wide.line_item",
               "nativeQueryRef": "line_item",
               "displayName": "line item"
             },
@@ -65,28 +50,103 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_990_actuals"
+                      "Entity": "nfp_990_actuals_wide"
                     }
                   },
-                  "Property": "amount"
+                  "Property": "fy2020"
                 }
               },
-              "queryRef": "nfp_990_actuals.amount",
-              "nativeQueryRef": "amount",
-              "displayName": "amount $"
+              "queryRef": "nfp_990_actuals_wide.fy2020",
+              "nativeQueryRef": "fy2020",
+              "displayName": "FY2020 (pre-merger)"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_990_actuals"
+                      "Entity": "nfp_990_actuals_wide"
+                    }
+                  },
+                  "Property": "fy2021"
+                }
+              },
+              "queryRef": "nfp_990_actuals_wide.fy2021",
+              "nativeQueryRef": "fy2021",
+              "displayName": "FY2021"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_actuals_wide"
+                    }
+                  },
+                  "Property": "fy2022"
+                }
+              },
+              "queryRef": "nfp_990_actuals_wide.fy2022",
+              "nativeQueryRef": "fy2022",
+              "displayName": "FY2022"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_actuals_wide"
+                    }
+                  },
+                  "Property": "fy2023"
+                }
+              },
+              "queryRef": "nfp_990_actuals_wide.fy2023",
+              "nativeQueryRef": "fy2023",
+              "displayName": "FY2023"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_actuals_wide"
+                    }
+                  },
+                  "Property": "fy2024"
+                }
+              },
+              "queryRef": "nfp_990_actuals_wide.fy2024",
+              "nativeQueryRef": "fy2024",
+              "displayName": "FY2024"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_actuals_wide"
+                    }
+                  },
+                  "Property": "fy2025"
+                }
+              },
+              "queryRef": "nfp_990_actuals_wide.fy2025",
+              "nativeQueryRef": "fy2025",
+              "displayName": "FY2025"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_990_actuals_wide"
                     }
                   },
                   "Property": "basis"
                 }
               },
-              "queryRef": "nfp_990_actuals.basis",
+              "queryRef": "nfp_990_actuals_wide.basis",
               "nativeQueryRef": "basis",
               "displayName": "basis"
             },
@@ -95,30 +155,15 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_990_actuals"
-                    }
-                  },
-                  "Property": "confidence"
-                }
-              },
-              "queryRef": "nfp_990_actuals.confidence",
-              "nativeQueryRef": "confidence",
-              "displayName": "confidence"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "nfp_990_actuals"
+                      "Entity": "nfp_990_actuals_wide"
                     }
                   },
                   "Property": "note"
                 }
               },
-              "queryRef": "nfp_990_actuals.note",
+              "queryRef": "nfp_990_actuals_wide.note",
               "nativeQueryRef": "note",
-              "displayName": "note"
+              "displayName": "990 reference"
             }
           ]
         }
@@ -130,7 +175,7 @@
               "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "nfp_990_actuals"
+                    "Entity": "nfp_990_actuals_wide"
                   }
                 },
                 "Property": "row_id"

@@ -1486,3 +1486,15 @@ cents, so cross-footing stays exact and a displayed row can be off
 by $1 from the displayed parts only through honest rounding.
 weeks_covered and the yield/ratio columns keep their decimals.
 Page 11500 -> 11880.
+
+### 117. Tab 11 filed actuals: years as columns (owner QA)
+2026-09-07. The raw 990-lines table on tab 11 listed 148 year-by-item
+rows in a 280-high visual - unbrowsable. New view export
+nfp_990_actuals_wide: 29 line items down the left in statement order
+(revenue -> expenses -> result -> Part X balance sheet -> Schedule A),
+one column per year, FY2020 headed "(pre-merger)", basis + latest 990
+part/line reference per row. A faithful pivot of nfp_990_actuals
+(which stays for the charts, cards and chat assistant) - the engine
+asserts every line item is covered so a future filing line can't
+silently vanish. Visual swapped to the wide view at h=1620 (all 29
+rows, no scroll); tab 11 page 5500 -> 6850.

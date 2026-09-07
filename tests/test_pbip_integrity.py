@@ -90,6 +90,7 @@ CSV_FOR_TABLE = {
     "nfp_invest_menu": "nfp_invest_menu",
     "nfp_invest_buckets": "nfp_invest_buckets",
     "nfp_cash_13wk_wide": "nfp_cash_13wk_wide",
+    "nfp_990_actuals_wide": "nfp_990_actuals_wide",
     "client_fs_option_sizing": "client_fs_option_sizing",
 }
 

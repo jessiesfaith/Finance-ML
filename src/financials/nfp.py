@@ -1430,6 +1430,56 @@ def actuals_990() -> pd.DataFrame:
     return out
 
 
+# statement order for the years-as-columns view of the filed actuals
+_ACTUALS_WIDE_ORDER = [
+    # revenue (Part I lines 8-12)
+    "contributions_and_grants", "program_service_revenue",
+    "investment_income", "other_revenue", "total_revenue",
+    # expenses (Part I lines 13-18 + Part IX columns)
+    "grants_paid", "salaries_and_benefits", "fundraising_expenses",
+    "other_expenses", "program_expenses", "mgmt_general_expenses",
+    "total_expenses",
+    # result
+    "surplus_deficit", "net_assets_change",
+    # balance sheet (Part X)
+    "total_assets_end", "cash_end", "savings_end",
+    "pledges_receivable_end", "accounts_receivable_end",
+    "prepaid_expenses_end", "investments_securities_end",
+    "total_liabilities_end", "accounts_payable_accrued_end",
+    "grants_payable_end", "deferred_revenue_end", "net_assets_end",
+    "unrestricted_net_assets_end", "restricted_net_assets_end",
+    # compliance (Schedule A)
+    "public_support_pct"]
+
+
+def actuals_990_wide(act: pd.DataFrame) -> pd.DataFrame:
+    """The filed actuals with YEARS AS COLUMNS (owner request
+    2026-09-07): line items run down the left in statement order, one
+    column per fiscal year, so an item's history reads across one
+    row. Same numbers as nfp_990_actuals - this is a view, not new
+    data. FY2020 is the pre-merger APJCC filing and stays excluded
+    from every chart."""
+    missing = set(act["line_item"]) - set(_ACTUALS_WIDE_ORDER)
+    assert not missing, f"line items missing from wide order: {missing}"
+    years = ["FY2020", "FY2021", "FY2022", "FY2023", "FY2024",
+             "FY2025"]
+    out = []
+    for item in _ACTUALS_WIDE_ORDER:
+        rows = act[act["line_item"] == item]
+        if not len(rows):
+            continue
+        vals = {}
+        for fy in years:
+            m = rows[rows["fiscal_year"] == fy]
+            vals[fy.lower()] = (m.iloc[0]["amount"] if len(m) else "")
+        noted = rows[rows["note"] != ""]
+        out.append({
+            "line_item": item, **vals,
+            "basis": rows.iloc[-1]["basis"],
+            "note": noted.iloc[-1]["note"] if len(noted) else ""})
+    return pd.DataFrame(out)
+
+
 def ratio_actuals_990(act: pd.DataFrame) -> pd.DataFrame:
     """The playbook ratios computed from the FILED 990 figures for
     every filed year (FY2021-FY2025) - real inputs, shown formula.
@@ -2398,6 +2448,7 @@ def build_all() -> dict[str, pd.DataFrame]:
     act = actuals_990()
     ratios = ratio_actuals_990(act)
     frames["nfp_990_actuals"] = act
+    frames["nfp_990_actuals_wide"] = actuals_990_wide(act)
     frames["nfp_990_ratio_actuals"] = ratios
     fs = fin_statements_990(act)
     frames["nfp_fin_statements"] = fs

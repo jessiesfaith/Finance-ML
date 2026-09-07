@@ -899,3 +899,24 @@ def test_tab17_wrapped_columns_have_pinned_widths():
     rprojs = [p["nativeQueryRef"] for p in register["visual"]["query"]
               ["queryState"]["Values"]["projections"]]
     assert rprojs.index("fy2024_value") == rprojs.index("kpi") + 1
+
+
+def test_actuals_wide_is_a_faithful_pivot():
+    """Owner request 2026-09-07 (tab 11): the filed actuals browse
+    table puts line items down the left and years across - same
+    numbers as the long table, statement order, FY2020 clearly the
+    pre-merger column, blanks where a year never filed that line."""
+    from financials.nfp import actuals_990, actuals_990_wide
+    act = actuals_990()
+    w = actuals_990_wide(act).set_index("line_item")
+    assert len(w) == 29
+    assert list(w.index[:5]) == [
+        "contributions_and_grants", "program_service_revenue",
+        "investment_income", "other_revenue", "total_revenue"]
+    assert w.loc["total_revenue", "fy2020"] == 8219966
+    assert w.loc["total_revenue", "fy2025"] == 14208155
+    assert w.loc["contributions_and_grants", "fy2020"] == ""
+    assert w.loc["public_support_pct", "fy2025"] == 74.89
+    assert w.loc["net_assets_change", "basis"] == "DERIVED"
+    assert w.loc["net_assets_change", "fy2025"] == 860359
+    assert w.loc["total_expenses", "note"] == "Part I line 18"
