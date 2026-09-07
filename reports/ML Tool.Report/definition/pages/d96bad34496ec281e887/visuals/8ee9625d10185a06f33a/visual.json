@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "REAL filed figures only (PUBLIC_RESEARCH, HIGH confidence). Left: the two core statements. Right: the ratios a CFO reads against them - full review table at the bottom.",
+                    "value": "REAL filed figures only (PUBLIC_RESEARCH, HIGH confidence). Top to bottom: the two core statements with YoY variance, the full CFO ratio review (all 22 ratios vs target), YoY with the math, the KPI register, and the rules & guardrails.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
