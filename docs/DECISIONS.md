@@ -1401,3 +1401,29 @@ formatString #,0.##;(#,0.##) on every NFP numeric column - format
 strings cannot fail a query. PBIR rule learned the hard way (add to
 the tableEx rules): never hand-author conditional-formatting
 expression trees; use format strings or let Desktop generate them.
+
+### 113. Tab 17 forward-looking sections + review audience/meaning
+2026-09-07. Owner asked for (a) the register's "typically reviewed
+by" and "what it means here" columns on the full CFO review (all 22
+ratios; the 12 register KPIs reuse the register's exact text via
+_KPI_AUDIENCE/_KPI_DESCRIPTIONS so the tables never drift, the other
+10 get _RATIO_EXTRA_MEANING), and (b) three sections at the bottom of
+tab 17: a combined 13-week CASH & EXPENSE forecast, current treasury
+yields, and bond market trends with an if-purchased forecast. Honesty
+lines drawn: the 13-week forecast is a DERIVED straight-line proxy
+(1/52nd of filed FY2025 revenue/expenses per week from filed opening
+cash - a real one needs internal AR/AP/payroll data, said on the
+tab); week-13 cumulative expenses equal exp/4 = the 3-month floor, so
+every week honestly MISSES it. Treasury quotes are PUBLIC_RESEARCH /
+MEDIUM (treasury.gov download egress-blocked; quotes as of 2026-09-04
+via web search with click-through URLs, never HIGH, "verify before
+trading" on the tab). The if-purchased forecast is hypothetical
+$1,000,000 held to maturity - bills simple interest, notes compounded
+with reinvestment stated in the math column - never advice, and no
+market-direction prediction is made (trend rows quote named sources
+that disagree, on purpose). New tables nfp_cash_13wk,
+nfp_treasury_yields, nfp_bond_trends, nfp_bond_forecast; inputs in
+data/nfp/nfp_treasury_inputs.csv + nfp_bond_trend_inputs.csv;
+MARKET_AS_OF constant moves with the quotes. Charts follow rule #107
+(dates/tenors x, amounts y; tenor_label carries a leading digit so
+the curve sorts short-to-long). Page grows 5520 -> 8620.

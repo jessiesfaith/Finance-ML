@@ -83,6 +83,10 @@ CSV_FOR_TABLE = {
     "nfp_990_kpis": "nfp_990_kpis",
     "nfp_990_yoy": "nfp_990_yoy",
     "nfp_990_rules": "nfp_990_rules",
+    "nfp_cash_13wk": "nfp_cash_13wk",
+    "nfp_treasury_yields": "nfp_treasury_yields",
+    "nfp_bond_trends": "nfp_bond_trends",
+    "nfp_bond_forecast": "nfp_bond_forecast",
     "client_fs_option_sizing": "client_fs_option_sizing",
 }
 

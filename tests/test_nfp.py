@@ -702,3 +702,80 @@ def test_new_ratio_kinds_pinned():
     assert (k["typical_audience"].str.len() > 3).all()
     assert k[k["kpi"] == "IRS Public Support %"].iloc[0][
         "typical_audience"].startswith("BOARD")
+
+
+def test_cfo_review_carries_audience_and_meaning():
+    """Owner request 2026-09-07: the register's 'typically reviewed
+    by' and 'what it means here' columns live on the full CFO review
+    too - for all 22 ratios, with the 12 register KPIs reusing the
+    register's own text so the two tables can never drift."""
+    from financials.nfp import (actuals_990, cfo_review_990, kpis_990,
+                                ratio_actuals_990)
+    act = actuals_990()
+    r = ratio_actuals_990(act)
+    cr = cfo_review_990(act, r).set_index("ratio_kind")
+    assert (cr["reviewed_by"].str.len() > 3).all()
+    assert (cr["what_it_means"].str.len() > 60).all()
+    k = kpis_990(r).set_index("kpi")
+    assert (cr.loc["months_cash_on_hand", "reviewed_by"]
+            == k.loc["Months of Cash on Hand", "typical_audience"])
+    assert (cr.loc["months_cash_on_hand", "what_it_means"]
+            == k.loc["Months of Cash on Hand", "description"])
+    assert cr.loc["leverage_ratio", "reviewed_by"].startswith("CEO")
+
+
+def test_cash_forecast_13wk_straight_line_pinned():
+    """The 13-week forecast is pure arithmetic on FY2025 filed
+    figures: 1/52nd of revenue and expenses per week from the filed
+    opening cash. Week 13 cumulative expenses equal one quarter of
+    filed spending - which IS the 3-month floor, so every week
+    honestly MISSES it."""
+    from financials.nfp import actuals_990, cash_forecast_13wk
+    cf = cash_forecast_13wk(actuals_990())
+    assert len(cf) == 14  # opening + 13 weeks
+    op = cf.iloc[0]
+    assert op["week_no"] == 0 and op["ending_cash"] == 515092
+    assert op["basis"].startswith("FILED")
+    wk13 = cf.iloc[13]
+    assert wk13["week_ending"] == "2026-12-04"
+    assert float(wk13["ending_cash"]) == pytest.approx(682305.0)
+    assert float(wk13["cum_expenses"]) == pytest.approx(3384825.75)
+    assert float(wk13["inflow"]) == pytest.approx(273233.75, abs=0.01)
+    assert float(wk13["expenses"]) == pytest.approx(260371.21,
+                                                    abs=0.01)
+    body = cf.iloc[1:]
+    assert (body["basis"] == "DERIVED (STRAIGHT-LINE 990 PROXY)").all()
+    assert cf["vs_3mo_floor"].str.startswith("MISSES by ").all()
+    assert "682,305 vs 3,384,826" in wk13["vs_3mo_floor"]
+
+
+def test_treasury_and_bond_layer_pinned():
+    """Market quotes are owner-verified research (MEDIUM, click-through
+    URLs, never HIGH) and the if-purchased forecast is deterministic
+    hold-to-maturity math on those quotes - hypothetical, not advice."""
+    from financials.nfp import (bond_forecast_990, bond_trends,
+                                treasury_yields)
+    ty = treasury_yields()
+    assert len(ty) == 6
+    assert (ty["confidence"] == "MEDIUM").all()
+    assert (ty["as_of"] == "2026-09-04").all()
+    assert (ty["url"].str.startswith("https://")).all()
+    q = ty.set_index("tenor")["yield_pct"]
+    assert float(q["13-week bill"]) == 3.79
+    assert float(q["10-year note"]) == 4.76
+    # tenor_label sorts short-to-long even on an alphabetical axis
+    assert list(ty["tenor_label"]) == sorted(ty["tenor_label"])
+    bf = bond_forecast_990(ty).set_index("tenor")
+    assert float(bf.loc["13-week bill", "est_interest"]) == 9475.0
+    assert float(bf.loc["2-year note", "est_interest"]) == \
+        pytest.approx(89309.69, abs=0.01)
+    assert float(bf.loc["10-year note", "est_value_at_maturity"]) == \
+        pytest.approx(1592043.38, abs=0.01)
+    assert "1,000,000 x 3.79% x 0.25 yr" in \
+        bf.loc["13-week bill", "math_detail"]
+    assert (bf["basis"] == "DERIVED (HYPOTHETICAL - held to "
+            "maturity)").all()
+    bt = bond_trends()
+    assert len(bt) == 5
+    assert (bt["confidence"] == "MEDIUM").all()
+    assert not bt["meaning_for_jsv"].str.contains("recommend").any()

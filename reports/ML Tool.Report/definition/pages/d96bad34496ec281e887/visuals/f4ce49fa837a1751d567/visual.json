@@ -1,0 +1,174 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "f4ce49fa837a1751d567",
+  "position": {
+    "x": 165,
+    "y": 7334,
+    "height": 480,
+    "width": 2670,
+    "z": 380000,
+    "tabOrder": 380000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_bond_trends"
+                    }
+                  },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_bond_trends.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_bond_trends"
+                    }
+                  },
+                  "Property": "topic"
+                }
+              },
+              "queryRef": "nfp_bond_trends.topic",
+              "nativeQueryRef": "topic",
+              "displayName": "topic"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_bond_trends"
+                    }
+                  },
+                  "Property": "current_reading"
+                }
+              },
+              "queryRef": "nfp_bond_trends.current_reading",
+              "nativeQueryRef": "current_reading",
+              "displayName": "current reading"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_bond_trends"
+                    }
+                  },
+                  "Property": "direction"
+                }
+              },
+              "queryRef": "nfp_bond_trends.direction",
+              "nativeQueryRef": "direction",
+              "displayName": "direction"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_bond_trends"
+                    }
+                  },
+                  "Property": "meaning_for_jsv"
+                }
+              },
+              "queryRef": "nfp_bond_trends.meaning_for_jsv",
+              "nativeQueryRef": "meaning_for_jsv",
+              "displayName": "what it means for JSV"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_bond_trends"
+                    }
+                  },
+                  "Property": "source"
+                }
+              },
+              "queryRef": "nfp_bond_trends.source",
+              "nativeQueryRef": "source",
+              "displayName": "source"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_bond_trends"
+                    }
+                  },
+                  "Property": "confidence"
+                }
+              },
+              "queryRef": "nfp_bond_trends.confidence",
+              "nativeQueryRef": "confidence",
+              "displayName": "confidence"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_bond_trends"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

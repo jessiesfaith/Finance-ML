@@ -209,6 +209,36 @@
               "queryRef": "nfp_cfo_review.cfo_reading",
               "nativeQueryRef": "cfo_reading",
               "displayName": "CFO reading"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cfo_review"
+                    }
+                  },
+                  "Property": "reviewed_by"
+                }
+              },
+              "queryRef": "nfp_cfo_review.reviewed_by",
+              "nativeQueryRef": "reviewed_by",
+              "displayName": "typically reviewed by"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cfo_review"
+                    }
+                  },
+                  "Property": "what_it_means"
+                }
+              },
+              "queryRef": "nfp_cfo_review.what_it_means",
+              "nativeQueryRef": "what_it_means",
+              "displayName": "what it means here"
             }
           ]
         }

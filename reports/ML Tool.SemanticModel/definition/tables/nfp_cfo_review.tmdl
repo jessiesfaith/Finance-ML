@@ -91,6 +91,22 @@ table nfp_cfo_review
 
 		annotation SummarizationSetBy = Automatic
 
+	column reviewed_by
+		dataType: string
+		lineageTag: 50da3b02-cbdd-4a2a-9f07-a7650fd347c5
+		summarizeBy: none
+		sourceColumn: reviewed_by
+
+		annotation SummarizationSetBy = Automatic
+
+	column what_it_means
+		dataType: string
+		lineageTag: 4af21def-6ee6-42cb-9260-2398f0f04bf8
+		summarizeBy: none
+		sourceColumn: what_it_means
+
+		annotation SummarizationSetBy = Automatic
+
 	column fy2021
 		dataType: double
 		formatString: #,0.##;(#,0.##)
@@ -177,10 +193,10 @@ table nfp_cfo_review
 				let
 				  Source = Csv.Document(
 				    File.Contents("C:\dev\Finance-ML\reports\nfp_cfo_review.csv"),
-				    [Delimiter = ",", Columns = 20, QuoteStyle = QuoteStyle.Csv]
+				    [Delimiter = ",", Columns = 22, QuoteStyle = QuoteStyle.Csv]
 				),
 				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "ratio_kind", "ratio", "fy2025_value", "unit", "trend_fy2021_fy2025", "benchmark_or_policy", "vs_target", "verdict_detail", "math_fy2025", "cfo_reading", "fy2021", "fy2022", "fy2023", "fy2024", "fy2025", "target_value", "variance_to_target", "yoy_variance", "value_class"}),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "ratio_kind", "ratio", "fy2025_value", "unit", "trend_fy2021_fy2025", "benchmark_or_policy", "vs_target", "verdict_detail", "math_fy2025", "cfo_reading", "reviewed_by", "what_it_means", "fy2021", "fy2022", "fy2023", "fy2024", "fy2025", "target_value", "variance_to_target", "yoy_variance", "value_class"}),
 				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
 				    {"row_id", type text},
 				    {"ratio_kind", type text},
@@ -193,6 +209,8 @@ table nfp_cfo_review
 				    {"verdict_detail", type text},
 				    {"math_fy2025", type text},
 				    {"cfo_reading", type text},
+				    {"reviewed_by", type text},
+				    {"what_it_means", type text},
 				    {"fy2021", type number},
 				    {"fy2022", type number},
 				    {"fy2023", type number},

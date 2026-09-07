@@ -1,0 +1,144 @@
+/// 13-week cash + expense forecast, straight-lined from the FY2025 filing (DERIVED teaching proxy, not a cash budget).
+table nfp_cash_13wk
+	lineageTag: e684147e-1a68-491e-82ca-c31e42e7ded9
+
+	column row_id
+		dataType: string
+		lineageTag: d5018487-f915-4195-a22f-38e6571d56ce
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column week_no
+		dataType: int64
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 09f06f37-4941-44d4-99ce-2b528a4faf35
+		summarizeBy: none
+		sourceColumn: week_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column week_ending
+		dataType: string
+		lineageTag: d85304cb-7b4f-4a5e-89f4-c59a8ef9e705
+		summarizeBy: none
+		sourceColumn: week_ending
+
+		annotation SummarizationSetBy = Automatic
+
+	column inflow
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 16aa6f5d-d046-4f80-a3da-08862120b1bb
+		summarizeBy: none
+		sourceColumn: inflow
+
+		annotation SummarizationSetBy = Automatic
+
+	column expenses
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 1ebff37c-e95f-4762-8208-e76790223281
+		summarizeBy: none
+		sourceColumn: expenses
+
+		annotation SummarizationSetBy = Automatic
+
+	column net_change
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: a3d49be6-4230-47d0-badf-6f1602bf867d
+		summarizeBy: none
+		sourceColumn: net_change
+
+		annotation SummarizationSetBy = Automatic
+
+	column ending_cash
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: cccfcdd3-6539-40e8-ae21-e6d63c69afa0
+		summarizeBy: none
+		sourceColumn: ending_cash
+
+		annotation SummarizationSetBy = Automatic
+
+	column cum_expenses
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 4009962e-2741-4588-99dc-1c285b14da4b
+		summarizeBy: none
+		sourceColumn: cum_expenses
+
+		annotation SummarizationSetBy = Automatic
+
+	column weeks_covered
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 1c11bdb0-4097-4f03-8a7e-b2a167e1445c
+		summarizeBy: none
+		sourceColumn: weeks_covered
+
+		annotation SummarizationSetBy = Automatic
+
+	column vs_3mo_floor
+		dataType: string
+		lineageTag: 8e509dbd-f0a9-4f5c-9c1b-1106c3d5a436
+		summarizeBy: none
+		sourceColumn: vs_3mo_floor
+
+		annotation SummarizationSetBy = Automatic
+
+	column basis
+		dataType: string
+		lineageTag: 071ea4c5-b805-4628-838d-882214d7f14f
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: 3f2ca78d-86c3-4629-b280-43c21fc5247e
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: e86c5f87-97a9-48e3-9503-30572a39d5a8
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_cash_13wk = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_cash_13wk.csv"),
+				    [Delimiter = ",", Columns = 13, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "week_no", "week_ending", "inflow", "expenses", "net_change", "ending_cash", "cum_expenses", "weeks_covered", "vs_3mo_floor", "basis", "note", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"week_no", Int64.Type},
+				    {"week_ending", type text},
+				    {"inflow", type number},
+				    {"expenses", type number},
+				    {"net_change", type number},
+				    {"ending_cash", type number},
+				    {"cum_expenses", type number},
+				    {"weeks_covered", type number},
+				    {"vs_3mo_floor", type text},
+				    {"basis", type text},
+				    {"note", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

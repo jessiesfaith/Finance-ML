@@ -1929,6 +1929,63 @@ _CFO_READINGS = {
         "on Schedule A - passed with 2x headroom every year"}
 
 
+# audience + plain-English meaning for the review ratios that have no
+# KPI-register entry (the 12 register KPIs reuse _KPI_DESCRIPTIONS /
+# _KPI_AUDIENCE so the two tables never drift apart)
+_RATIO_EXTRA_MEANING = {
+    "savings_indicator_pct": (
+        "CEO (annual close)",
+        "The year's surplus restated as a share of spending - how much "
+        "the year added to reserves per dollar spent. No published "
+        "standard; positive years rebuild reserves, negative years "
+        "draw them down."),
+    "roa_pct": (
+        "BOARD (investment committee)",
+        "Surplus earned per dollar of total assets. No sector standard "
+        "for nonprofits - read it as a trend line, not against a "
+        "benchmark."),
+    "program_reliance_pct": (
+        "BOARD + CEO (revenue mix)",
+        "Earned program fees as a share of total revenue. High "
+        "reliance means results track enrollment and utilization - "
+        "the JCC operating model - and is read next to revenue "
+        "concentration."),
+    "contrib_reliance_pct": (
+        "BOARD (fundraising committee)",
+        "Donated dollars as a share of total revenue. Swings with "
+        "campaign cycles; read together with fundraising efficiency."),
+    "invest_other_pct": (
+        "BOARD (investment committee)",
+        "Portfolio and miscellaneous income as a share of revenue. "
+        "Small but growing - earned by the same portfolio that months "
+        "of cash excludes."),
+    "overhead_ratio_pct": (
+        "BOARD (policy + funders)",
+        "Management & general plus fundraising as a share of total "
+        "expenses - the watchdog 'overhead' number funders read "
+        "first. BBB standards imply a 35% ceiling."),
+    "grants_pct_exp": (
+        "BOARD (grants committee)",
+        "Regranting to other organizations as a share of spending - "
+        "the Federation legacy role inside the merged organization."),
+    "fundraise_dollars_per_dollar": (
+        "BOARD (fundraising committee)",
+        "Dollars of contributions raised per dollar of fundraising "
+        "expense - the flip side of fundraising efficiency. The "
+        "sector bar is about $5 raised per $1 spent."),
+    "net_asset_ratio_pct": (
+        "BOARD (annual)",
+        "Net assets as a share of total assets - how much of the "
+        "balance sheet the organization owns outright. Strong here, "
+        "but much of it is donor-restricted or tied up in fixed "
+        "assets."),
+    "leverage_ratio": (
+        "CEO (treasury) + BOARD (annual)",
+        "Total liabilities against net assets - reliance on debt. "
+        "0.27x is low; borrowing capacity exists if the board ever "
+        "wants it.")}
+
+
 def cfo_review_990(act: pd.DataFrame,
                    ratios: pd.DataFrame) -> pd.DataFrame:
     """The right-hand review panel for the statements tab: latest value,
@@ -1960,6 +2017,12 @@ def cfo_review_990(act: pd.DataFrame,
             "verdict_detail": latest["verdict_detail"] or "-",
             "math_fy2025": math.get(kind, ""),
             "cfo_reading": reading,
+            "reviewed_by": (_KPI_AUDIENCE[kind]
+                            if kind in _KPI_AUDIENCE
+                            else _RATIO_EXTRA_MEANING[kind][0]),
+            "what_it_means": (_KPI_DESCRIPTIONS[kind][1]
+                              if kind in _KPI_DESCRIPTIONS
+                              else _RATIO_EXTRA_MEANING[kind][1]),
             **yearvals,
             "target_value": float(tv) if tv != "" else "",
             "variance_to_target": (round(float(latest["value"])
@@ -2108,6 +2171,129 @@ def kpis_990(ratios: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(out)
 
 
+# snapshot date for the forward-looking sections (owner request
+# 2026-09-07): the market quotes in data/nfp/nfp_treasury_inputs.csv
+# were verified this day and the 13-week forecast starts here. When the
+# quotes are refreshed, move this date with them.
+MARKET_AS_OF = "2026-09-07"
+
+
+def cash_forecast_13wk(act: pd.DataFrame) -> pd.DataFrame:
+    """13-week cash + expense forecast, straight-lined from the FY2025
+    filing. This is a DERIVED teaching proxy, not a cash budget: the
+    990 gives one year's totals, so each week gets 1/52nd of filed
+    revenue and expenses. A real 13-week forecast needs internal
+    weekly data (AR/AP schedules, payroll calendar, camp/membership
+    seasonality) - RESEARCH REQUIRED for that upgrade. Week 13's
+    cumulative expenses equal one quarter of filed spending, which is
+    exactly the 3-month cash floor the policy targets."""
+    from datetime import date, timedelta
+    lookup = {(r["fiscal_year"], r["line_item"]): float(r["amount"])
+              for _, r in act.iterrows() if r["amount"] != ""}
+    opening = (lookup[("FY2025", "cash_end")]
+               + lookup[("FY2025", "savings_end")])
+    rev, exp = (lookup[("FY2025", "total_revenue")],
+                lookup[("FY2025", "total_expenses")])
+    wk_in, wk_out = rev / 52, exp / 52
+    floor = exp / 4  # 3 months of spending = 13 weeks of it
+    start = date.fromisoformat(MARKET_AS_OF)
+    first_friday = start + timedelta((4 - start.weekday()) % 7)
+    rows = [{
+        "week_no": 0, "week_ending": MARKET_AS_OF,
+        "inflow": "", "expenses": "", "net_change": "",
+        "ending_cash": round(opening, 2), "cum_expenses": "",
+        "weeks_covered": round(opening / wk_out, 2),
+        "vs_3mo_floor": (f"MISSES by {floor - opening:,.0f} "
+                         f"({opening:,.0f} vs {floor:,.0f})"),
+        "basis": "FILED (FY2025 Part X cash + savings)",
+        "note": "opening position from the FY2025 filing"}]
+    for k in range(1, 14):
+        ending = opening + k * (wk_in - wk_out)
+        rows.append({
+            "week_no": k,
+            "week_ending": str(first_friday + timedelta(weeks=k - 1)),
+            "inflow": round(wk_in, 2), "expenses": round(wk_out, 2),
+            "net_change": round(wk_in - wk_out, 2),
+            "ending_cash": round(ending, 2),
+            "cum_expenses": round(k * wk_out, 2),
+            "weeks_covered": round(ending / wk_out, 2),
+            "vs_3mo_floor": (f"MISSES by {floor - ending:,.0f} "
+                             f"({ending:,.0f} vs {floor:,.0f})"),
+            "basis": "DERIVED (STRAIGHT-LINE 990 PROXY)",
+            "note": ("1/52nd of filed FY2025 revenue and expenses "
+                     "per week - seasonality not modeled")})
+    df = pd.DataFrame(rows)
+    df["value_class"] = "PUBLIC_RESEARCH"
+    return df
+
+
+def treasury_yields() -> pd.DataFrame:
+    """Current treasury yield curve, from owner-verified market quotes
+    in data/nfp/nfp_treasury_inputs.csv (PUBLIC_RESEARCH, MEDIUM -
+    treasury.gov's own download is egress-blocked from the build
+    environment, so quotes came via web search and must be re-verified
+    before any purchase). tenor_label carries a leading digit so chart
+    category axes sort short-to-long instead of alphabetically."""
+    ty = pd.read_csv(NFP_DIR / "nfp_treasury_inputs.csv").fillna("")
+    ty = ty.sort_values("term_years").reset_index(drop=True)
+    ty.insert(2, "tenor_label",
+              [f"{i + 1} - {t}" for i, t in enumerate(ty["tenor"])])
+    ty["value_class"] = "PUBLIC_RESEARCH"
+    return ty
+
+
+def bond_trends() -> pd.DataFrame:
+    """Bond-market trend readings (researched 2026-09-07, MEDIUM
+    confidence, click-through sources) with what each means for JSV.
+    Commentary, never a recommendation."""
+    bt = pd.read_csv(NFP_DIR / "nfp_bond_trend_inputs.csv").fillna("")
+    bt["value_class"] = "PUBLIC_RESEARCH"
+    return bt
+
+
+def bond_forecast_990(ty: pd.DataFrame) -> pd.DataFrame:
+    """If-purchased forecast: a hypothetical $1,000,000 in each tenor,
+    HELD TO MATURITY at the quoted yield. Bills use simple interest
+    over the term; notes compound annually (coupons assumed reinvested
+    at the same rate - the classic simplification, stated in the
+    math). Hold-to-maturity means the yield is locked at purchase; the
+    market 'forecast' only matters if sold early. DERIVED and
+    HYPOTHETICAL - not investment advice."""
+    principal = 1_000_000
+    out = []
+    for _, r in ty.iterrows():
+        years, y = float(r["term_years"]), float(r["yield_pct"])
+        if years <= 1:
+            interest = principal * y / 100 * years
+            math = (f"1,000,000 x {y}% x {years} yr "
+                    f"= {interest:,.0f} interest (simple - bills)")
+            risk = ("matures inside the year; reinvestment rate at "
+                    "maturity is unknown")
+            if years == 0.25:
+                risk = ("matures inside the 13-week cash window - the "
+                        "tenor that matches the forecast above")
+        else:
+            value = principal * (1 + y / 100) ** years
+            interest = value - principal
+            math = (f"1,000,000 x (1 + {y}%)^{years:.0f} "
+                    f"= {value:,.0f} (coupons reinvested at the "
+                    f"same rate)")
+            risk = ("price moves if sold before maturity; "
+                    "hold-to-maturity locks the yield at purchase")
+        out.append({
+            "tenor_id": r["tenor_id"], "tenor": r["tenor"],
+            "tenor_label": r["tenor_label"],
+            "term_years": years, "yield_pct": y,
+            "amount_invested": principal,
+            "est_value_at_maturity": round(principal + interest, 2),
+            "est_interest": round(interest, 2),
+            "math_detail": math, "risk_note": risk,
+            "basis": "DERIVED (HYPOTHETICAL - held to maturity)",
+            "as_of": r["as_of"], "confidence": r["confidence"],
+            "value_class": "PUBLIC_RESEARCH"})
+    return pd.DataFrame(out)
+
+
 def build_all() -> dict[str, pd.DataFrame]:
     s = load_settings()
     settings_df = pd.read_csv(NFP_DIR / "nfp_settings.csv")
@@ -2166,6 +2352,11 @@ def build_all() -> dict[str, pd.DataFrame]:
     frames["nfp_990_kpis"] = kpis_990(ratios)
     frames["nfp_990_yoy"] = yoy_990(act, fs, ratios)
     frames["nfp_990_rules"] = rules_990(ratios)
+    frames["nfp_cash_13wk"] = cash_forecast_13wk(act)
+    ty = treasury_yields()
+    frames["nfp_treasury_yields"] = ty
+    frames["nfp_bond_trends"] = bond_trends()
+    frames["nfp_bond_forecast"] = bond_forecast_990(ty)
     # stable sort key: report tables sort by row_id to preserve the
     # decision-flow order of each export
     for df in frames.values():

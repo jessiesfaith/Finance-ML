@@ -1,0 +1,160 @@
+/// If-purchased forecast: hypothetical $1,000,000 per tenor held to maturity at the quoted yield (DERIVED, not advice).
+table nfp_bond_forecast
+	lineageTag: 60390f94-64c2-4dfa-842a-36ac78a3a0e3
+
+	column row_id
+		dataType: string
+		lineageTag: 2c1c4026-d1fd-4655-b4d5-9863c04e34d2
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column tenor_id
+		dataType: string
+		lineageTag: f651b817-dba1-48fc-8672-b40ed355d66a
+		summarizeBy: none
+		sourceColumn: tenor_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column tenor
+		dataType: string
+		lineageTag: 85503ee3-48e7-4a9c-bd94-b79de3b499a8
+		summarizeBy: none
+		sourceColumn: tenor
+
+		annotation SummarizationSetBy = Automatic
+
+	column tenor_label
+		dataType: string
+		lineageTag: 9614e755-fe7d-4e7e-a59b-725a5c47d48e
+		summarizeBy: none
+		sourceColumn: tenor_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column term_years
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: ca07db99-5a5e-45b6-9bbd-7a0d5efff8cd
+		summarizeBy: none
+		sourceColumn: term_years
+
+		annotation SummarizationSetBy = Automatic
+
+	column yield_pct
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 2fd2a82b-51f6-46c7-b8d0-62cf09f263dc
+		summarizeBy: none
+		sourceColumn: yield_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount_invested
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 9dd06d26-fe0b-4b42-85ad-46e1dae3811f
+		summarizeBy: none
+		sourceColumn: amount_invested
+
+		annotation SummarizationSetBy = Automatic
+
+	column est_value_at_maturity
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 355ed759-b4e8-423b-8e39-74ce1c9b02f3
+		summarizeBy: none
+		sourceColumn: est_value_at_maturity
+
+		annotation SummarizationSetBy = Automatic
+
+	column est_interest
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 55c257a9-0a65-4a98-a93a-77f51c6491d6
+		summarizeBy: none
+		sourceColumn: est_interest
+
+		annotation SummarizationSetBy = Automatic
+
+	column math_detail
+		dataType: string
+		lineageTag: 823b150d-12e3-4fae-b810-9572ccf98bc8
+		summarizeBy: none
+		sourceColumn: math_detail
+
+		annotation SummarizationSetBy = Automatic
+
+	column risk_note
+		dataType: string
+		lineageTag: 36905578-5db6-4fa6-83a8-2f5c55d05b5c
+		summarizeBy: none
+		sourceColumn: risk_note
+
+		annotation SummarizationSetBy = Automatic
+
+	column basis
+		dataType: string
+		lineageTag: c3ce6cdd-ec18-4edf-bc6f-6c0bc24d0070
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column as_of
+		dataType: string
+		lineageTag: 0f9a243f-848e-41f9-9237-8fcd5ad733c6
+		summarizeBy: none
+		sourceColumn: as_of
+
+		annotation SummarizationSetBy = Automatic
+
+	column confidence
+		dataType: string
+		lineageTag: 810327b5-2c7c-4c0f-b77f-1c5f83cfeaba
+		summarizeBy: none
+		sourceColumn: confidence
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 7f5db5a5-4f23-4e50-b524-2a7eaeb621aa
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_bond_forecast = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_bond_forecast.csv"),
+				    [Delimiter = ",", Columns = 15, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "tenor_id", "tenor", "tenor_label", "term_years", "yield_pct", "amount_invested", "est_value_at_maturity", "est_interest", "math_detail", "risk_note", "basis", "as_of", "confidence", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"tenor_id", type text},
+				    {"tenor", type text},
+				    {"tenor_label", type text},
+				    {"term_years", type number},
+				    {"yield_pct", type number},
+				    {"amount_invested", type number},
+				    {"est_value_at_maturity", type number},
+				    {"est_interest", type number},
+				    {"math_detail", type text},
+				    {"risk_note", type text},
+				    {"basis", type text},
+				    {"as_of", type text},
+				    {"confidence", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "d4beda611c0d28aa0067",
+  "position": {
+    "x": 165,
+    "y": 5218,
+    "height": 44,
+    "width": 2670,
+    "z": 310000,
+    "tabOrder": 310000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "13-WEEK CASH & EXPENSE FORECAST - straight line from the FY2025 filing (DERIVED, not a cash budget)",
+                    "textStyle": {
+                      "fontSize": "15pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

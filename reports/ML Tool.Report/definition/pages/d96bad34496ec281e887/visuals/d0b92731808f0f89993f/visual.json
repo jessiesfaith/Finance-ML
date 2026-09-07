@@ -1,0 +1,148 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "d0b92731808f0f89993f",
+  "position": {
+    "x": 165,
+    "y": 5952,
+    "height": 380,
+    "width": 2670,
+    "z": 330000,
+    "tabOrder": 330000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cash_13wk"
+                    }
+                  },
+                  "Property": "week_ending"
+                }
+              },
+              "queryRef": "nfp_cash_13wk.week_ending",
+              "nativeQueryRef": "week_ending",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_cash_13wk"
+                        }
+                      },
+                      "Property": "ending_cash"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_cash_13wk.ending_cash)",
+              "nativeQueryRef": "Sum of ending_cash",
+              "displayName": "forecast ending cash"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_cash_13wk"
+                        }
+                      },
+                      "Property": "expenses"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_cash_13wk.expenses)",
+              "nativeQueryRef": "Sum of expenses",
+              "displayName": "forecast weekly expenses"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_cash_13wk"
+                  }
+                },
+                "Property": "week_ending"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

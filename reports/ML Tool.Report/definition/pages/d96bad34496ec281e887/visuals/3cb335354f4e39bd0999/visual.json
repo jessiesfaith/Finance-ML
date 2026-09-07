@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "3cb335354f4e39bd0999",
+  "position": {
+    "x": 165,
+    "y": 6352,
+    "height": 44,
+    "width": 2670,
+    "z": 340000,
+    "tabOrder": 340000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "CURRENT TREASURY YIELDS - market quotes as of 2026-09-04 (PUBLIC RESEARCH, MEDIUM - verify at treasury.gov before trading)",
+                    "textStyle": {
+                      "fontSize": "15pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

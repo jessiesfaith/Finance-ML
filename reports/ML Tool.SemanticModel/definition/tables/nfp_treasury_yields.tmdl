@@ -1,0 +1,148 @@
+/// Current treasury yield curve - market quotes verified 2026-09-07 (PUBLIC_RESEARCH, MEDIUM; re-verify before trading).
+table nfp_treasury_yields
+	lineageTag: bc53b9d1-acec-4d97-b7b7-34c0e71a342a
+
+	column row_id
+		dataType: string
+		lineageTag: 6e3614b7-cd19-424e-b103-690c45209ff3
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column tenor_id
+		dataType: string
+		lineageTag: 85931354-2953-4498-8dba-35e094082025
+		summarizeBy: none
+		sourceColumn: tenor_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column tenor
+		dataType: string
+		lineageTag: d10455a5-7507-4963-aa98-44aeb5dccc08
+		summarizeBy: none
+		sourceColumn: tenor
+
+		annotation SummarizationSetBy = Automatic
+
+	column tenor_label
+		dataType: string
+		lineageTag: 304a269e-2964-4832-a04a-fac35481176c
+		summarizeBy: none
+		sourceColumn: tenor_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column term_years
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 31b1930c-8689-40f4-8f83-da3bac516469
+		summarizeBy: none
+		sourceColumn: term_years
+
+		annotation SummarizationSetBy = Automatic
+
+	column yield_pct
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 2e8ec951-bf42-4a17-af1e-54e1cf53eec1
+		summarizeBy: none
+		sourceColumn: yield_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column as_of
+		dataType: string
+		lineageTag: e38231ed-af8c-492c-a20d-9767b57f01e3
+		summarizeBy: none
+		sourceColumn: as_of
+
+		annotation SummarizationSetBy = Automatic
+
+	column basis
+		dataType: string
+		lineageTag: f76fd27c-b921-4d24-8c50-fc2f29e824fe
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: 8e02997a-eada-4d80-b1f8-aa86aee18950
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column url
+		dataType: string
+		lineageTag: 4911b359-623a-4378-bbed-84d2af1c659e
+		summarizeBy: none
+		sourceColumn: url
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_verified
+		dataType: string
+		lineageTag: d3925815-17a8-4250-914a-a870dc0386c1
+		summarizeBy: none
+		sourceColumn: date_verified
+
+		annotation SummarizationSetBy = Automatic
+
+	column confidence
+		dataType: string
+		lineageTag: 02b3504c-5f07-4903-aff9-7c3f32a00ace
+		summarizeBy: none
+		sourceColumn: confidence
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: 179efc2d-3a6e-43d8-b97d-354bd5d9d836
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: f1221e6a-a45e-401a-b89d-c58a101dd14b
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_treasury_yields = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_treasury_yields.csv"),
+				    [Delimiter = ",", Columns = 14, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "tenor_id", "tenor", "tenor_label", "term_years", "yield_pct", "as_of", "basis", "source", "url", "date_verified", "confidence", "note", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"tenor_id", type text},
+				    {"tenor", type text},
+				    {"tenor_label", type text},
+				    {"term_years", type number},
+				    {"yield_pct", type number},
+				    {"as_of", type text},
+				    {"basis", type text},
+				    {"source", type text},
+				    {"url", type text},
+				    {"date_verified", type text},
+				    {"confidence", type text},
+				    {"note", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,137 @@
+/// Bond-market trend readings with what each means for JSV (researched, MEDIUM confidence, click-through sources).
+table nfp_bond_trends
+	lineageTag: 3d8647b0-8dfa-407e-9de0-a54932b738ec
+
+	column row_id
+		dataType: string
+		lineageTag: 16bbba4c-9307-408d-9906-550578bf4c9c
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column trend_id
+		dataType: string
+		lineageTag: 114eb257-442e-4c8f-81d1-b52f0d9aec62
+		summarizeBy: none
+		sourceColumn: trend_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column topic
+		dataType: string
+		lineageTag: 5edb70ee-2809-4c68-9c0d-ab41ebf777a8
+		summarizeBy: none
+		sourceColumn: topic
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_reading
+		dataType: string
+		lineageTag: 9a3541bf-ef63-4de3-9529-0384a3e066dd
+		summarizeBy: none
+		sourceColumn: current_reading
+
+		annotation SummarizationSetBy = Automatic
+
+	column direction
+		dataType: string
+		lineageTag: dfac6af4-9e24-4d29-aad1-a0e8299af7fb
+		summarizeBy: none
+		sourceColumn: direction
+
+		annotation SummarizationSetBy = Automatic
+
+	column meaning_for_jsv
+		dataType: string
+		lineageTag: 50a9373e-9a3e-49fc-bd27-d4b5783757ab
+		summarizeBy: none
+		sourceColumn: meaning_for_jsv
+
+		annotation SummarizationSetBy = Automatic
+
+	column basis
+		dataType: string
+		lineageTag: 968592a7-0031-47d1-b51c-99c086a1d834
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: ff9604db-5c24-40a5-9f26-1c9f034e5d14
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column url
+		dataType: string
+		lineageTag: 1fe2e665-90e6-4647-aeeb-7e2cb8484614
+		summarizeBy: none
+		sourceColumn: url
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_verified
+		dataType: string
+		lineageTag: 9d2ba535-964f-4efd-94e0-e98871533aa3
+		summarizeBy: none
+		sourceColumn: date_verified
+
+		annotation SummarizationSetBy = Automatic
+
+	column confidence
+		dataType: string
+		lineageTag: 64503a6d-ff8d-4bd7-a5ea-ca5fe98cce38
+		summarizeBy: none
+		sourceColumn: confidence
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: 21e268bc-b5c4-4b72-a4d6-29bd4a919a44
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 4cc06df8-d878-4da7-81c9-38532bd52bce
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_bond_trends = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_bond_trends.csv"),
+				    [Delimiter = ",", Columns = 13, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "trend_id", "topic", "current_reading", "direction", "meaning_for_jsv", "basis", "source", "url", "date_verified", "confidence", "note", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"trend_id", type text},
+				    {"topic", type text},
+				    {"current_reading", type text},
+				    {"direction", type text},
+				    {"meaning_for_jsv", type text},
+				    {"basis", type text},
+				    {"source", type text},
+				    {"url", type text},
+				    {"date_verified", type text},
+				    {"confidence", type text},
+				    {"note", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

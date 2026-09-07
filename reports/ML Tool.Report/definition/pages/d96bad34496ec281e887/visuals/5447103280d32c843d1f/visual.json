@@ -1,0 +1,189 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "5447103280d32c843d1f",
+  "position": {
+    "x": 165,
+    "y": 7834,
+    "height": 460,
+    "width": 2670,
+    "z": 390000,
+    "tabOrder": 390000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_bond_forecast"
+                    }
+                  },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_bond_forecast.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_bond_forecast"
+                    }
+                  },
+                  "Property": "tenor"
+                }
+              },
+              "queryRef": "nfp_bond_forecast.tenor",
+              "nativeQueryRef": "tenor",
+              "displayName": "tenor"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_bond_forecast"
+                    }
+                  },
+                  "Property": "yield_pct"
+                }
+              },
+              "queryRef": "nfp_bond_forecast.yield_pct",
+              "nativeQueryRef": "yield_pct",
+              "displayName": "yield %"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_bond_forecast"
+                    }
+                  },
+                  "Property": "amount_invested"
+                }
+              },
+              "queryRef": "nfp_bond_forecast.amount_invested",
+              "nativeQueryRef": "amount_invested",
+              "displayName": "invested"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_bond_forecast"
+                    }
+                  },
+                  "Property": "est_value_at_maturity"
+                }
+              },
+              "queryRef": "nfp_bond_forecast.est_value_at_maturity",
+              "nativeQueryRef": "est_value_at_maturity",
+              "displayName": "value at maturity"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_bond_forecast"
+                    }
+                  },
+                  "Property": "est_interest"
+                }
+              },
+              "queryRef": "nfp_bond_forecast.est_interest",
+              "nativeQueryRef": "est_interest",
+              "displayName": "est interest"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_bond_forecast"
+                    }
+                  },
+                  "Property": "math_detail"
+                }
+              },
+              "queryRef": "nfp_bond_forecast.math_detail",
+              "nativeQueryRef": "math_detail",
+              "displayName": "the math"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_bond_forecast"
+                    }
+                  },
+                  "Property": "risk_note"
+                }
+              },
+              "queryRef": "nfp_bond_forecast.risk_note",
+              "nativeQueryRef": "risk_note",
+              "displayName": "risk note"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_bond_forecast"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

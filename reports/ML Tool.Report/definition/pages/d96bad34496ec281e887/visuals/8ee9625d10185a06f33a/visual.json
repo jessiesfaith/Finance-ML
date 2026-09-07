@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "REAL filed figures only (PUBLIC_RESEARCH, HIGH confidence). Top to bottom: the two core statements with YoY variance, the full CFO ratio review (all 22 ratios vs target, with the math), the KPI register, and the rules & guardrails.",
+                    "value": "REAL filed figures on top (HIGH confidence): the two core statements with variances, the full CFO ratio review (all 22 ratios vs target, with the math, audience and meaning), the KPI register, and the rules & guardrails. Forward-looking at the bottom: the 13-week cash & expense forecast (DERIVED straight-line proxy), current treasury yields and bond trends (MEDIUM market research - verify before acting), and an if-purchased forecast (HYPOTHETICAL, held to maturity).",
                     "textStyle": {
                       "fontSize": "12pt"
                     }

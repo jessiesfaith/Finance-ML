@@ -1,0 +1,234 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "8a64b0f8d79fd6795343",
+  "position": {
+    "x": 165,
+    "y": 5272,
+    "height": 660,
+    "width": 2670,
+    "z": 320000,
+    "tabOrder": 320000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cash_13wk"
+                    }
+                  },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_cash_13wk.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cash_13wk"
+                    }
+                  },
+                  "Property": "week_no"
+                }
+              },
+              "queryRef": "nfp_cash_13wk.week_no",
+              "nativeQueryRef": "week_no",
+              "displayName": "wk"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cash_13wk"
+                    }
+                  },
+                  "Property": "week_ending"
+                }
+              },
+              "queryRef": "nfp_cash_13wk.week_ending",
+              "nativeQueryRef": "week_ending",
+              "displayName": "week ending"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cash_13wk"
+                    }
+                  },
+                  "Property": "inflow"
+                }
+              },
+              "queryRef": "nfp_cash_13wk.inflow",
+              "nativeQueryRef": "inflow",
+              "displayName": "forecast inflow"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cash_13wk"
+                    }
+                  },
+                  "Property": "expenses"
+                }
+              },
+              "queryRef": "nfp_cash_13wk.expenses",
+              "nativeQueryRef": "expenses",
+              "displayName": "forecast expenses"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cash_13wk"
+                    }
+                  },
+                  "Property": "net_change"
+                }
+              },
+              "queryRef": "nfp_cash_13wk.net_change",
+              "nativeQueryRef": "net_change",
+              "displayName": "net"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cash_13wk"
+                    }
+                  },
+                  "Property": "ending_cash"
+                }
+              },
+              "queryRef": "nfp_cash_13wk.ending_cash",
+              "nativeQueryRef": "ending_cash",
+              "displayName": "ending cash"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cash_13wk"
+                    }
+                  },
+                  "Property": "cum_expenses"
+                }
+              },
+              "queryRef": "nfp_cash_13wk.cum_expenses",
+              "nativeQueryRef": "cum_expenses",
+              "displayName": "cumulative expenses"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cash_13wk"
+                    }
+                  },
+                  "Property": "weeks_covered"
+                }
+              },
+              "queryRef": "nfp_cash_13wk.weeks_covered",
+              "nativeQueryRef": "weeks_covered",
+              "displayName": "weeks of spending covered"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cash_13wk"
+                    }
+                  },
+                  "Property": "vs_3mo_floor"
+                }
+              },
+              "queryRef": "nfp_cash_13wk.vs_3mo_floor",
+              "nativeQueryRef": "vs_3mo_floor",
+              "displayName": "vs 3-month floor"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cash_13wk"
+                    }
+                  },
+                  "Property": "basis"
+                }
+              },
+              "queryRef": "nfp_cash_13wk.basis",
+              "nativeQueryRef": "basis",
+              "displayName": "basis"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_cash_13wk"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

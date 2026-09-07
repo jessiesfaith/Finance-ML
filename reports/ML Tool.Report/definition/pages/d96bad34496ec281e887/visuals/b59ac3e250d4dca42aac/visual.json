@@ -1,0 +1,189 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "b59ac3e250d4dca42aac",
+  "position": {
+    "x": 165,
+    "y": 6406,
+    "height": 420,
+    "width": 2670,
+    "z": 350000,
+    "tabOrder": 350000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_treasury_yields"
+                    }
+                  },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_treasury_yields.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_treasury_yields"
+                    }
+                  },
+                  "Property": "tenor"
+                }
+              },
+              "queryRef": "nfp_treasury_yields.tenor",
+              "nativeQueryRef": "tenor",
+              "displayName": "tenor"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_treasury_yields"
+                    }
+                  },
+                  "Property": "term_years"
+                }
+              },
+              "queryRef": "nfp_treasury_yields.term_years",
+              "nativeQueryRef": "term_years",
+              "displayName": "term (yrs)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_treasury_yields"
+                    }
+                  },
+                  "Property": "yield_pct"
+                }
+              },
+              "queryRef": "nfp_treasury_yields.yield_pct",
+              "nativeQueryRef": "yield_pct",
+              "displayName": "yield %"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_treasury_yields"
+                    }
+                  },
+                  "Property": "as_of"
+                }
+              },
+              "queryRef": "nfp_treasury_yields.as_of",
+              "nativeQueryRef": "as_of",
+              "displayName": "as of"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_treasury_yields"
+                    }
+                  },
+                  "Property": "source"
+                }
+              },
+              "queryRef": "nfp_treasury_yields.source",
+              "nativeQueryRef": "source",
+              "displayName": "source"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_treasury_yields"
+                    }
+                  },
+                  "Property": "confidence"
+                }
+              },
+              "queryRef": "nfp_treasury_yields.confidence",
+              "nativeQueryRef": "confidence",
+              "displayName": "confidence"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_treasury_yields"
+                    }
+                  },
+                  "Property": "note"
+                }
+              },
+              "queryRef": "nfp_treasury_yields.note",
+              "nativeQueryRef": "note",
+              "displayName": "note"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_treasury_yields"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
