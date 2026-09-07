@@ -1929,11 +1929,13 @@ _CFO_READINGS = {
         "on Schedule A - passed with 2x headroom every year"}
 
 
-def cfo_review_990(ratios: pd.DataFrame) -> pd.DataFrame:
+def cfo_review_990(act: pd.DataFrame,
+                   ratios: pd.DataFrame) -> pd.DataFrame:
     """The right-hand review panel for the statements tab: latest value,
     five-year path, the benchmark/policy, verdict, and a one-line CFO
     reading per ratio."""
     years = ["FY2021", "FY2022", "FY2023", "FY2024", "FY2025"]
+    math = _ratio_math_fy2025(act)
     out = []
     for kind, reading in _CFO_READINGS.items():
         rk = ratios[ratios["ratio_kind"] == kind]
@@ -1956,6 +1958,7 @@ def cfo_review_990(ratios: pd.DataFrame) -> pd.DataFrame:
                 or "No published standard",
             "vs_target": latest["vs_target"] or "-",
             "verdict_detail": latest["verdict_detail"] or "-",
+            "math_fy2025": math.get(kind, ""),
             "cfo_reading": reading,
             **yearvals,
             "target_value": float(tv) if tv != "" else "",
@@ -2159,7 +2162,7 @@ def build_all() -> dict[str, pd.DataFrame]:
     frames["nfp_990_ratio_actuals"] = ratios
     fs = fin_statements_990(act)
     frames["nfp_fin_statements"] = fs
-    frames["nfp_cfo_review"] = cfo_review_990(ratios)
+    frames["nfp_cfo_review"] = cfo_review_990(act, ratios)
     frames["nfp_990_kpis"] = kpis_990(ratios)
     frames["nfp_990_yoy"] = yoy_990(act, fs, ratios)
     frames["nfp_990_rules"] = rules_990(ratios)

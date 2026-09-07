@@ -188,6 +188,21 @@
                       "Entity": "nfp_cfo_review"
                     }
                   },
+                  "Property": "math_fy2025"
+                }
+              },
+              "queryRef": "nfp_cfo_review.math_fy2025",
+              "nativeQueryRef": "math_fy2025",
+              "displayName": "the math (FY2025 amounts)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_cfo_review"
+                    }
+                  },
                   "Property": "cfo_reading"
                 }
               },
