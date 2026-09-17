@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "9b0042f40cd2781a432b",
+  "position": {
+    "x": 165,
+    "y": 10400,
+    "height": 100,
+    "width": 2670,
+    "z": 550000,
+    "tabOrder": 550000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "2017-2025 are calendar-year total returns; 2026 is YTD. Percentages are each individual year's gain or loss, not cumulative. Returns researched 2026-09-17 (per-row sources in market_reit_returns.csv); era summaries are the owner's own page, market narrative rather than verified filings.",
+                    "textStyle": {
+                      "fontSize": "8pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

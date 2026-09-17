@@ -1,0 +1,263 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "d2920071e50a699a01b1",
+  "position": {
+    "x": 165,
+    "y": 9140,
+    "height": 240,
+    "width": 2670,
+    "z": 530000,
+    "tabOrder": 530000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_returns_wide"
+                    }
+                  },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "market_reit_returns_wide.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_returns_wide"
+                    }
+                  },
+                  "Property": "company"
+                }
+              },
+              "queryRef": "market_reit_returns_wide.company",
+              "nativeQueryRef": "company",
+              "displayName": "company"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_returns_wide"
+                    }
+                  },
+                  "Property": "ticker"
+                }
+              },
+              "queryRef": "market_reit_returns_wide.ticker",
+              "nativeQueryRef": "ticker",
+              "displayName": "ticker"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_returns_wide"
+                    }
+                  },
+                  "Property": "y2017"
+                }
+              },
+              "queryRef": "market_reit_returns_wide.y2017",
+              "nativeQueryRef": "y2017",
+              "displayName": "2017"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_returns_wide"
+                    }
+                  },
+                  "Property": "y2018"
+                }
+              },
+              "queryRef": "market_reit_returns_wide.y2018",
+              "nativeQueryRef": "y2018",
+              "displayName": "2018"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_returns_wide"
+                    }
+                  },
+                  "Property": "y2019"
+                }
+              },
+              "queryRef": "market_reit_returns_wide.y2019",
+              "nativeQueryRef": "y2019",
+              "displayName": "2019"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_returns_wide"
+                    }
+                  },
+                  "Property": "y2020"
+                }
+              },
+              "queryRef": "market_reit_returns_wide.y2020",
+              "nativeQueryRef": "y2020",
+              "displayName": "2020"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_returns_wide"
+                    }
+                  },
+                  "Property": "y2021"
+                }
+              },
+              "queryRef": "market_reit_returns_wide.y2021",
+              "nativeQueryRef": "y2021",
+              "displayName": "2021"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_returns_wide"
+                    }
+                  },
+                  "Property": "y2022"
+                }
+              },
+              "queryRef": "market_reit_returns_wide.y2022",
+              "nativeQueryRef": "y2022",
+              "displayName": "2022"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_returns_wide"
+                    }
+                  },
+                  "Property": "y2023"
+                }
+              },
+              "queryRef": "market_reit_returns_wide.y2023",
+              "nativeQueryRef": "y2023",
+              "displayName": "2023"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_returns_wide"
+                    }
+                  },
+                  "Property": "y2024"
+                }
+              },
+              "queryRef": "market_reit_returns_wide.y2024",
+              "nativeQueryRef": "y2024",
+              "displayName": "2024"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_returns_wide"
+                    }
+                  },
+                  "Property": "y2025"
+                }
+              },
+              "queryRef": "market_reit_returns_wide.y2025",
+              "nativeQueryRef": "y2025",
+              "displayName": "2025"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_returns_wide"
+                    }
+                  },
+                  "Property": "y2026_ytd"
+                }
+              },
+              "queryRef": "market_reit_returns_wide.y2026_ytd",
+              "nativeQueryRef": "y2026_ytd",
+              "displayName": "2026 YTD"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_returns_wide"
+                    }
+                  },
+                  "Property": "note"
+                }
+              },
+              "queryRef": "market_reit_returns_wide.note",
+              "nativeQueryRef": "note",
+              "displayName": "note"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "market_reit_returns_wide"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {}
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

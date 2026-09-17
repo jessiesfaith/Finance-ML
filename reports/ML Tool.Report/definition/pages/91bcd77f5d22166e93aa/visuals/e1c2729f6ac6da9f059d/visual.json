@@ -1,0 +1,150 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "e1c2729f6ac6da9f059d",
+  "position": {
+    "x": 165,
+    "y": 8720,
+    "height": 400,
+    "width": 2670,
+    "z": 520000,
+    "tabOrder": 520000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_returns"
+                    }
+                  },
+                  "Property": "year_label"
+                }
+              },
+              "queryRef": "market_reit_returns.year_label",
+              "nativeQueryRef": "year_label",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_returns"
+                    }
+                  },
+                  "Property": "REIT WELL total return %"
+                }
+              },
+              "queryRef": "market_reit_returns.REIT WELL total return %",
+              "nativeQueryRef": "REIT WELL total return %",
+              "displayName": "Welltower (WELL)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_returns"
+                    }
+                  },
+                  "Property": "REIT PLD total return %"
+                }
+              },
+              "queryRef": "market_reit_returns.REIT PLD total return %",
+              "nativeQueryRef": "REIT PLD total return %",
+              "displayName": "Prologis (PLD)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_returns"
+                    }
+                  },
+                  "Property": "REIT EQIX total return %"
+                }
+              },
+              "queryRef": "market_reit_returns.REIT EQIX total return %",
+              "nativeQueryRef": "REIT EQIX total return %",
+              "displayName": "Equinix (EQIX)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_returns"
+                    }
+                  },
+                  "Property": "REIT AMT total return %"
+                }
+              },
+              "queryRef": "market_reit_returns.REIT AMT total return %",
+              "nativeQueryRef": "REIT AMT total return %",
+              "displayName": "American Tower (AMT)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_returns"
+                    }
+                  },
+                  "Property": "REIT DLR total return %"
+                }
+              },
+              "queryRef": "market_reit_returns.REIT DLR total return %",
+              "nativeQueryRef": "REIT DLR total return %",
+              "displayName": "Digital Realty (DLR)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "market_reit_returns"
+                  }
+                },
+                "Property": "year_label"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

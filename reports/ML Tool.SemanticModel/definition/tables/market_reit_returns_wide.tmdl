@@ -1,0 +1,165 @@
+/// The REIT returns with years as columns, one row per company.
+table market_reit_returns_wide
+	lineageTag: 79b94892-e662-4a32-b990-ea9114e16e6c
+
+	column row_id
+		dataType: string
+		lineageTag: 78b9d228-c938-49e1-a6a0-8939e554cbd7
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column company
+		dataType: string
+		lineageTag: 90ef15a8-83c9-4c38-8599-bce8d0e028ab
+		summarizeBy: none
+		sourceColumn: company
+
+		annotation SummarizationSetBy = Automatic
+
+	column ticker
+		dataType: string
+		lineageTag: 19beaf2a-da36-48b7-b7fb-15ce3c8e1356
+		summarizeBy: none
+		sourceColumn: ticker
+
+		annotation SummarizationSetBy = Automatic
+
+	column y2017
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 187b5666-5b1c-4c47-84a4-36f9cdf2540b
+		summarizeBy: none
+		sourceColumn: y2017
+
+		annotation SummarizationSetBy = Automatic
+
+	column y2018
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 21f14bad-452d-4f35-bb16-9143791b0032
+		summarizeBy: none
+		sourceColumn: y2018
+
+		annotation SummarizationSetBy = Automatic
+
+	column y2019
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 3bb93b5d-943f-42dd-9386-f7f93cb70019
+		summarizeBy: none
+		sourceColumn: y2019
+
+		annotation SummarizationSetBy = Automatic
+
+	column y2020
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 45fc3fba-f7b5-4aa8-804b-fa2cf2a4864c
+		summarizeBy: none
+		sourceColumn: y2020
+
+		annotation SummarizationSetBy = Automatic
+
+	column y2021
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: ad58e865-a1a9-43a6-a8c0-9ba0e962d4d2
+		summarizeBy: none
+		sourceColumn: y2021
+
+		annotation SummarizationSetBy = Automatic
+
+	column y2022
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 45c1d978-0672-42f5-963d-6838f0b95acc
+		summarizeBy: none
+		sourceColumn: y2022
+
+		annotation SummarizationSetBy = Automatic
+
+	column y2023
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 1d5c993d-5ad8-437b-9f5f-c5beff7427fd
+		summarizeBy: none
+		sourceColumn: y2023
+
+		annotation SummarizationSetBy = Automatic
+
+	column y2024
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: aff5ec74-0e32-4ded-b168-f8a5b01ce72a
+		summarizeBy: none
+		sourceColumn: y2024
+
+		annotation SummarizationSetBy = Automatic
+
+	column y2025
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 1ab1dafa-0b28-4353-a59b-80a38c35ad5a
+		summarizeBy: none
+		sourceColumn: y2025
+
+		annotation SummarizationSetBy = Automatic
+
+	column y2026_ytd
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 2d72b90e-e098-4100-9b9d-dd94dc86dc24
+		summarizeBy: none
+		sourceColumn: y2026_ytd
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: 08afb2d3-1727-45c1-ad25-507a01d97bfd
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: f3ec2a2b-004a-421b-b091-f4d8f1b48c5e
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition market_reit_returns_wide = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\market_reit_returns_wide.csv"),
+				    [Delimiter = ",", Columns = 15, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "company", "ticker", "y2017", "y2018", "y2019", "y2020", "y2021", "y2022", "y2023", "y2024", "y2025", "y2026_ytd", "note", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"company", type text},
+				    {"ticker", type text},
+				    {"y2017", type number},
+				    {"y2018", type number},
+				    {"y2019", type number},
+				    {"y2020", type number},
+				    {"y2021", type number},
+				    {"y2022", type number},
+				    {"y2023", type number},
+				    {"y2024", type number},
+				    {"y2025", type number},
+				    {"y2026_ytd", type number},
+				    {"note", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

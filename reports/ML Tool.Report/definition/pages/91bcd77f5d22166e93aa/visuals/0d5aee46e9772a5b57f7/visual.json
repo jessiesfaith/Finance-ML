@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "0d5aee46e9772a5b57f7",
+  "position": {
+    "x": 165,
+    "y": 10540,
+    "height": 56,
+    "width": 2670,
+    "z": 560000,
+    "tabOrder": 560000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "U.S. Business Cycle Indicators - Leading, Coincident and Lagging",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Leading indicators turn first (where are we going?), coincident move with the economy (where are we now?), lagging confirm what already happened. Owner-provided snapshot; readings as of 2026-09-15 per its sources (BEA, BLS, FRED, Census, ISM, Conference Board, Yahoo Finance).",
+                    "textStyle": {
+                      "fontSize": "8pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

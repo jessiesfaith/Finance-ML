@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "9ad2fe4e88e7c0213959",
+  "position": {
+    "x": 165,
+    "y": 8650,
+    "height": 56,
+    "width": 2670,
+    "z": 510000,
+    "tabOrder": 510000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Top 5 REIT companies - 10-year performance",
+                    "textStyle": {
+                      "fontSize": "13pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Calendar-year total returns incl. reinvested dividends; 2026 is YTD through ~mid-September. PUBLIC RESEARCH (MEDIUM) - each row carries its source; EQIX/DLR 2017 are RESEARCH REQUIRED, never guessed.",
+                    "textStyle": {
+                      "fontSize": "8pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,173 @@
+/// Top-5 REIT calendar-year total returns 2017-2025 + 2026 YTD (PUBLIC_RESEARCH, MEDIUM; two cells honestly blank).
+table market_reit_returns
+	lineageTag: 17cfce6c-3796-4a8a-ac91-685c732975f2
+
+	measure 'REIT WELL total return %' =
+			
+			CALCULATE(SUM(market_reit_returns[return_pct]), market_reit_returns[ticker] = "WELL")
+		formatString: #,0.##;(#,0.##)
+		displayFolder: REIT
+		lineageTag: de68c593-b8c8-4f92-a354-5c24733035a9
+
+	measure 'REIT PLD total return %' =
+			
+			CALCULATE(SUM(market_reit_returns[return_pct]), market_reit_returns[ticker] = "PLD")
+		formatString: #,0.##;(#,0.##)
+		displayFolder: REIT
+		lineageTag: aebcf569-4bed-482c-bac1-7d6266512d25
+
+	measure 'REIT EQIX total return %' =
+			
+			CALCULATE(SUM(market_reit_returns[return_pct]), market_reit_returns[ticker] = "EQIX")
+		formatString: #,0.##;(#,0.##)
+		displayFolder: REIT
+		lineageTag: d9be8668-abd7-4b6c-a7f0-9b7ce8210aab
+
+	measure 'REIT AMT total return %' =
+			
+			CALCULATE(SUM(market_reit_returns[return_pct]), market_reit_returns[ticker] = "AMT")
+		formatString: #,0.##;(#,0.##)
+		displayFolder: REIT
+		lineageTag: fe5da10e-2e9d-46c1-b140-fd0353958177
+
+	measure 'REIT DLR total return %' =
+			
+			CALCULATE(SUM(market_reit_returns[return_pct]), market_reit_returns[ticker] = "DLR")
+		formatString: #,0.##;(#,0.##)
+		displayFolder: REIT
+		lineageTag: dc21206a-1679-41c8-a9ba-c470dc83e3af
+
+	column row_id
+		dataType: string
+		lineageTag: d9b48759-ad30-4557-8cb4-69fe480c8501
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_id
+		dataType: string
+		lineageTag: 12e21c7b-d32d-43e1-a4a0-2f3ee46993e0
+		summarizeBy: none
+		sourceColumn: item_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ticker
+		dataType: string
+		lineageTag: 99b219c1-b931-45bd-a762-dfb7fc4519c2
+		summarizeBy: none
+		sourceColumn: ticker
+
+		annotation SummarizationSetBy = Automatic
+
+	column company
+		dataType: string
+		lineageTag: a5047fe2-4ab3-4c56-8a6e-b11b0fc94e39
+		summarizeBy: none
+		sourceColumn: company
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_label
+		dataType: string
+		lineageTag: e07cecd9-4f9d-46c1-ac26-fbdffd9c5a90
+		summarizeBy: none
+		sourceColumn: year_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column return_pct
+		dataType: double
+		formatString: #,0.##;(#,0.##)
+		lineageTag: 987a8f18-193e-4bea-be39-dd060c7cc6e6
+		summarizeBy: none
+		sourceColumn: return_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column basis
+		dataType: string
+		lineageTag: bb7258c1-675d-4e70-bb4e-d54bc437ecbd
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: b9183e81-dc05-4c48-9f3e-968295b00260
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column url
+		dataType: string
+		lineageTag: 35f3fbd4-bde1-4eea-8756-76bce834c9c8
+		summarizeBy: none
+		sourceColumn: url
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_verified
+		dataType: string
+		lineageTag: 2db55ace-c3c3-40bd-a56d-7d186b147c65
+		summarizeBy: none
+		sourceColumn: date_verified
+
+		annotation SummarizationSetBy = Automatic
+
+	column confidence
+		dataType: string
+		lineageTag: f59650bc-d17b-4af0-af3e-827ab9c91fa9
+		summarizeBy: none
+		sourceColumn: confidence
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: 03dd25dd-f521-455a-b5a9-1932f9a21b1e
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 9e44c32f-d8fe-48e6-a11c-f867a44cc37d
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition market_reit_returns = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\market_reit_returns.csv"),
+				    [Delimiter = ",", Columns = 13, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "item_id", "ticker", "company", "year_label", "return_pct", "basis", "source", "url", "date_verified", "confidence", "note", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"item_id", type text},
+				    {"ticker", type text},
+				    {"company", type text},
+				    {"year_label", type text},
+				    {"return_pct", type number},
+				    {"basis", type text},
+				    {"source", type text},
+				    {"url", type text},
+				    {"date_verified", type text},
+				    {"confidence", type text},
+				    {"note", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

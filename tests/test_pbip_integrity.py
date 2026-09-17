@@ -91,6 +91,10 @@ CSV_FOR_TABLE = {
     "nfp_invest_buckets": "nfp_invest_buckets",
     "nfp_cash_13wk_wide": "nfp_cash_13wk_wide",
     "nfp_990_actuals_wide": "nfp_990_actuals_wide",
+    "market_reit_returns": "market_reit_returns",
+    "market_reit_returns_wide": "market_reit_returns_wide",
+    "market_reit_summary": "market_reit_summary",
+    "market_cycle_indicators": "market_cycle_indicators",
     "client_fs_option_sizing": "client_fs_option_sizing",
 }
 

@@ -1498,3 +1498,25 @@ part/line reference per row. A faithful pivot of nfp_990_actuals
 asserts every line item is covered so a future filing line can't
 silently vanish. Visual swapped to the wide view at h=1620 (all 29
 rows, no scroll); tab 11 page 5500 -> 6850.
+
+### 118. Macro tab: REIT market section + business-cycle snapshot
+2026-09-17. Owner asked for her REIT performance page and her
+business-cycle infographic on tab 4 (Macro History). New module
+src/financials/reit.py + src/build_reit.py (mirrors build_nfp).
+REIT layer: market_reit_returns (WELL/PLD/EQIX/AMT/DLR calendar-year
+total returns 2017-2025 + 2026 YTD ~mid-Sep, researched 2026-09-17,
+PUBLIC_RESEARCH MEDIUM with per-row URLs; EQIX-2017 and DLR-2017 are
+BLANK - RESEARCH REQUIRED - because no verifiable source was
+reachable, and one search result's DLR-2017 figure contradicted the
+owner's own chart and was rejected rather than shipped),
+market_reit_returns_wide (years as columns), market_reit_summary
+(her era narrative verbatim, OWNER-PROVIDED SUMMARY). Chart uses 5
+CALCULATE measures (one per ticker) on a year_label category - the
+proven multi-measure pattern, labels off to match tab 4's style.
+Cycle layer: market_cycle_indicators - 25 indicators transcribed
+from her infographic (leading 10 / coincident 8 / lagging 7) with
+the page's own EXPANSION / MIXED / CONTRACTION signals, data as of
+2026-09-15 per its footer (BEA, BLS, FRED, Census, ISM, Conference
+Board, Yahoo Finance); the caption's 5-2-3 / 4-1-3 / 3-0-4 counts
+are arithmetic on her page, never this pipeline's forecast. Tab 4
+page 9000 -> 11700. New test file tests/test_reit.py; suite 303.

@@ -1,0 +1,189 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "502cc1e2e781d3040885",
+  "position": {
+    "x": 165,
+    "y": 10610,
+    "height": 880,
+    "width": 2670,
+    "z": 570000,
+    "tabOrder": 570000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_cycle_indicators"
+                    }
+                  },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "market_cycle_indicators.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_cycle_indicators"
+                    }
+                  },
+                  "Property": "indicator_group"
+                }
+              },
+              "queryRef": "market_cycle_indicators.indicator_group",
+              "nativeQueryRef": "indicator_group",
+              "displayName": "group"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_cycle_indicators"
+                    }
+                  },
+                  "Property": "indicator"
+                }
+              },
+              "queryRef": "market_cycle_indicators.indicator",
+              "nativeQueryRef": "indicator",
+              "displayName": "indicator"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_cycle_indicators"
+                    }
+                  },
+                  "Property": "latest_reading"
+                }
+              },
+              "queryRef": "market_cycle_indicators.latest_reading",
+              "nativeQueryRef": "latest_reading",
+              "displayName": "latest"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_cycle_indicators"
+                    }
+                  },
+                  "Property": "change_or_context"
+                }
+              },
+              "queryRef": "market_cycle_indicators.change_or_context",
+              "nativeQueryRef": "change_or_context",
+              "displayName": "change / context"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_cycle_indicators"
+                    }
+                  },
+                  "Property": "as_of"
+                }
+              },
+              "queryRef": "market_cycle_indicators.as_of",
+              "nativeQueryRef": "as_of",
+              "displayName": "as of"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_cycle_indicators"
+                    }
+                  },
+                  "Property": "signal"
+                }
+              },
+              "queryRef": "market_cycle_indicators.signal",
+              "nativeQueryRef": "signal",
+              "displayName": "signal"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_cycle_indicators"
+                    }
+                  },
+                  "Property": "group_reading"
+                }
+              },
+              "queryRef": "market_cycle_indicators.group_reading",
+              "nativeQueryRef": "group_reading",
+              "displayName": "what this group answers"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "market_cycle_indicators"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

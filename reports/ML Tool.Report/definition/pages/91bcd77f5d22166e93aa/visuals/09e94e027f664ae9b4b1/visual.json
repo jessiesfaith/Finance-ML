@@ -1,0 +1,144 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "09e94e027f664ae9b4b1",
+  "position": {
+    "x": 165,
+    "y": 9400,
+    "height": 980,
+    "width": 2670,
+    "z": 540000,
+    "tabOrder": 540000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_summary"
+                    }
+                  },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "market_reit_summary.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_summary"
+                    }
+                  },
+                  "Property": "company"
+                }
+              },
+              "queryRef": "market_reit_summary.company",
+              "nativeQueryRef": "company",
+              "displayName": "company"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_summary"
+                    }
+                  },
+                  "Property": "period"
+                }
+              },
+              "queryRef": "market_reit_summary.period",
+              "nativeQueryRef": "period",
+              "displayName": "period"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_summary"
+                    }
+                  },
+                  "Property": "driver"
+                }
+              },
+              "queryRef": "market_reit_summary.driver",
+              "nativeQueryRef": "driver",
+              "displayName": "what drove it (owner's summary)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "market_reit_summary"
+                    }
+                  },
+                  "Property": "confidence"
+                }
+              },
+              "queryRef": "market_reit_summary.confidence",
+              "nativeQueryRef": "confidence",
+              "displayName": "confidence"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "market_reit_summary"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

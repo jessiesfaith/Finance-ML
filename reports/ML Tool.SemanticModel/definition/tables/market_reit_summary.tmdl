@@ -1,0 +1,128 @@
+/// Owner-provided era-by-era narrative per REIT (market narrative, not verified filings).
+table market_reit_summary
+	lineageTag: aa7c44a6-167c-416c-a2bf-31b2c9f044be
+
+	column row_id
+		dataType: string
+		lineageTag: 47b22e5f-7d1e-4b44-8dd7-f83eeefd575a
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_id
+		dataType: string
+		lineageTag: 3d9153a8-fce2-4f41-b168-b0abba16abff
+		summarizeBy: none
+		sourceColumn: item_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ticker
+		dataType: string
+		lineageTag: 9a6574cd-05d0-4283-832a-5a5f588fdca4
+		summarizeBy: none
+		sourceColumn: ticker
+
+		annotation SummarizationSetBy = Automatic
+
+	column company
+		dataType: string
+		lineageTag: 94e6caa0-2810-4194-8f14-debb55201344
+		summarizeBy: none
+		sourceColumn: company
+
+		annotation SummarizationSetBy = Automatic
+
+	column period
+		dataType: string
+		lineageTag: b1ca218c-5226-4e3a-83f9-7fad25b632d7
+		summarizeBy: none
+		sourceColumn: period
+
+		annotation SummarizationSetBy = Automatic
+
+	column driver
+		dataType: string
+		lineageTag: 5c1a73c1-7823-444e-aace-1cfbfa1e8a6d
+		summarizeBy: none
+		sourceColumn: driver
+
+		annotation SummarizationSetBy = Automatic
+
+	column basis
+		dataType: string
+		lineageTag: 310bd9d1-d426-4dd6-83ac-1b96034d5dbb
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: 3e2a7833-7568-4ecc-8afc-29036a39726c
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_verified
+		dataType: string
+		lineageTag: 617e30e9-d6f8-45ec-9f42-ae51190d684d
+		summarizeBy: none
+		sourceColumn: date_verified
+
+		annotation SummarizationSetBy = Automatic
+
+	column confidence
+		dataType: string
+		lineageTag: ce2d67bc-c79c-4a3f-af6b-aa1815a0f10d
+		summarizeBy: none
+		sourceColumn: confidence
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: 9d8fedc4-9a6c-4113-a223-040ee03dbaff
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: e712dfa3-8b29-4a4f-a3da-1df5acc95fcd
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition market_reit_summary = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\market_reit_summary.csv"),
+				    [Delimiter = ",", Columns = 12, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "item_id", "ticker", "company", "period", "driver", "basis", "source", "date_verified", "confidence", "note", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"item_id", type text},
+				    {"ticker", type text},
+				    {"company", type text},
+				    {"period", type text},
+				    {"driver", type text},
+				    {"basis", type text},
+				    {"source", type text},
+				    {"date_verified", type text},
+				    {"confidence", type text},
+				    {"note", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

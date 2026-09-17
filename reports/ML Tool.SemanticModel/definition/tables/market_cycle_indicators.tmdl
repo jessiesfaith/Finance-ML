@@ -1,0 +1,155 @@
+/// Owner-provided U.S. business-cycle indicator snapshot: leading / coincident / lagging with the page's own signals (data as of 2026-09-15).
+table market_cycle_indicators
+	lineageTag: 0daf206e-5d47-44cc-b6d0-12ce0881ee3f
+
+	column row_id
+		dataType: string
+		lineageTag: c062d992-ee5d-481b-8796-25a31d2d7136
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_id
+		dataType: string
+		lineageTag: 44f2dbfc-8294-4c21-aa15-b2e2d2160350
+		summarizeBy: none
+		sourceColumn: item_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column indicator_group
+		dataType: string
+		lineageTag: d8d76e1d-94cd-4fcb-96d3-69f9b4794d7b
+		summarizeBy: none
+		sourceColumn: indicator_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column group_reading
+		dataType: string
+		lineageTag: 8fcf0f1b-b93f-40c6-a6a4-501a32ba95b3
+		summarizeBy: none
+		sourceColumn: group_reading
+
+		annotation SummarizationSetBy = Automatic
+
+	column indicator
+		dataType: string
+		lineageTag: a2ef17c2-e5b3-4c32-aea1-2bbee504c221
+		summarizeBy: none
+		sourceColumn: indicator
+
+		annotation SummarizationSetBy = Automatic
+
+	column latest_reading
+		dataType: string
+		lineageTag: fc4a6e37-83b6-4335-bb4b-81aeb8d3e85d
+		summarizeBy: none
+		sourceColumn: latest_reading
+
+		annotation SummarizationSetBy = Automatic
+
+	column change_or_context
+		dataType: string
+		lineageTag: dcdeaeb0-7668-4ca9-8644-771eb14a228d
+		summarizeBy: none
+		sourceColumn: change_or_context
+
+		annotation SummarizationSetBy = Automatic
+
+	column as_of
+		dataType: string
+		lineageTag: 54ff0616-0877-4767-a346-85f4c50675a9
+		summarizeBy: none
+		sourceColumn: as_of
+
+		annotation SummarizationSetBy = Automatic
+
+	column signal
+		dataType: string
+		lineageTag: fdd0f116-5e7d-415f-9689-1bd6e9cf4355
+		summarizeBy: none
+		sourceColumn: signal
+
+		annotation SummarizationSetBy = Automatic
+
+	column basis
+		dataType: string
+		lineageTag: f8f3b01b-3f40-4a96-97de-8765e9a2d6e3
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: b912ba44-d010-454a-a64a-ba6c10e38aa1
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_verified
+		dataType: string
+		lineageTag: b113e8bb-2563-4260-b449-f807e66e97bc
+		summarizeBy: none
+		sourceColumn: date_verified
+
+		annotation SummarizationSetBy = Automatic
+
+	column confidence
+		dataType: string
+		lineageTag: cf0e0001-7f6e-4c3e-8dd5-a93008655731
+		summarizeBy: none
+		sourceColumn: confidence
+
+		annotation SummarizationSetBy = Automatic
+
+	column note
+		dataType: string
+		lineageTag: 59045c25-09a1-4155-9689-38113cf1256e
+		summarizeBy: none
+		sourceColumn: note
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 457afd08-d30b-4d45-96c6-173c66f45c51
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition market_cycle_indicators = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\market_cycle_indicators.csv"),
+				    [Delimiter = ",", Columns = 15, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "item_id", "indicator_group", "group_reading", "indicator", "latest_reading", "change_or_context", "as_of", "signal", "basis", "source", "date_verified", "confidence", "note", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"item_id", type text},
+				    {"indicator_group", type text},
+				    {"group_reading", type text},
+				    {"indicator", type text},
+				    {"latest_reading", type text},
+				    {"change_or_context", type text},
+				    {"as_of", type text},
+				    {"signal", type text},
+				    {"basis", type text},
+				    {"source", type text},
+				    {"date_verified", type text},
+				    {"confidence", type text},
+				    {"note", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
