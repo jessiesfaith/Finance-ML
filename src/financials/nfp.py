@@ -2397,6 +2397,133 @@ def invest_buckets() -> pd.DataFrame:
     return b
 
 
+def decision_250k(s: dict, ty: pd.DataFrame) -> dict[str, pd.DataFrame]:
+    """The CEO-presentable $250,000 decision model (owner request
+    2026-09-18): four choices side by side - invest in a program, pay
+    down debt, invest in a partnership, buy market instruments - with
+    the current state of each, a recommendation, and the sensitivity
+    analysis she wants to walk a CEO through: every rate-linked
+    option re-priced from -200bp to +200bp in 50bp steps, first in
+    year-1 dollars, then as ACCEPT / MAYBE / REJECT verdicts.
+
+    Honesty lines: the hurdle (board rate 5.00%), borrowing rate
+    (7.00%) and net equity return (6.00% - 0.50% fees = 5.50%) are
+    MANAGEMENT ASSUMPTIONS from nfp_settings; the T-bill anchor is
+    the real 52-week quote from the treasury layer (MEDIUM - verify
+    before trading). The program is deliberately NOT forced into a
+    rate - it is a mission/enrollment decision (pilot rule applies);
+    the partnership has no term sheet and stays RESEARCH REQUIRED.
+    ACCEPT = shifted rate >= hurdle; MAYBE = within 1.00pt below;
+    REJECT below that. The parallel shift is a stated teaching
+    simplification, and fixed-rate debt would keep its saving
+    regardless of market moves."""
+    amount = float(s["available_capital"])            # 250,000
+    hurdle = float(s["board_discount_rate_pct"])      # 5.00
+    debt_rate = float(s["borrowing_rate_pct"])        # 7.00
+    stock_rate = (float(s["expected_investment_return_pct"])
+                  - float(s["investment_fees_pct"]))  # 5.50 net
+    tbill = ty.set_index("tenor").loc["52-week bill"]
+    bond_rate = float(tbill["yield_pct"])             # 4.13 quote
+
+    def yr1(rate_pct):
+        return round(amount * rate_pct / 100)
+
+    matrix = [
+        ("What it is",
+         "Fund or expand a JSV program (staff, space, equipment)",
+         "Retire borrowings carrying the assumed 7.00% rate",
+         "Co-invest alongside another organization",
+         "Buy securities: T-bills (bonds) or a diversified stock fund",
+         "MANAGEMENT ASSUMPTION + MARKET QUOTE"),
+        ("Return anchor today",
+         "Mission return - no financial rate is modeled",
+         f"{debt_rate:.2f}% interest avoided (assumption)",
+         "RESEARCH REQUIRED - no term sheet to price",
+         f"T-bill {bond_rate:.2f}% (quote 2026-09-04) / "
+         f"stocks {stock_rate:.2f}% net (assumption)",
+         "see subtitle"),
+        ("Year-1 cash on the $250,000",
+         "Not modeled - the case is mission + enrollment",
+         f"{yr1(debt_rate):,.0f} saved, contractual",
+         "-",
+         f"{yr1(bond_rate):,.0f} bonds / {yr1(stock_rate):,.0f} "
+         "stocks (expected, not promised)",
+         "DERIVED"),
+        ("Risk",
+         "Execution and enrollment risk",
+         "None on the saving itself (if the debt is prepayable)",
+         "Counterparty + terms unknown",
+         "Bonds: rate/reinvestment. Stocks: market swings",
+         "QUALITATIVE"),
+        ("Liquidity after deploying",
+         "Sunk into the program",
+         "Gone from cash - but frees future cash flow",
+         "Likely locked up",
+         "High - securities can be sold",
+         "QUALITATIVE"),
+        ("Mission impact",
+         "Direct",
+         "Indirect - interest saved funds mission",
+         "Potential, unknown until scoped",
+         "Indirect - earnings fund mission",
+         "QUALITATIVE"),
+        ("Rate sensitivity",
+         "LOW - rides on enrollment, not rates",
+         "HIGH if the debt is variable-rate",
+         "Unknown",
+         "HIGH - bonds directly, stocks through valuations",
+         "QUALITATIVE"),
+        ("Verdict today",
+         "MISSION CALL - run the pilot rule first",
+         f"ACCEPT ({debt_rate:.2f}% vs {hurdle:.2f}% hurdle)",
+         "RESEARCH REQUIRED",
+         f"stocks ACCEPT ({stock_rate:.2f}%) / bonds MAYBE "
+         f"({bond_rate:.2f}%)",
+         "RULE: >= hurdle ACCEPT; within 1pt MAYBE; else REJECT"),
+    ]
+    matrix_df = pd.DataFrame(matrix, columns=[
+        "line_item", "invest_in_program", "pay_down_debt",
+        "partnership", "market_instruments", "basis"])
+    matrix_df["value_class"] = "MANAGEMENT ASSUMPTION"
+
+    def verdict(rate_pct):
+        if rate_pct >= hurdle:
+            v = "ACCEPT"
+        elif rate_pct >= hurdle - 1.0:
+            v = "MAYBE"
+        else:
+            v = "REJECT"
+        return f"{v} ({rate_pct:.2f}%)"
+
+    sens, verd = [], []
+    for bp in range(-200, 201, 50):
+        label = f"{bp:+d} bp" if bp else "0 bp (today)"
+        shift = bp / 100
+        sens.append({
+            "shift_bp": bp, "shift_label": label,
+            "invest_in_program": "not rate-driven",
+            "pay_down_debt": yr1(debt_rate + shift),
+            "partnership": "RESEARCH REQUIRED",
+            "bonds_tbill": yr1(bond_rate + shift),
+            "stocks_net": yr1(stock_rate + shift),
+            "basis": "DERIVED (PARALLEL SHIFT)"})
+        verd.append({
+            "shift_bp": bp, "shift_label": label,
+            "invest_in_program": "MISSION CALL",
+            "pay_down_debt": verdict(debt_rate + shift),
+            "partnership": "RESEARCH REQUIRED",
+            "bonds_tbill": verdict(bond_rate + shift),
+            "stocks_net": verdict(stock_rate + shift),
+            "basis": "RULE vs 5.00% hurdle"})
+    sens_df = pd.DataFrame(sens)
+    sens_df["value_class"] = "MANAGEMENT ASSUMPTION"
+    verd_df = pd.DataFrame(verd)
+    verd_df["value_class"] = "MANAGEMENT ASSUMPTION"
+    return {"nfp_250k_matrix": matrix_df,
+            "nfp_250k_sensitivity": sens_df,
+            "nfp_250k_verdicts": verd_df}
+
+
 def build_all() -> dict[str, pd.DataFrame]:
     s = load_settings()
     settings_df = pd.read_csv(NFP_DIR / "nfp_settings.csv")
@@ -2465,6 +2592,7 @@ def build_all() -> dict[str, pd.DataFrame]:
     frames["nfp_bond_forecast"] = bond_forecast_990(ty)
     frames["nfp_invest_menu"] = invest_menu()
     frames["nfp_invest_buckets"] = invest_buckets()
+    frames.update(decision_250k(s, ty))
     # stable sort key: report tables sort by row_id to preserve the
     # decision-flow order of each export
     for df in frames.values():

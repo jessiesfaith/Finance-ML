@@ -1,0 +1,9 @@
+row_id,line_item,invest_in_program,pay_down_debt,partnership,market_instruments,basis,value_class
+R001,What it is,"Fund or expand a JSV program (staff, space, equipment)",Retire borrowings carrying the assumed 7.00% rate,Co-invest alongside another organization,Buy securities: T-bills (bonds) or a diversified stock fund,MANAGEMENT ASSUMPTION + MARKET QUOTE,MANAGEMENT ASSUMPTION
+R002,Return anchor today,Mission return - no financial rate is modeled,7.00% interest avoided (assumption),RESEARCH REQUIRED - no term sheet to price,T-bill 4.13% (quote 2026-09-04) / stocks 5.50% net (assumption),see subtitle,MANAGEMENT ASSUMPTION
+R003,"Year-1 cash on the $250,000",Not modeled - the case is mission + enrollment,"17,500 saved, contractual",-,"10,325 bonds / 13,750 stocks (expected, not promised)",DERIVED,MANAGEMENT ASSUMPTION
+R004,Risk,Execution and enrollment risk,None on the saving itself (if the debt is prepayable),Counterparty + terms unknown,Bonds: rate/reinvestment. Stocks: market swings,QUALITATIVE,MANAGEMENT ASSUMPTION
+R005,Liquidity after deploying,Sunk into the program,Gone from cash - but frees future cash flow,Likely locked up,High - securities can be sold,QUALITATIVE,MANAGEMENT ASSUMPTION
+R006,Mission impact,Direct,Indirect - interest saved funds mission,"Potential, unknown until scoped",Indirect - earnings fund mission,QUALITATIVE,MANAGEMENT ASSUMPTION
+R007,Rate sensitivity,"LOW - rides on enrollment, not rates",HIGH if the debt is variable-rate,Unknown,"HIGH - bonds directly, stocks through valuations",QUALITATIVE,MANAGEMENT ASSUMPTION
+R008,Verdict today,MISSION CALL - run the pilot rule first,ACCEPT (7.00% vs 5.00% hurdle),RESEARCH REQUIRED,stocks ACCEPT (5.50%) / bonds MAYBE (4.13%),RULE: >= hurdle ACCEPT; within 1pt MAYBE; else REJECT,MANAGEMENT ASSUMPTION

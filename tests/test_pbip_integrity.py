@@ -95,6 +95,9 @@ CSV_FOR_TABLE = {
     "market_reit_returns_wide": "market_reit_returns_wide",
     "market_reit_summary": "market_reit_summary",
     "market_cycle_indicators": "market_cycle_indicators",
+    "nfp_250k_matrix": "nfp_250k_matrix",
+    "nfp_250k_sensitivity": "nfp_250k_sensitivity",
+    "nfp_250k_verdicts": "nfp_250k_verdicts",
     "client_fs_option_sizing": "client_fs_option_sizing",
 }
 

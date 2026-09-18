@@ -1,0 +1,173 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "5fc6304a89375e970a80",
+  "position": {
+    "x": 165,
+    "y": 234,
+    "height": 700,
+    "width": 2670,
+    "z": 140000,
+    "tabOrder": 140000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_250k_matrix"
+                    }
+                  },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_250k_matrix.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_250k_matrix"
+                    }
+                  },
+                  "Property": "line_item"
+                }
+              },
+              "queryRef": "nfp_250k_matrix.line_item",
+              "nativeQueryRef": "line_item",
+              "displayName": "line item"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_250k_matrix"
+                    }
+                  },
+                  "Property": "invest_in_program"
+                }
+              },
+              "queryRef": "nfp_250k_matrix.invest_in_program",
+              "nativeQueryRef": "invest_in_program",
+              "displayName": "invest in a program"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_250k_matrix"
+                    }
+                  },
+                  "Property": "pay_down_debt"
+                }
+              },
+              "queryRef": "nfp_250k_matrix.pay_down_debt",
+              "nativeQueryRef": "pay_down_debt",
+              "displayName": "pay down debt"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_250k_matrix"
+                    }
+                  },
+                  "Property": "partnership"
+                }
+              },
+              "queryRef": "nfp_250k_matrix.partnership",
+              "nativeQueryRef": "partnership",
+              "displayName": "invest in a partnership"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_250k_matrix"
+                    }
+                  },
+                  "Property": "market_instruments"
+                }
+              },
+              "queryRef": "nfp_250k_matrix.market_instruments",
+              "nativeQueryRef": "market_instruments",
+              "displayName": "instruments (stocks/bonds)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_250k_matrix"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

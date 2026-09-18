@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "5e068c4f741e91189970",
+  "position": {
+    "x": 165,
+    "y": 70,
+    "height": 90,
+    "width": 2670,
+    "z": 120000,
+    "tabOrder": 120000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Hurdle = board rate 5.00% (MANAGEMENT ASSUMPTION). Anchors: borrowing rate 7.00% (assumption), stocks 6.00% - 0.50% fees = 5.50% net (assumption), 52-week T-bill 4.13% (market quote 2026-09-04, MEDIUM - verify before trading). The program is deliberately NOT forced into a rate (it is a mission/enrollment decision) and the partnership has no term sheet - RESEARCH REQUIRED, never guessed.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "1cde9aa45dab1a374994",
+  "position": {
+    "x": 165,
+    "y": 954,
+    "height": 170,
+    "width": 2670,
+    "z": 150000,
+    "tabOrder": 150000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "RECOMMENDATION FOR THE $250,000 TODAY: (1) Liquidity first - JSV's filed FY2025 cash is 0.46 months vs the 3.0-month floor, so if this cash is not already reserved for operations, bucket 1 outranks all four choices. (2) If it is truly investable, the strongest risk-adjusted use on the board's own numbers is paying down 7.00% debt: a contractual 17,500/yr that no market instrument matches today. (3) Stocks at 5.50% net clear the hurdle with market risk; T-bills at 4.13% are a MAYBE - a fine place to park while deciding. (4) The program is a mission decision - run the pilot rule; the partnership cannot be scored until a term sheet exists.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

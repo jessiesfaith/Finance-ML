@@ -1520,3 +1520,24 @@ the page's own EXPANSION / MIXED / CONTRACTION signals, data as of
 Board, Yahoo Finance); the caption's 5-2-3 / 4-1-3 / 3-0-4 counts
 are arithmetic on her page, never this pipeline's forecast. Tab 4
 page 9000 -> 11700. New test file tests/test_reit.py; suite 303.
+
+### 119. Tab 18: the $250K decision model with +/-200bp sensitivity
+2026-09-18. Owner wants a CEO-presentable tab: four choices for
+$250,000 (program / pay down debt / partnership / instruments) with
+current state, a recommendation, and - the piece she wants to teach -
+sensitivity across +/-200bp in 50bp steps, twice: year-1 dollars and
+ACCEPT/MAYBE/REJECT verdicts with the shifted rate in every cell.
+Anchors are the board's OWN settings (hurdle = board rate 5.00%,
+borrowing 7.00%, stocks 6.00%-0.50% = 5.50% net - all MANAGEMENT
+ASSUMPTIONS) plus the real 52-week T-bill quote 4.13% (MEDIUM).
+Honesty lines: the program is never forced into a rate (mission/
+enrollment decision, pilot rule); the partnership has no term sheet
+and stays RESEARCH REQUIRED in every cell; the parallel shift is a
+stated teaching simplification and the caveat notes fixed-rate debt
+keeps its 17,500 regardless. The verdict flips ARE the deliverable
+and are test-pinned: debt never flips (ACCEPT even at the -200bp
+boundary, exactly 5.00%), T-bills flip MAYBE->ACCEPT at +100bp and
+REJECT below -50bp, stocks fail only at -200bp. New page registered
+in pages.json before Legacy (19 -> 20 pages); exports
+nfp_250k_matrix / _sensitivity / _verdicts; engine decision_250k()
+reuses load_settings + treasury_yields. Suite 304.

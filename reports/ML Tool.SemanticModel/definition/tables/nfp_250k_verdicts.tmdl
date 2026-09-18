@@ -1,0 +1,111 @@
+/// The same sensitivity grid as decisions: ACCEPT / MAYBE / REJECT vs the 5.00% hurdle, shifted rate shown.
+table nfp_250k_verdicts
+	lineageTag: 4ce91974-c2eb-408c-94bb-2d9cd0e4c306
+
+	column row_id
+		dataType: string
+		lineageTag: 1c8e1267-c01b-42ce-9ea0-22f4c1602853
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column shift_bp
+		dataType: int64
+		formatString: #,0;(#,0)
+		lineageTag: 2e6c4f0d-6e9b-4e64-abbf-27f7b4dd79a1
+		summarizeBy: none
+		sourceColumn: shift_bp
+
+		annotation SummarizationSetBy = Automatic
+
+	column shift_label
+		dataType: string
+		lineageTag: de3a6636-3159-4907-a755-c3b15156a0e1
+		summarizeBy: none
+		sourceColumn: shift_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column invest_in_program
+		dataType: string
+		lineageTag: cd2c78d7-6259-49e8-bc85-7a335a1d957b
+		summarizeBy: none
+		sourceColumn: invest_in_program
+
+		annotation SummarizationSetBy = Automatic
+
+	column pay_down_debt
+		dataType: string
+		lineageTag: 786f8bc9-eb10-48ad-8d73-ac616970e910
+		summarizeBy: none
+		sourceColumn: pay_down_debt
+
+		annotation SummarizationSetBy = Automatic
+
+	column partnership
+		dataType: string
+		lineageTag: 0fbc6758-67bd-4214-b635-9f9881ea73e4
+		summarizeBy: none
+		sourceColumn: partnership
+
+		annotation SummarizationSetBy = Automatic
+
+	column bonds_tbill
+		dataType: string
+		lineageTag: 7a72649c-a964-46bf-8c97-1de808547986
+		summarizeBy: none
+		sourceColumn: bonds_tbill
+
+		annotation SummarizationSetBy = Automatic
+
+	column stocks_net
+		dataType: string
+		lineageTag: 0ab66f44-4ea4-4ed2-8190-1a39f82e5bb0
+		summarizeBy: none
+		sourceColumn: stocks_net
+
+		annotation SummarizationSetBy = Automatic
+
+	column basis
+		dataType: string
+		lineageTag: 3ba55d7b-0f9c-4542-a19d-bd04abe2ddc2
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 4d986fc2-1f89-425d-a93a-2748250fcdd8
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_250k_verdicts = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_250k_verdicts.csv"),
+				    [Delimiter = ",", Columns = 10, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "shift_bp", "shift_label", "invest_in_program", "pay_down_debt", "partnership", "bonds_tbill", "stocks_net", "basis", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"shift_bp", Int64.Type},
+				    {"shift_label", type text},
+				    {"invest_in_program", type text},
+				    {"pay_down_debt", type text},
+				    {"partnership", type text},
+				    {"bonds_tbill", type text},
+				    {"stocks_net", type text},
+				    {"basis", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

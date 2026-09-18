@@ -1,0 +1,168 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "476121ac21d94af24255",
+  "position": {
+    "x": 165,
+    "y": 1778,
+    "height": 400,
+    "width": 2670,
+    "z": 180000,
+    "tabOrder": 180000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_250k_sensitivity"
+                    }
+                  },
+                  "Property": "shift_bp"
+                }
+              },
+              "queryRef": "nfp_250k_sensitivity.shift_bp",
+              "nativeQueryRef": "shift_bp",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_250k_sensitivity"
+                        }
+                      },
+                      "Property": "pay_down_debt"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_250k_sensitivity.pay_down_debt)",
+              "nativeQueryRef": "Sum of pay_down_debt",
+              "displayName": "pay down debt (7.00% assumed)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_250k_sensitivity"
+                        }
+                      },
+                      "Property": "bonds_tbill"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_250k_sensitivity.bonds_tbill)",
+              "nativeQueryRef": "Sum of bonds_tbill",
+              "displayName": "T-bills (4.13% quote)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_250k_sensitivity"
+                        }
+                      },
+                      "Property": "stocks_net"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_250k_sensitivity.stocks_net)",
+              "nativeQueryRef": "Sum of stocks_net",
+              "displayName": "stocks (5.50% net assumed)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_250k_sensitivity"
+                  }
+                },
+                "Property": "shift_bp"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

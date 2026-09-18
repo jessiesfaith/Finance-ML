@@ -1,0 +1,114 @@
+/// Year-1 dollars on $250,000 with every rate-linked option shifted -200bp..+200bp in 50bp steps.
+table nfp_250k_sensitivity
+	lineageTag: ff28ce89-afa2-4512-929a-945392e01c77
+
+	column row_id
+		dataType: string
+		lineageTag: 0dc43588-74c3-4a7e-af7b-db55ccb375ef
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column shift_bp
+		dataType: int64
+		formatString: #,0;(#,0)
+		lineageTag: 3038b262-1f39-430a-ad13-6da0ff1228ab
+		summarizeBy: none
+		sourceColumn: shift_bp
+
+		annotation SummarizationSetBy = Automatic
+
+	column shift_label
+		dataType: string
+		lineageTag: 6157405f-1367-41ac-b875-483139e3ad5c
+		summarizeBy: none
+		sourceColumn: shift_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column invest_in_program
+		dataType: string
+		lineageTag: c5d12600-9f34-46bd-9ad2-c0eca2968817
+		summarizeBy: none
+		sourceColumn: invest_in_program
+
+		annotation SummarizationSetBy = Automatic
+
+	column pay_down_debt
+		dataType: double
+		formatString: #,0;(#,0)
+		lineageTag: 9a5600bf-7c1a-4838-be8a-6ca35324fefc
+		summarizeBy: none
+		sourceColumn: pay_down_debt
+
+		annotation SummarizationSetBy = Automatic
+
+	column partnership
+		dataType: string
+		lineageTag: 41a79d05-d274-49b3-8c03-eaa6a743eadb
+		summarizeBy: none
+		sourceColumn: partnership
+
+		annotation SummarizationSetBy = Automatic
+
+	column bonds_tbill
+		dataType: double
+		formatString: #,0;(#,0)
+		lineageTag: a3ecc921-9809-4485-8bf1-4193b2ad89f1
+		summarizeBy: none
+		sourceColumn: bonds_tbill
+
+		annotation SummarizationSetBy = Automatic
+
+	column stocks_net
+		dataType: double
+		formatString: #,0;(#,0)
+		lineageTag: fa7f85ef-2594-47ab-a316-0f679747014b
+		summarizeBy: none
+		sourceColumn: stocks_net
+
+		annotation SummarizationSetBy = Automatic
+
+	column basis
+		dataType: string
+		lineageTag: fd3e249c-c872-43e7-bb1c-c34f1d373251
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 2c50b8a6-8469-4e0f-acd0-84e985120236
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_250k_sensitivity = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_250k_sensitivity.csv"),
+				    [Delimiter = ",", Columns = 10, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "shift_bp", "shift_label", "invest_in_program", "pay_down_debt", "partnership", "bonds_tbill", "stocks_net", "basis", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"shift_bp", Int64.Type},
+				    {"shift_label", type text},
+				    {"invest_in_program", type text},
+				    {"pay_down_debt", type number},
+				    {"partnership", type text},
+				    {"bonds_tbill", type number},
+				    {"stocks_net", type number},
+				    {"basis", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

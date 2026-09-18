@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "3f56297bcd60c8f189e0",
+  "position": {
+    "x": 165,
+    "y": 2832,
+    "height": 210,
+    "width": 2670,
+    "z": 210000,
+    "tabOrder": 210000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "HOW TO PRESENT THIS TO A CEO: the top table prices the decision once, at today's rates. The two grids re-price the SAME four choices nine times, from 2 points lower to 2 points higher in half-point steps. Two things matter. First, WHERE each column flips: T-bills flip MAYBE -> ACCEPT at +100bp; stocks only fall to REJECT at -200bp; paying down 7% debt NEVER flips - it clears the hurdle across the entire range, which is what a robust decision looks like. Second, WHICH columns do not move at all: the program is insensitive to rates - its risk is enrollment, not the Fed - and that is itself a finding. A choice that survives the whole grid is robust; one that flips inside +/-50bp is really a rate bet and should be sized and monitored like one.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

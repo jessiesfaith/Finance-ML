@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "3268633aeae5fb084006",
+  "position": {
+    "x": 165,
+    "y": 1144,
+    "height": 44,
+    "width": 2670,
+    "z": 160000,
+    "tabOrder": 160000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "SENSITIVITY #1 - year-1 dollars on $250,000, every rate-linked choice shifted -200bp to +200bp in 50bp steps",
+                    "textStyle": {
+                      "fontSize": "15pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

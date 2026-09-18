@@ -920,3 +920,45 @@ def test_actuals_wide_is_a_faithful_pivot():
     assert w.loc["net_assets_change", "basis"] == "DERIVED"
     assert w.loc["net_assets_change", "fy2025"] == 860359
     assert w.loc["total_expenses", "note"] == "Part I line 18"
+
+
+def test_250k_decision_model_pinned():
+    """The CEO-presentable $250K model (owner request 2026-09-18):
+    four choices, the board's own anchors, and the +/-200bp
+    sensitivity in 50bp steps - dollars and verdicts must agree, the
+    verdict flips are pinned (they are the whole point of the
+    presentation), and the un-priceable choices never get a fake
+    rate."""
+    from financials.nfp import decision_250k, load_settings, treasury_yields
+    frames = decision_250k(load_settings(), treasury_yields())
+    m = frames["nfp_250k_matrix"]
+    assert len(m) == 8
+    v_today = m[m["line_item"] == "Verdict today"].iloc[0]
+    assert v_today["pay_down_debt"].startswith("ACCEPT (7.00%")
+    assert v_today["partnership"] == "RESEARCH REQUIRED"
+    assert "MISSION CALL" in v_today["invest_in_program"]
+
+    s = frames["nfp_250k_sensitivity"].set_index("shift_bp")
+    assert list(s.index) == list(range(-200, 201, 50))
+    assert s.loc[0, "pay_down_debt"] == 17500      # 250,000 x 7%
+    assert s.loc[0, "bonds_tbill"] == 10325        # 250,000 x 4.13%
+    assert s.loc[0, "stocks_net"] == 13750         # 250,000 x 5.5%
+    assert s.loc[-200, "pay_down_debt"] == 12500
+    assert s.loc[200, "stocks_net"] == 18750
+    assert (s["invest_in_program"] == "not rate-driven").all()
+    assert (s["partnership"] == "RESEARCH REQUIRED").all()
+
+    v = frames["nfp_250k_verdicts"].set_index("shift_bp")
+    # debt never flips - robust across the whole grid (incl. the
+    # -200bp boundary, exactly at the 5.00% hurdle)
+    assert v["pay_down_debt"].str.startswith("ACCEPT").all()
+    assert v.loc[-200, "pay_down_debt"] == "ACCEPT (5.00%)"
+    # bonds flip MAYBE -> ACCEPT at +100bp, REJECT below -50bp
+    assert v.loc[0, "bonds_tbill"] == "MAYBE (4.13%)"
+    assert v.loc[100, "bonds_tbill"] == "ACCEPT (5.13%)"
+    assert v.loc[-50, "bonds_tbill"] == "REJECT (3.63%)"
+    # stocks only fail at -200bp
+    assert v.loc[-200, "stocks_net"] == "REJECT (3.50%)"
+    assert v.loc[-150, "stocks_net"] == "MAYBE (4.00%)"
+    assert v.loc[-50, "stocks_net"] == "ACCEPT (5.00%)"
+    assert (v["invest_in_program"] == "MISSION CALL").all()

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "8f2f571d3cc44523be80",
+  "position": {
+    "x": 165,
+    "y": 2198,
+    "height": 44,
+    "width": 2670,
+    "z": 190000,
+    "tabOrder": 190000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "SENSITIVITY #2 - the same grid as DECISIONS: ACCEPT / MAYBE / REJECT vs the 5.00% hurdle (shifted rate shown)",
+                    "textStyle": {
+                      "fontSize": "15pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

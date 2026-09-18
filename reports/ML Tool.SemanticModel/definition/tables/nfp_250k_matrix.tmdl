@@ -1,0 +1,92 @@
+/// The $250K decision model: four choices side by side with current state and verdicts (assumptions labeled).
+table nfp_250k_matrix
+	lineageTag: 5b6c3b05-d3da-4237-9491-633b1ec89feb
+
+	column row_id
+		dataType: string
+		lineageTag: 0e79f26b-d8f7-4165-ad13-39bf1bc4ab23
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column line_item
+		dataType: string
+		lineageTag: 07ed3d87-f11d-4632-b679-7af5c98184de
+		summarizeBy: none
+		sourceColumn: line_item
+
+		annotation SummarizationSetBy = Automatic
+
+	column invest_in_program
+		dataType: string
+		lineageTag: 9e7ea20c-7e6a-4e64-9934-fd12f20db8b5
+		summarizeBy: none
+		sourceColumn: invest_in_program
+
+		annotation SummarizationSetBy = Automatic
+
+	column pay_down_debt
+		dataType: string
+		lineageTag: a0bd994a-4b10-48a4-8f91-8ec4fa3683a4
+		summarizeBy: none
+		sourceColumn: pay_down_debt
+
+		annotation SummarizationSetBy = Automatic
+
+	column partnership
+		dataType: string
+		lineageTag: 9069e3f4-57cf-40bf-a453-f91976be7ebe
+		summarizeBy: none
+		sourceColumn: partnership
+
+		annotation SummarizationSetBy = Automatic
+
+	column market_instruments
+		dataType: string
+		lineageTag: c38ae83c-3821-456d-8000-c38650860cea
+		summarizeBy: none
+		sourceColumn: market_instruments
+
+		annotation SummarizationSetBy = Automatic
+
+	column basis
+		dataType: string
+		lineageTag: e708b3c8-f45d-43f6-a4e3-332d1693225b
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 2314ba3c-8eb7-4341-9d28-f7f56915e86a
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_250k_matrix = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_250k_matrix.csv"),
+				    [Delimiter = ",", Columns = 8, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "line_item", "invest_in_program", "pay_down_debt", "partnership", "market_instruments", "basis", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"line_item", type text},
+				    {"invest_in_program", type text},
+				    {"pay_down_debt", type text},
+				    {"partnership", type text},
+				    {"market_instruments", type text},
+				    {"basis", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
