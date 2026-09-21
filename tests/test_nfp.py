@@ -1017,3 +1017,33 @@ def test_250k_hurdle_math_and_intake_checklist():
     assert ck["input_needed"].str.contains("Cannibalization").any()
     assert ck["pool_expansion_example"].str.contains(
         "contingency").any()
+
+
+def test_pool_work_order_proforma_pinned():
+    """Owner requests 2026-09-21: the pool draft work order uses
+    RESEARCHED typical figures (sourced ranges with stated chosen
+    points - never demo numbers), and its math must produce the
+    honest finding: a typical pool MISSES the hurdle on lessons
+    alone; the decisive number stays RESEARCH REQUIRED."""
+    from financials.nfp import pool_typical_proforma
+    p = pool_typical_proforma()
+    assert len(p) == 13
+    ix = p.set_index("line_item")
+    assert ix.loc["TOTAL PROJECT COST", "amount"] == 402500
+    assert ix.loc["Incremental lifeguards", "amount"] == 45011
+    assert ix.loc["TOTAL OPERATING (incremental)", "amount"] == 78011
+    assert ix.loc["Year-1 net on lessons alone", "amount"] == -42011
+    assert "-10.44%" in ix.loc["Return vs the 5.00% hurdle",
+                               "the_math"]
+    assert "MISSES" in ix.loc["Return vs the 5.00% hurdle", "the_math"]
+    assert "62,136" in ix.loc["Breakeven / hurdle uplift needed",
+                              "the_math"]
+    up = ix.loc["Membership / rental uplift"]
+    assert up["amount"] == "" and "RESEARCH REQUIRED" in up["the_math"]
+    assert (p["basis"] == "RESEARCHED TYPICAL (MEDIUM) - NOT A JSV "
+            "QUOTE").all()
+    # researched rows carry click-through sources
+    researched = p[p["source_note"] != "derived"]
+    assert (researched["url"].str.startswith("https://")
+            | (researched["url"] == "")).all()
+    assert p["url"].str.startswith("https://").sum() >= 7

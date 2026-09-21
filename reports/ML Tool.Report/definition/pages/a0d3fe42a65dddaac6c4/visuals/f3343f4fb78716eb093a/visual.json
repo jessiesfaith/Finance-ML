@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "f3343f4fb78716eb093a",
+  "position": {
+    "x": 165,
+    "y": 2970,
+    "height": 140,
+    "width": 2670,
+    "z": 820000,
+    "tabOrder": 820000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Project: aquatics expansion, 3-4 lane institutional pool.  Status: DRAFT - FOR SCOPING ONLY.  Prepared: 2026-09-21 from researched typical costs (every amount is a stated point inside a sourced range, MEDIUM confidence, owner-adjustable).  Funding under review: the $250,000 covers ~62% of typical project cost - the remaining ~$152,500 needs campaign / restricted gifts / borrowing at 7.00%.  Approval path: fill the open items below -> board mission score -> real bids replace every researched figure.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

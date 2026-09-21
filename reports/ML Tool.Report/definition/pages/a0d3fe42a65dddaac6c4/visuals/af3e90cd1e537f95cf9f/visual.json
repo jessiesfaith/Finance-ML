@@ -3,7 +3,7 @@
   "name": "af3e90cd1e537f95cf9f",
   "position": {
     "x": 165,
-    "y": 2916,
+    "y": 4050,
     "height": 44,
     "width": 2670,
     "z": 730000,
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "TO SCORE A REAL PROGRAM INVESTMENT (e.g. A POOL EXPANSION) - the inputs needed before the program column gets a number",
+                    "value": "WORK ORDER OPEN ITEMS - inputs JSV must supply to finalize (never guessed; real bids and JSV data replace every researched figure)",
                     "textStyle": {
                       "fontSize": "15pt"
                     }

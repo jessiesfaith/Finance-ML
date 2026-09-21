@@ -1,0 +1,102 @@
+/// Draft work order economics for a typical pool expansion: researched sector-typical figures with sources - NOT a JSV bid.
+table nfp_pool_proforma
+	lineageTag: 2108f206-134f-40e1-ba90-81e0a11fe6ab
+
+	column row_id
+		dataType: string
+		lineageTag: 5f3f6527-c48a-4f92-98b2-e8ec532dc76a
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column section
+		dataType: string
+		lineageTag: 99f0a13e-a01c-46ef-8ef4-7e1a32a305f8
+		summarizeBy: none
+		sourceColumn: section
+
+		annotation SummarizationSetBy = Automatic
+
+	column line_item
+		dataType: string
+		lineageTag: 106dff45-1d5c-4355-a0c1-6550e1880ee7
+		summarizeBy: none
+		sourceColumn: line_item
+
+		annotation SummarizationSetBy = Automatic
+
+	column amount
+		dataType: double
+		formatString: #,0;(#,0)
+		lineageTag: 41500ee1-030a-4846-8968-87eb38238521
+		summarizeBy: none
+		sourceColumn: amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column the_math
+		dataType: string
+		lineageTag: 1a7f81f4-c2b0-43dc-ad25-e596bee7bfaa
+		summarizeBy: none
+		sourceColumn: the_math
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_note
+		dataType: string
+		lineageTag: 7bac57de-c8e3-4c19-a46d-9bce52a65740
+		summarizeBy: none
+		sourceColumn: source_note
+
+		annotation SummarizationSetBy = Automatic
+
+	column url
+		dataType: string
+		lineageTag: e48a0b04-6a19-4916-92d5-9c957788db3b
+		summarizeBy: none
+		sourceColumn: url
+
+		annotation SummarizationSetBy = Automatic
+
+	column basis
+		dataType: string
+		lineageTag: e8b09e5e-1d14-403c-aa1e-b8fb8744a198
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: bbf39e9c-6e54-4880-b94b-33baa1872b4b
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_pool_proforma = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_pool_proforma.csv"),
+				    [Delimiter = ",", Columns = 9, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "section", "line_item", "amount", "the_math", "source_note", "url", "basis", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"section", type text},
+				    {"line_item", type text},
+				    {"amount", type number},
+				    {"the_math", type text},
+				    {"source_note", type text},
+				    {"url", type text},
+				    {"basis", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

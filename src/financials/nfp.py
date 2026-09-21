@@ -2667,6 +2667,94 @@ def decision_250k(s: dict, ty: pd.DataFrame) -> dict[str, pd.DataFrame]:
             "nfp_250k_program_inputs": ck_df}
 
 
+def pool_typical_proforma() -> pd.DataFrame:
+    """DRAFT WORK ORDER economics for a typical pool expansion (owner
+    request 2026-09-21: 'make up typical costs as you see it online
+    not as demo'). Every anchor is a RESEARCHED range with a stated
+    chosen point (data/nfp/nfp_pool_typical_inputs.csv, click-through
+    URLs, MEDIUM) - sector-typical, explicitly NOT a JSV bid. The
+    honest finding the math produces: on lesson revenue alone a
+    typical pool does not clear the 5.00% hurdle - the case must come
+    from membership uplift (RESEARCH REQUIRED: JSV's own dues and
+    demand data) plus the board's mission score."""
+    inp = (pd.read_csv(NFP_DIR / "nfp_pool_typical_inputs.csv")
+           .fillna("").set_index("item_id"))
+
+    def cv(item_id):
+        return float(inp.loc[item_id, "chosen_value"])
+
+    def src(item_id):
+        return inp.loc[item_id, "source"], inp.loc[item_id, "url"]
+
+    build = cv("PT-1")
+    cont_pct = cv("PT-2")
+    capex = round(build * (1 + cont_pct / 100))       # 402,500
+    wage, hours = cv("PT-3"), cv("PT-4")
+    guards = round(wage * hours)                      # 45,011
+    utils, service, chems = cv("PT-5"), cv("PT-6"), cv("PT-7")
+    opex = guards + utils + service + chems           # 78,011
+    pkg, enroll = cv("PT-8"), cv("PT-9")
+    lessons = pkg * enroll                            # 36,000
+    net = lessons - opex                              # -42,011
+    ret_pct = net / capex * 100                       # -10.44
+    hurdle_dollars = round(capex * 0.05)              # 20,125
+    to_clear = -net + hurdle_dollars                  # 62,136
+
+    rows = [
+        ("CAPEX", "Construction (3-4 lane institutional)", build,
+         "midpoint of the researched 200,000 - 500,000+ range",
+         *src("PT-1")),
+        ("CAPEX", "Contingency", round(build * cont_pct / 100),
+         f"{build:,.0f} x {cont_pct:.0f}% (sector practice 10-20%)",
+         *src("PT-2")),
+        ("CAPEX", "TOTAL PROJECT COST", capex,
+         f"{build:,.0f} x 1.{cont_pct:.0f} = {capex:,.0f} - the "
+         f"250,000 covers {250000 / capex * 100:.0f}%; the remaining "
+         f"{capex - 250000:,.0f} needs campaign / restricted gifts / "
+         "borrowing at 7.00%", "derived", ""),
+        ("REVENUE", "Group swim lessons", lessons,
+         f"{enroll:,.0f} enrollments x {pkg:,.0f} per 8-session "
+         "package (8 x 15 community low-end)", *src("PT-8")),
+        ("REVENUE", "Membership / rental uplift", "",
+         "RESEARCH REQUIRED - needs JSV's dues schedule, retention "
+         "data and demand evidence; the decisive number",
+         *src("PT-10")),
+        ("OPERATING", "Incremental lifeguards", guards,
+         f"{hours:,.0f} hrs (one added post, 40 hrs/wk) x "
+         f"{wage:.2f} CA mean wage (BLS May 2024)", *src("PT-3")),
+        ("OPERATING", "Heating, electricity & water", utils,
+         "placeholder scaled well below the researched large-facility "
+         "figure (41,209 gas + 16,400 electric + 22,500 water)",
+         *src("PT-5")),
+        ("OPERATING", "Service contract", service,
+         "inside the researched 3,000 - 20,000 commercial range",
+         *src("PT-6")),
+        ("OPERATING", "Chemicals", chems,
+         "researched commercial figure", *src("PT-7")),
+        ("OPERATING", "TOTAL OPERATING (incremental)", opex,
+         f"{guards:,.0f} + {utils:,.0f} + {service:,.0f} + "
+         f"{chems:,.0f} = {opex:,.0f} per year", "derived", ""),
+        ("RESULT", "Year-1 net on lessons alone", net,
+         f"{lessons:,.0f} - {opex:,.0f} = ({-net:,.0f}) BEFORE any "
+         "membership uplift", "derived", ""),
+        ("RESULT", "Return vs the 5.00% hurdle", "",
+         f"({-net:,.0f}) / {capex:,.0f} = {ret_pct:.2f}% - MISSES on "
+         "financials alone; the case must come from membership "
+         "uplift + the board's mission score", "derived", ""),
+        ("RESULT", "Breakeven / hurdle uplift needed", "",
+         f"breakeven needs {-net:,.0f}/yr of new membership or "
+         f"rental revenue; CLEARING the hurdle needs {-net:,.0f} + "
+         f"{hurdle_dollars:,.0f} = {to_clear:,.0f}/yr", "derived",
+         ""),
+    ]
+    df = pd.DataFrame(rows, columns=[
+        "section", "line_item", "amount", "the_math", "source_note",
+        "url"])
+    df["basis"] = "RESEARCHED TYPICAL (MEDIUM) - NOT A JSV QUOTE"
+    df["value_class"] = "PUBLIC_RESEARCH"
+    return df
+
+
 def build_all() -> dict[str, pd.DataFrame]:
     s = load_settings()
     settings_df = pd.read_csv(NFP_DIR / "nfp_settings.csv")
@@ -2736,6 +2824,7 @@ def build_all() -> dict[str, pd.DataFrame]:
     frames["nfp_invest_menu"] = invest_menu()
     frames["nfp_invest_buckets"] = invest_buckets()
     frames.update(decision_250k(s, ty))
+    frames["nfp_pool_proforma"] = pool_typical_proforma()
     # stable sort key: report tables sort by row_id to preserve the
     # decision-flow order of each export
     for df in frames.values():

@@ -101,6 +101,7 @@ CSV_FOR_TABLE = {
     "nfp_250k_sens_pivot": "nfp_250k_sens_pivot",
     "nfp_250k_hurdle_math": "nfp_250k_hurdle_math",
     "nfp_250k_program_inputs": "nfp_250k_program_inputs",
+    "nfp_pool_proforma": "nfp_pool_proforma",
     "client_fs_option_sizing": "client_fs_option_sizing",
 }
 

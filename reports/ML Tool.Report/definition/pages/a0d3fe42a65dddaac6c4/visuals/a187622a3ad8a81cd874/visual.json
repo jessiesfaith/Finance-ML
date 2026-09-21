@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "5dc8f6f4d44e327ad734",
+  "name": "a187622a3ad8a81cd874",
   "position": {
     "x": 165,
-    "y": 5384,
-    "height": 100,
+    "y": 5024,
+    "height": 110,
     "width": 2670,
-    "z": 220000,
-    "tabOrder": 220000
+    "z": 840000,
+    "tabOrder": 840000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "All four columns deploy the same $250,000 (settings: available_capital). Rule: ACCEPT if the shifted return >= 5.00% hurdle, MAYBE within 1.00pt below, REJECT under 4.00%. Parallel shift is a teaching simplification - the same bp move is applied to every rate-linked option; FIXED-rate debt would keep its 17,500 saving regardless of market moves (the debt column's sensitivity describes variable-rate debt).",
+                    "value": "The work order's honest bottom line: on researched typical figures a pool MISSES the 5.00% hurdle on lesson revenue alone (-10.44%/yr before membership uplift). Breakeven needs ~42,011/yr of new membership or rental revenue; clearing the hurdle needs ~62,136/yr. The decisive missing number is JSV's own dues & demand data (RESEARCH REQUIRED) - and the board's mission score, which this model deliberately never invents.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }

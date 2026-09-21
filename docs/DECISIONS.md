@@ -1588,3 +1588,25 @@ program (utilization/fees, not interest rates). Every row status
 NEEDED FROM OWNER / BOARD, value_class RESEARCH REQUIRED - the
 program column gets a number only when she supplies these. Page
 2800 -> 4300; suite 306.
+
+### 123. Pool draft work order with researched typical costs
+2026-09-21 (fourth pass). Owner: "make up typical costs as you see it
+online not as demo" + "put the draft work order for the pool in its
+own section". New inputs file data/nfp/nfp_pool_typical_inputs.csv:
+every anchor is a RESEARCHED range with a click-through URL and a
+stated chosen point (Angi 3-4 lane institutional 200-500K+ -> 350K
+midpoint; 10-20% contingency -> 15%; BLS CA lifeguard mean 21.64/hr
+- CA chosen because JSV is in California; Pool Founder large-facility
+utilities 80K+ -> 20K scaled placeholder; service 3-20K -> 8K;
+chemicals 5K; Lessons.com community lessons 15-30/session -> 120
+8-packs). Two rows stay MANAGEMENT ASSUMPTION (guard hours, 300
+enrollments) and membership uplift stays RESEARCH REQUIRED. Engine
+pool_typical_proforma() computes the work order: capex 402,500 (the
+250K covers 62%), opex 78,011, lessons 36,000, year-1 net (42,011),
+return -10.44% vs the 5.00% hurdle -> the honest headline: a typical
+pool MISSES on lesson revenue alone; breakeven needs ~42,011/yr of
+uplift, clearing the hurdle ~62,136/yr - the decisive number is
+JSV's own dues/demand data. Tab 18 gained the DRAFT WORK ORDER
+section (header, meta/status/approval-path, scope & economics table
+with math+source columns, the intake checklist retitled as WORK
+ORDER OPEN ITEMS, bottom-line caption). Page 4300 -> 5560; suite 307.

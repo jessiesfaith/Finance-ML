@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "d4975da2f4e35c72f1fc",
+  "name": "54267179eddb98515a39",
   "position": {
     "x": 165,
-    "y": 4104,
+    "y": 3130,
     "height": 900,
     "width": 2670,
-    "z": 740000,
-    "tabOrder": 740000
+    "z": 830000,
+    "tabOrder": 830000
   },
   "visual": {
     "visualType": "tableEx",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_250k_program_inputs"
+                      "Entity": "nfp_pool_proforma"
                     }
                   },
                   "Property": "row_id"
                 }
               },
-              "queryRef": "nfp_250k_program_inputs.row_id",
+              "queryRef": "nfp_pool_proforma.row_id",
               "nativeQueryRef": "row_id",
               "displayName": "#"
             },
@@ -35,60 +35,90 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_250k_program_inputs"
+                      "Entity": "nfp_pool_proforma"
                     }
                   },
-                  "Property": "input_needed"
+                  "Property": "section"
                 }
               },
-              "queryRef": "nfp_250k_program_inputs.input_needed",
-              "nativeQueryRef": "input_needed",
-              "displayName": "input needed"
+              "queryRef": "nfp_pool_proforma.section",
+              "nativeQueryRef": "section",
+              "displayName": "section"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_250k_program_inputs"
+                      "Entity": "nfp_pool_proforma"
                     }
                   },
-                  "Property": "why_it_matters"
+                  "Property": "line_item"
                 }
               },
-              "queryRef": "nfp_250k_program_inputs.why_it_matters",
-              "nativeQueryRef": "why_it_matters",
-              "displayName": "why it matters"
+              "queryRef": "nfp_pool_proforma.line_item",
+              "nativeQueryRef": "line_item",
+              "displayName": "line item"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_250k_program_inputs"
+                      "Entity": "nfp_pool_proforma"
                     }
                   },
-                  "Property": "pool_expansion_example"
+                  "Property": "amount"
                 }
               },
-              "queryRef": "nfp_250k_program_inputs.pool_expansion_example",
-              "nativeQueryRef": "pool_expansion_example",
-              "displayName": "pool-expansion example"
+              "queryRef": "nfp_pool_proforma.amount",
+              "nativeQueryRef": "amount",
+              "displayName": "amount $"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "nfp_250k_program_inputs"
+                      "Entity": "nfp_pool_proforma"
                     }
                   },
-                  "Property": "status"
+                  "Property": "the_math"
                 }
               },
-              "queryRef": "nfp_250k_program_inputs.status",
-              "nativeQueryRef": "status",
-              "displayName": "status"
+              "queryRef": "nfp_pool_proforma.the_math",
+              "nativeQueryRef": "the_math",
+              "displayName": "the math"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_pool_proforma"
+                    }
+                  },
+                  "Property": "source_note"
+                }
+              },
+              "queryRef": "nfp_pool_proforma.source_note",
+              "nativeQueryRef": "source_note",
+              "displayName": "source"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_pool_proforma"
+                    }
+                  },
+                  "Property": "basis"
+                }
+              },
+              "queryRef": "nfp_pool_proforma.basis",
+              "nativeQueryRef": "basis",
+              "displayName": "basis"
             }
           ]
         }
@@ -100,7 +130,7 @@
               "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "nfp_250k_program_inputs"
+                    "Entity": "nfp_pool_proforma"
                   }
                 },
                 "Property": "row_id"
@@ -146,6 +176,36 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "selector": {
+            "metadata": "nfp_pool_proforma.the_math"
+          },
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "800D"
+                }
+              }
+            }
+          }
+        },
+        {
+          "selector": {
+            "metadata": "nfp_pool_proforma.source_note"
+          },
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "450D"
                 }
               }
             }
