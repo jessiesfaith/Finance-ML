@@ -1,0 +1,13 @@
+row_id,input_needed,why_it_matters,pool_expansion_example,status,value_class
+R001,Total project cost,"the real capex - decides whether 250,000 even covers it or is one funding slice",construction bid + design/permits + a contingency % (pools commonly carry 10-20% contingency),NEEDED FROM OWNER / BOARD,RESEARCH REQUIRED
+R002,Timeline,when cash leaves vs when revenue starts - drives payback and the 13-week forecast,construction months and target opening date (miss the summer season and year-1 revenue halves),NEEDED FROM OWNER / BOARD,RESEARCH REQUIRED
+R003,Funding plan,"how much of the 250,000 is used and what joins it - changes the return ON THE 250,000","share from this cash vs restricted gifts, campaign, or borrowing at 7.00%",NEEDED FROM OWNER / BOARD,RESEARCH REQUIRED
+R004,Incremental annual revenue,"the return numerator - must be NEW money, not moved money","added memberships x dues, swim-lesson seats x fee, rentals, camp add-ons - price x expected units each",NEEDED FROM OWNER / BOARD,RESEARCH REQUIRED
+R005,Incremental annual operating cost,the return denominator's partner - pools are operating-cost heavy,"lifeguards/staff, chemicals, utilities, insurance, routine maintenance",NEEDED FROM OWNER / BOARD,RESEARCH REQUIRED
+R006,Useful life & major-maintenance cycle,spreads the capex over the years it serves and reserves for renewal,years of service; resurfacing/equipment cycle and its cost,NEEDED FROM OWNER / BOARD,RESEARCH REQUIRED
+R007,Demand evidence,turns the revenue forecast from hope into a forecast,"waitlists, the tab-15 community-study findings, current aquatics utilization",NEEDED FROM OWNER / BOARD,RESEARCH REQUIRED
+R008,Cannibalization,new revenue that replaces existing revenue is not a return,does pool revenue pull families from existing programs?,NEEDED FROM OWNER / BOARD,RESEARCH REQUIRED
+R009,"Mission score (board, 1-10)","the framework weights mission 30% - the board must score it, not the model",how central is aquatics to the JSV mission?,NEEDED FROM OWNER / BOARD,RESEARCH REQUIRED
+R010,Donor restrictions,"restricted money changes what the 250,000 must cover and what may fund operations","any gift restricted to the pool, and its timing/terms",NEEDED FROM OWNER / BOARD,RESEARCH REQUIRED
+R011,Permits & site risk,schedule and cost risk unique to construction,"zoning, health-department approval, utility capacity",NEEDED FROM OWNER / BOARD,RESEARCH REQUIRED
+R012,Sensitivity drivers to test,"for a program the grid shifts utilization and fees, not interest rates",verdict at 70/85/100% of forecast enrollment and at +/-10% fees,NEEDED FROM OWNER / BOARD,RESEARCH REQUIRED

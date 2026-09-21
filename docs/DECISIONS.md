@@ -1569,3 +1569,22 @@ grid-vs-pivot test still guarantees the numbers. Pivot row order
 changed to debt / program / T-bills / stocks per her wording. Page
 4220 -> 2800 - the tab is now two screens: the decision matrix +
 recommendation, then the two sensitivity grids + chart + CEO script.
+
+### 122. Tab 18: math to the hurdle, breakeven, and the pool intake
+2026-09-21 (third pass). Owner asked how each decision's math reaches
+the hurdle and WHEN the potential ROI clears it, plus what is needed
+to score a real JSV program investment (pool expansion). New section
+"THE MATH TO THE HURDLE" (nfp_250k_hurdle_math, 4 rows): named-inputs
+math per option, the gap in points (+2.00 / -0.87 / +0.50), the
+breakeven shift computed from the same anchors (debt -200bp exactly,
+T-bills +87bp, stocks -50bp), and a payback note (debt: 14.3 yrs of
+savings to match principal, risk down day 1). New closing section
+"TO SCORE A REAL PROGRAM INVESTMENT" (nfp_250k_program_inputs, 12
+rows): the intake checklist - cost/contingency, timeline, funding
+plan, incremental revenue AND operating cost, useful life, demand
+evidence (ties to tab 15), cannibalization, board mission score,
+donor restrictions, permits, and the right sensitivity drivers for a
+program (utilization/fees, not interest rates). Every row status
+NEEDED FROM OWNER / BOARD, value_class RESEARCH REQUIRED - the
+program column gets a number only when she supplies these. Page
+2800 -> 4300; suite 306.

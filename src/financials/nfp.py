@@ -2549,10 +2549,122 @@ def decision_250k(s: dict, ty: pd.DataFrame) -> dict[str, pd.DataFrame]:
                       **decisions})
     pivot_df = pd.DataFrame(pivot)
     pivot_df["value_class"] = "MANAGEMENT ASSUMPTION"
+
+    # the math to the hurdle + breakeven per option (owner request
+    # 2026-09-21): named inputs in her tab-17 style, the gap to the
+    # hurdle in points, and WHEN the ROI clears it - the rate shift
+    # (in bp) at which the option hits exactly the hurdle.
+    def be_bp(rate_pct):
+        return round((hurdle - rate_pct) * 100)
+
+    hm = [
+        ("pay down debt",
+         f"250,000 x {debt_rate:.2f}% borrowing rate (assumption) = "
+         f"{yr1(debt_rate):,.0f} saved per year -> return "
+         f"{debt_rate:.2f}%",
+         f"{debt_rate:.2f}% - {hurdle:.2f}% = "
+         f"+{debt_rate - hurdle:.2f}pt ABOVE the hurdle",
+         f"already clears it - stays ACCEPT down to {be_bp(debt_rate)}"
+         f"bp (exactly {hurdle:.2f}%)",
+         f"the saving repeats every year the debt would have run; "
+         f"250,000 / {yr1(debt_rate):,.0f} = "
+         f"{250000 / yr1(debt_rate):.1f} yrs to match the principal "
+         "in savings - but balance-sheet risk drops on day 1"),
+        ("invest in a program",
+         "no rate to build - return = incremental program revenue - "
+         "incremental operating cost (see the intake checklist "
+         "below)",
+         "not comparable until the program inputs exist",
+         "set by enrollment and fees, not the Fed",
+         "payback computes once the pool-expansion inputs below are "
+         "filled in"),
+        ("T-bills",
+         f"250,000 x {bond_rate:.2f}% (52-week quote 2026-09-04) = "
+         f"{yr1(bond_rate):,.0f} per year",
+         f"{bond_rate:.2f}% - {hurdle:.2f}% = "
+         f"-{hurdle - bond_rate:.2f}pt BELOW the hurdle",
+         f"needs +{be_bp(bond_rate)}bp; first ACCEPT cell in the "
+         f"grid at +100bp ({bond_rate + 1:.2f}%)",
+         "interest is cash every year; principal returns at "
+         "maturity"),
+        ("stocks (net)",
+         f"250,000 x ({float(s['expected_investment_return_pct']):.2f}"
+         f"% expected - {float(s['investment_fees_pct']):.2f}% fees) "
+         f"= {yr1(stock_rate):,.0f} per year EXPECTED",
+         f"{stock_rate:.2f}% - {hurdle:.2f}% = "
+         f"+{stock_rate - hurdle:.2f}pt above the hurdle",
+         f"falls to exactly the hurdle at {be_bp(stock_rate)}bp; "
+         "REJECT only below -150bp",
+         "expected, not promised - single years swing hard (tab 4's "
+         "REIT section shows how hard)"),
+    ]
+    hm_df = pd.DataFrame(hm, columns=[
+        "option", "the_math", "vs_hurdle_today",
+        "breakeven_when_roi_clears", "payback_note"])
+    hm_df["basis"] = "DERIVED from the labeled assumptions + quote"
+    hm_df["value_class"] = "MANAGEMENT ASSUMPTION"
+
+    # intake checklist: what a real JSV program investment (e.g. a
+    # pool expansion) needs before the program column can be scored
+    # against the same hurdle - every row is information the owner /
+    # board must provide; nothing here is ever guessed.
+    ck = [
+        ("Total project cost", "the real capex - decides whether "
+         "250,000 even covers it or is one funding slice",
+         "construction bid + design/permits + a contingency % "
+         "(pools commonly carry 10-20% contingency)"),
+        ("Timeline", "when cash leaves vs when revenue starts - "
+         "drives payback and the 13-week forecast",
+         "construction months and target opening date (miss the "
+         "summer season and year-1 revenue halves)"),
+        ("Funding plan", "how much of the 250,000 is used and what "
+         "joins it - changes the return ON THE 250,000",
+         "share from this cash vs restricted gifts, campaign, or "
+         "borrowing at 7.00%"),
+        ("Incremental annual revenue", "the return numerator - "
+         "must be NEW money, not moved money",
+         "added memberships x dues, swim-lesson seats x fee, "
+         "rentals, camp add-ons - price x expected units each"),
+        ("Incremental annual operating cost", "the return "
+         "denominator's partner - pools are operating-cost heavy",
+         "lifeguards/staff, chemicals, utilities, insurance, "
+         "routine maintenance"),
+        ("Useful life & major-maintenance cycle", "spreads the capex "
+         "over the years it serves and reserves for renewal",
+         "years of service; resurfacing/equipment cycle and its "
+         "cost"),
+        ("Demand evidence", "turns the revenue forecast from hope "
+         "into a forecast",
+         "waitlists, the tab-15 community-study findings, current "
+         "aquatics utilization"),
+        ("Cannibalization", "new revenue that replaces existing "
+         "revenue is not a return",
+         "does pool revenue pull families from existing programs?"),
+        ("Mission score (board, 1-10)", "the framework weights "
+         "mission 30% - the board must score it, not the model",
+         "how central is aquatics to the JSV mission?"),
+        ("Donor restrictions", "restricted money changes what the "
+         "250,000 must cover and what may fund operations",
+         "any gift restricted to the pool, and its timing/terms"),
+        ("Permits & site risk", "schedule and cost risk unique to "
+         "construction",
+         "zoning, health-department approval, utility capacity"),
+        ("Sensitivity drivers to test", "for a program the grid "
+         "shifts utilization and fees, not interest rates",
+         "verdict at 70/85/100% of forecast enrollment and at "
+         "+/-10% fees"),
+    ]
+    ck_df = pd.DataFrame(ck, columns=[
+        "input_needed", "why_it_matters", "pool_expansion_example"])
+    ck_df["status"] = "NEEDED FROM OWNER / BOARD"
+    ck_df["value_class"] = "RESEARCH REQUIRED"
+
     return {"nfp_250k_matrix": matrix_df,
             "nfp_250k_sensitivity": sens_df,
             "nfp_250k_verdicts": verd_df,
-            "nfp_250k_sens_pivot": pivot_df}
+            "nfp_250k_sens_pivot": pivot_df,
+            "nfp_250k_hurdle_math": hm_df,
+            "nfp_250k_program_inputs": ck_df}
 
 
 def build_all() -> dict[str, pd.DataFrame]:

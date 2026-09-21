@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "eeef498f6b173161abe9",
+  "name": "bb31839714a35a6d1f36",
   "position": {
     "x": 165,
-    "y": 1688,
+    "y": 1144,
     "height": 44,
     "width": 2670,
-    "z": 610000,
-    "tabOrder": 610000
+    "z": 710000,
+    "tabOrder": 710000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "SENSITIVITY - DECISION GRID: one row per choice, rate shifts across (ACCEPT / MAYBE / REJECT vs the 5.00% hurdle, shifted rate shown)",
+                    "value": "THE MATH TO THE HURDLE - how each return is built, the gap in points, and WHEN the ROI clears 5.00%",
                     "textStyle": {
                       "fontSize": "15pt"
                     }

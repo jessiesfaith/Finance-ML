@@ -1,0 +1,74 @@
+/// Intake checklist to score a real program investment (e.g. pool expansion) - every row NEEDED from owner/board, never guessed.
+table nfp_250k_program_inputs
+	lineageTag: 45ce0204-a98c-4571-a6f3-2a5f04d6e178
+
+	column row_id
+		dataType: string
+		lineageTag: 0935ff58-8f80-484c-a588-3ed5d20538a6
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column input_needed
+		dataType: string
+		lineageTag: 770ff8d2-d09d-492b-a519-12f1b0236e59
+		summarizeBy: none
+		sourceColumn: input_needed
+
+		annotation SummarizationSetBy = Automatic
+
+	column why_it_matters
+		dataType: string
+		lineageTag: 743a258e-6bb2-4f8a-b400-a3b63e2ada08
+		summarizeBy: none
+		sourceColumn: why_it_matters
+
+		annotation SummarizationSetBy = Automatic
+
+	column pool_expansion_example
+		dataType: string
+		lineageTag: ba33eba1-56ce-47ca-9b98-a452f04bc414
+		summarizeBy: none
+		sourceColumn: pool_expansion_example
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 1db0e7cf-77dd-40a6-bde9-e2a1fefc24a6
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: 7dff6950-986f-4cd7-9ab8-2602e3035976
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_250k_program_inputs = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_250k_program_inputs.csv"),
+				    [Delimiter = ",", Columns = 6, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "input_needed", "why_it_matters", "pool_expansion_example", "status", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"input_needed", type text},
+				    {"why_it_matters", type text},
+				    {"pool_expansion_example", type text},
+				    {"status", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table

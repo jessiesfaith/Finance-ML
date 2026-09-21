@@ -1,0 +1,173 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "84f9f82627858f182dca",
+  "position": {
+    "x": 165,
+    "y": 1198,
+    "height": 470,
+    "width": 2670,
+    "z": 720000,
+    "tabOrder": 720000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_250k_hurdle_math"
+                    }
+                  },
+                  "Property": "row_id"
+                }
+              },
+              "queryRef": "nfp_250k_hurdle_math.row_id",
+              "nativeQueryRef": "row_id",
+              "displayName": "#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_250k_hurdle_math"
+                    }
+                  },
+                  "Property": "option"
+                }
+              },
+              "queryRef": "nfp_250k_hurdle_math.option",
+              "nativeQueryRef": "option",
+              "displayName": "option"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_250k_hurdle_math"
+                    }
+                  },
+                  "Property": "the_math"
+                }
+              },
+              "queryRef": "nfp_250k_hurdle_math.the_math",
+              "nativeQueryRef": "the_math",
+              "displayName": "the math"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_250k_hurdle_math"
+                    }
+                  },
+                  "Property": "vs_hurdle_today"
+                }
+              },
+              "queryRef": "nfp_250k_hurdle_math.vs_hurdle_today",
+              "nativeQueryRef": "vs_hurdle_today",
+              "displayName": "vs hurdle today"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_250k_hurdle_math"
+                    }
+                  },
+                  "Property": "breakeven_when_roi_clears"
+                }
+              },
+              "queryRef": "nfp_250k_hurdle_math.breakeven_when_roi_clears",
+              "nativeQueryRef": "breakeven_when_roi_clears",
+              "displayName": "when the ROI clears the hurdle"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nfp_250k_hurdle_math"
+                    }
+                  },
+                  "Property": "payback_note"
+                }
+              },
+              "queryRef": "nfp_250k_hurdle_math.payback_note",
+              "nativeQueryRef": "payback_note",
+              "displayName": "payback note"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nfp_250k_hurdle_math"
+                  }
+                },
+                "Property": "row_id"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "18D"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "eeef498f6b173161abe9",
+  "name": "af3e90cd1e537f95cf9f",
   "position": {
     "x": 165,
-    "y": 1688,
+    "y": 2916,
     "height": 44,
     "width": 2670,
-    "z": 610000,
-    "tabOrder": 610000
+    "z": 730000,
+    "tabOrder": 730000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "SENSITIVITY - DECISION GRID: one row per choice, rate shifts across (ACCEPT / MAYBE / REJECT vs the 5.00% hurdle, shifted rate shown)",
+                    "value": "TO SCORE A REAL PROGRAM INVESTMENT (e.g. A POOL EXPANSION) - the inputs needed before the program column gets a number",
                     "textStyle": {
                       "fontSize": "15pt"
                     }

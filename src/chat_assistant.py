@@ -69,7 +69,8 @@ INLINE_CSVS = [
     "market_reit_returns_wide.csv", "market_reit_summary.csv",
     "market_cycle_indicators.csv", "nfp_250k_matrix.csv",
     "nfp_250k_sensitivity.csv", "nfp_250k_verdicts.csv",
-    "nfp_250k_sens_pivot.csv",
+    "nfp_250k_sens_pivot.csv", "nfp_250k_hurdle_math.csv",
+    "nfp_250k_program_inputs.csv",
 ]
 HEAD_CSVS = ["market_history_rolling24.csv", "market_history_windows.csv",
              "market_history_long.csv"]

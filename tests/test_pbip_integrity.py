@@ -99,6 +99,8 @@ CSV_FOR_TABLE = {
     "nfp_250k_sensitivity": "nfp_250k_sensitivity",
     "nfp_250k_verdicts": "nfp_250k_verdicts",
     "nfp_250k_sens_pivot": "nfp_250k_sens_pivot",
+    "nfp_250k_hurdle_math": "nfp_250k_hurdle_math",
+    "nfp_250k_program_inputs": "nfp_250k_program_inputs",
     "client_fs_option_sizing": "client_fs_option_sizing",
 }
 

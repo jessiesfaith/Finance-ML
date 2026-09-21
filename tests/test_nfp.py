@@ -987,3 +987,33 @@ def test_250k_per_option_pivot_matches_grids():
             == "not rate-driven").all()
     assert ix.loc[("invest in a program", "decision"), "bp_0"] == \
         "MISSION CALL"
+
+
+def test_250k_hurdle_math_and_intake_checklist():
+    """Owner request 2026-09-21: per-option math to the hurdle with
+    the breakeven shift (WHEN the ROI clears 5.00%), and the intake
+    checklist that must be filled before a real program investment
+    (pool expansion) can be scored - checklist rows are NEEDED, never
+    guessed."""
+    from financials.nfp import decision_250k, load_settings, treasury_yields
+    frames = decision_250k(load_settings(), treasury_yields())
+    hm = frames["nfp_250k_hurdle_math"].set_index("option")
+    assert len(hm) == 4
+    assert "+2.00pt ABOVE" in hm.loc["pay down debt", "vs_hurdle_today"]
+    assert "-200bp" in hm.loc["pay down debt",
+                              "breakeven_when_roi_clears"]
+    assert "14.3 yrs" in hm.loc["pay down debt", "payback_note"]
+    assert "needs +87bp" in hm.loc["T-bills",
+                                   "breakeven_when_roi_clears"]
+    assert "-0.87pt BELOW" in hm.loc["T-bills", "vs_hurdle_today"]
+    assert "-50bp" in hm.loc["stocks (net)",
+                             "breakeven_when_roi_clears"]
+    assert "not comparable" in hm.loc["invest in a program",
+                                      "vs_hurdle_today"]
+    ck = frames["nfp_250k_program_inputs"]
+    assert len(ck) == 12
+    assert (ck["status"] == "NEEDED FROM OWNER / BOARD").all()
+    assert (ck["value_class"] == "RESEARCH REQUIRED").all()
+    assert ck["input_needed"].str.contains("Cannibalization").any()
+    assert ck["pool_expansion_example"].str.contains(
+        "contingency").any()

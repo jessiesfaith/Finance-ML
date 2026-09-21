@@ -1,0 +1,92 @@
+/// Per-option math to the hurdle: named inputs, gap in points, breakeven shift where the ROI clears 5.00%, payback note.
+table nfp_250k_hurdle_math
+	lineageTag: ab79c62e-07d5-47af-8a08-07f672bd209e
+
+	column row_id
+		dataType: string
+		lineageTag: 76fedcf6-919b-4eaf-afeb-2beced9799c7
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column option
+		dataType: string
+		lineageTag: a8c48c9b-0eac-47e1-9ac1-bd0a0fed812f
+		summarizeBy: none
+		sourceColumn: option
+
+		annotation SummarizationSetBy = Automatic
+
+	column the_math
+		dataType: string
+		lineageTag: 5af6c06b-6d62-40ba-a3cc-70ccaff699f7
+		summarizeBy: none
+		sourceColumn: the_math
+
+		annotation SummarizationSetBy = Automatic
+
+	column vs_hurdle_today
+		dataType: string
+		lineageTag: 6fef93a2-6213-4335-8359-36490766d2da
+		summarizeBy: none
+		sourceColumn: vs_hurdle_today
+
+		annotation SummarizationSetBy = Automatic
+
+	column breakeven_when_roi_clears
+		dataType: string
+		lineageTag: 77ef31fe-e98d-4416-a890-375e125c75cd
+		summarizeBy: none
+		sourceColumn: breakeven_when_roi_clears
+
+		annotation SummarizationSetBy = Automatic
+
+	column payback_note
+		dataType: string
+		lineageTag: b69e578f-abe4-424f-8903-ffe850544797
+		summarizeBy: none
+		sourceColumn: payback_note
+
+		annotation SummarizationSetBy = Automatic
+
+	column basis
+		dataType: string
+		lineageTag: 854644a5-16eb-4d51-bade-f45473fee8bb
+		summarizeBy: none
+		sourceColumn: basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: e7f0eb2e-5a18-4679-8d14-b05dbb09e56b
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_250k_hurdle_math = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_250k_hurdle_math.csv"),
+				    [Delimiter = ",", Columns = 8, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "option", "the_math", "vs_hurdle_today", "breakeven_when_roi_clears", "payback_note", "basis", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"option", type text},
+				    {"the_math", type text},
+				    {"vs_hurdle_today", type text},
+				    {"breakeven_when_roi_clears", type text},
+				    {"payback_note", type text},
+				    {"basis", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
