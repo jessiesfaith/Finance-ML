@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "5dc8f6f4d44e327ad734",
+  "name": "fb90ac6a003b05061016",
   "position": {
     "x": 165,
-    "y": 4040,
-    "height": 100,
+    "y": 1898,
+    "height": 44,
     "width": 2670,
-    "z": 220000,
-    "tabOrder": 220000
+    "z": 350000,
+    "tabOrder": 350000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,9 +19,9 @@
               {
                 "textRuns": [
                   {
-                    "value": "All four columns deploy the same $250,000 (settings: available_capital). Rule: ACCEPT if the shifted return >= 5.00% hurdle, MAYBE within 1.00pt below, REJECT under 4.00%. Parallel shift is a teaching simplification - the same bp move is applied to every rate-linked option; FIXED-rate debt would keep its 17,500 saving regardless of market moves (the debt column's sensitivity describes variable-rate debt).",
+                    "value": "T-BILLS - sensitivity: rate shift across, dollars then the decision",
                     "textStyle": {
-                      "fontSize": "12pt"
+                      "fontSize": "15pt"
                     }
                   }
                 ]

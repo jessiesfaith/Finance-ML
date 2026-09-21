@@ -962,3 +962,28 @@ def test_250k_decision_model_pinned():
     assert v.loc[-150, "stocks_net"] == "MAYBE (4.00%)"
     assert v.loc[-50, "stocks_net"] == "ACCEPT (5.00%)"
     assert (v["invest_in_program"] == "MISSION CALL").all()
+
+
+def test_250k_per_option_pivot_matches_grids():
+    """Owner request 2026-09-21: each option's own $ row and decision
+    row with the shifts as columns - a pure re-orientation of the two
+    grids, pinned so the layouts can never disagree."""
+    from financials.nfp import decision_250k, load_settings, treasury_yields
+    frames = decision_250k(load_settings(), treasury_yields())
+    p = frames["nfp_250k_sens_pivot"]
+    assert len(p) == 8  # 4 options x ($ row + decision row)
+    ix = p.set_index(["option", "metric"])
+    dollars = "year-1 $ impact on 250,000"
+    assert ix.loc[("pay down debt", dollars), "bp_m200"] == "12,500"
+    assert ix.loc[("pay down debt", dollars), "bp_p200"] == "22,500"
+    assert ix.loc[("pay down debt", "decision"), "bp_m200"] == \
+        "ACCEPT (5.00%)"
+    assert ix.loc[("T-bills", dollars), "bp_0"] == "10,325"
+    assert ix.loc[("T-bills", "decision"), "bp_p100"] == "ACCEPT (5.13%)"
+    assert ix.loc[("stocks (net)", "decision"), "bp_m200"] == \
+        "REJECT (3.50%)"
+    prog = ix.loc[("invest in a program", dollars)]
+    assert (prog[[c for c in p.columns if c.startswith("bp_")]]
+            == "not rate-driven").all()
+    assert ix.loc[("invest in a program", "decision"), "bp_0"] == \
+        "MISSION CALL"

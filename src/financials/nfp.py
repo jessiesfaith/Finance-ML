@@ -2519,9 +2519,40 @@ def decision_250k(s: dict, ty: pd.DataFrame) -> dict[str, pd.DataFrame]:
     sens_df["value_class"] = "MANAGEMENT ASSUMPTION"
     verd_df = pd.DataFrame(verd)
     verd_df["value_class"] = "MANAGEMENT ASSUMPTION"
+    # per-option presentation pivot (owner request 2026-09-21): each
+    # choice gets its OWN pair of rows - year-1 $ impact and the
+    # decision - with the rate shifts running across as columns, so
+    # the tab can show one small table per option per question.
+    bp_cols = [(-200, "bp_m200"), (-150, "bp_m150"), (-100, "bp_m100"),
+               (-50, "bp_m50"), (0, "bp_0"), (50, "bp_p50"),
+               (100, "bp_p100"), (150, "bp_p150"), (200, "bp_p200")]
+    sens_ix = sens_df.set_index("shift_bp")
+    verd_ix = verd_df.set_index("shift_bp")
+    pivot = []
+    for option, col_name in (
+            ("pay down debt", "pay_down_debt"),
+            ("T-bills", "bonds_tbill"),
+            ("stocks (net)", "stocks_net"),
+            ("invest in a program", "invest_in_program")):
+        dollars, decisions = {}, {}
+        for bp, key in bp_cols:
+            sv = sens_ix.loc[bp, col_name]
+            try:
+                dollars[key] = f"{float(sv):,.0f}"
+            except (TypeError, ValueError):
+                dollars[key] = sv
+            decisions[key] = verd_ix.loc[bp, col_name]
+        pivot.append({"option": option,
+                      "metric": "year-1 $ impact on 250,000",
+                      **dollars})
+        pivot.append({"option": option, "metric": "decision",
+                      **decisions})
+    pivot_df = pd.DataFrame(pivot)
+    pivot_df["value_class"] = "MANAGEMENT ASSUMPTION"
     return {"nfp_250k_matrix": matrix_df,
             "nfp_250k_sensitivity": sens_df,
-            "nfp_250k_verdicts": verd_df}
+            "nfp_250k_verdicts": verd_df,
+            "nfp_250k_sens_pivot": pivot_df}
 
 
 def build_all() -> dict[str, pd.DataFrame]:

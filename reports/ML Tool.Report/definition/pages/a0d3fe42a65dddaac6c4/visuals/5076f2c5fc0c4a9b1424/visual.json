@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "8f2f571d3cc44523be80",
+  "name": "5076f2c5fc0c4a9b1424",
   "position": {
     "x": 165,
-    "y": 2198,
+    "y": 3406,
     "height": 44,
     "width": 2670,
-    "z": 190000,
-    "tabOrder": 190000
+    "z": 430000,
+    "tabOrder": 430000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "SENSITIVITY #2 - the same grid as DECISIONS: ACCEPT / MAYBE / REJECT vs the 5.00% hurdle (shifted rate shown)",
+                    "value": "INVEST IN A PROGRAM - sensitivity: deliberately not rate-driven (the risk is enrollment, not the Fed)",
                     "textStyle": {
                       "fontSize": "15pt"
                     }

@@ -1541,3 +1541,18 @@ REJECT below -50bp, stocks fail only at -200bp. New page registered
 in pages.json before Legacy (19 -> 20 pages); exports
 nfp_250k_matrix / _sensitivity / _verdicts; engine decision_250k()
 reuses load_settings + treasury_yields. Suite 304.
+
+### 120. Tab 18 sensitivity restructured per option (owner QA)
+2026-09-21. Owner wants each choice's sensitivity as its own section:
+a chart with rate shift on x and that option's dollars on y, then its
+own values table, then its own accept/reject table - for pay down
+debt, T-bills, stocks, and invest in a program. The two combined
+grids and the 3-series chart were replaced by four sections; a new
+export nfp_250k_sens_pivot (8 rows: per option a "year-1 $ impact"
+row and a "decision" row, shifts across as columns) feeds the small
+tables via Categorical filterConfig on option+metric (the proven
+tab-14 filter pattern, first use on tableEx). The program section has
+the two tables but no chart - nothing numeric to plot, honestly
+"not rate-driven" / "MISSION CALL" in every cell. The pivot is
+test-pinned against the grids so orientations can never disagree.
+The long grid exports stay for the chat assistant. Page 3200 -> 4220.

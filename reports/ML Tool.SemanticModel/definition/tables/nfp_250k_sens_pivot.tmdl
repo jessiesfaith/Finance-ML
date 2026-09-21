@@ -1,0 +1,137 @@
+/// Per-option sensitivity pivot: each choice's year-1 $ row and decision row with the +/-200bp shifts as columns.
+table nfp_250k_sens_pivot
+	lineageTag: 5bf4fc89-0de6-4f9b-af2c-fce53c3c382f
+
+	column row_id
+		dataType: string
+		lineageTag: b120ad4b-6d9a-42d4-af8b-ca5482089d61
+		summarizeBy: none
+		sourceColumn: row_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column option
+		dataType: string
+		lineageTag: b02884b0-bf36-4b7f-bb01-1554844362a0
+		summarizeBy: none
+		sourceColumn: option
+
+		annotation SummarizationSetBy = Automatic
+
+	column metric
+		dataType: string
+		lineageTag: 4a5cb768-39d5-4423-a74d-3b768038e8e6
+		summarizeBy: none
+		sourceColumn: metric
+
+		annotation SummarizationSetBy = Automatic
+
+	column bp_m200
+		dataType: string
+		lineageTag: ffcc6e52-63a6-4c62-b505-7396b485ea21
+		summarizeBy: none
+		sourceColumn: bp_m200
+
+		annotation SummarizationSetBy = Automatic
+
+	column bp_m150
+		dataType: string
+		lineageTag: 73b3b703-4b40-4df0-ae02-0b7087882964
+		summarizeBy: none
+		sourceColumn: bp_m150
+
+		annotation SummarizationSetBy = Automatic
+
+	column bp_m100
+		dataType: string
+		lineageTag: 4f837914-3b3a-4c89-8a05-f7da1f0244d4
+		summarizeBy: none
+		sourceColumn: bp_m100
+
+		annotation SummarizationSetBy = Automatic
+
+	column bp_m50
+		dataType: string
+		lineageTag: 6404bf0f-f9a2-4ac9-bcee-97b77e9a25ac
+		summarizeBy: none
+		sourceColumn: bp_m50
+
+		annotation SummarizationSetBy = Automatic
+
+	column bp_0
+		dataType: string
+		lineageTag: e04f2c68-f59d-445b-ad7e-d866d1d32c43
+		summarizeBy: none
+		sourceColumn: bp_0
+
+		annotation SummarizationSetBy = Automatic
+
+	column bp_p50
+		dataType: string
+		lineageTag: 4e8171aa-cab9-40a9-833c-c9def1785505
+		summarizeBy: none
+		sourceColumn: bp_p50
+
+		annotation SummarizationSetBy = Automatic
+
+	column bp_p100
+		dataType: string
+		lineageTag: 65305625-b7d3-485f-aadc-932784a1dace
+		summarizeBy: none
+		sourceColumn: bp_p100
+
+		annotation SummarizationSetBy = Automatic
+
+	column bp_p150
+		dataType: string
+		lineageTag: 2c558fd5-0851-45c0-81ba-f7cd600576d3
+		summarizeBy: none
+		sourceColumn: bp_p150
+
+		annotation SummarizationSetBy = Automatic
+
+	column bp_p200
+		dataType: string
+		lineageTag: e0279936-e0da-4587-aaeb-bb6a835dfb9c
+		summarizeBy: none
+		sourceColumn: bp_p200
+
+		annotation SummarizationSetBy = Automatic
+
+	column value_class
+		dataType: string
+		lineageTag: fc5e56cc-09fe-4dd5-9b5e-864171f974da
+		summarizeBy: none
+		sourceColumn: value_class
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nfp_250k_sens_pivot = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(
+				    File.Contents("C:\dev\Finance-ML\reports\nfp_250k_sens_pivot.csv"),
+				    [Delimiter = ",", Columns = 13, QuoteStyle = QuoteStyle.Csv]
+				),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Selected columns" = Table.SelectColumns(#"Promoted headers", {"row_id", "option", "metric", "bp_m200", "bp_m150", "bp_m100", "bp_m50", "bp_0", "bp_p50", "bp_p100", "bp_p150", "bp_p200", "value_class"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"Selected columns", {
+				    {"row_id", type text},
+				    {"option", type text},
+				    {"metric", type text},
+				    {"bp_m200", type text},
+				    {"bp_m150", type text},
+				    {"bp_m100", type text},
+				    {"bp_m50", type text},
+				    {"bp_0", type text},
+				    {"bp_p50", type text},
+				    {"bp_p100", type text},
+				    {"bp_p150", type text},
+				    {"bp_p200", type text},
+				    {"value_class", type text}
+				  })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
