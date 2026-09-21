@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "4422e2ffd6357126f5b6",
+  "name": "eeef498f6b173161abe9",
   "position": {
     "x": 165,
     "y": 1144,
     "height": 44,
     "width": 2670,
-    "z": 310000,
-    "tabOrder": 310000
+    "z": 610000,
+    "tabOrder": 610000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "PAY DOWN DEBT - sensitivity: rate shift across, dollars then the decision",
+                    "value": "SENSITIVITY - DECISION GRID: one row per choice, rate shifts across (ACCEPT / MAYBE / REJECT vs the 5.00% hurdle, shifted rate shown)",
                     "textStyle": {
                       "fontSize": "15pt"
                     }

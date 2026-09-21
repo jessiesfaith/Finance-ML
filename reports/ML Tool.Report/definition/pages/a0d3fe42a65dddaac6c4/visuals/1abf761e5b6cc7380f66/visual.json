@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "735108d176d9fe7b7b17",
+  "name": "1abf761e5b6cc7380f66",
   "position": {
     "x": 165,
-    "y": 2706,
-    "height": 360,
+    "y": 1952,
+    "height": 400,
     "width": 2670,
-    "z": 400000,
-    "tabOrder": 400000
+    "z": 650000,
+    "tabOrder": 650000
   },
   "visual": {
     "visualType": "lineChart",
@@ -44,6 +44,46 @@
                           "Entity": "nfp_250k_sensitivity"
                         }
                       },
+                      "Property": "pay_down_debt"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_250k_sensitivity.pay_down_debt)",
+              "nativeQueryRef": "Sum of pay_down_debt",
+              "displayName": "pay down debt (7.00% assumed)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_250k_sensitivity"
+                        }
+                      },
+                      "Property": "bonds_tbill"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(nfp_250k_sensitivity.bonds_tbill)",
+              "nativeQueryRef": "Sum of bonds_tbill",
+              "displayName": "T-bills (4.13% quote)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "nfp_250k_sensitivity"
+                        }
+                      },
                       "Property": "stocks_net"
                     }
                   },
@@ -52,7 +92,7 @@
               },
               "queryRef": "Sum(nfp_250k_sensitivity.stocks_net)",
               "nativeQueryRef": "Sum of stocks_net",
-              "displayName": "stocks - year-1 $ on $250,000 (5.50% net assumed, shifted)"
+              "displayName": "stocks (5.50% net assumed)"
             }
           ]
         }

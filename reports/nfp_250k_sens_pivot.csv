@@ -1,9 +1,9 @@
 row_id,option,metric,bp_m200,bp_m150,bp_m100,bp_m50,bp_0,bp_p50,bp_p100,bp_p150,bp_p200,value_class
 R001,pay down debt,"year-1 $ impact on 250,000","12,500","13,750","15,000","16,250","17,500","18,750","20,000","21,250","22,500",MANAGEMENT ASSUMPTION
 R002,pay down debt,decision,ACCEPT (5.00%),ACCEPT (5.50%),ACCEPT (6.00%),ACCEPT (6.50%),ACCEPT (7.00%),ACCEPT (7.50%),ACCEPT (8.00%),ACCEPT (8.50%),ACCEPT (9.00%),MANAGEMENT ASSUMPTION
-R003,T-bills,"year-1 $ impact on 250,000","5,325","6,575","7,825","9,075","10,325","11,575","12,825","14,075","15,325",MANAGEMENT ASSUMPTION
-R004,T-bills,decision,REJECT (2.13%),REJECT (2.63%),REJECT (3.13%),REJECT (3.63%),MAYBE (4.13%),MAYBE (4.63%),ACCEPT (5.13%),ACCEPT (5.63%),ACCEPT (6.13%),MANAGEMENT ASSUMPTION
-R005,stocks (net),"year-1 $ impact on 250,000","8,750","10,000","11,250","12,500","13,750","15,000","16,250","17,500","18,750",MANAGEMENT ASSUMPTION
-R006,stocks (net),decision,REJECT (3.50%),MAYBE (4.00%),MAYBE (4.50%),ACCEPT (5.00%),ACCEPT (5.50%),ACCEPT (6.00%),ACCEPT (6.50%),ACCEPT (7.00%),ACCEPT (7.50%),MANAGEMENT ASSUMPTION
-R007,invest in a program,"year-1 $ impact on 250,000",not rate-driven,not rate-driven,not rate-driven,not rate-driven,not rate-driven,not rate-driven,not rate-driven,not rate-driven,not rate-driven,MANAGEMENT ASSUMPTION
-R008,invest in a program,decision,MISSION CALL,MISSION CALL,MISSION CALL,MISSION CALL,MISSION CALL,MISSION CALL,MISSION CALL,MISSION CALL,MISSION CALL,MANAGEMENT ASSUMPTION
+R003,invest in a program,"year-1 $ impact on 250,000",not rate-driven,not rate-driven,not rate-driven,not rate-driven,not rate-driven,not rate-driven,not rate-driven,not rate-driven,not rate-driven,MANAGEMENT ASSUMPTION
+R004,invest in a program,decision,MISSION CALL,MISSION CALL,MISSION CALL,MISSION CALL,MISSION CALL,MISSION CALL,MISSION CALL,MISSION CALL,MISSION CALL,MANAGEMENT ASSUMPTION
+R005,T-bills,"year-1 $ impact on 250,000","5,325","6,575","7,825","9,075","10,325","11,575","12,825","14,075","15,325",MANAGEMENT ASSUMPTION
+R006,T-bills,decision,REJECT (2.13%),REJECT (2.63%),REJECT (3.13%),REJECT (3.63%),MAYBE (4.13%),MAYBE (4.63%),ACCEPT (5.13%),ACCEPT (5.63%),ACCEPT (6.13%),MANAGEMENT ASSUMPTION
+R007,stocks (net),"year-1 $ impact on 250,000","8,750","10,000","11,250","12,500","13,750","15,000","16,250","17,500","18,750",MANAGEMENT ASSUMPTION
+R008,stocks (net),decision,REJECT (3.50%),MAYBE (4.00%),MAYBE (4.50%),ACCEPT (5.00%),ACCEPT (5.50%),ACCEPT (6.00%),ACCEPT (6.50%),ACCEPT (7.00%),ACCEPT (7.50%),MANAGEMENT ASSUMPTION

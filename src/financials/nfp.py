@@ -2531,9 +2531,9 @@ def decision_250k(s: dict, ty: pd.DataFrame) -> dict[str, pd.DataFrame]:
     pivot = []
     for option, col_name in (
             ("pay down debt", "pay_down_debt"),
+            ("invest in a program", "invest_in_program"),
             ("T-bills", "bonds_tbill"),
-            ("stocks (net)", "stocks_net"),
-            ("invest in a program", "invest_in_program")):
+            ("stocks (net)", "stocks_net")):
         dollars, decisions = {}, {}
         for bp, key in bp_cols:
             sv = sens_ix.loc[bp, col_name]

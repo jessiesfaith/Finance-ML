@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "bf195f1eef3ef3bba1c5",
+  "name": "fd37a22e191e7f62f53f",
   "position": {
     "x": 165,
-    "y": 3460,
-    "height": 130,
+    "y": 1602,
+    "height": 330,
     "width": 2670,
-    "z": 440000,
-    "tabOrder": 440000
+    "z": 640000,
+    "tabOrder": 640000
   },
   "visual": {
     "visualType": "tableEx",
@@ -23,12 +23,12 @@
                       "Entity": "nfp_250k_sens_pivot"
                     }
                   },
-                  "Property": "metric"
+                  "Property": "option"
                 }
               },
-              "queryRef": "nfp_250k_sens_pivot.metric",
-              "nativeQueryRef": "metric",
-              "displayName": "year-1 $ impact"
+              "queryRef": "nfp_250k_sens_pivot.option",
+              "nativeQueryRef": "option",
+              "displayName": "option"
             },
             {
               "field": {
@@ -233,60 +233,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "fbf195fa",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "nfp_250k_sens_pivot"
-              }
-            },
-            "Property": "option"
-          }
-        },
-        "type": "Categorical",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "t",
-              "Entity": "nfp_250k_sens_pivot",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "In": {
-                  "Expressions": [
-                    {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Source": "t"
-                          }
-                        },
-                        "Property": "option"
-                      }
-                    }
-                  ],
-                  "Values": [
-                    [
-                      {
-                        "Literal": {
-                          "Value": "'invest in a program'"
-                        }
-                      }
-                    ]
-                  ]
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "name": "fbf195fb",
+        "name": "ffd37a22e",
         "field": {
           "Column": {
             "Expression": {

@@ -1556,3 +1556,16 @@ the two tables but no chart - nothing numeric to plot, honestly
 "not rate-driven" / "MISSION CALL" in every cell. The pivot is
 test-pinned against the grids so orientations can never disagree.
 The long grid exports stay for the chat assistant. Page 3200 -> 4220.
+
+### 121. Tab 18: sensitivity consolidated into two grids (owner QA)
+2026-09-21 (second pass). Owner wants the per-option sections from
+#120 combined into grid views: a DECISION grid (one row per choice -
+pay down debt, invest in a program, T-bills, stocks - with the
++/-200bp shifts across) and a $ IMPACT grid with the same rows, plus
+the one combined 3-series chart (shift on x, dollars on y). The 15
+per-option visuals were removed; both grids read the same
+nfp_250k_sens_pivot export via a metric filterConfig, so the pinned
+grid-vs-pivot test still guarantees the numbers. Pivot row order
+changed to debt / program / T-bills / stocks per her wording. Page
+4220 -> 2800 - the tab is now two screens: the decision matrix +
+recommendation, then the two sensitivity grids + chart + CEO script.
